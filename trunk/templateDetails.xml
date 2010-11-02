@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
+<install version="1.5" type="template"  method="upgrade">
+	<name>Wright Framework</name>
+	<creationDate>November 2010</creationDate>
+	<author>Joomlashack</author>
+	<authorEmail>support@joomlashack.com</authorEmail>
+	<authorUrl>http://www.joomlashack.com</authorUrl>
+	<copyright>Copyright Joomlashack 2010. All rights reserved</copyright>
+	<license>Commercial license - single domain use only</license>
+	<version>0.1</version>
+    <description>
+			<![CDATA[
+
+			]]> 	
+    </description>
+	<files>
+		<filename>index.php</filename>
+		<filename>grid.php</filename>
+		<filename>templateDetails.xml</filename>
+		<folder>css</folder>
+		<folder>html</folder>
+		<folder>js</folder>
+		<folder>images</folder>
+		<folder>wright</folder>
+	</files>
+	<positions>
+		<position>menu</position>
+		<position>logo</position>
+		<position>newsflash</position>
+		<position>sidebar1</position>
+		<position>sidebar2</position>
+		<position>topmenu</position>
+		<position>footer</position>
+		<position>copyright</position>
+		<position>debug</position>
+		<position>breadcrumb</position>
+	</positions>
+
+	<!-- Joomla 1.5 Params -->
+	<params addpath="/templates/js_framework/wright/parameters/joomla_1.5">
+		<param name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />
+		<param name="style" type="styles" default="light" label="Style" description="Select which of the style variations you wish to use." />
+		<param name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>
+		<param name="logo" type="logo" default="template" label="Logo Image" description="You can select your logo from the images directory after you upload the image." />
+		<param name="logowidth" type="grid" defualt="6" label="Logo Width" description="Select the column width for the logo, the rest of the space will be given to the newsflash module, or if you set it to full width the module will dissapear" />
+		<param name="body_font" type="typography" default="helvetica" label="Body Font" description="Select the default font face for the body" />
+		<param name="body_googlefont" type="googlefonts" default="" label="Google Font Type" />
+		<param name="header_font" type="typography" default="helvetica" label="Heading Font" description="Select the default font face for the headers" />
+		<param name="header_googlefont" type="googlefonts" default="" label="Google Font Type" />
+		<param name="columns" type="columns" default="sidebar1:3;main:6;sidebar2:3" sidebars="2" label="Columns" description="You can set the default widths and arrange the main columns. Any columns that are unused will just be hidden and the main column will be widened." />
+		<param type="spacer" />
+		<param name="Color sample" type="colorpicker" />
+		
+		
+		<param type="spacer" />
+		<param name="headerstyle" type="list" default="text" label="Logo type" description="Display the logo as an image or text">
+			<option value="module">Use a module</option>
+			<option value="graphic">Use an Image</option>
+			<option value="text">Use Text (Headline and Slogan)</option>
+		</param>
+		<param name="headline" type="text" default="Wireframe Joomla Template" size="50" label="Logo text" description="Header text to be displayed or SEO text for image" />
+		<param name="slogan" type="text" default="Your Site Slogan" size="50" label="Slogan" description="Slogan text to be displayed or SEO text for image" />
+		<param name="logogridsize" type="list" default="3" label="Logo grid size" description="Size of the logo box (in grid units) if using text or graphic logo">
+			<option value="1">1 (60px)</option>
+			<option value="2">2 (140px)</option>
+			<option value="3">3 (220px)</option>
+			<option value="4">4 (300px)</option>
+			<option value="5">5 (380px)</option>
+			<option value="6">6 (460px)</option>
+			<option value="7">7 (540px)</option>
+			<option value="8">8 (620px)</option>
+			<option value="9">9 (700px)</option>
+			<option value="10">10 (780px)</option>
+			<option value="11">11 (860px)</option>
+			<option value="12">12 (940px)</option>
+		</param>
+		<param name="logoheight" type="text" default="150" label="Logo Height" description="Enter your logo image height (ONLY enter numerical value)" size="3" />
+		<param name="sidecolumnwidth" type="list" default="4" label="Side Column Widths" description="Sets the width of the side columns">
+			<option value="1">100px</option>
+			<option value="2">140px</option>
+			<option value="3">220px</option>
+			<option value="4">300px</option>
+		</param>
+		<param name="layoutstyle" type="list" default="lmr" label="Column Layout" description="Allows for different layouts of columns, the middle column will ALWAYS appear first in the source code for SEO!">
+			<option value="lmr">left, middle, right</option>
+			<option value="lrm">left, right, middle</option>
+			<option value="mlr">middle left, right</option>
+		</param>
+		<param name="headerscript" type="textarea" default="" label="Header Script" description="If you need to add scripts to your header (like Google verification code, perhaps), you should enter them here." rows="5" cols="50" />
+		<param name="footerscript" type="textarea" default="" label="Footer Script" description="If you need to add scripts to your footer (like Google Analytics tracking code), you should enter them here." rows="5" cols="50" />
+		<param name="mootools_enabled" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>
+		<param name="caption_enabled" type="radio" default="1" label="Enable caption.js" description="Turn off Joomla core caption.js">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>
+	</params>
+
+	<!-- Joomla 1.6 Params -->
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="headerstyle" type="list" default="text" label="Logo type" description="Display the logo as an image or text">
+					<option value="module">Use a module</option>
+					<option value="graphic">Use an Image</option>
+					<option value="text">Use Text (Headline and Slogan)</option>
+				</field>
+
+				<field name="headline" type="text" default="Wireframe Joomla Template" size="50" label="Logo text" description="Header text to be displayed or SEO text for image" />
+
+				<field name="slogan" type="text" default="Your Site Slogan" size="50" label="Slogan" description="Slogan text to be displayed or SEO text for image" />
+
+				<field name="logogridsize" type="list" default="3" label="Logo grid size" description="Size of the logo box (in grid units) if using text or graphic logo">
+					<option value="1">1 (60px)</option>
+					<option value="2">2 (140px)</option>
+					<option value="3">3 (220px)</option>
+					<option value="4">4 (300px)</option>
+					<option value="5">5 (380px)</option>
+					<option value="6">6 (460px)</option>
+					<option value="7">7 (540px)</option>
+					<option value="8">8 (620px)</option>
+					<option value="9">9 (700px)</option>
+					<option value="10">10 (780px)</option>
+					<option value="11">11 (860px)</option>
+					<option value="12">12 (940px)</option>
+				</field>
+
+				<field name="logoheight" type="text" default="150" label="Logo Height" description="Enter your logo image height (ONLY enter numerical value)" size="3" />
+				<field name="sidecolumnwidth" type="list" default="4" label="Side Column Widths" description="Sets the width of the side columns">
+					<option value="1">100px</option>
+					<option value="2">140px</option>
+					<option value="3">220px</option>
+					<option value="4">300px</option>
+				</field>
+				<field name="style" type="list" default="style1" label="Color Style" description="Select your color style">
+					<option value="style1">Blue</option>
+					<option value="style2">Brown</option>
+					<option value="style3">Green</option>
+					<option value="style4">Red</option>
+				</field>
+				<field name="layoutstyle" type="list" default="lmr" label="Column Layout" description="Allows for different layouts of columns, the middle column will ALWAYS appear first in the source code for SEO!">
+					<option value="lmr">left, middle, right</option>
+					<option value="lrm">left, right, middle</option>
+					<option value="mlr">middle left, right</option>
+				</field>
+				<field name="headerscript" type="textarea" default="" label="Header Script" description="If you need to add scripts to your header (like Google verification code, perhaps), you should enter them here." rows="5" cols="50" />
+				<field name="footerscript" type="textarea" default="" label="Footer Script" description="If you need to add scripts to your footer (like Google Analytics tracking code), you should enter them here." rows="5" cols="50" />
+				<field name="mootools_enabled" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js">
+					<option value="0">NO</option>
+					<option value="1">YES</option>
+				</field>
+				<field name="caption_enabled" type="radio" default="1" label="Enable caption.js" description="Turn off Joomla core caption.js">
+					<option value="0">NO</option>
+					<option value="1">YES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</install>

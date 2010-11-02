@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wright>
+	<settings>
+		<setting name="doctype" type="list" default="html5">
+			<option value="html5">HTML5</option>
+			<option value="xhtml1transitional">XHTML 1 Transitional</option>
+			<option value="xhtml1strict">XHTML 1 Strict</option>
+		</setting>
+	</settings>
+</wright>
