@@ -28,9 +28,9 @@ if ($showmode == 0 || $showmode == 2) :
 endif;
 
 if(($showmode > 0) && count($names)) : ?>
-    <ul>
+    <ul class="whosonline">
 <?php foreach($names as $name) : ?>
-	    <li><strong><?php echo $name->username; ?></strong></li>
+	    <li><?php echo $name->username; ?></li>
 <?php endforeach;  ?>
 	</ul>
 <?php endif;

@@ -1,8 +1,4 @@
 <?php
-/**
-* @copyright Copyright (C) JoomlaShack. All rights reserved.
-*/
-
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 ?>
