@@ -58,7 +58,7 @@ class Wright extends JDocumentHTML
 		// Setup the header
 		$this->header();
 
-		print $this->template;
+		print trim($this->template);
 		return true;
 
 	}

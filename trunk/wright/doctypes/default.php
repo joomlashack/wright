@@ -11,12 +11,14 @@ abstract class HtmlAdapterAbstract
 								'htmlComments' =>	'/<!--.*?-->/i',
 								'body' => '/<body(.*)?>/i',
 								'nav' => '/<nav(.*)>(.*)<\/nav>/isU',
-								'sections' => '/<section id="main"(.*)>(.*)<\/section>/isU',
+								'sections' => '/<section(.*)>(.*)<\/section>/isU',
 								'asides' => '/<aside(.*)>(.*)<\/aside>/isU',
+								'footer' => '/<footer(.*)>(.*)<\/footer>/isU',
 		);
 
 	public function  __construct($params) {
 		$this->params = $params;
+		$this->setupColumns();
 	}
 
 	public function getTags()
@@ -99,6 +101,66 @@ abstract class HtmlAdapterAbstract
 
 	public function getSections($matches)
 	{
+		$class = 'grid_'.$this->columns['main']->size;
+		if ($this->columns['main']->push) $class .= ' push_'.$this->columns['main']->push;
+		if ($this->columns['main']->pull) $class .= ' pull_'.$this->columns['main']->pull;
+		if (strpos($matches[1], 'class=')) {
+			preg_match('/class="(.*)"/i', $matches[1], $classes);
+			$class .= ' ' . $classes[1];
+		}
+
+		if (strpos($matches[1], 'class='))
+			$main = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
+		else
+			$main = preg_replace('/<section/iU', '<section class="'.$class.'"', $matches[0]);
+
+		return $main;
+	}
+
+	public function getAsides($matches)
+	{
+		// Get id and decide if to even bother
+		preg_match('/id=\"(.*)\"/isU', $matches[1], $ids);
+		$id = $ids[1];
+
+		$doc = Wright::getInstance();
+		if (!$doc->document->countModules($id))
+			return;
+
+		$class = 'grid_'.$this->columns[$id]->size;
+		if ($this->columns[$id]->push) $class .= ' push_'.$this->columns[$id]->push;
+		if ($this->columns[$id]->pull) $class .= ' pull_'.$this->columns[$id]->pull;
+		if (strpos($matches[1], 'class=')) {
+			preg_match('/class="(.*)"/i', $matches[1], $classes);
+			$class .= ' ' . $classes[1];
+		}
+
+		if (strpos($matches[1], 'class='))
+			$sidebar = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
+		else
+			$sidebar = preg_replace('/<aside/iU', '<aside class="'.$class.'"', $matches[0]);
+
+		return $sidebar;
+	}
+
+	public function getFooter($matches)
+	{
+
+		$class = 'footer';
+
+		if (strpos($matches[1], 'class=')) {
+			preg_match('/class="(.*)"/i', $matches[1], $classes);
+			$class .= ' ' . $classes[1];
+		}
+
+		if (strpos($matches[1], 'class='))
+			$footer = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
+
+		return $footer;
+	}
+
+	private function setupColumns()
+	{
 		$doc = Wright::getInstance();
 
 		// Get our column info straight
@@ -109,10 +171,10 @@ abstract class HtmlAdapterAbstract
 		foreach (explode(';', $doc->document->params->get('columns')) as $item)
 		{
 			list ($col, $val) = explode(':', $item);
-			
+
 			if ($col !== 'main' && $check == 0) $main++;
 			else $check = 1;
-			
+
 			$this->columns[$col]->name = $col;
 			$this->columns[$col]->size = $val;
 			$this->columns[$col]->push = 0;
@@ -177,47 +239,6 @@ abstract class HtmlAdapterAbstract
 				$this->columns['sidebar1']->pull = $this->columns['sidebar2']->size;
 				break;
 		}
-
-		$class = 'grid_'.$this->columns['main']->size;
-		if ($this->columns['main']->push) $class .= ' push_'.$this->columns['main']->push;
-		if ($this->columns['main']->pull) $class .= ' pull_'.$this->columns['main']->pull;
-		if (strpos($matches[1], 'class=')) {
-			preg_match('/class="(.*)"/i', $matches[1], $classes);
-			$class .= ' ' . $classes[1];
-		}
-
-		if (strpos($matches[1], 'class='))
-			$main = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
-		else
-			$main = preg_replace('/<section/iU', '<section class="'.$class.'"', $matches[0]);
-
-		return $main;
-	}
-
-	public function getAsides($matches)
-	{
-		// Get id and decide if to even bother
-		preg_match('/id=\"(.*)\"/isU', $matches[1], $ids);
-		$id = $ids[1];
-
-		$doc = Wright::getInstance();
-		if (!$doc->document->countModules($id))
-			return;
-
-		$class = 'grid_'.$this->columns[$id]->size;
-		if ($this->columns[$id]->push) $class .= ' push_'.$this->columns[$id]->push;
-		if ($this->columns[$id]->pull) $class .= ' pull_'.$this->columns[$id]->pull;
-		if (strpos($matches[1], 'class=')) {
-			preg_match('/class="(.*)"/i', $matches[1], $classes);
-			$class .= ' ' . $classes[1];
-		}
-
-		if (strpos($matches[1], 'class='))
-			$sidebar = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
-		else
-			$sidebar = preg_replace('/<aside/iU', '<aside class="'.$class.'"', $matches[0]);
-
-		return $sidebar;
 	}
 
 }
