@@ -7,7 +7,7 @@ abstract class HtmlAdapterAbstract
 	protected $params;
 
 	protected $tags = array(	'doctype' =>	'/<doctype>/i',
-								'html' =>		'/<html>/i',
+								'html' =>		'/<html(.*)?>/i',
 								'htmlComments' =>	'/<!--.*?-->/i',
 								'body' => '/<body(.*)?>/i',
 								'nav' => '/<nav(.*)>(.*)<\/nav>/isU',

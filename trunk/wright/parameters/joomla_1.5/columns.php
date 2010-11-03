@@ -22,15 +22,12 @@ class JElementColumns extends JElement
 
 		$sidebars = ($node->attributes('sidebars')) ? $node->attributes('sidebars') : 2;
 
-		$base = 60;
-
 		$options = array ();
 		for ($i=1; $i <= 12; $i++)
 		{
 			$val	= $i;
-			$text	= $i . ' (' . $base . 'px)';
+			$text	= $i;
 			$options[] = JHTML::_('select.option', $val, JText::_($text));
-			$base += 80;
 		}
 
 		$html = '<input type="hidden" name="'.$control_name.'['.$name.']" id="'.$control_name.$name.'" value="'.$value.'" />';
