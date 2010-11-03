@@ -1,5 +1,5 @@
 <?php
-/** $Id: default_address.php 12387 2009-06-30 01:17:44Z ian $ */
+/** $Id$ */
 defined( '_JEXEC' ) or die( 'Restricted access' );
 ?>
 <?php if ( ( $this->contact->params->get( 'address_check' ) > 0 ) &&  ( $this->contact->address || $this->contact->suburb  || $this->contact->state || $this->contact->country || $this->contact->postcode ) ) : ?>

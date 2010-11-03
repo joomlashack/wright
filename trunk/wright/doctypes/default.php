@@ -185,7 +185,7 @@ abstract class HtmlAdapterAbstract
 		$check = 0;
 		$number = 0;
 		$layout = array();
-		foreach (explode(';', $doc->document->params->get('columns')) as $item)
+		foreach (explode(';', $doc->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3')) as $item)
 		{
 			list ($col, $val) = explode(':', $item);
 

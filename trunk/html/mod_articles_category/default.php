@@ -2,7 +2,7 @@
 
 
 /**
- * @version		$Id: default.php 95 2010-09-01 15:45:08Z jeremy $
+ * @version		$Id$
  * @package		Joomla.Site
  * @subpackage	mod_articles_category
  * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.

@@ -10,9 +10,7 @@
 
 defined('_JEXEC') or die ('You are not allowed to directly access this file');
 
-$doc = JFactory::getDocument();
-
-class Wright extends JDocumentHTML
+class Wright
 {
 	public $template;
 	public $document;
@@ -23,7 +21,7 @@ class Wright extends JDocumentHTML
 		// Initialize properties
 		$document = JFactory::getDocument();
 		$this->document = $document;
-		$this->params =& $document->params;
+		$this->params = $document->params;
 
 		if (is_file(JPATH_THEMES.DS.$document->template.DS.'functions.php')) include_once(JPATH_THEMES.DS.$document->template.DS.'functions.php');
 

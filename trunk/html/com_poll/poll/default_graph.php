@@ -1,4 +1,4 @@
-<?php // @version $Id: default_graph.php 12230 2009-06-21 02:07:34Z ian $
+<?php // @version $Id$
 defined('_JEXEC') or die('Restricted access');
 ?>
 

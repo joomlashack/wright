@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: blog_item.php 96 2010-09-02 17:01:23Z jeremy $
+ * @version		$Id$
  * @package		Joomla.Site
  * @subpackage	com_content
  * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.

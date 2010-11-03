@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: default_items.php -1   $
+ * @version		$Id$
  * @package		Joomla.Site
  * @subpackage	com_newsfeeds
  * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.

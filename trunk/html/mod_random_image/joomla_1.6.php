@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: default.php 70 2010-08-04 03:28:12Z jeremy $
+ * @version		$Id$
  * @package		Joomla.Site
  * @subpackage	mod_random_image
  * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.

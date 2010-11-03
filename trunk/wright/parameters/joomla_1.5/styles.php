@@ -1,4 +1,4 @@
-<?php // $Id: datetime.php 19 2010-08-03 01:24:09Z jeremy $
+<?php // $Id$
 defined('_JEXEC') or die('Restricted access');
 
 class JElementStyles extends JElement

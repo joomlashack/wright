@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: default.php 103 2010-09-09 04:30:33Z jeremy $
+ * @version		$Id$
  * @package		Joomla.Site
  * @subpackage	com_wrapper
  * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
