@@ -51,12 +51,13 @@ abstract class HtmlAdapterAbstract
 		$browser = JBrowser::getInstance();
 		$class = $browser->getBrowser() . '-' . $browser->getMajor();
 
-		if (strpos($matches[1], 'class=')) {
-			preg_match('/class="(.*)"/i', $matches[1], $classes);
-			$class .= ' ' . $classes[1];
+		if (isset($matches[1])) {
+			if (strpos($matches[1], 'class=')) {
+				preg_match('/class="(.*)"/i', $matches[1], $classes);
+				if (isset($classes[1]))
+					$class .= ' ' . $classes[1];
+			}
 		}
-
-		//print_r($this->params);
 
 		// If user has custom typography selected, we need to add the classes to trigger it
 		if ($this->params->get('body_font', 'default') !== 'default') {
@@ -171,7 +172,7 @@ abstract class HtmlAdapterAbstract
 		}
 
 		if (strpos($matches[1], 'class='))
-			$header = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
+			$header = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0], 1);
 
 		return $header;
 	}

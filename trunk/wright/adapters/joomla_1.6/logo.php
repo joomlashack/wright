@@ -8,10 +8,19 @@ class AdapterJoomla_1_6Logo
 		if (!isset($args['style'])) $args['style'] = 'xhtml';
 
 		$doc = Wright::getInstance();
-		if ($doc->document->params->get('logo', 'template') == 'template')
-			$logo = JURI::root().'templates/'.$doc->document->template.'/images/logo.png';
-		else
-			$logo = JURI::root().'images/'.$doc->document->params->get('logo');
+		if ($doc->document->params->get('logo', 'template') == 'template') {
+			if (is_file(JPATH_ROOT.DS.'templates'.DS.$doc->document->template.DS.'images'.DS.'logo.png'))
+				$logo = JURI::root().'templates/'.$doc->document->template.'/images/logo.png';
+			elseif (is_file(JPATH_ROOT.DS.'templates'.DS.$doc->document->template.DS.$doc->document->params->get('style').DS.'images'.DS.'logo.png'))
+				$logo = JURI::root().'templates/'.$doc->document->template.'/'.$doc->document->params->get('style').'images/logo.png';
+			else {
+				$logo = JURI::root().'templates/'.$doc->document->template.'/wright/images/logo.png';
+			}
+		}
+		else {
+			$logo = JURI::root().'images/'.$doc->document->params->get('logo', 'logo.png');
+		}
+
 		$app = JFactory::getApplication();
 
 		$html = '<div id="logo" class="grid_'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'"><span>'.$app->getCfg('sitename').'</span><img src="'.$logo.'" alt="" title="" /></a></div>';
