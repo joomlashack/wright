@@ -14,7 +14,7 @@ class AdapterJoomla_1_5Logo
 			$logo = JURI::root().'images/'.$doc->document->params->get('logo');
 		$app = JFactory::getApplication();
 
-		$html = '<div id="logo" class="grid_'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'"><p>'.$app->getCfg('sitename').'</p><img src="'.$logo.'" alt="" title="" /></a></div>';
+		$html = '<div id="logo" class="grid_'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'"><span>'.$app->getCfg('sitename').'</span><img src="'.$logo.'" alt="" title="" /></a></div>';
 		if ($doc->document->params->get('logowidth') !== '12') $html .= '<div id="'.$args['name'].'" class="grid_'.(12 - $doc->document->params->get('logowidth', '6')).'"><jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" /></div>';
 		$html .= '<div class="clearfix"></div>';
 		return $html;

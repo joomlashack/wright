@@ -14,6 +14,7 @@ abstract class HtmlAdapterAbstract
 								'sections' => '/<section(.*)>(.*)<\/section>/isU',
 								'asides' => '/<aside(.*)>(.*)<\/aside>/isU',
 								'footer' => '/<footer(.*)>(.*)<\/footer>/isU',
+								'header' => '/<header(.*)>(.*)<\/header>/isU',
 		);
 
 	public function  __construct($params) {
@@ -157,6 +158,22 @@ abstract class HtmlAdapterAbstract
 			$footer = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
 
 		return $footer;
+	}
+
+	public function getHeader($matches)
+	{
+
+		$class = 'header';
+
+		if (strpos($matches[1], 'class=')) {
+			preg_match('/class="(.*)"/i', $matches[1], $classes);
+			$class .= ' ' . $classes[1];
+		}
+
+		if (strpos($matches[1], 'class='))
+			$header = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
+
+		return $header;
 	}
 
 	private function setupColumns()

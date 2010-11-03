@@ -83,13 +83,36 @@ class HtmlAdapterXhtml1Transitional extends HtmlAdapterAbstract
 			$class .= ' ' . $classes[1];
 		}
 
-		if (strpos($matches[1], 'class='))
-			$footer = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
+		$footer = $matches[0];
 
-		$footer = preg_replace('/<footer/iU', '<div', $matches[0]);
+		if (strpos($matches[1], 'class='))
+			$footer = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $footer);
+
+		$footer = preg_replace('/<footer/iU', '<div', $footer);
 
 		$footer = str_replace('</footer>', '</div>', $footer);
 
 		return $footer;
+	}
+
+	public function getHeader($matches)
+	{
+		$class = 'header';
+
+		if (strpos($matches[1], 'class=')) {
+			preg_match('/class="(.*)"/i', $matches[1], $classes);
+			$class .= ' ' . $classes[1];
+		}
+
+		$header = $matches[0];
+
+		if (strpos($matches[1], 'class='))
+			$header = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $header);
+
+		$header = preg_replace('/<header/iU', '<div', $header);
+
+		$header = str_replace('</header>', '</div>', $header);
+
+		return $header;
 	}
 }
