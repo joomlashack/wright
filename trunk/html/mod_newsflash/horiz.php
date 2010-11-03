@@ -1,11 +1,9 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access'); ?>
-<table class="moduletable<?php echo $params->get('moduleclass_sfx') ?>">
-	<tr>
+<ul class="newsflash-module<?php echo $params->get('moduleclass_sfx') ?>">
 	<?php foreach ($list as $item) : ?>
-		<td>
+		<li>
 			<?php modNewsFlashHelper::renderItem($item, $params, $access); ?>
-		</td>
+		</li>
 	<?php endforeach; ?>
-	</tr>
-</table>
+</ul>

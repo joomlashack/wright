@@ -1,6 +1,6 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access'); ?>
-<div align="center">
+<div class="random-image-module">
 <?php if ($link) : ?>
 <a href="<?php echo $link; ?>" target="_self">
 <?php endif; ?>
