@@ -19,7 +19,6 @@ class Wright
 	public $baseurl;
 
 	function Wright() {
-		print '<!-- Wright initialized -->';
 		// Initialize properties
 		$document = JFactory::getDocument();
 		$this->document = $document;
@@ -29,9 +28,12 @@ class Wright
 		if (is_file(JPATH_THEMES.DS.$document->template.DS.'functions.php')) include_once(JPATH_THEMES.DS.$document->template.DS.'functions.php');
 
 		// Get our template for further parsing, if custom file is found
+		// If there is a homepage option it will load it
 		// it will use it instead of the default file
 		$path = JPATH_THEMES.DS.$document->template.DS.'template.php';
-		if (is_file(JPATH_THEMES.DS.$document->template.DS.'custom.php')) $path = JPATH_THEMES.DS.$document->template.DS.'custom.php';
+		$menu = & JSite::getMenu();
+		if ($menu->getActive() == $menu->getDefault() && is_file(JPATH_THEMES.DS.$document->template.DS.'home.php')) $path = JPATH_THEMES.DS.$document->template.DS.'home.php';
+		elseif (is_file(JPATH_THEMES.DS.$document->template.DS.'custom.php')) $path = JPATH_THEMES.DS.$document->template.DS.'custom.php';
 
 		// Include our file and capture buffer
 		ob_start();

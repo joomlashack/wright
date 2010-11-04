@@ -242,7 +242,7 @@ ul.tick li {
 	border-bottom: 3px solid #c2df88;
 	background: #EEF7DD url(../images/typography/status-download.png) 10px 50% no-repeat;
 }
-/* Blockquote */
+/* Elements */
 blockquote, blockquote.left, blockquote.right {
 	padding:20px;
 	margin:10px 0;
@@ -260,4 +260,54 @@ blockquote.right {
 	float:right;
 	margin:0 0 10px 10px;
 	width:50%;
+}
+ol {
+list-style:decimal;
+}
+ul {
+list-style:disc;
+}
+li {
+margin-left:30px;
+}
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+margin-bottom:20px;
+}
+a:focus {
+outline:none;
+}
+a{
+text-decoration:underline;
+outline:none;
+}
+a:hover{
+text-decoration:none;
+}
+hr {
+border:0 #ccc solid;
+border-top-width:1px;
+clear:both;
+height:0;
+}
+h1, h2, h3, h4, h5, h6, .componentheading, .contentheading, .contentdescription {
+font-weight:bold;
+}
+h1, .componentheading {
+font-size:35px;
+margin:0 0 10px 0;
+}
+h2, .contentheading {
+font-size:30px;
+}
+h3 {
+font-size:25px;
+}
+h4, .contentdescription {
+font-size:19px;
+}
+h5 {
+font-size:17px;
+}
+h6 {
+font-size:15px;
 }

@@ -28,19 +28,16 @@ class JFormFieldColorpicker extends JFormField
 	 */
 	protected function getInput()
 	{
-		// Initialize some field attributes.
-		$size		= $this->element['size'] ? ' size="'.(int) $this->element['size'].'"' : '';
-		$maxLength	= $this->element['maxlength'] ? ' maxlength="'.(int) $this->element['maxlength'].'"' : '';
-		$class		= $this->element['class'] ? ' class="'.(string) $this->element['class'].'"' : '';
-		$readonly	= ((string) $this->element['readonly'] == 'true') ? ' readonly="readonly"' : '';
-		$disabled	= ((string) $this->element['disabled'] == 'true') ? ' disabled="disabled"' : '';
+		$doc = JFactory::getDocument();
+		$template = $this->form->getValue('template');
+		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/jscolor/jscolor.js');
 
-		// Initialize JavaScript field attributes.
-		$onchange	= $this->element['onchange'] ? ' onchange="'.(string) $this->element['onchange'].'"' : '';
+		$size = ( $this->element['size'] ? 'size="'.$this->element['size'].'"' : '' );
+        $value = htmlspecialchars_decode($this->value, ENT_QUOTES);
 
-		return '<input type="text" name="'.$this->name.'" id="'.$this->id.'"' .
-				' value="'.htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8').'"' .
-				$class.$size.$disabled.$readonly.$onchange.$maxLength.'/>';
+		$html = '<input type="text" name="'.$this->name.'" id="'.$this->name.'" value="'.$value.'" class="color" '.$size.' /> ';
+
+		return $html;
 	}
 }
 
