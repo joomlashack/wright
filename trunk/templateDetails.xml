@@ -39,6 +39,7 @@
 
 	<!-- Joomla 1.5 Params -->
 	<params addpath="/templates/js_framework/wright/parameters/joomla_1.5">
+		<param name="helper" type="help" label="" />
 		<param name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />
 		<param name="style" type="styles" default="light" label="Style" description="Select which of the style variations you wish to use." />
 		<param name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js">
@@ -67,6 +68,7 @@
 	<config>
 		<fields name="params" addfieldpath="/templates/js_framework/wright/parameters/joomla_1.6">
 			<fieldset name="basic">
+				<field name="helper" type="help" label="" />
 				<field name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />
 				<field name="style" type="styles" default="light" label="Style" description="Select which of the style variations you wish to use." />
 				<field name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js">
