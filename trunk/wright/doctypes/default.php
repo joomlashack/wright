@@ -208,6 +208,7 @@ abstract class HtmlAdapterAbstract
 		{
 			case 'main':
 				$this->columns['main']->size = 12;
+				break;
 
 			case 'main-sidebar1':
 				$this->columns['main']->size = (12-$this->columns['sidebar1']->size);
