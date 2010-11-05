@@ -41,7 +41,7 @@ defined('_JEXEC') or die('Restricted access');
 	endif;
 	endif; ?>
 </p>
-
+<div class="clr"></div>
 <?php if ((intval($this->article->modified) !=0 && $this->params->get('show_modify_date')) || ($this->params->get('show_author') && ($this->article->author != "")) || ($this->params->get('show_create_date'))) : ?>
 <p class="iteminfo">
 	<?php if ($this->params->get('show_create_date')) : ?>
@@ -61,7 +61,7 @@ defined('_JEXEC') or die('Restricted access');
 	<?php endif; ?>
 </p>
 <?php endif; ?>
-
+<div class="clr"></div>
 <?php if (!$this->params->get('show_intro')) :
 	echo $this->article->event->afterDisplayTitle;
 endif; ?>

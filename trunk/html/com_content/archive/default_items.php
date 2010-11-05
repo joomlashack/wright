@@ -32,7 +32,6 @@ $params = &$this->params;
  <dl class="article-info">
  <dt class="article-info-term"><?php echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?></dt>
 <?php endif; ?>
-
 <?php if ($params->get('show_category')) : ?>
 		<dd class="category-name">
 			<?php $title = $this->escape($item->category_title);
@@ -75,7 +74,7 @@ $params = &$this->params;
 <?php if (($params->get('show_author')) or ($params->get('show_category')) or ($params->get('show_create_date')) or ($params->get('show_modify_date')) or ($params->get('show_publish_date'))  or ($params->get('show_hits'))) :?>
 	 </dl>
 <?php endif; ?>
-
+<div class="clear"></div>
 <?php  if ($params->get('show_intro')) :?>
 		<div class="intro">
 			<?php echo JHTML::_('string.truncate', $item->introtext, 255); ?>

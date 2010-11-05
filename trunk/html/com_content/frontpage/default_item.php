@@ -36,7 +36,7 @@ endif; ?>
 	endif; ?>
 </p>
 <?php endif; ?>
-
+<div class="clear"></div>
 <?php if (($this->item->params->get('show_section') && $this->item->sectionid) || ($this->item->params->get('show_category') && $this->item->catid)) : ?>
 <p class="pageinfo">
     <?php if ($this->item->params->get('show_section') && $this->item->sectionid && isset($this->item->section)) : ?>
@@ -66,7 +66,7 @@ endif; ?>
 	<?php endif; ?>
 </p>
 <?php endif; ?>
-
+<div class="clear"></div>
 <?php if ((intval($this->item->modified) !=0 && $this->item->params->get('show_modify_date')) || ($this->item->params->get('show_author') && ($this->item->author != "")) || ($this->item->params->get('show_create_date'))) : ?>
 <p class="iteminfo">
 	<?php if ($this->item->params->get('show_create_date')) : ?>

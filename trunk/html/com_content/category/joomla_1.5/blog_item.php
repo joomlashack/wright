@@ -36,7 +36,7 @@ endif; ?>
 	endif; ?>
 </p>
 <?php endif; ?>
-
+<div class="clear"></div>
 <?php if (($this->item->params->get('show_section') && $this->item->sectionid) || ($this->item->params->get('show_category') && $this->item->catid)) : ?>
 <p class="pageinfo">
     <?php if ($this->item->params->get('show_section') && $this->item->sectionid && isset($this->item->section)) : ?>
@@ -81,7 +81,6 @@ endif; ?>
 	</span>
 	<?php endif; ?>
 
-	
 	<?php if (intval($this->item->modified) !=0 && $this->item->params->get('show_modify_date')) : ?>
 	<span class="modifydate">
 		<?php echo JText::sprintf('LAST_UPDATED2', JHTML::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC2'))); ?>
@@ -89,7 +88,7 @@ endif; ?>
 	<?php endif; ?>
 </p>
 <?php endif; ?>
-<div class="clr"></div>
+
 
 <?php echo $this->item->event->beforeDisplayContent; ?>
 
@@ -99,7 +98,6 @@ endif; ?>
 		<?php echo $this->escape($this->item->urls); ?></a>
 </span>
 <?php endif; ?>
-
 <?php if (isset ($this->item->toc)) :
 	echo $this->item->toc;
 endif; ?>
