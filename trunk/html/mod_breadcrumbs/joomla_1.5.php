@@ -1,6 +1,6 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access'); ?>
-<span class="breadcrumbs<?php echo $params->get('moduleclass_sfx'); ?> pathway">
+<span class="breadcrumbs pathway">
 <?php for ($i = 0; $i < $count; $i ++) :
 
 	// If not the last item in the breadcrumbs add the separator

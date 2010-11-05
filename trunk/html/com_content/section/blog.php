@@ -34,7 +34,7 @@ $cparams = JComponentHelper::getParams ('com_media');
 	for ($y = 0; $y < $rowcount && $i < $this->total; $y++, $i++) : ?>
 		<div class="leading<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
 			<?php $this->item =& $this->getItem($i, $this->params);
-			echo $this->loadTemplate('item'); ?>
+			include(dirname(__FILE__).DS.'blog_item.php') ?>
 		</div>
 		<span class="leading_separator<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">&nbsp;</span>
 	<?php endfor; ?>
@@ -52,7 +52,7 @@ $cparams = JComponentHelper::getParams ('com_media');
 				<?php for ($z = 0; $z < $colcount && $ii < $introcount && $i < $this->total; $z++, $i++, $ii++) : ?>
 					<div class="article_column column<?php echo $z + 1; ?> cols<?php echo $colcount; ?>" >
 						<?php $this->item =& $this->getItem($i, $this->params);
-						echo $this->loadTemplate('item'); ?>
+						include(dirname(__FILE__).DS.'blog_item.php') ?>
 					</div>
 					<span class="article_separator">&nbsp;</span>
 				<?php endfor; ?>
@@ -65,7 +65,7 @@ $cparams = JComponentHelper::getParams ('com_media');
 	if ($numlinks && $i < $this->total) : ?>
 	<div class="blog_more<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
 		<?php $this->links = array_slice($this->items, $i - $this->pagination->limitstart, $i - $this->pagination->limitstart + $numlinks);
-		echo $this->loadTemplate('links'); ?>
+		include(dirname(__FILE__).DS.'blog_links.php') ?>
 	</div>
 	<?php endif; ?>
 

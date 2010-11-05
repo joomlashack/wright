@@ -26,38 +26,10 @@ defined('_JEXEC') or die('Restricted access');
 	endif; ?>
 </h2>
 <?php endif; ?>
-
-<?php if ((intval($this->article->modified) !=0 && $this->params->get('show_modify_date')) || ($this->params->get('show_author') && ($this->article->author != "")) || ($this->params->get('show_create_date'))) : ?>
-<p class="articleinfo">
-	<?php if (intval($this->article->modified) !=0 && $this->params->get('show_modify_date')) : ?>
-	<span class="modifydate">
-		<?php echo JText::sprintf('LAST_UPDATED2', JHTML::_('date', $this->article->modified, JText::_('DATE_FORMAT_LC2'))); ?>
-	</span>
-	<?php endif; ?>
-
-	<?php if (($this->params->get('show_author')) && ($this->article->author != "")) : ?>
-	<span class="createdby">
-		<?php JText::printf('Written by', ($this->article->created_by_alias ? $this->escape($this->article->created_by_alias) : $this->escape($this->article->author))); ?>
-	</span>
-	<?php endif; ?>
-
-	<?php if ($this->params->get('show_create_date')) : ?>
-	<span class="createdate">
-		<?php echo JHTML::_('date', $this->article->created, JText::_('DATE_FORMAT_LC2')); ?>
-	</span>
-	<?php endif; ?>
-</p>
-<?php endif; ?>
-
-<?php if (!$this->params->get('show_intro')) :
-	echo $this->article->event->afterDisplayTitle;
-endif; ?>
-
 <p class="buttonheading">
 	<?php if ($this->print) :
 		echo JHTML::_('icon.print_screen', $this->article, $this->params, $this->access);
 	elseif ($this->params->get('show_pdf_icon') || $this->params->get('show_print_icon') || $this->params->get('show_email_icon')) : ?>
-	<img src="<?php echo $this->baseurl ?>/templates/<?php echo $mainframe->getTemplate(); ?>/images/trans.gif" alt="<?php echo JText::_('attention open in a new window'); ?>" />
 	<?php if ($this->params->get('show_pdf_icon')) :
 		echo JHTML::_('icon.pdf', $this->article, $this->params, $this->access);
 	endif;
@@ -69,6 +41,30 @@ endif; ?>
 	endif;
 	endif; ?>
 </p>
+
+<?php if ((intval($this->article->modified) !=0 && $this->params->get('show_modify_date')) || ($this->params->get('show_author') && ($this->article->author != "")) || ($this->params->get('show_create_date'))) : ?>
+<p class="iteminfo">
+	<?php if ($this->params->get('show_create_date')) : ?>
+	<span class="createdate">
+		<?php echo JHTML::_('date', $this->article->created, JText::_('DATE_FORMAT_LC2')); ?>
+	</span>
+	<?php endif; ?>
+	<?php if (($this->params->get('show_author')) && ($this->article->author != "")) : ?>
+	<span class="createdby">
+		<?php JText::printf('Written by', ($this->article->created_by_alias ? $this->escape($this->article->created_by_alias) : $this->escape($this->article->author))); ?>
+	</span>
+	<?php endif; ?>
+	<?php if (intval($this->article->modified) !=0 && $this->params->get('show_modify_date')) : ?>
+	<span class="modifydate">
+		<?php echo JText::sprintf('LAST_UPDATED2', JHTML::_('date', $this->article->modified, JText::_('DATE_FORMAT_LC2'))); ?>
+	</span>
+	<?php endif; ?>
+</p>
+<?php endif; ?>
+
+<?php if (!$this->params->get('show_intro')) :
+	echo $this->article->event->afterDisplayTitle;
+endif; ?>
 
 <?php if (($this->params->get('show_section') && $this->article->sectionid) || ($this->params->get('show_category') && $this->article->catid)) : ?>
 <p class="iteminfo">

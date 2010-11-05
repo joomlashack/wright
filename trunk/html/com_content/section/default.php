@@ -26,7 +26,7 @@ $cparams = JComponentHelper::getParams ('com_media');
 <?php endif; ?>
 
 <?php if ($this->params->def('show_categories', 1) && count($this->categories)) : ?>
-<ul>
+<ul class="contentpane">
 	<?php foreach ($this->categories as $category) :
 		if (!$this->params->get('show_empty_categories') && !$category->numitems) :
 			continue;

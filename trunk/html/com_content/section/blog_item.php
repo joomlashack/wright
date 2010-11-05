@@ -25,7 +25,6 @@ endif; ?>
 
 <?php if ($this->item->params->get('show_pdf_icon') || $this->item->params->get('show_print_icon') || $this->item->params->get('show_email_icon')) : ?>
 <p class="buttonheading">
-	<img src="<?php echo $this->baseurl ?>/templates/<?php echo $mainframe->getTemplate(); ?>/images/trans.gif" alt="<?php echo JText::_('attention open in a new window'); ?>" />
 	<?php if ($this->item->params->get('show_pdf_icon')) :
 		echo JHTML::_('icon.pdf', $this->item, $this->item->params, $this->access);
 	endif;
@@ -70,9 +69,9 @@ endif; ?>
 
 <?php if ((intval($this->item->modified) !=0 && $this->item->params->get('show_modify_date')) || ($this->item->params->get('show_author') && ($this->item->author != "")) || ($this->item->params->get('show_create_date'))) : ?>
 <p class="iteminfo">
-	<?php if ( intval($this->item->modified) != 0 && $this->item->params->get('show_modify_date')) : ?>
-	<span class="modifydate">
-		<?php echo JText::sprintf('LAST_UPDATED2', JHTML::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC2'))); ?>
+	<?php if ($this->item->params->get('show_create_date')) : ?>
+	<span class="createdate">
+		<?php echo JHTML::_('date', $this->item->created, JText::_('DATE_FORMAT_LC2')); ?>
 	</span>
 	<?php endif; ?>
 
@@ -82,9 +81,9 @@ endif; ?>
 	</span>
 	<?php endif; ?>
 
-	<?php if ($this->item->params->get('show_create_date')) : ?>
-	<span class="createdate">
-		<?php echo JHTML::_('date', $this->item->created, JText::_('DATE_FORMAT_LC2')); ?>
+	<?php if ( intval($this->item->modified) != 0 && $this->item->params->get('show_modify_date')) : ?>
+	<span class="modifydate">
+		<?php echo JText::sprintf('LAST_UPDATED2', JHTML::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC2'))); ?>
 	</span>
 	<?php endif; ?>
 </p>
