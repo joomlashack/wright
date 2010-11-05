@@ -27,6 +27,6 @@ defined('_JEXEC') or die('Restricted access');
 	</div>
 	<?php endif; ?>
 
-	<?php echo $this->loadTemplate('items'); ?>
+	<?php include(dirname(__FILE__).DS.'default_items.php'); ?>
 
 </div>

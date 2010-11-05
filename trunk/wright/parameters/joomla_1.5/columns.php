@@ -10,6 +10,7 @@ class JElementColumns extends JElement
 		$doc = JFactory::getDocument();
 		$template = $_GET['cid'][0];
 		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/columns/columns.js');
+		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/columns/columns.css');
 
 		$values = explode(';', $value);
 		foreach ($values as $col)
@@ -33,10 +34,11 @@ class JElementColumns extends JElement
 		$html = '<input type="hidden" name="'.$control_name.'['.$name.']" id="'.$control_name.$name.'" value="'.$value.'" />';
 
 		$html .= '<p id="column_info">' . JText::_('Using') . ' <span id="columns_used"></span> ' . JText::_('of') . ' 12 <span id="columns_warning">'.JText::_('The total needs to add up to 12').'</span></p>';
+		$html .= '<p>'.JText::_('Columns will collapse if no modules are published to them on a particular page.').'</p>';
 
 		foreach ($columns as $column)
 		{
-			$html .= '<div id="column_'.$column[0].'" class="column" style="width: '.floor(100/$number).'%; float: left;  text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\''.$column[0].'\', \'left\')">&laquo; Left</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a onclick="swapColumns(\''.$column[0].'\', \'right\')">Right &raquo;</a></span><span style="display: block; text-align:center;">' . JText::_(ucfirst($column[0])) . '</span> ' . JHTML::_('select.genericlist',  $options, 'ignore['.$column[0].']', $class, 'value', 'text', $column[1], 'columns_'.$column[0]) . '</div>';
+			$html .= '<div id="column_'.$column[0].'" class="column" style="width: '.floor(100/$number).'%; float: left;  text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\''.$column[0].'\', \'left\')">&nbsp;&nbsp;&laquo;&nbsp;&nbsp;</a>&nbsp;<a onclick="swapColumns(\''.$column[0].'\', \'right\')">&nbsp;&nbsp;&raquo;&nbsp;&nbsp;</a></span><span style="display: block; text-align:center;">' . JText::_(ucfirst($column[0])) . '</span> ' . JHTML::_('select.genericlist',  $options, 'ignore['.$column[0].']', $class, 'value', 'text', $column[1], 'columns_'.$column[0]) . '</div>';
 		}
 
 		$html .= '<div style="display: none; clear: both;"></div>';

@@ -56,7 +56,7 @@ $cparams = JComponentHelper::getParams ('com_media');
 		</tr>
 		<tr>
 			<td>
-				<?php echo $this->loadTemplate('address'); ?>
+				<?php include(dirname(__FILE__).DS.'default_address.php'); ?>
 			</td>
 		</tr>
 		</table>
@@ -73,7 +73,7 @@ $cparams = JComponentHelper::getParams ('com_media');
 </tr>
 <?php endif;
 if ( $this->contact->params->get('show_email_form') && ($this->contact->email_to || $this->contact->user_id))
-	echo $this->loadTemplate('form');
+	include(dirname(__FILE__).DS.'default_form.php');
 ?>
 </table>
 </div>

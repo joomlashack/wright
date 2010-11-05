@@ -1,19 +1,10 @@
-<?php
-/**
- * @version		$Id$
- * @package		Joomla.Site
- * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @since		1.5
- */
+<?php // @version $Id$
+defined( '_JEXEC' ) or die( 'Restricted access' );
+ ?>
+<?php if($this->params->get('show_page_title',1)) : ?>
+<h2 class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx')) ?>">
+	<?php echo $this->params->get('page_title') ?>
+</h2>
+<?php endif; ?>
 
-defined('_JEXEC') or die;
-
-if ($this->user->get('guest')):
-	// The user is not logged in.
-	echo $this->loadTemplate('login');
-else:
-	// The user is already logged in.
-	echo $this->loadTemplate('logout');
-endif;
+<?php echo $this->loadTemplate( $this->type ); ?>

@@ -28,5 +28,5 @@ $cparams = JComponentHelper::getParams ('com_media');
 	</div>
 	<?php endif; ?>
 
-	<?php echo $this->loadTemplate('items'); ?>
+	<?php include(dirname(__FILE__).DS.'default_items.php'); ?>
 </div>

@@ -12,7 +12,7 @@ class Overrider
 			$this->version = strtolower(ereg_replace("[^A-Za-z0-9_.]", "", $version->PRODUCT.'_'.$version->RELEASE ));
 		}
 
-		print 'overrider';
+		print '<!-- overrider -->';
 
 		return $this->version;
 	}

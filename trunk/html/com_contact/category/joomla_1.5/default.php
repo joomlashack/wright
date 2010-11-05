@@ -96,7 +96,7 @@ function tableOrdering( order, dir, task )
 	</tr>
 	<?php endif; ?>
 
-	<?php echo $this->loadTemplate('items'); ?>
+	<?php include(dirname(__FILE__).DS.'default_items.php'); ?>
 </table>
 
 <p class="counter">

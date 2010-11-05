@@ -1,15 +1,13 @@
 window.addEvent('load', function() {
 	checkColumns();
 
-	$$('select.columns').addEvent('change', function()
-	{
+	$$('select.columns').addEvent('change', function() {
 		checkColumns();
 		setColumnParam();
 	});
 });
 
-function setColumnParam()
-{
+function setColumnParam() {
 	var widths = new Array();
 	$$('div.column').each(function(column){
 		widths.push(column.getProperty('id').substring(7)+':'+column.getElement('select').getProperty('value'));
@@ -18,8 +16,7 @@ function setColumnParam()
 	$('paramscolumns').setProperty('value', widths.join(';'));
 }
 
-function checkColumns()
-{
+function checkColumns() {
 	var widths = new Number(0);
 	$$('select.columns').each(function(column){
 		widths += parseInt(column.getProperty('value'));
@@ -35,10 +32,12 @@ function checkColumns()
 		$('column_info').setStyle('color', 'inherit');
 		$('columns_warning').setStyle('display', 'none');
 	}
+	$$('div.column').each(function(column){
+		column.setStyle('width', column.getElement('select').getProperty('value')/12*100+'%');
+	});
 }
 
-function swapColumns(col, dir)
-{
+function swapColumns(col, dir) {
 	var cols = $$('div.column');
 	var index = 0;
 	var selected = 'column_'+col;
