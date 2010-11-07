@@ -83,6 +83,16 @@ class Wright
 			}
 			$this->document->setHeadData($dochead);
 		}
+
+		// set custom template theme for user
+		$user = &JFactory::getUser();
+		if( !is_null( JRequest::getVar('templateTheme', NULL) ) ) {
+			$user->setParam('theme', JRequest::getVar('templateTheme'));
+			$user->save(true);
+		}
+		if($user->getParam('theme')) {
+			$this->document->params->set('style', $user->getParam('theme'));
+		}
 	}
 
 	private function css()
@@ -133,70 +143,6 @@ class Wright
 						$sheet = $this->document->template.'-ie'.$major.'.css';
 					break;
 			}
-		}
-
-		// Google Fonts Inclusion
-		$fonts = array(		'Cantarell' => array('regular','italic','bold','bolditalic'),
-							'Cardo' => array(),
-							'Crimson+Text' => array(),
-							'Cuprum' => array(),
-							'Droid+Sans' => array('regular','bold'),
-							'Droid+Sans+Mono' => array(),
-							'Droid+Serif' => array('regular','italic','bold','bolditalic'),
-							'IM+Fell+DW+Pica' => array('regular','italic'),
-							'IM+Fell+DW+Pica+SC' => array(),
-							'IM+Fell+DW+Double+Pica' => array('regular','italic'),
-							'IM+Fell+DW+Double+Pica+SC' => array(),
-							'IM+Fell+DW+English' => array('regular','italic'),
-							'IM+Fell+DW+English+SC' => array(),
-							'IM+Fell+DW+French+Canon' => array('regular','italic'),
-							'IM+Fell+French+Canon+SC' => array(),
-							'IM+Fell+Great+Primer' => array('regular','italic'),
-							'IM+Fell+Great+Primer+SC' => array(),
-							'Inconsolata' => array(),
-							'Josefin+Sans+Std+Light' => array(),
-							'Lobster' => array(),
-							'Molengo' => array(),
-							'Neucha' => array(),
-							'Neuton' => array(),
-							'Nobile' => array('regular','italic','bold','bolditalic'),
-							'OFL+Sorts+Mill+Goudy+TT' => array('regular','italic'),
-							'Old+Standard+TT' => array('regular','italic','bold'),
-							'PT+Sans' => array('regular','italic','bold','bolditalic'),
-							'PT+Sans+Caption' => array('regular','bold'),
-							'PT+Sans+Narrow' => array('regular','bold'),
-							'Philosopher' => array(),
-							'Reenie+Beanie' => array(),
-							'Tangerine' => array('regular','bold'),
-							'Vollkorn' => array('regular','italic','bold','bolditalic'),
-							'Yanone+Kaffeesatz' => array('extralight','light','regular','bold'),
-				);
-		if ($this->document->params->get('body_font') == 'googlefonts') {
-			$body_googlefonts = explode(',', $this->document->params->get('body_googlefont'));
-			$body_googlefont = array_shift($body_googlefonts);
-			$possible_types = $fonts[$body_googlefont];
-			$body_googletypes = array();
-			foreach ($body_googlefonts as $body_googletype) {
-				if (in_array($body_googletype, $possible_types)) $body_googletypes[] = $body_googletype;
-			}
-			$body_googlefont_url = (count($body_googletypes)) ? $body_googlefont.':'.implode(',', $body_googletypes) : $body_googlefont;
-			$this->document->addStyleSheet('http://fonts.googleapis.com/css?family='.$body_googlefont_url.'&subset=latin');
-			$body_cssfont = strtolower(str_replace('+', '', $body_googlefont));
-			$code .= 'body.b_'.$body_cssfont.' * { font-family: "'.str_replace('+', ' ', $body_googlefont).'"; }';
-		}
-
-		if ($this->document->params->get('header_font') == 'googlefonts') {
-			$header_googlefonts = explode(',', $this->document->params->get('header_googlefont'));
-			$header_googlefont = array_shift($header_googlefonts);
-			$possible_types = $fonts[$header_googlefont];
-			$header_googletypes = array();
-			foreach ($header_googlefonts as $header_googletype) {
-				if (in_array($header_googletype, $possible_types)) $header_googletypes[] = $header_googletype;
-			}
-			$header_googlefont_url = (count($header_googletypes)) ? $header_googlefont.':'.implode(',', $header_googletypes) : $header_googlefont;
-			$this->document->addStyleSheet('http://fonts.googleapis.com/css?family='.$header_googlefont_url.'&subset=latin');
-			$header_cssfont = strtolower(str_replace('+', '', $header_googlefont));
-			$code .= '* body.h_'.$header_cssfont.' h1, * body.h_'.$header_cssfont.' h2, * body.h_'.$header_cssfont.' h3, * body.h_'.$header_cssfont.' h4, * body.h_'.$header_cssfont.' h5, * body.h_'.$header_cssfont.' h6 { font-family: "'.str_replace('+', ' ', $header_googlefont).'"; }';
 		}
 
 		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'rtl.css')) $styles[] = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'rtl.css';

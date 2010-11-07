@@ -331,6 +331,8 @@ margin:20px 10px 0 0;
 padding:0 0 0 30px;
 cursor:pointer;
 }
+.article_body {}
+.article_readmore { vertical-align: baseline; }
 /* ***************************************************************************************************** */
 /* PAGINATION */
 #main2 .pagination, #main .pagination {}

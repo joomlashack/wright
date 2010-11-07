@@ -102,10 +102,12 @@ endif; ?>
 	echo $this->item->toc;
 endif; ?>
 
-<?php echo JFilterOutput::ampReplace($this->item->text); ?>
+<div class="article_body">
+	<?php echo JFilterOutput::ampReplace($this->item->text);  ?>
+</div>
 
 <?php if ($this->item->params->get('show_readmore') && $this->item->readmore) : ?>
-<p>
+<p class="article_readmore">
 	<a href="<?php echo $this->item->readmore_link; ?>" class="readon<?php echo $this->escape($this->item->params->get('pageclass_sfx')); ?>">
 		<?php if ($this->item->readmore_register) :
 			echo JText::_('Register to read more...');
