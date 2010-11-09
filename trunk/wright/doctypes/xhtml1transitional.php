@@ -107,7 +107,7 @@ class HtmlAdapterXhtml1Transitional extends HtmlAdapterAbstract
 		$header = $matches[0];
 
 		if (strpos($matches[1], 'class='))
-			$header = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $header);
+			$header = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $header, 1);
 
 		$header = preg_replace('/<header/iU', '<div', $header);
 

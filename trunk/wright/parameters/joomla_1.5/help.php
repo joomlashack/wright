@@ -11,7 +11,7 @@ class JElementHelp extends JElement
 
 		JHTML::_('behavior.modal');
 		$template = $_GET['cid'][0];
-		$html = '<a class="modal" href="'.JURI::root().'templates/'.$template.'/wright/help" rel="{\'handler\': \'iframe\', \'size\': {x: 800, y:600}}">'.JText::_('Documentation').'</a>';
+		$html = '<a class="modal" href="'.JURI::root().'templates/'.$template.'/wright/help" rel="{\'handler\': \'iframe\', \'size\': {x: 800, y:600}}">'.JText::_('View the documentation.').'</a>';
 
 		// Refresh CSS cache since we are editing params
 		if (is_file(JPATH_ROOT.DS.'templates'.DS.$template.DS.'css'.DS.$template.'.css')) JFile::delete(JPATH_ROOT.DS.'templates'.DS.$template.DS.'css'.DS.$template.'.css');
