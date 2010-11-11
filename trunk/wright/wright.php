@@ -52,14 +52,14 @@ class Wright
 
 	public function display()
 	{
+		// Setup the header
+		$this->header();
+
 		// Parse by platform
 		$this->platform();
 
 		// Parse by doctype
-		$this->doctype();
-
-		// Setup the header
-		$this->header();
+		$this->doctype();	
 
 		print trim($this->template);
 		return true;
@@ -68,9 +68,6 @@ class Wright
 
 	public function header()
 	{
-		// Build css
-		$this->css();
-
 		// Remove mootools if set
 		if ($this->document->params->get('mootools', '1') == '0')
 		{
@@ -93,6 +90,9 @@ class Wright
 		if($user->getParam('theme')) {
 			$this->document->params->set('style', $user->getParam('theme'));
 		}
+
+		// Build css
+		$this->css();
 	}
 
 	private function css()
@@ -115,7 +115,7 @@ class Wright
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
 		{
-			$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/html5.js');
+			$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/wright/js/html5.js');
 			//$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/modernizr.js');
 			if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie.css'))
 			{
