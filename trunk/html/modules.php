@@ -86,27 +86,23 @@ function modChrome_wrightflexgridrounded($module, &$params, &$attribs) {
 
 
 /**
- * SHACK FLEX GRID + Legacy Rounded
- * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="wrightflexgridrounded3" />)
+ * SHACK FLEX GRID + CSS3 Rounded
+ * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="wrightCSS3" />)
  */
-function modChrome_wrightflexgridrounded3($module, &$params, &$attribs) {
+function modChrome_wrightCSS3($module, &$params, &$attribs) {
 	if (!$module->showtitle) {
 		$moduletitle = ' notitle';
 	} else {
 		$moduletitle = NULL;
 	}
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> flexgrid_<?php echo $attribs['grid'] ?>">
-	<div>
-		<div>
-			<div>
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?>">
+	<div class="pad">
 			<?php if ($module->showtitle) : ?>
 				<h3><?php echo $module->title; ?></h3>
 			<?php endif; ?>
 			<?php echo $module->content; ?>
-			</div>
 		</div>
-	</div>
 </div>
 <?php
 }
