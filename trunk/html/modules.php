@@ -49,10 +49,12 @@ function modChrome_wrightgridrounded($module, &$params, &$attribs) {
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 ?>
 <div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> flexgrid_<?php echo $attribs['grid'] ?>">
+	<div class="pad">
   <?php if ($module->showtitle) : ?>
   <h3><?php echo $module->title; ?></h3>
   <?php endif; ?>
   <?php echo $module->content; ?>
+</div>
 </div>
 <?php
 }
