@@ -17,6 +17,7 @@ class Wright
 	public $adapter;
 	public $params;
 	public $baseurl;
+	public $author;
 
 	function Wright() {
 		// Initialize properties
@@ -24,6 +25,7 @@ class Wright
 		$this->document = $document;
 		$this->params = $document->params;
 		$this->baseurl = $document->baseurl;
+		$this->author = simplexml_load_file(JPATH_BASE.DS.'templates'.DS.$this->document->template.DS.'templateDetails.xml')->author;
 
 		if (is_file(JPATH_THEMES.DS.$document->template.DS.'functions.php')) include_once(JPATH_THEMES.DS.$document->template.DS.'functions.php');
 

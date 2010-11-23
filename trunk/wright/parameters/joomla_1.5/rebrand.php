@@ -13,7 +13,9 @@ class JElementRebrand extends JElement
 
 		$html = JHTML::_('select.radiolist', $options, ''.$control_name.'['.$name.']', '', 'value', 'text', $value, $control_name.$name );
 
-		$html .= '&nbsp;<a href="http://www.joomlashack.com/licensing-center" target="_blank">What is rebranding?</a>';
+		$author = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$_GET['cid'][0].DS.'templateDetails.xml')->author;
+		if (stripos($author, 'shack'))
+			$html .= '&nbsp;<a href="http://www.joomlashack.com/licensing-center" target="_blank">What is rebranding?</a>';
 
 		return $html;
 	}
