@@ -8,7 +8,6 @@ class JElementSettings extends JElement
 	function fetchElement($name, $value, &$node, $control_name)
 	{
 		$doc = JRegistry::getInstance();
-		print_r($doc);
 
 		$template = $_GET['cid'][0];
 		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/jscolor/jscolor.js');
