@@ -28,8 +28,8 @@ class AdapterJoomla_1_5Footer
 
 			$md5 = md5($url);
 
-			$nums = ereg_replace("[^0-9]", "", $md5);
-
+			$nums = filter_var($md5, FILTER_SANITIZE_NUMBER_INT);
+			
 			$first = substr($nums,0,2);
 			$second = substr($nums,2,2);
 			$third  = substr($nums,4,2);
@@ -43,9 +43,7 @@ class AdapterJoomla_1_5Footer
 			foreach($anchors as $possibility=>$val) {;
 			  if($anchor=='' && $val>$first) {
 					$anchor = $possibility;
-					if($second>66) {
-						$host .= $links[$possibility];
-					}
+					$host .= $links[$possibility];
 					foreach($endlines as $ends=>$v) {
 						if($endline=='' && $v>$third) { $endline = $ends; }
 					}
