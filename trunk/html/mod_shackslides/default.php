@@ -20,6 +20,7 @@
 
 defined('_JEXEC') or die('Restricted access');
 
+// Adding the javascript and css files to the document
 $doc = JFactory::getDocument();
 $doc->addScript(JURI::base() . 'modules/mod_shackslides/assets/sliderman.js');
 $app = JFactory::getApplication();
@@ -28,18 +29,27 @@ $doc->addStylesheet(JURI::base() . 'templates/'.$app->getTemplate().'/html/mod_s
 // This can be used in an override to change default settings. User can override
 // settings in the module settings page still.
 $defaults = array(
-	'display_width' => '500', // width of container
-	'display_height' => '250', // height of container
-	'display_autoplay' => '5', // if not false, number of seconds per slide on autoplay
-	'display_pause' => 'true', // pauses the autoplay on hover over slider
-	'display_description' => 'true', // displays image discription box
-	'display_buttons' => 'false', // displays the next/prev buttons
-	'display_buttons_background' => '#ffffff', // buttons background color hex code
-	'display_navigation' => 'true', // displays the navigation
-	'display_navigation_buttons' => 'true', // displays next/prev buttons in navigation bar
-	'display_mousewheel' => 'false', // can use mousewheel for navigation
-	'display_container' => 'slider', // id for the slider container
-	'display_navigation_container' => 'sliderNav', // id for the slider navigation container
+	'width' => '500', // width of container
+	'height' => '250', // height of container
+	'autoplay' => '5', // number of seconds per slide on autoplay, 0 to disable
+	'pause' => 'true', // pauses the autoplay on hover over slider
+	'description' => 'true', // displays image discription box
+	'description_background' => '#ffffff', // description background color hex code
+	'description_opacity' => '0.5', // description background opacity
+	'description_height' => '50', // description height if position is top/bottom
+	'description_width' => '50', // description width if position is right/left
+	'description_position' => 'bottom', // top,button,right,left are options
+	'buttons' => '0', // displays the next/prev buttons
+	'buttons_opacity' => '1', // buttons opacity
+	'buttons_prev_label' => '&laquo;', // previous button label
+	'buttons_next_label' => '&raquo;', // next button label
+	'navigation' => '1', // displays the navigation
+	'navigation_buttons' => '1', // displays next/prev buttons in navigation bar
+	'navigation_container' => 'sliderNav', // id for the slider navigation container
+	'navigation_label' => '1', // shows the numbers for navigation
+	'mousewheel' => '0', // can use mousewheel for navigation
+	'container' => 'slider', // id for the slider container
+	
 );
 
 ?>
@@ -48,6 +58,7 @@ $defaults = array(
 
 	<div id="slider">
 <?php for ($i = 0; $i < count($images); $i++) : ?>
+<?php if ($images[$i] === false) continue; ?>
 <?php if ($links[$i]) : ?><a href="<?php echo $links[$i]; ?>"><?php endif; ?>
 					<img src="<?php echo $base.$images[$i] ?>" title="<?php echo $titles[$i] ?>" />
 		<?php if ($links[$i]) : ?></a><?php endif; ?>
