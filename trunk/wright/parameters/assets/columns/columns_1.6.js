@@ -12,7 +12,7 @@ function setColumnParam() {
 		widths.push(column.getProperty('id').substring(7)+':'+column.getElement('select').getProperty('value'));
 	});
 
-	$('paramscolumns').setProperty('value', widths.join(';'));
+	$('jform[params][columns]').setProperty('value', widths.join(';'));
 }
 
 function checkColumns() {
@@ -20,7 +20,7 @@ function checkColumns() {
 	$$('select.columns').each(function(column){
 		widths += parseInt(column.getProperty('value'));
 	});
-	$('columns_used').setText(widths);
+	$('columns_used').set('text', widths);
 	if (widths !== 12)
 	{
 		$('column_info').setStyle('color', 'red');
