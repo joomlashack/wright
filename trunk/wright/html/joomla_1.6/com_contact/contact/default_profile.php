@@ -1,0 +1,24 @@
+<?php
+/**
+ * @version		$Id: default_profile.php 8 2010-11-03 18:07:23Z jeremy $
+ * @package		Joomla.Site
+ * @subpackage	Contact
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+?>
+<?php if ($this->params->get('show_profile')) : ?>
+<div class="jcontact-profile">
+	<ol>
+		<?php foreach ($this->contact->profile as $profile) :	?>
+			<li>
+
+				<?php echo $profile->text = htmlspecialchars($profile->profile_value, ENT_COMPAT, 'UTF-8'); ?>
+
+			</li>
+		<?php endforeach; ?>
+	</ol>
+</div>
+<?php endif; ?>
