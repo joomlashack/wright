@@ -8,10 +8,11 @@ class JFormFieldHelp extends JFormField
 {
 	protected $type = 'Help';
 
-	protected function getInput($name, $value, &$node, $control_name)
+	protected function getInput()
 	{
 		JHTML::_('behavior.modal');
-		$template = $_GET['cid'][0];
+		$doc = JFactory::getDocument();
+		$template = $this->form->getValue('template');
 		$html = '<a class="modal" href="'.JURI::root().'templates/'.$template.'/wright/help" rel="{\'handler\': \'iframe\', \'size\': {x: 800, y:600}}">'.JText::_('Documentation').'</a>';
 
 		// Refresh CSS cache since we are editing params

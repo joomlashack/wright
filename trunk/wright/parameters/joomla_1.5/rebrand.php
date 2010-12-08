@@ -15,7 +15,7 @@ class JElementRebrand extends JElement
 
 		$author = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$_GET['cid'][0].DS.'templateDetails.xml')->author;
 		if (stripos($author, 'shack'))
-			$html .= '&nbsp;<a href="http://www.joomlashack.com/licensing-center" target="_blank">What is rebranding?</a>';
+			$html .= '&nbsp;<a href="http://www.joomlashack.com/licensing-center" target="_blank">Rebranding requires a license, learn more.</a>';
 
 		return $html;
 	}

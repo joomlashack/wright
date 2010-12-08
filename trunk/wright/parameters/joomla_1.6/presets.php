@@ -3,16 +3,20 @@
 // Check to ensure this file is within the rest of the framework
 defined('JPATH_BASE') or die();
 
-class JElementPresets extends JElement
+jimport('joomla.html.html');
+jimport('joomla.form.formfield');
+jimport('joomla.form.helper');
+JFormHelper::loadFieldClass('list');
+
+class JFormFieldPresets extends JFormFieldList
 {
 
 	var	$_name = 'Presets';
 
-	function fetchElement($name, $value, &$node, $control_name)
+	protected function getOptions()
 	{
 		$doc = JFactory::getDocument();
-
-		$template = $_GET['cid'][0];
+		$template = $this->form->getValue('template');
 		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/presets/presets.js');
 		
 		$file = simplexml_load_file(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/presets.xml');
@@ -28,6 +32,6 @@ class JElementPresets extends JElement
 			$options[] = JHTML::_('select.option', $preset['name'], $preset['title']);
 		}
 
-		return JHTML::_('select.genericlist',  $options, ''.$control_name.'['.$name.']', 'class="inputbox"', 'value', 'text', $value, $control_name.$name);
+		return $options;
 	}
 }

@@ -36,9 +36,6 @@ class JFormFieldTypography extends JFormFieldList
 		// Initialize variables.
 		$options = array();
 
-		$doc = JFactory::getDocument();
-		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/typography/typography.js');
-
 		$class = ( $this->element['class'] ? 'class="'.$this->element['class'].'"' : 'class="inputbox"' );
 
 		$stacks = array(	'Default' => 'Template default',

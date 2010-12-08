@@ -6,7 +6,6 @@ jimport('joomla.form.formfield');
 
 class JFormFieldRebrand extends JFormField
 {
-
 	protected $type = 'Rebrand';
 
 	protected function getInput()
@@ -42,6 +41,12 @@ class JFormFieldRebrand extends JFormField
 
 			$html[] = '<label for="'.$this->id.$i.'"'.$class.'>'.JText::_($option->text).'</label>';
 		}
+
+		$doc = JFactory::getDocument();
+		$template = $this->form->getValue('template');
+		$author = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$template.DS.'templateDetails.xml')->author;
+		if (stripos($author, 'shack'))
+			$html[] = '&nbsp;<a href="http://www.joomlashack.com/licensing-center" target="_blank">Rebranding requires a license, learn more.</a>';
 
 		// End the radio field output.
 		$html[] = '</fieldset>';

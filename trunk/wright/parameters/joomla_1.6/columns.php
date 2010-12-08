@@ -11,6 +11,7 @@ class JFormFieldColumns extends JFormField
 	{
 		$doc = JFactory::getDocument();
 		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/columns/columns.js');
+		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/columns/columns.css');
 
 		$values = explode(';', $this->value);
 		foreach ($values as $col)

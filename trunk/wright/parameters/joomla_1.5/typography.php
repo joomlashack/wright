@@ -7,10 +7,6 @@ class JElementTypography extends JElement
 
 	function fetchElement($name, $value, &$node, $control_name)
 	{
-		//$doc = JFactory::getDocument();
-		//$template = $_GET['cid'][0];
-		//$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/typography/typography.js');
-
 		$class = ( $node->attributes('class') ? 'class="'.$node->attributes('class').'"' : 'class="inputbox"' );
 
 		$stacks = array(	'Default' => 'Template default',
