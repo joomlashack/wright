@@ -3,7 +3,6 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-
 if ( ! defined('modMainMenuXMLCallbackDefined') )
 {
 function modMainMenuXMLCallback(&$node, $args)

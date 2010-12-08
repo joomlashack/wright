@@ -10,6 +10,12 @@
 
 defined('_JEXEC') or die ('You are not allowed to directly access this file');
 
+// Adding a check for PHP4 to cut down on support
+if (version_compare(PHP_VERSION, '5.2.0', '<')) {
+    print 'You are using an out of date version of PHP, version '.PHP_VERSION.' and our products require PHP 5.2 or greater. Please contact your host to use PHP 5.2. All versions of PHP prior to this are unsupported, but us and by the PHP community.';
+	die();
+}
+
 class Wright
 {
 	public $template;

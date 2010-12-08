@@ -2,16 +2,18 @@
 
 class Overrider
 {
-	public $version;
+	static $version;
 
 	public function getVersion()
 	{
-		if (!isset($this->version)) {
+		if (!isset(self::$version))
+		{
 			jimport('joomla.version');
 			$version = new JVersion();
-			$this->version = strtolower(ereg_replace("[^A-Za-z0-9_.]", "", $version->PRODUCT.'_'.$version->RELEASE ));
+			$joomla = str_replace('!', '', $version->PRODUCT.'_'.$version->RELEASE);
+			self::$version = strtolower($joomla);
 		}
 
-		return $this->version;
+		return self::$version;
 	}
 }
