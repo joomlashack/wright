@@ -11,7 +11,7 @@
 defined('_JEXEC') or die ('You are not allowed to directly access this file');
 
 // Adding a check for PHP4 to cut down on support
-if (version_compare(PHP_VERSION, '5.2.0', '<')) {
+if (version_compare(PHP_VERSION, '5', '<')) {
     print 'You are using an out of date version of PHP, version '.PHP_VERSION.' and our products require PHP 5.2 or greater. Please contact your host to use PHP 5.2. All versions of PHP prior to this are unsupported, but us and by the PHP community.';
 	die();
 }
@@ -105,30 +105,104 @@ class Wright
 
 	private function css()
 	{
+		$styles = $this->loadCSSList();
+
+		if ($this->document->params->get('csscache', 'yes') == 'yes' && is_writable(JPATH_THEMES.DS.$this->document->template.DS.'css'))
+		{
+			$this->processCSSCache($styles);
+		}
+		else
+		{
+			$this->addCSSToHead($styles);
+		}
+	}
+
+	private function processCSSCache($styles)
+	{
+		// Combine css into one file if files have been altered since cached copy
+		$rebuild = false;
+		if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$this->document->template.'.css')) $cachetime = filemtime(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$this->document->template.'.css');
+		else $cachetime = 0;
+		foreach ($styles as $folder => $files)
+		{
+			foreach ($files as $style)
+			{
+				if ($folder == 'wright') $file = JPATH_THEMES.DS.$this->document->template.DS.'wright'.DS.'css'.DS.$style;
+				elseif ($folder == 'template') $file = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style;
+				else $file = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style;
+
+				if (filemtime($file) > $cachetime) $rebuild = true;
+			}
+			
+		}
+		if ($rebuild)
+		{
+			$css = '';
+			foreach ($styles as $folder => $files)
+			{
+				foreach ($files as $style)
+				{
+					if ($folder == 'wright') $css .= file_get_contents(JPATH_THEMES.DS.$this->document->template.DS.'wright'.DS.'css'.DS.$style);
+					elseif ($folder == 'template') $css .= file_get_contents(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style);
+					else $css .= file_get_contents(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style);
+				}
+			}
+
+			// Clean out any charsets
+			$css = str_replace('@charset "utf-8";', '', $css);
+			// Strip comments
+			$css = preg_replace('/\/\*.*?\*\//s', '', $css);
+
+			include('css'.DS.'csstidy'.DS.'class.csstidy.php');
+
+			$tidy = new csstidy();
+
+			$tidy->parse($css);
+
+			file_put_contents(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$this->document->template.'.css', $tidy->print->plain());
+		}
+		$this->document->addStyleSheet(JURI::root().'templates/'.$this->document->template.'/css/'.$this->document->template.'.css');
+	}
+
+	private function addCSSToHead($styles)
+	{
+		foreach ($styles as $folder => $files)
+		{
+			foreach ($files as $style)
+			{
+				if ($folder == 'wright') $sheet = JURI::root().'templates/'.$this->document->template.'/wright/css/'.$style;
+				elseif ($folder == 'template') $sheet = JURI::root().'templates/'.$this->document->template.'/css/'.$style;
+				else $sheet = JURI::root().'templates/'.$this->document->template.'/css/'.$style;
+
+				$this->document->addStyleSheet($sheet);
+			}
+		}
+	}
+
+	private function loadCSSList()
+	{
 		jimport('joomla.filesystem.file');
 		jimport('joomla.filesystem.folder');
 		jimport('joomla.environment.browser');
 
 		$browser = JBrowser::getInstance();
-		$sheet = $this->document->template.'.css';
 
 		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
-		$styles = JFolder::files(JPATH_THEMES.DS.$this->document->template.DS.'wright'.DS.'css', '\d{1,2}_.*.css', false, true);
-		$styles = array_merge($styles, JFolder::files(JPATH_THEMES.DS.$this->document->template.DS.'css', '\d{1,2}_.*.css', false, true));
+		$styles['wright'] = array('reset.css', 'joomla.css', 'layout.css', 'typography.css', 'core.css');
+		$styles['template'] = JFolder::files(JPATH_THEMES.DS.$this->document->template.DS.'css', '\.css', false, false, array($this->document->template.'.css'));
 
 		// Load up a specific style if set
 		if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'style-'.$this->document->params->get('style').'.css'))
-			$styles[] = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'style-'.$this->document->params->get('style').'.css';
+			$styles['template'] = 'style-'.$this->document->params->get('style').'.css';
 
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
 		{
 			$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/wright/js/html5.js');
-			//$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/modernizr.js');
+
 			if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie.css'))
 			{
-				$styles[] = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie.css';
-				$sheet = $this->document->template.'-ie.css';
+				$styles['ie'] = 'ie.css';
 			}
 
 			// Switch to allow specific versions of IE to have additional sheets
@@ -137,16 +211,14 @@ class Wright
 			{
 				case '6' :
 					if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie6.css'))
-						$styles[] = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie6.css';
-						$sheet = $this->document->template.'-ie6.css';
+						$styles['ie'] = 'ie6.css';
 						$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/dd_belatedpng.js');
 						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/html5.js');
 					break;
 
 				default :
 					if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie'.$major.'.css'))
-						$styles[] = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie'.$major.'.css';
-						$sheet = $this->document->template.'-ie'.$major.'.css';
+						$styles['ie'] = 'ie'.$major.'.css';
 						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/html5.js');
 					break;
 			}
@@ -154,52 +226,7 @@ class Wright
 
 		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'rtl.css')) $styles[] = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'rtl.css';
 
-		/*
-		if ($this->document->params->get('csscache',' no') == 'yes')
-		{
-			// Combine css into one file if files have been altered since cached copy
-			$rebuild = false;
-			if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$sheet)) $cachetime = filemtime(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$sheet);
-			else $cachetime = 0;
-			foreach ($styles as $style)
-			{
-				if (filemtime($style) > $cachetime) $rebuild = true;
-			}
-			if ($rebuild)
-			{
-				$css = '';
-				foreach ($styles as $style)
-				{
-					$css .= JFile::read($style);
-				}
-				$css .= $code;
-
-				// Clean out any charsets
-				$css = str_replace('@charset "utf-8";', '', $css);
-				// Strip comments
-				$css = preg_replace('/\/\*.*?\*\//s', '', $css);
-				// Put in disclaimer
-				$css = '/* DO NOT EDIT THIS FILE. IT IS AUTOGENERATED. SEE DOCUMENTATION *
-					'.$css;
-
-				JFile::write(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$sheet, $css);
-			}
-			$this->document->addStyleSheet(JURI::root().'templates/'.$this->document->template.'/css/'.$sheet);
-		}
-		else
-		{
-			foreach ($styles as $style)
-			{
-				$sheet = str_replace("\\", "/", str_replace(JPATH_THEMES.DS.$this->document->template, '', $style));
-				$this->document->addStyleSheet(JURI::root(true).'/templates/'.$this->document->template.$sheet);
-				$this->document->addStyleDeclaration($code);
-			}
-		}*/
-		foreach ($styles as $style)
-			{
-				$sheet = str_replace("\\", "/", str_replace(JPATH_THEMES.DS.$this->document->template, '', $style));
-				$this->document->addStyleSheet(JURI::root(true).'/templates/'.$this->document->template.$sheet);
-			}
+		return $styles;
 	}
 
 	private function doctype()
@@ -266,11 +293,6 @@ class Wright
 		}
 
 		return $this->adapter->get($config);
-	}
-
-	function setGoogleFont($font, $type) {
-		$this->document->params->set($type.'_font', 'googlefonts');
-		$this->document->params->set($type.'_googlefont', str_replace(' ', '+', $font));
 	}
 
 	// Borrowed from JDocumentHtml for compatibility
