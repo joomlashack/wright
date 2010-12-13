@@ -18,6 +18,8 @@ class JElementLogo extends JElement
 		$options = array ();
 
 		$options[] = JHTML::_('select.option', 'template', '- '.JText::_('Use template logo').' -');
+		$options[] = JHTML::_('select.option', 'module', '- '.JText::_('Use module with position of logo').' -');
+		$options[] = JHTML::_('select.option', 'title', '- '.JText::_('Use site title').' -');
 
 		foreach ($files as $file)
 		{
