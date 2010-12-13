@@ -3,7 +3,7 @@
  * @package Joomlashack Wright Framework
  * @copyright Joomlashack 2010. All Rights Reserved.
  *
- * @description
+ * @description Wright is a framework layer for Joomla to improve stability of Joomlashack Templates
  *
  * It would be inadvisable to alter the contents of anything inside of this folder
  */
@@ -36,10 +36,10 @@ class Wright
 		if (is_file(JPATH_THEMES.DS.$document->template.DS.'functions.php')) include_once(JPATH_THEMES.DS.$document->template.DS.'functions.php');
 
 		// Get our template for further parsing, if custom file is found
-		// If there is a homepage option it will load it
 		// it will use it instead of the default file
 		$path = JPATH_THEMES.DS.$document->template.DS.'template.php';
 		$menu = & JSite::getMenu();
+		// If homepage, load up home.php if found
 		if ($menu->getActive() == $menu->getDefault() && is_file(JPATH_THEMES.DS.$document->template.DS.'home.php')) $path = JPATH_THEMES.DS.$document->template.DS.'home.php';
 		elseif (is_file(JPATH_THEMES.DS.$document->template.DS.'custom.php')) $path = JPATH_THEMES.DS.$document->template.DS.'custom.php';
 
@@ -226,13 +226,11 @@ class Wright
 		// Get Joomla's version to get proper platform
 		jimport('joomla.version');
 		$version = new JVersion();
-		$file = strtolower(str_replace('!', '', $version->PRODUCT.'_'.$version->RELEASE));
-		$class = ucfirst(str_replace('.','_',$file));
+		$file = ucfirst(str_replace('.','',$version->RELEASE));
 
 		// Load up the proper adapter
-		require_once(dirname(__FILE__).DS.'adapters'.DS.$file.'.php');
-		$classname = 'Adapter'.$class;
-		$this->adapter = new $classname();
+		require_once(dirname(__FILE__).DS.'adapters'.DS.'joomla.php');
+		$this->adapter = new WrightAdapterJoomla($file);
 		$this->template = preg_replace_callback("/<w:(.*)\/>/i", array(get_class($this), 'platformTags'), $this->template);
 		return true;
 	}

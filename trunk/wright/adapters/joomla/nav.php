@@ -1,6 +1,6 @@
 <?php
 
-class AdapterJoomla_1_6Nav
+class WrightAdapterJoomlaNav
 {
 	public function render($args)
 	{

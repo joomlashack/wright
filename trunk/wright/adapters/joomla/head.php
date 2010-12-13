@@ -1,6 +1,6 @@
 <?php
 
-class AdapterJoomla_1_5Head
+class WrightAdapterJoomlaHead
 {
 	public function render($args)
 	{

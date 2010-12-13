@@ -1,6 +1,6 @@
 <?php
 
-class AdapterJoomla_1_5Debug
+class WrightAdapterJoomlaDebug
 {
 	public function render($args)
 	{

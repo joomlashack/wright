@@ -1,6 +1,6 @@
 <?php
 
-class AdapterJoomla_1_6Logo
+class WrightAdapterJoomlaLogo
 {
 	public function render($args)
 	{

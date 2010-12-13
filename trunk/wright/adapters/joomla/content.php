@@ -1,6 +1,6 @@
 <?php
 
-class AdapterJoomla_1_6Content
+class WrightAdapterJoomlaContent
 {
 	public function render($args)
 	{
@@ -18,7 +18,7 @@ class AdapterJoomla_1_6Content
 				</div>
 			<div class="clr"></div>';
 		}
-
+		
 		$content .= '<jdoc:include type="component" />';
 
 		if ($doc->countModules($args['below']) && $args['below'] !== 'false') {

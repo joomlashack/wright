@@ -1,6 +1,6 @@
 <?php
 
-class AdapterJoomla_1_6Footer
+class WrightAdapterJoomlaFooter
 {
 	public function render($args)
 	{
@@ -29,7 +29,7 @@ class AdapterJoomla_1_6Footer
 			$md5 = md5($url);
 
 			$nums = filter_var($md5, FILTER_SANITIZE_NUMBER_INT);
-
+			
 			$first = substr($nums,0,2);
 			$second = substr($nums,2,2);
 			$third  = substr($nums,4,2);
