@@ -189,7 +189,7 @@ class Wright
 
 		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
 		$styles['wright'] = array('reset.css', 'joomla.css', 'layout.css', 'typography.css', 'core.css');
-		$styles['template'] = JFolder::files(JPATH_THEMES.DS.$this->document->template.DS.'css', '\.css', false, false, array($this->document->template.'.css'));
+		$styles['template'] = JFolder::files(JPATH_THEMES.DS.$this->document->template.DS.'css', '\.css', false, false, array($this->document->template.'.css', 'ie.css', 'ie6.css', 'ie7.css', 'ie8.css', 'ie9.css', 'rtl.css'));
 
 		// Load up a specific style if set
 		if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'style-'.$this->document->params->get('style').'.css'))
