@@ -107,7 +107,7 @@ class Wright
 	{
 		$styles = $this->loadCSSList();
 
-		if ($this->document->params->get('csscache', 'yes') == 'yes' && is_writable(JPATH_THEMES.DS.$this->document->template.DS.'css'))
+		if ($this->document->params->get('csscache', 'no') == 'yes' && is_writable(JPATH_THEMES.DS.$this->document->template.DS.'css'))
 		{
 			$this->processCSSCache($styles);
 		}

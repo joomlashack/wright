@@ -40,7 +40,7 @@ class WrightAdapterJoomlaLogo
 			$logo = JURI::root().'images/'.$doc->document->params->get('logo', 'logo.png');
 		}
 
-		$html = '<div id="logo" class="grid_'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'"><h2>'.$app->getCfg('sitename').'</h2><img src="'.$logo.'" alt="" title="" /></a></div>';
+		$html = '<div id="logo" class="grid_'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="image"><h2>'.$app->getCfg('sitename').'</h2><img src="'.$logo.'" alt="" title="" /></a></div>';
 		if ($doc->document->params->get('logowidth') !== '12') $html .= '<div id="'.$args['name'].'" class="grid_'.(12 - $doc->document->params->get('logowidth', '6')).'"><jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" /></div>';
 		$html .= '<div class="clearfix"></div>';
 		return $html;
