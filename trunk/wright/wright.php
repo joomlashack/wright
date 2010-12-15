@@ -125,26 +125,31 @@ class Wright
 		else $cachetime = 0;
 		foreach ($styles as $folder => $files)
 		{
-			foreach ($files as $style)
+			if (count($files))
 			{
-				if ($folder == 'wright') $file = JPATH_THEMES.DS.$this->document->template.DS.'wright'.DS.'css'.DS.$style;
-				elseif ($folder == 'template') $file = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style;
-				else $file = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style;
+				foreach ($files as $style)
+				{
+					if ($folder == 'wright') $file = JPATH_THEMES.DS.$this->document->template.DS.'wright'.DS.'css'.DS.$style;
+					elseif ($folder == 'template') $file = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style;
+					else $file = JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style;
 
-				if (filemtime($file) > $cachetime) $rebuild = true;
+					if (filemtime($file) > $cachetime) $rebuild = true;
+				}
 			}
-			
 		}
 		if ($rebuild)
 		{
 			$css = '';
 			foreach ($styles as $folder => $files)
 			{
-				foreach ($files as $style)
+				if (count($files))
 				{
-					if ($folder == 'wright') $css .= file_get_contents(JPATH_THEMES.DS.$this->document->template.DS.'wright'.DS.'css'.DS.$style);
-					elseif ($folder == 'template') $css .= file_get_contents(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style);
-					else $css .= file_get_contents(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style);
+					foreach ($files as $style)
+					{
+						if ($folder == 'wright') $css .= file_get_contents(JPATH_THEMES.DS.$this->document->template.DS.'wright'.DS.'css'.DS.$style);
+						elseif ($folder == 'template') $css .= file_get_contents(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style);
+						else $css .= file_get_contents(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$style);
+					}
 				}
 			}
 
@@ -168,13 +173,16 @@ class Wright
 	{
 		foreach ($styles as $folder => $files)
 		{
-			foreach ($files as $style)
+			if (count($files))
 			{
-				if ($folder == 'wright') $sheet = JURI::root().'templates/'.$this->document->template.'/wright/css/'.$style;
-				elseif ($folder == 'template') $sheet = JURI::root().'templates/'.$this->document->template.'/css/'.$style;
-				else $sheet = JURI::root().'templates/'.$this->document->template.'/css/'.$style;
+				foreach ($files as $style)
+				{
+					if ($folder == 'wright') $sheet = JURI::root().'templates/'.$this->document->template.'/wright/css/'.$style;
+					elseif ($folder == 'template') $sheet = JURI::root().'templates/'.$this->document->template.'/css/'.$style;
+					else $sheet = JURI::root().'templates/'.$this->document->template.'/css/'.$style;
 
-				$this->document->addStyleSheet($sheet);
+					$this->document->addStyleSheet($sheet);
+				}
 			}
 		}
 	}
@@ -202,7 +210,7 @@ class Wright
 
 			if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie.css'))
 			{
-				$styles['ie'] = 'ie.css';
+				$styles['ie'][] = 'ie.css';
 			}
 
 			// Switch to allow specific versions of IE to have additional sheets
@@ -211,14 +219,14 @@ class Wright
 			{
 				case '6' :
 					if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie6.css'))
-						$styles['ie'] = 'ie6.css';
+						$styles['ie'][] = 'ie6.css';
 						$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/dd_belatedpng.js');
 						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/html5.js');
 					break;
 
 				default :
 					if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie'.$major.'.css'))
-						$styles['ie'] = 'ie'.$major.'.css';
+						$styles['ie'][] = 'ie'.$major.'.css';
 						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/html5.js');
 					break;
 			}
