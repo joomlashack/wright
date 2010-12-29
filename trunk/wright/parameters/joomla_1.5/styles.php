@@ -8,9 +8,10 @@ class JElementStyles extends JElement
 	function fetchElement($name, $value, &$node, $control_name)
 	{
 		jimport('joomla.filesystem.folder');
+		$template = array_pop(JRequest::getVar('cid'));
 		$class = ( $node->attributes('class') ? 'class="'.$node->attributes('class').'"' : 'class="inputbox"' );
 
-		$styles = JFolder::files(str_replace('administrator'.DS, '', JPATH_THEMES.DS.$_GET['cid'][0].DS.'css'), 'style-(.*)?\.css');
+		$styles = JFolder::files(str_replace('administrator'.DS, '', JPATH_THEMES.DS.$template.DS.'css'), 'style-(.*)?\.css');
 
 		$options = array ();
 		foreach ($styles as $style)

@@ -10,7 +10,7 @@ class JElementHelp extends JElement
 		jimport('joomla.filesystem.file');
 
 		JHTML::_('behavior.modal');
-		$template = $_GET['cid'][0];
+		$template = array_pop(JRequest::getVar('cid'));
 		$html = '<a class="modal" href="'.JURI::root().'templates/'.$template.'/wright/help" rel="{\'handler\': \'iframe\', \'size\': {x: 800, y:600}}">'.JText::_('View the documentation.').'</a>';
 
 		// Refresh CSS cache since we are editing params

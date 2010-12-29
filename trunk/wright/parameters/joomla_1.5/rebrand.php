@@ -11,9 +11,11 @@ class JElementRebrand extends JElement
 		$options[] = JHTML::_('select.option', 'no', JText::_('No'));
 		$options[] = JHTML::_('select.option', 'yes', JText::_('Yes'));
 
+		$template = array_pop(JRequest::getVar('cid'));
+
 		$html = JHTML::_('select.radiolist', $options, ''.$control_name.'['.$name.']', '', 'value', 'text', $value, $control_name.$name );
 
-		$author = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$_GET['cid'][0].DS.'templateDetails.xml')->author;
+		$author = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$template.DS.'templateDetails.xml')->author;
 		if (stripos($author, 'shack'))
 			$html .= '&nbsp;<a href="http://www.joomlashack.com/licensing-center" target="_blank">Rebranding requires a license, learn more.</a>';
 

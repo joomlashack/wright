@@ -12,7 +12,7 @@ class JElementPresets extends JElement
 	{
 		$doc = JFactory::getDocument();
 
-		$template = $_GET['cid'][0];
+		$template = array_pop(JRequest::getVar('cid'));
 		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/presets/presets.js');
 		
 		$file = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$template.DS.'presets.xml');

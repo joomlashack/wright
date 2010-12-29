@@ -8,7 +8,7 @@ class JElementColumns extends JElement
 	function fetchElement($name, $value, &$node, $control_name)
 	{
 		$doc = JFactory::getDocument();
-		$template = $_GET['cid'][0];
+		$template = array_pop(JRequest::getVar('cid'));
 		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/columns/columns.js');
 		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/columns/columns.css');
 
