@@ -62,7 +62,7 @@
 .clearfix:after{clear:both;content:' ';display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0;}
 .clearfix{display:block;}
 * html .clearfix{height:1%;}
-.flexgrid_1,.flexgrid_2,.flexgrid_3,.flexgrid_4,.flexgrid_6{display:inline;float:left;margin-left:1%;margin-right:1%;}
+.flexgrid_1,.flexgrid_2,.flexgrid_3,.flexgrid_4,.flexgrid_6{display:inline;float:left;margin-left:1%;margin-right:1%;padding:0%;}
 .container_12 .flexgrid_1{width:98%;}
 .container_12 .flexgrid_2{width:48%;}
 .container_12 .flexgrid_3{width:31%;}
