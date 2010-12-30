@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
 	for ($y = 0; $y < $rowcount && $i < $this->total; $y++, $i++) : ?>
 		<div class="leading<?php echo $this->params->get('pageclass_sfx'); ?>">
 			<?php $this->item =& $this->getItem($i, $this->params);
-			echo $this->loadTemplate('item'); ?>
+			include(dirname(__FILE__).DS.'default_item.php'); ?>
 		</div>
 		<span class="leading_separator<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">&nbsp;</span>
 	<?php endfor; ?>

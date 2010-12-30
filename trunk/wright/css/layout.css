@@ -58,7 +58,7 @@
 .container_12 .pull_9{left:-720px;}
 .container_12 .pull_10{left:-800px;}
 .container_12 .pull_11{left:-880px;}
-.clear{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:0;}
+.clear,.clr{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:0;}
 .clearfix:after{clear:both;content:' ';display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0;}
 .clearfix{display:block;}
 * html .clearfix{height:1%;}
