@@ -65,7 +65,7 @@ body.b_verdana {
 
 /* Header styles */
 body.h_arial h1, body.h_arial h2, body.h_arial h3, body.h_arial h4, body.h_arial h5, body.h_arial h6 {
-	font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 body.h_baskerville h1, body.h_baskerville h2, body.h_baskerville h3, body.h_baskerville h4, body.h_baskerville h5, body.h_baskerville h6 {
 	font-family: Baskerville, Times, "Times New Roman", serif;
