@@ -293,7 +293,7 @@ border-top-width:1px;
 clear:both;
 height:0;
 }
-h1, h2, h3, h4, h5, h6, .componentheading, .contentheading, .contentdescription {
+h1, h2, h3, h4, h5, h6, .componentheading, .contentheading {
 font-weight:bold;
 }
 h1, .componentheading {
@@ -306,7 +306,7 @@ font-size:30px;
 h3 {
 font-size:25px;
 }
-h4, .contentdescription {
+h4 {
 font-size:19px;
 }
 h5 {
