@@ -14,7 +14,7 @@ class WrightAdapterJoomlaContent
 		$doc = Wright::getInstance();
 		if ($doc->countModules($args['above']) && $args['above'] !== 'false') {
 			$content .= '<div class="'.$args['above'].'">
-				<jdoc:include type="modules" name="'.$args['above'].'" chrome="'.$args['above-chrome'].'" />
+				<jdoc:include type="modules" name="'.$args['above'].'" style="'.$args['above-chrome'].'" />
 				</div>
 			<div class="clr"></div>';
 		}
@@ -23,7 +23,7 @@ class WrightAdapterJoomlaContent
 
 		if ($doc->countModules($args['below']) && $args['below'] !== 'false') {
 			$content .= '<div class="'.$args['below'].'">
-				<jdoc:include type="modules" name="'.$args['below'].'" chrome="'.$args['below-chrome'].'" />
+				<jdoc:include type="modules" name="'.$args['below'].'" style="'.$args['below-chrome'].'" />
 				</div>
 			<div class="clr"></div>';
 		}
