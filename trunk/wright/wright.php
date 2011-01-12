@@ -220,14 +220,14 @@ class Wright
 				case '6' :
 					if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie6.css'))
 						$styles['ie'][] = 'ie6.css';
-						$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/dd_belatedpng.js');
+						$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/wright/js/dd_belatedpng.js');
 						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/html5.js');
 					break;
 
 				default :
 					if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie'.$major.'.css'))
 						$styles['ie'][] = 'ie'.$major.'.css';
-						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/html5.js');
+						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/wright/js/html5.js');
 					break;
 			}
 		}
