@@ -315,3 +315,6 @@ font-size:17px;
 h6 {
 font-size:15px;
 }
+/* Sup - Sub */
+sup{font-size:.1em; position: relative; top: -0.5em;} 
+sub{font-size:.1em; position: relative; bottom: -0.5em;}
