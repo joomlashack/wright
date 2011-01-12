@@ -8,4 +8,4 @@
 $app =& JFactory::getApplication();
 
 require_once(JPATH_THEMES.DS.$app->getTemplate().DS.'wright'.DS.'html'.DS.'overrider.php');
-include(Overrider::getOverride('mod_mainmenu'));
+require(Overrider::getOverride('mod_mainmenu'));
