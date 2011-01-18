@@ -12,7 +12,7 @@ $canEdit = $this->user->authorise('core.edit', 'com_content.category.' . $this->
 
 <?php if (($this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) && !($this->print)) : ?>
 <div class="contentpaneopen_edit<?php echo $this->escape($params->get('pageclass_sfx')); ?>">
-	<?php echo JHTML::_('icon.edit', $this->item, $params, $this->access); ?>
+	<?php echo JHTML::_('icon.edit', $this->item, $params); ?>
 </div>
 <?php endif; ?>
 
@@ -36,16 +36,16 @@ $canEdit = $this->user->authorise('core.edit', 'com_content.category.' . $this->
 <?php if ($params->get('access-edit') ||  $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
 <p class="buttonheading">
 	<?php if ($this->print) :
-		echo JHTML::_('icon.print_screen', $this->item, $params, $this->access);
+		echo JHTML::_('icon.print_screen', $this->item, $params);
 	elseif ($params->get('show_pdf_icon') || $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
 	<?php if ($params->get('show_pdf_icon')) :
-			echo JHTML::_('icon.pdf', $this->item, $params, $this->access);
+			echo JHTML::_('icon.pdf', $this->item, $params);
 		endif;
 		if ($params->get('show_print_icon')) :
-			echo JHTML::_('icon.print_popup', $this->item, $params, $this->access);
+			echo JHTML::_('icon.print_popup', $this->item, $params);
 		endif;
 		if ($params->get('show_email_icon')) :
-			echo JHTML::_('icon.email', $this->item, $params, $this->access);
+			echo JHTML::_('icon.email', $this->item, $params);
 		endif;
 		if ($canEdit) :
 			echo JHtml::_('icon.edit', $this->item, $params);
@@ -59,7 +59,6 @@ $canEdit = $this->user->authorise('core.edit', 'com_content.category.' . $this->
 		echo $this->item->event->afterDisplayTitle;
 	endif; ?>
 
-	
 
 <?php $useDefList = (($params->get('show_author')) OR ($params->get('show_category')) OR ($params->get('show_parent_category'))
 	OR ($params->get('show_create_date')) OR ($params->get('show_modify_date')) OR ($params->get('show_publish_date'))
