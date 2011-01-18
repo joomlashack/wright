@@ -1,11 +1,4 @@
 <?php
-/**
- * @version		$Id: default.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	mod_weblinks
- * @copyright	Copyright (C) 2005 - 2009 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
 
 defined('_JEXEC') or die;
 ?>

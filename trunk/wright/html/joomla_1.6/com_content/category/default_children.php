@@ -1,11 +1,4 @@
 <?php
-/**
- * @version		$Id: default_children.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
 
 // no direct access
 defined('_JEXEC') or die;
@@ -50,7 +43,7 @@ $class = ' class="first"';
 				$this->category = $child;
 				$this->maxLevel--;
 				if ($this->maxLevel != 0) :
-					echo $this->loadTemplate('children');
+					include('default_children.php');
 				endif;
 				$this->category = $child->getParent();
 				$this->maxLevel++;

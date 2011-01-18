@@ -1,12 +1,4 @@
 <?php
-/**
- * @version		$Id: default_items.php 13471 2009-11-12 00:38:49Z eddieajau
- * @package		Joomla.Site
- * @subpackage	com_weblinks
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 // no direct access
 defined('_JEXEC') or die;
 
@@ -22,41 +14,43 @@ $listDirn	= $this->state->get('list.direction');
 <?php else : ?>
 
 <form action="<?php echo JFilterOutput::ampReplace(JFactory::getURI()->toString()); ?>" method="post" name="adminForm">
-	<fieldset class="filters">
-	<legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
+	<div class="display">
+	<?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?>&nbps;
 	<?php if ($this->params->get('show_pagination_limit')) : ?>
 		<div class="display-limit">
 			<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
 			<?php echo $this->pagination->getLimitBox(); ?>
 		</div>
 	<?php endif; ?>
-	</fieldset>
+	</div>
 
-	<table class="category">
+	<table class="weblinks">
 		<?php if ($this->params->get('show_headings')==1) : ?>
 
-		<thead><tr>
-			<th class="num">
-				<?php echo JText::_('COM_WEBLINKS_NUM'); ?>
-			</th>
-			<th class="title">
-					<?php echo JHtml::_('grid.sort',  'COM_WEBLINKS_GRID_SORT', 'title', $listDirn, $listOrder); ?>
-			</th>
-			<?php if ($this->params->get('show_link_hits')) : ?>
-			<th class="hits">
-					<?php echo JHtml::_('grid.sort',  'JGLOBAL_HITS', 'hits', $listDirn, $listOrder); ?>
-			</th>
-			<?php endif; ?>
-		</tr>
-	</thead>
+		<thead>
+			<tr>
+				<th class="sectiontableheader<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
+					<?php echo JText::_('COM_WEBLINKS_NUM'); ?>
+				</th>
+				<th width="90%" class="sectiontableheader<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
+						<?php echo JHtml::_('grid.sort',  'COM_WEBLINKS_GRID_SORT', 'title', $listDirn, $listOrder); ?>
+				</th>
+				<?php if ($this->params->get('show_link_hits')) : ?>
+				<th width="10%" class="sectiontableheader<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
+						<?php echo JHtml::_('grid.sort',  'JGLOBAL_HITS', 'hits', $listDirn, $listOrder); ?>
+				</th>
+				<?php endif; ?>
+			</tr>
+		</thead>
 	<?php endif; ?>
+
 	<tbody>
 	<?php foreach ($this->items as $i => $item) : ?>
-		<tr class="<?php echo $i % 2 ? 'odd' : 'even';?>">
-			<td class="num">
+		<tr class="sectiontableentry<?php echo $i % 2 ? '1' : '2';?>">
+			<td align="center" headers="num">
 				<?php echo $this->pagination->getRowOffset($i); ?>
 			</td>
-			<td class="title">
+			<td headers="title">
 			<p>
 				<?php if ($this->params->get('link_icons') <> -1) : ?>
 					<?php echo JHTML::_('image','system/'.$this->params->get('link_icons', 'weblink.png'), JText::_('COM_WEBLINKS_LINK'), NULL, true);?>
@@ -101,7 +95,7 @@ $listDirn	= $this->state->get('list.direction');
 			<?php endif; ?>
 		</td>
 		<?php if ($this->params->get('show_link_hits')) : ?>
-		<td class="hits">
+		<td headers="hits">
 			<?php echo $item->hits; ?>
 		</td>
 		<?php endif; ?>

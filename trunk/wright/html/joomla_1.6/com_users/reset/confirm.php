@@ -1,39 +1,31 @@
 <?php
-/**
- * @version		$Id: confirm.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @since		1.5
- */
-
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.mootools');
 JHtml::_('behavior.formvalidation');
 ?>
+
+<?php if ($this->params->get('show_page_heading')) : ?>
+<h1 class="componentheading">
+	<?php echo $this->escape($this->params->get('page_heading')); ?>
+</h1>
+<?php endif; ?>
+
 <div class="reset-confirm<?php echo $this->params->get('pageclass_sfx')?>">
-	<?php if ($this->params->get('show_page_heading')) : ?>
-	<h1>
-		<?php echo $this->escape($this->params->get('page_heading')); ?>
-	</h1>
-	<?php endif; ?>
 
 	<form action="<?php echo JRoute::_('index.php?option=com_users&task=reset.confirm'); ?>" method="post" class="form-validate">
-
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="contentpane">
 		<?php foreach ($this->form->getFieldsets() as $fieldset): ?>
-		<p><?php echo JText::_($fieldset->label); ?></p>		<fieldset>
-			<dl>
+		<tr>
 			<?php foreach ($this->form->getFieldset($fieldset->name) as $name => $field): ?>
-				<dt><?php echo $field->label; ?></dt>
-				<dd><?php echo $field->input; ?></dd>
+				<td height="40"><label for="<?php echo $name ?>" class="hasTip"><?php echo $field->label; ?></label></td>
+				<td><?php echo str_replace('class="', 'class="inputbox ', $field->input); ?></td>
 			<?php endforeach; ?>
-			</dl>
-		</fieldset>
+		</tr>
 		<?php endforeach; ?>
 
 		<button type="submit"><?php echo JText::_('JSUBMIT'); ?></button>
 		<?php echo JHtml::_('form.token'); ?>
+		</table>
 	</form>
 </div>

@@ -1,19 +1,11 @@
 <?php
-/**
- * @version		$Id: default.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	com_search
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 // no direct access
 defined('_JEXEC') or die;
 ?>
 
 <div class="search<?php echo $this->params->get('pageclass_sfx'); ?>">
 <?php if ($this->params->get('show_page_heading', 1)) : ?>
-<h1>
+<h1 class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx')) ?>">
 	<?php if ($this->escape($this->params->get('page_heading'))) :?>
 		<?php echo $this->escape($this->params->get('page_heading')); ?>
 	<?php else : ?>
@@ -22,10 +14,10 @@ defined('_JEXEC') or die;
 </h1>
 <?php endif; ?>
 
-<?php echo $this->loadTemplate('form'); ?>
+<?php include('default_form.php'); ?>
 <?php if ($this->error==null && count($this->results) > 0) :
-	echo $this->loadTemplate('results');
+	include('default_results.php');
 else :
-	echo $this->loadTemplate('error');
+	include('default_error.php');
 endif; ?>
 </div>

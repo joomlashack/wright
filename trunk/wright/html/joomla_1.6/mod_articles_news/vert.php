@@ -1,16 +1,8 @@
 <?php
-/**
- * @version		$Id: vert.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	mod_articles_news
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 // no direct access
 defined('_JEXEC') or die;
 ?>
-<ul class="newsflash-vert<?php echo $params->get('moduleclass_sfx'); ?>">
+<ul class="newsflash-module<?php echo $params->get('moduleclass_sfx'); ?>">
 <?php for ($i = 0, $n = count($list); $i < $n; $i ++) :
 	$item = $list[$i]; ?>
 	<li class="newsflash-item">

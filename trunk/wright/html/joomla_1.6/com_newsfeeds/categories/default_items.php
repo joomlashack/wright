@@ -1,12 +1,4 @@
 <?php
-/**
- * @version		$Id: default_items.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	com_newsfeeds
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 // no direct access
 defined('_JEXEC') or die;
 $class = ' class="first"';
@@ -23,26 +15,22 @@ if (count($this->items[$this->parent->id]) > 0 && $this->maxLevel != 0) :
 	?>
 	<li<?php echo $class; ?>>
 	<?php $class = ''; ?>
-		<span class="jitem-title"><a href="<?php echo JRoute::_(NewsfeedsHelperRoute::getCategoryRoute($item->id));?>">
+		<a href="<?php echo JRoute::_(NewsfeedsHelperRoute::getCategoryRoute($item->id));?>" class="category">
 			<?php echo $this->escape($item->title); ?></a>
-		</span>
-		<?php if ($item->description) : ?>
-			<div class="category-desc">
-				<?php echo JHtml::_('content.prepare', $item->description); ?>
-			</div>
-		<?php endif; ?>
 		<?php if ($this->params->get('show_item_count') == 1) :?>
-			<dl class="newsfeed-count"><dt>
-				<?php echo JText::_('COM_NEWSFEED_COUNT:'); ?></dt>
-				<dd><?php echo $item->numitems; ?></dd>
-			</dl>
+			<span class="small"><?php echo JText::_('COM_NEWSFEED_COUNT:'); ?> <?php echo $item->numitems; ?>
+			</span>
+		<?php endif; ?>
+		<?php if ($item->description) : ?>
+			<br />
+			<?php echo JHtml::_('content.prepare', $item->description); ?>
 		<?php endif; ?>
 
 		<?php if(count($item->getChildren()) > 0) :
 			$this->items[$item->id] = $item->getChildren();
 			$this->parent = $item;
 			$this->maxLevel--;
-			echo $this->loadTemplate('items');
+			include('default_items.php');
 			$this->parent = $item->getParent();
 			$this->maxLevel++;
 		endif; ?>

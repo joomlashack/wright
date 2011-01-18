@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 		<button type="submit" class="button"><?php echo JText::_('Filter'); ?></button>
 	</p>
 
-<?php echo $this->loadTemplate('items'); ?>
+<?php echo include('default_items.php'); ?>
 
 	<input type="hidden" name="view" value="archive" />
 	<input type="hidden" name="option" value="com_content" />

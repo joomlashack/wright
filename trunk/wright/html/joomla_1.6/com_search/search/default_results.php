@@ -1,20 +1,13 @@
 <?php
-/**
- * @version		$Id: default_results.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	com_search
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 // no direct access
 defined('_JEXEC') or die;
 ?>
 
-<dl class="search_results<?php echo $this->params->get('pageclass_sfx'); ?>">
+<ol class="search_results<?php echo $this->params->get('pageclass_sfx'); ?>">
 <?php foreach($this->results as $result) : ?>
-	<dt class="result-title">
+	<li class="result-title">
 		<?php echo $this->pagination->limitstart + $result->count.'. ';?>
+		<h4>
 		<?php if ($result->href) :?>
 			<a href="<?php echo JRoute::_($result->href); ?>"<?php if ($result->browsernav == 1) :?> target="_blank"<?php endif;?>>
 				<?php echo $this->escape($result->title);?>
@@ -22,25 +15,26 @@ defined('_JEXEC') or die;
 		<?php else:?>
 			<?php echo $this->escape($result->title);?>
 		<?php endif; ?>
-	</dt>
+		</h4>
 	<?php if ($result->section) : ?>
-		<dd class="result-category">
+		<p class="result-category">
 			<br />
 			<span class="small<?php echo $this->params->get('pageclass_sfx'); ?>">
 				(<?php echo $this->escape($result->section); ?>)
 			</span>
-		</dd>
+		</>
 	<?php endif; ?>
-	<dd class="result-text">
+	<p class="result-text">
 		<?php echo $result->text; ?>
-	</dd>
+	</p>
 	<?php if ($this->params->get('show_date')) : ?>
-		<dd class="result-created<?php echo $this->params->get('pageclass_sfx'); ?>">
+		<span class="small<?php echo $this->params->get('pageclass_sfx'); ?>">
 			<?php echo $result->created; ?>
-		</dd>
+		</span>
 	<?php endif; ?>
+	</li>
 <?php endforeach; ?>
-</dl>
+</ol>
 
 <div class="pagination">
 	<?php echo $this->pagination->getPagesLinks(); ?>

@@ -1,5 +1,7 @@
-<?php // no direct access
-defined('_JEXEC') or die('Restricted access'); ?>
+<?php
+// no direct access
+defined('_JEXEC') or die('Restricted access');
+?>
 <?php if($type == 'logout') : ?>
 <form action="index.php" method="post" name="login" id="form-login">
 <?php if ($params->get('greeting')) : ?>

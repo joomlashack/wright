@@ -1,11 +1,4 @@
 <?php
-/**
- * @version		$Id: default_items.php 19 2010-11-05 21:51:13Z garygisclair $
- * @package		Joomla.Site
- * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
 
 // no direct access
 defined('_JEXEC') or die;
@@ -14,26 +7,25 @@ JHtml::addIncludePath(JPATH_COMPONENT.DS.'helpers');
 $params = &$this->params;
 ?>
 
-<ul id="archive-items">
+<ul id="archive-list">
 <?php foreach ($this->items as $i => $item) : ?>
 	<li class="row<?php echo $i % 2; ?>">
 
-		<h2>
+		<h4 class="contentheading">
 		<?php if ($params->get('link_titles')): ?>
 			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->slug)); ?>">
 				<?php echo $this->escape($item->title); ?></a>
 		<?php else: ?>
 				<?php echo $this->escape($item->title); ?>
 		<?php endif; ?>
-		</h2>
+		</h4>
 
 
 <?php if (($params->get('show_author')) or ($params->get('show_category')) or ($params->get('show_create_date')) or ($params->get('show_modify_date')) or ($params->get('show_publish_date'))  or ($params->get('show_hits'))) : ?>
- <dl class="article-info">
- <dt class="article-info-term"><?php echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?></dt>
+		<div>
 <?php endif; ?>
 <?php if ($params->get('show_category')) : ?>
-		<dd class="category-name">
+		<span class="category-name">
 			<?php $title = $this->escape($item->category_title);
 					$title = ($title) ? $title : JText::_('JGLOBAL_UNCATEGORISED');
 					$url = '<a href="' . JRoute::_(ContentHelperRoute::getCategoryRoute($item->catslug)) . '">' . $title . '</a>'; ?>
@@ -42,38 +34,45 @@ $params = &$this->params;
 				<?php else : ?>
 				<?php echo JText::sprintf('COM_CONTENT_CATEGORY', $title); ?>
 			<?php endif; ?>
-		</dd>
+		</span>
+<?php if (($params->get('show_author')) or ($params->get('show_create_date')) or ($params->get('show_modify_date')) or ($params->get('show_publish_date'))  or ($params->get('show_hits'))) :?>
+		<h5 class="metadata">
+<?php endif; ?>
 <?php endif; ?>
 <?php if ($params->get('show_create_date')) : ?>
-		<dd class="create">
+		<span class="create">
 		<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHTML::_('date',$item->created, JText::_('DATE_FORMAT_LC2'))); ?>
-		</dd>
+		</span>
 <?php endif; ?>
 <?php if ($params->get('show_modify_date')) : ?>
-		<dd class="modified">
+		<span class="modified">
 		<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHTML::_('date',$item->modified, JText::_('DATE_FORMAT_LC2'))); ?>
-		</dd>
+		</span>
 <?php endif; ?>
 <?php if ($params->get('show_publish_date')) : ?>
-		<dd class="published">
+		<span class="published">
 		<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE', JHTML::_('date',$item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?>
-		</dd>
+		</span>
 <?php endif; ?>
 <?php if ($params->get('show_author') && !empty($item->author)) : ?>
-	<dd class="createdby">
+		<span class="author">
 		<?php $author = $params->get('link_author', 0) ? JHTML::_('link',JRoute::_('index.php?option=com_users&view=profile&member_id='.$item->created_by),$item->author) : $item->author; ?>
 		<?php $author = ($item->created_by_alias ? $item->created_by_alias : $author); ?>
 	<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
-		</dd>
+		</span>
 	<?php endif; ?>
 <?php if ($params->get('show_hits')) : ?>
-		<dd class="hits">
+		<span class="hits">
 		<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); ?>
-		</dd>
+		</span>
+<?php endif; ?>
+<?php if (($params->get('show_author')) or ($params->get('show_create_date')) or ($params->get('show_modify_date')) or ($params->get('show_publish_date'))  or ($params->get('show_hits'))) :?>
+		</h5>
 <?php endif; ?>
 <?php if (($params->get('show_author')) or ($params->get('show_category')) or ($params->get('show_create_date')) or ($params->get('show_modify_date')) or ($params->get('show_publish_date'))  or ($params->get('show_hits'))) :?>
-	 </dl>
+		</div>
 <?php endif; ?>
+
 <div class="clear"></div>
 <?php  if ($params->get('show_intro')) :?>
 		<div class="intro">

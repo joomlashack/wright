@@ -1,19 +1,11 @@
 <?php
-/**
- * @version		$Id: joomla_1.6.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	mod_search
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 // no direct access
 defined('_JEXEC') or die;
 ?>
 <form action="<?php echo JRoute::_('index.php');?>" method="post">
 	<div class="search-module<?php echo $params->get('moduleclass_sfx') ?>">
 		<?php
-			$output = '<label for="mod_search_searchword">'.JText::_('MOD_SEARCH_FIELD_TEXT_LABEL').'</label><input name="searchword" id="mod_search_searchword" maxlength="'.$maxlength.'" class="inputbox'.$moduleclass_sfx.'" type="text" size="'.$width.'" value="'.$text.'" onblur="if (this.value==\'\') this.value=\''.$text.'\';" onfocus="if (this.value==\''.$text.'\') this.value=\'\';" />';
+			$output = '<input name="searchword" id="mod_search_searchword" maxlength="'.$maxlength.'" alt="'.$params->get('moduleclass_sfx').'" class="inputbox'.$moduleclass_sfx.'" type="text" size="'.$width.'" value="'.$text.'" onblur="if(this.value==\'\') this.value=\''.$text.'\';" onfocus="if(this.value==\''.$text.'\') this.value=\'\';" />';
 
 			if ($button) :
 				if ($imagebutton) :

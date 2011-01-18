@@ -1,27 +1,18 @@
 <?php
-/**
- * @version		$Id: default_custom.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @since		1.6
- */
 defined('_JEXEC') or die;
 ?>
 <?php $fields = $this->form->getFieldset('profile');?>
 <?php if (count($fields)):;?>
 <fieldset id="users-profile-custom">
 	<legend><?php echo JText::_('COM_USERS_PROFILE_CUSTOM_LEGEND'); ?></legend>
-	<dl>
+	<ul>
 	<?php foreach($fields as $field):?>
 		<?php if (!$field->hidden) :?>
-		<dt><?php echo $field->label; ?></dt>
-		<dd>
-			<?php echo !empty($this->data->profile[$field->fieldname]) ? $this->data->profile[$field->fieldname] : JText::_('COM_USERS_PROFILE_VALUE_NOT_FOUND'); ?>
-		</dd>
+		<li><?php echo $field->label; ?>
+		<?php echo !empty($this->data->profile[$field->fieldname]) ? $this->data->profile[$field->fieldname] : JText::_('COM_USERS_PROFILE_VALUE_NOT_FOUND'); ?>
+		</li>
 		<?php endif;?>
 	<?php endforeach;?>
-	</dl>
+	</ul>
 </fieldset>
 <?php endif;?>

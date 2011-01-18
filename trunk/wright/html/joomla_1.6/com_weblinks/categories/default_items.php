@@ -33,17 +33,15 @@ if (count($this->items[$this->parent->id]) > 0 && $this->maxLevel != 0) :
 			</div>
 		<?php endif; ?>
 		<?php if ($this->params->get('show_numbers') == 1) :?>
-			<dl class="weblink-count"><dt>
-				<?php echo JText::_('COM_WEBLINKS_NUM'); ?></dt>
-				<dd><?php echo $item->numitems; ?></dd>
-			</dl>
+			<span class="small"><?php echo JText::_('COM_WEBLINKS_NUM'); ?>
+				(<?php echo $item->numitems; ?>)</span>
 		<?php endif; ?>
 
 		<?php if(count($item->getChildren()) > 0) :
 			$this->items[$item->id] = $item->getChildren();
 			$this->parent = $item;
 			$this->maxLevel--;
-			echo $this->loadTemplate('items');
+			include('default_items.php');
 			$this->parent = $item->getParent();
 			$this->maxLevel++;
 		endif; ?>

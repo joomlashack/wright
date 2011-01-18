@@ -1,5 +1,7 @@
-<?php // no direct access
-defined('_JEXEC') or die('Restricted access'); ?>
+<?php
+// no direct access
+defined('_JEXEC') or die('Restricted access');
+?>
 <div class="newsflash-item<?php echo $params->get( 'moduleclass_sfx' ); ?>">
 <?php if ($params->get('item_title')) : ?>
 	<h4>

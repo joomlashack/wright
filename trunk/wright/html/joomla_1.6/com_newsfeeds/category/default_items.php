@@ -1,12 +1,4 @@
 <?php
-/**
- * @version		$Id: default_items.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	com_newsfeeds
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 // no direct access
 defined('_JEXEC') or die;
 
@@ -21,19 +13,21 @@ $listDirn	= $this->state->get('list.direction');
 	<p> <?php echo JText::_('COM_NEWSFEEDS_NO_ARTICLES'); ?>	 </p>
 <?php else : ?>
 
-<form action="<?php echo JFilterOutput::ampReplace(JFactory::getURI()->toString()); ?>" method="post" name="adminForm">
-	<fieldset class="filters">
-	<legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
-	<?php if ($this->params->get('show_pagination_limit')) : ?>
-		<div class="display-limit">
-			<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
-			<?php echo $this->pagination->getLimitBox(); ?>
-		</div>
-	<?php endif; ?>
-	</fieldset>
-	<table class="category">
+<?php if ( $this->params->get( 'show_limit' ) ) : ?>
+<div class="display">
+	<form action="<?php echo JFilterOutput::ampReplace(JFactory::getURI()->toString()); ?>" method="post" name="adminForm">
+		<label for="limit"><?php echo JText::_( 'JGLOBAL_DISPLAY_NUM' ); ?>&nbsp;</label>
+		<?php echo $this->pagination->getLimitBox(); ?>
+
+		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
+		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+	</form>
+</div>
+<?php endif; ?>
+
+	<table class="newsfeeds">
 		<?php if ($this->params->get('show_headings')==1) : ?>
-		<thead><tr>
+		<thead><tr class="sectiontableheader<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>">
 				<?php if ($this->params->get('show_name')) : ?>
 				<th class="item-title" id="tableOrdering">
 					<?php echo JHtml::_('grid.sort',  JText::_('COM_NEWSFEEDS_FEED_NAME'), 'a.name', $listDirn, $listOrder); ?>
@@ -41,13 +35,13 @@ $listDirn	= $this->state->get('list.direction');
 				<?php endif; ?>
 
 				<?php if ($this->params->get('show_articles')) : ?>
-				<th class="item-num-art" id="tableOrdering2">
+				<th width="90%" class="sectiontableheader<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>" id="tableOrdering2">
 					<?php echo JHtml::_('grid.sort',  JText::_('COM_NEWSFEEDS_NUM_ARTICLES'), 'a.numarticles', $listDirn, $listOrder); ?>
 				</th>
 				<?php endif; ?>
 
 				<?php if ($this->params->get('show_link')) : ?>
-				<th class="item-link" id="tableOrdering3">
+				<th width="10%" class="sectiontableheader<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>" id="tableOrdering3">
 					<?php echo JHtml::_('grid.sort',  JText::_('COM_NEWSFEEDS_FEED_LINK'), 'a.link', $listDirn, $listOrder); ?>
 				</th>
 				<?php endif; ?>
@@ -58,7 +52,7 @@ $listDirn	= $this->state->get('list.direction');
 
 		<tbody>
 			<?php foreach ($this->items as $i => $item) : ?>
-				<tr class="<?php echo $i % 2 ? 'odd' : 'even';?>">
+				<tr class="sectiontableentry<?php echo $i % 2 ? '1' : '2';?>">
 
 					<td class="item-title">
 						<a href="<?php echo JRoute::_(NewsFeedsHelperRoute::getNewsfeedRoute($item->id, $item->catid)); ?>">
@@ -93,9 +87,4 @@ $listDirn	= $this->state->get('list.direction');
 	</div>
 	<?php endif; ?>
 
-	<div>
-		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-	</div>
-</form>
 <?php endif; ?>

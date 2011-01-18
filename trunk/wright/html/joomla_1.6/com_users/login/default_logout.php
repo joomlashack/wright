@@ -1,24 +1,16 @@
 <?php
-/**
- * @version		$Id: default_logout.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @since		1.5
- */
 
 defined('_JEXEC') or die;
 ?>
 <div class="logout<?php echo $this->params->get('pageclass_sfx')?>">
 	<?php if ($this->params->get('show_page_heading')) : ?>
-	<h1>
+	<h1 class="componentheading<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>">
 		<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h1>
 	<?php endif; ?>
 
 	<?php if ($this->params->get('logoutdescription_show') == 1 || $this->params->get('logout_image') != '') : ?>
-	<div class="logout-description">
+	<div class="contentdescription<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>">
 	<?php endif ; ?>
 
 		<?php if ($this->params->get('logoutdescription_show') == 1) : ?>

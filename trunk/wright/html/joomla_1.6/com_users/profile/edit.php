@@ -1,12 +1,4 @@
 <?php
-/**
- * @version		$Id: edit.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @since		1.6
- */
 
 defined('_JEXEC') or die;
 

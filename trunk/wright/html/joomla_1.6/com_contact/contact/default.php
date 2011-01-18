@@ -1,21 +1,13 @@
 <?php
- /**
- * $Id: default.php 8 2010-11-03 18:07:23Z jeremy $
- * @package		Joomla.Site
- * @subpackage	Contact
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 defined('_JEXEC') or die;
 
 $cparams = JComponentHelper::getParams ('com_media');
 ?>
-<div class="contact<?php echo $this->params->get('pageclass_sfx')?>">
+
 <?php if ($this->params->get('show_page_heading', 1)) : ?>
-<h1>
+<div class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
 	<?php echo $this->escape($this->params->get('page_heading')); ?>
-</h1>
+</div>
 <?php endif; ?>
 	<?php if ($this->contact->name && $this->params->get('show_name')) : ?>
 		<h2>
@@ -60,7 +52,7 @@ $cparams = JComponentHelper::getParams ('com_media');
 		<p class="contact-position"><?php echo $this->contact->con_position; ?></p>
 	<?php endif; ?>
 
-	<?php echo $this->loadTemplate('address'); ?>
+	<?php include('default_address.php'); ?>
 
 	<?php if ($this->params->get('allow_vcard')) :	//TODO either reimplement vcard or delete this.?>
 		<?php echo JText::_('COM_CONTACT_DOWNLOAD_INFORMATION_AS');?>
@@ -76,10 +68,10 @@ $cparams = JComponentHelper::getParams ('com_media');
 		<?php if ($this->params->get('presentation_style')=='plain'):?>
 			<?php  echo '<h3>'. JText::_('COM_CONTACT_EMAIL_FORM').'</h3>';  ?>
 		<?php endif; ?>				
-		<?php  echo $this->loadTemplate('form');  ?>
+		<?php  include('default_form.php');  ?>
 	<?php endif; ?>
 	<?php if ($this->params->get('show_links')) : ?>
-		<?php echo $this->loadTemplate('links'); ?>
+		<?php include('default_links.php'); ?>
 	<?php endif; ?>
 	<?php if ($this->params->get('show_articles') &&  $this->contact->user_id) : ?>
 		<?php if ($this->params->get('presentation_style')!='plain'):?>
@@ -88,7 +80,7 @@ $cparams = JComponentHelper::getParams ('com_media');
 			<?php if  ($this->params->get('presentation_style')=='plain'):?>
 			<?php echo '<h3>'. JText::_('JGLOBAL_ARTICLES').'</h3>'; ?>
 			<?php endif; ?>
-			<?php echo $this->loadTemplate('articles'); ?>
+			<?php include('default_articles.php'); ?>
 	<?php endif; ?>
 	<?php if ($this->params->get('show_profile') &&  $this->contact->user_id) : ?>
 		<?php if ($this->params->get('presentation_style')!='plain'):?>
@@ -97,7 +89,7 @@ $cparams = JComponentHelper::getParams ('com_media');
 		<?php if ($this->params->get('presentation_style')=='plain'):?>
 			<?php echo '<h3>'. JText::_('COM_CONTACT_PROFILE').'</h3>'; ?>
 		<?php endif; ?>	
-		<?php echo $this->loadTemplate('profile'); ?>
+		<?php include('default_profile.php'); ?>
 	<?php endif; ?>
 	<?php if ($this->contact->misc && $this->params->get('show_misc')) : ?>
 		<?php if ($this->params->get('presentation_style')!='plain'){?>
@@ -116,4 +108,3 @@ $cparams = JComponentHelper::getParams ('com_media');
 	<?php endif; ?>
 	<?php if ($this->params->get('presentation_style')!='plain'){?>
 			<?php echo JHtml::_($this->params->get('presentation_style').'.end');} ?>		
-</div>
