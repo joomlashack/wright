@@ -8,4 +8,4 @@
 $app =& JFactory::getApplication();
 
 require_once(JPATH_THEMES.DS.$app->getTemplate().DS.'wright'.DS.'html'.DS.'overrider.php');
-require_once(Overrider::getOverride('com_wrapper.wrapper'));
+include(Overrider::getOverride('com_wrapper.wrapper'));

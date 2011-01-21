@@ -89,6 +89,7 @@ abstract class HtmlAdapterAbstract
 				$class .= ' h_' . $this->params->get('header_font', 'helvetica');
 			}
 		}
+		if (JRequest::getVar('Itemid')) $class .= ' id_'.JRequest::getVar('Itemid');
 
 		$menu = & JSite::getMenu();
 		if ($menu->getActive() == $menu->getDefault()) $class .= ' home';

@@ -4,7 +4,7 @@
 defined('_JEXEC') or die;
 
 // Create a shortcut for params.
-$params = &$this->item->params;
+$params =& $this->item->params;
 $canEdit = $this->user->authorise('core.edit', 'com_content.category.' . $this->item->id);
 ?>
 

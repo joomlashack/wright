@@ -696,3 +696,31 @@ margin:10px;
 .pagenavcounter {
 font-weight:bold;
 }
+
+
+
+
+
+
+
+
+
+/*
+	Generic styles
+*/
+span.jicons-icons {}
+
+/*
+	com_contact
+*/
+div.categories-list ul {} /* Joomla 1.6 only */
+div.categories-list ul li {} /* Joomla 1.6 only */
+table.category th, .sectiontableheader {}
+table.category td, .sectiontableentry, .sectiontableentry0, .sectiontableentry1, .sectiontableentry2 {}
+.contact-form .inputbox { margin: 10px 0 0 0; }
+.contact-misc p { display: inline; }
+
+/*
+	com_content
+*/
+ul#archive-list { list-style: none; }

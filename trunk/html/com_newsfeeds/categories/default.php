@@ -8,4 +8,4 @@
 $app =& JFactory::getApplication();
 
 require_once(JPATH_THEMES.DS.$app->getTemplate().DS.'wright'.DS.'html'.DS.'overrider.php');
-require_once(Overrider::getOverride('com_newsfeeds.categories'));
+include(Overrider::getOverride('com_newsfeeds.categories'));
