@@ -18,7 +18,7 @@ $pageClass = $this->params->get('pageclass_sfx');
 
 <div class="blog<?php echo $pageClass;?>">
 
-<?php $leadingcount=0 ; ?>
+<?php $leadingcount=0 ;  ?>
 <?php if (!empty($this->lead_items)) : ?>
 	<?php foreach ($this->lead_items as &$item) : ?>
 		<div class="leading<?php echo $pageClass; ?>">
@@ -34,19 +34,15 @@ $pageClass = $this->params->get('pageclass_sfx');
 	<?php endforeach; ?>
 <?php endif; ?>
 
-<?php
-	$introcount=(count($this->intro_items));
-	$counter=0;
-?>
-<?php $introcount = (count($this->intro_items));
+<?php $introcount = count($this->intro_items);
 if ($introcount) :
 	$colcount = (int) $this->columns;
 	$rowcount = (int) $introcount / $colcount;
 	$ii = 0;
-	$i = 1;
-	for ($y = 0; $y < $rowcount && $i < $introcount; $y++) : ?>
+	$i = $leadingcount;
+	for ($y = 0; $y < $rowcount && $i < $introcount + $leadingcount; $y++) : ?>
 		<div class="article_row<?php echo $pageClass; ?>">
-			<?php for ($z = 0; $z < $colcount && $ii < $introcount && $i <= $introcount; $z++, $i++, $ii++) : ?>
+			<?php for ($z = 0; $z < $colcount && $ii < $introcount && $i <= $introcount && isset($this->intro_items[$i]); $z++, $i++, $ii++) : ?>
 				<div class="article_column column<?php echo $z + 1; ?> cols<?php echo $colcount; ?>" >
 					<?php $this->item =& $this->intro_items[$i];
 					include(dirname(__FILE__).DS.'default_item.php') ?>

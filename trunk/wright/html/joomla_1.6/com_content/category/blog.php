@@ -61,10 +61,10 @@ if ($introcount) :
 	$colcount = (int) $this->columns;
 	$rowcount = (int) $introcount / $colcount;
 	$ii = 0;
-	$i = 1;
+	$i = $leadingcount;
 	for ($y = 0; $y < $rowcount && $i < $introcount; $y++) : ?>
 		<div class="article_row<?php echo $pageClass; ?>">
-			<?php for ($z = 0; $z < $colcount && $ii < $introcount && $i <= $introcount; $z++, $i++, $ii++) : ?>
+			<?php for ($z = 0; $z < $colcount && $ii < $introcount && $i <= $introcount && isset($this->intro_items[$i]); $z++, $i++, $ii++) : ?>
 				<div class="article_column column<?php echo $z + 1; ?> cols<?php echo $colcount; ?>" >
 					<?php $this->item =& $this->intro_items[$i];
 					include(dirname(__FILE__).DS.'blog_item.php') ?>
