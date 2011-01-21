@@ -1,66 +1,7 @@
 <?php
-/**
- * @version		$Id$
- * @package		Joomla.Site
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
 
 // no direct access
 defined('_JEXEC') or die;
-
-/**
- * This is a file to add template specific chrome to pagination rendering.
- *
- * pagination_list_footer
- *	Input variable $list is an array with offsets:
- *		$list[prefix]		: string
- *		$list[limit]		: int
- *		$list[limitstart]	: int
- *		$list[total]		: int
- *		$list[limitfield]	: string
- *		$list[pagescounter]	: string
- *		$list[pageslinks]	: string
- *
- * pagination_list_render
- *	Input variable $list is an array with offsets:
- *		$list[all]
- *			[data]		: string
- *			[active]	: boolean
- *		$list[start]
- *			[data]		: string
- *			[active]	: boolean
- *		$list[previous]
- *			[data]		: string
- *			[active]	: boolean
- *		$list[next]
- *			[data]		: string
- *			[active]	: boolean
- *		$list[end]
- *			[data]		: string
- *			[active]	: boolean
- *		$list[pages]
- *			[{PAGE}][data]		: string
- *			[{PAGE}][active]	: boolean
- *
- * pagination_item_active
- *	Input variable $item is an object with fields:
- *		$item->base	: integer
- *		$item->prefix	: string
- *		$item->link	: string
- *		$item->text	: string
- *
- * pagination_item_inactive
- *	Input variable $item is an object with fields:
- *		$item->base	: integer
- *		$item->prefix	: string
- *		$item->link	: string
- *		$item->text	: string
- *
- * This gives template designers ultimate control over how pagination is rendered.
- *
- * NOTE: If you override pagination_item_active OR pagination_item_inactive you MUST override them both
- */
 
 function pagination_list_footer($list)
 {
@@ -105,7 +46,7 @@ function pagination_list_render($list)
 }
 
 function pagination_item_active(&$item) {
-	return "<a href=\"".$item->link."\" title=\"".$item->text."\">".$item->text."</a>";
+	return "<span><a href=\"".$item->link."\" title=\"".$item->text."\">".$item->text."</a></span>";
 }
 
 function pagination_item_inactive(&$item) {
