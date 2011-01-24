@@ -9,7 +9,7 @@ class WrightAdapterJoomlaContent
 		if (!isset($args['below'])) $args['below'] = 'below-content';
 		if (!isset($args['below-chrome'])) $args['below-chrome'] = 'xhtml';
 
-		$content = '';
+		$content = '<jdoc:include type="message" />';
 
 		$doc = Wright::getInstance();
 		if ($doc->countModules($args['above']) && $args['above'] !== 'false') {
