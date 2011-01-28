@@ -114,7 +114,7 @@ endif; ?>
 		elseif ($readmore = $this->item->params->get('readmore')) :
 			echo $readmore;
 		else :
-			echo JText::sprintf('Read more', $this->escape($this->item->title));
+			echo JText::sprintf('Read more');
 		endif; ?></a>
 </p>
 <?php endif; ?>
