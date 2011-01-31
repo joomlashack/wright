@@ -131,7 +131,7 @@ $params = &$this->item->params;
 					elseif ($readmore = $this->item->alternative_readmore) :
 						echo $readmore;
 					else :
-						echo JText::sprintf('COM_CONTENT_READ_MORE');
+						echo JText::_('COM_CONTENT_READ_MORE');
 					endif; ?></a>
 		</p>
 <?php endif; ?>
