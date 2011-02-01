@@ -113,7 +113,7 @@ endif; ?>
 		elseif ($readmore = $this->item->params->get('readmore')) :
 			echo $readmore;
 		else :
-			echo JText::_('Read more');
+			echo JText::sprintf('Read more', $this->escape((strlen($this->item->title) > 40) ? substr($this->item->title, 0, 40).'...' : $this->item->title));
 		endif; ?></a>
 </p>
 <?php endif; ?>

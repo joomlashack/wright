@@ -98,7 +98,7 @@ $params = &$this->params;
 					elseif ($readmore = $item->alternative_readmore) :
 						echo $readmore;
 					else :
-						echo JText::_('COM_CONTENT_READ_MORE');
+						echo JText::sprintf('COM_CONTENT_READ_MORE', $this->escape((strlen($this->item->title) > 40) ? substr($this->item->title, 0, 40).'...' : $this->item->title));
 					endif; ?></a>
 		</p>
 <?php endif; ?>
