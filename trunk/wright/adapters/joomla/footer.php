@@ -28,7 +28,7 @@ class WrightAdapterJoomlaFooter
 
 			$md5 = md5($url);
 
-			$nums = filter_var($md5, FILTER_SANITIZE_NUMBER_INT);
+			$nums = str_replace(array('a','b','c','d','e','f'), '', $md5);
 			
 			$first = substr($nums,0,2);
 			$second = substr($nums,2,2);
