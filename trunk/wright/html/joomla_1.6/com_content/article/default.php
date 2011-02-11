@@ -6,7 +6,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.DS.'helpers');
 
 // Create shortcut to parameters.
 $params = $this->item->params;
-$canEdit = $this->user->authorise('core.edit', 'com_content.category.' . $this->item->id);
+$canEdit	= $this->item->params->get('access-edit');
 ?>
 <div id="page" class="item-page<?php echo $params->get('pageclass_sfx')?>">
 
@@ -48,7 +48,7 @@ $canEdit = $this->user->authorise('core.edit', 'com_content.category.' . $this->
 			echo JHTML::_('icon.email', $this->item, $params);
 		endif;
 		if ($canEdit) :
-			echo JHtml::_('icon.edit', $this->item, $params);
+			echo JHTML::_('icon.edit', $this->item, $params);
 		endif;
 	endif; ?>
 </p>
