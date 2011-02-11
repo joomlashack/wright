@@ -63,7 +63,7 @@
 .clearfix{display:block;}
 * html .clearfix{height:1%;}
 .flexgrid_1,.flexgrid_2,.flexgrid_3,.flexgrid_4,.flexgrid_5,.flexgrid_6{display:inline;float:left;margin-left:1%;margin-right:1%;padding:0%;}
-.container_12 .flexgrid_1{width:100%;}
+.container_12 .flexgrid_1{width:98%;}
 .container_12 .flexgrid_2{width:47.9%;}
 .container_12 .flexgrid_3{width:31%;}
 .container_12 .flexgrid_4{width:22.9%;}
