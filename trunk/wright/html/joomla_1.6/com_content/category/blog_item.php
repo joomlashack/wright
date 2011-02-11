@@ -80,7 +80,7 @@ $canEdit = $this->user->authorise('core.edit', 'com_content.category.' . $this->
 <div class="clr"></div>
 
 <p class="iteminfo">
-	<?php if ($params->get('show_parent_category') && $this->item->parent_slug != '1:root') : ?>
+	<?php if ($params->get('show_parent_category')) : ?>
 	<span class="parent-category-name">
 		<?php $title = $this->escape($this->item->parent_title);
 				$title = ($title) ? $title : JText::_('JGLOBAL_UNCATEGORISED');
