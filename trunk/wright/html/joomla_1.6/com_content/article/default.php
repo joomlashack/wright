@@ -16,7 +16,7 @@ $canEdit = $this->user->authorise('core.edit', 'com_content.category.' . $this->
 </div>
 <?php endif; ?>
 
-<?php if ($params->get('show_title',1) && $params->get('page_title') != $this->item->title) : ?>
+<?php if ($params->get('show_page_heading',1)) : ?>
 <h1 class="componentheading<?php echo $this->escape($params->get('pageclass_sfx')); ?>">
         <?php echo $this->escape($params->get('page_title')); ?>
 </h1>
