@@ -4,6 +4,7 @@
 */
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
+$headBuilder = new BuildHeader($this->document);
 ?>
 <doctype>
 <html>
@@ -28,12 +29,12 @@ jQuery('document').ready(function(){
 	<!-- BEGIN HEADER -->
 	<header id="header" class="container_12 clearfix">
 		<?php // displays the logo
-		BuildHeader::getHeader();
+		$headBuilder->getHeader();
 		?>
 		<?php if($this->countModules('shackmenu')) : ?>
 		<div id="menu_wrap">
 			<div id="menu">		
-					<?php BuildHeader::getMenu();?>
+					<?php $headBuilder->getMenu();?>
 					<w:module type="single" name="shackmenu" chrome="none" />
 				</div>
 		</div>

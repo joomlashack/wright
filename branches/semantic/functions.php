@@ -10,6 +10,13 @@ if(JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form'){
 
 
 class BuildHeader {
+	
+	protected $document;
+	
+	public function __construct(&$document) {
+		$this->document = $document;
+	}
+	
 	// getHeader() displays logo as text/tagline or SEO optimized graphic
   function getHeader() {
 			$headertype				= $this->document->params->get( 'headertype', 'image' );
