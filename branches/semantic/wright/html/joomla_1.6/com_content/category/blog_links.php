@@ -13,7 +13,6 @@ defined('_JEXEC') or die;
 
 
 <div class="items-more">
-
 <h3><?php echo JText::_('COM_CONTENT_MORE_ARTICLES'); ?></h3>
 <ol>
 <?php
