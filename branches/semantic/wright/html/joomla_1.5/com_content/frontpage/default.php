@@ -10,15 +10,7 @@ defined('_JEXEC') or die('Restricted access');
 	</h1>
 	<?php endif; ?>
 
-	<?php $i = $this->pagination->limitstart;
-	$rowcount = $this->params->def('num_leading_articles', 1);
-	for ($y = 0; $y < $rowcount && $i < $this->total; $y++, $i++) : ?>
-		<div class="leading<?php echo $this->params->get('pageclass_sfx'); ?>">
-			<?php $this->item =& $this->getItem($i, $this->params);
-			include(dirname(__FILE__).DS.'default_item.php'); ?>
-		</div>
-		<span class="leading_separator<?php echo $this->escape($this->par<?php 
-		// Leading items
+	<?php // Leading items
 		$i = $this->pagination->limitstart;
 		$rowcount = $this->params->def('num_leading_articles', 1); 
 	if ($rowcount) : ?>
@@ -26,7 +18,7 @@ defined('_JEXEC') or die('Restricted access');
 	<?php for ($y = 0; $y < $rowcount && $i < $this->total; $y++, $i++) : ?>
 		<div class="leading num<?php echo $rowcount ?>">
 			<?php $this->item =& $this->getItem($i, $this->params);
-			include(dirname(__FILE__).DS.'blog_item.php'); ?>
+			include(dirname(__FILE__).DS.'default_item.php'); ?>
 		</div>
 	<?php endfor; ?>
 	</div>
@@ -48,7 +40,7 @@ defined('_JEXEC') or die('Restricted access');
 					<div class="item column-<?php echo $z + 1; ?>" >
 						<?php 
 							$this->item =& $this->getItem($i, $this->params);
-							include(dirname(__FILE__).DS.'blog_item.php') 
+							include(dirname(__FILE__).DS.'default_item.php') 
 						?>
 					</div>
 				<?php endfor; ?>
@@ -62,7 +54,7 @@ defined('_JEXEC') or die('Restricted access');
 	$numlinks = $this->params->def('num_links', 4);
 	if ($numlinks && $i < $this->total) : ?>
 		<?php $this->links = array_slice($this->items, $i - $this->pagination->limitstart, $i - $this->pagination->limitstart + $numlinks);
-		include(dirname(__FILE__).DS.'blog_links.php'); ?>
+		include(dirname(__FILE__).DS.'default_links.php'); ?>
 	<?php endif; ?>
 
 	<?php 
