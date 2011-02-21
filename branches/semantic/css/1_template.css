@@ -1,0 +1,104 @@
+/* @override http://demotemplates.joomlashack.com/generic16demo/templates/js_elated/css/1_template.css */
+
+/*
+Template Specific Styles
+====================================================
+Table of Contents:
+Ctrl/Cmd + F to find the @groups named below
+
+@group Header
+@group Structure
+
+*/
+
+/* @group Header */
+
+/* Graphic Header */
+
+#header span#graphic,#header h1#graphic {
+	margin: 0;
+	padding: 0;
+	text-indent: -9999em;
+	float: left;
+	z-index: 1000;
+	background-image: none;
+	border: none;
+}
+
+#header span#graphic a,#header h1#graphic a {
+	display: block;
+	background-repeat: no-repeat;
+}
+
+/* Text Header */
+
+#header span#text-header,#header h1#text-header {
+	letter-spacing: -2px;
+	font-weight: bold;
+	line-height: 100%;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	text-indent: 8px;
+}
+
+#header h1#text-header a,#header span#text-header a {
+	text-decoration: none;
+	line-height: 100%;
+}
+
+/* Text Header Tagline */
+
+#header span#text-slogan,#header h2#text-slogan {
+	font-size: 18px;
+	letter-spacing: -1px;
+	margin: 0;
+	padding: 0;
+	line-height: 100%;
+	font-weight: bold;
+	display: block;
+	text-indent: 10px;
+}
+
+/* @end */
+
+
+/* @group Structure */
+
+#container {
+	width: 960px;
+	margin: 0px auto;
+	min-height: 400px;
+	padding: 15px 0 12px 0;
+	position: relative;
+	top: -18px;
+}
+
+#wrap {
+	background-color: #fff;
+	width: 960px;
+	margin: 0px auto;
+}
+
+#leader {
+}
+
+.footer_top {
+	width: 990px;
+	height: 76px;
+	margin: 0px auto;
+	font-size: 12px;
+	line-height: 60px;
+	text-align: center;
+	position: relative;
+	top: -18px;
+}
+
+
+#footer,#footer a {
+	color: inherit;
+}
+
+
+/* @end */
+
