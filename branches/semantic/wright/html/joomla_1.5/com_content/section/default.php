@@ -3,30 +3,33 @@ defined('_JEXEC') or die('Restricted access');
 $cparams = JComponentHelper::getParams ('com_media');
 ?>
 
-<?php if ($this->params->get('show_page_title',1)) : ?>
-<h1 class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
-	<?php echo $this->escape($this->params->get('page_title')); ?>
-</h1>
-<?php endif; ?>
+<div class="category-list<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
 
-<?php if ($this->params->def('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
-<div class="contentdescription<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
-	<?php if ($this->params->get('show_description_image') && $this->section->image) : ?>
-	<img src="<?php echo $this->baseurl . '/' . $this->escape($cparams->get('image_path')).'/'.$this->escape($this->section->image); ?>" class="image_<?php echo $this->escape($this->section->image_position); ?>" />
+	<?php if ($this->params->get('show_page_title',1)) : ?>
+	<h1>
+		<?php echo $this->escape($this->params->get('page_title')); ?>
+	</h1>
+	<?php endif; ?>
+	
+	<?php if ($this->params->get('show_section', 1)) : ?>
+	<h2>
+		<span class="subheading-category"><?php echo $this->section->title;?></span>
+	</h2>
 	<?php endif; ?>
 
-	<?php if ($this->params->get('show_description') && $this->section->description) :
-		echo $this->section->description;
-	endif; ?>
-
-	<?php if ($this->params->get('show_description_image') && $this->section->image) : ?>
-	<div class="wrap_image">&nbsp;</div>
+	<?php if ($this->params->def('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
+	<div class="category-desc">
+		<?php if ($this->params->get('show_description_image') && $this->section->image) : ?>
+			<img src="<?php echo $this->baseurl . '/' . $this->escape($cparams->get('image_path')).'/'.$this->escape($this->section->image); ?>" class="image_<?php echo $this->escape($this->section->image_position); ?>" />
+		<?php endif; ?>
+		<?php if ($this->params->get('show_description') && $this->section->description) :
+			echo $this->section->description;
+		endif; ?>
+	</div>
 	<?php endif; ?>
-</div>
-<?php endif; ?>
 
 <?php if ($this->params->def('show_categories', 1) && count($this->categories)) : ?>
-<ul class="contentpane">
+<ul class="cat-items">
 	<?php foreach ($this->categories as $category) :
 		if (!$this->params->get('show_empty_categories') && !$category->numitems) :
 			continue;
