@@ -1,12 +1,4 @@
 <?php
-/**
- * @version		$Id: default_items.php 20196 2011-01-09 02:40:25Z ian $
- * @package		Joomla.Site
- * @subpackage	com_contact
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 // no direct access
 defined('_JEXEC') or die;
 
@@ -20,6 +12,7 @@ $listDirn	= $this->state->get('list.direction');
 <?php else : ?>
 
 <form action="<?php echo JFilterOutput::ampReplace(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm">
+
 <?php if ($this->params->get('show_pagination_limit')) : ?>
 	<fieldset class="filters">
 	<legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
@@ -30,6 +23,7 @@ $listDirn	= $this->state->get('list.direction');
 		</div>
 	</fieldset>
 <?php endif; ?>
+
 	<table class="category">
 		<?php if ($this->params->get('show_headings')) : ?>
 		<thead><tr>
@@ -37,16 +31,19 @@ $listDirn	= $this->state->get('list.direction');
 			<th class="item-title">
 				<?php echo JHtml::_('grid.sort', 'COM_CONTACT_CONTACT_EMAIL_NAME', 'a.name', $listDirn, $listOrder); ?>
 			</th>
+			
 			<?php if ($this->params->get('show_position_headings')) : ?>
 			<th class="item-position">
 				<?php echo JHtml::_('grid.sort', 'COM_CONTACT_POSITION', 'a.con_position', $listDirn, $listOrder); ?>
 			</th>
 			<?php endif; ?>
+			
 			<?php if ($this->params->get('show_email_headings')) : ?>
 			<th class="item-email">
 				<?php echo JText::_('JGLOBAL_EMAIL'); ?>
 			</th>
 			<?php endif; ?>
+			
 			<?php if ($this->params->get('show_telephone_headings')) : ?>
 			<th class="item-phone">
 				<?php echo JText::_('COM_CONTACT_TELEPHONE'); ?>
@@ -164,9 +161,9 @@ $listDirn	= $this->state->get('list.direction');
 		<?php echo $this->pagination->getPagesLinks(); ?>
 	</div>
 	<?php endif; ?>
-	<div>
-		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-	</div>
+
+	<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
+	<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+
 </form>
 <?php endif; ?>

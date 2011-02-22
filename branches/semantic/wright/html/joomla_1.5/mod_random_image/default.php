@@ -1,6 +1,6 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access'); ?>
-<div class="random-image-module<?php echo $params->get('moduleclass_sfx'); ?>">
+<div class="random-image<?php echo $params->get('moduleclass_sfx'); ?>">
 <?php if ($link) : ?>
 <a href="<?php echo $link; ?>" target="_self">
 <?php endif; ?>

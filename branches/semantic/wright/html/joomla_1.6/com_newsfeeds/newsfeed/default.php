@@ -1,13 +1,4 @@
 <?php
-
-/**
- * @version		$Id: default.php 20196 2011-01-09 02:40:25Z ian $
- * @package		Joomla.Site
- * @subpackage	com_newsfeeds
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 // no direct access
 defined('_JEXEC') or die;
 ?>
@@ -37,32 +28,31 @@ if ($lang->isRTL() && $myrtl == 0) {
 					}
 ?>
 <div class="newsfeed<?php echo $this->pageclass_sfx?><?php echo $direction; ?>">
-<?php if ($this->params->get('show_page_heading', 1)) : ?>
-<h1 class="<?php echo $direction; ?>">
-	<?php echo $this->escape($this->params->get('page_heading')); ?>
-</h1>
-<?php endif; ?>
+
+	<?php if ($this->params->get('show_page_heading', 1)) : ?>
+		<h1 class="<?php echo $direction; ?>">
+			<?php echo $this->escape($this->params->get('page_heading')); ?>
+		</h1>
+	<?php endif; ?>
+
 	<h2 class="<?php echo $direction; ?>">
 		<a href="<?php echo $this->newsfeed->channel['link']; ?>" target="_blank">
 			<?php echo str_replace('&apos;', "'", $this->newsfeed->channel['title']); ?></a>
 	</h2>
 
-<!-- Show Description -->
-<?php if ($this->params->get('show_feed_description')) : ?>
-	<div class="feed-description">
-		<?php echo str_replace('&apos;', "'", $this->newsfeed->channel['description']); ?>
-	</div>
-<?php endif; ?>
+	<?php if ($this->params->get('show_feed_description')) : ?>
+		<div class="feed-description">
+			<?php echo str_replace('&apos;', "'", $this->newsfeed->channel['description']); ?>
+		</div>
+	<?php endif; ?>
 
-<!-- Show Image -->
-<?php if (isset($this->newsfeed->image['url']) && isset($this->newsfeed->image['title']) && $this->params->get('show_feed_image')) : ?>
-<div>
-		<img src="<?php echo $this->newsfeed->image['url']; ?>" alt="<?php echo $this->newsfeed->image['title']; ?>" />
-</div>
-<?php endif; ?>
+	<?php if (isset($this->newsfeed->image['url']) && isset($this->newsfeed->image['title']) && $this->params->get('show_feed_image')) : ?>
+		<div>
+			<img src="<?php echo $this->newsfeed->image['url']; ?>" alt="<?php echo $this->newsfeed->image['title']; ?>" />
+		</div>
+	<?php endif; ?>
 
-<!-- Show items -->
-<ol>
+	<ol>
 	<?php foreach ($this->newsfeed->items as $item) :  ?>
 		<li>
 			<?php if (!is_null($item->get_link())) : ?>
@@ -82,8 +72,8 @@ if ($lang->isRTL() && $myrtl == 0) {
 
 				</div>
 			<?php endif; ?>
-			</li>
-		<?php endforeach; ?>
-		</ol>
+		</li>
+	<?php endforeach; ?>
+	</ol>
 </div>
 

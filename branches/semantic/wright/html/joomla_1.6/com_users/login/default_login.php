@@ -1,26 +1,17 @@
 <?php
-/**
- * @version		$Id: default_login.php 20196 2011-01-09 02:40:25Z ian $
- * @package		Joomla.Site
- * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @since		1.5
- */
-
 defined('_JEXEC') or die;
 JHtml::_('behavior.keepalive');
 ?>
 <div class="login<?php echo $this->pageclass_sfx?>">
+
 	<?php if ($this->params->get('show_page_heading')) : ?>
-	<h1>
-		<?php echo $this->escape($this->params->get('page_heading')); ?>
-	</h1>
+		<h1>
+			<?php echo $this->escape($this->params->get('page_heading')); ?>
+		</h1>
 	<?php endif; ?>
 
 	<?php if ($this->params->get('logindescription_show') == 1 || $this->params->get('login_image') != '') : ?>
 	<div class="login-description">
-	<?php endif ; ?>
 
 		<?php if($this->params->get('logindescription_show') == 1) : ?>
 			<?php echo $this->params->get('login_description'); ?>
@@ -30,7 +21,6 @@ JHtml::_('behavior.keepalive');
 			<img src="<?php echo $this->escape($this->params->get('login_image')); ?>" class="login-image" alt="<?php echo JTEXT::_('COM_USER_LOGIN_IMAGE_ALT')?>"/>
 		<?php endif; ?>
 
-	<?php if ($this->params->get('logindescription_show') == 1 || $this->params->get('login_image') != '') : ?>
 	</div>
 	<?php endif ; ?>
 

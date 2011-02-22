@@ -1,12 +1,4 @@
 <?php
-/**
- * @version		$Id: default_items.php 20196 2011-01-09 02:40:25Z ian $
- * @package		Joomla.Site
- * @subpackage	com_newsfeeds
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 // no direct access
 defined('_JEXEC') or die;
 
@@ -33,12 +25,11 @@ $listDirn	= $this->state->get('list.direction');
 	</fieldset>
 	<table class="category">
 		<?php if ($this->params->get('show_headings')==1) : ?>
-		<thead><tr>
-				
+		<thead>
+			<tr>	
 				<th class="item-title" id="tableOrdering">
 					<?php echo JHtml::_('grid.sort', 'COM_NEWSFEEDS_FEED_NAME', 'a.name', $listDirn, $listOrder); ?>
 				</th>
-				
 
 				<?php if ($this->params->get('show_articles')) : ?>
 				<th class="item-num-art" id="tableOrdering2">
@@ -51,7 +42,6 @@ $listDirn	= $this->state->get('list.direction');
 					<?php echo JHtml::_('grid.sort', 'COM_NEWSFEEDS_FEED_LINK', 'a.link', $listDirn, $listOrder); ?>
 				</th>
 				<?php endif; ?>
-
 			</tr>
 		</thead>
 		<?php endif; ?>
@@ -63,28 +53,24 @@ $listDirn	= $this->state->get('list.direction');
 		<?php else: ?>
 			<tr class="cat-list row<?php echo $i % 2; ?>" >
 		<?php endif; ?>
-
 					<td class="item-title">
 						<a href="<?php echo JRoute::_(NewsFeedsHelperRoute::getNewsfeedRoute($item->slug, $item->catid)); ?>">
 							<?php echo $item->name; ?></a>
 					</td>
 
-					<?php  if ($this->params->get('show_articles')) : ?>
+					<?php if ($this->params->get('show_articles')) : ?>
 						<td class="item-num-art">
 							<?php echo $item->numarticles; ?>
 						</td>
-					<?php  endif; ?>
+					<?php endif; ?>
 
 					<?php  if ($this->params->get('show_link')) : ?>
 						<td class="item-link">
 							<a href="<?php echo $item->link; ?>"><?php echo $item->link; ?></a>
 						</td>
-					<?php  endif; ?>
-
+					<?php endif; ?>
 				</tr>
-				
 			<?php endforeach; ?>
-			
 		</tbody>
 	</table>
 
@@ -99,9 +85,7 @@ $listDirn	= $this->state->get('list.direction');
 	</div>
 	<?php endif; ?>
 
-	<div>
-		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-	</div>
+	<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
+	<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
 </form>
 <?php endif; ?>

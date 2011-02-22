@@ -2,35 +2,30 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 
-<div class="componentheading">
-	<?php echo JText::_('Confirm your Account'); ?>
-</div>
+<div class="reset-confirm<?php echo $this->escape($this->params->get('pageclass_sfx')) ?>">
 
-<form action="<?php echo JRoute::_( 'index.php?option=com_user&task=confirmreset' ); ?>" method="post" class="josForm form-validate">
-	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="contentpane">
-		<tr>
-			<td colspan="2" height="40">
-				<p><?php echo JText::_('RESET_PASSWORD_CONFIRM_DESCRIPTION'); ?></p>
-			</td>
-		</tr>
-		<tr>
-			<td height="40">
+	<?php if ($this->params->get('show_page_title')) : ?>
+		<h1>
+			<?php echo $this->escape($this->params->get('page_title')); ?>
+		</h1>
+	<?php endif; ?>
+
+	<form action="<?php echo JRoute::_( 'index.php?option=com_user&task=confirmreset' ); ?>" method="post" class="josForm form-validate">
+		<p><?php echo JText::_('RESET_PASSWORD_CONFIRM_DESCRIPTION'); ?></p>
+		<fieldset>
+			<div class="reset-field">
 				<label for="username" class="hasTip" title="<?php echo JText::_('RESET_PASSWORD_USERNAME_TIP_TITLE'); ?>::<?php echo JText::_('RESET_PASSWORD_USERNAME_TIP_TEXT'); ?>"><?php echo JText::_('User Name'); ?>:</label>
-			</td>
-			<td>
 				<input id="username" name="username" type="text" class="required" size="36" />
-			</td>
-		</tr>
-		<tr>
-			<td height="40">
+			</div>
+			<div class="reset-field">
 				<label for="token" class="hasTip" title="<?php echo JText::_('RESET_PASSWORD_TOKEN_TIP_TITLE'); ?>::<?php echo JText::_('RESET_PASSWORD_TOKEN_TIP_TEXT'); ?>"><?php echo JText::_('Token'); ?>:</label>
-			</td>
-			<td>
 				<input id="token" name="token" type="text" class="required" size="36" />
-			</td>
-		</tr>
-	</table>
+			</div>
+		</fieldset>
 
-	<button type="submit" class="validate"><?php echo JText::_('Submit'); ?></button>
-	<?php echo JHTML::_( 'form.token' ); ?>
-</form>
+		<div>
+			<button type="submit" class="validate"><?php echo JText::_('Submit'); ?></button>
+			<?php echo JHTML::_( 'form.token' ); ?>
+		</div>
+	</form>
+</div>

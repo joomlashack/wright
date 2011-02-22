@@ -1,15 +1,16 @@
 <?php // @version $Id: default_login.php 13 2010-11-05 16:28:16Z jeremy $
 defined( '_JEXEC' ) or die( 'Restricted access' );
 ?>
-<form action="<?php echo JRoute::_( 'index.php', true, $this->params->get('usesecure')); ?>" method="post" name="login" id="login" class="login_form<?php echo $this->params->get( 'pageclass_sfx' ); ?>">
-	<?php if ( $this->params->get( 'show_login_title' ) ) : ?>
-	<h1 class="componentheading<?php echo $this->params->get( 'pageclass_sfx' ); ?>">
-		<?php echo $this->params->get( 'header_login' ); ?>
-	</h1>
-	<?php endif; ?>
+<div class="login<?php echo $this->params->get( 'pageclass_sfx' ); ?>">
 
+	<?php if ( $this->params->get( 'show_login_title' ) ) : ?>
+		<h1>
+			<?php echo $this->params->get( 'header_login' ); ?>
+		</h1>
+	<?php endif; ?>
+	
 	<?php if ( $this->params->get( 'description_login' ) || isset( $this->image ) ) : ?>
-		<div class="contentdescription<?php echo $this->params->get( 'pageclass_sfx' );?>">
+		<div class="login-description">
 			<?php if (isset ($this->image)) :
 				echo $this->image;
 			endif;
@@ -17,22 +18,22 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 			<p>
 				<?php echo $this->params->get('description_login_text'); ?>
 			</p>
-			<?php endif;
-			if (isset ($this->image)) : ?>
-			<div class="wrap_image">&nbsp;</div>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>
+	
+	<form action="<?php echo JRoute::_( 'index.php', true, $this->params->get('usesecure')); ?>" method="post" name="login" id="login" class="login_form<?php echo $this->params->get( 'pageclass_sfx' ); ?>">
+	
 	<fieldset>
-		<div class="name">
+		<div class="name login-fields">
 			<label for="user" ><?php echo JText::_( 'Username' ); ?></label>
 			<input name="username" type="text" class="inputbox" size="20"  id="user" />
 		</div>
-		<div class="pass">
+		<div class="pass login-fields">
 			<label for="pass" ><?php echo JText::_( 'Password' ); ?></label>
 			<input name="passwd" type="password" class="inputbox" size="20" id="pass" />
 		</div>
-		<div class="remember">
+		<div class="remember login-fields">
 			<label for="rem"><?php echo JText::_( 'Remember me' ); ?></label>
 			<input type="checkbox" name="remember" class="inputbox" value="yes" id="rem" />
 		</div>
@@ -53,4 +54,5 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	<input type="hidden" name="task" value="login" />
 	<input type="hidden" name="return" value="<?php echo $this->return; ?>" />
 	<?php echo JHTML::_( 'form.token' ); ?>
-</form>
+	</form>
+</div>

@@ -4,7 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 <div class="newsflash-item<?php echo $params->get( 'moduleclass_sfx' ); ?>">
 <?php if ($params->get('item_title')) : ?>
-	<h4>
+	<h4 class="newsflash-title<?php echo $params->get('moduleclass_sfx'); ?>">
 	<?php if ($params->get('link_titles') && $item->linkOn != '') : ?>
 		<a href="<?php echo $item->linkOn;?>" class="contentpagetitle<?php echo $params->get( 'moduleclass_sfx' ); ?>">
 			<?php echo $item->title;?></a>
@@ -15,13 +15,13 @@ defined('_JEXEC') or die('Restricted access');
 
 <?php endif; ?>
 
-<?php if (!$params->get('intro_only')) :  echo $item->afterDisplayTitle; endif; ?>
+<?php if (!$params->get('intro_only')) : echo $item->afterDisplayTitle; endif; ?>
 
 <?php echo $item->beforeDisplayContent; ?>
 
 	<?php echo $item->text; ?>
 
    <?php if (isset($item->linkOn) && $item->readmore && $params->get('readmore')) :
-	  echo '<p><a class="readmore" href="'.$item->linkOn.'">'.$item->linkText.'</a></p>';
+	  echo '<a class="readmore" href="'.$item->linkOn.'">'.$item->linkText.'</a>';
 	endif; ?>
 </div>

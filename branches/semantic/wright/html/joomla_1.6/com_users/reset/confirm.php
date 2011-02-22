@@ -1,13 +1,4 @@
 <?php
-/**
- * @version		$Id: confirm.php 20196 2011-01-09 02:40:25Z ian $
- * @package		Joomla.Site
- * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @since		1.5
- */
-
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.keepalive');
@@ -23,13 +14,14 @@ JHtml::_('behavior.formvalidation');
 	<form action="<?php echo JRoute::_('index.php?option=com_users&task=reset.confirm'); ?>" method="post" class="form-validate">
 
 		<?php foreach ($this->form->getFieldsets() as $fieldset): ?>
-		<p><?php echo JText::_($fieldset->label); ?></p>		<fieldset>
-			<dl>
+		<p><?php echo JText::_($fieldset->label); ?></p>		
+		<fieldset>
 			<?php foreach ($this->form->getFieldset($fieldset->name) as $name => $field): ?>
-				<dt><?php echo $field->label; ?></dt>
-				<dd><?php echo $field->input; ?></dd>
+			<div class="reset-field">
+				<?php echo $field->label; ?>
+				<?php echo $field->input; ?>
+			</div>
 			<?php endforeach; ?>
-			</dl>
 		</fieldset>
 		<?php endforeach; ?>
 

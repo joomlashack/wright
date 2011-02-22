@@ -1,11 +1,7 @@
 <?php // @version $Id: form.php 8 2010-11-03 18:07:23Z jeremy $
 defined('_JEXEC') or die('Restricted access');
 ?>
-<?php if($this->params->get('show_page_title',1)) : ?>
-<h2 class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx')) ?>">
-        <?php echo $this->escape($this->params->get('page_title')) ?>
-</h2>
-<?php endif; ?>
+
 <script type="text/javascript">
    //<![CDATA[
 function submitbutton(pressbutton)
@@ -30,53 +26,58 @@ function submitbutton(pressbutton)
          //]]>
 </script>
 
-<form  action="<?php echo $this->action ?>" method="post" name="adminForm" class="editor" id="adminForm">
-<fieldset class="publishing">
-<legend><?php echo JText::_( 'Submit A Web Link' );?></legend>
-	<div>
-	<label for="jformtitle"><?php echo JText::_( 'Name' ); ?>:</label>
-     <input class="inputbox" type="text" id="jformtitle" name="jform[title]" size="50" maxlength="250" value="<?php echo $this->escape($this->weblink->title);?>" />
-	</div>
+<div class="edit<?php echo $this->escape($this->params->get('pageclass_sfx')) ?>">
 
-	<div>
-    <label for="jformcatid"><?php echo JText::_( 'Category' ); ?>:</label>
-    <?php echo $this->lists['catid']; ?>
-    </div>
-	<div>
-	<label for="jformurl"><?php echo JText::_( 'URL' ); ?>:</label>
-	<input class="inputbox" type="text" id="jformurl" name="jform[url]" value="<?php echo $this->escape($this->weblink->url); ?>" size="50" maxlength="250" />
-	</div>
+	<?php if($this->params->get('show_page_title',1)) : ?>
+		<h1>
+			<?php echo $this->escape($this->params->get('page_title')) ?>
+		</h1>
+	<?php endif; ?>
 
-	<div>
-	<label for="jformdescription"><?php echo JText::_( 'Description' ); ?>:</label>
-	<textarea class="inputbox" cols="30" rows="6" id="jformdescription" name="jform[description]" style="width:300px"><?php echo htmlspecialchars( $this->weblink->description, ENT_QUOTES );?></textarea>
-	</div>
-</fieldset>
 
-<fieldset>
-<legend><?php echo JText::_( 'Published' );?></legend>
-<div>
-		<label for="jformpublished">
-			<?php echo JText::_( 'Published' ); ?>:
-		</label>
+<form action="<?php echo $this->action ?>" method="post" name="adminForm" class="editor form-validate" id="adminForm">
+	<fieldset>
+		<legend><?php echo JText::_( 'Submit A Web Link' );?></legend>
+		
+		<div class="formelm">
+			<label for="jformtitle"><?php echo JText::_( 'Name' ); ?>:</label>
+			<input class="inputbox" type="text" id="jformtitle" name="jform[title]" size="50" maxlength="250" value="<?php echo $this->escape($this->weblink->title);?>" />
+		</div>
+
+		<div class="formelm">
+			<label for="jformcatid"><?php echo JText::_( 'Category' ); ?>:</label>
+			<?php echo $this->lists['catid']; ?>
+		</div>
+		
+		<div class="formelm">
+			<label for="jformurl"><?php echo JText::_( 'URL' ); ?>:</label>
+			<input class="inputbox" type="text" id="jformurl" name="jform[url]" value="<?php echo $this->escape($this->weblink->url); ?>" size="50" maxlength="250" />
+		</div>
+
+		<div class="formelm">
+			<label for="jformdescription"><?php echo JText::_( 'Description' ); ?>:</label>
+			<textarea class="inputbox" cols="30" rows="6" id="jformdescription" name="jform[description]" style="width:300px"><?php echo htmlspecialchars( $this->weblink->description, ENT_QUOTES );?></textarea>
+		</div>
+
+		<div class="formelm">
+			<label for="jformpublished"><?php echo JText::_( 'Published' ); ?>:</label>
 			<?php echo $this->lists['published']; ?>
-</div>
-<div><label for="jformordering">
-			<?php echo JText::_( 'Ordering' ); ?>:
-		</label>
-		<?php echo $this->lists['ordering']; ?>
-</div>
-</fieldset>
+		</div>
+		
+		<div class="formelm">
+			<label for="jformordering"><?php echo JText::_( 'Ordering' ); ?>:</label>
+			<?php echo $this->lists['ordering']; ?>
+		</div>
 
-
-<div>
-        <button type="button" onclick="submitbutton('save')">
-                <?php echo JText::_('Save') ?>
-        </button>
-        <button type="button" onclick="submitbutton('cancel')" >
-                <?php echo JText::_('Cancel') ?>
-        </button>
-</div>
+		<div class="formelm-buttons">
+			<button type="button" onclick="submitbutton('save')">
+					<?php echo JText::_('Save') ?>
+			</button>
+			<button type="button" onclick="submitbutton('cancel')" >
+					<?php echo JText::_('Cancel') ?>
+			</button>
+		</div>
+	</fieldset>
 
         <input type="hidden" name="jform[id]" value="<?php echo (int)$this->weblink->id; ?>" />
         <input type="hidden" name="jform[ordering]" value="<?php echo (int)$this->weblink->ordering; ?>" />
@@ -86,3 +87,4 @@ function submitbutton(pressbutton)
         <input type="hidden" name="task" value="" />
         <?php echo JHTML::_( 'form.token' ); ?>
 </form>
+</div>

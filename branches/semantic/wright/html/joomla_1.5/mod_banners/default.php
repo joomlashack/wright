@@ -3,7 +3,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <div class="bannergroup<?php echo $params->get( 'moduleclass_sfx' ) ?>">
 
 <?php if ($headerText) : ?>
-   <div class="bannerheader"><h4><?php echo $headerText ?></h4></div>
+   <h4><?php echo $headerText ?></h4>
 <?php endif;
 
 foreach($list as $item) :

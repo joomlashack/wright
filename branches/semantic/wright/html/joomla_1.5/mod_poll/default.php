@@ -1,7 +1,7 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access'); ?>
 
-<div class="poll-module<?php echo $params->get('moduleclass_sfx'); ?>">
+<div class="poll<?php echo $params->get('moduleclass_sfx'); ?>">
 
 	<h5><?php echo $poll->title; ?></h5>
 

@@ -1,3 +1,3 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access'); ?>
-<div><?php echo $lineone; ?></div>
+<div class="footer1"><?php echo $lineone; ?></div>

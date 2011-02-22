@@ -5,7 +5,7 @@ defined('_JEXEC') or die('Restricted access');
 <?php if($type == 'logout') : ?>
 <form action="index.php" method="post" name="login" id="form-login">
 <?php if ($params->get('greeting')) : ?>
-	<div>
+	<div class="login-greeting">
 	<?php if ($params->get('name')) : {
 		echo JText::sprintf( 'HINAME', $user->get('name') );
 	} else : {
@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 	} endif; ?>
 	</div>
 <?php endif; ?>
-	<div align="center">
+	<div class="logout-button">
 		<input type="submit" name="Submit" class="button" value="<?php echo JText::_( 'BUTTON_LOGOUT'); ?>" />
 	</div>
 
@@ -34,8 +34,10 @@ defined('_JEXEC') or die('Restricted access');
 		JHTML::_('script', 'openid.js');
 endif; ?>
 <form action="<?php echo JRoute::_( 'index.php', true, $params->get('usesecure')); ?>" method="post" name="login" id="form-login" >
-	<?php echo $params->get('pretext'); ?>
-	<fieldset class="input">
+	<div class="pretext">
+		<?php echo $params->get('pretext'); ?>
+	</div>
+	<fieldset class="userdata">
 	<p id="form-login-username">
 		<label for="modlgn_username"><?php echo JText::_('Username') ?></label><br />
 		<input id="modlgn_username" type="text" name="username" class="inputbox" alt="username" size="18" />
@@ -70,7 +72,9 @@ endif; ?>
 		</li>
 		<?php endif; ?>
 	</ul>
-	<?php echo $params->get('posttext'); ?>
+	<div class="posttext">
+		<?php echo $params->get('posttext'); ?>
+	</div>
 
 	<input type="hidden" name="option" value="com_user" />
 	<input type="hidden" name="task" value="login" />

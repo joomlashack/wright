@@ -3,7 +3,7 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <form action="<?php echo JRoute::_('index.php');?>" method="post">
-	<div class="search-module<?php echo $params->get('moduleclass_sfx') ?>">
+	<div class="search<?php echo $params->get('moduleclass_sfx') ?>">
 		<?php
 		    $output = '<input name="searchword" id="mod_search_searchword" maxlength="'.$maxlength.'" alt="'.$button_text.'" class="inputbox'.$params->get('moduleclass_sfx').'" type="text" size="'.$width.'" value="'.$text.'" onblur="if(this.value==\'\') this.value=\''.$text.'\';" onfocus="if(this.value==\''.$text.'\') this.value=\'\';" />';
 
