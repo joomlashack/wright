@@ -533,7 +533,7 @@ div.moduleS1 ul.menu a:hover {
 
 div.moduleS1 li {
 	list-style: none;
-	background: url(../images/style1/bullet_S1.png) no-repeat 0 .3em;
+	background: url(../images/style1/bullet_S1.png) no-repeat 0 .4em;
 	padding: 0px 0px 0px 16px;
 	margin: 0;
 	line-height: 150%;
@@ -576,7 +576,7 @@ div.moduleS2 a:hover {
 
 div.moduleS2 li {
 	list-style: none;
-	background: url(../images/style1/bullet_S2.png) no-repeat 0 .3em;
+	background: url(../images/style1/bullet_S2.png) no-repeat 0 .4em;
 	padding: 0px 0px 0px 16px;
 	margin: 0;
 	line-height: 150%;
@@ -619,7 +619,7 @@ div.moduleS3 a:hover {
 
 div.moduleS3 li {
 	list-style: none;
-	background: url(../images/style1/bullet_S3.png) no-repeat 0 .3em;
+	background: url(../images/style1/bullet_S3.png) no-repeat 0 .4em;
 	padding: 0px 0px 0px 16px;
 	margin: 0;
 	line-height: 150%;
