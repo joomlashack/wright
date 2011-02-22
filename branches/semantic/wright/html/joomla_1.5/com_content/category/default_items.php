@@ -60,12 +60,12 @@ document.adminForm.submit( task );
 				<?php endif; ?>
 
 				<?php if ($this->params->get('show_hits')) : ?>
-				<th align="center" class="list-hits" width="5%" nowrap="nowrap" id="tableOrdering4">
+				<th align="center" class="list-hits" width="5%" id="tableOrdering4">
 					<?php echo JHTML::_('grid.sort', 'Hits', 'a.hits', $this->lists['order_Dir'], $this->lists['order']); ?>
 				</th>
 				<?php endif; ?>
 			</tr>
-		<thead>
+		</thead>
 		<?php endif; ?>
 		
 		<tbody>

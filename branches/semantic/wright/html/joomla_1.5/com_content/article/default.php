@@ -4,7 +4,29 @@ defined('_JEXEC') or die('Restricted access');
 
 ?>
 
-<div id="item-page<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">	<?php if ($this->params->get('show_page_title', 1) && $this->params->get('page_title') != $this->article->title) : ?>		<h1> <?php echo $this->escape($this->params->get('page_title')); ?> </h1>	<?php endif; ?>		<?php if ($this->params->get('show_print_icon') || $this->params->get('show_email_icon') || $this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>	<ul class="actions">		<?php if (!$this->print) : ?>		<?php if ($this->params->get('show_print_icon')) : ?>		<li class="print-icon"> <?php echo JHtml::_('icon.print_popup',  $this->article, $this->params, $this->access); ?> </li>		<?php endif; ?>		<?php if ($this->params->get('show_email_icon')) : ?>		<li class="email-icon"> <?php echo JHtml::_('icon.email',  $this->article, $this->params, $this->access); ?> </li>		<?php endif; ?>		<?php if ($this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>		<li class="edit-icon"> <?php echo JHtml::_('icon.edit', $this->article, $this->params); ?> </li>		<?php endif; ?>		<?php else : ?>		<li> <?php echo JHtml::_('icon.print_screen',  $this->article, $this->params, $this->access); ?> </li>		<?php endif; ?>	</ul>	<?php endif; ?>
+<div id="item-page<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
+
+	<?php if ($this->params->get('show_page_title', 1) && $this->params->get('page_title') != $this->article->title) : ?>
+		<h1> <?php echo $this->escape($this->params->get('page_title')); ?> </h1>
+	<?php endif; ?>
+	
+	<?php if ($this->params->get('show_print_icon') || $this->params->get('show_email_icon') || $this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>
+	<ul class="actions">
+		<?php if (!$this->print) : ?>
+		<?php if ($this->params->get('show_print_icon')) : ?>
+		<li class="print-icon"> <?php echo JHtml::_('icon.print_popup',  $this->article, $this->params, $this->access); ?> </li>
+		<?php endif; ?>
+		<?php if ($this->params->get('show_email_icon')) : ?>
+		<li class="email-icon"> <?php echo JHtml::_('icon.email',  $this->article, $this->params, $this->access); ?> </li>
+		<?php endif; ?>
+		<?php if ($this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>
+		<li class="edit-icon"> <?php echo JHtml::_('icon.edit', $this->article, $this->params); ?> </li>
+		<?php endif; ?>
+		<?php else : ?>
+		<li> <?php echo JHtml::_('icon.print_screen',  $this->article, $this->params, $this->access); ?> </li>
+		<?php endif; ?>
+	</ul>
+	<?php endif; ?>
 
 	<?php if ($this->params->get('show_title')) : ?>
 	<h2>
@@ -38,7 +60,7 @@ defined('_JEXEC') or die('Restricted access');
 		</ul>
 		<?php endif; ?>
 		
-		<?php $useRowTwo = (($this->params->get('show_author')) OR ($this->params->get('show_section')) OR $this->params->get('show_category')); ?>
+		<?php $useRowTwo = (($this->params->get('show_author') && !empty($this->item->author )) OR ($this->params->get('show_section')) OR $this->params->get('show_category')); ?>
 		<?php if ($useRowTwo) : ?>
 		<ul class="article-info">
 			<?php if ($this->params->get('show_author') && !empty($this->item->author )) : ?>
@@ -70,10 +92,9 @@ defined('_JEXEC') or die('Restricted access');
 			<?php endif; ?>
 		</ul>
 		<?php endif; ?>
-		
+
 	</div>
 	<?php endif; ?>
-	
 	<?php if (isset ($this->article->toc)) :
 		echo $this->article->toc;
 	endif; ?>
