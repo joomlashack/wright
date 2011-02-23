@@ -47,7 +47,7 @@ JHtml::core();
 <?php endif; ?>
 
 <?php if (!$params->get('show_intro')) : ?>
-	<echo $this->item->event->afterDisplayTitle;
+	<?php echo $this->item->event->afterDisplayTitle;?>
 <?php endif; ?>
 
 <?php echo $this->item->event->beforeDisplayContent; ?>

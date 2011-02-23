@@ -9,7 +9,8 @@ class JElementTypography extends JElement
 	{
 		$class = ( $node->attributes('class') ? 'class="'.$node->attributes('class').'"' : 'class="inputbox"' );
 
-		$stacks = array(	'Default' => 'Template default',
+		$stacks = array(
+							'Default' => 'Template default',
 							'Arial' => 'sans-serif',
 							'Baskerville' => 'serif',
 							'Cambria' => 'serif',

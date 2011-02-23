@@ -163,6 +163,11 @@ img.alignleft,img.floatleft,img.image-left {
 	padding: 0 0 10px 0;
 }
 
+.center {
+	text-align: center;
+}
+
+
 /* @end */
 
 
@@ -685,7 +690,10 @@ ul.captionlist li {
 
 
 ul.check li,
-div.module ul.check li {
+div.module ul.check li,
+div.moduleS1 ul.check li,
+div.moduleS2 ul.check li,
+div.moduleS3 ul.check li {
 	list-style: none;
 	line-height: 16px;
 	padding: 2px 0px 2px 20px;
@@ -727,27 +735,32 @@ blockquote {
 }
 
 blockquote p {
+	font-size: 20px;
 	padding: 0px 36px 0px 0px;
 	float: left;
 	background: url(../images/icons/quote_down.png) bottom right no-repeat;
 }
 
 
-blockquote, blockquote.left, blockquote.right {
-	font-size: 20px;
+blockquote.right,blockquote.left {
+	background: none;
+	padding: 5px 10px;
+	font-size: 1em;
+	line-height: 1.65em;
+	float: right;
+	margin: 5px 0 10px 10px;
+	width: 40%;
+	clear: left;
+	display: inline;
+	border-top: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
 }
 
 blockquote.left {
 	float: left;
-	margin: 0 10px 10px 0;
-	width: 50%;
+	margin: 5px 10px 10px 0;
 }
 
-blockquote.right {
-	float: right;
-	margin: 0 0 10px 10px;
-	width: 50%;
-}
 
 /* @end */
 

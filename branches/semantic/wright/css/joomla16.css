@@ -1,3 +1,5 @@
+/* @override http://joomla16.com/templates/js_elated/wright/css/joomla16.css */
+
 /*
 Joomla 1.6 specific styles
 ====================================================
@@ -28,9 +30,11 @@ Ctrl/Cmd + F to find the @groups named below
 
 .cols-1 {display: block;float: none !important;margin: 0 !important;}
 
+
 .cols-2 .column-1 {width:46%;float:left;}
 
 .cols-2 .column-2 {width:46%;float:right;margin:0}
+
 
 .cols-3 .column-1 {float:left;width:29%;padding:10px 5px 10px 0px;margin-right:4%}
 
@@ -38,13 +42,20 @@ Ctrl/Cmd + F to find the @groups named below
 
 .cols-3 .column-3 {float:right;width:29%;padding:10px 0px 10px 5px;}
 
+
+.cols-4 .column-1 {float:left;width:24%;padding:10px 5px 10px 0px;margin:0;}
+
+.cols-4 .column-2 {float:left;width:24%;margin:0;}
+
+.cols-4 .column-3 {float:left;width:24%;margin:0;}
+
+.cols-4 .column-4 {float:right;width:24%;padding:10px 0px 10px 5px;margin:0;}
+
+
 .items-row {overflow:hidden}
 
-.column-1,.column-2,.column-3 {padding:10px 5px}
+.column-1,.column-2,.column-3,.column-4 {padding:10px 5px}
 
-.column-2 {width:55%;margin-left:40%;}
-
-.column-3 {width:30%}
 
 .leading {clear: both;}
 
@@ -112,6 +123,16 @@ table.category a.category {
 }
 
 
+/* Categories Module */
+
+ul.categories-module li h4 {
+	margin: 0px 0px 5px 0px;
+}
+
+ul.categories-module p {
+	margin: 0px 0px 0px 0px;
+	padding-bottom: 5px;
+}
 
 /* @end */
 
@@ -402,6 +423,15 @@ span.star {
 #system-message li {
 	margin: 0px 0px 5px 20px;
 	padding: 0;
+}
+
+
+.register {
+	padding: 10px 0px;
+}
+.register label {
+	width: 15em;
+	display: inline-block;
 }
 
 /* @end */

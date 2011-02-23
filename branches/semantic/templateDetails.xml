@@ -1,132 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<install version="1.5" type="template" method="upgrade">
-	<name>JS_Elated</name>
-	<version>1.0</version>
-	<creationDate>January 2011</creationDate>
-	<author>Casey Lee for Joomlashack</author>
-	<authorEmail>support@joomlashack.com</authorEmail>
-	<authorUrl>http://www.joomlashack.com</authorUrl>
-	<copyright>Copyright Simple Themes LLC 2010. All rights reserved</copyright>
-	<license>Commercial license - single domain use only</license>
-	<description>
-		<![CDATA[
-			<p>Thank you for purchasing JS Elated from Joomlashack</p>
-		]]>
-	</description>
-	<files>
-		<filename>functions.php</filename>
-		<filename>index.php</filename>
-		<filename>template.php</filename>
-		<filename>templateDetails.xml</filename>
-		<filename>template_thumbnail.png</filename>
-		<folder>css</folder>
-		<folder>html</folder>
-		<folder>images</folder>
-		<folder>js</folder>
-		<folder>wright</folder>
-	</files>
-	<positions>
-		<position>sidebar1</position>
-		<position>sidebar2</position>
-		<position>shackmenu</position>
-		<position>menu</position>
-		<position>breadcrumbs</position>
-		<position>above-content</position>
-		<position>below-content</position>
-		<position>banner</position>
-		<position>logo</position>
-		<position>grid-top</position>
-		<position>grid-bottom</position>
-		<position>grid-footer</position>
-		<position>footertext</position>
-	</positions>
-
-	<params addpath="/templates/js_elated/wright/parameters/joomla_1.5">
-		<param type="spacer" default="&lt;b&gt;Header Options&lt;/b&gt;" />
-		<param name="headertype" type="list" default="text" label="Header Type" description="Header display method: Image should be 32-bit transparent PNG or must match body background image.">
-			<option value="image">Graphic</option>
-			<option value="text">Text</option>
-		</param>
-		<param name="menuposition" type="list" default="right" label="Menu Position" description="Display your main menu next to the logo or below the logo. This option is useful for larger logos or for menus that contain more menu items.">
-			<option value="below">Below Logo</option>
-			<option value="right">Right of Logo</option>
-		</param>
-		<param name="item_spacing" type="text" default="18" label="Menu Item Spacing" size="30" description="padding (in px) between menu items"></param>
-		<param name="logo" type="logo" default="template" label="Logo Image" description="If you chose to display a graphic header (above), you can select your logo from the images directory after you upload the image." />
-		<param name="header_width" type="text" default="250" label="Logo Width (px)" size="30" description="Logo Width (when header style = image)"></param>
-		<param name="header_height" type="text" default="60" label="Logo Height (px)" size="30" description="Logo Height (when header style = image"></param>
-		<param name="header_top_pad" type="text" default="10" label="Logo Padding-Top" size="30" description="Adds margin to the top of your logo"></param>
-		<param name="header_bot_pad" type="text" default="10" label="Logo Padding-Bottom" size="30" description="Adds margin to the bottom of your logo"></param>
-		<param name="header_left_pad" type="text" default="20" label="Logo Padding-Left" size="30" description="Adds margin to the left of your logo"></param>
-		<param name="header_right_pad" type="text" default="20" label="Logo Padding-Right" size="30" description="Adds margin to the right of your logo"></param>
-		<param name="headline" type="text" default="Elated" label="Site Title" size="30" description="The site title is rendered for SEO purposes so it is important to customize this regardless of 'text' or 'graphic' Header Mode (configured above)."></param>
-		<param name="tagline" type="text" default="by Joomlashack" label="Tagline" size="30" description="The site description is rendered for SEO purposes so it is important to custommize this regardless of 'text' or 'graphic' Header Mode (configured above)."></param>
-		<param type="spacer" default="&lt;b&gt;Styling Options&lt;/b&gt;" />
-		<param name="style" type="styles" default="blue" label="Template Color Style" description="Select which of the style variations you wish to use." />
-		<param name="body_font" type="typography" default="helvetica" label="Body Font" description="Select the default font face for the body" />
-		<param name="header_font" type="typography" default="verdana" label="Heading Font" description="Select the default font face for the headers" />
-		<param name="columns" type="columns" default="sidebar1:3;main:6;sidebar2:3" sidebars="2" label="Columns" description="You can set the default widths and arrange the main columns. Any columns that are unused will just be hidden and the main column will be widened." />
-		<param name="doctype" type="list" default="html5" label="Doctype" description="">
-			<option value="html5">HTML5</option>
-			<option value="xhtml1transitional">XHTML 1 Transtional</option>
-			<option value="xhtml1strict">XHTML 1 Strict</option>
-		</param>
-		<param name="headerscript" type="textarea" default="" label="Header Script" description="If you need to add scripts to your header (like Google verification code, perhaps), you should enter them here." rows="5" cols="50" />
-		<param name="footerscript" type="textarea" default="" label="Footer Script" description="If you need to add scripts to your footer (like Google Analytics tracking code), you should enter them here." rows="5" cols="50" />
-		<param name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />
-		<param name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js. This will speed up yor site if you are not using frontend editing features.">
-			<option value="0">NO</option>
-			<option value="1">YES</option>
-		</param>
-		<param name="helper" type="help" default="elated" label="Need Help?" />
-	</params>
-
-	<config>
-		<fields name="params" addfieldpath="/templates/js_elated/wright/parameters/joomla_1.6">
-			<fieldset name="basic">
-				<field type="spacer" default="&lt;b&gt;Header Options&lt;/b&gt;" />
-				<field name="headertype" type="list" default="text" label="Header Type" description="Header display method: Image should be 32-bit transparent PNG or must match body background image.">
-					<option value="image">Graphic</option>
-					<option value="text">Text</option>
-				</field>
-				<field name="menuposition" type="list" default="right" label="Menu Position" description="Display your main menu next to the logo or below the logo. This option is useful for larger logos or for menus that contain more menu items.">
-					<option value="below">Below Logo</option>
-					<option value="right">Right of Logo</option>
-				</field>
-				<field name="item_spacing" type="text" default="18" label="Menu Item Spacing" size="30" description="padding (in px) between menu items"></field>
-				<field name="logo" type="logo" default="template" label="Logo Image" description="If you chose to display a graphic header (above), you can select your logo from the images directory after you upload the image." />
-				<field name="header_width" type="text" default="250" label="Logo Width (px)" size="30" description="Logo Width (when header style = image)"></field>
-				<field name="header_height" type="text" default="60" label="Logo Height (px)" size="30" description="Logo Height (when header style = image"></field>
-				<field name="header_top_pad" type="text" default="10" label="Logo Padding-Top" size="30" description="Adds margin to the top of your logo"></field>
-				<field name="header_bot_pad" type="text" default="10" label="Logo Padding-Bottom" size="30" description="Adds margin to the bottom of your logo"></field>
-				<field name="header_left_pad" type="text" default="20" label="Logo Padding-Left" size="30" description="Adds margin to the left of your logo"></field>
-				<field name="header_right_pad" type="text" default="20" label="Logo Padding-Right" size="30" description="Adds margin to the right of your logo"></field>
-				
-				<field name="headline" type="text" default="Elated" label="Site Title" size="30" description="The site title is rendered for SEO purposes so it is important to customize this regardless of 'text' or 'graphic' Header Mode (configured above)."></field>
-				<field name="tagline" type="text" default="by Joomlashack" label="Tagline" size="30" description="The site description is rendered for SEO purposes so it is important to custommize this regardless of 'text' or 'graphic' Header Mode (configured above)."></field>
-				<field type="spacer" default="&lt;b&gt;Styling Options&lt;/b&gt;" />
-				<field name="style" type="styles" default="blue" label="Template Color Style" description="Select which of the style variations you wish to use." />
-				<field name="body_font" type="typography" default="helvetica" label="Body Font" description="Select the default font face for the body" />
-				<field name="header_font" type="typography" default="verdana" label="Heading Font" description="Select the default font face for the headers" />
-				<field name="columns" type="columns" default="sidebar1:3;main:6;sidebar2:3" sidebars="2" label="Columns" description="You can set the default widths and arrange the main columns. Any columns that are unused will just be hidden and the main column will be widened." />
-				<field name="doctype" type="list" default="html5" label="Doctype" description="">
-					<option value="html5">HTML5</option>
-					<option value="xhtml1transitional">XHTML 1 Transtional</option>
-					<option value="xhtml1strict">XHTML 1 Strict</option>
-				</field>
-				<field name="headerscript" type="textarea" default="" label="Header Script" description="If you need to add scripts to your header (like Google verification code, perhaps), you should enter them here." rows="5" cols="50" />
-				<field name="footerscript" type="textarea" default="" label="Footer Script" description="If you need to add scripts to your footer (like Google Analytics tracking code), you should enter them here." rows="5" cols="50" />
-				<field name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />
-				<field name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js. This will speed up yor site if you are not using frontend editing features.">
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="helper" type="help" default="elated" label="Need Help?" />
-			</fieldset>
-		</fields>
-	</config>
-	<styles>
-	 <style name="style1" type="light" />
-	 <style name="style2" type="light" />
-	</styles>
-</install>
+<?xml version="1.0" encoding="utf-8"?><install version="1.5" type="template" method="upgrade">	<name>JS_Elated</name>	<version>1.0</version>	<creationDate>January 2011</creationDate>	<author>Casey Lee for Joomlashack</author>	<authorEmail>support@joomlashack.com</authorEmail>	<authorUrl>http://www.joomlashack.com</authorUrl>	<copyright>Copyright Simple Themes LLC 2010. All rights reserved</copyright>	<license>Commercial license - single domain use only</license>	<description>		<![CDATA[			<p>Thank you for purchasing JS Elated from Joomlashack</p>		]]>	</description>	<files>		<filename>functions.php</filename>		<filename>index.php</filename>		<filename>template.php</filename>		<filename>templateDetails.xml</filename>		<filename>template_thumbnail.png</filename>		<folder>css</folder>		<folder>html</folder>		<folder>images</folder>		<folder>js</folder>		<folder>wright</folder>	</files>	<positions>		<position>sidebar1</position>		<position>sidebar2</position>		<position>shackmenu</position>		<position>menu</position>		<position>breadcrumbs</position>		<position>above-content</position>		<position>below-content</position>		<position>banner</position>		<position>logo</position>		<position>grid-top</position>		<position>grid-bottom</position>		<position>grid-footer</position>		<position>footertext</position>	</positions>	<params addpath="/templates/js_elated/wright/parameters/joomla_1.5">		<param type="spacer" default="&lt;b&gt;Header Options&lt;/b&gt;" />		<param name="headertype" type="list" default="text" label="Header Type" description="Header display method: Image should be 32-bit transparent PNG or must match body background image.">			<option value="image">Graphic</option>			<option value="text">Text</option>		</param>		<param name="menuposition" type="list" default="right" label="Menu Position" description="Display your main menu next to the logo or below the logo. This option is useful for larger logos or for menus that contain more menu items.">			<option value="below">Below Logo</option>			<option value="right">Right of Logo</option>		</param>		<param name="item_spacing" type="text" default="18" label="Menu Item Spacing" size="30" description="padding (in px) between menu items"></param>		<param name="logo" type="logo" default="template" label="Logo Image" description="If you chose to display a graphic header (above), you can select your logo from the images directory after you upload the image." />		<param name="header_width" type="text" default="250" label="Logo Width (px)" size="30" description="Logo Width (when header style = image)"></param>		<param name="header_height" type="text" default="60" label="Logo Height (px)" size="30" description="Logo Height (when header style = image"></param>		<param name="header_top_pad" type="text" default="10" label="Logo Padding-Top" size="30" description="Adds margin to the top of your logo"></param>		<param name="header_bot_pad" type="text" default="10" label="Logo Padding-Bottom" size="30" description="Adds margin to the bottom of your logo"></param>		<param name="header_left_pad" type="text" default="20" label="Logo Padding-Left" size="30" description="Adds margin to the left of your logo"></param>		<param name="header_right_pad" type="text" default="20" label="Logo Padding-Right" size="30" description="Adds margin to the right of your logo"></param>		<param name="headline" type="text" default="Elated" label="Site Title" size="30" description="The site title is rendered for SEO purposes so it is important to customize this regardless of 'text' or 'graphic' Header Mode (configured above)."></param>		<param name="tagline" type="text" default="by Joomlashack" label="Tagline" size="30" description="The site description is rendered for SEO purposes so it is important to custommize this regardless of 'text' or 'graphic' Header Mode (configured above)."></param>		<param type="spacer" default="&lt;b&gt;Styling Options&lt;/b&gt;" />		<param name="style" type="styles" default="blue" label="Template Color Style" description="Select which of the style variations you wish to use." />		<param name="header_font" type="typography" default="verdana" label="Heading Font" description="Select the default font face for the headers" />		<param name="body_font" type="typography" default="helvetica" label="Body Font" description="Select the default font face for the body" />		<param name="columns" type="columns" default="sidebar1:3;main:6;sidebar2:3" sidebars="2" label="Columns" description="You can set the default widths and arrange the main columns. Any columns that are unused will just be hidden and the main column will be widened." />		<param name="doctype" type="list" default="html5" label="Doctype" description="">			<option value="html5">HTML5</option>			<option value="xhtml1transitional">XHTML 1 Transtional</option>			<option value="xhtml1strict">XHTML 1 Strict</option>		</param>		<param name="headerscript" type="textarea" default="" label="Header Script" description="If you need to add scripts to your header (like Google verification code, perhaps), you should enter them here." rows="5" cols="50" />		<param name="footerscript" type="textarea" default="" label="Footer Script" description="If you need to add scripts to your footer (like Google Analytics tracking code), you should enter them here." rows="5" cols="50" />		<param name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />		<param name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js. This will speed up yor site if you are not using frontend editing features.">			<option value="0">NO</option>			<option value="1">YES</option>		</param>		<param name="helper" type="help" default="elated" label="Need Help?" />	</params>	<config>		<fields name="params" addfieldpath="/templates/js_elated/wright/parameters/joomla_1.6">			<fieldset name="basic">				<field type="spacer" default="&lt;b&gt;Header Options&lt;/b&gt;" />				<field name="headertype" type="list" default="text" label="Header Type" description="Header display method: Image should be 32-bit transparent PNG or must match body background image.">					<option value="image">Graphic</option>					<option value="text">Text</option>				</field>				<field name="menuposition" type="list" default="right" label="Menu Position" description="Display your main menu next to the logo or below the logo. This option is useful for larger logos or for menus that contain more menu items.">					<option value="below">Below Logo</option>					<option value="right">Right of Logo</option>				</field>				<field name="item_spacing" type="text" default="18" label="Menu Item Spacing" size="30" description="padding (in px) between menu items"></field>				<field name="logo" type="logo" default="template" label="Logo Image" description="If you chose to display a graphic header (above), you can select your logo from the images directory after you upload the image." />				<field name="header_width" type="text" default="250" label="Logo Width (px)" size="30" description="Logo Width (when header style = image)"></field>				<field name="header_height" type="text" default="60" label="Logo Height (px)" size="30" description="Logo Height (when header style = image"></field>				<field name="header_top_pad" type="text" default="10" label="Logo Padding-Top" size="30" description="Adds margin to the top of your logo"></field>				<field name="header_bot_pad" type="text" default="10" label="Logo Padding-Bottom" size="30" description="Adds margin to the bottom of your logo"></field>				<field name="header_left_pad" type="text" default="20" label="Logo Padding-Left" size="30" description="Adds margin to the left of your logo"></field>				<field name="header_right_pad" type="text" default="20" label="Logo Padding-Right" size="30" description="Adds margin to the right of your logo"></field>								<field name="headline" type="text" default="Elated" label="Site Title" size="30" description="The site title is rendered for SEO purposes so it is important to customize this regardless of 'text' or 'graphic' Header Mode (configured above)."></field>				<field name="tagline" type="text" default="by Joomlashack" label="Tagline" size="30" description="The site description is rendered for SEO purposes so it is important to custommize this regardless of 'text' or 'graphic' Header Mode (configured above)."></field>				<field type="spacer" default="&lt;b&gt;Styling Options&lt;/b&gt;" />				<field name="style" type="styles" default="blue" label="Template Color Style" description="Select which of the style variations you wish to use." />				<field name="header_font" type="typography" default="verdana" label="Heading Font" description="Select the default font face for the headers" />				<field name="body_font" type="typography" default="helvetica" label="Body Font" description="Select the default font face for the body" />				<field name="columns" type="columns" default="sidebar1:3;main:6;sidebar2:3" sidebars="2" label="Columns" description="You can set the default widths and arrange the main columns. Any columns that are unused will just be hidden and the main column will be widened." />				<field name="doctype" type="list" default="html5" label="Doctype" description="">					<option value="html5">HTML5</option>					<option value="xhtml1transitional">XHTML 1 Transtional</option>					<option value="xhtml1strict">XHTML 1 Strict</option>				</field>				<field name="headerscript" type="textarea" default="" label="Header Script" description="If you need to add scripts to your header (like Google verification code, perhaps), you should enter them here." rows="5" cols="50" />				<field name="footerscript" type="textarea" default="" label="Footer Script" description="If you need to add scripts to your footer (like Google Analytics tracking code), you should enter them here." rows="5" cols="50" />				<field name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />				<field name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js. This will speed up yor site if you are not using frontend editing features.">					<option value="0">JNO</option>					<option value="1">JYES</option>				</field>				<field name="helper" type="help" default="elated" label="Need Help?" />			</fieldset>		</fields>	</config>	<styles>	 <style name="style1" type="light" />	 <style name="style2" type="light" />	</styles></install>

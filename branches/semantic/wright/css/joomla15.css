@@ -1,5 +1,3 @@
-/* @override http://joomla15.com/templates/js_elated/wright/css/joomla15.css */
-
 /*
 Joomla 1.5 specific styles
 ====================================================
@@ -405,5 +403,14 @@ span.star {
 	margin: 0px 0px 5px 20px;
 	padding: 0;
 }
+
+.register {
+	padding: 10px 0px;
+}
+.register label {
+	width: 15em;
+	display: inline-block;
+}
+
 
 /* @end */
