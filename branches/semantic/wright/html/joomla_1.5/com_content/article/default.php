@@ -49,7 +49,7 @@ defined('_JEXEC') or die('Restricted access');
 	<?php if ($ShowArticleInfo) : ?>
 	<div class="article-info-box">
 
-		<?php if ($this->params->get('show_create_date') OR $this->params->get('show_modify_date')) : ?>
+		<?php if ($this->params->get('show_create_date') OR $this->params->get('show_modify_date') OR $this->params->get('show_author')) : ?>
 		<ul class="article-info">
 			<?php if ($this->params->get('show_create_date')) : ?>
 			<li class="create"> <?php echo JHTML::_('date', $this->article->created, JText::_('DATE_FORMAT_LC2')); ?> </li>
@@ -57,17 +57,17 @@ defined('_JEXEC') or die('Restricted access');
 			<?php if ($this->params->get('show_modify_date')) : ?>
 			<li class="modified"> <?php echo JText::sprintf('LAST_UPDATED2', JHTML::_('date', $this->article->modified, JText::_('DATE_FORMAT_LC2'))); ?> </li>
 			<?php endif; ?>
-		</ul>
-		<?php endif; ?>
-		
-		<?php $useRowTwo = (($this->params->get('show_author') && !empty($this->item->author )) OR ($this->params->get('show_section')) OR $this->params->get('show_category')); ?>
-		<?php if ($useRowTwo) : ?>
-		<ul class="article-info">
-			<?php if ($this->params->get('show_author') && !empty($this->item->author )) : ?>
+			<?php if ($this->params->get('show_author')) : ?>
 			<li class="createdby">
 				<?php JText::printf('Written by', ($this->article->created_by_alias ? $this->escape($this->article->created_by_alias) : $this->escape($this->article->author))); ?>
 			</li>
 			<?php endif; ?>
+		</ul>
+		<?php endif; ?>
+		
+		<?php $useRowTwo = (($this->params->get('show_section')) OR $this->params->get('show_category')); ?>
+		<?php if ($useRowTwo) : ?>
+		<ul class="article-info">
 			<?php if ($this->params->get('show_section') && $this->article->sectionid) : ?>
 			<li class="parent-category-name">
 				<?php if ($this->params->get('link_section')) : ?>

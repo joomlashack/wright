@@ -6,9 +6,9 @@ $cparams = JComponentHelper::getParams ('com_media');
 <div class="category-list<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
 
 	<?php if ($this->params->get('show_page_title',1)) : ?>
-	<h1>
+	<h2>
 		<?php echo $this->escape($this->params->get('page_title')); ?>
-	</h1>
+	</h2>
 	<?php endif; ?>
 	
 	<?php if ($this->params->get('show_category', 1)) : ?>

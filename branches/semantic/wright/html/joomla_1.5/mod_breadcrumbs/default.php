@@ -8,11 +8,15 @@ defined('_JEXEC') or die('Restricted access'); ?>
 		if(!empty($list[$i]->link)) {
 			echo '<a href="'.$list[$i]->link.'" class="pathway">'.$list[$i]->name.'</a>';
 		} else {
+		    echo '<strong>';
 			echo $list[$i]->name;
+			  echo '</strong>';
 		}
-		echo ' '.$separator.' ';
+		echo '<span class="sep">'.$separator.'</span>';
 	}  else if ($params->get('showLast', 1)) { // when $i == $count -1 and 'showLast' is true
-	    echo $list[$i]->name;
+  echo '<strong>';
+	echo $list[$i]->name;
+  echo '</strong>';
 	}
 endfor; ?>
 </span>
