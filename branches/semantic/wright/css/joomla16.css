@@ -1,4 +1,3 @@
-/* @override http://joomla16.com/templates/js_elated/wright/css/joomla16.css */
 
 /*
 Joomla 1.6 specific styles
@@ -132,6 +131,16 @@ ul.categories-module li h4 {
 ul.categories-module p {
 	margin: 0px 0px 0px 0px;
 	padding-bottom: 5px;
+}
+
+.module ul.category-moduleS3 li,
+.moduleS1 ul.category-moduleS3 li,
+.moduleS2 ul.category-moduleS3 li,
+.moduleS3 ul.category-moduleS3 li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background: none;
 }
 
 /* @end */

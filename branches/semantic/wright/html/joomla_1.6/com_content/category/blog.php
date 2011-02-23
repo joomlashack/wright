@@ -81,7 +81,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	<?php
 	// Links
 	if (!empty($this->link_items)) : ?>
-		include('blog_links.php');
+		<?php include('blog_links.php');?>
 	<?php endif; ?>
 
 
