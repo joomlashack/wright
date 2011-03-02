@@ -47,10 +47,9 @@ abstract class HtmlAdapterAbstract
 
 	public function getBody($matches)
 	{
-		$wright = Wright::getInstance();
-		require_once(JPATH_ROOT.DS.'templates'.DS.$wright->document->template.DS.'wright'.DS.'includes'.DS.'browser.php');
-		$browser = new Browser();
-		$class = 'is_'.strtolower($browser->getBrowser()) . ' v_' . substr($browser->getVersion(), 0, strpos($browser->getVersion(), '.', 2));
+		jimport('joomla.environment.browser');
+		$browser = JBrowser::getInstance();
+		$class = $browser->getBrowser() . '-' . $browser->getMajor();
 
 		if (isset($matches[1])) {
 			if (strpos($matches[1], 'class=')) {
@@ -59,12 +58,6 @@ abstract class HtmlAdapterAbstract
 					$class .= ' ' . $classes[1];
 			}
 		}
-
-		// if specific style add to class list
-		//$class .= ' '.$wright->params->get('style');
-		$xml = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$wright->document->template.DS.'templateDetails.xml');
-		$theme = $xml->xpath('//style[@name="'.$wright->params->get('style').'"]');
-		if (count($theme)) $class .= ' '.$theme[0]['type'];
 
 		// If user has custom typography selected, we need to add the classes to trigger it
 		if ($this->params->get('body_font', 'default') !== 'default') {
