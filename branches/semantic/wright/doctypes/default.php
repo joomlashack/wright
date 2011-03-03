@@ -223,6 +223,7 @@ abstract class HtmlAdapterAbstract
 		{
 			case 'main':
 				$this->columns['main']->size = 12;
+				$this->cols = 'wide';
 				break;
 
 			case 'main-sidebar1':
