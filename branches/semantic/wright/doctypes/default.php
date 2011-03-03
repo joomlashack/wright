@@ -5,6 +5,7 @@ abstract class HtmlAdapterAbstract
 	protected $columns = array();
 	protected $widths = array();
 	protected $params;
+	public $cols = '';
 
 	protected $tags = array(	'doctype' =>	'/<doctype>/i',
 								'html' =>		'/<html(.*)?>/i',
@@ -47,9 +48,10 @@ abstract class HtmlAdapterAbstract
 
 	public function getBody($matches)
 	{
-		jimport('joomla.environment.browser');
-		$browser = JBrowser::getInstance();
-		$class = $browser->getBrowser() . '-' . $browser->getMajor();
+		$wright = Wright::getInstance();
+		require_once(JPATH_ROOT.DS.'templates'.DS.$wright->document->template.DS.'wright'.DS.'includes'.DS.'browser.php');
+		$browser = new Browser();
+		$class = 'is_'.strtolower($browser->getBrowser()) . ' v_' . substr($browser->getVersion(), 0, strpos($browser->getVersion(), '.', 2));
 
 		if (isset($matches[1])) {
 			if (strpos($matches[1], 'class=')) {
@@ -58,6 +60,12 @@ abstract class HtmlAdapterAbstract
 					$class .= ' ' . $classes[1];
 			}
 		}
+
+		// if specific style add to class list
+		//$class .= ' '.$wright->params->get('style');
+		$xml = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$wright->document->template.DS.'templateDetails.xml');
+		$theme = $xml->xpath('//style[@name="'.$wright->params->get('style').'"]');
+		if (count($theme)) $class .= ' '.$theme[0]['type'];
 
 		// If user has custom typography selected, we need to add the classes to trigger it
 		if ($this->params->get('body_font', 'default') !== 'default') {
@@ -219,50 +227,63 @@ abstract class HtmlAdapterAbstract
 
 			case 'main-sidebar1':
 				$this->columns['main']->size = (12-$this->columns['sidebar1']->size);
+				$this->cols = 'm_'.$this->columns['main']->size.'_r_'.$this->columns['sidebar1']->size;
 				break;
 
 			case 'sidebar1-main':
 				$this->columns['main']->size = (12-$this->columns['sidebar1']->size);
 				$this->columns['sidebar1']->pull = $this->columns['main']->size;
 				$this->columns['main']->push = $this->columns['sidebar1']->size;
+				$this->cols = 'l_'.$this->columns['sidebar1']->size.'_m_'.$this->columns['main']->size;
 				break;
 
 			case 'main-sidebar2':
 				$this->columns['main']->size = (12-$this->columns['sidebar2']->size);
+				$this->cols = 'm_'.$this->columns['main']->size.'_r_'.$this->columns['sidebar2']->size;
 				break;
 
 			case 'sidebar2-main':
 				$this->columns['main']->size = (12-$this->columns['sidebar2']->size);
 				$this->columns['sidebar2']->pull = $this->columns['main']->size;
 				$this->columns['main']->push = $this->columns['sidebar2']->size;
+				$this->cols = 'l_'.$this->columns['sidebar2']->size.'_m_'.$this->columns['main']->size;
+				break;
+
+			case 'main-sidebar1-sidebar2':
+				$this->cols = 'm_'.$this->columns['main']->size.'_l_'.$this->columns['sidebar1']->size.'_r_'.$this->columns['sidebar2']->size;
 				break;
 
 			case 'main-sidebar2-sidebar1':
 				$this->columns['sidebar2']->pull = $this->columns['sidebar1']->size;
 				$this->columns['sidebar1']->push = $this->columns['sidebar2']->size;
+				$this->cols = 'm_'.$this->columns['main']->size.'_l_'.$this->columns['sidebar2']->size.'_r_'.$this->columns['sidebar1']->size;
 				break;
 
 			case 'sidebar2-main-sidebar1':
 				$this->columns['main']->push = $this->columns['sidebar2']->size;
 				$this->columns['sidebar2']->pull = $this->columns['main']->size + $this->columns['sidebar1']->size;
 				$this->columns['sidebar1']->push = $this->columns['sidebar2']->size;
+				$this->cols = 'l_'.$this->columns['sidebar2']->size.'_m_'.$this->columns['main']->size.'_r_'.$this->columns['sidebar1']->size;
 				break;
 
 			case 'sidebar1-main-sidebar2':
 				$this->columns['main']->push = $this->columns['sidebar1']->size;
 				$this->columns['sidebar1']->pull = $this->columns['main']->size;
+				$this->cols = 'l_'.$this->columns['sidebar1']->size.'_m_'.$this->columns['main']->size.'_r_'.$this->columns['sidebar2']->size;
 				break;
 
 			case 'sidebar1-sidebar2-main':
 				$this->columns['main']->push = $this->columns['sidebar1']->size + $this->columns['sidebar2']->size;
 				$this->columns['sidebar2']->pull = $this->columns['main']->size;
 				$this->columns['sidebar1']->pull = $this->columns['main']->size;
+				$this->cols = 'l_'.$this->columns['sidebar1']->size.'_l_'.$this->columns['sidebar2']->size.'_m_'.$this->columns['main']->size;
 				break;
 
 			case 'sidebar2-sidebar1-main':
 				$this->columns['main']->push = $this->columns['sidebar1']->size + $this->columns['sidebar2']->size;
 				$this->columns['sidebar2']->pull = $this->columns['main']->size +  $this->columns['sidebar1']->size;
 				$this->columns['sidebar1']->pull = $this->columns['sidebar2']->size;
+				$this->cols = 'l_'.$this->columns['sidebar2']->size.'_r_'.$this->columns['sidebar1']->size.'_m_'.$this->columns['main']->size;
 				break;
 		}
 	}
