@@ -51,7 +51,8 @@ abstract class HtmlAdapterAbstract
 		$wright = Wright::getInstance();
 		require_once(JPATH_ROOT.DS.'templates'.DS.$wright->document->template.DS.'wright'.DS.'includes'.DS.'browser.php');
 		$browser = new Browser();
-		$class = 'is_'.strtolower($browser->getBrowser()) . ' v_' . substr($browser->getVersion(), 0, strpos($browser->getVersion(), '.', 2));
+		$browser_version = explode('.', $browser->getVersion());
+		$class = 'is_'.strtolower($browser->getBrowser()) . ' v_' . ((isset($browser_version[1])) ? $browser_version[0].'.'.$browser_version[1] : $browser_version[0]);
 
 		if (isset($matches[1])) {
 			if (strpos($matches[1], 'class=')) {
