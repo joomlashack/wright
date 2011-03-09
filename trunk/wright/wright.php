@@ -4,7 +4,6 @@
  * @copyright Joomlashack 2010. All Rights Reserved.
  *
  * @description Wright is a framework layer for Joomla to improve stability of Joomlashack Templates
- *
  * It would be inadvisable to alter the contents of anything inside of this folder
  */
 
@@ -82,7 +81,7 @@ class Wright
 			$dochead = $this->document->getHeadData();
 			reset($dochead['scripts']);
 			foreach ($dochead['scripts'] as $script=>$type) {
-				if (strpos($script, 'media/system/js/caption.js') || strpos($script, 'media/system/js/mootools.js') || strpos($script, 'media/system/js/mootools-core.js') || strpos($script, 'media/system/js/mootools-more.js')) {
+				if (strpos($script, 'media/system/js/caption.js') || strpos($script, 'media/system/js/mootools.js')) {
 					unset($dochead['scripts'][$script]);
 				}
 			}
@@ -196,12 +195,7 @@ class Wright
 		$browser = JBrowser::getInstance();
 
 		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
-		$styles['wright'] = array('reset.css', 'layout.css', 'typography.css');
-		if (version_compare(JVERSION, '1.6.0', 'lt')) {
-			$styles['wright'][] = 'joomla15.css';
-		} else {
-			$styles['wright'][] = 'joomla16.css';
-		}
+		$styles['wright'] = array('reset.css', 'joomla.css', 'layout.css', 'typography.css', 'core.css');
 		$styles['template'] = JFolder::files(JPATH_THEMES.DS.$this->document->template.DS.'css', '\d{1,2}_.*.css');
 
 		// Load up a specific style if set
