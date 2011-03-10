@@ -222,21 +222,22 @@ abstract class HtmlAdapterAbstract
 
 		switch(implode('-', $layout))
 		{
+		// wide
 			case 'main':
 				$this->columns['main']->size = 12;
 				$this->cols = 'wide';
 				break;
-
+		// 2-col
 			case 'main-sidebar1':
 				$this->columns['main']->size = (12-$this->columns['sidebar1']->size);
-				$this->cols = 'm_'.$this->columns['main']->size.'_r_'.$this->columns['sidebar1']->size;
+				$this->cols = 'm_'.$this->columns['main']->size.'_'.$this->columns['sidebar1']->size;
 				break;
 
 			case 'sidebar1-main':
 				$this->columns['main']->size = (12-$this->columns['sidebar1']->size);
 				$this->columns['sidebar1']->pull = $this->columns['main']->size;
 				$this->columns['main']->push = $this->columns['sidebar1']->size;
-				$this->cols = 'l_'.$this->columns['sidebar1']->size.'_m_'.$this->columns['main']->size;
+				$this->cols = 'l_'.$this->columns['main']->size;
 				break;
 
 			case 'main-sidebar2':
@@ -248,37 +249,37 @@ abstract class HtmlAdapterAbstract
 				$this->columns['main']->size = (12-$this->columns['sidebar2']->size);
 				$this->columns['sidebar2']->pull = $this->columns['main']->size;
 				$this->columns['main']->push = $this->columns['sidebar2']->size;
-				$this->cols = 'l_'.$this->columns['sidebar2']->size.'_m_'.$this->columns['main']->size;
+				$this->cols = 'l_'.$this->columns['main']->size;
 				break;
-
+		// 3-col
 			case 'main-sidebar1-sidebar2':
-				$this->cols = 'm_'.$this->columns['main']->size.'_l_'.$this->columns['sidebar1']->size.'_r_'.$this->columns['sidebar2']->size;
+				$this->cols = 'm_'.$this->columns['sidebar1']->size.'_'.$this->columns['sidebar2']->size;
 				break;
 
 			case 'main-sidebar2-sidebar1':
 				$this->columns['sidebar2']->pull = $this->columns['sidebar1']->size;
 				$this->columns['sidebar1']->push = $this->columns['sidebar2']->size;
-				$this->cols = 'm_'.$this->columns['main']->size.'_l_'.$this->columns['sidebar2']->size.'_r_'.$this->columns['sidebar1']->size;
+				$this->cols = 'm_'.$this->columns['sidebar2']->size.'_'.$this->columns['sidebar1']->size;
 				break;
 
 			case 'sidebar2-main-sidebar1':
 				$this->columns['main']->push = $this->columns['sidebar2']->size;
 				$this->columns['sidebar2']->pull = $this->columns['main']->size + $this->columns['sidebar1']->size;
 				$this->columns['sidebar1']->push = $this->columns['sidebar2']->size;
-				$this->cols = 'l_'.$this->columns['sidebar2']->size.'_m_'.$this->columns['main']->size.'_r_'.$this->columns['sidebar1']->size;
+				$this->cols = $this->columns['sidebar2']->size.'_m_'.$this->columns['sidebar1']->size;
 				break;
 
 			case 'sidebar1-main-sidebar2':
 				$this->columns['main']->push = $this->columns['sidebar1']->size;
 				$this->columns['sidebar1']->pull = $this->columns['main']->size;
-				$this->cols = 'l_'.$this->columns['sidebar1']->size.'_m_'.$this->columns['main']->size.'_r_'.$this->columns['sidebar2']->size;
+				$this->cols = $this->columns['sidebar1']->size.'_m_'.$this->columns['sidebar2']->size;
 				break;
 
 			case 'sidebar1-sidebar2-main':
 				$this->columns['main']->push = $this->columns['sidebar1']->size + $this->columns['sidebar2']->size;
 				$this->columns['sidebar2']->pull = $this->columns['main']->size;
 				$this->columns['sidebar1']->pull = $this->columns['main']->size;
-				$this->cols = 'l_'.$this->columns['sidebar1']->size.'_l_'.$this->columns['sidebar2']->size.'_m_'.$this->columns['main']->size;
+				$this->cols = $this->columns['sidebar1']->size.'_'.$this->columns['sidebar2']->size.'_m';
 				break;
 
 			case 'sidebar2-sidebar1-main':
