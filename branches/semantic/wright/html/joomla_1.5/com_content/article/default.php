@@ -20,7 +20,7 @@ defined('_JEXEC') or die('Restricted access');
 		<li class="email-icon"> <?php echo JHtml::_('icon.email',  $this->article, $this->params, $this->access); ?> </li>
 		<?php endif; ?>
 		<?php if ($this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>
-		<li class="edit-icon"> <?php echo JHtml::_('icon.edit', $this->article, $this->params); ?> </li>
+		<li class="edit-icon"> <?php echo JHtml::_('icon.edit', $this->article, $this->params, $this->access); ?> </li>
 		<?php endif; ?>
 		<?php else : ?>
 		<li> <?php echo JHtml::_('icon.print_screen',  $this->article, $this->params, $this->access); ?> </li>

@@ -51,6 +51,7 @@ table { border-collapse:collapse; border-spacing:0;width: 100%; }
 hr { display:block; height:1px; border:0; margin:1em 0; padding:0; }
 input, select { vertical-align:middle; }
 div.joomlashack{text-indent: -1000em; background: url('../images/jscright.png') no-repeat;width: 960px;margin: 0px auto;}
-
+div#logo a.image h2 {text-indent: -1000em;float:left;}
+div#logo a.image h3 {text-indent: -1000em;float:left;}
 
 /* END RESET CSS */

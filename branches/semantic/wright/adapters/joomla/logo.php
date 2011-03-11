@@ -10,6 +10,9 @@ class WrightAdapterJoomlaLogo
 		$doc = Wright::getInstance();
 		$app = JFactory::getApplication();
 
+		$title = '<h2>'.(($doc->document->params->get('headline', '') !== '') ? $doc->document->params->get('headline') : $app->getCfg('sitename')).'</h2>';
+		$title .= ($doc->document->params->get('tagline', '') !== '') ? '<h3>'.$doc->document->params->get('tagline').'</h3>' : '';
+
 		// If user wants a module, load it instead of image
 		if ($doc->document->params->get('logo', 'template') == 'module') {
 			$html = '<div id="logo" class="grid_'.$doc->document->params->get('logowidth', '6').'"><jdoc:include type="modules" name="logo" /></div>';
@@ -20,7 +23,7 @@ class WrightAdapterJoomlaLogo
 
 		// If user wants just a title, print it out
 		elseif ($doc->document->params->get('logo', 'template') == 'title') {
-			$html = '<div id="logo" class="grid_'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="title"><h2>'.$app->getCfg('sitename').'</h2></a></div>';
+			$html = '<div id="logo" class="grid_'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="title">'.$title.'</a></div>';
 			if ($doc->document->params->get('logowidth') !== '12') $html .= '<div id="'.$args['name'].'" class="grid_'.(12 - $doc->document->params->get('logowidth', '6')).'"><jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" /></div>';
 			$html .= '<div class="clearfix"></div>';
 			return $html;
@@ -40,7 +43,7 @@ class WrightAdapterJoomlaLogo
 			$logo = JURI::root().'images/'.$doc->document->params->get('logo', 'logo.png');
 		}
 
-		$html = '<div id="logo" class="grid_'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="image"><h2>'.$app->getCfg('sitename').'</h2><img src="'.$logo.'" alt="" title="" /></a></div>';
+		$html = '<div id="logo" class="grid_'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
 		if ($doc->document->params->get('logowidth') !== '12') $html .= '<div id="'.$args['name'].'" class="grid_'.(12 - $doc->document->params->get('logowidth', '6')).'"><jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" /></div>';
 		$html .= '<div class="clearfix"></div>';
 		return $html;
