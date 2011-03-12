@@ -165,7 +165,7 @@ class Wright
 
 			file_put_contents(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$this->document->template.'.css', $tidy->print->plain());
 		}
-		$this->document->addStyleSheet(JURI::root().'templates/'.$this->document->template.'/css/'.$this->document->template.'.css');
+		$this->document->addStyleSheet('/templates/'.$this->document->template.'/css/'.$this->document->template.'.css');
 	}
 
 	private function addCSSToHead($styles)
@@ -176,9 +176,9 @@ class Wright
 			{
 				foreach ($files as $style)
 				{
-					if ($folder == 'wright') $sheet = JURI::root().'templates/'.$this->document->template.'/wright/css/'.$style;
-					elseif ($folder == 'template') $sheet = JURI::root().'templates/'.$this->document->template.'/css/'.$style;
-					else $sheet = JURI::root().'templates/'.$this->document->template.'/css/'.$style;
+					if ($folder == 'wright') $sheet = '/templates/'.$this->document->template.'/wright/css/'.$style;
+					elseif ($folder == 'template') $sheet = '/templates/'.$this->document->template.'/css/'.$style;
+					else $sheet = '/templates/'.$this->document->template.'/css/'.$style;
 
 					$this->document->addStyleSheet($sheet);
 				}
@@ -205,7 +205,7 @@ class Wright
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
 		{
-			$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/wright/js/html5.js');
+			$this->document->addScript('/templates/'.$this->document->template.'/wright/js/html5.js');
 
 			if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie.css'))
 			{
@@ -219,14 +219,14 @@ class Wright
 				case '6' :
 					if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie6.css'))
 						$styles['ie'][] = 'ie6.css';
-						$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/wright/js/dd_belatedpng.js');
-						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/html5.js');
+						$this->document->addScript('/templates/'.$this->document->template.'/wright/js/dd_belatedpng.js');
+						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript('/templates/'.$this->document->template.'/js/html5.js');
 					break;
 
 				default :
 					if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie'.$major.'.css'))
 						$styles['ie'][] = 'ie'.$major.'.css';
-						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/wright/js/html5.js');
+						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript('/templates/'.$this->document->template.'/wright/js/html5.js');
 					break;
 			}
 		}
