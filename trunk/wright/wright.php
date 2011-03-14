@@ -4,7 +4,6 @@
  * @copyright Joomlashack 2010. All Rights Reserved.
  *
  * @description Wright is a framework layer for Joomla to improve stability of Joomlashack Templates
- *
  * It would be inadvisable to alter the contents of anything inside of this folder
  */
 
@@ -82,7 +81,7 @@ class Wright
 			$dochead = $this->document->getHeadData();
 			reset($dochead['scripts']);
 			foreach ($dochead['scripts'] as $script=>$type) {
-				if (strpos($script, 'media/system/js/caption.js') || strpos($script, 'media/system/js/mootools.js') || strpos($script, 'media/system/js/mootools-core.js') || strpos($script, 'media/system/js/mootools-more.js')) {
+				if (strpos($script, 'media/system/js/caption.js') || strpos($script, 'media/system/js/mootools.js')) {
 					unset($dochead['scripts'][$script]);
 				}
 			}
@@ -166,7 +165,7 @@ class Wright
 
 			file_put_contents(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.$this->document->template.'.css', $tidy->print->plain());
 		}
-		$this->document->addStyleSheet('/templates/'.$this->document->template.'/css/'.$this->document->template.'.css');
+		$this->document->addStyleSheet(JURI::root().'templates/'.$this->document->template.'/css/'.$this->document->template.'.css');
 	}
 
 	private function addCSSToHead($styles)
@@ -177,9 +176,9 @@ class Wright
 			{
 				foreach ($files as $style)
 				{
-					if ($folder == 'wright') $sheet = '/templates/'.$this->document->template.'/wright/css/'.$style;
-					elseif ($folder == 'template') $sheet = '/templates/'.$this->document->template.'/css/'.$style;
-					else $sheet = '/templates/'.$this->document->template.'/css/'.$style;
+					if ($folder == 'wright') $sheet = JURI::root().'templates/'.$this->document->template.'/wright/css/'.$style;
+					elseif ($folder == 'template') $sheet = JURI::root().'templates/'.$this->document->template.'/css/'.$style;
+					else $sheet = JURI::root().'templates/'.$this->document->template.'/css/'.$style;
 
 					$this->document->addStyleSheet($sheet);
 				}
@@ -196,12 +195,7 @@ class Wright
 		$browser = JBrowser::getInstance();
 
 		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
-		$styles['wright'] = array('reset.css', 'layout.css', 'typography.css');
-		if (version_compare(JVERSION, '1.6.0', 'lt')) {
-			$styles['wright'][] = 'joomla15.css';
-		} else {
-			$styles['wright'][] = 'joomla16.css';
-		}
+		$styles['wright'] = array('reset.css', 'joomla.css', 'layout.css', 'typography.css', 'core.css');
 		$styles['template'] = JFolder::files(JPATH_THEMES.DS.$this->document->template.DS.'css', '\d{1,2}_.*.css');
 
 		// Load up a specific style if set
@@ -211,7 +205,7 @@ class Wright
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
 		{
-			$this->document->addScript('/templates/'.$this->document->template.'/wright/js/html5.js');
+			$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/wright/js/html5.js');
 
 			if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie.css'))
 			{
@@ -225,14 +219,14 @@ class Wright
 				case '6' :
 					if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie6.css'))
 						$styles['ie'][] = 'ie6.css';
-						$this->document->addScript('/templates/'.$this->document->template.'/wright/js/dd_belatedpng.js');
-						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript('/templates/'.$this->document->template.'/js/html5.js');
+						$this->document->addScript(JURI::root().'templates/'.$this->document->template.'/wright/js/dd_belatedpng.js');
+						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/js/html5.js');
 					break;
 
 				default :
 					if (is_file(JPATH_THEMES.DS.$this->document->template.DS.'css'.DS.'ie'.$major.'.css'))
 						$styles['ie'][] = 'ie'.$major.'.css';
-						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript('/templates/'.$this->document->template.'/wright/js/html5.js');
+						if ($this->document->params->get('doctype') == 'html5') $this->document->addScript(JURI::root().'templates/'.$this->document->template.'/wright/js/html5.js');
 					break;
 			}
 		}
