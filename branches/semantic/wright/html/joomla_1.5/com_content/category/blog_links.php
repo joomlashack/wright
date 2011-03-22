@@ -14,3 +14,4 @@ defined('_JEXEC') or die('Restricted access');
 	</li>
 	<?php endforeach; ?>
 </ol>
+</div>
