@@ -53,4 +53,5 @@ $cparams = JComponentHelper::getParams ('com_media');
 	</li>
 	<?php endforeach; ?>
 </ul>
-<?php endif;
+</div>
+<?php endif; ?>
