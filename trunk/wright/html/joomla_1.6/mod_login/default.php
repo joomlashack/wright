@@ -14,6 +14,7 @@ defined('_JEXEC') or die;
 	</div>
 <?php endif; ?>
 	<div align="center">
+	<?php echo JHtml::_('form.token'); ?>
 		<input type="submit" name="Submit" class="button" value="<?php echo JText::_('JLOGOUT'); ?>" />
 	</div>
 
