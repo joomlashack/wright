@@ -5,7 +5,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 <?php if ( $this->params->get( 'address_check' ) > 0 ) : ?>
 <tr>
-	<td rowspan="6" valign="top" width="<?php echo $this->params->get( 'column_width' ); ?>" >
+	<td rowspan="6" width="30%" valign="top" width="30%">
 		<?php echo $this->params->get( 'marker_address' ); ?>
 	</td>
 </tr>
@@ -56,7 +56,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 <?php if ( $this->contact->email_to && $this->params->get( 'show_email' ) ) : ?>
 <tr>
-	<td width="<?php echo $this->params->get( 'column_width' ); ?>" >
+	<td width="30%">
 		<?php echo $this->params->get( 'marker_email' ); ?>
 	</td>
 	<td>
@@ -66,7 +66,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <?php endif; ?>
 <?php if ( $this->contact->telephone && $this->params->get( 'show_telephone' ) ) : ?>
 <tr>
-	<td width="<?php echo $this->params->get( 'column_width' ); ?>" >
+	<td width="30%">
 		<?php echo $this->params->get( 'marker_telephone' ); ?>
 	</td>
 	<td>
@@ -76,7 +76,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <?php endif; ?>
 <?php if ( $this->contact->fax && $this->params->get( 'show_fax' ) ) : ?>
 <tr>
-	<td width="<?php echo $this->params->get( 'column_width' ); ?>" >
+	<td width="30%">
 		<?php echo $this->params->get( 'marker_fax' ); ?>
 	</td>
 	<td>
@@ -86,7 +86,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <?php endif; ?>
 <?php if ( $this->contact->mobile && $this->params->get( 'show_mobile' ) ) :?>
 <tr>
-	<td width="<?php echo $this->params->get( 'column_width' ); ?>" >
+	<td width="30%">
 	<?php echo $this->params->get( 'marker_mobile' ); ?>
 	</td>
 	<td>
@@ -96,7 +96,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <?php endif; ?>
 <?php if ( $this->contact->webpage && $this->params->get( 'show_webpage' )) : ?>
 <tr>
-	<td width="<?php echo $this->params->get( 'column_width' ); ?>" >
+	<td width="30%">
 	</td>
 	<td>
 		<a href="<?php echo $this->escape($this->contact->webpage); ?>" target="_blank">
@@ -110,7 +110,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <?php if ( $this->contact->misc && $this->params->get( 'show_misc' ) ) : ?>
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-	<td width="<?php echo $this->params->get( 'column_width' ); ?>" valign="top" >
+	<td width="30%" valign="top" >
 		<?php echo $this->params->get( 'marker_misc' ); ?>
 	</td>
 	<td>
