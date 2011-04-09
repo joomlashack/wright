@@ -27,10 +27,10 @@ $params = &$this->params;
 			<?php if ($params->get('show_create_date') OR $params->get('show_modify_date')) : ?>
 			<ul class="article-info">
 				<?php if ($params->get('show_create_date')) : ?>
-				<li class="create"> <?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHTML::_('date',$this->item->created, JText::_('DATE_FORMAT_LC2'))); ?> </li>
+				<li class="create"> <?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHTML::_('date',$item->created, JText::_('DATE_FORMAT_LC2'))); ?> </li>
 				<?php endif; ?>
 				<?php if ($params->get('show_modify_date')) : ?>
-				<li class="modified"> <?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHTML::_('date',$this->item->modified, JText::_('DATE_FORMAT_LC2'))); ?> </li>
+				<li class="modified"> <?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHTML::_('date',$item->modified, JText::_('DATE_FORMAT_LC2'))); ?> </li>
 				<?php endif; ?>
 			</ul>
 			<?php endif; ?>
@@ -39,21 +39,21 @@ $params = &$this->params;
 			<?php if ($useRowTwo) : ?>
 			<ul class="article-info">
 				<?php if ($params->get('show_publish_date')) : ?>
-				<li class="published"> <?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE', JHTML::_('date',$this->item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?> </li>
+				<li class="published"> <?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE', JHTML::_('date',$item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?> </li>
 				<?php endif; ?>
-				<?php if ($params->get('show_author') && !empty($this->item->author )) : ?>
+				<?php if ($params->get('show_author') && !empty($item->author )) : ?>
 				<li class="createdby">
-					<?php $author =  $this->item->author; ?>
-					<?php $author = ($this->item->created_by_alias ? $this->item->created_by_alias : $author);?>
-					<?php if (!empty($this->item->contactid ) &&  $params->get('link_author') == true):?>
-					<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', JHTML::_('link',JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid),$author)); ?>
+					<?php $author =  $item->author; ?>
+					<?php $author = ($item->created_by_alias ? $item->created_by_alias : $author);?>
+					<?php if (!empty($item->contactid ) &&  $params->get('link_author') == true):?>
+					<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', JHTML::_('link',JRoute::_('index.php?option=com_contact&view=contact&id='.$item->contactid),$author)); ?>
 					<?php else :?>
 					<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
 					<?php endif; ?>
 				</li>
 				<?php endif; ?>
 				<?php if ($params->get('show_hits')) : ?>
-				<li class="hits"> <?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?> </li>
+				<li class="hits"> <?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); ?> </li>
 				<?php endif; ?>
 			</ul>
 			<?php endif; ?>
@@ -62,11 +62,11 @@ $params = &$this->params;
 			<?php if ($useRowThree) : ?>
 			<ul class="article-info">
 				<?php endif; ?>
-				<?php if ($params->get('show_parent_category') && $this->item->parent_slug != '1:root') : ?>
+				<?php if ($params->get('show_parent_category') && $item->parent_slug != '1:root') : ?>
 				<li class="parent-category-name">
-					<?php	$title = $this->escape($this->item->parent_title);
-						$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->parent_slug)).'">'.$title.'</a>';?>
-					<?php if ($params->get('link_parent_category') AND $this->item->parent_slug) : ?>
+					<?php	$title = $this->escape($item->parent_title);
+						$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($item->parent_slug)).'">'.$title.'</a>';?>
+					<?php if ($params->get('link_parent_category') AND $item->parent_slug) : ?>
 					<?php echo JText::sprintf('COM_CONTENT_PARENT', $url); ?>
 					<?php else : ?>
 					<?php echo JText::sprintf('COM_CONTENT_PARENT', $title); ?>
@@ -75,9 +75,9 @@ $params = &$this->params;
 				<?php endif; ?>
 				<?php if ($params->get('show_category')) : ?>
 				<li class="category-name">
-					<?php 	$title = $this->escape($this->item->category_title);
-						$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->catslug)).'">'.$title.'</a>';?>
-					<?php if ($params->get('link_category') AND $this->item->catslug) : ?>
+					<?php 	$title = $this->escape($item->category_title);
+						$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($item->catslug)).'">'.$title.'</a>';?>
+					<?php if ($params->get('link_category') AND $item->catslug) : ?>
 					<?php echo JText::sprintf('COM_CONTENT_CATEGORY', $url); ?>
 					<?php else : ?>
 					<?php echo JText::sprintf('COM_CONTENT_CATEGORY', $title); ?>
