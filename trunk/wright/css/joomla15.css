@@ -1,0 +1,416 @@
+/*
+Joomla 1.5 specific styles
+====================================================
+Table of Contents:
+Ctrl/Cmd + F to find the @groups named below
+
+@group Article Column Structure
+@group Categories/Archives
+@group Article Info
+@group Pagination
+@group Contact
+@group Misc. Joomla! Styles
+
+*/
+
+
+/* @group Article Column Structure */
+
+.contentpaneopen, .blog {width: 100%;}
+
+.blog {margin: 0 0 20px 0;}
+
+.article_column {padding: 10px 0;}
+
+.column_separator {padding: 20px 1%;}
+
+.items-leading {display: inline-block;width: 100%;}
+
+.cols-1 {display: block;float: none !important;margin: 0 !important;}
+
+.cols-2 .column-1 {width:46%;float:left;}
+
+.cols-2 .column-2 {width:46%;float:right;margin:0}
+
+.cols-3 .column-1 {float:left;width:29%;padding:10px 5px 10px 0px;margin-right:4%}
+
+.cols-3 .column-2 {float:left;width:29%;margin-left:0;padding:10px 5px;}
+
+.cols-3 .column-3 {float:right;width:29%;padding:10px 0px 10px 5px;}
+
+.items-row {overflow:hidden}
+
+.column-1,.column-2,.column-3 {padding:10px 5px}
+
+.column-2 {width:55%;margin-left:40%;}
+
+.column-3 {width:30%}
+
+.leading {clear: both;}
+
+p.readmore {margin: 0;padding: 0;}
+
+.item-page {
+}
+
+/* @end */
+
+
+
+
+/* @group Categories/Archives */
+
+div.categories-list ul,
+div.categories-list li,
+div.cat-children ul,
+div.cat-children li {
+	list-style: none;margin: 0;padding: 0;
+}
+
+div.categories-list li.first,
+div.cat-children li.first,
+div.cat-children li.last {
+	margin-left: 0;
+}
+div.categories-list li.first ul li,
+div.categories-list li.last ul li,
+div.cat-children li.first ul li,
+div.cat-children li.last ul li {
+	margin-left: 20px;
+}
+
+
+div.categories-list span.item-title,
+div.cat-children span.item-title {
+	font-size: 18px;
+	display: block;
+	margin: 10px 0px;
+	background: url(../images/icons/24/folder.png) no-repeat left center;
+}
+div.categories-list span.item-title a,
+div.cat-children span.item-title a {
+	padding-left: 20px;
+}
+
+span.article-count,
+span.weblink-count,
+span.contact-count,
+span.newsfeed-count {
+	float: right;
+	clear: both;
+}
+
+
+
+/* Category Tables */
+
+table.category p {
+	margin: 0;
+}
+table.category a.category {
+	font-weight: bold;
+}
+
+
+
+/* @end */
+
+
+
+
+/* @group Article Info */
+
+
+.article-info-box {
+	border-bottom: 1px solid #eee;
+	margin-bottom: 10px;
+}
+
+.article-info-term {
+	clear: both;
+	display: none;
+}
+
+.article-info {
+	width: 100%;
+	clear: both;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+body.dark dl.article-info {
+	border-bottom: 1px dotted #000;
+}
+
+li.parent-category-name,li.category-name,li.create,li.modified,li.published,li.createdby,li.hits {
+	padding: 1px 10px 1px 20px;
+	font: 11px/1.5em Helvetica, Tahoma, Verdana, sans-serif;
+	margin: 0;
+	float: left;
+}
+
+span.content_rating {
+	padding: 0;
+	width: 100%;
+	font-size: 11px;
+}
+
+span.content_rating img {
+	padding: 2px 1px;
+	vertical-align: bottom;
+}
+
+span.content_vote input {
+	margin: 0px 3px;
+	vertical-align: baseline;
+}
+span.content_vote {
+	font-size: 11px;
+	display: inline-block;
+	margin: 5px 0px;
+}
+
+li.createdby {
+	background: url(../images/icons/16/user_suit.png) no-repeat left top;
+}
+
+li.create {
+	background: url(../images/icons/16/calendar.png) no-repeat left top;
+}
+
+li.modified {
+	background: url(../images/icons/16/calendar_edit.png) no-repeat left top;
+}
+
+li.published {
+	background: url(../images/icons/16/calendar_add.png) no-repeat left top;
+}
+
+li.hits {
+	background: url(../images/icons/16/chart_bar.png) no-repeat left top;
+}
+
+li.parent-category-name {
+	background: url(../images/icons/16/folder_go.png) no-repeat left top;
+}
+
+li.category-name {
+	background: url(../images/icons/16/folder.png) no-repeat left top;
+}
+
+/* Print & PDF Icons */
+
+ul.actions,ul.actions li {
+	float: right;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+ul.actions li {
+	padding: 0px 2px;
+}
+
+
+/* @end */
+
+
+
+
+/* @group Pagination */
+
+
+/* Article Pagination */
+
+ul.pagenav,
+.pagination ul {
+	text-align:center;
+	margin: 10px auto;
+	list-style: none;
+}
+
+ul.pagenav li,
+.pagination ul li {
+	display:inline;
+}
+
+ul.pagenav li a,
+.pagination li a {
+	padding: 5px 10px;
+	border-radius:4px;
+	border: 1px solid;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	text-decoration: none;
+}
+
+/* Category Pagination */
+
+.pagination {
+	display: block;
+	text-align: center;
+	font-size: 12px;
+	margin: 10px auto 20px auto;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+}
+
+.pagination span {
+	padding: 0px 4px;
+}
+
+
+.pagination a {
+	padding: 4px 8px;
+	text-decoration: none;
+	border: 1px solid;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+}
+
+.counter,.pagenavcounter {
+	display: block;
+	text-align: center;
+}
+
+
+
+/* @end */
+
+/* @group Contact */
+
+div.panel {
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	display: block;
+	cursor: pointer;
+}
+body.light div.panel {
+	border-bottom: 1px solid #ccc;
+}
+body.dark div.panel {
+	border-bottom: 1px solid #000;
+}
+
+
+/* @end */
+
+
+/* @group Misc. Joomla! Styles */
+
+
+.jicons-icons {
+	float: left;
+	margin: 0px 5px 0px 0px;
+}
+
+.hidelabeltxt {
+	display: none;
+	visibility: hidden;
+}
+.filter-search {
+	float: left;
+}
+.display-limit {
+	float: right;
+}
+.fl-right {
+	float: right;	
+}
+
+.login-fields {
+	margin: 10px 0px;
+}
+
+span.star {
+	color: red;
+}
+
+/* Tool Tips */
+.tip-wrap {
+	text-align: left;
+	padding: 5px 7px;
+	border: 2px solid;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	background-color: #ffd758;
+	border-color: #ffb30a;
+    box-shadow: 1px 1px 0 #fff5d6 inset, -1px -1px 0 #fff5d6 inset;
+    -moz-box-shadow: 1px 1px 0 #fff5d6 inset, -1px -1px 0 #fff5d6 inset;
+    -webkit-box-shadow: 1px 1px 0 #fff5d6 inset, -1px -1px 0 #fff5d6 inset;
+	text-shadow: #fff0c0 1px 1px 0;
+}
+.tip-text {
+	color: #4f3b0e;
+	line-height: 140%;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-size: 12px;
+	display: block;
+	width: 100%;
+	white-space: nowrap;
+}
+
+.tip-title {
+	font-weight: bold;
+	font-size: 14px;
+	color: #322508;
+}
+
+/* User Form Submission */
+
+.formelm {
+	padding: 10px;
+}
+.formelm label {
+	float: left;
+	width: 200px;
+	margin-right: 10px;
+}
+.formelm-buttons {
+	margin: 20px 0px;
+}
+.formelm select {
+	margin-left: 0px;
+}
+
+.button2-left a {
+    font-weight: bold;
+    text-decoration: none;
+	font: bold 12px/28px Helvetica, Arial, sans-serif;
+	margin: 5px 10px 0px 0px;
+	padding: 0px 10px;
+	float: left;
+	background-color: #eee;
+	background: -moz-linear-gradient(top center, #fff 0%, #eee 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #eee));
+	border: 1px solid #d6d6d6;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+    -moz-box-shadow: 1px 1px 0 #fff inset, -1px -1px 0 #fff inset;
+    -webkit-box-shadow: 1px 1px 0 #fff inset, -1px -1px 0 #fff inset;
+}
+.button2-left a:hover {
+	background-color: #f6f6f6;
+}
+
+#system-message li {
+	margin: 0px 0px 5px 20px;
+	padding: 0;
+}
+
+.register {
+	padding: 10px 0px;
+}
+.register label {
+	width: 15em;
+	display: inline-block;
+}
+
+
+/* @end */
