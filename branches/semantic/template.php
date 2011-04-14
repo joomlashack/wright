@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2010 Joomlashack / Joomlapraise / Meritage Assets
+ * @copyright	Copyright (C) 2005 - 2011 Joomlashack / Meritage Assets
  * @author		Jeremy Wilken - Joomlashack
  * @package		Wright
  *
@@ -119,6 +119,6 @@ defined('_JEXEC') or die('Restricted access');
 		</div>
 	</div>
 </div>
-<?php echo $this->params->get("footerscript",""); ?>
+<?php //echo $this->document->params->get("footerscript",""); ?>
 </body>
 </html>

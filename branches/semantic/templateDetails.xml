@@ -46,7 +46,7 @@
 		<position>bottommenu</position>
 		<position>debug</position>
 	</positions>
-	<params addpath="/templates/js_generic/wright/parameters/joomla_1.5">
+	<params addpath="/templates/js_wright/wright/parameters/joomla_1.5">
 		<param name="helper" type="help" default="simplepraise" label="Need Help?" />
 		<param name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />
 		<param name="style" type="styles" default="theme1" label="Style" description="Select which of the style variations you wish to use." />
@@ -77,7 +77,7 @@
 		<param name="linkHoverColor" type="colorpicker" default="#3988CC" label="Link Hover Color" description="Type A Hexadecimal Color" />
 	</params>
 	<config>
-		<fields name="params" addfieldpath="/templates/js_generic/wright/parameters/joomla_1.6">
+		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_1.6">
 			<fieldset name="basic">
 				<field name="helper" type="help" default="simplepraise" label="Need Help?" />
 				<field name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />
