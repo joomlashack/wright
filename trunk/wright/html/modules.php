@@ -47,8 +47,25 @@ function modChrome_wrightgridrounded($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="shackflexgrid" />)
  */
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
+    $document = &JFactory::getDocument();
+    static $modulenumber = 1;
+    if (stripos($params->get('moduleclass_sfx'), 'flexgrid') === false) {
+        $grid = $attribs['grid'];
+        $class = $params->get('moduleclass_sfx');
+    } else {
+        $grid = preg_replace('/\D/', '', $params->get('moduleclass_sfx'));
+        $class = '';
+    }
+    $class .= ' mod_'.$modulenumber;
+    if( $modulenumber == 1 ) {
+        $class .= ' first';
+    } else if ( $modulenumber == $document->countModules( $attribs['name'] ) ) {
+        $class .= ' last';
+        $modulenumber = 0;
+    }
+    $modulenumber++;
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> flexgrid_<?php echo $attribs['grid'] ?>">
+<div class="module<?php echo $class; ?> flexgrid_<?php echo $grid ?>">
 	<div class="pad">
   <?php if ($module->showtitle) : ?>
   <h3><?php echo $module->title; ?></h3>

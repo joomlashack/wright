@@ -13,6 +13,8 @@ class JElementStyles extends JElement
 
 		$styles = JFolder::files(str_replace('administrator'.DS, '', JPATH_THEMES.DS.$template.DS.'css'), 'style-(.*)?\.css');
 
+        if (!count($styles)) return JText::_('No styles are provided for this template');
+
 		$options = array ();
 		foreach ($styles as $style)
 		{
