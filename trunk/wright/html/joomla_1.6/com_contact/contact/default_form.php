@@ -28,51 +28,39 @@ JHtml::_('behavior.keepalive');
 <div class="contact-form">
 	<form action="<?php echo JRoute::_('index.php');?>" method="post" name="emailForm" id="emailForm" class="form-validate">
 		<p class="form-required">
-			<?php echo JText::_('COM_CONTACT_CONTACT_REQUIRED');?>
+			<?php echo JText::_('COM_CONTACT_FORM_LABEL'); ?>
 		</p>
 		<div class="contact-email">
 			<div>
-				<label for="contact-formname">
-					<?php echo JText::_('COM_CONTACT_CONTACT_EMAIL_NAME');?>
-				</label>
-				<input type="text" name="name" id="contact-formname" size="30" class="inputbox" value="" />
+				<?php echo $this->form->getLabel('contact_name'); ?>
+				<?php echo $this->form->getInput('contact_name'); ?>
 			</div>
 			<div>
-				<label id="contact-emailmsg" for="contact-email">
-					<?php echo JText::_('JGLOBAL_EMAIL');?>*
-				</label>
-				<input type="text" id="contact-email" name="email" size="30" value="" class="inputbox required validate-email" maxlength="100" />
+				<?php echo $this->form->getLabel('contact_email'); ?>
+				<?php echo $this->form->getInput('contact_email'); ?>
 			</div>
 			<div>
-				<label for="contact-subject">
-					<?php echo JText::_('COM_CONTACT_CONTACT_MESSAGE_SUBJECT');?>:
-				</label>
-				<input type="text" name="subject" id="contact-subject" size="30" class="inputbox" value="" />
+				<?php echo $this->form->getLabel('contact_subject'); ?>
+				<?php echo $this->form->getInput('contact_subject'); ?>
 			</div>
 			<div>
-				<label id="contact-textmsg" for="contact-text">
-					<?php echo JText::_('COM_CONTACT_CONTACT_ENTER_MESSAGE');?>:
-				</label>
-				<textarea cols="50" rows="10" name="text" id="contact-text" class="inputbox required"></textarea>
+				<?php echo $this->form->getLabel('contact_message'); ?>
+				<?php echo $this->form->getInput('contact_message'); ?>
 			</div>
 
 			<?php if ($this->params->get('show_email_copy')) : ?>
 			<div class="fl-right">
-				<input type="checkbox" name="email_copy" id="contact-email-copy" value="1"  />
-				<label for="contact-email-copy">
-					<?php echo JText::_('COM_CONTACT_CONTACT_EMAIL_A_COPY'); ?>
-				</label>
+				<?php echo $this->form->getInput('contact_email_copy'); ?>
+                <?php echo $this->form->getLabel('contact_email_copy'); ?>
 			</div>
 			<?php endif; ?>
 			<div>
 				<button class="button validate" type="submit"><?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
 			</div>
 			<input type="hidden" name="option" value="com_contact" />
-			<input type="hidden" name="view" value="contact" />
-			<input type="hidden" name="id" value="<?php echo $this->contact->id; ?>" />
 			<input type="hidden" name="task" value="contact.submit" />
-			<input type="hidden" name="return" value="<?php echo $this->return; ?>" />
-			<?php echo JHtml::_('form.token'); ?>
+			<input type="hidden" name="return" value="<?php echo $this->return_page;?>" />
+			<?php echo JHtml::_( 'form.token' ); ?>
 		</div>
 	</form>
 </div>

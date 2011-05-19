@@ -27,7 +27,7 @@ $listDirn	= $this->state->get('list.direction');
 				<?php echo JText::_('JGLOBAL_NUM'); ?>
 			</th>
 			<th class="sectiontableheader<?php echo $pageClass ?>">
-				<?php echo JHtml::_('grid.sort', 'COM_CONTACT_CONTACT_EMAIL_NAME', 'a.name', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('grid.sort', 'COM_CONTACT_CONTACT_EMAIL_NAME_LABEL', 'a.name', $listDirn, $listOrder); ?>
 			</th>
 			<?php if ($this->params->get('show_position')) : ?>
 			<th class="sectiontableheader<?php echo $pageClass ?>">

@@ -14,10 +14,10 @@ defined('_JEXEC') or die;
 	</div>
 <?php endif; ?>
 	<div align="center">
-	<?php echo JHtml::_('form.token'); ?>
 		<input type="submit" name="Submit" class="button" value="<?php echo JText::_('JLOGOUT'); ?>" />
 	</div>
-
+	
+	<?php echo JHtml::_('form.token'); ?>
 	<input type="hidden" name="option" value="com_users" />
 	<input type="hidden" name="task" value="user.logout" />
 	<input type="hidden" name="return" value="<?php echo $return; ?>" />
