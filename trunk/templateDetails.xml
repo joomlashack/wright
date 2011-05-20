@@ -7,7 +7,7 @@
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>http://www.joomlashack.com</authorUrl>
 	<copyright>Copyright Joomlashack 2011. All rights reserved</copyright>
-	<license>Commercial license - single domain use only</license>
+	<license>GNU GPLv2</license>
 	<version>1.0.0</version>
     <description>
 			<![CDATA[
@@ -49,7 +49,7 @@
 	<params addpath="/templates/js_wright/wright/parameters/joomla_1.5">
         <!-- Start of default Wright params -->
 		<param name="helper" type="help" label="Need Help?" />
-		<param name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />
+		<param name="rebrand" type="rebrand" default="no" label="Remove Branding" description="This setting removes the branding from the footer of the template." />
 		<param name="style" type="styles" default="theme1" label="Style" description="Select which of the style variations you wish to use." />
 		<param name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js">
 			<option value="0">NO</option>
@@ -79,7 +79,7 @@
 			<fieldset name="basic">
                 <!-- Start of default Wright params -->
 				<field name="helper" type="help" label="Need Help?" />
-				<field name="rebrand" type="rebrand" default="no" label="Remove Branding" description="Our templates come with some branding. If you wish to remove it please purchase the rights to remove our branding by clicking on the link provided before disabling it here. Rebranding is handled as an honor system, we don't monitor or verify if you have purchased it, so please be respectful of our licensing terms. " />
+				<field name="rebrand" type="rebrand" default="no" label="Remove Branding" description="This setting removes the branding from the footer of the template." />
 				<field name="style" type="styles" default="theme1" label="Style" description="Select which of the style variations you wish to use." />
 				<field name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js">
 					<option value="0">JNO</option>
