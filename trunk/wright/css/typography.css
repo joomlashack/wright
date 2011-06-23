@@ -298,8 +298,33 @@ body.h_verdana h1, body.h_verdana h2, body.h_verdana h3, body.h_verdana h4, body
 ul.accent {
 	padding-left: 10px;
 	margin-left: 0;
+	list-style: none;
 }
-ul.accent li {
+ul.accent li,
+ul.bullet1 li,
+ul.bullet2 li,
+ul.bullet3 li,
+ul.bullet4 li,
+ul.bullet5 li,
+ul.bullet6 li,
+ul.bullet7 li,
+ul.male li,
+ul.female li,
+ul.accept li,
+ul.clock li,
+ul.color li,
+ul.cup li,
+ul.drink li,
+ul.date li,
+ul.smile li,
+ul.exclamation li,
+ul.heart li,
+ul.music li,
+ul.rainbow li,
+ul.golf li,
+ul.tennis li,
+ul.star li,
+ul.tick li  {
 	list-style: none;
 	margin-left: 0;
 	padding: 0 0 0 24px;
@@ -331,7 +356,6 @@ ul.accent li.male, ul.male li {
 }
 ul.accent li.female, ul.female li {
 	background: url(../images/icons/16/user_female.png) 4px .2em no-repeat;
-	;
 }
 ul.accent li.accept, ul.accept li {
 	background: url(../images/icons/16/accept.png) 4px .2em no-repeat;
