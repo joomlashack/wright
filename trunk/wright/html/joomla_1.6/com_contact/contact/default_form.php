@@ -54,6 +54,27 @@ JHtml::_('behavior.keepalive');
                 <?php echo $this->form->getLabel('contact_email_copy'); ?>
 			</div>
 			<?php endif; ?>
+            
+            <?php //Dynamically load any additional fields from plugins.
+            foreach ($this->form->getFieldsets() as $fieldset): ?>
+                  <?php if ($fieldset->name != 'contact'):?>
+                       <?php $fields = $this->form->getFieldset($fieldset->name);?>
+                       <?php foreach($fields as $field): ?>
+            <div>
+                            <?php if ($field->hidden): ?>
+                                 <?php echo $field->input;?>
+                            <?php else:?>
+                                    <?php echo $field->label; ?>
+                                    <?php if (!$field->required && $field->type != "Spacer"): ?>
+                                       <span class="optional"><?php echo JText::_('COM_CONTACT_OPTIONAL');?></span>
+                                    <?php endif; ?>
+                                 <?php echo $field->input;?>
+                            <?php endif;?>
+            </div>
+                       <?php endforeach;?>
+                  <?php endif ?>
+             <?php endforeach;?>
+            
 			<div>
 				<button class="button validate" type="submit"><?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
 			</div>
