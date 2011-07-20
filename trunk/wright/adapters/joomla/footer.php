@@ -42,7 +42,7 @@ class WrightAdapterJoomlaFooter
 			  }
 			}
 
-			return '<div class="'.$class.'"><a href="'.$host.'">'.$anchor.'</a>'.$endline.'</div>';
+			return '<a class="joomlashack" href="'.$host.'">'.$anchor.$endline.'</a>';
 		}
 		else
 		{
