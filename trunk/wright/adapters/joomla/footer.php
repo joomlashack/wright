@@ -8,21 +8,13 @@ class WrightAdapterJoomlaFooter
 
 		if ($doc->document->params->get('rebrand', 'no') !== 'yes')
 		{
-			if (stripos($doc->author, 'praise')) {
-				$anchors = array("Joomla Templates"=>25,				"Free Joomla Templates"=>45,					"Joomla 1.6 Template"=>61,					"Joomla 1.6 Templates"=>75,					"Joomla Template"=>80,					"Joomla 1.5 Templates"=>84,					"Joomla 1.5 Template"=>88,					"Joomla Template Club"=>92,					"Joomla Themes"=>96,					"Joomla Theme"=>100);
-				$links = array("Joomla Templates"=>"joomla-templates",	"Free Joomla Templates"=>"joomla-templates",	"Joomla 1.6 Template"=>"joomla-templates",	"Joomla 1.6 Templates"=>"joomla-templates",	"Joomla Template"=>"joomla-templates",	"Joomla 1.5 Templates"=>"joomla-templates",	"Joomla 1.5 Template"=>"joomla-templates",	"Joomla Template Club"=>"joomla-templates",	"Joomla Themes"=>"joomla-templates",	"Joomla Theme"  => "joomla-templates");
-				$endlines  = array(": by JoomlaPraise"=>10,				": from JoomlaPraise"=>20,						" by JoomlaPraise"=>30,						" from JoomlaPraise"=>40,					" at JoomlaPraise"=>50,					": by JoomlaPraise.com"=>60,				": from JoomlaPraise.com"=>70,				" by JoomlaPraise.com"=>80,					" from JoomlaPraise.com"=>90,			" at JoomlaPraise.com"=>100);
-				$host = "http://www.joomlapraise.com/";
-				$class = 'joomlapraise';
-			}
-			else
-			{
-				$anchors = array("Joomla Templates"=>25,							"Free Joomla Templates"=>45,						"Joomla Tutorial"=>61,			"Joomla Template Tutorial"=>75,				"Joomla Template"=>80,								"Joomla 1.5 Templates"=>84,					"Joomla 1.5 Template"=>88,								"Joomla Extensions"=>92,					"Joomla Extension"=>96,						"Joomla Training"=>100);
-				$links = array("Joomla Templates"=>"professional-joomla-templates",	"Free Joomla Templates"=>"free-joomla-templates",	"Joomla Tutorial"=>"tutorials",	"Joomla Template Tutorial"=>"tutorials",	"Joomla Template"=>"professional-joomla-templates",	"Joomla 1.5 Templates"=>"joomla-templates",	"Joomla 1.5 Template"=>"professional-joomla-templates",	"Joomla Extensions"=>"joomla-extensions",	"Joomla Extension"=>"joomla-extensions",	"Joomla Training"  => "university/");
-				$endlines  = array(": by JoomlaShack"=>10,							": from JoomlaShack"=>20,							" by JoomlaShack"=>30,			" from JoomlaShack"=>40,					" at JoomlaShack"=>50,								": by JoomlaShack.com"=>60,					": from JoomlaShack.com"=>70,							" by JoomlaShack.com"=>80,					" from JoomlaShack.com"=>90,				" at JoomlaShack.com"=>100);
-				$host = "http://www.joomlashack.com/";
-				$class = 'joomlashack';
-			}
+			
+			$anchors = array(	"Joomla" => 10,				"How to Joomla" => 15,				"Free Joomla Template" => 20,						"Joomla Templates" => 35,								"Joomla Template" => 50,								"Template para Joomla" => 65,								"Template for Joomla" => 80,								"Joomla Extension" => 85,					"Joomla Extensions" => 90,					"Joomla Module" => 95,					"Joomla Training"=>100);
+			$links = array("	Joomla" => "",				"How to Joomla" => "university/",	"Free Joomla Template" => "free-joomla-templates",	"Joomla Templates" => "professional-joomla-templates",	"Joomla Template" => "professional-joomla-templates",	"Template para Joomla" => "professional-joomla-templates",	"Template for Joomla" => "professional-joomla-templates",	"Joomla Extension" => "joomla-extensions",	"Joomla Extensions" => "joomla-extensions",	"Joomla Module" => "joomla-extensions",	"Joomla Training"  => "university/");
+			$endlines  = array(	": by JoomlaShack" => 10,	": from JoomlaShack" => 20,			" by JoomlaShack"=>30,								" from JoomlaShack" => 40,								" at JoomlaShack" => 50,								": by JoomlaShack.com" => 60,								": from JoomlaShack.com" => 70,								" by JoomlaShack.com" => 80,				" from JoomlaShack.com" => 90,				" - by Joomlashack.com" => 95,			" at JoomlaShack.com"=>100);
+			$host = "http://www.joomlashack.com/";
+			$class = 'joomlashack';
+		
 
 			$url = $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
