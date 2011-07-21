@@ -14,9 +14,10 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 $params = &$this->params;
 ?>
 
-<ul id="archive-items">
+<div class="archive-items">
 <?php foreach ($this->items as $i => $item) : ?>
-	<li class="row<?php echo $i % 2; ?>">
+
+	<div class="row<?php echo $i % 2; ?>">
 
 		<h2>
 		<?php if ($params->get('link_titles')): ?>
@@ -28,6 +29,7 @@ $params = &$this->params;
 		</h2>
 
 <?php if (($params->get('show_author')) or ($params->get('show_parent_category')) or ($params->get('show_category')) or ($params->get('show_create_date')) or ($params->get('show_modify_date')) or ($params->get('show_publish_date'))  or ($params->get('show_hits'))) : ?>
+<div class="article-info-box">
 <ul class="article-info">
 <li class="article-info-term"><?php echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?></li>
 <?php endif; ?>
@@ -90,6 +92,7 @@ $params = &$this->params;
 <?php endif; ?>
 <?php if (($params->get('show_author')) or ($params->get('show_category')) or ($params->get('show_create_date')) or ($params->get('show_modify_date')) or ($params->get('show_publish_date'))  or ($params->get('show_hits'))) :?>
 	</ul>
+    </div>
 <?php endif; ?>
 
 <?php if ($params->get('show_intro')) :?>
@@ -97,9 +100,9 @@ $params = &$this->params;
 		<?php echo JHtml::_('string.truncate', $item->introtext, $params->get('introtext_limit')); ?>
 	</div>
 <?php endif; ?>
-	</li>
+	</div>
 <?php endforeach; ?>
-</ul>
+</div>
 
 <div class="pagination">
 	<p class="counter">
