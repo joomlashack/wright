@@ -80,7 +80,7 @@ hr {
 input, select {
 	vertical-align:middle;
 }
-div#js a.joomlashack {
+div a.joomlashack {
 text-indent: -1000em;
 	background:url(../images/jscright.png) no-repeat;
 	width: 960px;
