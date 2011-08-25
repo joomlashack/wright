@@ -82,8 +82,8 @@
 				<field name="rebrand" type="rebrand" default="no" label="Remove Branding" description="This setting removes the branding from the footer of the template." />
 				<field name="style" type="styles" default="theme1" label="Style" description="Select which of the style variations you wish to use." />
 				<field name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js">
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
+					<option value="0">NO</option>
+					<option value="1">YES</option>
 				</field>
 				<field name="logo" type="logo" default="template" label="Logo Image" description="You can select your logo from the images directory after you upload the image." />
 				<field name="logowidth" type="grid" defualt="4" label="Logo Width" description="Select the column width for the logo, the rest of the space will be given to the newsflash module, or if you set it to full width the module will dissapear" />
@@ -94,13 +94,7 @@
 					<option value="html5">HTML5</option>
 					<option value="xhtml1transitional">XHTML 1 Transitional</option>
 					<option value="xhtml1strict">XHTML 1 Strict</option>
-				</field>
-                <field name="csscache" type="radio" default="no" label="Combine and cache CSS" description="You can use this to have your css automatically combined into one file and cached, but disable if you have problems">
-                    <option value="no">JDISABLE</option>
-                    <option value="yes">JENABLE</option>
-                </field>
-				<field name="headerscript" type="textarea" default="" label="Header Script" description="If you need to add scripts to your header (like Google verification code, perhaps), you should enter them here without the &lt;script&gt; tags." rows="5" cols="50" />
-				<field name="footerscript" type="textarea" default="" label="Footer Script" description="If you need to add scripts to your footer (like Google Analytics tracking code), you should enter them here without the &lt;script&gt; tags." rows="5" cols="50" />
+				</field
                 <!-- End of default Wright params -->
 			</fieldset>
 		</fields>
