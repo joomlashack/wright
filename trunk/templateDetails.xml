@@ -94,7 +94,7 @@
 					<option value="html5">HTML5</option>
 					<option value="xhtml1transitional">XHTML 1 Transitional</option>
 					<option value="xhtml1strict">XHTML 1 Strict</option>
-				</field
+				</field>
                 <!-- End of default Wright params -->
 			</fieldset>
 		</fields>
