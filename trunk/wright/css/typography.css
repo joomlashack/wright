@@ -490,7 +490,7 @@ ul.accent li.tick, ul.tick li {
 }
 /* Alert Styles */
 
-div.note, div.alert, div.info, div.email, div.download, div.warn, div.idea, div.accept, div.accept, div.secure, div.author, div.time, div.mycomment, div.tools {
+div.note, div.alert, div.info, div.myemail, div.download, div.warn, div.idea, div.accept, div.accept, div.secure, div.author, div.time, div.mycomment, div.tools {
 	text-align: left;
 	padding: 10px 10px 10px 48px;
 	border: 2px solid;
@@ -573,7 +573,7 @@ div.accept {
 div.accept a {
 	color: #4C6F22;
 }
-div.email {
+div.myemail {
 	background: #f3eed3 url(../images/icons/24/email.png) no-repeat 10px 50%;
 	border-color: #deb600;
 	color: #3e3e3e;
@@ -581,7 +581,7 @@ div.email {
 	-moz-text-shadow: #fff 1px 1px 0;
 	-webkit-text-shadow: #fff 1px 1px 0;
 }
-div.email a {
+div.myemail a {
 	color: #988217;
 }
 div.download {
