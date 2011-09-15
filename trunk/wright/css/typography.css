@@ -724,19 +724,23 @@ ul.check a:hover {
 /* Elements */
 
 blockquote {
-	font-size: 1.4em;
+	font-size: 1.1em;
 	font-family: "Times New Roman", Times, serif;
 	font-style: italic;
-	padding: 15px;
+	padding: 0px 0px 0px 36px;
 	margin: 10px 0;
 	line-height: 25px;
+	background: url(../images/icons/quote_up.png) top left no-repeat;
 	display: inline-block;
-	text-shadow:1px 1px 0 #FFF;
-	-moz-text-shadow:1px 1px 0 #FFF;
-	-webkit-text-shadow:1px 1px 0 #FFF;
 }
+
 blockquote p {
+	font-size: 20px;
+	padding: 0px 36px 0px 0px;
+	float: left;
+	background: url(../images/icons/quote_down.png) bottom right no-repeat;
 }
+
 blockquote.right, blockquote.left {
 	font-size:1.1em;
 	float: right;
