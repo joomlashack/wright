@@ -32,6 +32,46 @@ Ctrl/Cmd + F to find the @groups named below
 	display: inline-block;
 	width: 100%;
 }
+dl.article-info {
+	clear:both;
+	float:none;
+	display:block;
+	width:100%;
+	min-height:20px;
+	margin:20px 0;
+	font-size:0.8em;
+}
+dl.article-info dt {
+	display:none;
+}
+dl.article-info dd {
+	display:inline-block;
+	float:none;
+	clear:none;
+	zoom:1;
+	margin:0 10px 0 0;
+	padding:0 0 0 20px;
+	width:auto;
+}
+dl.article-info dd.parent-category-name,
+dl.article-info dd.category-name {
+	background:url(../images/icons/16/folder.png) no-repeat 0 3px;
+}
+dl.article-info dd.create {
+	background:url(../images/icons/16/calendar_add.png) no-repeat 0 3px;
+}
+dl.article-info dd.modified {
+	background:url(../images/icons/16/calendar_edit.png) no-repeat 0 3px;
+}
+dl.article-info dd.published {
+	background:url(../images/icons/16/calendar.png) no-repeat 0 3px;
+}
+dl.article-info dd.createdby {
+	background:url(../images/icons/16/user_suit.png) no-repeat 0 3px;
+}
+dl.article-info dd.hits {
+	background:url(../images/icons/16/chart_bar.png) no-repeat 0 3px;
+}
 .cols-1 {
 	display: block;
 	float: none !important;
