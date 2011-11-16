@@ -66,12 +66,6 @@
 			<option value="xhtml1transitional">XHTML 1 Transitional</option>
 			<option value="xhtml1strict">XHTML 1 Strict</option>
 		</param>
-        <param name="csscache" type="radio" default="no" label="Combine and cache CSS" description="You can use this to have your css automatically combined into one file and cached, but disable if you have problems">
-			<option value="no">DISABLE</option>
-			<option value="yes">ENABLE</option>
-		</param>
-		<param name="headerscript" type="textarea" default="" label="Header Script" description="If you need to add scripts to your header (like Google verification code, perhaps), you should enter them here without the &lt;script&gt; tags." rows="5" cols="50" />
-		<param name="footerscript" type="textarea" default="" label="Footer Script" description="If you need to add scripts to your footer (like Google Analytics tracking code), you should enter them here without the &lt;script&gt; tags." rows="5" cols="50" />
         <!-- End of default Wright params -->
 	</params>
 	<config>
