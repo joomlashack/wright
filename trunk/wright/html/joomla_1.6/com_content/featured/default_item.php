@@ -95,7 +95,7 @@ $canEdit	= $this->item->params->get('access-edit');
 
 <?php if ($params->get('show_publish_date')) : ?>
 		<li class="published">
-		<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE', JHTML::_('date',$this->item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?>
+		<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHTML::_('date',$this->item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?>
 		</li>
 <?php endif; ?>
 

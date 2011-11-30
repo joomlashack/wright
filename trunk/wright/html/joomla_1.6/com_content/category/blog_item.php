@@ -72,7 +72,7 @@ OR ($params->get('show_create_date')) OR ($params->get('show_modify_date')) OR (
 	<?php if ($useRowTwo) : ?>
 	<ul class="article-info">
 		<?php if ($params->get('show_publish_date')) : ?>
-		<li class="published"> <?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE', JHTML::_('date',$this->item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?> </li>
+		<li class="published"> <?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHTML::_('date',$this->item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?> </li>
 		<?php endif; ?>
 		<?php if ($params->get('show_author') && !empty($this->item->author )) : ?>
 		<li class="createdby">
