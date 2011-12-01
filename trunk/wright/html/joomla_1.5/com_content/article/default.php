@@ -4,7 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 
 ?>
 
-<div id="item-page<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
+<div class="item-page<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
 
 	<?php if ($this->params->get('show_page_title', 1) && $this->params->get('page_title') != $this->article->title) : ?>
 		<h1> <?php echo $this->escape($this->params->get('page_title')); ?> </h1>
