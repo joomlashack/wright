@@ -48,6 +48,10 @@ function modChrome_wrightgridrounded($module, &$params, &$attribs) {
  */
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $document = &JFactory::getDocument();
+	static $modulenumbera = Array();
+	if (!isset($modulenumbera[$attribs['name']]))
+		$modulenumbera[$attribs['name']] = 1;
+	
     static $modulenumber = 1;
     if (stripos($params->get('moduleclass_sfx'), 'flexgrid') === false) {
         $grid = $attribs['grid'];
@@ -56,22 +60,24 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
         $grid = preg_replace('/\D/', '', $params->get('moduleclass_sfx'));
         $class = '';
     }
-    $class .= ' mod_'.$modulenumber;
-    if( $modulenumber == 1 ) {
-        $class .= ' first';
-    } else if ( $modulenumber == $document->countModules( $attribs['name'] ) ) {
-        $class .= ' last';
-        $modulenumber = 0;
-    }
+	$class .= ' mod_'.$modulenumbera[$attribs['name']];
     $modulenumber++;
+	if( $modulenumbera[$attribs['name']] == 1 ) {
+        $class .= ' first';
+    }
+    if ( $modulenumbera[$attribs['name']] == $document->countModules( $attribs['name'] ) ) {
+        $class .= ' last';
+        $modulenumbera[$attribs['name']] = 0;
+    }
+    $modulenumbera[$attribs['name']]++;
 ?>
 <div class="module<?php echo $class; ?> flexgrid_<?php echo $grid ?>">
-	<div class="pad">
-  <?php if ($module->showtitle) : ?>
+  <div class="pad"> 
+  	  <?php if ($module->showtitle) : ?>
   <h3><?php echo $module->title; ?></h3>
   <?php endif; ?>
   <?php echo $module->content; ?>
-</div>
+  </div>
 </div>
 <?php
 }
