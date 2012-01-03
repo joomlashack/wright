@@ -9,9 +9,9 @@ class WrightAdapterJoomlaFooter
 		if ($doc->document->params->get('rebrand', 'no') !== 'yes')
 		{
 			
-			$anchors = array(	"Joomla template" => 50,				"joomla templates" => 100);
-			$links = array(     "Joomla template" => "",				"joomla templates" => );
-			$endlines  = array(	": by JoomlaShack" => 50,	": from JoomlaShack" => 100);
+			$anchors = array(	"Joomla" => 10,				"How to Joomla" => 15,				"Free Joomla Template" => 20,						"Joomla Templates" => 35,								"Joomla Template" => 50,								"Template para Joomla" => 65,								"Template for Joomla" => 80,								"Joomla Extension" => 85,					"Joomla Extensions" => 90,					"Joomla Module" => 95,					"Joomla Training"=>100);
+			$links = array(     "Joomla" => "",				"How to Joomla" => "university/",	"Free Joomla Template" => "free-joomla-templates",	"Joomla Templates" => "professional-joomla-templates",	"Joomla Template" => "professional-joomla-templates",	"Template para Joomla" => "professional-joomla-templates",	"Template for Joomla" => "professional-joomla-templates",	"Joomla Extension" => "joomla-extensions",	"Joomla Extensions" => "joomla-extensions",	"Joomla Module" => "joomla-extensions",	"Joomla Training"  => "university/");
+			$endlines  = array(	": by JoomlaShack" => 10,	": from JoomlaShack" => 20,			" by JoomlaShack"=>30,								" from JoomlaShack" => 40,								" at JoomlaShack" => 50,								": by JoomlaShack.com" => 60,								": from JoomlaShack.com" => 70,								" by JoomlaShack.com" => 80,				" from JoomlaShack.com" => 90,				" - by Joomlashack.com" => 95,			" at JoomlaShack.com"=>100);
 			$host = "http://www.joomlashack.com/";
 			$class = 'joomlashack';
 		
