@@ -1,5 +1,6 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
+require_once("suffixes.php");
 
 /**
  * Wright GRID Module
@@ -22,8 +23,28 @@ function modChrome_wrightgrid($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="user3" grid="<?php echo $user3gridcount;?>" style="wrightgridimages" />)
  */
 function modChrome_wrightgridimages($module, &$params, &$attribs) {
+	// stacked suffixes
+	$icon = "";
+	$iconposition = "";
+	$gridwidth = "";
+
+	// temporal application for simpleTech only (first template with icon and icon position)
+    $app = &JFactory::getApplication();
+	$templ = $app->getTemplate();
+	if ($templ == "js_simpletech") {
+		$suffix = $params->get('moduleclass_sfx');
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth);
+		// suffix return to the parameters
+		$params->set('moduleclass_sfx',$suffix);
+		
+		// checks if icon exists in wright/images/icons/modules
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templ.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+			$icon = "";
+		}
+	}
+	
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid_<?php echo $attribs['grid'] ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid_<?php echo $attribs['grid'] ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?>">
   <div class="pad4">
   	<div class="pad5">
   		<div class="pad6"></div>
@@ -39,7 +60,16 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
   <div class="clr"></div>
   <?php endif; ?>
   </div>
-  <?php echo $module->content; ?>
+  
+	<?php if ($icon != ""): ?>
+		<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templ/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+		<div class="module_content">
+	<?php endif; ?>
+		<?php echo $module->content; ?>
+	<?php if ($icon != ""): ?>
+		</div>
+	<?php endif; ?>
+  
        </div>
   	</div> 
   </div>
@@ -125,6 +155,26 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="shackflexgridimages" />)
  */
 function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
+	// stacked suffixes
+	$icon = "";
+	$iconposition = "";
+	$gridwidth = "";
+
+	// temporal application for simpleTech only (first template with icon and icon position)
+    $app = &JFactory::getApplication();
+	$templ = $app->getTemplate();
+	if ($templ == "js_simpletech") {
+		$suffix = $params->get('moduleclass_sfx');
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth);
+		// suffix return to the parameters
+		$params->set('moduleclass_sfx',$suffix);
+		
+		// checks if icon exists in wright/images/icons/modules
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templ.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+			$icon = "";
+		}
+	}
+
     $document = &JFactory::getDocument();
 	static $modulenumbera = Array();
 	if (!isset($modulenumbera[$attribs['name']]))
@@ -149,7 +199,7 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
     }
     $modulenumbera[$attribs['name']]++;
 ?>
-<div class="module<?php echo $class; ?> flexgrid_<?php echo $grid ?>">
+<div class="module<?php echo $class; ?> flexgrid_<?php echo ($gridwidth != "" ? $gridwidth : $grid) ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?>">
 	<div class="pad4">
 		<div class="pad5">
   		<div class="pad6"></div>
@@ -165,7 +215,14 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 					</div>  	
 					<div class="clr"></div>		
   				<?php endif; ?>
-		  <?php echo $module->content; ?>
+  				<?php if ($icon != ""): ?>
+  					<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templ/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+  					<div class="module_content">
+  				<?php endif; ?>
+			  		<?php echo $module->content; ?>
+  				<?php if ($icon != ""): ?>
+  					</div>
+  				<?php endif; ?>
 		  <div class="clr"></div>
   		</div>
   	 <div class="clr"></div>
