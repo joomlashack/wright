@@ -236,3 +236,13 @@ Main Layout Grid - Proceed with caution
 .container_12 .flexgrid_6 {
 	width:14%;
 }
+
+div.icon-right div.module_icon {
+	float: right;
+	margin: 0 5px 10px 10px;
+}
+
+div.icon-left div.module_icon {
+	float: left;
+	margin: 0 10px 10px 5px;
+}
