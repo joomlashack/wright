@@ -56,7 +56,7 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
   		<div class="pad3">
   			<div class="pad-title">
   <?php if ($module->showtitle) : ?>
-  <h3><?php echo $module->title; ?></h3>
+  <h3><span><?php echo $module->title; ?></span></h3>
   <div class="clr"></div>
   <?php endif; ?>
   </div>
@@ -211,7 +211,7 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 			<div class="pad3">
   				<?php if ($module->showtitle) : ?>
   					<div class="pad-title">
-						<h3><?php echo $module->title; ?></h3>
+						<h3><span><?php echo $module->title; ?></span></h3>
 					</div>  	
 					<div class="clr"></div>		
   				<?php endif; ?>
