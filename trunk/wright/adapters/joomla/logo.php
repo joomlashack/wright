@@ -35,7 +35,7 @@ class WrightAdapterJoomlaLogo
 			$user = &JFactory::getUser();
 			$logotone = ($user->getParam('templateTone',''));
 			if ($logotone == '') {
-				$logotone =  $this->params->get('Tone','' );
+				$logotone =  $doc->document->params->get('Tone','' );
 			}
 			
 			if (is_file(JPATH_ROOT.DS.'templates/'.$doc->document->template.'/images/logo' . $logotone. '.png'))
