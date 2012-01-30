@@ -103,6 +103,8 @@ abstract class HtmlAdapterAbstract
 		$menu = & JSite::getMenu();
 		if ($menu->getActive() == $menu->getDefault()) $class .= ' home';
 
+		$class .= " rev_" . $wright->revision;
+
 		return '<body class="'.$class.'">';
 	}
 
