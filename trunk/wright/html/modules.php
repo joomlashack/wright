@@ -33,9 +33,9 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
 	$iconposition = "";
 	$gridwidth = "";
 
+	$app = & JFactory::getApplication();
+	$templatename = $app->getTemplate();
 	if ($suffixes) {
-		$app = & JFactory::getApplication();
-		$templatename = $app->getTemplate();
 
 		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth);
@@ -67,7 +67,7 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
   </div>
   
 	<?php if ($icon != ""): ?>
-		<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templ/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+		<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
 		<div class="module_content">
 	<?php endif; ?>
 		<?php echo $module->content; ?>
@@ -170,9 +170,9 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 	$iconposition = "";
 	$gridwidth = "";
 	
+	$app = & JFactory::getApplication();
+	$templatename = $app->getTemplate();
 	if ($suffixes) {
-		$app = & JFactory::getApplication();
-		$templatename = $app->getTemplate();
 
 		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth);
@@ -226,7 +226,7 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 					<div class="clr"></div>		
   				<?php endif; ?>
   				<?php if ($icon != ""): ?>
-  					<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templ/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+  					<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
   					<div class="module_content">
   				<?php endif; ?>
 			  		<?php echo $module->content; ?>
