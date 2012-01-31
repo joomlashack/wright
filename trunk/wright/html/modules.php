@@ -25,20 +25,24 @@ function modChrome_wrightgrid($module, &$params, &$attribs) {
 function modChrome_wrightgridimages($module, &$params, &$attribs) {
 	// stacked suffixes (only if template allows it)
 	$suffixes = false;
+	$specialClasses = Array();
+	$specialClassesResult = Array();
 	if (class_exists("WrightTemplate")) {
 		$wrightTemplate = WrightTemplate::getInstance();
 		$suffixes = $wrightTemplate->suffixes;
+		$specialClasses = $wrightTemplate->specialClasses;
 	}
 	$icon = "";
 	$iconposition = "";
 	$gridwidth = "";
+	$specialClassesString = "";
 
 	$app = & JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
 		$suffix = $params->get('moduleclass_sfx');
-		parse_suffix($suffix, $icon, $iconposition,$gridwidth);
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
 		
@@ -46,10 +50,14 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
 		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
 			$icon = "";
 		}
+		
+		foreach ($specialClassesResult as $class => $result) {
+			$specialClassesString .= " " . $class . "_" . $result;
+		}
 	}
 	
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid_<?php echo $attribs['grid'] ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> <?php if (isset($attribs['grid'])) : ?>grid_<?php echo $attribs['grid'] ?><?php endif; ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
   <div class="pad4">
   	<div class="pad5">
   		<div class="pad6"></div>
@@ -162,20 +170,24 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 	// stacked suffixes (only if template allows it)
 	$suffixes = false;
+	$specialClasses = Array();
+	$specialClassesResult = Array();
 	if (class_exists("WrightTemplate")) {
 		$wrightTemplate = WrightTemplate::getInstance();
 		$suffixes = $wrightTemplate->suffixes;
+		$specialClasses = $wrightTemplate->specialClasses;
 	}
 	$icon = "";
 	$iconposition = "";
 	$gridwidth = "";
-	
+	$specialClassesString = "";
+
 	$app = & JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
 		$suffix = $params->get('moduleclass_sfx');
-		parse_suffix($suffix, $icon, $iconposition,$gridwidth);
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
 		
@@ -183,8 +195,12 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
 			$icon = "";
 		}
+		
+		foreach ($specialClassesResult as $class => $result) {
+			$specialClassesString .= " " . $class . "_" . $result;
+		}
 	}
-
+	
     $document = &JFactory::getDocument();
 	static $modulenumbera = Array();
 	if (!isset($modulenumbera[$attribs['name']]))
@@ -209,7 +225,7 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
     }
     $modulenumbera[$attribs['name']]++;
 ?>
-<div class="module<?php echo $class; ?> flexgrid_<?php echo ($gridwidth != "" ? $gridwidth : $grid) ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?>">
+<div class="module<?php echo $class; ?> flexgrid_<?php echo ($gridwidth != "" ? $gridwidth : $grid) ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 	<div class="pad4">
 		<div class="pad5">
   		<div class="pad6"></div>
