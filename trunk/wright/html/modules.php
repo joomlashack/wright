@@ -23,22 +23,27 @@ function modChrome_wrightgrid($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="user3" grid="<?php echo $user3gridcount;?>" style="wrightgridimages" />)
  */
 function modChrome_wrightgridimages($module, &$params, &$attribs) {
-	// stacked suffixes
+	// stacked suffixes (only if template allows it)
+	$suffixes = false;
+	if (class_exists("WrightTemplate")) {
+		$wrightTemplate = WrightTemplate::getInstance();
+		$suffixes = $wrightTemplate->suffixes;
+	}
 	$icon = "";
 	$iconposition = "";
 	$gridwidth = "";
 
-	// temporal application for simpleTech only (first template with icon and icon position)
-    $app = &JFactory::getApplication();
-	$templ = $app->getTemplate();
-	if ($templ == "js_simpletech") {
+	if ($suffixes) {
+		$app = & JFactory::getApplication();
+		$templatename = $app->getTemplate();
+
 		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templ.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
 			$icon = "";
 		}
 	}
@@ -155,22 +160,27 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="shackflexgridimages" />)
  */
 function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
-	// stacked suffixes
+	// stacked suffixes (only if template allows it)
+	$suffixes = false;
+	if (class_exists("WrightTemplate")) {
+		$wrightTemplate = WrightTemplate::getInstance();
+		$suffixes = $wrightTemplate->suffixes;
+	}
 	$icon = "";
 	$iconposition = "";
 	$gridwidth = "";
+	
+	if ($suffixes) {
+		$app = & JFactory::getApplication();
+		$templatename = $app->getTemplate();
 
-	// temporal application for simpleTech only (first template with icon and icon position)
-    $app = &JFactory::getApplication();
-	$templ = $app->getTemplate();
-	if ($templ == "js_simpletech") {
 		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templ.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
 			$icon = "";
 		}
 	}
