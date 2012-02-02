@@ -7,12 +7,52 @@ require_once("suffixes.php");
  * (i.e. <jdoc:include type="modules" name="user3" grid="<?php echo $user3gridcount;?>" style="wrightgrid" />)
  */
 function modChrome_wrightgrid($module, &$params, &$attribs) {
+	// stacked suffixes (only if template allows it)
+	$suffixes = false;
+	$specialClasses = Array();
+	$specialClassesResult = Array();
+	if (class_exists("WrightTemplate")) {
+		$wrightTemplate = WrightTemplate::getInstance();
+		$suffixes = $wrightTemplate->suffixes;
+		if (property_exists("WrightTemplate", "specialClasses"))
+			$specialClasses = $wrightTemplate->specialClasses;
+	}
+	$icon = "";
+	$iconposition = "";
+	$gridwidth = "";
+	$specialClassesString = "";
+
+	$app = & JFactory::getApplication();
+	$templatename = $app->getTemplate();
+	if ($suffixes) {
+
+		$suffix = $params->get('moduleclass_sfx');
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
+		// suffix return to the parameters
+		$params->set('moduleclass_sfx',$suffix);
+		
+		// checks if icon exists in wright/images/icons/modules
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+			$icon = "";
+		}
+		
+		foreach ($specialClassesResult as $class => $result) {
+			$specialClassesString .= " " . $class . "_" . $result;
+		}
+	}
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid_<?php echo $attribs['grid'] ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
   <?php if ($module->showtitle) : ?>
   <h3><?php echo $module->title; ?></h3>
   <?php endif; ?>
-  <?php echo $module->content; ?>
+	<?php if ($icon != ""): ?>
+		<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+		<div class="module_content">
+	<?php endif; ?>
+		<?php echo $module->content; ?>
+	<?php if ($icon != ""): ?>
+		</div>
+	<?php endif; ?>
 </div>
 <?php
 }
@@ -30,7 +70,8 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
 	if (class_exists("WrightTemplate")) {
 		$wrightTemplate = WrightTemplate::getInstance();
 		$suffixes = $wrightTemplate->suffixes;
-		$specialClasses = $wrightTemplate->specialClasses;
+		if (property_exists("WrightTemplate", "specialClasses"))
+			$specialClasses = $wrightTemplate->specialClasses;
 	}
 	$icon = "";
 	$iconposition = "";
@@ -57,7 +98,7 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
 	}
 	
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> <?php if (isset($attribs['grid'])) : ?>grid_<?php echo $attribs['grid'] ?><?php endif; ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
   <div class="pad4">
   	<div class="pad5">
   		<div class="pad6"></div>
@@ -101,13 +142,47 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="shackflexgridrounded" />)
  */
 function modChrome_wrightgridrounded($module, &$params, &$attribs) {
+	// stacked suffixes (only if template allows it)
+	$suffixes = false;
+	$specialClasses = Array();
+	$specialClassesResult = Array();
+	if (class_exists("WrightTemplate")) {
+		$wrightTemplate = WrightTemplate::getInstance();
+		$suffixes = $wrightTemplate->suffixes;
+		if (property_exists("WrightTemplate", "specialClasses"))
+			$specialClasses = $wrightTemplate->specialClasses;
+	}
+	$icon = "";
+	$iconposition = "";
+	$gridwidth = "";
+	$specialClassesString = "";
+
+	$app = & JFactory::getApplication();
+	$templatename = $app->getTemplate();
+	if ($suffixes) {
+
+		$suffix = $params->get('moduleclass_sfx');
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
+		// suffix return to the parameters
+		$params->set('moduleclass_sfx',$suffix);
+		
+		// checks if icon exists in wright/images/icons/modules
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+			$icon = "";
+		}
+		
+		foreach ($specialClassesResult as $class => $result) {
+			$specialClassesString .= " " . $class . "_" . $result;
+		}
+	}
+
 	if (!$module->showtitle) {
 		$moduletitle = ' notitle';
 	} else {
 		$moduletitle = NULL;
 	}
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid_<?php echo $attribs['grid']; ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 	<div class="side TL"></div>
 	<div class="side TR"></div>
 	<div class="side BL"></div>
@@ -116,7 +191,14 @@ function modChrome_wrightgridrounded($module, &$params, &$attribs) {
 		<h3><?php echo $module->title; ?></h3>
 	<?php endif; ?>
 		<div class="module_body<?php echo $moduletitle; ?>">
-			<?php echo $module->content; ?>
+			<?php if ($icon != ""): ?>
+				<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+				<div class="module_content">
+			<?php endif; ?>
+				<?php echo $module->content; ?>
+			<?php if ($icon != ""): ?>
+				</div>
+			<?php endif; ?>
 		</div>
 </div>
 <?php
@@ -127,6 +209,40 @@ function modChrome_wrightgridrounded($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="shackflexgrid" />)
  */
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
+	// stacked suffixes (only if template allows it)
+	$suffixes = false;
+	$specialClasses = Array();
+	$specialClassesResult = Array();
+	if (class_exists("WrightTemplate")) {
+		$wrightTemplate = WrightTemplate::getInstance();
+		$suffixes = $wrightTemplate->suffixes;
+		if (property_exists("WrightTemplate", "specialClasses"))
+			$specialClasses = $wrightTemplate->specialClasses;
+	}
+	$icon = "";
+	$iconposition = "";
+	$gridwidth = "";
+	$specialClassesString = "";
+
+	$app = & JFactory::getApplication();
+	$templatename = $app->getTemplate();
+	if ($suffixes) {
+
+		$suffix = $params->get('moduleclass_sfx');
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
+		// suffix return to the parameters
+		$params->set('moduleclass_sfx',$suffix);
+		
+		// checks if icon exists in wright/images/icons/modules
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+			$icon = "";
+		}
+		
+		foreach ($specialClassesResult as $class => $result) {
+			$specialClassesString .= " " . $class . "_" . $result;
+		}
+	}
+
     $document = &JFactory::getDocument();
 	static $modulenumbera = Array();
 	if (!isset($modulenumbera[$attribs['name']]))
@@ -134,7 +250,9 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 	
     static $modulenumber = 1;
     if (stripos($params->get('moduleclass_sfx'), 'flexgrid') === false) {
-        $grid = $attribs['grid'];
+    	$grid = '';
+    	if (isset($attribs['grid']))
+	        $grid = $attribs['grid'];
         $class = $params->get('moduleclass_sfx');
     } else {
         $grid = preg_replace('/\D/', '', $params->get('moduleclass_sfx'));
@@ -151,12 +269,19 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     }
     $modulenumbera[$attribs['name']]++;
 ?>
-<div class="module<?php echo $class; ?> flexgrid_<?php echo $grid ?>">
+<div class="module<?php echo $class; ?> flexgrid_<?php echo $grid ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
   <div class="pad"> 
   	  <?php if ($module->showtitle) : ?>
   <h3><?php echo $module->title; ?></h3>
   <?php endif; ?>
-  <?php echo $module->content; ?>
+	<?php if ($icon != ""): ?>
+        <div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+        <div class="module_content">
+    <?php endif; ?>
+        <?php echo $module->content; ?>
+    <?php if ($icon != ""): ?>
+        </div>
+    <?php endif; ?>
   </div>
 </div>
 <?php
@@ -175,7 +300,8 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 	if (class_exists("WrightTemplate")) {
 		$wrightTemplate = WrightTemplate::getInstance();
 		$suffixes = $wrightTemplate->suffixes;
-		$specialClasses = $wrightTemplate->specialClasses;
+		if (property_exists("WrightTemplate", "specialClasses"))
+			$specialClasses = $wrightTemplate->specialClasses;
 	}
 	$icon = "";
 	$iconposition = "";
@@ -208,7 +334,9 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 	
     static $modulenumber = 1;
     if (stripos($params->get('moduleclass_sfx'), 'flexgrid') === false) {
-        $grid = $attribs['grid'];
+    	$grid = '';
+    	if (isset($attribs['grid']))
+        	$grid = $attribs['grid'];
         $class = $params->get('moduleclass_sfx');
     } else {
         $grid = preg_replace('/\D/', '', $params->get('moduleclass_sfx'));
@@ -269,13 +397,47 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="shackflexgridrounded" />)
  */
 function modChrome_wrightflexgridrounded($module, &$params, &$attribs) {
+	// stacked suffixes (only if template allows it)
+	$suffixes = false;
+	$specialClasses = Array();
+	$specialClassesResult = Array();
+	if (class_exists("WrightTemplate")) {
+		$wrightTemplate = WrightTemplate::getInstance();
+		$suffixes = $wrightTemplate->suffixes;
+		if (property_exists("WrightTemplate", "specialClasses"))
+			$specialClasses = $wrightTemplate->specialClasses;
+	}
+	$icon = "";
+	$iconposition = "";
+	$gridwidth = "";
+	$specialClassesString = "";
+
+	$app = & JFactory::getApplication();
+	$templatename = $app->getTemplate();
+	if ($suffixes) {
+
+		$suffix = $params->get('moduleclass_sfx');
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
+		// suffix return to the parameters
+		$params->set('moduleclass_sfx',$suffix);
+		
+		// checks if icon exists in wright/images/icons/modules
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+			$icon = "";
+		}
+		
+		foreach ($specialClassesResult as $class => $result) {
+			$specialClassesString .= " " . $class . "_" . $result;
+		}
+	}
+
 	if (!$module->showtitle) {
 		$moduletitle = ' notitle';
 	} else {
 		$moduletitle = NULL;
 	}
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> flexgrid_<?php echo $attribs['grid'] ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> flexgrid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 	<div class="side TL"></div>
 	<div class="side TR"></div>
 	<div class="side BL"></div>
@@ -284,7 +446,14 @@ function modChrome_wrightflexgridrounded($module, &$params, &$attribs) {
 		<h3><?php echo $module->title; ?></h3>
 	<?php endif; ?>
 		<div class="module_body<?php echo $moduletitle; ?>">
-			<?php echo $module->content; ?>
+			<?php if ($icon != ""): ?>
+				<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+				<div class="module_content">
+			<?php endif; ?>
+		  		<?php echo $module->content; ?>
+			<?php if ($icon != ""): ?>
+				</div>
+			<?php endif; ?>
 		</div>
 </div>
 <?php
@@ -297,18 +466,65 @@ function modChrome_wrightflexgridrounded($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="wrightCSS3" />)
  */
 function modChrome_wrightCSS3($module, &$params, &$attribs) {
+	// stacked suffixes (only if template allows it)
+	$suffixes = false;
+	$specialClasses = Array();
+	$specialClassesResult = Array();
+	if (class_exists("WrightTemplate")) {
+		$wrightTemplate = WrightTemplate::getInstance();
+		$suffixes = $wrightTemplate->suffixes;
+		if (property_exists("WrightTemplate", "specialClasses"))
+			$specialClasses = $wrightTemplate->specialClasses;
+	}
+	$icon = "";
+	$iconposition = "";
+	$gridwidth = "";
+	$specialClassesString = "";
+
+	$app = & JFactory::getApplication();
+	$templatename = $app->getTemplate();
+	if ($suffixes) {
+
+		$suffix = $params->get('moduleclass_sfx');
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
+		// suffix return to the parameters
+		$params->set('moduleclass_sfx',$suffix);
+		
+		// checks if icon exists in wright/images/icons/modules
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+			$icon = "";
+		}
+		
+		foreach ($specialClassesResult as $class => $result) {
+			$specialClassesString .= " " . $class . "_" . $result;
+		}
+	}
+
+	if (!$module->showtitle) {
+		$moduletitle = ' notitle';
+	} else {
+		$moduletitle = NULL;
+	}
+
 	if (!$module->showtitle) {
 		$moduletitle = ' notitle';
 	} else {
 		$moduletitle = NULL;
 	}
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 	<div class="pad">
 			<?php if ($module->showtitle) : ?>
 				<h3><?php echo $module->title; ?></h3>
 			<?php endif; ?>
-			<?php echo $module->content; ?>
+			<?php if ($icon != ""): ?>
+				<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+				<div class="module_content">
+			<?php endif; ?>
+		  		<?php echo $module->content; ?>
+			<?php if ($icon != ""): ?>
+				</div>
+			<?php endif; ?>
 		</div>
 </div>
 <?php
@@ -320,14 +536,54 @@ function modChrome_wrightCSS3($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="right" style="shackrounded" />)
  */
 function modChrome_wrightrounded($module, &$params, &$attribs) {
+	// stacked suffixes (only if template allows it)
+	$suffixes = false;
+	$specialClasses = Array();
+	$specialClassesResult = Array();
+	if (class_exists("WrightTemplate")) {
+		$wrightTemplate = WrightTemplate::getInstance();
+		$suffixes = $wrightTemplate->suffixes;
+		if (property_exists("WrightTemplate", "specialClasses"))
+			$specialClasses = $wrightTemplate->specialClasses;
+	}
+	$icon = "";
+	$iconposition = "";
+	$gridwidth = "";
+	$specialClassesString = "";
+
+	$app = & JFactory::getApplication();
+	$templatename = $app->getTemplate();
+	if ($suffixes) {
+
+		$suffix = $params->get('moduleclass_sfx');
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
+		// suffix return to the parameters
+		$params->set('moduleclass_sfx',$suffix);
+		
+		// checks if icon exists in wright/images/icons/modules
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+			$icon = "";
+		}
+		
+		foreach ($specialClassesResult as $class => $result) {
+			$specialClassesString .= " " . $class . "_" . $result;
+		}
+	}
 ?>
-<div class="moduletable<?php echo $params->get( 'moduleclass_sfx' ); ?>">
+<div class="moduletable<?php echo $params->get( 'moduleclass_sfx' ); ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 <span class="tl"></span><span class="tr"></span>
     <div>
 	<?php if ($module->showtitle) : ?>
   <h3><?php echo $module->title; ?></h3>
   <?php endif; ?>
-  <?php echo $module->content; ?>
+	<?php if ($icon != ""): ?>
+		<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+		<div class="module_content">
+	<?php endif; ?>
+  		<?php echo $module->content; ?>
+	<?php if ($icon != ""): ?>
+		</div>
+	<?php endif; ?>
   </div>
   <span class="bl"></span><span class="br"></span>
 </div>
@@ -339,13 +595,47 @@ function modChrome_wrightrounded($module, &$params, &$attribs) {
  * (i.e. <jdoc:include type="modules" name="right" style="shackrounded"2 />)
  */
 function modChrome_wrightrounded2($module, &$params, &$attribs) {
+	// stacked suffixes (only if template allows it)
+	$suffixes = false;
+	$specialClasses = Array();
+	$specialClassesResult = Array();
+	if (class_exists("WrightTemplate")) {
+		$wrightTemplate = WrightTemplate::getInstance();
+		$suffixes = $wrightTemplate->suffixes;
+		if (property_exists("WrightTemplate", "specialClasses"))
+			$specialClasses = $wrightTemplate->specialClasses;
+	}
+	$icon = "";
+	$iconposition = "";
+	$gridwidth = "";
+	$specialClassesString = "";
+
+	$app = & JFactory::getApplication();
+	$templatename = $app->getTemplate();
+	if ($suffixes) {
+
+		$suffix = $params->get('moduleclass_sfx');
+		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
+		// suffix return to the parameters
+		$params->set('moduleclass_sfx',$suffix);
+		
+		// checks if icon exists in wright/images/icons/modules
+		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+			$icon = "";
+		}
+		
+		foreach ($specialClassesResult as $class => $result) {
+			$specialClassesString .= " " . $class . "_" . $result;
+		}
+	}
+
 	if (!$module->showtitle) {
 		$moduletitle = ' notitle';
 	} else {
 		$moduletitle = NULL;
 	}
 ?>
-<div class="moduletable<?php echo $params->get( 'moduleclass_sfx' ); ?>">
+<div class="moduletable<?php echo $params->get( 'moduleclass_sfx' ); ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 	<div class="side TL"></div>
 	<div class="side TR"></div>
 	<div class="side BL"></div>
@@ -354,7 +644,14 @@ function modChrome_wrightrounded2($module, &$params, &$attribs) {
 	<h3><?php echo $module->title; ?></h3>
 <?php endif; ?>
 	<div class="module_body<?php echo $moduletitle; ?>">
-		<?php echo $module->content; ?>
+		<?php if ($icon != ""): ?>
+			<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
+			<div class="module_content">
+		<?php endif; ?>
+	  		<?php echo $module->content; ?>
+		<?php if ($icon != ""): ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </div>
 <?php
