@@ -78,6 +78,7 @@ JHtml::_('behavior.keepalive');
 			<div>
 				<button class="button validate" type="submit"><?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
 			</div>
+			<input type="hidden" name="id" value="<?php echo $this->contact->slug; ?>" />
 			<input type="hidden" name="option" value="com_contact" />
 			<input type="hidden" name="task" value="contact.submit" />
 			<input type="hidden" name="return" value="<?php echo $this->return_page;?>" />

@@ -2,6 +2,21 @@
 
 class WrightAdapterJoomlaLogo
 {
+	// checks the existance of a logo
+	public function isThereALogo() {
+		$dochtml = JFactory::getDocument();
+		
+		// if is set as a module position 'logo', checks if there is any module in that position
+		if ($dochtml->params->get('logo', 'template') == 'module') {
+			if ($dochtml->countModules('logo'))
+				return true;
+			return false;
+		}
+		
+		// in any other case, there is always a logo (at least as Wright's default image logo.png)
+		return true;
+	}
+	
 	public function render($args)
 	{
 		if (!isset($args['name'])) $args['name'] = 'newsflash';

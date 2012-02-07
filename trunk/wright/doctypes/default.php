@@ -138,8 +138,21 @@ abstract class HtmlAdapterAbstract
 		$id = $ids[1];
 
 		$doc = Wright::getInstance();
-		if (!$doc->document->countModules($id))
-			return;
+		if (!$doc->document->countModules($id)) {
+			// addition for forcing a sidebar (if it is a template which must have a sidebar for some of its positions)
+			$forcedSidebar = false;
+
+			if (class_exists("WrightTemplate")) {
+				if (property_exists("WrightTemplate", "forcedSidebar")) {
+					$wrightTemplate =& WrightTemplate::getInstance();
+					if ($id == $wrightTemplate->forcedSidebar)
+						$forcedSidebar = true;
+				}
+			}
+			
+			if (!$forcedSidebar)
+				return;
+		}
 
 		$class = 'grid_'.$this->columns[$id]->size;
 		if ($this->columns[$id]->push) $class .= ' push_'.$this->columns[$id]->push;
@@ -166,7 +179,7 @@ abstract class HtmlAdapterAbstract
 			preg_match('/class="(.*)"/i', $matches[1], $classes);
 			$class .= ' ' . $classes[1];
 		}
-
+		
 		if (strpos($matches[1], 'class='))
 			$footer = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
 
@@ -214,6 +227,16 @@ abstract class HtmlAdapterAbstract
 			$number++;
 			if ($doc->document->countModules($col) || $col == 'main')
 					$layout[] = $col;
+			else {
+				// addition for forcing a sidebar (if it is a template which must have a sidebar for some of its positions)
+				if (class_exists("WrightTemplate")) {
+					if (property_exists("WrightTemplate", "forcedSidebar")) {
+						$wrightTemplate =& WrightTemplate::getInstance();
+						if ($col == $wrightTemplate->forcedSidebar)
+							$layout[] = $col;
+					}
+				}
+			}
 		}
 
 		// Auto set to full width if editing
@@ -221,7 +244,7 @@ abstract class HtmlAdapterAbstract
 			empty($layout);
 			$layout[] = 'main';
 		}
-
+		
 		switch(implode('-', $layout))
 		{
 			case 'main':
