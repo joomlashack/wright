@@ -22,7 +22,7 @@ function modChrome_wrightgrid($module, &$params, &$attribs) {
 	$gridwidth = "";
 	$specialClassesString = "";
 
-	$app = & JFactory::getApplication();
+	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
@@ -78,7 +78,7 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
 	$gridwidth = "";
 	$specialClassesString = "";
 
-	$app = & JFactory::getApplication();
+	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
@@ -157,7 +157,7 @@ function modChrome_wrightgridrounded($module, &$params, &$attribs) {
 	$gridwidth = "";
 	$specialClassesString = "";
 
-	$app = & JFactory::getApplication();
+	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
@@ -224,7 +224,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 	$gridwidth = "";
 	$specialClassesString = "";
 
-	$app = & JFactory::getApplication();
+	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
@@ -243,7 +243,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 		}
 	}
 
-    $document = &JFactory::getDocument();
+    $document = JFactory::getDocument();
 	static $modulenumbera = Array();
 	if (!isset($modulenumbera[$attribs['name']]))
 		$modulenumbera[$attribs['name']] = 1;
@@ -308,7 +308,7 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 	$gridwidth = "";
 	$specialClassesString = "";
 
-	$app = & JFactory::getApplication();
+	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
@@ -412,7 +412,7 @@ function modChrome_wrightflexgridrounded($module, &$params, &$attribs) {
 	$gridwidth = "";
 	$specialClassesString = "";
 
-	$app = & JFactory::getApplication();
+	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
@@ -481,7 +481,7 @@ function modChrome_wrightCSS3($module, &$params, &$attribs) {
 	$gridwidth = "";
 	$specialClassesString = "";
 
-	$app = & JFactory::getApplication();
+	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
@@ -551,7 +551,7 @@ function modChrome_wrightrounded($module, &$params, &$attribs) {
 	$gridwidth = "";
 	$specialClassesString = "";
 
-	$app = & JFactory::getApplication();
+	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
@@ -610,7 +610,7 @@ function modChrome_wrightrounded2($module, &$params, &$attribs) {
 	$gridwidth = "";
 	$specialClassesString = "";
 
-	$app = & JFactory::getApplication();
+	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 

@@ -100,7 +100,8 @@ abstract class HtmlAdapterAbstract
 		}
 		if (JRequest::getVar('Itemid')) $class .= ' id_'.JRequest::getVar('Itemid');
 
-		$menu = & JSite::getMenu();
+		$app = JFactory::getApplication();
+		$menu = $app->getMenu();
 		if ($menu->getActive() == $menu->getDefault()) $class .= ' home';
 
 		$class .= " rev_" . $wright->revision;
@@ -211,19 +212,22 @@ abstract class HtmlAdapterAbstract
 		$check = 0;
 		$number = 0;
 		$layout = array();
+		
 		foreach (explode(';', $doc->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3')) as $item)
 		{
 			list ($col, $val) = explode(':', $item);
 
 			if ($col !== 'main' && $check == 0) $main++;
 			else $check = 1;
-
+			
+			$this->columns[$col] = new stdClass();
+			
 			$this->columns[$col]->name = $col;
 			$this->columns[$col]->size = $val;
 			$this->columns[$col]->push = 0;
 			$this->columns[$col]->pull = 0;
 			$this->columns[$col]->check = $check;
-
+			
 			$number++;
 			if ($doc->document->countModules($col) || $col == 'main')
 					$layout[] = $col;

@@ -14,6 +14,8 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 // Create shortcuts to some parameters.
 $params		= $this->item->params;
+$images = json_decode($this->item->images);
+$urls = json_decode($this->item->urls);
 $canEdit	= $this->item->params->get('access-edit');
 $user		= JFactory::getUser();
 ?>
@@ -121,8 +123,7 @@ endif; ?>
 	<?php if (!empty($this->item->contactid) && $params->get('link_author') == true): ?>
 	<?php
 		$needle = 'index.php?option=com_contact&view=contact&id=' . $this->item->contactid;
-		$app = JFactory::getApplication();
-		$item = $app->getMenu()->getItems('link', $needle, true);
+		$item = JSite::getMenu()->getItems('link', $needle, true);
 		$cntlink = !empty($item) ? $needle . '&Itemid=' . $item->id : $needle;
 	?>
 		<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', JHtml::_('link', JRoute::_($cntlink), $author)); ?>
@@ -143,7 +144,24 @@ endif; ?>
 <?php if (isset ($this->item->toc)) : ?>
 	<?php echo $this->item->toc; ?>
 <?php endif; ?>
+
+<?php if (isset($urls) AND ((!empty($urls->urls_position) AND ($urls->urls_position=='0')) OR  ($params->get('urls_position')=='0' AND empty($urls->urls_position) ))
+		OR (empty($urls->urls_position) AND (!$params->get('urls_position')))): ?>
+<?php echo $this->loadTemplate('links'); ?>
+<?php endif; ?>
+
+
 <?php if ($params->get('access-view')):?>
+	<?php  if (isset($images->image_fulltext) and !empty($images->image_fulltext)) : ?>
+	<?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
+	<div class="img-fulltext-<?php echo htmlspecialchars($imgfloat); ?>">
+	<img
+		<?php if ($images->image_fulltext_caption):
+			echo 'class="caption"'.' title="' .htmlspecialchars($images->image_fulltext_caption) .'"';
+		endif; ?>
+		src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>"/>
+	</div>
+	<?php endif; ?>
 	<?php echo $this->item->text; ?>
 
 	<?php //optional teaser intro text for guests ?>

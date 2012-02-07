@@ -21,7 +21,7 @@ class WrightTemplateBase {
 	
 	private $_isThereALogo = null;  // local variable to know if there is a logo for the site
 
-	function getInstance() {
+	public static function getInstance() {
 		static $instance = null;
 		if ($instance === null) {
 			// prefers to use the inherited WrightTemplate class for customized settings on the template itself

@@ -47,7 +47,7 @@ class WrightAdapterJoomlaLogo
 		// If user wants an image, decide which image to load
 		elseif ($doc->document->params->get('logo', 'template') == 'template') {
 			// added support for logo tone (light = "", dark = "-Dark")
-			$user = &JFactory::getUser();
+			$user = JFactory::getUser();
 			$logotone = ($user->getParam('templateTone',''));
 			if ($logotone == '') {
 				$logotone =  $doc->document->params->get('Tone','' );

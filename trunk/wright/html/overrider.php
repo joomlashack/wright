@@ -4,7 +4,7 @@ class Overrider
 {
 	static $version;
 
-	public function getVersion()
+	public static function getVersion()
 	{
 		if (!isset(self::$version)) {
 			jimport('joomla.version');
@@ -15,13 +15,13 @@ class Overrider
 		return self::$version;
 	}
 
-	public function getOverride($extension, $layout = 'default')
+	public static function getOverride($extension, $layout = 'default')
 	{
 		$type = substr($extension, 0, 3);
 
 		$file = '';
 
-		$app =& JFactory::getApplication();
+		$app = JFactory::getApplication();
         
         $version = self::getVersion();
 
