@@ -22,11 +22,12 @@ function modChrome_wrightgrid($module, &$params, &$attribs) {
 	$gridwidth = "";
 	$specialClassesString = "";
 
+	$origsuffix = $params->get('moduleclass_sfx');
+	$suffix = $origsuffix;
+
 	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
-
-		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
@@ -49,7 +50,16 @@ function modChrome_wrightgrid($module, &$params, &$attribs) {
 		<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
 		<div class="module_content">
 	<?php endif; ?>
-		<?php echo $module->content; ?>
+		<?php
+			// replaces only the first appearance of the original suffix (for the module class)
+			if ($origsuffix != $suffix) {
+				$pos = strpos($module->content,$origsuffix);
+				if ($pos !== false) {
+				    $module->content = substr_replace($module->content,$suffix,$pos,strlen($origsuffix));
+				}
+			}
+			echo $module->content;
+		?>
 	<?php if ($icon != ""): ?>
 		</div>
 	<?php endif; ?>
@@ -77,12 +87,12 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
 	$iconposition = "";
 	$gridwidth = "";
 	$specialClassesString = "";
+	$origsuffix = $params->get('moduleclass_sfx');
+	$suffix = $origsuffix;
 
 	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
-
-		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
@@ -119,7 +129,16 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
 		<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
 		<div class="module_content">
 	<?php endif; ?>
-		<?php echo $module->content; ?>
+		<?php
+			// replaces only the first appearance of the original suffix (for the module class)
+			if ($origsuffix != $suffix) {
+				$pos = strpos($module->content,$origsuffix);
+				if ($pos !== false) {
+				    $module->content = substr_replace($module->content,$suffix,$pos,strlen($origsuffix));
+				}
+			}
+			echo $module->content;
+		?>
 	<?php if ($icon != ""): ?>
 		</div>
 	<?php endif; ?>
@@ -156,12 +175,13 @@ function modChrome_wrightgridrounded($module, &$params, &$attribs) {
 	$iconposition = "";
 	$gridwidth = "";
 	$specialClassesString = "";
-
+	$origsuffix = $params->get('moduleclass_sfx');
+	$suffix = $origsuffix;
+	
 	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
-		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
@@ -195,7 +215,16 @@ function modChrome_wrightgridrounded($module, &$params, &$attribs) {
 				<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
 				<div class="module_content">
 			<?php endif; ?>
-				<?php echo $module->content; ?>
+		<?php
+			// replaces only the first appearance of the original suffix (for the module class)
+			if ($origsuffix != $suffix) {
+				$pos = strpos($module->content,$origsuffix);
+				if ($pos !== false) {
+				    $module->content = substr_replace($module->content,$suffix,$pos,strlen($origsuffix));
+				}
+			}
+			echo $module->content;
+		?>
 			<?php if ($icon != ""): ?>
 				</div>
 			<?php endif; ?>
@@ -223,12 +252,12 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 	$iconposition = "";
 	$gridwidth = "";
 	$specialClassesString = "";
+	$origsuffix = $params->get('moduleclass_sfx');
+	$suffix = $origsuffix;
 
 	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
-
-		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
@@ -278,7 +307,16 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
         <div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
         <div class="module_content">
     <?php endif; ?>
-        <?php echo $module->content; ?>
+		<?php
+			// replaces only the first appearance of the original suffix (for the module class)
+			if ($origsuffix != $suffix) {
+				$pos = strpos($module->content,$origsuffix);
+				if ($pos !== false) {
+				    $module->content = substr_replace($module->content,$suffix,$pos,strlen($origsuffix));
+				}
+			}
+			echo $module->content;
+		?>
     <?php if ($icon != ""): ?>
         </div>
     <?php endif; ?>
@@ -307,12 +345,13 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 	$iconposition = "";
 	$gridwidth = "";
 	$specialClassesString = "";
+	$origsuffix = $params->get('moduleclass_sfx');
+	$suffix = $origsuffix;
 
 	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 
-		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
@@ -373,7 +412,16 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
   					<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
   					<div class="module_content">
   				<?php endif; ?>
-			  		<?php echo $module->content; ?>
+  				<?php
+  					// replaces only the first appearance of the original suffix (for the module class)
+					if ($origsuffix != $suffix) {
+						$pos = strpos($module->content,$origsuffix);
+						if ($pos !== false) {
+						    $module->content = substr_replace($module->content,$suffix,$pos,strlen($origsuffix));
+						}
+					}
+					echo $module->content;
+				?>
   				<?php if ($icon != ""): ?>
   					</div>
   				<?php endif; ?>
@@ -411,12 +459,12 @@ function modChrome_wrightflexgridrounded($module, &$params, &$attribs) {
 	$iconposition = "";
 	$gridwidth = "";
 	$specialClassesString = "";
+	$origsuffix = $params->get('moduleclass_sfx');
+	$suffix = $origsuffix;
 
 	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
-
-		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
@@ -450,7 +498,16 @@ function modChrome_wrightflexgridrounded($module, &$params, &$attribs) {
 				<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
 				<div class="module_content">
 			<?php endif; ?>
-		  		<?php echo $module->content; ?>
+			<?php
+				// replaces only the first appearance of the original suffix (for the module class)
+				if ($origsuffix != $suffix) {
+					$pos = strpos($module->content,$origsuffix);
+					if ($pos !== false) {
+					    $module->content = substr_replace($module->content,$suffix,$pos,strlen($origsuffix));
+					}
+				}
+				echo $module->content;
+			?>
 			<?php if ($icon != ""): ?>
 				</div>
 			<?php endif; ?>
@@ -480,12 +537,12 @@ function modChrome_wrightCSS3($module, &$params, &$attribs) {
 	$iconposition = "";
 	$gridwidth = "";
 	$specialClassesString = "";
+	$origsuffix = $params->get('moduleclass_sfx');
+	$suffix = $origsuffix;
 
 	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
-
-		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
@@ -521,7 +578,16 @@ function modChrome_wrightCSS3($module, &$params, &$attribs) {
 				<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
 				<div class="module_content">
 			<?php endif; ?>
-		  		<?php echo $module->content; ?>
+			<?php
+				// replaces only the first appearance of the original suffix (for the module class)
+				if ($origsuffix != $suffix) {
+					$pos = strpos($module->content,$origsuffix);
+					if ($pos !== false) {
+					    $module->content = substr_replace($module->content,$suffix,$pos,strlen($origsuffix));
+					}
+				}
+				echo $module->content;
+			?>
 			<?php if ($icon != ""): ?>
 				</div>
 			<?php endif; ?>
@@ -550,12 +616,12 @@ function modChrome_wrightrounded($module, &$params, &$attribs) {
 	$iconposition = "";
 	$gridwidth = "";
 	$specialClassesString = "";
+	$origsuffix = $params->get('moduleclass_sfx');
+	$suffix = $origsuffix;
 
 	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
-
-		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
@@ -580,7 +646,18 @@ function modChrome_wrightrounded($module, &$params, &$attribs) {
 		<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
 		<div class="module_content">
 	<?php endif; ?>
-  		<?php echo $module->content; ?>
+
+		<?php
+			// replaces only the first appearance of the original suffix (for the module class)
+			if ($origsuffix != $suffix) {
+				$pos = strpos($module->content,$origsuffix);
+				if ($pos !== false) {
+				    $module->content = substr_replace($module->content,$suffix,$pos,strlen($origsuffix));
+				}
+			}
+			echo $module->content;
+		?>
+
 	<?php if ($icon != ""): ?>
 		</div>
 	<?php endif; ?>
@@ -609,12 +686,12 @@ function modChrome_wrightrounded2($module, &$params, &$attribs) {
 	$iconposition = "";
 	$gridwidth = "";
 	$specialClassesString = "";
+	$origsuffix = $params->get('moduleclass_sfx');
+	$suffix = $origsuffix;
 
 	$app = JFactory::getApplication();
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
-
-		$suffix = $params->get('moduleclass_sfx');
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
@@ -648,7 +725,18 @@ function modChrome_wrightrounded2($module, &$params, &$attribs) {
 			<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
 			<div class="module_content">
 		<?php endif; ?>
-	  		<?php echo $module->content; ?>
+
+		<?php
+			// replaces only the first appearance of the original suffix (for the module class)
+			if ($origsuffix != $suffix) {
+				$pos = strpos($module->content,$origsuffix);
+				if ($pos !== false) {
+				    $module->content = substr_replace($module->content,$suffix,$pos,strlen($origsuffix));
+				}
+			}
+			echo $module->content;
+		?>
+
 		<?php if ($icon != ""): ?>
 			</div>
 		<?php endif; ?>
