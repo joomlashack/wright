@@ -1,6 +1,9 @@
 <?php
 defined('_JEXEC') or die;
 JHtml::_('behavior.keepalive');
+JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.tooltip');
+
 	$script = '
 		function validateForm(frm) {
 			var valid = document.formvalidator.isValid(frm);
@@ -26,35 +29,43 @@ JHtml::_('behavior.keepalive');
 <?php endif; ?>
 
 <div class="contact-form">
-	<form action="<?php echo JRoute::_('index.php');?>" method="post" name="emailForm" id="emailForm" class="form-validate">
-		<p class="form-required">
-			<?php echo JText::_('COM_CONTACT_FORM_LABEL'); ?>
-		</p>
-		<div class="contact-email">
-			<div>
-				<?php echo $this->form->getLabel('contact_name'); ?>
-				<?php echo $this->form->getInput('contact_name'); ?>
-			</div>
-			<div>
-				<?php echo $this->form->getLabel('contact_email'); ?>
-				<?php echo $this->form->getInput('contact_email'); ?>
-			</div>
-			<div>
-				<?php echo $this->form->getLabel('contact_subject'); ?>
-				<?php echo $this->form->getInput('contact_subject'); ?>
-			</div>
-			<div>
-				<?php echo $this->form->getLabel('contact_message'); ?>
-				<?php echo $this->form->getInput('contact_message'); ?>
-			</div>
-
-			<?php if ($this->params->get('show_email_copy')) : ?>
-			<div class="fl-right">
+	<form id="contact-form" action="<?php echo JRoute::_('index.php'); ?>" method="post" class="form-validate">
+		<fieldset>
+			<legend><?php echo JText::_('COM_CONTACT_FORM_LABEL'); ?></legend>
+			                
+         <div class="contact_email<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
+			<label for="contact_name">
+				&nbsp;<?php echo $this->form->getLabel('contact_name'); ?>:
+			</label>
+			<br />
+			<?php echo $this->form->getInput('contact_name'); ?>
+			<br />
+			<label id="contact_emailmsg" for="contact_email">
+				&nbsp;<?php echo $this->form->getLabel('contact_email'); ?>:
+			</label>
+			<br />
+			<?php echo $this->form->getInput('contact_email'); ?>
+			<br />
+			<label for="contact_subject">
+				&nbsp;<?php echo $this->form->getLabel('contact_subject'); ?>:
+			</label>
+			<br />
+			<?php echo $this->form->getInput('contact_subject'); ?>
+			<br /><br />
+			<label id="contact_textmsg" for="contact_text">
+				&nbsp;<?php echo $this->form->getLabel('contact_message'); ?>:
+			</label>
+			<br />
+			<?php echo $this->form->getInput('contact_message'); ?>
+			<?php if ($this->contact->params->get( 'show_email_copy' )) : ?>
+			<br />
 				<?php echo $this->form->getInput('contact_email_copy'); ?>
-                <?php echo $this->form->getLabel('contact_email_copy'); ?>
-			</div>
+				<label for="contact_email_copy">
+					<?php echo $this->form->getLabel('contact_email_copy'); ?>
+				</label>
 			<?php endif; ?>
-            
+  			<br />
+          
             <?php //Dynamically load any additional fields from plugins.
             foreach ($this->form->getFieldsets() as $fieldset): ?>
                   <?php if ($fieldset->name != 'contact'):?>
@@ -84,5 +95,6 @@ JHtml::_('behavior.keepalive');
 			<input type="hidden" name="return" value="<?php echo $this->return_page;?>" />
 			<?php echo JHtml::_( 'form.token' ); ?>
 		</div>
-	</form>
+		</fieldset>
+	</form><br />
 </div>
