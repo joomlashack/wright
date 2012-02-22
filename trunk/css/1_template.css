@@ -982,9 +982,6 @@ margin:0 20px 20px 0;
 }
 /* ***************************************************************************************************** */
 /* CONTACT COMPONENT */
-.category {
-clear:both;
-}
 .category tbody td{
 padding:5px;
 }

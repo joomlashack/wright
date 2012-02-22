@@ -151,7 +151,7 @@ abstract class HtmlAdapterAbstract
 				}
 			}
 			
-			if (!$forcedSidebar)
+			if (!$forcedSidebar || $editmode)
 				return;
 		}
 
@@ -213,15 +213,22 @@ abstract class HtmlAdapterAbstract
 		$number = 0;
 		$layout = array();
 		
+		$editmode = false;
+		
+		// Check editing mode
+		if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form' || JRequest::getVar('layout') == 'edit') {
+			$editmode = true;
+		}
+		
 		foreach (explode(';', $doc->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3')) as $item)
 		{
 			list ($col, $val) = explode(':', $item);
 
 			if ($col !== 'main' && $check == 0) $main++;
 			else $check = 1;
-			
-			$this->columns[$col] = new stdClass();
-			
+
+            		$this->columns[$col] = new JObject();
+
 			$this->columns[$col]->name = $col;
 			$this->columns[$col]->size = $val;
 			$this->columns[$col]->push = 0;
@@ -231,7 +238,7 @@ abstract class HtmlAdapterAbstract
 			$number++;
 			if ($doc->document->countModules($col) || $col == 'main')
 					$layout[] = $col;
-			else {
+			else if (!$editmode) {
 				// addition for forcing a sidebar (if it is a template which must have a sidebar for some of its positions)
 				if (class_exists("WrightTemplate")) {
 					if (property_exists("WrightTemplate", "forcedSidebar")) {
@@ -244,8 +251,8 @@ abstract class HtmlAdapterAbstract
 		}
 
 		// Auto set to full width if editing
-		if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form') {
-			empty($layout);
+		if ($editmode) {
+			$layout = Array();
 			$layout[] = 'main';
 		}
 		

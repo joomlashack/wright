@@ -80,7 +80,7 @@
 					<option value="1">YES</option>
 				</field>
 				<field name="logo" type="logo" default="template" label="Logo Image" description="You can select your logo from the images directory after you upload the image." />
-				<field name="logowidth" type="grid" defualt="4" label="Logo Width" description="Select the column width for the logo, the rest of the space will be given to the newsflash module, or if you set it to full width the module will dissapear" />
+				<field name="logowidth" type="grid" default="4" label="Logo Width" description="Select the column width for the logo, the rest of the space will be given to the newsflash module, or if you set it to full width the module will dissapear" />
 				<field name="body_font" type="typography" default="arial" label="Body Font" description="Select the default font face for the body" />
 				<field name="header_font" type="typography" default="arial" label="Heading Font" description="Select the default font face for the headers" />
 				<field name="columns" type="columns" default="sidebar1:3;main:6;sidebar2:3" sidebars="2" label="Columns" description="You can set the default widths and arrange the main columns. Any columns that are unused will just be hidden and the main column will be widened." />
