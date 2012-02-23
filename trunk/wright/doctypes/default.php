@@ -145,7 +145,7 @@ abstract class HtmlAdapterAbstract
 
 			if (class_exists("WrightTemplate")) {
 				if (property_exists("WrightTemplate", "forcedSidebar")) {
-					$wrightTemplate =& WrightTemplate::getInstance();
+					$wrightTemplate = WrightTemplate::getInstance();
 					if ($id == $wrightTemplate->forcedSidebar)
 						$forcedSidebar = true;
 				}
@@ -242,7 +242,7 @@ abstract class HtmlAdapterAbstract
 				// addition for forcing a sidebar (if it is a template which must have a sidebar for some of its positions)
 				if (class_exists("WrightTemplate")) {
 					if (property_exists("WrightTemplate", "forcedSidebar")) {
-						$wrightTemplate =& WrightTemplate::getInstance();
+						$wrightTemplate = WrightTemplate::getInstance();
 						if ($col == $wrightTemplate->forcedSidebar)
 							$layout[] = $col;
 					}
