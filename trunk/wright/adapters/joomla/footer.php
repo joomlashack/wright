@@ -20,7 +20,15 @@ class WrightAdapterJoomlaFooter
 
 			$md5 = md5($url);
 
-			$nums = filter_var($md5, FILTER_SANITIZE_NUMBER_INT);
+			$nums = "";
+			for ($i=0; $i<strlen($md5); $i++) {
+				$j = ord(substr($md5,$i,1));
+				
+				if ($j == 43 ||
+					$j == 43 ||
+					$j >= 48 && $j <= 57)
+					$nums .= substr($md5,$i,1);
+			}
 			
 			$first = substr($nums,0,2);
 			$second = substr($nums,2,2);
