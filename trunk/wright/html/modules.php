@@ -366,7 +366,7 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 		}
 	}
 	
-    $document = &JFactory::getDocument();
+    $document = JFactory::getDocument();
 	static $modulenumbera = Array();
 	if (!isset($modulenumbera[$attribs['name']]))
 		$modulenumbera[$attribs['name']] = 1;
