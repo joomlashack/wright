@@ -67,6 +67,13 @@ ol {
 li {
 	margin-left: 30px;
 }
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+	margin-left: 30px;
+	margin-top: 0;
+}
 hr {
 	border: 0 #ccc solid;
 	border-top-width: 1px;
