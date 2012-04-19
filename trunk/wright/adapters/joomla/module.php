@@ -23,6 +23,12 @@ class WrightAdapterJoomlaModule
 				$html .= '<jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['chrome'].'" grid="'.$doc->countModules($args['name']).'" />';
 				$html .= '</div>';
 				break;
+			case 'fixedgrid' :
+				$doc = JFactory::getDocument();
+				$html .= '<div class="'.$args['wrapper'].'">';
+				$html .= '<jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['chrome'].'" grid="'.$args['grid'].'" />';
+				$html .= '</div>';
+				break;
 			default :
 				$html .= '<div class="'.$args['wrapper'].'">';
 				$html .= '<jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['chrome'].'" />';
