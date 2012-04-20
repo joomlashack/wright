@@ -452,4 +452,39 @@ span.star {
 	display: inline-block;
 }
 
+/* toc */
+
+div#article-index {
+	color: #330;
+	border: 1px solid #D6D6D6;
+	margin: 5px;
+	float: right;
+	width: auto;
+	padding: 10px;
+}
+
+div#article-index ul {
+	margin: 0;
+	padding: 0;
+}
+
+div#article-index ul li {
+	list-style: none;
+	font-size: 0.9em;
+	font-weight: normal;
+	text-align: left;
+	padding: 0;
+	margin: 0 5px;
+}
+
+div#article-index ul li a.active {
+	font-weight: bold;
+}
+
+div.pagenavcounter {
+	color: #4F4F4F;
+	text-align: left;
+}
+
+
 /* @end */
