@@ -12,6 +12,8 @@ defined('_JEXEC') or die('You are not allowed to directly access this file');
 
 class WrightTemplateBase {
 	public $suffixes = false;  // checks if template allows stacked suffixes
+	public $fullHeightSidebars = false;  // checks if this template uses full height sidebars
+
 	public $specialClasses = Array();  // special stacked suffixes classes
 	
 	public $forcedSidebar = "";  // optional forced sidebar position, starts with nothing to be decided by fixed position (parameter) or auto setting

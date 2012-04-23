@@ -124,10 +124,12 @@ abstract class HtmlAdapterAbstract
 			$class .= ' ' . $classes[1];
 		}
 
+		$this->columns['main']->exists = true;  // marks that column really exists
+
 		if (strpos($matches[1], 'class='))
-			$main = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
+			$main = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0], 1);
 		else
-			$main = preg_replace('/<section/iU', '<section class="'.$class.'"', $matches[0]);
+			$main = preg_replace('/<section/iU', '<section class="'.$class.'"', $matches[0], 1);
 
 		return $main;
 	}
@@ -154,6 +156,8 @@ abstract class HtmlAdapterAbstract
 			if (!$forcedSidebar || $editmode)
 				return;
 		}
+		
+		$this->columns[$id]->exists = true;  // marks that column really exists
 
 		$class = 'grid_'.$this->columns[$id]->size;
 		if ($this->columns[$id]->push) $class .= ' push_'.$this->columns[$id]->push;
@@ -164,9 +168,9 @@ abstract class HtmlAdapterAbstract
 		}
 
 		if (strpos($matches[1], 'class='))
-			$sidebar = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
+			$sidebar = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0], 1);
 		else
-			$sidebar = preg_replace('/<aside/iU', '<aside class="'.$class.'"', $matches[0]);
+			$sidebar = preg_replace('/<aside/iU', '<aside class="'.$class.'"', $matches[0], 1);
 
 		return $sidebar;
 	}
@@ -182,7 +186,7 @@ abstract class HtmlAdapterAbstract
 		}
 		
 		if (strpos($matches[1], 'class='))
-			$footer = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0]);
+			$footer = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0], 1);
 
 		return $footer;
 	}
@@ -202,6 +206,44 @@ abstract class HtmlAdapterAbstract
 
 		return $header;
 	}
+	
+	// Full Height Columns (sidebars)
+	public function getFullHeightColumns($matches) {
+		$before = 0;
+		$after = 0;
+		
+		$i = 0;
+		foreach ($this->columns as $col) {
+			if ($col->exists) {  // only counts the column if really exists
+				switch ($i) {
+					case 0:
+						if ($col->name == "sidebar1" || $col->name == "sidebar2")
+							$before += $col->size;
+						break;
+					case 1:
+						if ($before > 0 && ($col->name == "sidebar1" || $col->name == "sidebar2"))
+							$before += $col->size;
+						elseif ($col->name == "sidebar1" || $col->name == "sidebar2") {
+							$after += $col->size;
+						}
+						break;
+					case 2:
+						if ($col->name == "sidebar1" || $col->name == "sidebar2")
+							$after += $col->size;
+						break;
+				}
+			}
+			$i++;
+		}
+		
+		
+		$content = $matches[1] .
+			"<div id=\"columnscontainer\" class=\"container_12 main before_$before after_$after\">" .
+		 	$matches[2] .
+		 	"</div>" .
+		 	$matches[3];
+		return $content;
+	}
 
 	private function setupColumns()
 	{
@@ -213,11 +255,20 @@ abstract class HtmlAdapterAbstract
 		$number = 0;
 		$layout = array();
 		
-		$editmode = false;
+		$wrightTemplate = null;
 		
 		// Check editing mode
 		if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form' || JRequest::getVar('layout') == 'edit') {
 			$editmode = true;
+		}
+
+		if (class_exists("WrightTemplate") && !$editmode) {
+			$wrightTemplate = WrightTemplate::getInstance();
+			
+			// checks if the template has full height sidebars for adding the tag for the columns (sidebars)
+			if ($wrightTemplate->fullHeightSidebars) {
+				$this->tags['fullHeightColumns'] = '/(.*)<div class="container_12" id="columnscontainer">(.*)<\/div><div id="columnscontainer_close"><\/div>(.*)$/isU';
+			}
 		}
 		
 		foreach (explode(';', $doc->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3')) as $item)
@@ -234,25 +285,25 @@ abstract class HtmlAdapterAbstract
 			$this->columns[$col]->push = 0;
 			$this->columns[$col]->pull = 0;
 			$this->columns[$col]->check = $check;
+			$this->columns[$col]->exists = false;  // contains if column really exists into content or not
 			
 			$number++;
 			if ($doc->document->countModules($col) || $col == 'main')
 					$layout[] = $col;
-			else if (!$editmode) {
+			else {
 				// addition for forcing a sidebar (if it is a template which must have a sidebar for some of its positions)
-				if (class_exists("WrightTemplate")) {
+				if ($wrightTemplate)
 					if (property_exists("WrightTemplate", "forcedSidebar")) {
-						$wrightTemplate = WrightTemplate::getInstance();
+						$wrightTemplate =& WrightTemplate::getInstance();
 						if ($col == $wrightTemplate->forcedSidebar)
 							$layout[] = $col;
 					}
-				}
 			}
 		}
-
+		
 		// Auto set to full width if editing
-		if ($editmode) {
-			$layout = Array();
+		if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form') {
+			empty($layout);
 			$layout[] = 'main';
 		}
 		
