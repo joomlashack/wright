@@ -30,7 +30,7 @@ class Wright
 	public $baseurl;
 	public $author;
 	
-	public $revision = "206";
+	public $revision = "207";
 
 	function Wright()
 	{
@@ -292,7 +292,7 @@ class Wright
 		}
 
 		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . 'rtl.css'))
-			$styles[] = JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . 'rtl.css';
+			$styles['template'][] = 'rtl.css';
 			
 		//Check to see if custom.css file is present, and if so add it after all other css files
 			if (is_file(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . 'custom.css'))
