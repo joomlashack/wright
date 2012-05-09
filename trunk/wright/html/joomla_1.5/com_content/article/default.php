@@ -10,9 +10,12 @@ defined('_JEXEC') or die('Restricted access');
 		<h1> <?php echo $this->escape($this->params->get('page_title')); ?> </h1>
 	<?php endif; ?>
 	
-	<?php if ($this->params->get('show_print_icon') || $this->params->get('show_email_icon') || $this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>
+	<?php if ($this->params->get('show_pdf_icon') || $this->params->get('show_print_icon') || $this->params->get('show_email_icon') || $this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>
 	<ul class="actions">
 		<?php if (!$this->print) : ?>
+		<?php if ($this->params->get('show_pdf_icon')) : ?>
+		<li class="pdf-icon"> <?php echo JHtml::_('icon.pdf',  $this->article, $this->params, $this->access); ?> </li>
+		<?php endif; ?>
 		<?php if ($this->params->get('show_print_icon')) : ?>
 		<li class="print-icon"> <?php echo JHtml::_('icon.print_popup',  $this->article, $this->params, $this->access); ?> </li>
 		<?php endif; ?>

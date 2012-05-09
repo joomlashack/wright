@@ -2,8 +2,13 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 
-<?php if ($this->item->params->get('show_print_icon') || $this->item->params->get('show_email_icon') || $this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>
+<?php if ($this->item->params->get('show_pdf_icon') || $this->item->params->get('show_print_icon') || $this->item->params->get('show_email_icon') || $this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>
 	<ul class="actions">
+		<?php if ($this->item->params->get('show_pdf_icon')) : ?>
+		<li class="pdf-icon">
+			<?php echo JHtml::_('icon.pdf', $this->item, $this->item->params, $this->access); ?>
+		</li>
+		<?php endif; ?>
 		<?php if ($this->item->params->get('show_print_icon')) : ?>
 		<li class="print-icon">
 			<?php echo JHtml::_('icon.print_popup', $this->item, $this->item->params, $this->access); ?>

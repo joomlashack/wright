@@ -8,8 +8,8 @@ defined('_JEXEC') or die('Restricted access'); ?>
 				<?php echo $this->escape($item->title); ?></a>
 		</h2>
 
-		<?php $ShowArticleInfo = ((intval($this->article->modified) !=0 && $this->params->get('show_modify_date')) || ($this->params->get('show_author') && ($this->article->author != "")) || ($this->params->get('show_create_date'))
-		($this->params->get('show_section') && $this->article->sectionid) || ($this->params->get('show_category') && $this->article->catid)); ?>
+		<?php $ShowArticleInfo = ((intval($this->article->modified) !=0 && $this->params->get('show_modify_date')) || ($this->params->get('show_author') && ($this->article->author != "")) || ($this->params->get('show_create_date')) ||
+			($this->params->get('show_section') && $this->article->sectionid) || ($this->params->get('show_category') && $this->article->catid)); ?>
 		<?php if ($ShowArticleInfo) : ?>
 		<div class="article-info-box">
 
