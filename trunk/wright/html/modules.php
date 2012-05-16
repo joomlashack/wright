@@ -42,7 +42,7 @@ function modChrome_wrightgrid($module, &$params, &$attribs) {
 		}
 	}
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>grid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
   <?php if ($module->showtitle) : ?>
   <h3><?php echo $module->title; ?></h3>
   <?php endif; ?>
@@ -108,7 +108,7 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
 	}
 	
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>grid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
   <div class="pad4">
   	<div class="pad5">
   		<div class="pad6"></div>
@@ -202,7 +202,7 @@ function modChrome_wrightgridrounded($module, &$params, &$attribs) {
 		$moduletitle = NULL;
 	}
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> grid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>grid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 	<div class="side TL"></div>
 	<div class="side TR"></div>
 	<div class="side BL"></div>
@@ -298,7 +298,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     }
     $modulenumbera[$attribs['name']]++;
 ?>
-<div class="module<?php echo $class; ?> flexgrid_<?php echo $grid ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="module<?php echo $class; ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>flexgrid_<?php echo $grid ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
   <div class="pad"> 
   	  <?php if ($module->showtitle) : ?>
   <h3><?php echo $module->title; ?></h3>
@@ -392,7 +392,7 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
     }
     $modulenumbera[$attribs['name']]++;
 ?>
-<div class="module<?php echo $class; ?> flexgrid_<?php echo ($gridwidth != "" ? $gridwidth : $grid) ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="module<?php echo $class; ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>flexgrid_<?php echo ($gridwidth != "" ? $gridwidth : $grid) ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 	<div class="pad4">
 		<div class="pad5">
   		<div class="pad6"></div>
@@ -485,7 +485,7 @@ function modChrome_wrightflexgridrounded($module, &$params, &$attribs) {
 		$moduletitle = NULL;
 	}
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> flexgrid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>flexgrid<?php echo (isset($attribs['grid']) ? "_" . $attribs['grid'] : "") ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 	<div class="side TL"></div>
 	<div class="side TR"></div>
 	<div class="side BL"></div>
@@ -569,7 +569,7 @@ function modChrome_wrightCSS3($module, &$params, &$attribs) {
 		$moduletitle = NULL;
 	}
 ?>
-<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="module<?php echo $params->get( 'moduleclass_sfx' ); ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 	<div class="pad">
 			<?php if ($module->showtitle) : ?>
 				<h3><?php echo $module->title; ?></h3>
@@ -636,7 +636,7 @@ function modChrome_wrightrounded($module, &$params, &$attribs) {
 		}
 	}
 ?>
-<div class="moduletable<?php echo $params->get( 'moduleclass_sfx' ); ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="moduletable<?php echo $params->get( 'moduleclass_sfx' ); ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 <span class="tl"></span><span class="tr"></span>
     <div>
 	<?php if ($module->showtitle) : ?>
@@ -712,7 +712,7 @@ function modChrome_wrightrounded2($module, &$params, &$attribs) {
 		$moduletitle = NULL;
 	}
 ?>
-<div class="moduletable<?php echo $params->get( 'moduleclass_sfx' ); ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="moduletable<?php echo $params->get( 'moduleclass_sfx' ); ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
 	<div class="side TL"></div>
 	<div class="side TR"></div>
 	<div class="side BL"></div>
