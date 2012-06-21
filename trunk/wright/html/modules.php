@@ -259,6 +259,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 	$templatename = $app->getTemplate();
 	if ($suffixes) {
 		parse_suffix($suffix, $icon, $iconposition,$gridwidth,$specialClasses,$specialClassesResult);
+
 		// suffix return to the parameters
 		$params->set('moduleclass_sfx',$suffix);
 		
@@ -298,7 +299,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     }
     $modulenumbera[$attribs['name']]++;
 ?>
-<div class="module<?php echo $class; ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>flexgrid_<?php echo $grid ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="module<?php echo $class; ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>flexgrid_<?php echo ($gridwidth != "" ? $gridwidth : $grid) ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
   <div class="pad"> 
   	  <?php if ($module->showtitle) : ?>
   <h3><?php echo $module->title; ?></h3>
