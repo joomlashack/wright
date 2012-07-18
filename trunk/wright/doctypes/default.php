@@ -152,6 +152,13 @@ abstract class HtmlAdapterAbstract
 						$forcedSidebar = true;
 				}
 			}
+
+			$editmode = false;
+			
+			// Check editing mode
+			if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form' || JRequest::getVar('layout') == 'edit') {
+				$editmode = true;
+			}
 			
 			if (!$forcedSidebar || $editmode)
 				return;

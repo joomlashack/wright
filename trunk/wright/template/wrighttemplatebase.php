@@ -74,7 +74,6 @@ class WrightTemplateBase {
 		}
 		
 		require_once(dirname(__FILE__) . DS . '..' . DS . 'adapters' . DS . 'joomla' . DS . 'logo.php');
-//		require_once("wright/adapters/joomla/logo.php");
 		$this->_isThereALogo = WrightAdapterJoomlaLogo::isThereALogo();
 		return $this->_isThereALogo;
 	}

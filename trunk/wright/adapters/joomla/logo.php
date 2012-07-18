@@ -3,7 +3,7 @@
 class WrightAdapterJoomlaLogo
 {
 	// checks the existance of a logo
-	public function isThereALogo() {
+	public static function isThereALogo() {
 		$dochtml = JFactory::getDocument();
 		
 		// if is set as a module position 'logo', checks if there is any module in that position

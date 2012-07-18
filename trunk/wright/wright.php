@@ -30,7 +30,7 @@ class Wright
 	public $baseurl;
 	public $author;
 	
-	public $revision = "213";
+	public $revision = "214";
 
 	function Wright()
 	{
