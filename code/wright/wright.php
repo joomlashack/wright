@@ -30,7 +30,7 @@ class Wright
 	public $baseurl;
 	public $author;
 
-	public $revision = "3.0.7";
+	public $revision = "3.0.8";
 
 	// Urls
 	private $_urlTemplate = null;

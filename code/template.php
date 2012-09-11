@@ -50,7 +50,7 @@ if ($this->countModules('toolbar')) {
         <!-- featured -->
         <?php if ($this->countModules('featured')) : ?>
         <div id="featured">
-            <w:module type="<?php echo $gridMode; ?>" name="featured" chrome="none" />
+            <w:module type="none" name="featured" chrome="xhtml" />
         </div>
         <?php endif; ?>
         <!-- grid-top -->
@@ -75,7 +75,7 @@ if ($this->countModules('toolbar')) {
                 <?php if ($this->countModules('above-content')) : ?>
                 <!-- above-content -->
                 <div id="above-content">
-                    <w:module type="<?php echo $gridMode; ?>" name="above-content" chrome="none" />
+                    <w:module type="none" name="above-content" chrome="xhtml" />
                 </div>
                 <?php endif; ?>
             	<?php if ($this->countModules('breadcrumbs')) : ?>
@@ -89,7 +89,7 @@ if ($this->countModules('toolbar')) {
                 <?php if ($this->countModules('below-content')) : ?>
                 <!-- below-content -->
                 <div id="below-content">
-                    <w:module type="<?php echo $gridMode; ?>" name="below-content" chrome="none" />
+                    <w:module type="none" name="below-content" chrome="xhtml" />
                 </div>
                 <?php endif; ?>
             </section>
