@@ -30,12 +30,13 @@ class Wright
 	public $baseurl;
 	public $author;
 
-	public $revision = "3.0.5";
+	public $revision = "3.0.6";
 
 	// Urls
 	private $_urlTemplate = null;
 	private $_urlWright = null;
 	private $_urlBootstrap = null;
+	private $_urlJS = null;
 
 	function Wright()
 	{
@@ -51,6 +52,7 @@ class Wright
 		$this->_urlWright = $this->_urlTemplate . '/wright';
 		$this->_urlBootstrap = $this->_urlWright . '/bootstrap';
 		$this->_urlFontAwesomeMore = $this->_urlWright . '/fontawesomemore';
+		$this->_urlJS = $this->_urlWright . '/js';
 
 		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
 
@@ -135,7 +137,7 @@ class Wright
             switch ($loadJquery) {
                 // load jQuery locally
                 case 1:
-                    $jquery = JURI::root().'templates/' . $this->document->template . '/wright/js/jquery-1.8.0.min.js';
+                    $jquery = $this->_urlJS . '/jquery-1.8.0.min.js';
                     break;
                 // load jQuery from Google
                 default:
@@ -149,6 +151,10 @@ class Wright
 
 		// load bootstrap JS
 		$this->document->addScript($this->_urlBootstrap . '/js/bootstrap.min.js');
+		
+		if ($this->document->params->get('stickyFooter', 1)) {
+			$this->document->addScript($this->_urlJS . '/utils.js');
+		}
 
 		// Add header script if set
 		if (trim($this->document->params->get('headerscript', '')) !== '')

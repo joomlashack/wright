@@ -117,13 +117,15 @@ if ($this->countModules('toolbar')) {
         
     </div>
     
-        <!-- footer -->
-    <footer id="footer" >
-    	<?php if ($this->countModules('footer')) : ?>
-		<w:module type="<?php echo $gridMode; ?>" name="footer" chrome="wrightflexgrid" />
-		 <?php endif; ?>
-		<w:footer />
-    </footer>
+    <!-- footer -->
+    <div class="wrapper-footer">
+	    <footer id="footer" <?php if ($this->params->get('stickyFooter',1)) : ?> class="sticky"<?php endif;?>>
+	    	<?php if ($this->countModules('footer')) : ?>
+			<w:module type="<?php echo $gridMode; ?>" name="footer" chrome="wrightflexgrid" />
+			 <?php endif; ?>
+			<w:footer />
+	    </footer>
+    </div>
 	
 </body>
 </html>

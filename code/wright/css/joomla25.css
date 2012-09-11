@@ -17,11 +17,15 @@ Ctrl/Cmd + F to find the @groups named below
 /* @group Article Column Structure */
 
 /* DEFAULT HTML *****************************/
+html {
+	height: 100%;
+}
 body{
-	padding-top: 10px;
+	min-height: 100%;
+	position: relative;
 }
 body.toolbarpadding {
-	padding-top: 50px;
+	padding-top: 0;
 }
 
 @media (max-width: 979px){
@@ -30,6 +34,7 @@ body.toolbarpadding {
 		padding-top: 0;
 	}
 }
+
 
 a {
 	
@@ -146,12 +151,15 @@ a.joomlashack {
 	background-image:-o-linear-gradient(top,#222,#111);
 	background-image:linear-gradient(to bottom,#222,#111);
 	background-repeat:repeat-x;border-color:#252525;
-	filter:progid:dximagetransform.microsoft.gradient(startColorstr='#ff222222',endColorstr='#ff111111',GradientType=0)}
+	filter:progid:dximagetransform.microsoft.gradient(startColorstr='#ff222222',endColorstr='#ff111111',GradientType=0)
 }
 
-#footer a {
-	color:#000000;
+#footer.sticky {
+	width: 100%;
+	bottom: 0;
+	position: absolute;
 }
+
 /* @ end Footer */
 
 /* @ loging ***************************************/
@@ -752,12 +760,20 @@ ul#archive-items{
 }
 
 /* Toolbar */
+
+#toolbar {
+	margin-bottom: 0;
+}
+
 nav div.toolbar {
 	padding-left: 40px;
 	padding-right: 40px;
 }
 .toolbar.container{
 	margin-left: 10px;
+}
+.wrapper-toolbar{
+	min-height: 40px;
 }
 /* Menu - Bootstrap Dropdown Navbar - Addition for multi-level ***********************************************************************************/
 
@@ -974,7 +990,9 @@ dl.label.label-info dt{
     cursor: default;	
 }
 .nav-tabs .tabs a {
-    border: 1px solid #000000;
+    border: 1px solid #ccc;
+    background-color:#ccc;
+    border-bottom:4px solid #ccc;
     border-radius: 4px 4px 0 0;
     line-height: 18px;
     padding-top: 8px;
@@ -1138,4 +1156,13 @@ span.spacer{
 	display: block;
     float: left;
     margin: 10px 0;
+}
+@media (max-width: 767px){
+	
+	.tabs.nav.nav-tabs dt.tabs{
+		float: none;
+	}
+	.nav-tabs .tabs a{
+		display: block;
+	}
 }
