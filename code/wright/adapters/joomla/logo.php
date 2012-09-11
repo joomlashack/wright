@@ -3,7 +3,7 @@
 class WrightAdapterJoomlaLogo
 {
 	// checks the existance of a logo
-	public function isThereALogo() {
+	public static function isThereALogo() {
 		$dochtml = JFactory::getDocument();
 
 		// if is set as a module position 'logo', checks if there is any module in that position
@@ -71,7 +71,6 @@ class WrightAdapterJoomlaLogo
 
 		$html = '<div id="logo" class="span'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
 		if ($doc->document->params->get('logowidth') !== '12') $html .= '<div id="'.$args['name'].'" class="span'.(12 - $doc->document->params->get('logowidth', '6')).'"><jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" /></div>';
-		//$html .= '<div class="clearfix"></div>';
 		return $html;
 	}
 }

@@ -6,9 +6,9 @@
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>http://www.joomlashack.com</authorUrl>
-	<copyright>Copyright Joomlashack 2011. All rights reserved</copyright>
+	<copyright>Copyright Joomlashack 2012. All rights reserved</copyright>
 	<license>GNU GPLv2</license>
-	<version>3.0.0</version>
+	<version>3.0.0 alpha2</version>
     <description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
     
 	<languages folder="language">
@@ -56,7 +56,7 @@
 	</positions>
 	
 	<config>
-		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_1.6">
+		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_2.5">
 			<fieldset name="basic">
                 <!-- Start of default Wright params -->
 				<field name="helper" type="help" label="TPL_JS_WRIGHT_FIELD_NEED_HELP_LABEL" description="TPL_JS_WRIGHT_FIELD_NEED_HELP_DESC"/>
@@ -86,14 +86,6 @@
 					<option value="row-fluid">TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROWMODE_FLUID</option>
 					<option value="row">TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROWMODE_DEFAULT</option>
 				</field>
-				<!--field name="forceToolbarMenu" type="list" default="1" label="TPL_JS_WRIGHT_FIELD_FORCE_TOOLBAR_MENU_LABEL" description="TPL_JS_WRIGHT_FIELD_FORCE_TOOLBAR_MENU_DESC">
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-				</field>
-				<field name="forceBottomMenu" type="list" default="1" label="TPL_JS_WRIGHT_FIELD_FORCE_BOTTOM_MENU_LABEL" description="TPL_JS_WRIGHT_FIELD_FORCE_BOTTOM_MENU_DESC">
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-				</field -->
                 <!-- End of default Wright params -->
 			</fieldset>
 		</fields>
