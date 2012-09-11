@@ -30,7 +30,7 @@ class Wright
 	public $baseurl;
 	public $author;
 
-	public $revision = "3.0b";
+	public $revision = "3.0.0";
 
 	// Urls
 	private $_urlTemplate = null;
@@ -135,11 +135,11 @@ class Wright
             switch ($loadJquery) {
                 // load jQuery locally
                 case 1:
-                    $jquery = JURI::root().'templates/' . $this->document->template . '/wright/js/jquery-1.7.2.min.js';
+                    $jquery = JURI::root().'templates/' . $this->document->template . '/wright/js/jquery-1.8.0.min.js';
                     break;
                 // load jQuery from Google
                 default:
-                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js';
+                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js';
                     break;
             }
             $this->document->addScript($jquery);
@@ -282,10 +282,11 @@ class Wright
 
 		$browser = JBrowser::getInstance();
 
-		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
-		//$styles['wright'] = array('reset.css', 'layout.css', 'typography.css');
-		$styles['bootstrap'] = array('bootstrap.min.css', 'bootstrap-responsive.min.css');
-		$styles['fontawesomemore'] = array('font-awesome.css', 'font-awesome-ie7.css');
+		$styles['bootstrap'] = array('bootstrap.min.css');
+		if ($this->document->params->get('responsive',1)) {
+			$styles['bootstrap'][] = 'bootstrap-responsive.min.css';
+		}
+		$styles['fontawesomemore'] = array('font-awesome.css');
         $version = explode('.', JVERSION);
         $version = $version[0].$version[1];
         if (is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.css'))
@@ -321,6 +322,9 @@ class Wright
 					if ($this->document->params->get('doctype') == 'html5')
 						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/js/html5.js');
 					break;
+				case '7' :
+					$styles['fontawesomemore'][] = 'font-awesome-ie7.css';
+					// does not break for leaving defaults
 				default :
 					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie' . $major . '.css'))
 						$styles['ie'][] = 'ie' . $major . '.css';

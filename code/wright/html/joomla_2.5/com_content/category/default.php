@@ -25,8 +25,7 @@ if (!function_exists("wright_joomla_content_category")) :
 		$buffer = preg_replace('/<dd class="hits">/Ui', '<dd class="hits"><i class="icon-signal"></i>', $buffer);
 		$buffer = preg_replace('/<dd class="parent-category-name">/Ui', '<dd class="hits"><i class="icon-folder-close"></i>', $buffer);
 	    $buffer = preg_replace('/<ul class="actions">/Ui', '<ul class="btn-group actions">', $buffer);
-		$buffer = preg_replace('/<li class="print-icon">/Ui', '<li class="btn print-icon">', $buffer);
-		$buffer = preg_replace('/<li class="email-icon">/Ui', '<li class="btn email-icon">', $buffer);
+		$buffer = preg_replace('/<li class="([^-]+)-icon">/Ui', '<li class="btn $1-icon">', $buffer);
 		
 		$buffer = preg_replace_callback('/<p class="readmore">([^<]*)<a([^>]*)>/Ui', "replace_readmore", $buffer);	
 		$buffer = preg_replace('/ class="button"/Ui', 'class="button btn " style="display:block; float:right; margin-left:5px;"', $buffer);

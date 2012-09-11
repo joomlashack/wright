@@ -9,7 +9,7 @@ class WrightAdapterJoomlaNav
 		// Set module name
 		if (!isset($args['style'])) $args['style'] = 'raw';
 		// Set module name
-		if (!isset($args['class'])) $args['class'] = 'span12';
+		if (!isset($args['class'])) $args['class'] = 'container';
 		// Set module name
 		if (!isset($args['wrapclass'])) $args['wrapclass'] = '';
 
@@ -25,16 +25,16 @@ class WrightAdapterJoomlaNav
 
 
 		$nav = $wrapper . '
-			<nav id="'.$args['name'].'" class="'.$args['class'].'">
-				<div class="navbar">
+			<nav id="'.$args['name'].'">
+				<div class="navbar ' . $args['wrapclass'] . '">
 					<div class="navbar-inner">
-						<div class="container">
-				            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<div class="' . $args['class'] . '">
+				            <a class="btn btn-navbar" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
 					            <span class="icon-bar"></span>
 					            <span class="icon-bar"></span>
 					            <span class="icon-bar"></span>
 				            </a>
-				            <div class="nav-collapse">
+				            <div class="nav-collapse" id="nav-'.$args['name'].'">
 								 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
 							</div>
 						</div>

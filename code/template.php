@@ -18,6 +18,11 @@ if ($gridMode == 'row-fluid') {
     $containerClass = 'container-fluid';
 }
 
+$bodyclass = "";
+if ($this->countModules('toolbar')) {
+	$bodyclass = "toolbarpadding";
+}
+
 ?>
 <doctype>
 <html>
@@ -25,14 +30,12 @@ if ($gridMode == 'row-fluid') {
 	
 <w:head />
 </head>
-<body>
-    <div class="<?php echo $containerClass; ?>">
-        <?php if ($this->countModules('toolbar')) : ?>
-        <!-- toolbar -->
-        <div id="toolbar">
-            <w:module type="<?php echo $gridMode; ?>" name="toolbar" chrome="wrightmenu" />
-        </div>
-        <?php endif; ?>
+<body<?php if ($bodyclass != "") :?> class="<?php echo $bodyclass?>"<?php endif; ?>>
+    <?php if ($this->countModules('toolbar')) : ?>
+    <!-- menu -->
+	<w:nav type="<?php echo $gridMode; ?>" name="toolbar" chrome="wrightmenu" wrapclass="navbar-fixed-top navbar-inverse" class="toolbar container" />
+    <?php endif; ?>
+    <div class="<?php echo $containerClass ?>">
         <!-- header -->
         <header id="header">
         	<div class="<?php echo $gridMode; ?> clearfix">
@@ -58,7 +61,7 @@ if ($gridMode == 'row-fluid') {
         <?php endif; ?>
         <?php if ($this->countModules('grid-top2')) : ?>
         <!-- grid-top2 -->
-        <div id="stage">
+        <div id="grid-top2">
             <w:module type="<?php echo $gridMode; ?>" name="grid-top2" chrome="wrightflexgrid" />
         </div>
         <?php endif; ?>
@@ -111,13 +114,17 @@ if ($gridMode == 'row-fluid') {
         <!-- bottom-menu -->
 		<w:nav type="<?php echo $gridMode; ?>" name="bottom-menu" chrome="wrightmenu" />
         <?php endif; ?>
-        <?php if ($this->countModules('footer')) : ?>
-        <!-- footer -->
-        <footer id="footer" >
-    		<w:module type="<?php echo $gridMode; ?>" name="footer" chrome="wrightflexgrid" />
-        </footer>
-        <?php endif; ?>
-		<w:footer />
+        
     </div>
+    
+        <!-- footer -->
+    <footer id="footer" >
+    	<?php if ($this->countModules('footer')) : ?>
+    		
+		<w:module type="<?php echo $gridMode; ?>" name="footer" chrome="wrightflexgrid" />
+		 <?php endif; ?>
+		<w:footer />
+    </footer>
+	
 </body>
 </html>

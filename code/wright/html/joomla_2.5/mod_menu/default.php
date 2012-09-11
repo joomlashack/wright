@@ -23,24 +23,28 @@ if (!function_exists("wright_joomla_nav")) :
 	function convert_icons($matches) {
 		$space = stripos($matches[5]," ");
 		$afterspace = "";
-		if ($space !== FALSE)
+		if ($space !== FALSE) {
 			$afterspace = substr($matches[5],$space+1);
+			$matches[5] = substr($matches[5],0,$space);
+		}
 		
-		return "<li" . $matches[1] . ">" . $matches[2] . "<a" . $matches[3] . "class='" . $afterspace . "'" . $matches[6] . "><i class='icon-" . $matches[5] . "'></i>";
+		return "<li" . $matches[1] . ">" . $matches[2] .
+			"<a" . $matches[3] . " " . $matches[6] . "><i class='icon-" . $matches[5] . "'></i>" .
+			"<span class='" . $afterspace . "'>" . $matches[7] . "</span></a>";
 	}
 
 	function wright_joomla_nav($buffer) {
 		// sets main ul nav class
 		$buffer = preg_replace_callback("/<ul([^>]*)class([^>]*)\"([^>]*)\"([^>]*)>/i",  "convert_ul_main", $buffer);
 
-		// converts a (links) into bootstrap classes
-		$buffer = preg_replace_callback("/<li([^>]*)class([^>]*)parent([^>]*)>([^<a]*)<a([^>]*)>([^\<\/]*)\<\/a>([^<]*)<ul>/iU",  "convert_li", $buffer);
+		// converts a (links) - parents with child ul - into bootstrap classes
+		$buffer = preg_replace_callback("/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<a([^>]*)>([^\<\/]*)\<\/a>([^<]*)<ul>/iU",  "convert_li", $buffer);
 	
-		// converts span (separators) into bootstrap classes
-		$buffer = preg_replace_callback("/<li([^>]*)class([^>]*)parent([^>]*)>([^<sp]*)<span([^>]*)>([^\<\/]*)\<\/span>([^<]*)<ul>/iU",  "convert_li", $buffer);
+		// converts span (separators) - parents with child ul - into bootstrap classes
+		$buffer = preg_replace_callback("/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<span([^>]*)>([^\<\/]*)\<\/span>([^<]*)<ul>/iU",  "convert_li", $buffer);
 
 		// converts icons into bootstrap/fontawesomemore icons format
-		$buffer = preg_replace_callback("/<li([^>]*)>([^<a]*)<a([^>]*)class=\"([^\"]*)icon\-([^\"]*)\"([^>]*)>/iU",  "convert_icons", $buffer);
+		$buffer = preg_replace_callback("/<li([^>]*)>([^<]*)<a([^>]*)class=\"([^\"]*)icon\-([^\"]*)\"([^>]*)>([^<]*)<\/a>/iU",  "convert_icons", $buffer);
 
 		// extracts first childs to change submenu to main dropdown
 		$dom = new DOMDocument();
@@ -50,7 +54,7 @@ if (!function_exists("wright_joomla_nav")) :
 		$li = $ul->firstChild;
 		while ($li) {
 			$class = $li->getAttribute("class");
-			if (stristr($class, 'parent') !== FALSE) {
+			if (stristr($class, 'dropdown') !== FALSE) {
 				$a = $li->firstChild;
 				$i = $a->firstChild;
 				$i = $i->nextSibling;

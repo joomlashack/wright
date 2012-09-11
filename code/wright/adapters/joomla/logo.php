@@ -70,7 +70,7 @@ class WrightAdapterJoomlaLogo
 		}
 
 		$html = '<div id="logo" class="span'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
-		if ($doc->document->params->get('logowidth') !== '12') $html .= '<div id="'.$args['name'].'" class="span'.(12 - $doc->document->params->get('logowidth', '6')).'"><jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" /></div>';
+		if ($doc->document->params->get('logowidth') !== '12' && $doc->countModules($args['name'])) $html .= '<div id="'.$args['name'].'" class="span'.(12 - $doc->document->params->get('logowidth', '6')).'"><jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" /></div>';
 		return $html;
 	}
 }
