@@ -43,22 +43,21 @@ class WrightAdapterJoomlaNav
 			$nav =
 			'<div class="'.$args['wrapper'].'">
 				<div class="' . $args['containerClass'] . '">
-					<div class="' . $args['rowClass'] . '">
-						<nav id="'.$args['name'].'">
-							<div class="navbar ' . $args['wrapClass'] . '">
-								<div class="navbar-inner">
-						            <a class="btn btn-navbar" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
-							            <span class="icon-bar"></span>
-							            <span class="icon-bar"></span>
-							            <span class="icon-bar"></span>
-						            </a>
-						            <div class="nav-collapse" id="nav-'.$args['name'].'">
-										 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
-									</div>
+					<nav id="'.$args['name'].'">
+						<div class="navbar ' . $args['wrapClass'] . '">
+							<div class="navbar-inner">
+							<a href="#" class="brand">Title</a>
+					            <a class="btn btn-navbar" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
+						            <span class="icon-bar"></span>
+						            <span class="icon-bar"></span>
+						            <span class="icon-bar"></span>
+					            </a>
+					            <div class="nav-collapse" id="nav-'.$args['name'].'">
+									 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
 								</div>
 							</div>
-						</nav>
-					</div>
+						</div>
+					</nav>
 				</div>
 			</div>';			
 		}

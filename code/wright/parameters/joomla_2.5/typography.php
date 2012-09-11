@@ -39,8 +39,7 @@ class JFormFieldTypography extends JFormFieldList
 							'Tahoma' => 'sans-serif',
 							'Times' => 'serif',
 							'Trebuchet MS' => 'sans-serif',
-							'Verdana' => 'sans-serif',
-							'Google Fonts' => 'various'
+							'Verdana' => 'sans-serif'
 				);
 
 		foreach ($stacks as $stack => $style)
