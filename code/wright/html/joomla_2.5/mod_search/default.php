@@ -14,7 +14,7 @@ if (!function_exists("wright_joomla_mod_search")) :
 	
 function wright_joomla_mod_search($buffer) {
 	
-	$buffer = preg_replace('/ class="button"/Ui', ' class="button btn btn-success " ', $buffer);
+	$buffer = preg_replace('/ class="button"/Ui', ' class="button btn btn-primary " ', $buffer);
 	return $buffer;
 				
 }

@@ -33,7 +33,7 @@ if ($this->countModules('toolbar')) {
 <body<?php if ($bodyclass != "") :?> class="<?php echo $bodyclass?>"<?php endif; ?>>
     <?php if ($this->countModules('toolbar')) : ?>
     <!-- menu -->
-	<w:nav type="<?php echo $gridMode; ?>" name="toolbar" chrome="wrightmenu" wrapclass="navbar-fixed-top navbar-inverse" class="toolbar container" />
+	<w:nav containerClass="<?php echo $containerClass ?>" rowClass="<?php echo $gridMode;?>" wrapClass="navbar-fixed-top navbar-inverse" type="toolbar" name="toolbar" />
     <?php endif; ?>
     <div class="<?php echo $containerClass ?>">
         <!-- header -->
@@ -45,12 +45,12 @@ if ($this->countModules('toolbar')) {
         </header>
         <?php if ($this->countModules('menu')) : ?>
         <!-- menu -->
-   		<w:nav type="<?php echo $gridMode; ?>" name="menu" chrome="wrightmenu" />
+   		<w:nav containerClass="<?php echo $containerClass ?>" rowClass="<?php echo $gridMode;?>"  name="menu" />
         <?php endif; ?>
         <!-- featured -->
         <?php if ($this->countModules('featured')) : ?>
         <div id="featured">
-            <w:module type="<?php echo $gridMode; ?>" name="featured" chrome="wrightflexgrid" />
+            <w:module type="<?php echo $gridMode; ?>" name="featured" chrome="none" />
         </div>
         <?php endif; ?>
         <!-- grid-top -->
@@ -75,7 +75,7 @@ if ($this->countModules('toolbar')) {
                 <?php if ($this->countModules('above-content')) : ?>
                 <!-- above-content -->
                 <div id="above-content">
-                    <w:module type="<?php echo $gridMode; ?>" name="above-content" chrome="wrightflexgrid" />
+                    <w:module type="<?php echo $gridMode; ?>" name="above-content" chrome="none" />
                 </div>
                 <?php endif; ?>
             	<?php if ($this->countModules('breadcrumbs')) : ?>
@@ -89,7 +89,7 @@ if ($this->countModules('toolbar')) {
                 <?php if ($this->countModules('below-content')) : ?>
                 <!-- below-content -->
                 <div id="below-content">
-                    <w:module type="<?php echo $gridMode; ?>" name="below-content" chrome="wrightflexgrid" />
+                    <w:module type="<?php echo $gridMode; ?>" name="below-content" chrome="none" />
                 </div>
                 <?php endif; ?>
             </section>
@@ -112,7 +112,7 @@ if ($this->countModules('toolbar')) {
         <?php endif; ?>
         <?php if ($this->countModules('bottom-menu')) : ?>
         <!-- bottom-menu -->
-		<w:nav type="<?php echo $gridMode; ?>" name="bottom-menu" chrome="wrightmenu" />
+		<w:nav containerClass="<?php echo $containerClass ?>" rowClass="<?php echo $gridMode;?>" name="bottom-menu" />
         <?php endif; ?>
         
     </div>

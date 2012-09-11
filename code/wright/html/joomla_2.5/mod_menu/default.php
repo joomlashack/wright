@@ -18,6 +18,7 @@ if (!function_exists("wright_joomla_nav")) :
 	function convert_li($matches, $img) {
 		$class = "";
 		$classa = "";
+		$link = "#";
 		
 		if (preg_match('/([^"]*)class="([^"]*)icon-([^"]*)"/Ui', $matches[5], $matches2)) {
 			$class = trim($matches2[3]);
@@ -29,11 +30,24 @@ if (!function_exists("wright_joomla_nav")) :
 				$class = trim(substr($class,0,$space));
 			}
 		}
+		elseif (preg_match('/([^"]*)class="([^"]*)icon-([^"]*)"/Ui', $matches[7], $matches2)) {
+			$class = trim($matches2[3]);
+			
+			$space = stripos($class," ");
+			$afterspace = "";
+			if ($space !== FALSE) {
+				$classa = trim(substr($class,$space+1));
+				$class = trim(substr($class,0,$space));
+			}
+		}
 		
-		return "<li" . $matches[1] . "class" . $matches[2] . " parent dropdown " . $matches[3] . ">" . $matches[4] . "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>" .
+		if ($matches[6] != "")
+			$link = $matches[6];
+		
+		return "<li" . $matches[1] . "class" . $matches[2] . " parent dropdown " . $matches[3] . ">" . $matches[4] . "<a href='$link' class='dropdown-toggle' data-toggle='dropdown'>" .
 			($class != "" ? "<i class='icon-$class'></i>" : "") . 
 			($img != "" ? "<img" . $img . ">" : "") .
-			"<span class='$classa'>" . $matches[6] . "</span><i class='icon-caret-right'></i></a>" . $matches[7] . "<ul class='dropdown-menu sub-menu'>";
+			"<span class='$classa'>" . $matches[8] . "</span><i class='icon-caret-right'></i></a>" . $matches[9] . "<ul class='dropdown-menu sub-menu'>";
 	}
 
 
@@ -45,10 +59,13 @@ if (!function_exists("wright_joomla_nav")) :
 		$matches2[3] = $matches[3];
 		$matches2[4] = $matches[4];
 		$matches2[5] = $matches[5];
+		$matches2[5] = $matches[5];
 		$matches2[6] = $matches[6];
-		$matches2[7] = $matches[12];
+		$matches2[7] = $matches[7];
+		$matches2[8] = $matches[12];
+		$matches2[9] = $matches[14];
 		
-		return convert_li($matches2, $matches[7]);
+		return convert_li($matches2, $matches[9]);
 	}
 
 	function convert_li_img($matches) {
@@ -59,10 +76,13 @@ if (!function_exists("wright_joomla_nav")) :
 		$matches2[3] = $matches[3];
 		$matches2[4] = $matches[4];
 		$matches2[5] = $matches[5];
+		$matches2[5] = $matches[5];
 		$matches2[6] = $matches[6];
-		$matches2[7] = $matches[10];
+		$matches2[7] = $matches[7];
+		$matches2[8] = $matches[10];
+		$matches2[9] = $matches[11];
 		
-		return convert_li($matches2, $matches[7]);
+		return convert_li($matches2, $matches[9]);
 	}
 
 	function convert_span_separator($matches) {
@@ -73,8 +93,10 @@ if (!function_exists("wright_joomla_nav")) :
 		$matches2[3] = $matches[3];
 		$matches2[4] = $matches[4];
 		$matches2[5] = $matches[6] . " " . $matches[7];
-		$matches2[6] = $matches[8];
-		$matches2[7] = $matches[9];
+		$matches2[6] = "";
+		$matches2[7] = "";
+		$matches2[8] = $matches[8];
+		$matches2[9] = $matches[9];
 		
 		return convert_li($matches2);
 	}
@@ -88,8 +110,10 @@ if (!function_exists("wright_joomla_nav")) :
 		$matches2[3] = $matches[3];
 		$matches2[4] = $matches[4];
 		$matches2[5] = $matches[6] . " " . $matches[7];
-		$matches2[6] = $matches[11];
-		$matches2[7] = $matches[12];
+		$matches2[6] = "";
+		$matches2[7] = "";
+		$matches2[8] = $matches[11];
+		$matches2[9] = $matches[12];
 		
 		return convert_li($matches2,$matches[8]);
 	}
@@ -102,8 +126,10 @@ if (!function_exists("wright_joomla_nav")) :
 		$matches2[3] = $matches[3];
 		$matches2[4] = $matches[4];
 		$matches2[5] = $matches[6] . " " . $matches[7];
-		$matches2[6] = $matches[9];
-		$matches2[7] = $matches[10];
+		$matches2[6] = "";
+		$matches2[7] = "";
+		$matches2[8] = $matches[9];
+		$matches2[9] = $matches[10];
 		
 		return convert_li($matches2,$matches[8]);
 	}
@@ -134,13 +160,13 @@ if (!function_exists("wright_joomla_nav")) :
 		$buffer = preg_replace_callback("/<ul([^>]*)class([^>]*)\"([^>]*)\"([^>]*)>/i",  "convert_ul_main", $buffer);
 
 		// converts a (links) - parents with child ul - into bootstrap classes
-		$buffer = preg_replace_callback("/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<a([^>]*)>([^<]*)<\/a>([^<]*)<ul>/iU",  "convert_li", $buffer);
+		$buffer = preg_replace_callback('/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<a([^>]*)href="([^"]*)"([^>]*)>([^<]*)<\/a>([^<]*)<ul>/iU',  "convert_li", $buffer);
 
 		// converts a (links) with image and span - parents with child ul - into bootstrap classes
-		$buffer = preg_replace_callback("/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<a([^>]*)>([^<]*)<img([^>]*)>([^<]*)<span([^>]*)>([^<]*)<\/span>([^<]*)<\/a>([^<]*)<ul>/iU",  "convert_li_img_span", $buffer);
+		$buffer = preg_replace_callback('/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<a([^>]*)href="([^"]*)"([^>]*)>([^<]*)<img([^>]*)>([^<]*)<span([^>]*)>([^<]*)<\/span>([^<]*)<\/a>([^<]*)<ul>/iU',  "convert_li_img_span", $buffer);
 
 		// converts a (links) with image no span - parents with child ul - into bootstrap classes
-		$buffer = preg_replace_callback("/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<a([^>]*)>([^<]*)<img([^>]*)>([^<]*)([^<]*)<\/a>([^<]*)<ul>/iU",  "convert_li_img", $buffer);
+		$buffer = preg_replace_callback('/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<a([^>]*)href="([^"]*)"([^>]*)>([^<]*)<img([^>]*)>([^<]*)<\/a>([^<]*)<ul>/iU',  "convert_li_img", $buffer);
 
 		// converts span (separators) - parents with child ul - into bootstrap classes
 		$buffer = preg_replace_callback('/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<span([^>]*)class="([^"]*)separator([^"]*)">([^<]*)<\/span>([^<]*)<ul>/iU',  "convert_span_separator", $buffer);
@@ -150,7 +176,7 @@ if (!function_exists("wright_joomla_nav")) :
 
 		// converts span (separators) with image no span - parents with child ul - into bootstrap classes
 		$buffer = preg_replace_callback('/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<span([^>]*)class="([^"]*)separator([^"]*)"><img([^>]*)>([^<]*)<\/span>([^<]*)<ul>/iU',  "convert_span_separator_img", $buffer);
-				
+
 		// converts icons into bootstrap/fontawesomemore icons format
 		$buffer = preg_replace_callback("/<li([^>]*)>([^<]*)<a([^>]*)class=\"([^\"]*)icon\-([^\"]*)\"([^>]*)>([^<]*)<\/a>/iU",  "convert_icons", $buffer);
 		

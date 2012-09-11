@@ -823,6 +823,10 @@ nav div.toolbar {
     display: block;
 }
 
+.nav-tabs {
+	border-bottom: 2px solid #DDDDDD;
+}
+
 .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
     margin-top: 0;
 }
@@ -969,19 +973,19 @@ dl.label.label-info dt{
     color: #555555;
     cursor: default;	
 }
-.nav-tabs  a {
-    border: 1px solid transparent;
+.nav-tabs .tabs a {
+    border: 1px solid #000000;
     border-radius: 4px 4px 0 0;
     line-height: 18px;
     padding-top: 8px;
 }
-.nav-tabs  a, .nav-pills  a{
+.nav-tabs .tabs a, .nav-pills .tabs a{
 	line-height: 14px;
     margin-right: 2px;
     padding-left: 12px;
     padding-right: 12px;
 }
-.tabs.nav.nav-tabs dt{
+.tabs.nav.nav-tabs dt.tabs {
 	float: left;
 }
 

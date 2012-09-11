@@ -15,8 +15,8 @@ if (!function_exists("wright_joomla_users_registration")) :
 	
 	function wright_joomla_users_registration($buffer) {
 		
-			$buffer = preg_replace('/ class="validate"/Ui', 'class="validate btn btn-success" style=" margin-left:5px;"', $buffer);
-			$buffer = preg_replace('/ title="cancel"/Ui', 'title="cancel" class=" btn btn-success" style=" margin-left:5px;"', $buffer);
+			$buffer = preg_replace('/ class="validate"/Ui', 'class="validate btn btn-primary" style=" margin-left:5px;"', $buffer);
+			$buffer = preg_replace('/ title="cancel"/Ui', 'title="cancel" class=" btn btn-primary" style=" margin-left:5px;"', $buffer);
 			
 			
 				return $buffer;
