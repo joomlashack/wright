@@ -12,8 +12,8 @@ defined('_JEXEC') or die;
 
 if (!function_exists("wright_joomla_users_latest")) :
 function wright_joomla_users_latest($buffer) {
-	
 			$buffer = preg_replace('/class="latestusers"/Ui', 'class="latestusers nav"', $buffer);	
+			$buffer = preg_replace('/class="latestusers([^nav]+)">/Ui', 'class="latestusers $1 nav">', $buffer);
 			$buffer = preg_replace('/<li>/Ui', '<li> <i class="icon-user"></i>', $buffer);	
 				return $buffer;
 				

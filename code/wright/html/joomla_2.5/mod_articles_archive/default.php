@@ -16,9 +16,8 @@ if (!function_exists("wright_joomla_articles_archive")) :
 	}
 	
 function wright_joomla_articles_archive($buffer) {
-	
-	
 	$buffer = preg_replace('/class="archive-module"/Ui', 'class="archive-module nav"', $buffer);	
+	$buffer = preg_replace('/class="archive-module([^nav]+)">/Ui', 'class="archive-module $1 nav">', $buffer);
 	$buffer = preg_replace_callback('/<a([^>]*)>([^<]*)<\/a>/Ui', 'wright_joomla_articles_archive_icon', $buffer);
 	return $buffer;
 				

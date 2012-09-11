@@ -18,7 +18,9 @@ function wright_joomla_related_items_icon ($matches) {
 
 
 function wright_joomla_related_items ($buffer) {
+	
 	$buffer = preg_replace('/class="relateditems"/Ui', 'class="relateditems nav"', $buffer);	
+	$buffer = preg_replace('/class="relateditems([^nav]+)">/Ui', 'class="relateditems $1 nav">', $buffer);
 	$buffer = preg_replace_callback('/<a([^>]*)>([^<]*)<\/a>/Ui', 'wright_joomla_related_items_icon', $buffer);
 	return $buffer;				
 }

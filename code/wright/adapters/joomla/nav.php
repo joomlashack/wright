@@ -46,7 +46,6 @@ class WrightAdapterJoomlaNav
 					<nav id="'.$args['name'].'">
 						<div class="navbar ' . $args['wrapClass'] . '">
 							<div class="navbar-inner">
-							<a href="#" class="brand">Title</a>
 					            <a class="btn btn-navbar" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
 						            <span class="icon-bar"></span>
 						            <span class="icon-bar"></span>

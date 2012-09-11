@@ -17,6 +17,7 @@ if (!function_exists("wright_joomla_articles_category")) :
 
 	function wright_joomla_articles_category($buffer) {
 		$buffer = preg_replace('/class="category-module"/Ui', 'class="category-module nav"', $buffer);	
+		$buffer = preg_replace('/class="category-module([^nav]+)">/Ui', 'class="category-module $1 nav">', $buffer);
 		$buffer = preg_replace_callback('/<a([^>]*)>([^<]*)<\/a>/Ui', 'wright_joomla_articles_category_icon', $buffer);
 		return $buffer;
 	}

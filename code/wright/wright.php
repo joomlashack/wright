@@ -30,7 +30,7 @@ class Wright
 	public $baseurl;
 	public $author;
 
-	public $revision = "3.0.6";
+	public $revision = "3.0.7";
 
 	// Urls
 	private $_urlTemplate = null;
@@ -299,6 +299,8 @@ class Wright
 			$styles['bootstrap'][] = 'bootstrap-responsive.min.css';
 		}
 		$styles['fontawesomemore'] = array('font-awesome.css');
+
+		$styles['wright'] = array('typography.css');
         $version = explode('.', JVERSION);
         $version = $version[0].$version[1];
         if (is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.css'))

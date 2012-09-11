@@ -16,9 +16,8 @@ if (!function_exists("wright_joomla_articles_popular")) :
 	}
 function wright_joomla_articles_popular($buffer) {
 	
-	
-	
 	$buffer = preg_replace('/class="mostread"/Ui', 'class="mostread nav"', $buffer);	
+	$buffer = preg_replace('/class="mostread([^nav]+)">/Ui', 'class="mostread $1 nav">', $buffer);
 	$buffer = preg_replace_callback('/<a([^>]*)>([^<]*)<\/a>/Ui', 'wright_joomla_articles_popular_icon', $buffer);
 	return $buffer;
 				
