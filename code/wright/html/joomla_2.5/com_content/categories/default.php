@@ -14,6 +14,7 @@ if (!function_exists("wright_joomla_content_categories")) :
 		
 		
 		$buffer = preg_replace('/<span class="item-title">/Ui', '<span class="item-title"><i class="icon-folder-open"></i>', $buffer);
+		$buffer = preg_replace('/<dl>/Ui', '<dl class="label label-info">', $buffer);
 		return $buffer;
 	}
 

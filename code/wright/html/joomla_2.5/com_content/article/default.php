@@ -20,6 +20,14 @@ if (!function_exists("wright_joomla_content_article")) :
 		$buffer = preg_replace('/<dd class="parent-category-name">/Ui', '<dd class="hits"><i class="icon-folder-close"></i>', $buffer);
 	    $buffer = preg_replace('/<ul class="actions">/Ui', '<ul class="btn-group actions">', $buffer);
 		$buffer = preg_replace('/<li class="([^-]+)-icon">/Ui', '<li class="btn $1-icon">', $buffer);
+		$buffer = preg_replace('/<li>Next/Ui', '<li class="disabled"><a>Next</a> ', $buffer);
+		$buffer = preg_replace('/<li>Prev/Ui', '<li class="disabled"><a>Prev</a> ', $buffer);
+		$buffer = preg_replace('/class="tabs"/Ui', 'class="tabs nav nav-tabs"', $buffer); 
+
+
+		$buffer = preg_replace('/<div id="article-index">([^<]*)<h3>([^<]*)<\/h3>([^<]*)<ul>/Ui', '<div id="article-index">$1<h3>$2</h3>$3<ul class="nav nav-tabs nav-stacked">', $buffer);
+		$buffer = preg_replace('/<div id="article-index">([^<]*)<ul>/Ui', '<div id="article-index">$1<ul class="nav nav-tabs nav-stacked">', $buffer);
+	
 		return $buffer;
 	}
 

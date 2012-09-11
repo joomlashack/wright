@@ -120,7 +120,6 @@ if ($this->countModules('toolbar')) {
         <!-- footer -->
     <footer id="footer" >
     	<?php if ($this->countModules('footer')) : ?>
-    		
 		<w:module type="<?php echo $gridMode; ?>" name="footer" chrome="wrightflexgrid" />
 		 <?php endif; ?>
 		<w:footer />

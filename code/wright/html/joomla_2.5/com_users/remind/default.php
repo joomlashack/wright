@@ -15,7 +15,7 @@ if (!function_exists("wright_joomla_users_remind")) :
 	
 	function wright_joomla_users_remind($buffer) {
 		
-			$buffer = preg_replace('/ class="validate"/Ui', 'class="validate btn " style=" margin-left:5px;"', $buffer);
+			$buffer = preg_replace('/ class="validate"/Ui', 'class="validate btn btn-success" style=" margin-left:5px;"', $buffer);
 			$buffer = preg_replace('/<p>/Ui', '<p class="form-actions" >', $buffer);
 				return $buffer;
 				

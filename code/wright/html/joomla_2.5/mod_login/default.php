@@ -15,7 +15,7 @@ if (!function_exists("wright_joomla_mod_login")) :
 function wright_joomla_mod_login($buffer) {
 	
 	$buffer = preg_replace('/<ul>/Ui', '<ul  class="nav nav-list well">', $buffer);
-		$buffer = preg_replace('/ class="button"/Ui', ' class="button btn " ', $buffer);
+		$buffer = preg_replace('/ class="button"/Ui', ' class="button btn btn-success" ', $buffer);
 	return $buffer;
 				
 }

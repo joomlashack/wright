@@ -15,7 +15,7 @@ if (!function_exists("wright_joomla_newsfeeds_category")) :
 	function wright_joomla_newsfeeds_category($buffer) {
 			$buffer = preg_replace('/<h2>/Ui', '<div class="page-header"> <h2>', $buffer);
 		$buffer = preg_replace('/<\/h2>/Ui', '</h2> </div>', $buffer);
-			$buffer = preg_replace('/<table class="category">/Ui', '<table class="table table-bordered table-striped">', $buffer);
+			$buffer = preg_replace('/<table class="category">/Ui', '<table class="table table-striped table-hover">', $buffer);
 				return $buffer;
 	}
 

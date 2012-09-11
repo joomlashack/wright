@@ -16,7 +16,7 @@ if (!function_exists("wright_joomla_contact_category")) :
 	function wright_joomla_contact_category($buffer) {
 			$buffer = preg_replace('/<h2>/Ui', '<div class="page-header"> <h2>', $buffer);
 			$buffer = preg_replace('/<\/h2>/Ui', '</h2> </div>', $buffer);
-			$buffer = preg_replace('/<table class="category">/Ui', '<table class="category table table-bordered table-striped">', $buffer);
+			$buffer = preg_replace('/<table class="category">/Ui', '<table class="category table table-striped table-hover">', $buffer);
 				return $buffer;
 				
 	}

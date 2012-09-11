@@ -12,14 +12,16 @@ class WrightAdapterJoomlaNav
 		if (!isset($args['class'])) $args['class'] = 'container';
 		// Set module name
 		if (!isset($args['wrapclass'])) $args['wrapclass'] = '';
+		if (!isset($args['wrapper'])) $args['wrapper'] = 'wrapper-' . $args['name'];
 
+		$wrapper = "";
 		switch ($args['type'])
 		{
 		    case 'row-fluid' :
 				$wrapper = '<div class="'.$args['type'].'">';
 		        break;
 			default :
-				$wrapper .= '<div class="'.$args['wrapper'].'">';
+				$wrapper = '<div class="'.$args['wrapper'].'">';
 				break;
 		}
 

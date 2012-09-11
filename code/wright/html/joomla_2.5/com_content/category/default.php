@@ -41,7 +41,7 @@ if (!function_exists("wright_joomla_content_category")) :
 		$buffer = preg_replace('/<span class="pagenav">/Ui', '<span class="pagenav disabled"><a>', $buffer);
 		$buffer = preg_replace('/<\/span><\/li>/Ui', '</a></span></li>', $buffer);
 		
-		$buffer = preg_replace('/<table class="category">/Ui', '<table class="table table-bordered table-striped">', $buffer);
+		$buffer = preg_replace('/<table class="category">/Ui', '<table class="table table-striped table-hover">', $buffer);
 		
 		$buffer = preg_replace('/Display #/Ui', '<label> Display # </label>', $buffer);
 

@@ -14,7 +14,7 @@ if (!function_exists("wright_joomla_mod_fider")) :
 	
 function wright_joomla_mod_fider($buffer) {
 	
-	$buffer = preg_replace('/ class="button finder"/Ui', ' class="button finder  btn " ', $buffer);
+	$buffer = preg_replace('/ class="button finder"/Ui', ' class="button finder btn btn-success " ', $buffer);
 	return $buffer;
 				
 }

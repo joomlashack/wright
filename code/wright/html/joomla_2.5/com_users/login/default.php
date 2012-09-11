@@ -16,8 +16,8 @@ if (!function_exists("wright_joomla_users_login")) :
 
 	function wright_joomla_users_login($buffer) {
 		
-		$buffer = preg_replace('/ class="button"/Ui', 'class="button btn"', $buffer);
-		$buffer = preg_replace('/class="validate"/Ui', 'class="validate btn"', $buffer);
+		$buffer = preg_replace('/ class="button"/Ui', 'class="button btn btn-success"', $buffer);
+		$buffer = preg_replace('/class="validate"/Ui', 'class="validate btn btn-success"', $buffer);
 		$buffer = preg_replace('/<ul>/Ui', '<div class="span3">', $buffer);
 		$buffer = preg_replace('/<\/ul>/Ui', '</div>', $buffer);
 		$buffer = preg_replace_callback('/<li>([^<]*)<a([^>]*)href="([^"]*)"([^>]*)>([^<]*)<\/a>([^<]*)<\/li>/Ui', "wright_joomla_users_login_li", $buffer);
