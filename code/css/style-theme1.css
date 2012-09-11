@@ -36,12 +36,11 @@ border-bottom:1px solid #CCC;
 background:#FFF;
 }
 #footer{
-color:#F0F0F0;
-background:#222222;
+color:gray;
 padding-top: 10px; 
 }
 #footer a {
-color:#A2A3A8;
+color:black;
 }
 /* positions margins */
 #toolbar, #header, #menu, #featured, #grid-top, #main-content, 

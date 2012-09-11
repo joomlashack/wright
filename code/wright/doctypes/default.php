@@ -327,7 +327,7 @@ abstract class HtmlAdapterAbstract
 
 		// Auto set to full width if editing
 		if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form') {
-			empty($layout);
+			$layout = Array();
 			$layout[] = 'main';
 		}
 

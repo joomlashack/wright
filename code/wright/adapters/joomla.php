@@ -37,7 +37,7 @@ class WrightAdapterJoomla
 			$file = dirname(__FILE__).'/'.'joomla'.'/'.'joomla_'.$this->getVersion().'/'.$tag.'.php';
 			$class = 'WrightAdapterJoomla'.$this->getVersion().ucfirst($tag);
 		}
-
+		
 		require_once $file;
 
 		$item = new $class();
@@ -49,5 +49,5 @@ class WrightAdapterJoomla
 	{
 		return $this->version;
 	}
-
+	
 }

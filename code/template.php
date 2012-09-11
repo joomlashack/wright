@@ -22,6 +22,7 @@ if ($gridMode == 'row-fluid') {
 <doctype>
 <html>
 <head>
+	
 <w:head />
 </head>
 <body>
@@ -41,9 +42,7 @@ if ($gridMode == 'row-fluid') {
         </header>
         <?php if ($this->countModules('menu')) : ?>
         <!-- menu -->
-        <nav id="menu">
-    		<w:module type="<?php echo $gridMode; ?>" name="menu" chrome="wrightmenu" />
-        </nav>
+   		<w:nav type="<?php echo $gridMode; ?>" name="menu" chrome="wrightmenu" />
         <?php endif; ?>
         <!-- featured -->
         <?php if ($this->countModules('featured')) : ?>
@@ -110,17 +109,15 @@ if ($gridMode == 'row-fluid') {
         <?php endif; ?>
         <?php if ($this->countModules('bottom-menu')) : ?>
         <!-- bottom-menu -->
-        <div id="bottom-menu" >
-    			<w:module type="<?php echo $gridMode; ?>" name="bottom-menu" chrome="wrightmenu" />
-        </div>
+		<w:nav type="<?php echo $gridMode; ?>" name="bottom-menu" chrome="wrightmenu" />
         <?php endif; ?>
         <?php if ($this->countModules('footer')) : ?>
         <!-- footer -->
         <footer id="footer" >
-    			<w:module type="<?php echo $gridMode; ?>" name="footer" chrome="wrightflexgrid" />
-    			<w:footer />
+    		<w:module type="<?php echo $gridMode; ?>" name="footer" chrome="wrightflexgrid" />
         </footer>
         <?php endif; ?>
+		<w:footer />
     </div>
 </body>
 </html>

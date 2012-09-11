@@ -15,6 +15,28 @@ Ctrl/Cmd + F to find the @groups named below
 
 
 /* @group Article Column Structure */
+.footer1, .footer2 {
+    float: left;
+}
+.footer2 {
+    margin-left: 5px;
+}
+#footer .module, #footer .moduletable {
+    background-color: transparent;
+    border: 0 none;
+    display: table;
+    margin: 0 auto;
+    float: none;
+    width: auto;
+}
+a.joomlashack {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    text-indent: -1000em;
+    width: 75px;
+    background: url("../images/jscright.png") no-repeat scroll 0 0 transparent;
+}
 
 .contentpaneopen, .blog {
 	width: 100%;
@@ -38,46 +60,64 @@ dl.article-info {
 	display:block;
 	width:100%;
 	min-height:20px;
-	margin:20px 0;
+	margin:10px 0;
 	font-size:0.8em;
 }
 dl.article-info dt {
 	display:none;
 }
 dl.article-info dd {
+	line-height: 42px;
+	height: 42px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	background:none;
 	display:inline-block;
 	float:none;
 	clear:none;
 	zoom:1;
-	margin:0 10px 0 0;
-	padding:0 0 0 20px;
+	margin:0;
+	padding:0 5px;
 	width:auto;
+	cursor: default;
 }
-dl.article-info dd.parent-category-name,
-dl.article-info dd.category-name {
-	background:url(../images/icons/16/folder.png) no-repeat 0 3px;
+.categories-list [class^="icon-"],
+.categories-list [class*=" icon-"],
+.cat-children [class^="icon-"],
+.cat-children [class*=" icon-"]{
+	line-height: 24px;
 }
-dl.article-info dd.create {
-	background:url(../images/icons/16/calendar_add.png) no-repeat 0 3px;
+[class^="icon-"], [class*=" icon-"] {
+	background-image: none;
 }
-dl.article-info dd.modified {
-	background:url(../images/icons/16/calendar_edit.png) no-repeat 0 3px;
+
+dl.article-info dd [class^="icon-"], dl.article-info dd [class*=" icon-"] {
+	width: 16px;
+	font-size: 16px;
+	background-image: none;
+	font-size: 1.2em;
+	height:1.2em;
+	display: inline-block;
+	text-align: center;
 }
-dl.article-info dd.published {
-	background:url(../images/icons/16/calendar.png) no-repeat 0 3px;
+
+
+
+dl.article-info dd:hover {
+	background-color: #FBF4F4;
 }
-dl.article-info dd.createdby {
-	background:url(../images/icons/16/user_suit.png) no-repeat 0 3px;
-}
-dl.article-info dd.hits {
-	background:url(../images/icons/16/chart_bar.png) no-repeat 0 3px;
+
+dl.article-info dd:hover > i {
+	font-size: 1.7em;
 }
 
 .items-row {
 	overflow:hidden
 }
 .column-1, .column-2, .column-3, .column-4 {
-	padding:10px 5px
+	padding:10px 5px;
+	clear: both;
 }
 .leading {
 	clear: both;
@@ -95,12 +135,34 @@ p.readmore {
 
 /* @group Categories/Archives */
 
-div.categories-list ul, div.categories-list li, div.cat-children ul, div.cat-children li {
+div.categories-list ul, 
+div.categories-list li, 
+div.cat-children ul, 
+div.cat-children li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-div.categories-list li.first, div.cat-children li.first, div.cat-children li.last {
+div.cat-children li,
+div.categories-list li{
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+div.categories-list ul ul li:last-child,
+div.cat-children ul ul li:last-child{
+	border-bottom-color:transparent; 
+	margin-bottom: 0;
+    padding-bottom: 0;
+}
+div.categories-list ul ul,
+div.cat-children ul ul{
+	margin-left: 20px;
+	margin-top: 20px;
+}
+div.categories-list li.first, 
+div.cat-children li.first, 
+div.cat-children li.last {
 	margin-left: 0;
 }
 div.categories-list li.first ul li, div.categories-list li.last ul li, div.cat-children li.first ul li, div.cat-children li.last ul li {
@@ -110,10 +172,15 @@ div.categories-list span.item-title, div.cat-children span.item-title {
 	font-size: 18px;
 	display: block;
 	margin: 10px 0px;
-	background: url(../images/icons/24/folder.png) no-repeat left center;
+	
 }
+div.categories-list ul ul span.item-title,
+div.cat-children ul ul span.item-title{
+	font-size: 16px;
+}
+
 div.categories-list span.item-title a, div.cat-children span.item-title a {
-	padding-left: 20px;
+	padding-left: 5px;
 }
 span.article-count, span.weblink-count, span.contact-count, span.newsfeed-count {
 	float: right;
@@ -237,25 +304,18 @@ ul.actions li {
 
 ul.pagenav, .pagination ul {
 	text-align:center;
-	margin: 10px auto;
+	margin: auto;
 	list-style: none;
+	display: inline-block;
 }
 ul.pagenav li, .pagination ul li {
 	display:inline;
 }
-ul.pagenav li a, .pagination li a {
-	padding: 5px 10px;
-	border-radius:4px;
-	border: 1px solid;
-	border-radius:4px;
-	-moz-border-radius:4px;
-	-webkit-border-radius:4px;
-	text-decoration: none;
-}
+
 /* Category Pagination */
 
 .pagination {
-	display: block;
+	display: table;
 	text-align: center;
 	font-size: 12px;
 	margin: 10px auto 20px auto;
@@ -267,18 +327,14 @@ ul.pagenav li a, .pagination li a {
 .pagination span {
 	padding: 0px 4px;
 }
-.pagination a {
-	float: none;
-	padding: 4px 8px;
-	text-decoration: none;
-	border: 1px solid;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-khtml-border-radius: 5px;
+div.disabled{
+	display: inline;
 }
 .counter, .pagenavcounter {
 	display: block;
+	float:left;
+	line-height:35px;
+	margin-right:5px;
 	text-align: center;
 }
 /* @end */
@@ -313,9 +369,10 @@ body.dark div.panel {
 }
 .filter-search {
 	float: left;
+	margin-right: 10px;
 }
 .display-limit {
-	float: right;
+	float: left;
 }
 .fl-right {
 	float: right;
@@ -361,7 +418,7 @@ span.star {
 }
 .formelm label {
 	float: left;
-	width: 200px;
+	width: 100px;
 	margin-right: 10px;
 }
 .formelm-buttons {
@@ -454,6 +511,128 @@ div.pagenavcounter {
 	color: #4F4F4F;
 	text-align: left;
 }
+div.intro{
+	padding-left: 14px;
+	padding-right: 10px;
+}
+ul#archive-items{
+	list-style: none ;
+	margin: 0;
+}
 
+/* Menu - Bootstrap Dropdown Navbar - Addition for multi-level */
 
+.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+}
+
+@media (max-width: 979px) {
+
+	.dropdown-menu .sub-menu {
+		left: auto;
+		position: relative;
+		top: auto;
+		visibility: visible;
+		margin-top: 0;
+	}
+	
+}
+
+.dropdown-menu li:hover > .sub-menu {
+    visibility: visible;
+}
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+    margin-top: 0;
+}
+
+.navbar .sub-menu:before {
+    border-bottom: 7px solid transparent;
+    border-left: none;
+    border-right: 7px solid rgba(0, 0, 0, 0.2);
+    border-top: 7px solid transparent;
+    left: -7px;
+    top: 10px;
+}
+.navbar .sub-menu:after {
+    border-top: 6px solid transparent;
+    border-left: none;
+    border-right: 6px solid #fff;
+    border-bottom: 6px solid transparent;
+    left: 10px;
+    top: 11px;
+    left: -6px;
+}
+
+.navbar a.dropdown-toggle i {
+    height: 100%;
+    line-height: 100%;
+    vertical-align: baseline;
+}
+dl.label.label-info{
+	display: inline-block;
+	margin: 0;
+	padding: 0 5px;
+}
+dl.label.label-info dd,
+dl.label.label-info dt{
+	display: inline-block;
+}
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle, 
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color: #222;
+}
+.well h3{
+    color: #999999;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 18px;
+    padding: 3px 15px;
+    margin-left: -20px;
+    margin-right: -20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+.nav-list li{
+    margin-left: -20px;
+    margin-right: -20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.page-header .page-header {
+    border-bottom: 0 none;
+    margin: 0 0;
+    padding-bottom: 0;
+}
+label{
+	float: left;
+	line-height: 26px;
+	margin-right: 10px;
+}
+.feed-description{
+	margin-bottom: 20px;
+}
+.phrases-box,
+.ordering-box{
+	float: left;
+}
+.dropdown-menu a,
+.dropdown-menu span {
+    clear: both;
+    color: #333333;
+    display: block;
+    font-weight: normal;
+    line-height: 18px;
+    padding: 3px 15px;
+    white-space: nowrap;
+}
 /* @end */

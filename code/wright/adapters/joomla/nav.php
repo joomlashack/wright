@@ -13,13 +13,35 @@ class WrightAdapterJoomlaNav
 		// Set module name
 		if (!isset($args['wrapclass'])) $args['wrapclass'] = '';
 
-		$nav = '<div id="'.$args['name'].'_wrap"';
-		if (isset($args['wrapclass'])) $nav .= ' class="'.$args['wrapclass'].'"';
-		$nav .= '>
-	<nav id="'.$args['name'].'" class="'.$args['class'].'">
-		<jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
-	</nav>
-</div>';
+		switch ($args['type'])
+		{
+		    case 'row-fluid' :
+				$wrapper = '<div class="'.$args['type'].'">';
+		        break;
+			default :
+				$wrapper .= '<div class="'.$args['wrapper'].'">';
+				break;
+		}
+
+
+		$nav = $wrapper . '
+			<nav id="'.$args['name'].'" class="'.$args['class'].'">
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="container">
+				            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					            <span class="icon-bar"></span>
+					            <span class="icon-bar"></span>
+					            <span class="icon-bar"></span>
+				            </a>
+				            <div class="nav-collapse">
+								 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>';
 		return $nav;
 	}
 }

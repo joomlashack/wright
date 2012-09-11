@@ -30,7 +30,7 @@ class Wright
 	public $baseurl;
 	public $author;
 
-	public $revision = "3.0a1";
+	public $revision = "3.0b";
 
 	// Urls
 	private $_urlTemplate = null;
@@ -50,6 +50,7 @@ class Wright
 		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
 		$this->_urlWright = $this->_urlTemplate . '/wright';
 		$this->_urlBootstrap = $this->_urlWright . '/bootstrap';
+		$this->_urlFontAwesomeMore = $this->_urlWright . '/fontawesomemore';
 
 		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
 
@@ -262,6 +263,8 @@ class Wright
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
 					elseif ($folder == 'bootstrap')
 						$sheet = $this->_urlBootstrap . '/css/' . $style;
+					elseif ($folder == 'fontawesomemore')
+						$sheet = $this->_urlFontAwesomeMore . '/css/' . $style;
 					else
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
 
@@ -282,6 +285,7 @@ class Wright
 		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
 		//$styles['wright'] = array('reset.css', 'layout.css', 'typography.css');
 		$styles['bootstrap'] = array('bootstrap.min.css', 'bootstrap-responsive.min.css');
+		$styles['fontawesomemore'] = array('font-awesome.css', 'font-awesome-ie7.css');
         $version = explode('.', JVERSION);
         $version = $version[0].$version[1];
         if (is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.css'))
