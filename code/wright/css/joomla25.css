@@ -18,8 +18,6 @@ Ctrl/Cmd + F to find the @groups named below
 
 /* DEFAULT HTML *****************************/
 body{
-	color:#444751;
-	background:#FFF;
 	padding-top: 10px;
 }
 body.toolbarpadding {
@@ -34,18 +32,16 @@ body.toolbarpadding {
 }
 
 a {
-	color:#0088CC;
 	
 }
 a:hover{
-	color: #333;
 }
 /* style the default Joomla image captions */
 p.img_caption {
-font-style: italic;
-font-size: .75em;
-text-align: center;
-background: #f7f7f7;
+	font-style: italic;
+	font-size: .75em;
+	text-align: center;
+	background: #f7f7f7;
 }
 /* TEMPLATE SPECIFIC CSS CODE */
 #header {
