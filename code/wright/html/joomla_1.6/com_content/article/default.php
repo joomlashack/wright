@@ -2,7 +2,7 @@
 // no direct access
 defined('_JEXEC') or die;
 
-JHtml::addIncludePath(JPATH_COMPONENT.DS.'helpers');
+JHtml::addIncludePath(JPATH_COMPONENT.'/'.'helpers');
 
 // Create shortcuts to some parameters.
 $params		= $this->item->params;
@@ -14,7 +14,7 @@ $canEdit	= $this->item->params->get('access-edit');
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 		<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
 	<?php endif; ?>
-	
+
 	<?php if ($canEdit ||  $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
 	<ul class="actions">
 		<?php if (!$this->print) : ?>
@@ -32,7 +32,7 @@ $canEdit	= $this->item->params->get('access-edit');
 		<?php endif; ?>
 	</ul>
 	<?php endif; ?>
-	
+
 	<?php if ($params->get('show_title')|| $params->get('access-edit')) : ?>
 	<h2>
 		<?php if ($params->get('link_titles') && !empty($this->item->readmore_link)) : ?>
@@ -42,13 +42,13 @@ $canEdit	= $this->item->params->get('access-edit');
 		<?php endif; ?>
 	</h2>
 	<?php endif; ?>
-	
+
 	<?php  if (!$params->get('show_intro')) :
 		echo $this->item->event->afterDisplayTitle;
 	endif; ?>
-	
+
 	<?php echo $this->item->event->beforeDisplayContent; ?>
-	
+
 	<?php $ShowArticleInfo = (($params->get('show_author')) OR ($params->get('show_category')) OR ($params->get('show_parent_category'))
 	OR ($params->get('show_create_date')) OR ($params->get('show_modify_date')) OR ($params->get('show_publish_date')) OR ($params->get('show_hits'))); ?>
 	<?php if ($ShowArticleInfo) : ?>
@@ -64,7 +64,7 @@ $canEdit	= $this->item->params->get('access-edit');
 			<?php endif; ?>
 		</ul>
 		<?php endif; ?>
-		
+
 		<?php $useRowTwo = (($params->get('show_publish_date')) OR ($params->get('show_author')) OR ($params->get('show_hits'))); ?>
 		<?php if ($useRowTwo) : ?>
 		<ul class="article-info">
@@ -87,7 +87,7 @@ $canEdit	= $this->item->params->get('access-edit');
 			<?php endif; ?>
 		</ul>
 		<?php endif; ?>
-		
+
 		<?php $useRowThree = (($params->get('show_parent_category')) OR ($params->get('show_category'))); ?>
 		<?php if ($useRowThree) : ?>
 		<ul class="article-info">
@@ -119,13 +119,13 @@ $canEdit	= $this->item->params->get('access-edit');
 		<?php endif; ?>
 	</div>
 	<?php endif; ?>
-	
+
 	<?php if (isset ($this->item->toc)) : ?>
 		<?php echo $this->item->toc; ?>
 	<?php endif; ?>
-	
-	<?php echo $this->item->text; ?> 
 
-	<?php echo $this->item->event->afterDisplayContent; ?> 
-	
+	<?php echo $this->item->text; ?>
+
+	<?php echo $this->item->event->afterDisplayContent; ?>
+
 </div>

@@ -2,11 +2,11 @@
 /**
  * @package Joomlashack Wright Framework
  * @copyright Joomlashack 2010-2012. All Rights Reserved.
- * 
+ *
  * @description Wright is a framework layer for Joomla to improve stability of Joomlashack Templates
- * 
+ *
  * It would be inadvisable to alter the contents of anything inside of this folder
- * 
+ *
  */
 defined('_JEXEC') or die('You are not allowed to directly access this file');
 
@@ -18,7 +18,7 @@ if (version_compare(PHP_VERSION, '5', '<'))
 }
 
 // includes WrightTemplateBase class for customizations to the template
-require_once(dirname(__FILE__) . DS . 'template' . DS . 'wrighttemplatebase.php');
+require_once(dirname(__FILE__) . '/template/wrighttemplatebase.php');
 
 
 class Wright
@@ -29,8 +29,13 @@ class Wright
 	public $params;
 	public $baseurl;
 	public $author;
-	
-	public $revision = "2.5.0";
+
+	public $revision = "207";
+
+	// Urls
+	private $_urlTemplate = null;
+	private $_urlWright = null;
+	private $_urlBootstrap = null;
 
 	function Wright()
 	{
@@ -40,31 +45,37 @@ class Wright
 		$this->document = $document;
 		$this->params = $document->params;
 		$this->baseurl = $document->baseurl;
-		$this->author = simplexml_load_file(JPATH_BASE . DS . 'templates' . DS . $this->document->template . DS . 'templateDetails.xml')->author;
 
-		if (is_file(JPATH_THEMES . DS . $document->template . DS . 'functions.php'))
-			include_once(JPATH_THEMES . DS . $document->template . DS . 'functions.php');
+		// Urls
+		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
+		$this->_urlWright = $this->_urlTemplate . '/wright';
+		$this->_urlBootstrap = $this->_urlWright . '/bootstrap';
+
+		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
+
+		if (is_file(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
+			include_once(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php');
 
 		// Get our template for further parsing, if custom file is found
 		// it will use it instead of the default file
-		$path = JPATH_THEMES . DS . $document->template . DS . 'template.php';
+		$path = JPATH_THEMES . '/' . $document->template . '/' . 'template.php';
 		$menu = $app->getMenu();
 
 		// If homepage, load up home.php if found
         if (version_compare(JVERSION, '1.6', 'lt')) {
-            if ($menu->getActive() == $menu->getDefault() && is_file(JPATH_THEMES . DS . $document->template . DS . 'home.php'))
-                $path = JPATH_THEMES . DS . $document->template . DS . 'home.php';
-            elseif (is_file(JPATH_THEMES . DS . $document->template . DS . 'custom.php'))
-                $path = JPATH_THEMES . DS . $document->template . DS . 'custom.php';
+            if ($menu->getActive() == $menu->getDefault() && is_file(JPATH_THEMES . '/' . $document->template . '/' . 'home.php'))
+                $path = JPATH_THEMES . '/' . $document->template . '/home.php';
+            elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
+                $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
         }
         else {
             $lang = JFactory::getLanguage();
-            if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . DS . $document->template . DS . 'home.php'))
-                $path = JPATH_THEMES . DS . $document->template . DS . 'home.php';
-            elseif (is_file(JPATH_THEMES . DS . $document->template . DS . 'custom.php'))
-                $path = JPATH_THEMES . DS . $document->template . DS . 'custom.php';
+            if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . '/' . $document->template . '/home.php'))
+                $path = JPATH_THEMES . '/' . $document->template . '/home.php';
+            elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
+                $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
         }
-        
+
 
 		// Include our file and capture buffer
 		ob_start();
@@ -117,6 +128,27 @@ class Wright
 			$this->document->setHeadData($dochead);
 		}
 
+		// load jQuery ?
+		if ($loadJquery = $this->document->params->get('jquery', 0))
+		{
+            switch ($loadJquery) {
+                // load jQuery locally
+                case 1:
+                    $jquery = JURI::root().'templates/' . $this->document->template . '/wright/js/jquery-1.7.2.min.js';
+                    break;
+                // load jQuery from Google
+                default:
+                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js';
+                    break;
+            }
+            $this->document->addScript($jquery);
+            // ensure that jQuery loads in noConflict mode to avoid mootools conflicts
+            $this->document->addScriptDeclaration('jQuery.noConflict();');
+		}
+
+		// load bootstrap JS
+		$this->document->addScript($this->_urlBootstrap . '/js/bootstrap.min.js');
+
 		// Add header script if set
 		if (trim($this->document->params->get('headerscript', '')) !== '')
 		{
@@ -143,7 +175,7 @@ class Wright
 	{
 		$styles = $this->loadCSSList();
 
-		if ($this->document->params->get('csscache', 'no') == 'yes' && is_writable(JPATH_THEMES . DS . $this->document->template . DS . 'css'))
+		if ($this->document->params->get('csscache', 'no') == 'yes' && is_writable(JPATH_THEMES . '/' . $this->document->template . '/css'))
 		{
 			$this->processCSSCache($styles);
 		}
@@ -158,8 +190,8 @@ class Wright
 		// Combine css into one file if files have been altered since cached copy
 		$rebuild = false;
 
-		if (is_file(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . $this->document->template . '.css'))
-			$cachetime = filemtime(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . $this->document->template . '.css');
+		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . $this->document->template . '.css'))
+			$cachetime = filemtime(JPATH_THEMES . '/' . $this->document->template . '/css/' . $this->document->template . '.css');
 		else
 			$cachetime = 0;
 
@@ -170,11 +202,11 @@ class Wright
 				foreach ($files as $style)
 				{
 					if ($folder == 'wright')
-						$file = JPATH_THEMES . DS . $this->document->template . DS . 'wright' . DS . 'css' . DS . $style;
+						$file = JPATH_THEMES . '/' . $this->document->template . '/wright/css/' . $style;
 					elseif ($folder == 'template')
-						$file = JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . $style;
+						$file = JPATH_THEMES . '/' . $this->document->template . '/css/' . $style;
 					else
-						$file = JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . $style;
+						$file = JPATH_THEMES . '/' . $this->document->template . '/css/' . $style;
 
 					if (filemtime($file) > $cachetime)
 						$rebuild = true;
@@ -192,11 +224,11 @@ class Wright
 					foreach ($files as $style)
 					{
 						if ($folder == 'wright')
-							$css .= file_get_contents(JPATH_THEMES . DS . $this->document->template . DS . 'wright' . DS . 'css' . DS . $style);
+							$css .= file_get_contents(JPATH_THEMES . '/' . $this->document->template . '/wright/css/' . $style);
 						elseif ($folder == 'template')
-							$css .= file_get_contents(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . $style);
+							$css .= file_get_contents(JPATH_THEMES . '/' . $this->document->template . '/css/' . $style);
 						else
-							$css .= file_get_contents(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . $style);
+							$css .= file_get_contents(JPATH_THEMES . '/' . $this->document->template . '/css/' . $style);
 					}
 				}
 			}
@@ -206,12 +238,12 @@ class Wright
 			// Strip comments
 			$css = preg_replace('/\/\*.*?\*\//s', '', $css);
 
-			include('css' . DS . 'csstidy' . DS . 'class.csstidy.php');
+			include('css/csstidy/class.csstidy.php');
 
 			$tidy = new csstidy();
 			$tidy->parse($css);
 
-			file_put_contents(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . $this->document->template . '.css', $tidy->print->plain());
+			file_put_contents(JPATH_THEMES . '/' . $this->document->template . '/css/' . $this->document->template . '.css', $tidy->print->plain());
 		}
 		$this->document->addStyleSheet(JURI::root().'templates/' . $this->document->template . '/css/' . $this->document->template . '.css');
 	}
@@ -228,6 +260,8 @@ class Wright
 						$sheet = JURI::root().'templates/' . $this->document->template . '/wright/css/' . $style;
 					elseif ($folder == 'template')
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
+					elseif ($folder == 'bootstrap')
+						$sheet = $this->_urlBootstrap . '/css/' . $style;
 					else
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
 
@@ -246,18 +280,19 @@ class Wright
 		$browser = JBrowser::getInstance();
 
 		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
-		$styles['wright'] = array('reset.css', 'layout.css', 'typography.css');
+		//$styles['wright'] = array('reset.css', 'layout.css', 'typography.css');
+		$styles['bootstrap'] = array('bootstrap.min.css', 'bootstrap-responsive.min.css');
         $version = explode('.', JVERSION);
         $version = $version[0].$version[1];
-        if (is_file(JPATH_THEMES . DS . $this->document->template .'/wright/css/joomla'.$version.'.css'))
+        if (is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.css'))
         {
             $styles['wright'][] = 'joomla'.$version.'.css';
         }
 
-		$styles['template'] = JFolder::files(JPATH_THEMES . DS . $this->document->template . DS . 'css', '\d{1,2}_.*.css');
+		$styles['template'] = JFolder::files(JPATH_THEMES . '/' . $this->document->template . '/css', '\d{1,2}_.*.css');
 
 		// Load up a specific style if set
-		if (is_file(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . 'style-' . $this->document->params->get('style') . '.css'))
+		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'style-' . $this->document->params->get('style') . '.css'))
 			$styles['template'][] = 'style-' . $this->document->params->get('style') . '.css';
 
 		// Add some stuff for lovely IE if needed
@@ -265,7 +300,7 @@ class Wright
 		{
 			$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
 
-			if (is_file(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . 'ie.css'))
+			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie.css'))
 			{
 				$styles['ie'][] = 'ie.css';
 			}
@@ -276,14 +311,14 @@ class Wright
 			switch ($major)
 			{
 				case '6' :
-					if (is_file(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . 'ie6.css'))
+					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie6.css'))
 						$styles['ie'][] = 'ie6.css';
 					$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
 					if ($this->document->params->get('doctype') == 'html5')
 						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/js/html5.js');
 					break;
 				default :
-					if (is_file(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . 'ie' . $major . '.css'))
+					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie' . $major . '.css'))
 						$styles['ie'][] = 'ie' . $major . '.css';
 					if ($this->document->params->get('doctype') == 'html5')
 						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
@@ -291,11 +326,11 @@ class Wright
 			}
 		}
 
-		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . 'rtl.css'))
+		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/rtl.css'))
 			$styles['template'][] = 'rtl.css';
-			
+
 		//Check to see if custom.css file is present, and if so add it after all other css files
-			if (is_file(JPATH_THEMES . DS . $this->document->template . DS . 'css' . DS . 'custom.css'))
+			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/custom.css'))
 				$styles['template'][] = 'custom.css';
 
 		return $styles;
@@ -303,7 +338,7 @@ class Wright
 
 	private function doctype()
 	{
-		require(dirname(__FILE__) . DS . 'doctypes' . DS . $this->document->params->get('doctype', 'html5') . '.php');
+		require(dirname(__FILE__) . '/doctypes/' . $this->document->params->get('doctype', 'html5') . '.php');
 		$adapter_name = 'HtmlAdapter' . $this->document->params->get('doctype', 'html5');
 		$adapter = new $adapter_name($this->document->params);
 
@@ -312,6 +347,9 @@ class Wright
 			$action = 'get' . ucfirst($name);
 			$this->template = preg_replace_callback($regex, array($adapter, $action), $this->template);
 		}
+
+		// reorder columns based on the order
+        $this->reorderContent();
 
         if (trim($this->document->params->get('footerscript')) != '') {
             $this->template = str_replace('</body>', '<script type="text/javascript">'.$this->document->params->get('footerscript').'</script></body>', $this->template);
@@ -333,7 +371,7 @@ class Wright
 		$file = ucfirst(str_replace('.', '', $version->RELEASE));
 
 		// Load up the proper adapter
-		require_once(dirname(__FILE__) . DS . 'adapters' . DS . 'joomla.php');
+		require_once(dirname(__FILE__) . '/adapters/joomla.php');
 		$this->adapter = new WrightAdapterJoomla($file);
 		$this->template = preg_replace_callback("/<w:(.*)\/>/i", array(get_class($this), 'platformTags'), $this->template);
 		return true;
@@ -387,5 +425,70 @@ class Wright
 		$str = 'return ' . implode(' ', $words) . ';';
 
 		return eval($str);
+	}
+
+    /**
+     * Reorder main content / sidebars in the order selected by the user
+     */
+	private function reorderContent() {
+
+	    /**
+	     * regular patterns to identify every column
+	     * Added id to avoid the annoying bug that avoids the user to use HTML5 tags
+	     */
+	    $patterns = array(  'sidebar1' => '/<aside(.*)id="sidebar1">(.*)<\/aside>/isU',
+	                        'sidebar2' => '/<aside(.*)id="sidebar2">(.*)<\/aside>/isU',
+	                        'main' => '/<section(.*)id="main"(.*)>(.*)<\/section>/isU'
+	    );
+
+	    // only this columns
+	    $allowedColNames = array_keys($patterns);
+	    $reorderedCols = array();
+	    $reorderedContent = '';
+
+	    // get column configuration
+	    $columnCfg = $this->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3');
+	    $colStrings = explode(';', $columnCfg);
+	    if ($colStrings) {
+	        foreach ($colStrings as $colString) {
+	            list ($colName, $colWidth) = explode(':', $colString);
+	            if(in_array($colName, $allowedColNames)) {
+	                $reorderedCols[] = $colName;
+	            }
+	        }
+	    }
+
+	    // get column contents with regular expressions
+	    $patternFound = false;
+	    foreach ($patterns as $column => $pattern) {
+
+	        // save the content into a variable
+	        $$column = null;
+	        if (preg_match($pattern, $this->template, $matches)) {
+	            $$column = $matches[0];
+
+	            $replacement = '';
+	            // replace first column found with string '##wricolumns##' to reorder content later
+	            if (!$patternFound) {
+	                $replacement = '##wricolumns##';
+	                $patternFound = true;
+	            }
+	            $this->template = preg_replace($pattern, $replacement, $this->template);
+	        }
+	    }
+
+	    // if columns reordered and column content found replace contents
+	    if ($reorderedCols && $patternFound) {
+	        foreach ($reorderedCols as $colName) {
+	            if (!is_null($$colName)) {
+	                $reorderedContent .= $$colName;
+	            }
+	        }
+	    }
+
+	    $this->template = preg_replace('/##wricolumns##/isU', $reorderedContent, $this->template);
+
+	    return $reorderedContent;
+
 	}
 }

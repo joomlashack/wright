@@ -32,7 +32,9 @@ function checkColumns() {
 		$('columns_warning').setStyle('display', 'none');
 	}
 	$$('div.column').each(function(column){
-		column.setStyle('width', column.getElement('select').getProperty('value')/12*100+'%');
+		var columWidth = column.getElement('select').getProperty('value')/12*82;
+		if (columWidth == 0) columWidth = 6;
+		column.setStyle('width', columWidth+'%');
 	});
 }
 

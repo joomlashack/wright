@@ -25,7 +25,7 @@ class JFormFieldColumns extends JFormField
 		$sidebars = ($this->element['sidebars']) ? $this->element['sidebars'] : 2;
 
 		$options = array ();
-		for ($i=1; $i <= 12; $i++)
+		for ($i=0; $i <= 12; $i++)
 		{
 			$val	= $i;
 			$text	= $i;

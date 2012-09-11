@@ -72,59 +72,7 @@ dl.article-info dd.createdby {
 dl.article-info dd.hits {
 	background:url(../images/icons/16/chart_bar.png) no-repeat 0 3px;
 }
-.cols-1 {
-	display: block;
-	float: none !important;
-	margin: 0 !important;
-}
-.cols-2 .column-1 {
-	width:46%;
-	float:left;
-}
-.cols-2 .column-2 {
-	width:46%;
-	float:right;
-	margin:0
-}
-.cols-3 .column-1 {
-	float:left;
-	width:29%;
-	padding:10px 5px 10px 0px;
-	margin-right:4%
-}
-.cols-3 .column-2 {
-	float:left;
-	width:29%;
-	margin-left:0;
-	padding:10px 5px;
-}
-.cols-3 .column-3 {
-	float:right;
-	width:29%;
-	padding:10px 0px 10px 5px;
-}
-.cols-4 .column-1 {
-	float:left;
-	width:24%;
-	padding:10px 5px 10px 0px;
-	margin:0;
-}
-.cols-4 .column-2 {
-	float:left;
-	width:24%;
-	margin:0;
-}
-.cols-4 .column-3 {
-	float:left;
-	width:24%;
-	margin:0;
-}
-.cols-4 .column-4 {
-	float:right;
-	width:24%;
-	padding:10px 0px 10px 5px;
-	margin:0;
-}
+
 .items-row {
 	overflow:hidden
 }
@@ -285,24 +233,42 @@ ul.actions li {
 /* @group Pagination */
 
 
+/* Article Pagination */
 
+ul.pagenav, .pagination ul {
+	text-align:center;
+	margin: 10px auto;
+	list-style: none;
+}
+ul.pagenav li, .pagination ul li {
+	display:inline;
+}
+ul.pagenav li a, .pagination li a {
+	padding: 5px 10px;
+	border-radius:4px;
+	border: 1px solid;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	text-decoration: none;
+}
 /* Category Pagination */
 
 .pagination {
 	display: block;
-	clear:both;
+	text-align: center;
 	font-size: 12px;
 	margin: 10px auto 20px auto;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-khtml-border-radius: 5px;
-	border-top: 1px solid #eee;
 }
 .pagination span {
 	padding: 0px 4px;
 }
-.pagination span a {
+.pagination a {
+	float: none;
 	padding: 4px 8px;
 	text-decoration: none;
 	border: 1px solid;
@@ -320,6 +286,8 @@ ul.actions li {
 /* @group Contact */
 
 div.panel {
+	margin-bottom: 10px;
+	padding-bottom: 5px;
 	display: block;
 	cursor: pointer;
 }
@@ -482,108 +450,10 @@ div#article-index ul li a.active {
 	font-weight: bold;
 }
 
-/* @end */
-
-/* For Page Break */
-/* Pages */
 div.pagenavcounter {
-	background-color: #eee;
-    color: #4F4F4F;
-    display: inline-block;
-    font-size: 12px;
-    margin: 0 0 20px;
-    padding: 1px 5px;
-}
-/* Article Pagination */
-
-ul.pagenav, div.pagination ul {
-   
-    list-style: none outside none;
-    margin: 10px auto;
-    padding: 1px 5px;
-    text-align: center;
-}
-ul.pagenav li, 
-div.pagination ul li {
-	display:inline;
-	background-color:#eee;
-	padding: 2px 5px;
 	color: #4F4F4F;
-}
-ul.pagenav li a, 
-div.pagination ul li a {
-	margin: -2px -5px;
-	display:inline-block;
-	text-decoration: none;
-	background-color: #4F4F4F;
-	color:white;
-	padding: 0 5px;
-	-moz-transition:all 0.2s ease-in 0s;
-}
-ul.pagenav li a:hover, 
-div.pagination ul li a:hover {
-	box-shadow: 0 0 5px #999;
-}
-/* Tabs */
-#tabs + div.current{
-	border: 1px solid #999;
-	box-shadow: 0 0 50px #e9e9e9 inset;
-	clear: both;
+	text-align: left;
 }
 
-dl#tabs dt{
-	clear: right;
-	width: auto;
-	padding: 5px;
-	border-top: 1px solid #999;
-	border-left: 1px solid #999;
-	border-right: 1px solid #999;
-	margin: 5px 5px 0 0;
-	box-shadow: 0 0 20px #e9e9e9 inset;
-}
-dl#tabs dt h3{
-	margin-bottom: 0;
-}
-.current dd{
-	padding: 0 10px;
-}
-dl#tabs dt:hover,
-dl#tabs dt.open{
-	box-shadow: 0 0 20px #fff inset;
-}
 
-dl#tabs dt.open a{
-	color: #aaa;
-}
-/* Slider */
-
-.panel{
-	margin-top:-1px;
-	border: 1px solid #e0e0e0;
-	padding: 0 10px;
-}
-.panel h3{
-	background-image: url(../images/slider_max.png);
-	background-repeat: no-repeat;
-	background-position:right center;
-	padding: 5px;
-	margin-bottom: 0;
-	margin-left: -10px;
-	width: 101%;
-	box-shadow:  0 0 20px #e9e9e9 inset;
-}
-.panel h3.pane-toggler-down{
-	background-image: url(../images/slider_minus.png);
-	background-color: #eee;
-}
-
-.panel h3.pane-toggler-down a{
-	border-bottom: 1px solid #E0E0E0;
-    display: block;
-    margin: 0 0 -5px;
- 	padding-bottom:5px;
-}
-.panel h3 a{
-	
-
-}
+/* @end */

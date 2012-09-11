@@ -16,6 +16,7 @@ abstract class HtmlAdapterAbstract
 								'asides' => '/<aside(.*)>(.*)<\/aside>/isU',
 								'footer' => '/<footer(.*)>(.*)<\/footer>/isU',
 								'header' => '/<header(.*)>(.*)<\/header>/isU',
+								'toolbar' => '/<div(.*)id="toolbar">(.*)<\/div>/isU',
 		);
 
 	public function  __construct($params) {
@@ -49,7 +50,7 @@ abstract class HtmlAdapterAbstract
 	public function getBody($matches)
 	{
 		$wright = Wright::getInstance();
-		require_once(JPATH_ROOT.DS.'templates'.DS.$wright->document->template.DS.'wright'.DS.'includes'.DS.'browser.php');
+		require_once(JPATH_ROOT.'/'.'templates'.'/'.$wright->document->template.'/'.'wright'.'/'.'includes'.'/'.'browser.php');
 		$browser = new Browser();
 		$browser_version = explode('.', $browser->getVersion());
 		$class = 'is_'.strtolower($browser->getBrowser()) . ' v_' . $browser_version[0];
@@ -64,7 +65,7 @@ abstract class HtmlAdapterAbstract
 
 		// if specific style add to class list
 		//$class .= ' '.$wright->params->get('style');
-		$xml = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$wright->document->template.DS.'templateDetails.xml');
+		$xml = simplexml_load_file(JPATH_ROOT.'/'.'templates'.'/'.$wright->document->template.'/'.'templateDetails.xml');
 		$theme = $xml->xpath('//style[@name="'.$wright->params->get('style').'"]');
 		if (count($theme)) $class .= ' '.$theme[0]['type'];
 
@@ -91,7 +92,7 @@ abstract class HtmlAdapterAbstract
 				else {
 					$gfont = $this->params->get('header_googlefont', 'Cuprum');
 				}
-				
+
 				$class .= ' h_' . strtolower(str_replace('+', '', $gfont));
 			}
 			else {
@@ -116,9 +117,9 @@ abstract class HtmlAdapterAbstract
 
 	public function getSections($matches)
 	{
-		$class = 'grid_'.$this->columns['main']->size;
-		if ($this->columns['main']->push) $class .= ' push_'.$this->columns['main']->push;
-		if ($this->columns['main']->pull) $class .= ' pull_'.$this->columns['main']->pull;
+		$class = 'span'.$this->columns['main']->size;
+		//if ($this->columns['main']->push) $class .= ' last';
+		//if ($this->columns['main']->pull) $class .= ' pull_'.$this->columns['main']->pull;
 		if (strpos($matches[1], 'class=')) {
 			preg_match('/class="(.*)"/i', $matches[1], $classes);
 			$class .= ' ' . $classes[1];
@@ -141,6 +142,7 @@ abstract class HtmlAdapterAbstract
 		$id = $ids[1];
 
 		$doc = Wright::getInstance();
+
 		if (!$doc->document->countModules($id)) {
 			// addition for forcing a sidebar (if it is a template which must have a sidebar for some of its positions)
 			$forcedSidebar = false;
@@ -153,22 +155,15 @@ abstract class HtmlAdapterAbstract
 				}
 			}
 
-			$editmode = false;
-			
-			// Check editing mode
-			if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form' || JRequest::getVar('layout') == 'edit') {
-				$editmode = true;
-			}
-			
 			if (!$forcedSidebar || $editmode)
 				return;
 		}
-		
+
 		$this->columns[$id]->exists = true;  // marks that column really exists
 
-		$class = 'grid_'.$this->columns[$id]->size;
-		if ($this->columns[$id]->push) $class .= ' push_'.$this->columns[$id]->push;
-		if ($this->columns[$id]->pull) $class .= ' pull_'.$this->columns[$id]->pull;
+		$class = 'span'.$this->columns[$id]->size;
+		//if ($this->columns[$id]->push) $class .= ' push_'.$this->columns[$id]->push;
+		//if ($this->columns[$id]->pull) $class .= ' pull_'.$this->columns[$id]->pull;
 		if (strpos($matches[1], 'class=')) {
 			preg_match('/class="(.*)"/i', $matches[1], $classes);
 			$class .= ' ' . $classes[1];
@@ -178,22 +173,30 @@ abstract class HtmlAdapterAbstract
 			$sidebar = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0], 1);
 		else
 			$sidebar = preg_replace('/<aside/iU', '<aside class="'.$class.'"', $matches[0], 1);
-
-		return $sidebar;
+		// only return sidebar if user has set columns > 0
+        if ($this->columns[$id]->size > 0 ) {
+		    return $sidebar;
+        }
 	}
 
 	public function getFooter($matches)
 	{
-
 		$class = 'footer';
+		$footer = $matches[0];
 
+		// Footer attributes contain classes?
 		if (strpos($matches[1], 'class=')) {
+			// Get aditional classes
 			preg_match('/class="(.*)"/i', $matches[1], $classes);
 			$class .= ' ' . $classes[1];
-		}
-		
-		if (strpos($matches[1], 'class='))
+			//
 			$footer = preg_replace('/class=\".*\"/iU', 'class="'.$class.'"', $matches[0], 1);
+		}
+		// Doesn't contain classes. Insert it
+		else
+		{
+			$footer = preg_replace('/<footer/iU','<footer class="' . $class . '"', $matches[0], 1);
+		}
 
 		return $footer;
 	}
@@ -202,6 +205,7 @@ abstract class HtmlAdapterAbstract
 	{
 
 		$class = 'header';
+		$header = $matches[0];
 
 		if (strpos($matches[1], 'class=')) {
 			preg_match('/class="(.*)"/i', $matches[1], $classes);
@@ -213,12 +217,12 @@ abstract class HtmlAdapterAbstract
 
 		return $header;
 	}
-	
+
 	// Full Height Columns (sidebars)
 	public function getFullHeightColumns($matches) {
 		$before = 0;
 		$after = 0;
-		
+
 		$i = 0;
 		foreach ($this->columns as $col) {
 			if ($col->exists) {  // only counts the column if really exists
@@ -242,14 +246,21 @@ abstract class HtmlAdapterAbstract
 			}
 			$i++;
 		}
-		
-		
+
+
 		$content = $matches[1] .
 			"<div id=\"columnscontainer\" class=\"container_12 main before_$before after_$after\">" .
 		 	$matches[2] .
 		 	"</div>" .
 		 	$matches[3];
 		return $content;
+	}
+
+	function getToolbar($matches){
+		$toolbar = $matches[0];
+		//var_dump($matches);
+		return $toolbar;
+
 	}
 
 	private function setupColumns()
@@ -261,10 +272,9 @@ abstract class HtmlAdapterAbstract
 		$check = 0;
 		$number = 0;
 		$layout = array();
-		
+
 		$wrightTemplate = null;
-		$editmode = false;
-		
+
 		// Check editing mode
 		if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form' || JRequest::getVar('layout') == 'edit') {
 			$editmode = true;
@@ -272,14 +282,13 @@ abstract class HtmlAdapterAbstract
 
 		if (class_exists("WrightTemplate") && !$editmode) {
 			$wrightTemplate = WrightTemplate::getInstance();
-			
+
 			// checks if the template has full height sidebars for adding the tag for the columns (sidebars)
-			if (property_exists("WrightTemplate", "fullHeightSidebars"))
-				if ($wrightTemplate->fullHeightSidebars) {
-					$this->tags['fullHeightColumns'] = '/(.*)<div class="container_12" id="columnscontainer">(.*)<\/div><div id="columnscontainer_close"><\/div>(.*)$/isU';
-				}
+			if ($wrightTemplate->fullHeightSidebars) {
+				$this->tags['fullHeightColumns'] = '/(.*)<div class="container_12" id="columnscontainer">(.*)<\/div><div id="columnscontainer_close"><\/div>(.*)$/isU';
+			}
 		}
-		
+
 		foreach (explode(';', $doc->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3')) as $item)
 		{
 			list ($col, $val) = explode(':', $item);
@@ -295,27 +304,28 @@ abstract class HtmlAdapterAbstract
 			$this->columns[$col]->pull = 0;
 			$this->columns[$col]->check = $check;
 			$this->columns[$col]->exists = false;  // contains if column really exists into content or not
-			
+
 			$number++;
-			if ($doc->document->countModules($col) || $col == 'main')
+			if ($val > 0 && $doc->document->countModules($col) || $col == 'main') {
 					$layout[] = $col;
+			}
 			else {
 				// addition for forcing a sidebar (if it is a template which must have a sidebar for some of its positions)
 				if ($wrightTemplate)
 					if (property_exists("WrightTemplate", "forcedSidebar")) {
-						$wrightTemplate = WrightTemplate::getInstance();
+						$wrightTemplate =& WrightTemplate::getInstance();
 						if ($col == $wrightTemplate->forcedSidebar)
 							$layout[] = $col;
 					}
 			}
 		}
-		
+
 		// Auto set to full width if editing
 		if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form') {
-			$layout = Array();
+			empty($layout);
 			$layout[] = 'main';
 		}
-		
+
 		switch(implode('-', $layout))
 		{
 			case 'main':

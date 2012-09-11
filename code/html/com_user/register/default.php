@@ -7,5 +7,5 @@
 
 $app =& JFactory::getApplication();
 
-require_once(JPATH_THEMES.DS.$app->getTemplate().DS.'wright'.DS.'html'.DS.'overrider.php');
+require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
 include(Overrider::getOverride('com_user.register'));

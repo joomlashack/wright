@@ -2,7 +2,7 @@
 // no direct access
 defined('_JEXEC') or die;
 
-JHtml::addIncludePath(JPATH_COMPONENT.DS.'helpers');
+JHtml::addIncludePath(JPATH_COMPONENT.'/'.'helpers');
 $params = &$this->params;
 ?>
 
@@ -34,7 +34,7 @@ $params = &$this->params;
 				<?php endif; ?>
 			</ul>
 			<?php endif; ?>
-			
+
 			<?php $useRowTwo = (($params->get('show_publish_date')) OR ($params->get('show_author')) OR ($params->get('show_hits'))); ?>
 			<?php if ($useRowTwo) : ?>
 			<ul class="article-info">
@@ -57,7 +57,7 @@ $params = &$this->params;
 				<?php endif; ?>
 			</ul>
 			<?php endif; ?>
-			
+
 			<?php $useRowThree = (($params->get('show_parent_category')) OR ($params->get('show_category'))); ?>
 			<?php if ($useRowThree) : ?>
 			<ul class="article-info">
@@ -93,7 +93,7 @@ $params = &$this->params;
 <?php if ($params->get('show_intro')) :?>
 	<div class="intro">
 		<?php echo JHTML::_('string.truncate', $item->introtext, $params->get('introtext_limit')); ?>
-	</div>		
+	</div>
 <?php endif; ?>
 	</div>
 <?php endforeach; ?>

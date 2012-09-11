@@ -22,13 +22,13 @@ class Overrider
 		$file = '';
 
 		$app = JFactory::getApplication();
-        
+
         $version = self::getVersion();
 
 		switch ($type)
 		{
 			case 'mod' :
-                while (!is_file(JPATH_THEMES.DS.$app->getTemplate().DS.'wright'.DS.'html'.DS.'joomla_'.implode('.', $version).DS.$extension.DS.$layout.'.php'))
+                while (!is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php'))
                 {
                     // If running down the list, we need to jump down a major number version
                     // then make sure we don't drop below minimum support
@@ -43,12 +43,12 @@ class Overrider
                         $version[1]--;
                     }
                 }
-				$file = JPATH_THEMES.DS.$app->getTemplate().DS.'wright'.DS.'html'.DS.'joomla_'.implode('.', $version).DS.$extension.DS.$layout.'.php';
+				$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php';
 				break;
 
 			case 'com' :
 				list($folder, $view) = explode('.', $extension);
-                while (!is_file(JPATH_THEMES.DS.$app->getTemplate().DS.'wright'.DS.'html'.DS.'joomla_'.implode('.', $version).DS.$folder.DS.$view.DS.$layout.'.php'))
+                while (!is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php'))
                 {
                     // If running down the list, we need to jump down a major number version
                     // then make sure we don't drop below minimum support
@@ -63,7 +63,7 @@ class Overrider
                         $version[1]--;
                     }
                 }
-                $file = JPATH_THEMES.DS.$app->getTemplate().DS.'wright'.DS.'html'.DS.'joomla_'.implode('.', $version).DS.$folder.DS.$view.DS.$layout.'.php';
+                $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php';
 				break;
 		}
 		return $file;
