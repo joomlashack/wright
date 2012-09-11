@@ -70,7 +70,31 @@ class WrightAdapterJoomlaLogo
 		}
 
 		$html = '<div id="logo" class="span'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
-		if ($doc->document->params->get('logowidth') !== '12' && $doc->countModules($args['name'])) $html .= '<div id="'.$args['name'].'" class="span'.(12 - $doc->document->params->get('logowidth', '6')).'"><jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" /></div>';
+		if ($doc->document->params->get('logowidth') !== '12' && $doc->countModules($args['name'])) {
+			if ($args['name'] == 'menu') {
+				$html .= '
+					<nav id="'.$args['name'].'" class="span'.(12 - $doc->document->params->get('logowidth', '6')).'">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="container">
+						            <a class="btn btn-navbar" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
+							            <span class="icon-bar"></span>
+							            <span class="icon-bar"></span>
+							            <span class="icon-bar"></span>
+						            </a>
+						            <div class="nav-collapse" id="nav-'.$args['name'].'">
+										 <jdoc:include type="modules" name="'.$args['name'].'" style="raw" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</nav>
+				';
+			}
+			else {
+				$html .= '<div id="'.$args['name'].'" class="span'.(12 - $doc->document->params->get('logowidth', '6')).'"><jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" /></div>';
+			}
+		} 
 		return $html;
 	}
 }

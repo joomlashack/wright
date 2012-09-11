@@ -30,7 +30,7 @@ class Wright
 	public $baseurl;
 	public $author;
 
-	public $revision = "3.0.0";
+	public $revision = "3.0.2";
 
 	// Urls
 	private $_urlTemplate = null;
@@ -261,8 +261,14 @@ class Wright
 						$sheet = JURI::root().'templates/' . $this->document->template . '/wright/css/' . $style;
 					elseif ($folder == 'template')
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
-					elseif ($folder == 'bootstrap')
-						$sheet = $this->_urlBootstrap . '/css/' . $style;
+					elseif ($folder == 'bootstrap') {
+						if ($style == 'style-' . $this->document->params->get('style') . '.bootstrap.min.css') {
+							$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
+						}
+						else {
+							$sheet = $this->_urlBootstrap . '/css/' . $style;						
+						}
+					}
 					elseif ($folder == 'fontawesomemore')
 						$sheet = $this->_urlFontAwesomeMore . '/css/' . $style;
 					else
@@ -295,6 +301,10 @@ class Wright
         }
 
 		$styles['template'] = JFolder::files(JPATH_THEMES . '/' . $this->document->template . '/css', '\d{1,2}_.*.css');
+
+		// Load up a specific bootstrap style if set
+		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'style-' . $this->document->params->get('style') . '.bootstrap.min.css'))
+			$styles['bootstrap'][0] = 'style-' . $this->document->params->get('style') . '.bootstrap.min.css';
 
 		// Load up a specific style if set
 		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'style-' . $this->document->params->get('style') . '.css'))
