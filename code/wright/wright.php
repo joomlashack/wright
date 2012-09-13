@@ -30,7 +30,7 @@ class Wright
 	public $baseurl;
 	public $author;
 
-	public $revision = "3.0.8";
+	public $revision = "3.0.8_novitas";
 
 	// Urls
 	private $_urlTemplate = null;
@@ -307,6 +307,9 @@ class Wright
         {
             $styles['wright'][] = 'joomla'.$version.'.css';
         }
+		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.responsive.css')) {
+            $styles['wright'][] = 'joomla'.$version.'-responsive.css';
+		}
 
 		$styles['template'] = JFolder::files(JPATH_THEMES . '/' . $this->document->template . '/css', '\d{1,2}_.*.css');
 
