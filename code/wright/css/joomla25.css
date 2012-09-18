@@ -196,6 +196,9 @@ label{
 	min-width:70px;
 	margin-right: 10px;
 }
+.search label{
+	min-width:0;
+}
 li{
 	margin-bottom: 3px;
 	line-height: normal;
