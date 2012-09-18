@@ -28,18 +28,6 @@ body.toolbarpadding {
 	padding-top: 0;
 }
 
-@media (max-width: 979px){
-	body,
-	body.toolbarpadding {
-		padding-top: 0;
-	}
-}
-
-a {
-	
-}
-a:hover{
-}
 /* style the default Joomla image captions */
 p.img_caption {
 	font-style: italic;
@@ -121,22 +109,8 @@ a.joomlashack {
     width: 75px;
     background: url("../images/jscright.png") no-repeat scroll 0 0 transparent;
 }
-	
-@media (max-width: 979px){
-	.footer1,
-	.footer2{
-		float: none;
-		text-align: center;
-	}
-	
-}
 
-@media (max-width: 767px){
-	#footer{
-		margin-left: -20px;
-		margin-right: -20px;
-	}
-}
+
 #footer a:hover{
 	color: gray;
 }
@@ -221,6 +195,9 @@ label{
 	line-height: 26px;
 	min-width:70px;
 	margin-right: 10px;
+}
+.search label{
+	min-width:0;
 }
 li{
 	margin-bottom: 3px;
@@ -788,28 +765,6 @@ nav div.toolbar {
     margin-top: -1px;
 }
 
-@media (max-width: 979px) {
-	
-	.navbar .btn-navbar {
-		margin-bottom: 3px;
-	}
-
-	.navbar .nav > li > .dropdown-menu:after,
-	.navbar .nav > li > .dropdown-menu:before {
-		border-bottom: 0;
-		border-left: 0;
-		border-right: 0;
-	}
-
-	.dropdown-menu .sub-menu {
-		left: auto;
-		position: relative;
-		top: auto;
-		visibility: visible;
-		margin-top: 0;
-	}
-	
-}
 .dropdown-menu li > span:hover,
 .dropdown-menu .active > span{
 	background-color: #0081C2;
@@ -1104,14 +1059,6 @@ div:first-child + .panel {
 #sidebar2 input#modlgn-remember{
 	min-width: inherit;
 }
-#sidebar1 input,
-#sidebar1 textarea,
-#sidebar2 input, 
-#sidebar2 textarea
-{
-	width: auto;
-	min-width: 150px;
-}
 
 #sidebar1,
 #sidebar2{
@@ -1143,7 +1090,12 @@ span.spacer{
 [class*="span"], .row-fluid [class*="span"]{
 	
 	margin-bottom: 10px;
+	overflow: hidden;
 }
+
+
+
+    
 .icons-left{
 	float:left; 
 	min-height:16px;
@@ -1156,12 +1108,18 @@ span.spacer{
     float: left;
     margin: 10px 0;
 }
-@media (max-width: 767px){
-	
-	.tabs.nav.nav-tabs dt.tabs{
-		float: none;
-	}
-	.nav-tabs .tabs a{
-		display: block;
-	}
+.pagenav.disabled a {
+    color: gray;
+}
+
+
+/* Newsflash */
+
+div.newsflash a.readmore,
+div.newsflash_ms1 a.readmore,
+div.newsflash_ms2 a.readmore,
+div.newsflash_ms3 a.readmore,
+div.newsflash_ms4 a.readmore,
+div.newsflash_ms5 a.readmore {
+	padding-bottom: 10px;
 }
