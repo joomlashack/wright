@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
-<install version="1.5" type="template" method="upgrade">
+<extension version="2.5" type="template" method="upgrade" client="site">
 	<name>js_wright</name>
 	<creationDate>November 2010</creationDate>
 	<author>Joomlashack</author>
@@ -46,30 +46,8 @@
 		<position>bottommenu</position>
 		<position>debug</position>
 	</positions>
-	<params addpath="/templates/js_wright/wright/parameters/joomla_1.5">
-        <!-- Start of default Wright params -->
-		<param name="helper" type="help" label="Need Help?" />
-		<param name="rebrand" type="rebrand" default="no" label="Remove Branding" description="This setting removes the branding from the footer of the template." />
-		<param name="style" type="styles" default="theme1" label="Style" description="Select which of the style variations you wish to use." />
-		<param name="mootools" type="radio" default="1" label="Enable Mootools" description="Turn off Joomla core Mootools.js">
-			<option value="0">NO</option>
-			<option value="1">YES</option>
-		</param>
-		<param name="logo" type="logo" default="template" label="Logo Image" description="You can select your logo from the images directory after you upload the image." />
-		<param name="logowidth" type="grid" default="4" label="Logo Width" description="Select the column width for the logo, the rest of the space will be given to the newsflash module, or if you set it to full width the module will dissapear" />
-		<param name="body_font" type="typography" default="arial" label="Body Font" description="Select the default font face for the body" />
-		<param name="header_font" type="typography" default="arial" label="Heading Font" description="Select the default font face for the headers" />
-		<param name="grids" type="text" default="12" label="Grids Columns" description="Number of columns in the grid system" />
-        <param name="columns" type="columns" default="sidebar1:3;main:6;sidebar2:3" sidebars="2" label="Columns" description="You can set the default widths and arrange the main columns. Any columns that are unused will just be hidden and the main column will be widened." />
-		<param name="doctype" type="list" default="html5" label="Doctype" description="">
-			<option value="html5">HTML5</option>
-			<option value="xhtml1transitional">XHTML 1 Transitional</option>
-			<option value="xhtml1strict">XHTML 1 Strict</option>
-		</param>
-        <!-- End of default Wright params -->
-	</params>
 	<config>
-		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_1.6">
+		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_2.5">
 			<fieldset name="basic">
                 <!-- Start of default Wright params -->
 				<field name="helper" type="help" label="Need Help?" />
@@ -93,4 +71,4 @@
 			</fieldset>
 		</fields>
 	</config>
-</install>
+</extension>
