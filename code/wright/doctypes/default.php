@@ -49,7 +49,7 @@ abstract class HtmlAdapterAbstract
 	public function getBody($matches)
 	{
 		$wright = Wright::getInstance();
-		require_once(JPATH_ROOT.DS.'templates'.DS.$wright->document->template.DS.'wright'.DS.'includes'.DS.'browser.php');
+		require_once(JPATH_ROOT.'/templates/'.$wright->document->template.'/wright/includes/browser.php');
 		$browser = new Browser();
 		$browser_version = explode('.', $browser->getVersion());
 		$class = 'is_'.strtolower($browser->getBrowser()) . ' v_' . $browser_version[0];
@@ -64,7 +64,7 @@ abstract class HtmlAdapterAbstract
 
 		// if specific style add to class list
 		//$class .= ' '.$wright->params->get('style');
-		$xml = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$wright->document->template.DS.'templateDetails.xml');
+		$xml = simplexml_load_file(JPATH_ROOT.'/templates/'.$wright->document->template.'/templateDetails.xml');
 		$theme = $xml->xpath('//style[@name="'.$wright->params->get('style').'"]');
 		if (count($theme)) $class .= ' '.$theme[0]['type'];
 

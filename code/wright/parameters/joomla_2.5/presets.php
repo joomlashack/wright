@@ -17,9 +17,9 @@ class JFormFieldPresets extends JFormFieldList
 	{
 		$doc = JFactory::getDocument();
 		$template = $this->form->getValue('template');
-		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/presets/presets_1.6.js');
+		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/presets/presets_2.5.js');
 		
-		$file = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$template.DS.'presets.xml');
+		$file = simplexml_load_file(JPATH_ROOT.'/templates/'.$template.'/presets.xml');
 
 		$json = str_replace('@attributes', 'attributes', json_encode($file));
 

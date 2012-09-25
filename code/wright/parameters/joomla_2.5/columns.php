@@ -10,7 +10,7 @@ class JFormFieldColumns extends JFormField
 	function getInput()
 	{
 		$doc = JFactory::getDocument();
-		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/columns/columns_1.6.js');
+		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/columns/columns_2.5.js');
 		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/columns/columns.css');
 
 		$values = explode(';', $this->value);

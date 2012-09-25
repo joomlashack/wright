@@ -53,13 +53,13 @@ class WrightAdapterJoomlaLogo
 				$logotone =  $doc->document->params->get('Tone','' );
 			}
 			
-			if (is_file(JPATH_ROOT.DS.'templates/'.$doc->document->template.'/images/logo' . $logotone. '.png'))
+			if (is_file(JPATH_ROOT.'/templates/'.$doc->document->template.'/images/logo' . $logotone. '.png'))
 				$logo = JURI::root().'templates/'.$doc->document->template.'/images/logo' . $logotone. '.png';
-			elseif (is_file(JPATH_ROOT.DS.'templates'.DS.$doc->document->template.DS.'images'.DS.$doc->document->params->get('style').DS.'logo' . $logotone. '.png'))
+			elseif (is_file(JPATH_ROOT.'/templates/'.$doc->document->template.'/images/'.$doc->document->params->get('style').'/logo' . $logotone. '.png'))
 				$logo = JURI::root().'templates/'.$doc->document->template.'/images/'.$doc->document->params->get('style').'/logo' . $logotone. '.png';
-			elseif (is_file(JPATH_ROOT.DS.'templates/'.$doc->document->template.'/images/logo.png'))
+			elseif (is_file(JPATH_ROOT.'/templates/'.$doc->document->template.'/images/logo.png'))
 				$logo = JURI::root().'templates/'.$doc->document->template.'/images/logo.png';
-			elseif (is_file(JPATH_ROOT.DS.'templates'.DS.$doc->document->template.DS.'images'.DS.$doc->document->params->get('style').DS.'logo.png'))
+			elseif (is_file(JPATH_ROOT.'/templates/'.$doc->document->template.'/images/'.$doc->document->params->get('style').'/logo.png'))
 				$logo = JURI::root().'templates/'.$doc->document->template.'/images/'.$doc->document->params->get('style').'/logo.png';
 			else {
 				$logo = JURI::root().'templates/'.$doc->document->template.'/wright/images/logo.png';

@@ -17,7 +17,7 @@ class JFormFieldStyles extends JFormFieldList
 		// Initialize variables.
 		$options = array();
 
-		$styles = JFolder::files(JPATH_ROOT.DS.'templates'.DS.$this->form->getValue('template').DS.'css', 'style-(.*)?\.css');
+		$styles = JFolder::files(JPATH_ROOT.'/templates/'.$this->form->getValue('template').'/css', 'style-(.*)?\.css');
 
         if (!count($styles)) return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template'), true));
 
