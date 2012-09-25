@@ -8,7 +8,7 @@ $canEdit	= $this->item->params->get('access-edit');
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 $images = json_decode($this->item->images);
 JHtml::_('behavior.tooltip');
-JHtml::framework();
+JHtmlBehavior::framework();
 
 ?>
 

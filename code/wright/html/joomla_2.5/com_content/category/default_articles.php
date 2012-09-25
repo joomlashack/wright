@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
-JHtml::framework();
+JHtmlBehavior::framework();
 
 // Create some shortcuts.
 $params		= &$this->item->params;

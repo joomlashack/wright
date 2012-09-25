@@ -2,7 +2,7 @@
 // no direct access
 defined('_JEXEC') or die;
 
-JHtml::framework();
+JHtmlBehavior::framework();
 
 $listOrder	= $this->state->get('list.ordering');
 $listDirn	= $this->state->get('list.direction');
