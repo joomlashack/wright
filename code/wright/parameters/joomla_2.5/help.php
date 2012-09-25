@@ -10,7 +10,7 @@ class JFormFieldHelp extends JFormField
 
 	protected function getInput()
 	{
-		JHTML::_('behavior.modal');
+		JHtml::_('behavior.modal');
 		$doc = JFactory::getDocument();
 		$template = $this->form->getValue('template');
 		$html = '<a class="modal" href="'.JURI::root().'templates/'.$template.'/wright/help" rel="{\'handler\': \'iframe\', \'size\': {x: 800, y:600}}">'.JText::_('Documentation').'</a>';

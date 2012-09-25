@@ -24,7 +24,7 @@ class JFormFieldGrid extends JFormFieldList
 		{
 			$val	= $i;
 			$text	= $i;
-			$options[] = JHTML::_('select.option', $val, JText::_($text));
+			$options[] = JHtml::_('select.option', $val, JText::_($text));
 		}
 
 		return $options;

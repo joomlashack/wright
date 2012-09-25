@@ -17,7 +17,7 @@ class JFormFieldPresets extends JFormFieldList
 	{
 		$doc = JFactory::getDocument();
 		$template = $this->form->getValue('template');
-		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/presets/presets_2.5.js');
+		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$template.'/wright/parameters/assets/presets/presets.js');
 		
 		$file = simplexml_load_file(JPATH_ROOT.'/templates/'.$template.'/presets.xml');
 
@@ -29,7 +29,7 @@ class JFormFieldPresets extends JFormFieldList
 
 		foreach ($file->xpath('//preset') as $preset)
 		{
-			$options[] = JHTML::_('select.option', $preset['name'], $preset['title']);
+			$options[] = JHtml::_('select.option', $preset['name'], $preset['title']);
 		}
 
 		return $options;

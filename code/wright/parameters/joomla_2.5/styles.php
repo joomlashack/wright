@@ -19,14 +19,14 @@ class JFormFieldStyles extends JFormFieldList
 
 		$styles = JFolder::files(JPATH_ROOT.'/templates/'.$this->form->getValue('template').'/css', 'style-(.*)?\.css');
 
-        if (!count($styles)) return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template'), true));
+        if (!count($styles)) return array(JHtml::_('select.option', '', JText::_('No styles are provided for this template'), true));
 
 		foreach ($styles as $style)
 		{
 			$item = substr($style, 6, strpos($style, '.css') - 6);
 			$val	= $item;
 			$text	= ucfirst($item);
-			$options[] = JHTML::_('select.option', $val, JText::_($text));
+			$options[] = JHtml::_('select.option', $val, JText::_($text));
 		}
 
 		return $options;

@@ -47,7 +47,7 @@ class JFormFieldTypography extends JFormFieldList
 		{
 			$val	= strtolower(str_replace(' ', '', $stack));
 			$text	= $stack . ' - ' . ucfirst($style);
-			$options[] = JHTML::_('select.option', $val, JText::_($text));
+			$options[] = JHtml::_('select.option', $val, JText::_($text));
 		}
 
 		return $options;

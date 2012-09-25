@@ -18,8 +18,8 @@ class JFormFieldRebrand extends JFormField
 
 		// Get the field options.
 		$options = array();
-		$options[] = JHTML::_('select.option', 'no', JText::_('No'));
-		$options[] = JHTML::_('select.option', 'yes', JText::_('Yes'));
+		$options[] = JHtml::_('select.option', 'no', JText::_('No'));
+		$options[] = JHtml::_('select.option', 'yes', JText::_('Yes'));
 
 		// Build the radio field output.
 		foreach ($options as $i => $option) {

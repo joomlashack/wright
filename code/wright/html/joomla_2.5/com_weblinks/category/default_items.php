@@ -6,7 +6,7 @@ defined('_JEXEC') or die;
 $params = &$this->item->params;
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
-JHtml::core();
+JHtml::framework();
 // Get the user object.
 $user = JFactory::getUser();
 // Check if user is allowed to add/edit based on weblinks permissinos.
@@ -62,7 +62,7 @@ $listDirn	= $this->state->get('list.direction');
 				<td class="title">
 					<?php if ($this->params->get('link_icons') <> -1) : ?>
 					<span class="jicons-icons">
-						<?php echo JHTML::_('image','system/'.$this->params->get('link_icons', 'weblink.png'), JText::_('COM_WEBLINKS_LINK'), NULL, true);?>
+						<?php echo JHtml::_('image','system/'.$this->params->get('link_icons', 'weblink.png'), JText::_('COM_WEBLINKS_LINK'), NULL, true);?>
 					</span>
 					<?php endif; ?>
 				<p>

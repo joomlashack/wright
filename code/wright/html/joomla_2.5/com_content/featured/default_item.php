@@ -73,13 +73,13 @@ $canEdit	= $this->item->params->get('access-edit');
 
 <?php if ($params->get('show_create_date')) : ?>
 		<li class="create">
-		<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHTML::_('date',$this->item->created, JText::_('DATE_FORMAT_LC2'))); ?>
+		<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date',$this->item->created, JText::_('DATE_FORMAT_LC2'))); ?>
 		</li>
 <?php endif; ?>
 
 <?php if ($params->get('show_modify_date')) : ?>
 		<li class="modified">
-		<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHTML::_('date',$this->item->modified, JText::_('DATE_FORMAT_LC2'))); ?>
+		<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date',$this->item->modified, JText::_('DATE_FORMAT_LC2'))); ?>
 		</li>
 <?php endif; ?>
 
@@ -96,7 +96,7 @@ $canEdit	= $this->item->params->get('access-edit');
 
 <?php if ($params->get('show_publish_date')) : ?>
 		<li class="published">
-		<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHTML::_('date',$this->item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?>
+		<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date',$this->item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?>
 		</li>
 <?php endif; ?>
 
@@ -106,7 +106,7 @@ $canEdit	= $this->item->params->get('access-edit');
 	<?php $author =  $this->item->author; ?>
 	<?php $author = ($this->item->created_by_alias ? $this->item->created_by_alias : $author);?>
 	<?php if (!empty($this->item->contactid ) &&  $params->get('link_author') == true):?>
-	<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', JHTML::_('link',JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid),$author)); ?>
+	<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', JHtml::_('link',JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid),$author)); ?>
 	<?php else :?>
 	<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
 	<?php endif; ?>
@@ -196,12 +196,12 @@ $canEdit	= $this->item->params->get('access-edit');
 						echo JText::_('COM_CONTENT_REGISTER_TO_READ_MORE');
 					elseif ($readmore = $this->item->alternative_readmore) :
 						echo $readmore;
-						echo JHTML::_('string.truncate', ($this->item->title), $params->get('readmore_limit'));
+						echo JHtml::_('string.truncate', ($this->item->title), $params->get('readmore_limit'));
 					elseif ($params->get('show_readmore_title', 0) == 0) :
 						echo JText::sprintf('COM_CONTENT_READ_MORE_TITLE');	
 					else :
 						echo JText::_('COM_CONTENT_READ_MORE');
-						echo JHTML::_('string.truncate', ($this->item->title), $params->get('readmore_limit'));
+						echo JHtml::_('string.truncate', ($this->item->title), $params->get('readmore_limit'));
 					endif; ?></a>
 		</p>
 <?php endif; ?>

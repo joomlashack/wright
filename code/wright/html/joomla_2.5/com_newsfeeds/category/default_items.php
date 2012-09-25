@@ -2,7 +2,7 @@
 // no direct access
 defined('_JEXEC') or die;
 
-JHtml::core();
+JHtml::framework();
 
 $n = count($this->items);
 $listOrder	= $this->state->get('list.ordering');
