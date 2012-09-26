@@ -163,9 +163,6 @@ div.categories-list span.item-title, div.cat-children span.item-title {
 	display: block;
 	margin: 10px 0px;
 }
-div.categories-list span.item-title a, div.cat-children span.item-title a {
-	padding-left: 20px;
-}
 span.article-count, span.weblink-count, span.contact-count, span.newsfeed-count {
 	float: right;
 	clear: both;
@@ -523,37 +520,8 @@ ul.pagenav li a:hover,
 div.pagination ul li a:hover {
 	box-shadow: 0 0 5px #999;
 }
-/* Tabs */
-#tabs + div.current{
-	border: 1px solid #999;
-	box-shadow: 0 0 50px #e9e9e9 inset;
-	clear: both;
-}
 
-dl#tabs dt{
-	clear: right;
-	width: auto;
-	padding: 5px;
-	border-top: 1px solid #999;
-	border-left: 1px solid #999;
-	border-right: 1px solid #999;
-	margin: 5px 5px 0 0;
-	box-shadow: 0 0 20px #e9e9e9 inset;
-}
-dl#tabs dt h3{
-	margin-bottom: 0;
-}
-.current dd{
-	padding: 0 10px;
-}
-dl#tabs dt:hover,
-dl#tabs dt.open{
-	box-shadow: 0 0 20px #fff inset;
-}
 
-dl#tabs dt.open a{
-	color: #aaa;
-}
 /* Slider */
 
 .panel{
@@ -652,4 +620,21 @@ div.tab-content div.tab-pane.active {
 ul.nav-tabs li {
 	float: left;
 	list-style: none;
+}
+
+dl#tabs,
+dl.tabs {
+	width: 100%;
+}
+
+dl#tabs dt,
+dl#tabs dd,
+dl.tabs dt,
+dl.tabs dd {
+	clear: both;
+	width: 100%;
+}
+
+ul.pagenav {
+	clear: both;
 }
