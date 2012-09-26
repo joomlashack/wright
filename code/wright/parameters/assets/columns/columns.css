@@ -10,3 +10,8 @@ div.columns select.columns { float: none; }
 div.col select {
 	width: 90%;
 }
+
+p#column_info,
+div#columns {
+	clear: both;
+}
