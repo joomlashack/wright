@@ -228,6 +228,8 @@ class Wright
 						$sheet = JURI::root().'templates/' . $this->document->template . '/wright/css/' . $style;
 					elseif ($folder == 'template')
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
+					elseif ($folder == 'fontawesomemore')
+						$sheet = JURI::root().'templates/' . $this->document->template . '/wright/fontawesomemore/css/' . $style;
 					else
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
 
@@ -245,8 +247,11 @@ class Wright
 
 		$browser = JBrowser::getInstance();
 
+		$styles['fontawesomemore'] = array('font-awesome.css');
+
 		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
 		$styles['wright'] = array('reset.css', 'layout.css', 'typography.css');
+		
         $version = explode('.', JVERSION);
         $version = $version[0].$version[1];
         if (is_file(JPATH_THEMES .'/'. $this->document->template .'/wright/css/joomla'.$version.'.css'))
@@ -288,6 +293,8 @@ class Wright
 					if ($this->document->params->get('doctype') == 'html5')
 						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
 					break;
+				case '7':
+					$styles['fontawesomemore'][] = 'font-awesome-ie7.css';
 			}
 		}
 

@@ -39,7 +39,7 @@ dl.article-info {
 	width:100%;
 	min-height:20px;
 	margin:20px 0;
-	font-size:0.8em;
+	font-size:1em;
 }
 dl.article-info dt {
 	display:none;
@@ -586,4 +586,44 @@ dl#tabs dt.open a{
 .panel h3 a{
 	
 
+}
+
+.pull-right {
+	float: right;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-left.item-image {
+    margin: 0 20px 18px 0;
+}
+
+.pull-right.item-image {
+    margin: 0 0 18px 20px;
+}
+[class^="icon-"], [class*=" icon-"],
+a [class^="icon-"], a [class*=" icon-"] {
+	background-image: none;
+	text-decoration: none;
+}
+
+
+ul.dropdown-menu {
+	list-style: none;	
+}
+
+ul.dropdown-menu li {
+	list-style: none;
+	float: left;
+	margin-left: 10px;
+}
+
+div.btn-group i.icon-cog {
+	display: none;
+}
+
+ul.dropdown-menu li a {
+	text-decoration: none;
 }
