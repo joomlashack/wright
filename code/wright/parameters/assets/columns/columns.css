@@ -6,3 +6,7 @@ div.columns select.columns { float: none; }
 #column_sidebar4 { background-color: #bbb; }
 #column_main { background-color: #ddd; }
 .column a { cursor: pointer; }
+
+div.col select {
+	width: 90%;
+}

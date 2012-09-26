@@ -8,7 +8,7 @@ window.addEvent('load', function() {
 
 function setColumnParam() {
 	var widths = new Array();
-	$$('div.column').each(function(column){
+	$$('div.col').each(function(column){
 		widths.push(column.getProperty('id').substring(7)+':'+column.getElement('select').getProperty('value'));
 	});
 
@@ -31,13 +31,25 @@ function checkColumns() {
 		$('column_info').setStyle('color', 'inherit');
 		$('columns_warning').setStyle('display', 'none');
 	}
-	$$('div.column').each(function(column){
-		column.setStyle('width', column.getElement('select').getProperty('value')/12*100+'%');
+	$$('div.col').each(function(column){
+		column.removeClass('span1');
+		column.removeClass('span2');
+		column.removeClass('span3');
+		column.removeClass('span4');
+		column.removeClass('span5');
+		column.removeClass('span6');
+		column.removeClass('span7');
+		column.removeClass('span8');
+		column.removeClass('span9');
+		column.removeClass('span10');
+		column.removeClass('span11');
+		column.removeClass('span12');
+		column.addClass('span' + column.getElement('select').getProperty('value'));
 	});
 }
 
 function swapColumns(col, dir) {
-	var cols = $$('div.column');
+	var cols = $$('div.col');
 	var index = 0;
 	var selected = 'column_'+col;
 	if (dir == 'right')
@@ -49,7 +61,7 @@ function swapColumns(col, dir) {
 			}
 			index++;
 		});
-		$(selected).injectAfter(cols[swapindex]);
+		$(selected).inject(cols[swapindex],'after');
 	}
 	else
 	{

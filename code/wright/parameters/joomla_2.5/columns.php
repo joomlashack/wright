@@ -32,9 +32,9 @@ class JFormFieldColumns extends JFormField
 			$options[] = JHtml::_('select.option', $val, JText::_($text));
 		}
 
-		$html = '<p id="column_info" style="float: left">' . JText::_('Using') . ' <span id="columns_used"></span> ' . JText::_('of') . ' 12 <span id="columns_warning">'.JText::_('The total needs to add up to 12').'</span></p>';
+		$html = '<p id="column_info">' . JText::_('Using') . ' <span id="columns_used"></span> ' . JText::_('of') . ' 12 <span id="columns_warning">'.JText::_('The total needs to add up to 12').'</span></p>';
 		
-		$html .= '<div class="columns" style="float: left;">';
+		$html .= '<div class="columns row-fluid">';
 
 		$html .= '<input type="hidden" name="'.$this->name.'" id="'.$this->name.'" value="'.$this->value.'" />';
 
@@ -44,7 +44,7 @@ class JFormFieldColumns extends JFormField
 
 		foreach ($columns as $column)
 		{
-			$html .= '<div id="column_'.$column[0].'" class="column" style="width: '.floor(100/$number).'%; float: left;  text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\''.$column[0].'\', \'left\')">&nbsp;&nbsp;&laquo;&nbsp;&nbsp;</a><a onclick="swapColumns(\''.$column[0].'\', \'right\')">&nbsp;&nbsp;&raquo;&nbsp;&nbsp;</a></span><span style="display: block; text-align:center;">' . JText::_(ucfirst($column[0])) . '</span> ' . JHtml::_('select.genericlist',  $options, 'ignore['.$column[0].']', $class, 'value', 'text', $column[1], 'columns_'.$column[0]) . '</div>';
+			$html .= '<div id="column_'.$column[0].'" class="col span' . $column[1] . '" style="text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\''.$column[0].'\', \'left\')">&nbsp;&nbsp;&laquo;&nbsp;&nbsp;</a><a onclick="swapColumns(\''.$column[0].'\', \'right\')">&nbsp;&nbsp;&raquo;&nbsp;&nbsp;</a></span><span style="display: block; text-align:center;">' . JText::_(ucfirst($column[0])) . '</span> ' . JHtml::_('select.genericlist',  $options, 'ignore['.$column[0].']', $class, 'value', 'text', $column[1], 'columns_'.$column[0]) . '</div>';
 		}
 
 		$html .= '<div style="display: none; clear: both;"></div></div>';
