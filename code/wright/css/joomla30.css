@@ -632,3 +632,24 @@ fieldset.filters div.alert {
 	border-color: #0088CC;
 	padding: 5px;
 }
+
+div.btn-toolbar div.btn-group {
+	float: left;
+}
+
+fieldset, div.tab-content {
+	clear: both;
+}
+
+div.tab-content div.tab-pane {
+	display: none;
+}
+
+div.tab-content div.tab-pane.active {
+	display: block;
+}
+
+ul.nav-tabs li {
+	float: left;
+	list-style: none;
+}
