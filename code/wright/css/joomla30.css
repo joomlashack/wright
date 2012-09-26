@@ -162,7 +162,6 @@ div.categories-list span.item-title, div.cat-children span.item-title {
 	font-size: 18px;
 	display: block;
 	margin: 10px 0px;
-	background: url(../images/icons/24/folder.png) no-repeat left center;
 }
 div.categories-list span.item-title a, div.cat-children span.item-title a {
 	padding-left: 20px;
@@ -626,4 +625,10 @@ div.btn-group i.icon-cog {
 
 ul.dropdown-menu li a {
 	text-decoration: none;
+}
+
+fieldset.filters div.alert {
+	background: none;
+	border-color: #0088CC;
+	padding: 5px;
 }
