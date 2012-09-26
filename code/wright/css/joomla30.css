@@ -622,6 +622,12 @@ ul.nav-tabs li {
 	list-style: none;
 }
 
+ul.nav-tabs.nav-stacked li {
+	float: none;
+	clear: both;
+	list-style: none;
+}
+
 dl#tabs,
 dl.tabs {
 	width: 100%;
