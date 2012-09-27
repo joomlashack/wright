@@ -441,18 +441,7 @@ border:1px solid #CCC;
 ul#archive-list li h5.metadata span{
 color:#999;
 }
-.create{
-background:url(../images/createdate.png) no-repeat 0px 50%;
-}
-.modified{
-background:url(../images/modifydate.png) no-repeat 0px 50%;
-}
-.published{
-background:url(../images/publishdate.png) no-repeat 0px 50%;
-}
-.author{
-background:url(../images/createdby.png) no-repeat 0px 50%;
-}
+
 /* ***************************************************************************************************** */
 /* WEBLINKS COMPONENT */
 table.weblinks{
