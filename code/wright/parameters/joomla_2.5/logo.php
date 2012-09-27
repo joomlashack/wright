@@ -22,7 +22,7 @@ class JFormFieldLogo extends JFormFieldList
 		$options[] = JHTML::_('select.option', 'module', '- '.JText::_('Use module with position of logo').' -');
 		$options[] = JHTML::_('select.option', 'title', '- '.JText::_('Use site title').' -');
 
-		$files = JFolder::files(JPATH_ROOT.DS.'images', '\.png$|\.gif$|\.jpg$|\.bmp$|\.ico$');
+		$files = JFolder::files(JPATH_ROOT.'/images', '\.png$|\.gif$|\.jpg$|\.bmp$|\.ico$');
 
 		foreach ($files as $file)
 		{

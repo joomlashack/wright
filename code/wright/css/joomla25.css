@@ -1,5 +1,5 @@
 /*
-Joomla 2.5 specific styles (copied from 1.7)
+Joomla 2.5 specific styles
 ====================================================
 Table of Contents:
 Ctrl/Cmd + F to find the @groups named below
@@ -309,6 +309,10 @@ dl.article-info dd:hover > i {
 	height: auto;
 	vertical-align: middle;
 	margin-top: 0;
+}
+
+a [class^="icon-"], a [class*=" icon-"] {
+	text-decoration: none;
 }
 
 .icon-white, .nav > .active > a > [class^="icon-"], .nav > .active > a > [class*=" icon-"], .dropdown-menu > li > a:hover > [class^="icon-"], .dropdown-menu > li > a:hover > [class*=" icon-"], .dropdown-menu > .active > a > [class^="icon-"], .dropdown-menu > .active > a > [class*=" icon-"] {
@@ -1099,6 +1103,7 @@ span.spacer{
 .icons-left{
 	float:left; 
 	min-height:16px;
+	margin-left: -20px;
 }
 #mod-finder-advanced{
 	clear: both;
@@ -1111,8 +1116,18 @@ span.spacer{
 .pagenav.disabled a {
     color: gray;
 }
-
-
+.category-module.nav li,
+.weblinks.nav li,
+.archive-module.nav li,
+.relateditems.nav li,
+.mostread.nav li,
+.categories-module.nav li,
+.latestnews.nav li {
+	 padding-left: 20px
+}
+.feed-link {
+	 display: inline-block;
+}
 /* Newsflash */
 
 div.newsflash a.readmore,

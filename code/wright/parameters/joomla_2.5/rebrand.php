@@ -41,7 +41,7 @@ class JFormFieldRebrand extends JFormField
 
 		$doc = JFactory::getDocument();
 		$template = $this->form->getValue('template');
-		$author = simplexml_load_file(JPATH_ROOT.DS.'templates'.DS.$template.DS.'templateDetails.xml')->author;
+		$author = simplexml_load_file(JPATH_ROOT.'/templates'.'/'.$template.'/templateDetails.xml')->author;
 		if (stripos($author, 'shack'))
 			$html[] = '&nbsp;<a href="http://www.joomlashack.com/licensing-center" target="_blank">Rebranding requires a license, learn more.</a>';
 
