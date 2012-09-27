@@ -33,7 +33,7 @@ function modChrome_wrightgrid($module, &$params, &$attribs) {
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.'/'."templates".'/'.$templatename.'/'."wright".'/'."images".'/'."icons".'/'."modules".'/'.$icon.".png")) {
 			$icon = "";
 		}
 		
@@ -98,7 +98,7 @@ function modChrome_wrightgridimages($module, &$params, &$attribs) {
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.'/'."templates".'/'.$templatename.'/'."wright".'/'."images".'/'."icons".'/'."modules".'/'.$icon.".png")) {
 			$icon = "";
 		}
 		
@@ -187,7 +187,7 @@ function modChrome_wrightgridrounded($module, &$params, &$attribs) {
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.'/'."templates".'/'.$templatename.'/'."wright".'/'."images".'/'."icons".'/'."modules".'/'.$icon.".png")) {
 			$icon = "";
 		}
 		
@@ -264,7 +264,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.'/'."templates".'/'.$templatename.'/'."wright".'/'."images".'/'."icons".'/'."modules".'/'.$icon.".png")) {
 			$icon = "";
 		}
 		
@@ -358,7 +358,7 @@ function modChrome_wrightflexgridimages($module, &$params, &$attribs) {
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.'/'."templates".'/'.$templatename.'/'."wright".'/'."images".'/'."icons".'/'."modules".'/'.$icon.".png")) {
 			$icon = "";
 		}
 		
@@ -471,7 +471,7 @@ function modChrome_wrightflexgridrounded($module, &$params, &$attribs) {
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.'/'."templates".'/'.$templatename.'/'."wright".'/'."images".'/'."icons".'/'."modules".'/'.$icon.".png")) {
 			$icon = "";
 		}
 		
@@ -549,7 +549,7 @@ function modChrome_wrightCSS3($module, &$params, &$attribs) {
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.'/'."templates".'/'.$templatename.'/'."wright".'/'."images".'/'."icons".'/'."modules".'/'.$icon.".png")) {
 			$icon = "";
 		}
 		
@@ -628,7 +628,7 @@ function modChrome_wrightrounded($module, &$params, &$attribs) {
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.'/'."templates".'/'.$templatename.'/'."wright".'/'."images".'/'."icons".'/'."modules".'/'.$icon.".png")) {
 			$icon = "";
 		}
 		
@@ -698,7 +698,7 @@ function modChrome_wrightrounded2($module, &$params, &$attribs) {
 		$params->set('moduleclass_sfx',$suffix);
 		
 		// checks if icon exists in wright/images/icons/modules
-		if (!file_exists(JPATH_SITE.DS."templates".DS.$templatename.DS."wright".DS."images".DS."icons".DS."modules".DS.$icon.".png")) {
+		if (!file_exists(JPATH_SITE.'/'."templates".'/'.$templatename.'/'."wright".'/'."images".'/'."icons".'/'."modules".'/'.$icon.".png")) {
 			$icon = "";
 		}
 		
