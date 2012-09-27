@@ -25,6 +25,39 @@ body.toolbarpadding {
 	padding-top: 0;
 }
 
+p.img_caption {
+	font-style: italic;
+	font-size: .75em;
+	text-align: center;
+	background: #f7f7f7;
+}
+/* TEMPLATE SPECIFIC CSS CODE */
+#header {
+	background:#FFF;
+	margin-bottom: 10px; 
+}
+#header #logo h2 { display: none; }
+#pathway{
+	background:#FFF;
+}
+#stage{
+	border-bottom:1px solid #E0E0E0;
+	background:#F8F8F8;
+}
+.elements{
+	border-bottom:1px solid #CCC;
+	background:#FFF;
+}
+#container{
+	border-bottom:1px solid #CCC;
+	background:#FFF;
+}
+
+
+/* CONTENT BUTTONS */
+.btn-group.actions .btn img { height: 16px; }
+
+
 /* @group Toolbar */
 
 #toolbar {
