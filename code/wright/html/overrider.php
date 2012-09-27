@@ -22,48 +22,24 @@ class Overrider
 		$file = '';
 
 		$app = JFactory::getApplication();
-        
+
         $version = self::getVersion();
 
 		switch ($type)
 		{
 			case 'mod' :
-                while (!is_file(JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php'))
-                {
-                    // If running down the list, we need to jump down a major number version
-                    // then make sure we don't drop below minimum support
-                    // lastly just decrement the minor number
-                    if ($version[1] == 0) {
-                        $version[0]--;
-                        $version[1] = 9;
-                    } elseif ($version[0] == 1 && $version[1] == 5) {
-                        continue;
-                    }
-                    else {
-                        $version[1]--;
-                    }
-                }
-				$file = JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php';
+                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php'))
+					$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php';
+				else
+					$file = JPATH_SITE.'/modules/'.$extension.'/tmpl/'.$layout.'.php';
 				break;
 
 			case 'com' :
 				list($folder, $view) = explode('.', $extension);
-                while (!is_file(JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php'))
-                {
-                    // If running down the list, we need to jump down a major number version
-                    // then make sure we don't drop below minimum support
-                    // lastly just decrement the minor number
-                    if ($version[1] == 0) {
-                        $version[0]--;
-                        $version[1] = 9;
-                    } elseif ($version[0] == 1 && $version[1] == 5) {
-                        continue;
-                    }
-                    else {
-                        $version[1]--;
-                    }
-                }
-                $file = JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php';
+                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php'))
+					$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php';
+				else
+					$file = JPATH_SITE.'/components/'.$folder.'/views/'.$view.'/tmpl/'.$layout.'.php';		
 				break;
 		}
 		return $file;
