@@ -339,3 +339,11 @@ a.joomlashack {
 	bottom: 0;
 	position: absolute;
 }
+
+
+/* @ Various */
+
+.element-invisible {
+	display: none;
+	visibility: hidden;
+}
