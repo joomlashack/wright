@@ -644,3 +644,11 @@ dl.tabs dd {
 ul.pagenav {
 	clear: both;
 }
+
+div#pathway span.sep {
+	margin: 0 5px;
+}
+
+div#pathway span.sep img {
+	display: none;
+}
