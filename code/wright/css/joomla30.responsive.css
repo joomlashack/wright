@@ -1,0 +1,16 @@
+
+@media (max-width: 979px) {
+	body,
+	body.toolbarpadding {
+		padding-top: 0;
+	}
+	.navbar .btn-navbar {
+		margin-bottom: 3px;
+	}	
+}
+@media (max-width: 767px){
+	#footer{
+		margin-left: -20px;
+		margin-right: -20px;
+	}
+}

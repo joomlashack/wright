@@ -31,6 +31,8 @@ class Wright
 	public $author;
 
 	public $revision = "{version}";
+	
+	private $loadBootstrap = false;
 
 	// Urls
 	private $_urlTemplate = null;
@@ -53,6 +55,15 @@ class Wright
 		$this->_urlBootstrap = $this->_urlWright . '/bootstrap';
 		$this->_urlFontAwesomeMore = $this->_urlWright . '/fontawesomemore';
 		$this->_urlJS = $this->_urlWright . '/js';
+		
+		// versions under 3.0 must load bootstrap
+		if (version_compare(JVERSION, '3.0', 'lt')) {
+			$this->loadBootstrap = true;
+		}
+		else {
+			// Add JavaScript Frameworks
+			JHtml::_('bootstrap.framework');
+		}
 
 		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
 
@@ -132,7 +143,7 @@ class Wright
 		}
 
 		// load jQuery ?
-		if ($loadJquery = $this->document->params->get('jquery', 0))
+		if ($this->loadBootstrap && $loadJquery = $this->document->params->get('jquery', 0))
 		{
             switch ($loadJquery) {
                 // load jQuery locally
@@ -149,8 +160,9 @@ class Wright
             $this->document->addScriptDeclaration('jQuery.noConflict();');
 		}
 
-		// load bootstrap JS
-		$this->document->addScript($this->_urlBootstrap . '/js/bootstrap.min.js');
+		if ($this->loadBootstrap)
+			// load bootstrap JS
+			$this->document->addScript($this->_urlBootstrap . '/js/bootstrap.min.js');
 		
 		if ($this->document->params->get('stickyFooter', 1)) {
 			$this->document->addScript($this->_urlJS . '/utils.js');
@@ -294,6 +306,10 @@ class Wright
 
 		$browser = JBrowser::getInstance();
 
+        $version = explode('.', JVERSION);
+        $version = $version[0].$version[1];
+
+		// Loads Bootstrap and FontAwesomeMore
 		$styles['bootstrap'] = array('bootstrap.min.css');
 		if ($this->document->params->get('responsive',1)) {
 			$styles['bootstrap'][] = 'bootstrap-responsive.min.css';
@@ -301,8 +317,6 @@ class Wright
 		$styles['fontawesomemore'] = array('font-awesome.css');
 
 		$styles['wright'] = array('typography.css');
-        $version = explode('.', JVERSION);
-        $version = $version[0].$version[1];
         if (is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.css'))
         {
             $styles['wright'][] = 'joomla'.$version.'.css';
