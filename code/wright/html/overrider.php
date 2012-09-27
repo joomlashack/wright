@@ -22,7 +22,7 @@ class Overrider
 		$file = '';
 
 		$app = JFactory::getApplication();
-        
+
         $version = self::getVersion();
 
 		switch ($type)
@@ -37,7 +37,7 @@ class Overrider
                         $version[0]--;
                         $version[1] = 9;
                     } elseif ($version[0] == 1 && $version[1] == 5) {
-                        continue;
+                        die ('/joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php');
                     }
                     else {
                         $version[1]--;
@@ -45,7 +45,6 @@ class Overrider
                 }
 				$file = JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php';
 				break;
-
 			case 'com' :
 				list($folder, $view) = explode('.', $extension);
                 while (!is_file(JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php'))
@@ -57,7 +56,7 @@ class Overrider
                         $version[0]--;
                         $version[1] = 9;
                     } elseif ($version[0] == 1 && $version[1] == 5) {
-                        continue;
+                        die (JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php');
                     }
                     else {
                         $version[1]--;
