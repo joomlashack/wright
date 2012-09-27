@@ -73,3 +73,12 @@
 .row-fluid .span1 {
     width: 6.38298%;
 }
+
+div.col [class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: FontAwesome;
+}
+
+
+a [class^="icon-"], a [class*=" icon-"] {
+	cursor: pointer;
+}

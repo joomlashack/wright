@@ -65,14 +65,14 @@ function swapColumns(col, dir) {
 	}
 	else
 	{
-		cols.each(function(el) {			
+		cols.each(function(el) {
 			if (el.getProperty('id') == selected)
 			{
 				swapindex = index - 1;
 			}
 			index++;
 		});
-		$(selected).injectBefore(cols[swapindex]);
+		$(selected).inject(cols[swapindex],'before');
 	}
 	checkColumns();
 	setColumnParam();
