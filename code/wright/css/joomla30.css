@@ -380,3 +380,7 @@ a.joomlashack {
 	display: none;
 	visibility: hidden;
 }
+
+.breadcrumb {
+	margin: 0;
+}
