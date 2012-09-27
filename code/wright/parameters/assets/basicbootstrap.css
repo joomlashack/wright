@@ -1,0 +1,84 @@
+.row-fluid:after {
+    clear: both;
+}
+.row-fluid:before, .row-fluid:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.row-fluid:after {
+    clear: both;
+}
+.row-fluid:before, .row-fluid:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.row-fluid:before, .row-fluid:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.row-fluid:before, .row-fluid:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+
+.row-fluid [class*="span"] {
+    -moz-box-sizing: border-box;
+    display: block;
+    float: left;
+    min-height: 30px;
+    width: 100%;
+}
+[class*="span"] {
+    float: left;
+}
+
+
+.row-fluid .span12 {
+    width: 100%;
+}
+.row-fluid .span11 {
+    width: 91.4894%;
+}
+.row-fluid .span10 {
+    width: 82.9787%;
+}
+.row-fluid .span9 {
+    width: 74.4681%;
+}
+.row-fluid .span8 {
+    width: 65.9574%;
+}
+.row-fluid .span7 {
+    width: 57.4468%;
+}
+.row-fluid .span6 {
+    width: 48.9362%;
+}
+.row-fluid .span5 {
+    width: 40.4255%;
+}
+.row-fluid .span4 {
+    width: 31.9149%;
+}
+.row-fluid .span3 {
+    width: 23.4043%;
+}
+.row-fluid .span2 {
+    width: 14.8936%;
+}
+.row-fluid .span1 {
+    width: 6.38298%;
+}
+
+div.col [class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: FontAwesome;
+}
+
+
+a [class^="icon-"], a [class*=" icon-"] {
+	cursor: pointer;
+}
