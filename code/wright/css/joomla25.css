@@ -586,6 +586,10 @@ dl#tabs dt.open a{
 .panel h3 a{
 }
 
+div#pathway span.sep {
+	margin: 0 5px;
+}
+
 div#pathway span.sep img {
 	display: none;
 }
