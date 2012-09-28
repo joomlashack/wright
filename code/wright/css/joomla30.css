@@ -38,7 +38,8 @@ dl.article-info {
 	display:block;
 	width:100%;
 	min-height:20px;
-	margin:20px 0;
+	margin: 0;
+	padding:0;
 	font-size:1em;
 }
 dl.article-info dt {
@@ -50,7 +51,7 @@ dl.article-info dd {
 	clear:none;
 	zoom:1;
 	margin:0 10px 0 0;
-	padding:0 0 0 20px;
+	padding:0;
 	width:auto;
 }
 dl.article-info dd.parent-category-name,
@@ -651,4 +652,15 @@ div#pathway span.sep {
 
 div#pathway span.sep img {
 	display: none;
+}
+
+
+/* Text selection */
+
+::selection {
+	background:rgb(255,255,0);
+}
+
+::-moz-selection {
+	background: rgb(255,255,0);
 }
