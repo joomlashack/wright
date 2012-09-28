@@ -653,3 +653,6 @@ div#pathway span.sep {
 div#pathway span.sep img {
 	display: none;
 }
+
+
+::selection { background:rgb(255,255,0); }
