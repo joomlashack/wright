@@ -655,4 +655,12 @@ div#pathway span.sep img {
 }
 
 
-::selection { background:rgb(255,255,0); }
+/* Text selection */
+
+::selection {
+	background:rgb(255,255,0);
+}
+
+::-moz-selection {
+	background: rgb(255,255,0);
+}
