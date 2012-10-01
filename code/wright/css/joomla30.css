@@ -296,6 +296,10 @@ ul.actions li {
 	-khtml-border-radius: 5px;
 	border-top: 1px solid #eee;
 }
+.pagination .pagination{
+	border-top: 0 none;
+	border-radius:0 0 0 0;
+}
 .pagination span {
 	padding: 0px 4px;
 }
@@ -528,21 +532,20 @@ div.pagination ul li a:hover {
 .panel{
 	margin-top:-1px;
 	border: 1px solid #e0e0e0;
-	padding: 0 10px;
+	padding: 0;
 }
 .panel h3 {
     background-image: url("../images/slider_max.png");
     background-position: 98% center;
     background-repeat: no-repeat;
-    box-shadow: 0 0 20px #E9E9E9 inset;
+   background-color:rgba(143,170,184,0.2);
     margin-bottom: 0;
     margin-left: -10px;
     padding: 5px;
-    width: 98%;
 }
 .panel h3.pane-toggler-down{
 	background-image: url(../images/slider_minus.png);
-	background-color: #eee;
+	box-shadow: 0 0 20px 10px #333 inset;
 }
 
 .panel h3.pane-toggler-down a{
@@ -598,8 +601,9 @@ ul.dropdown-menu li a {
 
 fieldset.filters div.alert {
 	background: none;
-	border-color: #0088CC;
-	padding: 5px;
+	border: 1px solid #666;
+	padding: 10px;
+	box-shadow: 0 0;
 }
 
 div.btn-toolbar div.btn-group {
