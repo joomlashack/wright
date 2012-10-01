@@ -302,6 +302,7 @@ ul.actions li {
 }
 .pagination span {
 	padding: 0px 4px;
+	display: inline-block;
 }
 .pagination span a {
 	padding: 4px 8px;
@@ -312,9 +313,16 @@ ul.actions li {
 	-webkit-border-radius: 5px;
 	-khtml-border-radius: 5px;
 }
-.counter, .pagenavcounter {
+.pagination ul {
+	margin: 0;
+}
+.pagenavcounter {
 	display: block;
 	text-align: center;
+}
+.counter{
+	display: inline-block;
+	float: none;
 }
 /* @end */
 
