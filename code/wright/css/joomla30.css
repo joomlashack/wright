@@ -298,7 +298,8 @@ div.categories-list span.item-title, div.cat-children span.item-title {
 }
 .list-condensed li {
     padding: 4px 5px;
-}
+    overflow: hidden;
+}    
 .list-striped li, .list-striped dd, .row-striped .row, .row-striped .row-fluid {
     border-bottom: 1px solid #DDDDDD;
     padding: 8px;
