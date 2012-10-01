@@ -296,6 +296,10 @@ ul.actions li {
 	-khtml-border-radius: 5px;
 	border-top: 1px solid #eee;
 }
+.pagination .pagination{
+	border-top: 0 none;
+	border-radius:0 0 0 0;
+}
 .pagination span {
 	padding: 0px 4px;
 }
