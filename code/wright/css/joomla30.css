@@ -323,6 +323,7 @@ ul.actions li {
 .counter{
 	display: inline-block;
 	float: none;
+	line-height:39px;
 }
 /* @end */
 
@@ -553,7 +554,7 @@ div.pagination ul li a:hover {
 }
 .panel h3.pane-toggler-down{
 	background-image: url(../images/slider_minus.png);
-	box-shadow: 0 0 20px 10px #333 inset;
+	background-color: #ccc;
 }
 
 .panel h3.pane-toggler-down a{
