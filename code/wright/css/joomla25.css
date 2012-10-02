@@ -299,6 +299,10 @@ ul.actions li {
 	-khtml-border-radius: 5px;
 	border-top: 1px solid #eee;
 }
+.pagination .pagination{
+	border-radius:0 0 0 0;
+	border-top:0 none;
+}
 .pagination span {
 	padding: 0px 4px;
 }
@@ -571,26 +575,25 @@ dl.tabs dt.open a{
 	width: auto;
 }
 /* Slider */
-
 .panel{
 	margin-top:-1px;
 	border: 1px solid #e0e0e0;
-	padding: 0 10px;
+	padding: 0;
 }
 .panel h3 {
     background-image: url("../images/slider_max.png");
     background-position: 98% center;
     background-repeat: no-repeat;
-    box-shadow: 0 0 20px #E9E9E9 inset;
+   background-color:rgba(143,170,184,0.2);
     margin-bottom: 0;
     margin-left: -10px;
     padding: 5px;
-    width: 98%;
 }
 .panel h3.pane-toggler-down{
 	background-image: url(../images/slider_minus.png);
-	background-color: #eee;
+	box-shadow: 0 0 20px 10px #333 inset;
 }
+
 
 .panel h3.pane-toggler-down a{
 	border-bottom: 1px solid #E0E0E0;
