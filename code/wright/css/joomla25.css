@@ -84,6 +84,10 @@ h2{
 h3{
 	font-size: 1.6em;
 }
+.well h3{
+	font-size: 1.6em;
+	padding: 0 0 4px 0;
+}
 h4{
 	font-size: 1.4em;
 }
@@ -256,6 +260,7 @@ dt label{
 p.readmore {
 	margin: 0;
 	padding: 0;
+	clear: both;
 }
 
 @media (max-width:767px) {
@@ -266,13 +271,14 @@ p.readmore {
 
 /* @ Article Info  ***************************************/
 dl.article-info {
-	clear:both;
 	float:none;
 	display:block;
 	width:100%;
 	min-height:20px;
-	margin:10px 0;
+	margin:0;
 	font-size:0.8em;
+	padding: 0;
+	list-style: none;
 }
 dl.article-info dt {
 	display:none;
@@ -435,14 +441,8 @@ ul.categories-module p {
 	clear: both;
 	display: none;
 }
-.article-info {
-	width: 100%;
-	clear: both;
-	display: inline-block;
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
+
+
 body.dark dl.article-info {
 	border-bottom: 1px dotted #000;
 }
@@ -474,8 +474,10 @@ span.content_vote {
 /* Print & PDF Icons *************************************************************/
 ul.actions{
 	float: right;
+	margin-top: 10px;
+	padding: 0;
 }
-ul.actions, ul.actions li {
+ul.actions li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -1058,6 +1060,8 @@ div:first-child + .panel {
 {
 	min-width: inherit;
 	margin: 0 5px 10px;
+	float: right;
+	clear: both;
 }
 #sidebar1 input#modlgn-remember,
 #sidebar2 input#modlgn-remember{
@@ -1137,4 +1141,11 @@ div.newsflash_ms3 a.readmore,
 div.newsflash_ms4 a.readmore,
 div.newsflash_ms5 a.readmore {
 	padding-bottom: 10px;
+}
+.page-header{
+	margin: 0;
+	padding: 0;
+}
+.moduletable, .module {
+	margin-bottom: 20px;
 }
