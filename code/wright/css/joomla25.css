@@ -1149,3 +1149,7 @@ div.newsflash_ms5 a.readmore {
 .moduletable, .module {
 	margin-bottom: 20px;
 }
+#breadcrumbs .module,
+#breadcrumbs .moduletable{
+	margin: 0;
+}
