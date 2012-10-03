@@ -94,6 +94,12 @@
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
+				<field name="bootstrap_images" type="list" default="" label="TPL_JS_WRIGHT_BOOTSTRAP_IMAGES" description="TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_DESC">
+					<option value="">TPL_JS_WRIGHT_NONE</option>
+					<option value="img-rounded">TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_ROUNDED</option>
+					<option value="img-circle">TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_CIRCLE</option>
+					<option value="img-polaroid">TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_POLAROID</option>
+				</field>
                 <!-- End of default Wright params -->
 			</fieldset>
 		</fields>
