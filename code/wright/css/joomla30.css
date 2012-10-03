@@ -404,4 +404,6 @@ a.joomlashack {
 }
 aside .nav.menu.nav-tabs{
 	float:none;
+}.aside input {
+	width:93%;
 }

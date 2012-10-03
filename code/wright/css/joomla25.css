@@ -1154,3 +1154,6 @@ div.newsflash_ms5 a.readmore {
 aside .nav.menu.nav-tabs{
 	float:none;
 }
+aside input {
+	width:93%;
+}
