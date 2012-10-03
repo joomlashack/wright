@@ -869,11 +869,9 @@ dl.label.label-info dt{
 }
 
 .well h3{
-    color: #999999;
     display: block;
     line-height: 18px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
 }
 
 
