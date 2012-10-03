@@ -57,6 +57,26 @@ p.img_caption {
 /* CONTENT BUTTONS */
 .btn-group.actions .btn img { height: 16px; }
 
+/* @ Images and links */
+
+.img-intro-left,
+.img-fulltext-left {
+	float: left;
+	margin: 10px;
+}
+
+.img-intro-right,
+.img-fulltext-right {
+	float: right;
+	margin: 10px;
+}
+
+p.img_caption,
+.item p.img_caption,
+.item-page p.img_caption {
+	clear: none;
+}
+
 
 /* @group Toolbar */
 
