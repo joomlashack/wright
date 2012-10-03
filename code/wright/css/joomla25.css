@@ -1151,3 +1151,6 @@ div.newsflash_ms5 a.readmore {
 .blog-featured{
 	clear:both;
 }
+aside .nav.menu.nav-tabs{
+	float:none;
+}

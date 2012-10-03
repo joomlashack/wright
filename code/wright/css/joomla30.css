@@ -395,3 +395,13 @@ a.joomlashack {
 .moduletable,.module{
 	margin-bottom: 20px;
 }
+#breadcrumbs .module,
+#breadcrumbs .moduletable{
+	margin: 0;
+}
+.blog-featured{
+	clear:both;
+}
+aside .nav.menu.nav-tabs{
+	float:none;
+}
