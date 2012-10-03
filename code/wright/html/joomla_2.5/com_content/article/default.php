@@ -11,6 +11,15 @@ defined('_JEXEC') or die;
 if (!function_exists("wright_joomla_content_article")) :
 	
 	function wright_joomla_content_article($buffer) {
+
+		// Bootstrapped images		
+		$app = JFactory::getApplication();
+		$template = $app->getTemplate(true);
+		$params = $template->params;
+		$bootstrap_images = $params->get('bootstrap_images','');
+		$buffer = preg_replace('/<div class="img-fulltext-([a-z]+)">([^<]*)<img([^>]*)>/Ui','<div class="img-fulltext-$1">$2<img width="98%" class="' . $bootstrap_images . '" $3>',$buffer);
+		$buffer = preg_replace('/<div class="img-intro-([a-z]+)">([^<]*)<img([^>]*)>/Ui','<div class="img-intro-$1">$2<img width="98%" class="' . $bootstrap_images . '" $3>',$buffer);
+		
 		$buffer = preg_replace('/<dd class="category-name">/Ui', '<dd class="category-name"><i class="icon-folder-close"></i>', $buffer);
 		$buffer = preg_replace('/<dd class="create">/Ui', '<dd class="create"><i class="icon-calendar"></i>', $buffer);
 		$buffer = preg_replace('/<dd class="modified">/Ui', '<dd class="modified"><i class="icon-edit"></i>', $buffer);
@@ -24,15 +33,18 @@ if (!function_exists("wright_joomla_content_article")) :
 		$buffer = preg_replace('/<li>Prev/Ui', '<li class="disabled"><a>Prev</a> ', $buffer);
 		$buffer = preg_replace('/class="tabs"/Ui', 'class="tabs nav nav-tabs"', $buffer); 
 
-
 		$buffer = preg_replace('/<div id="article-index">([^<]*)<h3>([^<]*)<\/h3>([^<]*)<ul>/Ui', '<div id="article-index">$1<h3>$2</h3>$3<ul class="nav nav-tabs nav-stacked">', $buffer);
 		$buffer = preg_replace('/<div id="article-index">([^<]*)<ul>/Ui', '<div id="article-index">$1<ul class="nav nav-tabs nav-stacked">', $buffer);
+		
 		return $buffer;
 	}
 
 endif;
 
+
 ob_start("wright_joomla_content_article");
 require('components/com_content/views/article/tmpl/default.php');
 ob_end_flush();
+
+
 ?>

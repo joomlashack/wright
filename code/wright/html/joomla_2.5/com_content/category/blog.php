@@ -51,7 +51,13 @@ if (!function_exists("wright_joomla_content_category_blog")) :
 		return $buffer;
 	}
 	
-	function wright_joomla_content_category_blog($buffer) {
+	function wright_joomla_content_category_blog($buffer) {		// Bootstrapped images		
+		$app = JFactory::getApplication();
+		$template = $app->getTemplate(true);
+		$params = $template->params;
+		$bootstrap_images = $params->get('bootstrap_images','');
+		$buffer = preg_replace('/<div class="img-fulltext-([a-z]+)">([^<]*)<img([^>]*)>/Ui','<div class="img-fulltext-$1">$2<img width="98%" class="' . $bootstrap_images . '" $3>',$buffer);
+		$buffer = preg_replace('/<div class="img-intro-([a-z]+)">([^<]*)<img([^>]*)>/Ui','<div class="img-intro-$1">$2<img width="98%" class="' . $bootstrap_images . '" $3>',$buffer);
 		
 		$buffer = preg_replace('/<dd class="category-name">/Ui', '<dd class="category-name"><i class="icon-folder-close"></i>', $buffer);
 		$buffer = preg_replace('/<dd class="create">/Ui', '<dd class="create"><i class="icon-calendar"></i>', $buffer);
