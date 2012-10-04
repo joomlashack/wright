@@ -18,9 +18,9 @@ class JFormFieldLogo extends JFormFieldList
 	{
 		$options = array();
 
-		$options[] = JHTML::_('select.option', 'template', '- '.JText::_('Use template logo').' -');
-		$options[] = JHTML::_('select.option', 'module', '- '.JText::_('Use module with position of logo').' -');
-		$options[] = JHTML::_('select.option', 'title', '- '.JText::_('Use site title').' -');
+		$options[] = JHTML::_('select.option', 'template', '- '.JText::_('TPL_JS_WRIGHT_FIELD_LOGO_TEMPLATE').' -');
+		$options[] = JHTML::_('select.option', 'module', '- '.JText::_('TPL_JS_WRIGHT_FIELD_LOGO_MODULE').' -');
+		$options[] = JHTML::_('select.option', 'title', '- '.JText::_('TPL_JS_WRIGHT_FIELD_LOGO_TITLE').' -');
 
 		$files = JFolder::files(JPATH_ROOT.'/images', '\.png$|\.gif$|\.jpg$|\.bmp$|\.ico$');
 

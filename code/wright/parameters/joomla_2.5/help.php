@@ -13,7 +13,7 @@ class JFormFieldHelp extends JFormField
 		JHTML::_('behavior.modal');
 		$doc = JFactory::getDocument();
 		$template = $this->form->getValue('template');
-		$html = '<a class="modal" href="'.JURI::root().'templates/'.$template.'/wright/help" rel="{\'handler\': \'iframe\', \'size\': {x: 800, y:600}}">'.JText::_('Documentation').'</a>';
+		$html = '<a class="modal" href="'.JURI::root().'templates/'.$template.'/wright/help" rel="{\'handler\': \'iframe\', \'size\': {x: 800, y:600}}">'.JText::_('TPL_JS_WRIGHT_FIELD_DOCUMENTATION').'</a>';
 
 		// Refresh CSS cache since we are editing params
 		if (is_file(JPATH_ROOT.'/templates'.'/'.$template.'/css'.'/'.$template.'.css')) JFile::delete(JPATH_ROOT.'/templates'.'/'.$template.'/css'.'/'.$template.'.css');

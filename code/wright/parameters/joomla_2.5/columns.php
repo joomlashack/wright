@@ -34,7 +34,7 @@ class JFormFieldColumns extends JFormField
 			$options[] = JHtml::_('select.option', $val, JText::_($text));
 		}
 
-		$html = '<p id="column_info">' . JText::_('Using') . ' <span id="columns_used"></span> ' . JText::_('of') . ' 12 <span id="columns_warning">'.JText::_('The total needs to add up to 12').'</span></p>';
+		$html = '<p id="column_info">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_USING') . ' <span id="columns_used"></span> ' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_OF') . ' 12 <span id="columns_warning">'.JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_WARNING').'</span></p>';
 		
 		$html .= '<div class="columns row-fluid">';
 
@@ -46,7 +46,7 @@ class JFormFieldColumns extends JFormField
 
 		foreach ($columns as $column)
 		{
-			$html .= '<div id="column_'.$column[0].'" class="col span' . $column[1] . '" style="text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\''.$column[0].'\', \'left\')"><i class="icon-caret-left"></i></a><a onclick="swapColumns(\''.$column[0].'\', \'right\')"><i class="icon-caret-right"></i></a></span><span style="display: block; text-align:center;">' . JText::_(ucfirst($column[0])) . '</span> ' . JHtml::_('select.genericlist',  $options, 'ignore['.$column[0].']', $class, 'value', 'text', $column[1], 'columns_'.$column[0]) . '</div>';
+			$html .= '<div id="column_'.$column[0].'" class="col span' . $column[1] . '" style="text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\''.$column[0].'\', \'left\')"><i class="icon-caret-left"></i></a><a onclick="swapColumns(\''.$column[0].'\', \'right\')"><i class="icon-caret-right"></i></a></span><span style="display: block; text-align:center;">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMN_'.strtoupper($column[0])) . '</span> ' . JHtml::_('select.genericlist',  $options, 'ignore['.$column[0].']', $class, 'value', 'text', $column[1], 'columns_'.$column[0]) . '</div>';
 		}
 
 		$html .= '<div style="display: none; clear: both;"></div></div>';
