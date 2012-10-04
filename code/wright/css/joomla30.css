@@ -428,3 +428,10 @@ aside .nav.menu.nav-tabs{
 }.aside input {
 	width:93%;
 }
+.newsflash-title_ms1,
+.newsflash-title_ms2,
+.newsflash-title_ms3,
+.newsflash-title_ms4,
+.newsflash-title{
+	margin-top: 10px;
+}
