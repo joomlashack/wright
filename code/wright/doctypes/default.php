@@ -55,11 +55,18 @@ abstract class HtmlAdapterAbstract
 		$browser_version = explode('.', $browser->getVersion());
 		$class = 'is_'.strtolower($browser->getBrowser()) . ' v_' . $browser_version[0];
 
+		$style = "";
+
 		if (isset($matches[1])) {
 			if (strpos($matches[1], 'class=')) {
-				preg_match('/class="(.*)"/i', $matches[1], $classes);
+				preg_match('/class="([^"]*)"/i', $matches[1], $classes);
 				if (isset($classes[1]))
 					$class .= ' ' . $classes[1];
+			}
+			if (strpos($matches[1], 'style=')) {
+				preg_match('/style="([^"]*)"/i', $matches[1], $styles);
+				if (isset($styles[1]))
+					$style = $styles[1];
 			}
 		}
 
@@ -107,7 +114,7 @@ abstract class HtmlAdapterAbstract
 
 		$class .= " rev_" . $wright->revision;
 
-		return '<body class="'.$class.'">';
+		return '<body class="'.$class.'"' . ($style != '' ? ' style="' . $style . '"' : '') . '>';
 	}
 
 	public function getNav($matches)
