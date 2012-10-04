@@ -1083,7 +1083,10 @@ div:first-child + .panel {
 .items-more.well{
 	padding: 0;
 }
-
+.items-more h3{
+	padding-right:10px;
+	padding-left:15px; 
+}
 /* User Registration  ************************************************************/
 span.spacer{
 	overflow: hidden;
@@ -1156,4 +1159,16 @@ aside .nav.menu.nav-tabs{
 }
 aside input {
 	width:93%;
+}
+.img-intro-left, .img-fulltext-left {
+    float: left;
+    margin: 0 25px 10px 0;
+}
+
+.img-intro-right, .img-fulltext-right {
+    float: right;
+    margin: 0 0 10px 25px;
+}
+.img-fulltext-none, .img-intro-none{
+	margin-bottom: 10px;
 }
