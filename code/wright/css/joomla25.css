@@ -439,16 +439,22 @@ span.star {
 
 /* Images and links */
 
+
 .img-intro-left,
-.img-fulltext-left {
+.img-fulltext-left,
+.pull-left.item-image {
 	float: left;
-	margin: 10px;
+	margin: 0 25px 10px 0;
 }
 
 .img-intro-right,
-.img-fulltext-right {
+.img-fulltext-right,
+.pull-right.item-image {
 	float: right;
-	margin: 10px;
+	margin: 0 0 10px 25px;
+}
+.img-fulltext-none, .img-intro-none{
+	margin-bottom: 10px;
 }
 
 p.img_caption,
