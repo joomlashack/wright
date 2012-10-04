@@ -637,3 +637,6 @@ ul.menu ul{
 	width: 100%;
 	height: auto;
 }
+.items-more ul{
+	margin:0;
+}

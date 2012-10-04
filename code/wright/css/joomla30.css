@@ -693,6 +693,9 @@ ul.menu ul{
 	padding:0;
 	margin: 0;
 }
+.items-more ul{
+	margin:0;
+}
 .items-more .items-more{
 	border:0 none;
 }
