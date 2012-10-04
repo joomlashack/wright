@@ -214,7 +214,7 @@ ul.categories-module p {
 	width: 100%;
 	clear: both;
 	display: inline-block;
-	padding: 0;
+	padding: 5px 0;
 	margin: 0;
 	list-style: none;
 }
@@ -632,4 +632,8 @@ aside ul.menu ul li{
 ul.menu ul{
     list-style:none;
     margin:5px;
+}
+.random-image > img{
+	width: 100%;
+	height: auto;
 }
