@@ -33,13 +33,12 @@ Ctrl/Cmd + F to find the @groups named below
 	width: 100%;
 }
 dl.article-info {
-	clear:both;
-	float:none;
-	display:block;
-	width:100%;
-	min-height:20px;
-	margin:20px 0;
-	font-size:0.8em;
+    display: block;
+    float: none;
+    font-size: 0.8em;
+    margin: 10px 0 20px;
+    min-height: 33px;
+    width: 100%;
 }
 dl.article-info dt {
 	display:none;
@@ -210,14 +209,7 @@ ul.categories-module p {
 	clear: both;
 	display: none;
 }
-.article-info {
-	width: 100%;
-	clear: both;
-	display: inline-block;
-	padding: 5px 0;
-	margin: 0;
-	list-style: none;
-}
+
 body.dark dl.article-info {
 	border-bottom: 1px dotted #000;
 }
@@ -268,10 +260,10 @@ li.category-name {
 }
 /* Print & PDF Icons */
 
-ul.actions, ul.actions li {
+ul.actions {
 	float: right;
 	list-style: none;
-	margin: 0;
+	margin: 10px 0 0;
 	padding: 0;
 }
 ul.actions li {
@@ -293,11 +285,7 @@ ul.actions li {
 	clear:both;
 	font-size: 12px;
 	margin: 10px auto 20px auto;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-khtml-border-radius: 5px;
-	border-top: 1px solid #eee;
+
 }
 .pagination .pagination {
 	border-radius:0 0 0 0;
@@ -306,14 +294,12 @@ ul.actions li {
 .pagination span {
 	padding: 0px 4px;
 }
-.pagination span a {
-	padding: 4px 8px;
-	text-decoration: none;
-	border: 1px solid;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-khtml-border-radius: 5px;
+div.pagination p.counter {
+	color: #999;
+	display: block;
+	float: left;
+	line-height: 40px;
+	margin-right: 10px;
 }
 .counter, .pagenavcounter {
 	display: block;
@@ -506,9 +492,7 @@ div.pagenavcounter {
 /* Article Pagination */
 
 ul.pagenav, div.pagination ul {
-   
     list-style: none outside none;
-    margin: 10px auto;
     padding: 1px 5px;
     text-align: center;
 }
@@ -519,20 +503,7 @@ div.pagination ul li {
 	padding: 2px 5px;
 	color: #4F4F4F;
 }
-ul.pagenav li a, 
-div.pagination ul li a {
-	margin: -2px -5px;
-	display:inline-block;
-	text-decoration: none;
-	background-color: #4F4F4F;
-	color:white;
-	padding: 0 5px;
-	-moz-transition:all 0.2s ease-in 0s;
-}
-ul.pagenav li a:hover, 
-div.pagination ul li a:hover {
-	box-shadow: 0 0 5px #999;
-}
+
 /* Tabs */
 dl.tabs{
 	margin-bottom: 0;
@@ -634,6 +605,15 @@ ul.menu {
 aside ul.menu ul li{
 	margin-left: 10px;	
 }
+.blog-featured {
+	clear: both;
+}
+aside .nav.menu.nav-tabs {
+	float: none;
+}
+.aside input {
+	width: 93%;
+}
 ul.menu ul{
     list-style:none;
     margin:5px;
@@ -651,4 +631,17 @@ ul.menu ul{
 .newsflash-title_ms4,
 .newsflash-title{
 	margin-top: 10px;
+}
+.page-header{
+	padding-bottom:0;
+	margin: 0;
+}
+.well h3{
+	margin: 0;
+}
+.well ul.well,.well form{
+	margin-bottom: 0;
+}
+.moduletable, .module {
+	margin-bottom: 20px;
 }
