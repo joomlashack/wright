@@ -426,3 +426,18 @@ aside .nav.menu.nav-tabs {
 .well ul.well,.well form{
 	margin-bottom: 0;
 }
+div#above-content.clearfix {
+padding-bottom: 30px;
+margin-bottom: 20px;
+border-bottom: 3px solid #D8D8D8;
+}
+
+#sliderContainer div.slidermanDescriptionCont div.slidermanDescriptionText div.slideTitle p {
+font-size: 1.1em;
+line-height: 14px;
+}
+/* positions margins */
+#toolbar, #header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2, 
+#bottom-menu {
+	margin-bottom: 10px;  
+}
