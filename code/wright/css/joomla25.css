@@ -950,6 +950,7 @@ dl.label.label-info dt{
     border-radius: 4px 4px 0 0;
     line-height: 18px;
     padding-top: 8px;
+    font-size: .7em;
 }
 .nav-tabs .tabs a, .nav-pills .tabs a{
 	line-height: 14px;
