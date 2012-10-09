@@ -94,7 +94,39 @@ nav div.toolbar {
 .wrapper-toolbar {
 	min-height: 40px;
 }
+dl.article-info {
+	float:none;
+	display:block;
+	width:100%;
+	min-height:20px;
+	margin:0;
+	font-size:0.8em;
+	padding:5px 0;
+	list-style: none;
+}
+dl.article-info dt {
+	display:none;
+}
+dl.article-info dd {
+	line-height: 24px;
+	min-height: 24px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	background:none;
+	display:inline-block;
+	float:none;
+	clear:none;
+	zoom:1;
+	margin:0;
+	padding:0 5px;
+	width:auto;
+	cursor: default;
+}
 
+dl.article-info dd:hover {
+	background-color: #FBF4F4;
+}
 /* @group Menu */
 
 .navbar .nav li {
@@ -287,7 +319,7 @@ div.categories-list span.item-title, div.cat-children span.item-title {
 	-moz-border-left-colors: none;
 	-moz-border-right-colors: none;
 	-moz-border-top-colors: none;
-	background-color: #CCCCCC;
+	background-color: #F5F5F5;
 	border-color: #F5F5F5;
 	border-image: none;
 	border-radius: 4px 4px 0 0;
@@ -417,6 +449,13 @@ aside .nav.menu.nav-tabs {
 .newsflash-title_ms1, .newsflash-title_ms2, .newsflash-title_ms3, .newsflash-title_ms4, .newsflash-title {
 	margin-top: 10px;
 }
+
+div.newsflash a.readmore, div.newsflash_ms1 a.readmore, div.newsflash_ms2 a.readmore, div.newsflash_ms3 a.readmore, div.newsflash_ms4 a.readmore, div.newsflash_ms5 a.readmore {
+    padding-bottom: 10px;
+}
+aside a.readmore{
+	margin-bottom: 10px;
+}
 .page-header{
 	padding-bottom:0;
 	margin: 0;
@@ -438,7 +477,7 @@ font-size: 1.1em;
 line-height: 14px;
 }
 /* positions margins */
-#toolbar, #header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2, 
+#header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2, 
 #bottom-menu {
 	margin-bottom: 10px;  
 }

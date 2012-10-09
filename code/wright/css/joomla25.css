@@ -63,7 +63,7 @@ p.img_caption {
 
 
 /* positions margins */
-#toolbar, #header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2, 
+#header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2, 
 #bottom-menu {
 	margin-bottom: 10px;  
 }
@@ -1131,6 +1131,9 @@ span.spacer{
 	 display: inline-block;
 }
 /* Newsflash */
+aside a.readmore{
+	margin-bottom: 10px;
+}
 .newsflash-title_ms1, .newsflash-title_ms2, .newsflash-title_ms3, .newsflash-title_ms4, .newsflash-title {
 	margin-top: 10px;
 }
