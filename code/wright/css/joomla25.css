@@ -1131,7 +1131,9 @@ span.spacer{
 	 display: inline-block;
 }
 /* Newsflash */
-
+.newsflash-title_ms1, .newsflash-title_ms2, .newsflash-title_ms3, .newsflash-title_ms4, .newsflash-title {
+	margin-top: 10px;
+}
 div.newsflash a.readmore,
 div.newsflash_ms1 a.readmore,
 div.newsflash_ms2 a.readmore,
