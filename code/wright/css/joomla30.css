@@ -167,10 +167,6 @@ dl.article-info dd:hover {
 	display: block;
 }
 
-.nav-tabs {
-	border-bottom: 2px solid #DDDDDD;
-}
-
 .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
 	margin-top: 0;
 }
@@ -287,27 +283,7 @@ div.categories-list span.item-title, div.cat-children span.item-title {
 
 /* @ Tabs */
 
-.nav-tabs {
-	border-bottom: 2px solid #DDDDDD;
-}
 
-.nav-tabs > .open  a {
-	background-color: #FFFFFF;
-	border-color: #DDDDDD #DDDDDD transparent;
-	border-style: solid;
-	border-width: 1px;
-	color: #555555;
-	cursor: default;
-}
-.nav-tabs .tabs a {
-	border: 1px solid #ccc;
-	background-color: #ccc;
-	border-bottom: 4px solid #ccc;
-	border-radius: 4px 4px 0 0;
-	line-height: 18px;
-	padding-top: 8px;
-    font-size: .7em;
-}
 .nav-tabs .tabs a, .nav-pills .tabs a {
 	line-height: 14px;
 	margin-right: 2px;
@@ -420,11 +396,13 @@ a.joomlashack {
 
 /* @ Various */
 
-.element-invisible {
+body .element-invisible {
 	display: none;
 	visibility: hidden;
 }
-
+.icon-cog{
+	margin-right: 3px;
+}
 .breadcrumb {
 	margin: 0;
 }
@@ -480,4 +458,10 @@ line-height: 14px;
 #header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2, 
 #bottom-menu {
 	margin-bottom: 10px;  
+}
+.form-actions {
+    border: 0 none;
+    border-radius: 6px 6px 6px 6px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }

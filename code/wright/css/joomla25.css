@@ -298,7 +298,11 @@ dl.article-info dd {
 	width:auto;
 	cursor: default;
 }
-
+.filters.form-actions{
+	padding: 10px 10px 0;
+	border-radius:6px;
+	border:0 none;
+}
 dl.article-info dd:hover {
 	background-color: #FBF4F4;
 }
@@ -798,9 +802,6 @@ nav div.toolbar {
     display: block;
 }
 
-.nav-tabs {
-	border-bottom: 2px solid #DDDDDD;
-}
 
 .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
     margin-top: 0;
@@ -940,23 +941,11 @@ dl.label.label-info dt{
     border-color: #DDDDDD #DDDDDD transparent;
     border-style: solid;
     border-width: 1px;
-    color: #555555;
+    color: #555555 !important;
     cursor: default;	
 }
-.nav-tabs .tabs a {
-    border: 1px solid #ccc;
-    background-color:#ccc;
-    border-bottom:4px solid #ccc;
-    border-radius: 4px 4px 0 0;
-    line-height: 18px;
-    padding-top: 8px;
-    font-size: .7em;
-}
-.nav-tabs .tabs a, .nav-pills .tabs a{
-	line-height: 14px;
-    margin-right: 2px;
-    padding-left: 12px;
-    padding-right: 12px;
+.nav-tabs a{
+	border-radius:5px 5px 0 0; 
 }
 .tabs.nav.nav-tabs dt.tabs {
 	float: left;
@@ -1187,4 +1176,10 @@ border-bottom: 3px solid #D8D8D8;
 #sliderContainer div.slidermanDescriptionCont div.slidermanDescriptionText div.slideTitle p {
 font-size: 1.1em;
 line-height: 14px;
+}
+.form-actions {
+    border: 0 none;
+    border-radius: 6px 6px 6px 6px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
