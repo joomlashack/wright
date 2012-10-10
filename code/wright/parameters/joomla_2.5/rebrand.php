@@ -18,8 +18,8 @@ class JFormFieldRebrand extends JFormField
 
 		// Get the field options.
 		$options = array();
-		$options[] = JHTML::_('select.option', 'no', JText::_('No'));
-		$options[] = JHTML::_('select.option', 'yes', JText::_('Yes'));
+		$options[] = JHTML::_('select.option', 'no', JText::_('JNO'));
+		$options[] = JHTML::_('select.option', 'yes', JText::_('JYES'));
 
 		// Build the radio field output.
 		foreach ($options as $i => $option) {
@@ -43,7 +43,7 @@ class JFormFieldRebrand extends JFormField
 		$template = $this->form->getValue('template');
 		$author = simplexml_load_file(JPATH_ROOT.'/templates'.'/'.$template.'/templateDetails.xml')->author;
 		if (stripos($author, 'shack'))
-			$html[] = '&nbsp;<a href="http://www.joomlashack.com/licensing-center" target="_blank">Rebranding requires a license, learn more.</a>';
+			$html[] = '&nbsp;<a href="http://www.joomlashack.com/licensing-center" target="_blank">' . JText::_('TPL_JS_WRIGHT_FIELD_REBRAND_LICENSE') . '</a>';
 
 		// End the radio field output.
 		$html[] = '</fieldset>';

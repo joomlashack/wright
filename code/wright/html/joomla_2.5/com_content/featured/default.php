@@ -48,8 +48,37 @@ if (!function_exists("wright_joomla_content_featured")) :
 
 		return $buffer;
 	}
+	
+	function wright_joomla_content_featured_image($matches) {
+		$width = '';
+		global $wright_bootstrap_images;
+		if ($matches[1] == "none")
+			$width = ' width="98%"';
+		
+		return '<div class="img-fulltext-' . $matches[1] . '">' . $matches[2] . '<img' . $width . ' class="' . $wright_bootstrap_images . '" ' . $matches[3] . '>';
+	}
+
+	function wright_joomla_content_featured_image_full($matches) {
+		$width = '';
+		global $wright_bootstrap_images;
+		if ($matches[1] == "none")
+			$width = ' width="98%"';
+		
+		return '<div class="img-intro-' . $matches[1] . '">' . $matches[2] . '<img' . $width . ' class="' . $wright_bootstrap_images . '" ' . $matches[3] . '>';
+	}
+	
 		
 	function wright_joomla_content_featured($buffer) {
+		// Bootstrapped images
+		global $wright_bootstrap_images;	
+		$app = JFactory::getApplication();
+		$template = $app->getTemplate(true);
+		$params = $template->params;
+		$wright_bootstrap_images = $params->get('bootstrap_images','');
+		$buffer = preg_replace_callback('/<div class="img-fulltext-([a-z]+)">([^<]*)<img([^>]*)>/Ui', 'wright_joomla_content_featured_image', $buffer);
+		$buffer = preg_replace_callback('/<div class="img-intro-([a-z]+)">([^<]*)<img([^>]*)>/Ui', 'wright_joomla_content_featured_image_full', $buffer);
+
+		
 		$buffer = preg_replace('/<dd class="category-name">/Ui', '<dd class="category-name"><i class="icon-folder-close"></i>', $buffer);
 		$buffer = preg_replace('/<dd class="create">/Ui', '<dd class="create"><i class="icon-calendar"></i>', $buffer);
 		$buffer = preg_replace('/<dd class="modified">/Ui', '<dd class="modified"><i class="icon-edit"></i>', $buffer);

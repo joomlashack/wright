@@ -18,7 +18,7 @@ class JFormFieldTypography extends JFormFieldList
 
 		$class = ( $this->element['class'] ? 'class="'.$this->element['class'].'"' : 'class="inputbox"' );
 
-		$stacks = array(	'Default' => 'Template default',
+		$stacks = array( 'JDEFAULT' => 'TPL_JS_WRIGHT_FIELD_DEFAULT',
 							'Arial' => 'sans-serif',
 							'Baskerville' => 'serif',
 							'Cambria' => 'serif',
@@ -45,8 +45,8 @@ class JFormFieldTypography extends JFormFieldList
 		foreach ($stacks as $stack => $style)
 		{
 			$val	= strtolower(str_replace(' ', '', $stack));
-			$text	= $stack . ' - ' . ucfirst($style);
-			$options[] = JHTML::_('select.option', $val, JText::_($text));
+			$text	= JText::_($stack) . ' - ' . JText::_($style);
+			$options[] = JHTML::_('select.option', $val, ucfirst($text));
 		}
 
 		return $options;

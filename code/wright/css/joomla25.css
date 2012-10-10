@@ -63,8 +63,7 @@ p.img_caption {
 
 
 /* positions margins */
-#toolbar, #header, #menu, #featured, #grid-top, #main-content, 
-#above-content, #breadcrumbs, #grid-bottom, #grid-bottom2, 
+#header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2, 
 #bottom-menu {
 	margin-bottom: 10px;  
 }
@@ -83,6 +82,10 @@ h2{
 
 h3{
 	font-size: 1.6em;
+}
+.well h3{
+	font-size: 1.6em;
+	padding: 0 0 4px 0;
 }
 h4{
 	font-size: 1.4em;
@@ -256,6 +259,7 @@ dt label{
 p.readmore {
 	margin: 0;
 	padding: 0;
+	clear: both;
 }
 
 @media (max-width:767px) {
@@ -266,13 +270,14 @@ p.readmore {
 
 /* @ Article Info  ***************************************/
 dl.article-info {
-	clear:both;
 	float:none;
 	display:block;
 	width:100%;
 	min-height:20px;
-	margin:10px 0;
+	margin:0;
 	font-size:0.8em;
+	padding:5px 0;
+	list-style: none;
 }
 dl.article-info dt {
 	display:none;
@@ -293,7 +298,11 @@ dl.article-info dd {
 	width:auto;
 	cursor: default;
 }
-
+.filters.form-actions{
+	padding: 10px 10px 0;
+	border-radius:6px;
+	border:0 none;
+}
 dl.article-info dd:hover {
 	background-color: #FBF4F4;
 }
@@ -435,14 +444,8 @@ ul.categories-module p {
 	clear: both;
 	display: none;
 }
-.article-info {
-	width: 100%;
-	clear: both;
-	display: inline-block;
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
+
+
 body.dark dl.article-info {
 	border-bottom: 1px dotted #000;
 }
@@ -474,8 +477,10 @@ span.content_vote {
 /* Print & PDF Icons *************************************************************/
 ul.actions{
 	float: right;
+	margin-top: 6px;
+	padding: 0;
 }
-ul.actions, ul.actions li {
+ul.actions li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -797,9 +802,6 @@ nav div.toolbar {
     display: block;
 }
 
-.nav-tabs {
-	border-bottom: 2px solid #DDDDDD;
-}
 
 .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
     margin-top: 0;
@@ -867,14 +869,9 @@ dl.label.label-info dt{
 }
 
 .well h3{
-    color: #999999;
     display: block;
-    font-size: 11px;
-    font-weight: bold;
     line-height: 18px;
-    padding: 3px 15px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
 }
 
 
@@ -943,23 +940,16 @@ dl.label.label-info dt{
 	background-color: #FFFFFF;
     border-color: #DDDDDD #DDDDDD transparent;
     border-style: solid;
+    padding-bottom:1px;
     border-width: 1px;
-    color: #555555;
+    color: #555555 !important;
     cursor: default;	
 }
-.nav-tabs .tabs a {
-    border: 1px solid #ccc;
-    background-color:#ccc;
-    border-bottom:4px solid #ccc;
-    border-radius: 4px 4px 0 0;
-    line-height: 18px;
-    padding-top: 8px;
-}
-.nav-tabs .tabs a, .nav-pills .tabs a{
-	line-height: 14px;
-    margin-right: 2px;
-    padding-left: 12px;
-    padding-right: 12px;
+.nav-tabs a{
+	border-radius:5px 5px 0 0; 
+	margin-right: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 .tabs.nav.nav-tabs dt.tabs {
 	float: left;
@@ -1058,6 +1048,8 @@ div:first-child + .panel {
 {
 	min-width: inherit;
 	margin: 0 5px 10px;
+	float: right;
+	clear: both;
 }
 #sidebar1 input#modlgn-remember,
 #sidebar2 input#modlgn-remember{
@@ -1084,7 +1076,10 @@ div:first-child + .panel {
 .items-more.well{
 	padding: 0;
 }
-
+.items-more h3{
+	padding-right:10px;
+	padding-left:15px; 
+}
 /* User Registration  ************************************************************/
 span.spacer{
 	overflow: hidden;
@@ -1129,7 +1124,12 @@ span.spacer{
 	 display: inline-block;
 }
 /* Newsflash */
-
+aside a.readmore{
+	margin-bottom: 10px;
+}
+.newsflash-title_ms1, .newsflash-title_ms2, .newsflash-title_ms3, .newsflash-title_ms4, .newsflash-title {
+	margin-top: 10px;
+}
 div.newsflash a.readmore,
 div.newsflash_ms1 a.readmore,
 div.newsflash_ms2 a.readmore,
@@ -1137,4 +1137,53 @@ div.newsflash_ms3 a.readmore,
 div.newsflash_ms4 a.readmore,
 div.newsflash_ms5 a.readmore {
 	padding-bottom: 10px;
+}
+.page-header{
+	margin: 0;
+	padding: 0;
+}
+.moduletable, .module {
+	margin-bottom: 20px;
+}
+#breadcrumbs .module,
+#breadcrumbs .moduletable{
+	margin: 0;
+}
+.blog-featured{
+	clear:both;
+}
+aside .nav.menu.nav-tabs{
+	float:none;
+}
+aside input {
+	width:93%;
+}
+.img-intro-left, .img-fulltext-left {
+    float: left;
+    margin: 0 25px 10px 0;
+}
+
+.img-intro-right, .img-fulltext-right {
+    float: right;
+    margin: 0 0 10px 25px;
+}
+.img-fulltext-none, .img-intro-none{
+	margin-bottom: 10px;
+}
+
+div#above-content.clearfix {
+padding-bottom: 30px;
+margin-bottom: 20px;
+border-bottom: 3px solid #D8D8D8;
+}
+
+#sliderContainer div.slidermanDescriptionCont div.slidermanDescriptionText div.slideTitle p {
+font-size: 1.1em;
+line-height: 14px;
+}
+.form-actions {
+    border: 0 none;
+    border-radius: 6px 6px 6px 6px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
