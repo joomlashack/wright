@@ -948,9 +948,7 @@ dl.label.label-info dt{
 .nav-tabs a{
 	border-radius:5px 5px 0 0; 
 	margin-right: 5px;
-	padding-left: 5px;
-	padding-top: 3px;
-	padding-bottom:1px;
+	padding:4px 5px 1px;
 	font-size: .7em;
 }
 .tabs.nav.nav-tabs dt.tabs {
