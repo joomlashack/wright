@@ -945,13 +945,16 @@ dl.label.label-info dt{
     cursor: default;	
 }
 .nav-tabs a{
-	border-radius:5px 5px 0 0; 
 	margin-right: 5px;
 	padding:4px 5px 1px;
 	vertical-align: bottom;
 }
+.bs-docs-sidenav li {
+	margin-bottom: 0;
+}
 .nav-tabs dt a{
 	font-size: .7em;
+	border-radius:5px 5px 0 0; 
 }
 .tabs.nav.nav-tabs dt.tabs {
 	float: left;
