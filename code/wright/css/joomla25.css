@@ -940,7 +940,6 @@ dl.label.label-info dt{
 	background-color: #FFFFFF;
     border-color: #DDDDDD #DDDDDD transparent;
     border-style: solid;
-    padding-bottom:1px;
     border-width: 1px;
     color: #555555 !important;
     cursor: default;	
@@ -949,6 +948,9 @@ dl.label.label-info dt{
 	border-radius:5px 5px 0 0; 
 	margin-right: 5px;
 	padding:4px 5px 1px;
+	vertical-align: bottom;
+}
+.nav-tabs dt a{
 	font-size: .7em;
 }
 .tabs.nav.nav-tabs dt.tabs {
