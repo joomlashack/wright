@@ -1191,3 +1191,27 @@ line-height: 14px;
     padding-bottom: 10px;
     padding-top: 10px;
 }
+.nav .dropdown-toggle .caret {
+border-bottom-color: #666;
+border-top-color: #666;
+}
+.nav .dropdown-toggle.btn-primary .caret, .nav .dropdown-toggle.btn-danger .caret, .nav .dropdown-toggle.btn-warning .caret, .nav .dropdown-toggle.btn-success .caret, .nav .dropdown-toggle.btn-info .caret, .nav .dropdown-toggle.btn-inverse .caret {
+border-bottom-color: white;
+border-top-color: white;
+}
+.nav .dropdown-toggle.btn-primary .caret, .nav .dropdown-toggle.btn-danger .caret, .nav .dropdown-toggle.btn-warning .caret, .nav .dropdown-toggle.btn-success .caret, .nav .dropdown-toggle.btn-info .caret, .nav .dropdown-toggle.btn-inverse .caret {
+border-bottom-color: white;
+border-top-color: white;
+}
+.text-warning {
+color: #C09853;
+}
+.text-error {
+color: #B94A48;
+}
+.text-info {
+color: #3A87AD;
+}
+.text-success {
+color: #468847;
+}
