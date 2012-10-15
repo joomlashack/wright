@@ -1091,13 +1091,6 @@ span.spacer{
 	display: block;
 }
 /* Module class  ************************************************************/
-[class*="span"], .row-fluid [class*="span"]{
-	
-	margin-bottom: 10px;
-}
-
-
-
     
 .icons-left{
 	float:left; 
