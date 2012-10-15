@@ -16,8 +16,7 @@ function wright_joomla_mod_weblinks_icons($matches) {
 		return '<a' . $matches[1] . '><i class="icon-link icons-left"></i>' . $matches[2] .'</a>';
 	}
 function wright_joomla_mod_weblinks($buffer) {
-	$buffer = preg_replace('/class="weblinks"/Ui', 'class="weblinks nav"', $buffer);	
-	$buffer = preg_replace('/class="weblinks([^nav]+)">/Ui', 'class="weblinks $1 nav">', $buffer);
+	$buffer = preg_replace('/class="weblinks([^"]*)">/Ui', 'class="weblinks$1 nav">', $buffer);
 	$buffer = preg_replace_callback('/<a([^>]*)>([^<]*)<\/a>/Ui', 'wright_joomla_mod_weblinks_icons', $buffer);
 	return $buffer;
 				
