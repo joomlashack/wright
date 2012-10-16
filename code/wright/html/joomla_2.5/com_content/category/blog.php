@@ -104,6 +104,9 @@ if (!function_exists("wright_joomla_content_category_blog")) :
 		$buffer = preg_replace('/<span class="pagenav">/Ui', '<span class="pagenav disabled"><a>', $buffer);
 		$buffer = preg_replace('/<\/span><\/li>/Ui', '</a></span></li>', $buffer);
 		
+		
+		$buffer = preg_replace('/<div class="blog">/Ui', '<div class="blog row-fluid">', $buffer);
+		
 		$buffer = wright_joomla_content_category_blog_columns($buffer);
 		
 		return $buffer;
