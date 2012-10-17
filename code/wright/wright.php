@@ -342,6 +342,9 @@ class Wright
 		// Load up a specific style if set
 		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'style-' . $this->document->params->get('style') . '.css'))
 			$styles['template'][] = 'style-' . $this->document->params->get('style') . '.css';
+		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'style-' . $this->document->params->get('style') . '.responsive.css')) {
+            $styles['template'][] = 'style-' . $this->document->params->get('style') . '.responsive.css';
+		}
 
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
