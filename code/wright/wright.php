@@ -213,7 +213,7 @@ class Wright
 			$cachetime = filemtime(JPATH_THEMES . '/' . $this->document->template . '/css/' . $this->document->template . '.css');
 		else
 			$cachetime = 0;
-
+		
 		foreach ($styles as $folder => $files)
 		{
 			if (count($files))
@@ -309,6 +309,13 @@ class Wright
         $version = explode('.', JVERSION);
         $version = $version[0].$version[1];
 
+		$styles['bootstrap'] = Array();
+		$styles['fontawesomemore'] = Array();
+		$styles['wright'] = Array();
+		$styles['template'] = Array();
+
+		$styles['template'] = JFolder::files(JPATH_THEMES . '/' . $this->document->template . '/css', '\d{1,2}_.*.css');
+
 		// Loads Bootstrap and FontAwesomeMore
 		$styles['bootstrap'] = array('bootstrap.min.css');
 		if ($this->document->params->get('responsive',1)) {
@@ -324,8 +331,9 @@ class Wright
 		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.responsive.css')) {
             $styles['wright'][] = 'joomla'.$version.'.responsive.css';
 		}
-
-		$styles['template'] = JFolder::files(JPATH_THEMES . '/' . $this->document->template . '/css', '\d{1,2}_.*.css');
+		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template .'/css/responsive.css')) {
+            $styles['template'][] = 'responsive.css';
+		}
 
 		// Load up a specific bootstrap style if set
 		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'style-' . $this->document->params->get('style') . '.bootstrap.min.css'))
