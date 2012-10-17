@@ -32,92 +32,14 @@ function getPositionAutospanWidth($position) {
 }
 
 
-/* Parses an stacked suffix
- * suffix: stacked suffix (string)
- * icon: output icon (|icon|<icon>)
- * icon position: optional icon position (|icon|<icon position>|<icon>)
- * fixedSpanWidth: fixed span width (|spanwidth|<width>)
- * specialClasses: array with special template classes (user defined)
- * specialClassesResult: array with results of special classes
- */
-
-function parse_suffix(&$suffix, &$icon, &$iconposition, &$fixedSpanWidth, $specialClasses, &$specialClassesResult) {	
-	$icon = "";
-	$iconposition = "";
-	$fixedSpanWidth = "";
-	$specialClassesResult = Array();
-	
-	// identify icon
-	$i = preg_match("/^(.*)\|icon\|(left\||right\|)?([^\|]*)(.*)/", $suffix, $ar);
-	if ($i) {
-		$icon = ($ar[3]);
-		$iconposition = ($ar[2] == "" ? "right" : substr($ar[2],0,strlen($ar[2])-1));
-		$suffix = $ar[1] . $ar[4];
-	}
-	// identify spanwidth
-	$i = preg_match("/^(.*)\|spanwidth\|([1-6]{1})(.*)/", $suffix, $ar);
-	if ($i) {
-		$fixedSpanWidth = $ar[2];
-		$suffix = $ar[1] . $ar[3];
-	}
-
-	// identify special classes
-	if (isset($specialClasses)) {
-		foreach ($specialClasses as $class) {
-			$i = preg_match("/^(.*)\|" . $class . "\|([^\|]*)(.*)/", $suffix, $ar);
-			if ($i) {
-				$specialClassesResult[$class] = ($ar[2]);
-				$suffix = $ar[1] . $ar[3];
-			}
-		}
-	}
-
-	if (strlen($suffix) > 0) {
-		if ($suffix[0] == "|") $suffix = substr($suffix,1);
-		if ($suffix[strlen($suffix)-1] == "|") $suffix = substr($suffix,0,strlen($suffix)-1);
-	}
-}
-
-
 
 /**
  * WRIGHT FLEX GRID
  * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="wrightflexgrid" />)
  */
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
-    // stacked suffixes (only if template allows it)
-    $suffixes = false;
-    $specialClasses = Array();
-    $specialClassesResult = Array();
-    if (class_exists("WrightTemplate")) {
-        $wrightTemplate = WrightTemplate::getInstance();
-        $suffixes = $wrightTemplate->suffixes;
-        if (property_exists("WrightTemplate", "specialClasses"))
-            $specialClasses = $wrightTemplate->specialClasses;
-    }
-    $icon = "";
-    $iconposition = "";
-    $spanWidthFixed = "";
-    $specialClassesString = "";
-    $origsuffix = $params->get('moduleclass_sfx');
-    $suffix = $origsuffix;
-
     $app = JFactory::getApplication();
     $templatename = $app->getTemplate();
-    if ($suffixes) {
-        parse_suffix($suffix, $icon, $iconposition,$spanWidthFixed,$specialClasses,$specialClassesResult);
-        // suffix return to the parameters
-        $params->set('moduleclass_sfx',$suffix);
-
-        // checks if icon exists in wright/images/icons/modules
-        if (!file_exists(JPATH_SITE.'/'."templates".'/'.$templatename.'/'."wright".'/'."images".'/'."icons".'/'."modules".'/'.$icon.".png")) {
-            $icon = "";
-        }
-
-        foreach ($specialClassesResult as $class => $result) {
-            $specialClassesString .= " " . $class . "_" . $result;
-        }
-    }
 
     $document = JFactory::getDocument();
     static $modulenumbera = Array();
@@ -128,16 +50,15 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $robModules = JModuleHelper::getModules($attribs['name']);
 
 
+	$class = $params->get('moduleclass_sfx');
     static $modulenumber = 1;
     if (stripos($params->get('moduleclass_sfx'), 'span') === false) {
         $grid = '';
         if (isset($attribs['grid']))
             $grid = $attribs['grid'];
-        $class = $params->get('moduleclass_sfx');
     // user assigned span width in module parameters
     } else {
         $grid = preg_replace('/\D/', '', $params->get('moduleclass_sfx'));
-        $class = '';
         $spanWidth = $grid;
     }
 
@@ -160,7 +81,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     }
     $modulenumbera[$attribs['name']]++;
     ?>
-<div class="module<?php echo $class; ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>span<?php echo ($spanWidthFixed != "" ? $spanWidthFixed : $spanWidth) ?><?php if($iconposition != "" && $icon != "") echo " icon-$iconposition" ?><?php echo $specialClassesString ?>">
+<div class="module<?php echo $class; ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>span<?php echo ($spanWidth) ?>">
 <?php if ($module->showtitle) : ?>
 <h3><?php echo $module->title; ?></h3>
 <?php endif; ?>
@@ -169,13 +90,6 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 <div class="module_content">
 <?php endif; ?>
 <?php
-// replaces only the first appearance of the original suffix (for the module class)
-if ($origsuffix != $suffix) {
-$pos = strpos($module->content,$origsuffix);
-if ($pos !== false) {
-$module->content = substr_replace($module->content,$suffix,$pos,strlen($origsuffix));
-}
-}
 echo $module->content;
 ?>
 <?php if ($icon != ""): ?>
