@@ -45,7 +45,8 @@ if (!function_exists("wright_joomla_content_category")) :
 		
 		$buffer = preg_replace('/Display #/Ui', '<label> Display # </label>', $buffer);
 
-			
+		$buffer = preg_replace('/<div class="blog">/Ui', '<div class="blog row-fluid">', $buffer);
+					
 		
 		
 		return $buffer;

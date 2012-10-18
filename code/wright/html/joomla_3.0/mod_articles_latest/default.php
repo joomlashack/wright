@@ -17,9 +17,8 @@ function wright_joomla_articles_latest_icon ($matches) {
 }
 
 
-function wright_joomla_articles_latest ($buffer) {
-	$buffer = preg_replace('/class="latestnews"/Ui', 'class="latestnews nav"', $buffer);	
-	$buffer = preg_replace('/class="latestnews([^nav]+)">/Ui', 'class="latestnews $1 nav">', $buffer);
+function wright_joomla_articles_latest ($buffer) {	
+	$buffer = preg_replace('/class="latestnews([^"]*)">/Ui', 'class="latestnews$1 nav">', $buffer);
 	$buffer = preg_replace_callback('/<a([^>]*)>([^<]*)<\/a>/Ui', 'wright_joomla_articles_latest_icon', $buffer);
 	return $buffer;				
 }

@@ -65,7 +65,7 @@ if ($this->countModules('toolbar')) {
             <w:module type="<?php echo $gridMode; ?>" name="grid-top2" chrome="wrightflexgrid" />
         </div>
         <?php endif; ?>
-        <div id="main-content" class="row-fluid">
+        <div id="main-content" class="<?php echo $gridMode; ?>">
             <!-- sidebar1 -->
             <aside id="sidebar1">
             	<w:module name="sidebar1" chrome="xhtml" />

@@ -940,16 +940,21 @@ dl.label.label-info dt{
 	background-color: #FFFFFF;
     border-color: #DDDDDD #DDDDDD transparent;
     border-style: solid;
-    padding-bottom:1px;
     border-width: 1px;
     color: #555555 !important;
     cursor: default;	
 }
 .nav-tabs a{
-	border-radius:5px 5px 0 0; 
 	margin-right: 5px;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding:4px 5px 1px;
+	vertical-align: bottom;
+}
+.bs-docs-sidenav li {
+	margin-bottom: 0;
+}
+.nav-tabs dt a{
+	font-size: .7em;
+	border-radius:5px 5px 0 0; 
 }
 .tabs.nav.nav-tabs dt.tabs {
 	float: left;
@@ -1086,14 +1091,6 @@ span.spacer{
 	display: block;
 }
 /* Module class  ************************************************************/
-[class*="span"], .row-fluid [class*="span"]{
-	
-	margin-bottom: 10px;
-	overflow: hidden;
-}
-
-
-
     
 .icons-left{
 	float:left; 
@@ -1186,4 +1183,28 @@ line-height: 14px;
     border-radius: 6px 6px 6px 6px;
     padding-bottom: 10px;
     padding-top: 10px;
+}
+.nav .dropdown-toggle .caret {
+border-bottom-color: #666;
+border-top-color: #666;
+}
+.nav .dropdown-toggle.btn-primary .caret, .nav .dropdown-toggle.btn-danger .caret, .nav .dropdown-toggle.btn-warning .caret, .nav .dropdown-toggle.btn-success .caret, .nav .dropdown-toggle.btn-info .caret, .nav .dropdown-toggle.btn-inverse .caret {
+border-bottom-color: white;
+border-top-color: white;
+}
+.nav .dropdown-toggle.btn-primary .caret, .nav .dropdown-toggle.btn-danger .caret, .nav .dropdown-toggle.btn-warning .caret, .nav .dropdown-toggle.btn-success .caret, .nav .dropdown-toggle.btn-info .caret, .nav .dropdown-toggle.btn-inverse .caret {
+border-bottom-color: white;
+border-top-color: white;
+}
+.text-warning {
+color: #C09853;
+}
+.text-error {
+color: #B94A48;
+}
+.text-info {
+color: #3A87AD;
+}
+.text-success {
+color: #468847;
 }
