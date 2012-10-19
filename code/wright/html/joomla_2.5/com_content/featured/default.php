@@ -102,8 +102,9 @@ if (!function_exists("wright_joomla_content_featured")) :
 		
 		$buffer = preg_replace('/<span class="pagenav">/Ui', '<span class="pagenav disabled"><a>', $buffer);
 		$buffer = preg_replace('/<\/span><\/li>/Ui', '</a></span></li>', $buffer);
-
-
+		
+		$buffer = preg_replace('/<div class="blog-featured">/Ui', '<div class="blog-featured row-fluid">', $buffer);
+		
 		$buffer = wright_joomla_content_featured_columns($buffer);
 
 		return $buffer;
