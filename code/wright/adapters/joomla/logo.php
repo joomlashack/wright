@@ -22,6 +22,9 @@ class WrightAdapterJoomlaLogo
 		if (!isset($args['name'])) $args['name'] = 'newsflash';
 		if (!isset($args['style'])) $args['style'] = 'xhtml';
 
+		// class for the wrapper of the menu nav bar
+		if (!isset($args['menuWrapClass'])) $args['menuWrapClass'] = '';
+
 		$doc = Wright::getInstance();
 		$app = JFactory::getApplication();
 
@@ -103,7 +106,7 @@ class WrightAdapterJoomlaLogo
 			if ($args['name'] == 'menu') {
 				$html .= '
 					<nav id="'.$args['name'].'" class="span'.$modulewidth2.'">
-						<div class="navbar">
+						<div class="navbar ' . $args['menuWrapClass'] . '">
 							<div class="navbar-inner">
 								<div class="container">
 						            <a class="btn btn-navbar" data-toggle="collapse" data-target="#nav-'.$modulename2.'">
