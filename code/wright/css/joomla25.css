@@ -525,11 +525,17 @@ ul.actions li {
 div.disabled{
 	display: inline;
 }
-.counter, .pagenavcounter {
+.pagenavcounter {
 	display: inline-block;
 	line-height:35px;
 	margin-right:5px;
 	text-align: center;
+}
+.counter {
+	color: #999;
+	display: block;
+	float: left;
+	line-height: 40px;
 }
 /* @end */
 
@@ -1080,6 +1086,7 @@ div:first-child + .panel {
 /* Wrapper More links  ************************************************************/
 .items-more.well{
 	padding: 0;
+	margin-top: 10px;
 }
 .items-more h3{
 	padding-right:10px;
@@ -1135,10 +1142,7 @@ div.newsflash_ms4 a.readmore,
 div.newsflash_ms5 a.readmore {
 	padding-bottom: 10px;
 }
-.page-header{
-	margin: 0;
-	padding: 0;
-}
+
 .moduletable, .module {
 	margin-bottom: 20px;
 }
@@ -1207,4 +1211,7 @@ color: #3A87AD;
 }
 .text-success {
 color: #468847;
+}
+p.readmore{
+	float: right;
 }
