@@ -44,4 +44,8 @@
 		margin-left: -20px;
 		margin-right: -20px;
 	}
+	
+	select {
+		width: 155px;
+	}
 }
