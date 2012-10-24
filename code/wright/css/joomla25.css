@@ -358,18 +358,21 @@ dl.article-info dd [class^="icon-"], dl.article-info dd [class*=" icon-"] {
 /* @group Categories/Archives *****************************************/
 
 div.categories-list ul, 
-div.categories-list li, 
-div.cat-children ul, 
+div.categories-list li,
 div.cat-children li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
+.cat-children ul{
+	padding: 0 0 0 10px;
+	margin: 0;
+}
 div.cat-children li,
 div.categories-list li{
 	border-bottom: 1px solid #eee;
 	padding-bottom: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 div.categories-list ul ul li:last-child,
 div.cat-children ul ul li:last-child{
@@ -535,6 +538,7 @@ div.disabled{
 	color: #999;
 	display: block;
 	float: left;
+	margin-right:5px;
 	line-height: 40px;
 }
 /* @end */
@@ -1214,4 +1218,8 @@ color: #468847;
 }
 p.readmore{
 	float: right;
+}
+.page-header{
+	padding: 0;
+	margin: 20px 0 20px;
 }
