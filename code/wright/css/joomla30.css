@@ -475,3 +475,13 @@ color: #3A87AD;
 .text-success {
 color: #468847;
 }
+.img-polaroid{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing: border-box;
+}
+.hide-text{
+	display: none;
+}
