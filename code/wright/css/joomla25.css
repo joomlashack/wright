@@ -196,8 +196,9 @@ dd {
 label{
 	float: left;
 	line-height: 26px;
-	min-width:70px;
+	min-width:80px;
 	margin-right: 10px;
+	text-align: right;
 }
 .search label{
 	min-width:0;
@@ -1066,6 +1067,10 @@ div:first-child + .panel {
 	float: right;
 	clear: both;
 }
+#sidebar1 input.button.btn,
+#sidebar2 input.button.btn{
+	clear: none;
+}
 #sidebar1 input#modlgn-remember,
 #sidebar2 input#modlgn-remember{
 	min-width: inherit;
@@ -1161,7 +1166,7 @@ aside .nav.menu.nav-tabs{
 	float:none;
 }
 aside input {
-	width:93%;
+	width:41%;
 }
 .img-intro-left, .img-fulltext-left {
     float: left;
