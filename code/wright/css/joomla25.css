@@ -198,7 +198,6 @@ label{
 	line-height: 26px;
 	min-width:80px;
 	margin-right: 10px;
-	text-align: right;
 }
 .search label{
 	min-width:0;
@@ -1166,7 +1165,7 @@ aside .nav.menu.nav-tabs{
 	float:none;
 }
 aside input {
-	width:41%;
+	width:60%;
 }
 .img-intro-left, .img-fulltext-left {
     float: left;
