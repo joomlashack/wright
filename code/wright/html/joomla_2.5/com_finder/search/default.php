@@ -14,7 +14,7 @@ if (!function_exists("wright_joomla_finder_search")) :
 	
 	
 	function wright_joomla_finder_search($buffer) {
-		$buffer = preg_replace('/ class="button"/Ui', 'class="button btn btn-success"', $buffer);
+		$buffer = preg_replace('/ class="button"/Ui', 'class="button btn btn-primary"', $buffer);
 		$buffer = preg_replace('/<span class="small">/Ui', '<span class="label label-info small">', $buffer);
 		
 				return $buffer;

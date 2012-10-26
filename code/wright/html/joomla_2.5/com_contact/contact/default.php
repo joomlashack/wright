@@ -38,7 +38,7 @@ if (!function_exists("wright_joomla_contact_contact")) :
 		$buffer = preg_replace('/class="tabs"/Ui', 'class="tabs nav nav-tabs"', $buffer); 
 	    $buffer = preg_replace('/<div class="panel">/Ui', '<div class="panel"><i class="icon-sort-down" style="float:right; margin-top:10px;position:relative; z-index:1;"> </i>', $buffer); 
      	//$buffer = preg_replace('/pane-toggler-down/Ui', 'pane-toggler-down icon-folder-close', $buffer);
-     	$buffer = preg_replace('/class="button validate"/Ui', 'class="button btn validate"', $buffer);
+     	$buffer = preg_replace('/class="button validate"/Ui', 'class="button btn validate btn-primary"', $buffer);
 
 		$buffer = preg_replace_callback('/<span([^>]*)>([^<]*)<img([^>]*)con_address.png([^>]*)>/Ui', 'wright_joomla_contact_contact_address', $buffer);
 		$buffer = preg_replace_callback('/<span([^>]*)>([^<]*)<img([^>]*)emailButton.png([^>]*)>/Ui', 'wright_joomla_contact_contact_email', $buffer);
