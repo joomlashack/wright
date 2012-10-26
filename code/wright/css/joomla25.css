@@ -207,17 +207,13 @@ li{
 	line-height: normal;
 }
 
-select[multiple], select[size]{
-	float: left;
-	margin-right: 10px;
-}
 .newsfeed-category select#limit,
 .blog-featured select#limit,
 .contact-category select#limit {
 	float: none;
 }
 #finder-filter-select-list label{
-	min-width: 129px;
+	min-width: 150px;
 }
 ul.nobullet{
 	list-style: none outside none; 
