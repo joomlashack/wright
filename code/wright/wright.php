@@ -141,6 +141,9 @@ class Wright
 			}
 			$this->document->setHeadData($dochead);
 		}
+		else {
+			JHtml::_('behavior.framework', true);
+		}
 
 		// load jQuery ?
 		if ($this->loadBootstrap && $loadJquery = $this->document->params->get('jquery', 0))
