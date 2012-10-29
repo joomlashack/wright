@@ -56,6 +56,7 @@ abstract class HtmlAdapterAbstract
 		$class = 'is_'.strtolower($browser->getBrowser()) . ' v_' . $browser_version[0];
 
 		$style = "";
+		$data = "";  // added for other data-(0-9) classes
 
 		if (isset($matches[1])) {
 			if (strpos($matches[1], 'class=')) {
@@ -68,10 +69,16 @@ abstract class HtmlAdapterAbstract
 				if (isset($styles[1]))
 					$style = $styles[1];
 			}
+
+			preg_match_all('/data-([0-9]+)="([^"]*)"/', $matches[1], $dataclasses, PREG_SET_ORDER);
+			if ($dataclasses) {
+				foreach ($dataclasses as $dc) {
+					$data .= ' data-' . $dc[1] . '="' . $dc[2] . '"';					
+				}
+			}
 		}
 
 		// if specific style add to class list
-		//$class .= ' '.$wright->params->get('style');
 		$xml = simplexml_load_file(JPATH_ROOT.'/'.'templates'.'/'.$wright->document->template.'/'.'templateDetails.xml');
 		$theme = $xml->xpath('//style[@name="'.$wright->params->get('style').'"]');
 		if (count($theme)) $class .= ' '.$theme[0]['type'];
@@ -114,7 +121,7 @@ abstract class HtmlAdapterAbstract
 
 		$class .= " rev_" . $wright->revision;
 
-		return '<body class="'.$class.'"' . ($style != '' ? ' style="' . $style . '"' : '') . '>';
+		return '<body class="'.$class.'"' . ($style != '' ? ' style="' . $style . '"' : '') . $data . '>';
 	}
 
 	public function getNav($matches)
