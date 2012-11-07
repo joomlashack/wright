@@ -49,3 +49,14 @@
 		width: 155px;
 	}
 }
+@media(max-width:320px){
+	.filter-search button.button.btn{
+		display:block !important;
+		width:100%;
+		margin:0 0 10px !important;
+	}
+	.filter-search select,
+	.filter-search input{
+		width:100%;
+	}
+}
