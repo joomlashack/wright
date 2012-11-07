@@ -575,8 +575,11 @@ body.dark div.panel {
 	visibility: hidden;
 }
 .filter-search {
-	float: left;
 	margin-right: 10px;
+}
+.filter-search button.button.btn{
+	display:inline-block !important;
+	float:none !important;
 }
 .display-limit {
 	float: left;
