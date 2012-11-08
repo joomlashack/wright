@@ -48,7 +48,8 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 
     $spanWidth = getPositionAutospanWidth($attribs['name']);
     $robModules = JModuleHelper::getModules($attribs['name']);
-
+	
+	$extradivs = explode(',',$attribs['extradivs']);
 
 	$class = $params->get('moduleclass_sfx');
     static $modulenumber = 1;
@@ -83,7 +84,9 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     ?>
 <div class="module<?php echo $class; ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>span<?php echo ($spanWidth) ?>">
 <?php if ($module->showtitle) : ?>
-<h3><?php echo $module->title; ?></h3>
+	<?php if (in_array('title',$extradivs)) : ?>	<div class="module_title"> <?php endif; ?>
+		<h3><?php echo $module->title; ?></h3>		
+	<?php if (in_array('title',$extradivs)) : ?>	</div> <?php endif; ?>
 <?php endif; ?>
 <?php if ($icon != ""): ?>
 <div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
