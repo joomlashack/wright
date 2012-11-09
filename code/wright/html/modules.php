@@ -88,16 +88,9 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 		<h3><?php echo $module->title; ?></h3>		
 	<?php if (in_array('title',$extradivs)) : ?>	</div> <?php endif; ?>
 <?php endif; ?>
-<?php if ($icon != ""): ?>
-<div class="module_icon"><img width="48" height="48" src="<?php echo JRoute::_("templates/$templatename/wright/images/icons/modules/$icon.png") ?>" alt="<?php echo $icon ?>" /></div>
-<div class="module_content">
-<?php endif; ?>
 <?php
 echo $module->content;
 ?>
-<?php if ($icon != ""): ?>
-</div>
-<?php endif; ?>
 </div>
 <?php
 }
