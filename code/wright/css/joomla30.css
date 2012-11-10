@@ -410,6 +410,12 @@ aside .nav.menu.nav-tabs {
 .aside input {
 	width: 93%;
 }
+aside input {
+	width:60%; 
+}
+label.finder{
+	margin-right: 3px;
+}
 .newsflash-title_ms1, .newsflash-title_ms2, .newsflash-title_ms3, .newsflash-title_ms4, .newsflash-title {
 	margin-top: 10px;
 }
@@ -474,4 +480,14 @@ color: #3A87AD;
 }
 .text-success {
 color: #468847;
+}
+.img-polaroid{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing: border-box;
+}
+.hide-text{
+	display: none;
 }

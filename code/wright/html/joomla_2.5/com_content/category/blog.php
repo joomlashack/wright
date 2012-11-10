@@ -73,6 +73,8 @@ if (!function_exists("wright_joomla_content_category_blog")) :
 	function wright_joomla_content_category_blog($buffer) {		
 		// Bootstrapped images
 		global $wright_bootstrap_images;	
+		global $wright_joomla_content_category_blog_nocols;
+		
 		$app = JFactory::getApplication();
 		$template = $app->getTemplate(true);
 		$params = $template->params;
@@ -104,10 +106,10 @@ if (!function_exists("wright_joomla_content_category_blog")) :
 		$buffer = preg_replace('/<span class="pagenav">/Ui', '<span class="pagenav disabled"><a>', $buffer);
 		$buffer = preg_replace('/<\/span><\/li>/Ui', '</a></span></li>', $buffer);
 		
-		
-		$buffer = preg_replace('/<div class="blog">/Ui', '<div class="blog row-fluid">', $buffer);
-		
-		$buffer = wright_joomla_content_category_blog_columns($buffer);
+		if (!$wright_joomla_content_category_blog_nocols) {
+			$buffer = preg_replace('/<div class="blog">/Ui', '<div class="blog row-fluid">', $buffer);
+			$buffer = wright_joomla_content_category_blog_columns($buffer);
+		}
 		
 		return $buffer;
 	}

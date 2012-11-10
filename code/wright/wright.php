@@ -141,6 +141,9 @@ class Wright
 			}
 			$this->document->setHeadData($dochead);
 		}
+		else {
+			JHtml::_('behavior.framework', true);
+		}
 
 		// load jQuery ?
 		if ($this->loadBootstrap && $loadJquery = $this->document->params->get('jquery', 0))
@@ -148,11 +151,11 @@ class Wright
             switch ($loadJquery) {
                 // load jQuery locally
                 case 1:
-                    $jquery = $this->_urlJS . '/jquery-1.8.0.min.js';
+                    $jquery = $this->_urlJS . '/jquery-1.8.2.min.js';
                     break;
                 // load jQuery from Google
                 default:
-                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js';
+                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js';
                     break;
             }
             $this->document->addScript($jquery);
