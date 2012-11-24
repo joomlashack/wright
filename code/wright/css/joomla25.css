@@ -1007,7 +1007,7 @@ dl.label.label-info dt{
     position: relative;
     z-index: 2;
 }
-.tabs.nav h3{
+dl.tabs.nav h3{
 	margin-bottom: 0;
 	margin-right: 5px;
 }
