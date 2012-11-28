@@ -219,11 +219,11 @@ to use in the template.
 
 ### 5. License Information
 
-The Wright framework and template that it's shipped with are licensed under the GNU GPLv3([http://www.gnu.org/licenses/gpl.html/](http://www.gnu.org/licenses/gpl.html/ "http://www.gnu.org/licenses/gpl.html/"))
+The Wright framework and template that it's shipped with are licensed under the GNU GPLv3 ([http://www.gnu.org/licenses/gpl.html/](http://www.gnu.org/licenses/gpl.html/ "http://www.gnu.org/licenses/gpl.html/"))
 
 
 ### 6. Feedback and Suggestions
 
 Thank you for using Wright. We want to make sure we are providing
 a good product, so if you have problems, comments, or ideas, please feel free to 
-post in the Wright Forum([https://help.joomlashack.com/categories/20059413-wright-joomla-template-framework/](https://help.joomlashack.com/categories/20059413-wright-joomla-template-framework/ "https://help.joomlashack.com/categories/20059413-wright-joomla-template-framework/")) 
+post in the Wright Forum ([https://help.joomlashack.com/categories/20059413-wright-joomla-template-framework/](https://help.joomlashack.com/categories/20059413-wright-joomla-template-framework/ "https://help.joomlashack.com/categories/20059413-wright-joomla-template-framework/")) 
