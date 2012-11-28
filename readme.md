@@ -224,6 +224,6 @@ The Wright framework and template that it's shipped with are licensed under the 
 
 ### 6. Feedback and Suggestions
 
-Thank you for using our templates. We want to make sure we are providing
+Thank you for using Wright. We want to make sure we are providing
 a good product, so if you have problems, comments, or ideas, please feel free to 
 post in the [Wright Forum](https://help.joomlashack.com/categories/20059413-wright-joomla-template-framework/ "Wright Forum") 
