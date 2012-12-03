@@ -341,7 +341,9 @@ dl.article-info dd [class^="icon-"], dl.article-info dd [class*=" icon-"] {
 .navbar .nav li li.dropdown.open.active > .dropdown-toggle{
 	color: white;
 }
-
+.navbar .open > .dropdown-menu {
+	display: none;
+}
 
 /* @  Article   ***************************************/
 .item-page {
