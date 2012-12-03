@@ -188,7 +188,9 @@ dl.article-info dd:hover {
 	top: 11px;
 	left: -6px;
 }
-
+.navbar .open > .dropdown-menu {
+	display: none;
+}
 .navbar a.dropdown-toggle i {
 	height: 100%;
 	line-height: 100%;
