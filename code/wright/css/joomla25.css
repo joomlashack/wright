@@ -196,7 +196,6 @@ dd {
 label{
 	float: left;
 	line-height: 26px;
-	min-width:80px;
 	margin-right: 10px;
 }
 .search label{
@@ -341,7 +340,9 @@ dl.article-info dd [class^="icon-"], dl.article-info dd [class*=" icon-"] {
 .navbar .nav li li.dropdown.open.active > .dropdown-toggle{
 	color: white;
 }
-
+.navbar .open > .dropdown-menu {
+	display: none;
+}
 
 /* @  Article   ***************************************/
 .item-page {
@@ -590,6 +591,9 @@ body.dark div.panel {
 .login-fields {
 	margin: 10px 0px;
 	
+}
+.login-fields label {
+	min-width: 80px;
 }
 
 span.star {
@@ -1007,7 +1011,7 @@ dl.label.label-info dt{
     position: relative;
     z-index: 2;
 }
-.tabs.nav h3{
+dl.tabs.nav h3{
 	margin-bottom: 0;
 	margin-right: 5px;
 }
