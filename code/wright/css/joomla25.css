@@ -196,7 +196,6 @@ dd {
 label{
 	float: left;
 	line-height: 26px;
-	min-width:80px;
 	margin-right: 10px;
 }
 .search label{
@@ -592,6 +591,9 @@ body.dark div.panel {
 .login-fields {
 	margin: 10px 0px;
 	
+}
+.login-fields label {
+	min-width: 80px;
 }
 
 span.star {
