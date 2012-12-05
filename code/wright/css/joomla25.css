@@ -154,6 +154,12 @@ a.joomlashack {
 
 /* @ end Login */
 
+/* @ Search  ***************************************/
+div.search input.button {
+	min-height: 32px;
+}
+
+/* @ end Search */
 
 /* @ Smart Search  ***************************************/
 #finder-filter-select-list{
@@ -666,13 +672,6 @@ span.star {
 	box-shadow: 0 0;
 }
 /* Button *******************************************************************************************/
-.button,
-.validate{
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-bottom: 10px;
-}
-
 .button.finder{
 	margin:0 5px 10px;
 }
@@ -1079,9 +1078,6 @@ div:first-child + .panel {
 #sidebar2 input.button 
 {
 	min-width: inherit;
-	margin: 0 5px 10px;
-	float: right;
-	clear: both;
 }
 #sidebar1 input.button.btn,
 #sidebar2 input.button.btn{
