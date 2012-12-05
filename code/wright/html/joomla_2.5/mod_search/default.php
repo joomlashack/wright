@@ -10,11 +10,12 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-if (!function_exists("wright_joomla_mod_search")) :
-	
+if (!function_exists("wright_joomla_mod_search")) :	
+
 function wright_joomla_mod_search($buffer) {
-	
-	$buffer = preg_replace('/ class="button([^"]*)"/Ui', ' class="button$1 btn btn-primary " ', $buffer);
+	$buffer = preg_replace('/<input([^>]*)class="button([^"]*)"([^>]*)>/Ui', '<input$1class="button$2 btn btn-primary"$3>', $buffer);
+	$buffer = preg_replace('/<input([^>]*)type="image"([^>]*)class="button([^"]*) btn btn-primary"([^>]*)>/Ui', '<input$1type="image"$2class="button$3"$4>', $buffer);
+
 	return $buffer;
 				
 }
