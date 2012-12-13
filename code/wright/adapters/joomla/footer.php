@@ -5,6 +5,7 @@ class WrightAdapterJoomlaFooter
 	public function render($args)
 	{
 		$doc = Wright::getInstance();
+		$js = $doc->generateJS();
 
 		if ($doc->document->params->get('rebrand', 'no') !== 'yes')
 		{
@@ -50,11 +51,13 @@ class WrightAdapterJoomlaFooter
 			  }
 			}
 
-			return '<a class="joomlashack" href="'.$host.'">'.$anchor.$endline.'</a>';
+			return '<a class="joomlashack" href="'.$host.'">'.$anchor.$endline.'</a>' . $js;
 		}
 		else
 		{
-			return;
+			return $js;
 		}
+		
+		
 	}
 }
