@@ -44,7 +44,7 @@ if (!function_exists("wright_joomla_nav")) :
 		if ($matches[6] != "")
 			$link = $matches[6];
 		
-		return "<li" . $matches[1] . "class" . $matches[2] . " parent dropdown " . $matches[3] . ">" . $matches[4] . "<a href='$link' class='dropdown-toggle' data-toggle='dropdown'>" .
+		return "<li" . $matches[1] . "class" . $matches[2] . " parent dropdown " . $matches[3] . ">" . $matches[4] . "<a href='$link' class='dropdown-toggle disabled' data-toggle='dropdown'>" .
 			($class != "" ? "<i class='icon-$class'></i>" : "") . 
 			($img != "" ? "<img" . $img . ">" : "") .
 			"<span class='$classa'>" . $matches[8] . "</span><i class='icon-caret-right'></i></a>" . $matches[9] . "<ul class='dropdown-menu sub-menu'>";

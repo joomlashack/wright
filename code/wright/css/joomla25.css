@@ -1250,3 +1250,7 @@ p.readmore{
 .hide-text{
 	display: none;
 }
+
+.carousel .item > img {
+	width: 100%;
+}

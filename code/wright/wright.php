@@ -33,13 +33,16 @@ class Wright
 	public $revision = "{version}";
 	
 	private $loadBootstrap = false;
+	
+	public $_jsScripts = Array();
+	public $_jsDeclarations = Array();
 
 	// Urls
 	private $_urlTemplate = null;
 	private $_urlWright = null;
 	private $_urlBootstrap = null;
 	private $_urlJS = null;
-
+	
 	function Wright()
 	{
 		// Initialize properties
@@ -158,23 +161,25 @@ class Wright
                     $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js';
                     break;
             }
-            $this->document->addScript($jquery);
+            
+            $this->addJSScript($jquery);
             // ensure that jQuery loads in noConflict mode to avoid mootools conflicts
-            $this->document->addScriptDeclaration('jQuery.noConflict();');
+            $this->addJSScriptDeclaration('jQuery.noConflict();');
 		}
 
 		if ($this->loadBootstrap)
 			// load bootstrap JS
-			$this->document->addScript($this->_urlBootstrap . '/js/bootstrap.min.js');
+			$this->addJSScript($this->_urlBootstrap . '/js/bootstrap.min.js');
 		
+		$this->addJSScript($this->_urlJS . '/utils.js');
 		if ($this->document->params->get('stickyFooter', 1)) {
-			$this->document->addScript($this->_urlJS . '/utils.js');
+			$this->addJSScript($this->_urlJS . '/stickyfooter.js');
 		}
 
 		// Add header script if set
 		if (trim($this->document->params->get('headerscript', '')) !== '')
 		{
-            $this->document->addScriptDeclaration($this->document->params->get('headerscript'));
+            $this->addJSScriptDeclaration($this->document->params->get('headerscript'));
 		}
 
 		// set custom template theme for user
@@ -352,7 +357,7 @@ class Wright
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
 		{
-			$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
+			$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
 
 			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie.css'))
 			{
@@ -367,9 +372,9 @@ class Wright
 				case '6' :
 					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie6.css'))
 						$styles['ie'][] = 'ie6.css';
-					$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
+					$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
 					if ($this->document->params->get('doctype') == 'html5')
-						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/js/html5.js');
+						$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/js/html5.js');
 					break;
 				case '7' :
 					$styles['fontawesomemore'][] = 'font-awesome-ie7.css';
@@ -378,7 +383,7 @@ class Wright
 					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie' . $major . '.css'))
 						$styles['ie'][] = 'ie' . $major . '.css';
 					if ($this->document->params->get('doctype') == 'html5')
-						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
+						$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
 					break;
 			}
 		}
@@ -547,5 +552,49 @@ class Wright
 
 	    return $reorderedContent;
 
+	}
+	
+	private function addJSScript($url) {
+		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
+
+		if ($javascriptBottom) {
+			$this->_jsScripts[] = $url;
+		}
+		else {
+			$document = JFactory::getDocument();
+			$document->addScript($url);
+		}
+	}
+	
+	private function addJSScriptDeclaration($script) {
+		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
+
+		if ($javascriptBottom) {
+			$this->_jsDeclarations[] = $script;
+		}
+		else {
+			$document = JFactory::getDocument();
+			$document->addScriptDeclaration($script);
+		}
+	}
+	
+	public function generateJS() {
+		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
+		if ($javascriptBottom) {
+			$script = "\n";
+			if ($this->_jsScripts)
+				foreach ($this->_jsScripts as $js) {
+					$script .= "<script src='$js' type='text/javascript'></script>\n";
+				}
+			if ($this->_jsDeclarations) {
+				$script .= "<script type='text/javascript'>\n";
+				foreach ($this->_jsDeclarations as $js) {
+					$script .= "$js\n";
+				}
+				$script .= "</script>\n";
+			}
+			return $script;
+		}
+		return "";
 	}
 }
