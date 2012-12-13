@@ -1,12 +1,10 @@
-jQuery(document).ready(function() {
-	function stickyFooter() {
-		if (jQuery('#footer')) {
-			var h = jQuery('#footer').height();
-			jQuery('.wrapper-footer').height(h);
-		}
-	}
-	stickyFooter();
-	jQuery(window).resize(function() {
-		stickyFooter();
-	});
-});
+if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) { 
+// both present , kill jquery slide for carousel class
+(function($) { 
+       $(document).ready(function(){
+        $('.carousel').each(function(index, element) {
+                $(this)[index].slide = null;
+               });
+         });
+ })(jQuery);
+}
