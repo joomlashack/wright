@@ -35,9 +35,7 @@ p.img_caption {
 	background: #FFF;
 	margin-bottom: 10px;
 }
-#header #logo h2 {
-	display: none;
-}
+#header #logo a.image h2 { display: none; }
 #pathway {
 	background: #FFF;
 }

@@ -17,7 +17,7 @@ class WrightAdapterJoomlaLogo
 		return true;
 	}
 	
-	public function renderCompanion($name, $args, $width, $alt) {
+	public function renderCompanion($name, $args, $width, $alt = false) {
 		$doc = Wright::getInstance();
 
 		if ($name == 'menu') {
@@ -71,25 +71,25 @@ class WrightAdapterJoomlaLogo
 		$logowidth = $doc->document->params->get('logowidth', '6');
 		
 		$modules = 0;
-		$modulename = $args['name'];
-		$modulename2 = $args['name'] . "2";
+		$modulename = (isset($args['name']) ? $args['name'] : "");
+		$modulename2 = (isset($args['name']) ? $args['name'] . 2 : "");		
 
-		$module2name = $args['name2'];
-		$module2name2 = $args['name2'] . "2";
-		
+		$module2name = (isset($args['name2']) ? $args['name2'] : "");
+		$module2name2 = (isset($args['name2']) ? $args['name2'] . 2 : "");		
 		
 		if ($logowidth !== '12' && ($doc->countModules($modulename) || $doc->countModules($module2name))) $modules++;
+		if ($logowidth !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) $modules++;
 		
 		if ($modules == 2) {
 			$modulewidth2 = floor($modulewidth/2);
 			$modulewidth = ceil($modulewidth/2);
 			$logowidth = 12 - $modulewidth - $modulewidth2;
 			
-			if ($doc->document->params->get('logowidth') !== '12' && $doc->countModules($modulename)) {
+			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename) || $doc->countModules($module2name))) {
+				$html .= '<div id="'.$modulename.'" class="span'.$modulewidth.'">';
 				$html .= $this->renderCompanion($modulename,$args,$modulewidth);
-			}
-			if ($doc->document->params->get('logowidth') !== '12' && $doc->countModules($modulename2)) {
-				$html .= $this->renderCompanion($modulename2,$args,$modulewidth);
+				$html .= $this->renderCompanion($module2name,$args,$modulewidth,true);
+				$html .= '</div>';
 			}
 		}
 		else {
@@ -101,20 +101,30 @@ class WrightAdapterJoomlaLogo
 		// If user wants a module, load it instead of image
 		if ($doc->document->params->get('logo', 'template') == 'module') {
 			$html .= '<div id="logo" class="span'.$doc->document->params->get('logowidth', '6').'"><jdoc:include type="modules" name="logo" /></div>';
-			if ($doc->document->params->get('logowidth') !== '12') {
+
+
+			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
+				$html .= '<div id="'.$modulename2.'" class="span'.$modulewidth2.'">';
 				$html .= $this->renderCompanion($modulename2,$args,$modulewidth2);
 				$html .= $this->renderCompanion($module2name2,$args,$modulewidth2,true);
+				$html .= '</div>';
 			}
+
 			return $html;
 		}
 
 		// If user wants just a title, print it out
 		elseif ($doc->document->params->get('logo', 'template') == 'title') {
+		
 			$html .= '<div id="logo" class="span'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="title">'.$title.'</a></div>';
-			if ($doc->document->params->get('logowidth') !== '12') {
+
+			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
+				$html .= '<div id="'.$modulename2.'" class="span'.$modulewidth2.'">';
 				$html .= $this->renderCompanion($modulename2,$args,$modulewidth2);
 				$html .= $this->renderCompanion($module2name2,$args,$modulewidth2,true);
+				$html .= '</div>';
 			}
+
 			return $html;
 		}
 
@@ -148,7 +158,7 @@ class WrightAdapterJoomlaLogo
 		$html .= '<div id="logo" class="span'.$logowidth.'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
 		
 		if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
-			$html .= '<div id="'.$modulename.'" class="span'.$modulewidth2.'">';
+			$html .= '<div id="'.$modulename2.'" class="span'.$modulewidth2.'">';
 			$html .= $this->renderCompanion($modulename2,$args,$modulewidth2);
 			$html .= $this->renderCompanion($module2name2,$args,$modulewidth2,true);
 			$html .= '</div>';
