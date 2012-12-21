@@ -168,14 +168,25 @@ a.joomlashack {
 	float:right;
 }
 /* Article Pagination */
-
+ul.pagenav{
+	display: block;
+	overflow: hidden;
+}
+ul.pagenav li.pagenav-prev{
+	float: left;
+}
+ul.pagenav li.pagenav-next{
+	float: right;	
+}
+.pagination ul{
+	display: inline-block;
+}
 ul.pagenav, .pagination ul {
 	text-align:center;
 	margin: auto;
 	list-style: none;
-	display: inline-block;
 }
-ul.pagenav li, .pagination ul li {
+.pagination ul li {
 	display:inline;
 }
 /* @ end Article pagination */
