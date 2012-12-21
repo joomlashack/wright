@@ -175,14 +175,25 @@ div.search input.button {
 	float:right;
 }
 /* Article Pagination */
-
+ul.pagenav{
+	display: block;
+	overflow: hidden;
+}
+ul.pagenav li.pagenav-prev{
+	float: left;
+}
+ul.pagenav li.pagenav-next{
+	float: right;	
+}
+.pagination ul{
+	display: inline-block;
+}
 ul.pagenav, .pagination ul {
 	text-align:center;
 	margin: auto;
 	list-style: none;
-	display: inline-block;
 }
-ul.pagenav li, .pagination ul li {
+.pagination ul li {
 	display:inline;
 }
 /* @ end Article pagination */
@@ -1240,13 +1251,6 @@ p.readmore{
 .page-header{
 	padding: 0;
 	margin: 20px 0 20px;
-}
-.img-polaroid{
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing:border-box;
-	-ms-box-sizing:border-box;
-	-o-box-sizing:border-box;
-	box-sizing: border-box;
 }
 .hide-text{
 	display: none;
