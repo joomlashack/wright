@@ -878,6 +878,11 @@ nav div.toolbar {
     padding: 10px 15px;
     text-decoration: none;
     text-shadow: 0 1px 0 #FFFFFF;
+    cursor: default;
+}
+
+.dropdown-menu li > span.separator {
+	cursor: default;
 }
 
 .navbar .nav > .active > span.separator, .navbar .nav > .active > span.separator:hover, .navbar .nav > .active > span.separator:focus {
@@ -1259,3 +1264,15 @@ p.readmore{
 .carousel .item > img {
 	width: 100%;
 }
+
+
+/* Text selection */
+
+::selection {
+	background:rgb(255,255,0);
+}
+
+::-moz-selection {
+	background: rgb(255,255,0);
+}
+
