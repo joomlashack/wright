@@ -1,7 +1,7 @@
 <?php
 /**
  * @package Joomlashack Wright Framework
- * @copyright Joomlashack 2010-2012. All Rights Reserved.
+ * @copyright Joomlashack 2010-2013. All Rights Reserved.
  *
  * @description Wright is a framework layer for Joomla to improve stability of Joomlashack Templates
  *
@@ -162,9 +162,9 @@ class Wright
                     break;
             }
             
-            $this->addJSScript($jquery);
+            $this->document->addScript($jquery);
             // ensure that jQuery loads in noConflict mode to avoid mootools conflicts
-            $this->addJSScriptDeclaration('jQuery.noConflict();');
+            $this->document->addScriptDeclaration('jQuery.noConflict();');
 		}
 
 		if ($this->loadBootstrap)
