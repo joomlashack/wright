@@ -175,6 +175,11 @@ p.img_caption, .item p.img_caption, .item-page p.img_caption {
 	padding: 3px 15px;
 	white-space: nowrap;
 }
+
+.dropdown-menu li > span.separator {
+	cursor: default;
+}
+
 .dropdown-menu li > span:hover, .dropdown-menu .active > span {
 	background-color: #0081C2;
 	background-image: -moz-linear-gradient(center top , #0088CC, #0077B3);
@@ -476,4 +481,14 @@ p.img_caption, .item p.img_caption, .item-page p.img_caption {
 }
 #toolbar {
 	margin-bottom: 0;
+}
+
+/* Text selection */
+
+::selection {
+	background:rgb(255,255,0);
+}
+
+::-moz-selection {
+	background: rgb(255,255,0);
 }
