@@ -44,7 +44,7 @@ if (!function_exists("wright_joomla_nav")) :
 		if ($matches[6] != "")
 			$link = $matches[6];
 		
-		return "<li" . $matches[1] . "class" . $matches[2] . " parent dropdown " . $matches[3] . ">" . $matches[4] . "<a href='$link' class='dropdown-toggle disabled' data-toggle='dropdown'>" .
+		return "<li" . $matches[1] . "class" . $matches[2] . " parent dropdown " . $matches[3] . ">" . $matches[4] . "<a href='$link' class='dropdown-toggle disabled' data-toggle='dropdown-menus'>" .
 			($class != "" ? "<i class='icon-$class'></i>" : "") . 
 			($img != "" ? "<img" . $img . ">" : "") .
 			"<span class='$classa'>" . $matches[8] . "</span><i class='icon-caret-right'></i></a>" . $matches[9] . "<ul" . $matches[10] . "class='" . $matches[11] . " dropdown-menu sub-menu'" . $matches[12] . ">";
@@ -93,6 +93,8 @@ if (!function_exists("wright_joomla_nav")) :
 	}
 
 	function wright_joomla_nav($buffer) {
+		// removes dividers (to ensure they can be parents)
+		$buffer = preg_replace("/<li class=\"item-([^\"]*)divider([^\"]*)\"/iU", "<li class=\"item-$1$2\"", $buffer);
 		
 		// converts a (links) - parents with child ul - into bootstrap classes
 		$buffer = preg_replace_callback('/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<a([^>]*)href="([^"]*)"([^>]*)>([^<]*)<\/a>([^<]*)<ul([^>]*)class="([^"]*)"([^>]*)>/iU',  "convert_li", $buffer);
