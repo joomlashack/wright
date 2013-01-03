@@ -93,7 +93,9 @@ if (!function_exists("wright_joomla_nav")) :
 	}
 
 	function wright_joomla_nav($buffer) {
-		
+		// removes dividers (to ensure they can be parents)
+		$buffer = preg_replace("/<li class=\"item-([^\"]*)divider([^\"]*)\"/iU", "<li class=\"item-$1$2\"", $buffer);
+
 		// converts a (links) - parents with child ul - into bootstrap classes
 		$buffer = preg_replace_callback('/<li([^>]*)class([^>]*)parent([^>]*)>([^<]*)<a([^>]*)href="([^"]*)"([^>]*)>([^<]*)<\/a>([^<]*)<ul([^>]*)class="([^"]*)"([^>]*)>/iU',  "convert_li", $buffer);
 
