@@ -301,11 +301,13 @@ p.img_caption, .item p.img_caption, .item-page p.img_caption {
 	line-height: inherit;
 }
 .navbar .nav > li > span.separator {
-	color: #555555;
+	color: #999999;
 	float: none;
 	padding: 10px 15px;
 	text-decoration: none;
-	text-shadow: 0 1px 0 #FFFFFF;
+}
+.navbar-inverse .nav > li > span.separator {
+	color: #666666;
 }
 .navbar .nav > .active > span.separator, .navbar .nav > .active > span.separator:hover, .navbar .nav > .active > span.separator:focus {
 	background-color: #E5E5E5;
