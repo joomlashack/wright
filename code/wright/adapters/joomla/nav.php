@@ -25,7 +25,7 @@ class WrightAdapterJoomlaNav
 					<div class="navbar ' . $args['wrapClass'] . '">
 						<div class="navbar-inner">
 							<div class="' . $args['containerClass'] . '">
-					            <a class="btn btn-navbar" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
+					            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
 						            <span class="icon-bar"></span>
 						            <span class="icon-bar"></span>
 						            <span class="icon-bar"></span>
@@ -46,7 +46,7 @@ class WrightAdapterJoomlaNav
 					<nav id="'.$args['name'].'">
 						<div class="navbar ' . $args['wrapClass'] . '">
 							<div class="navbar-inner">
-					            <a class="btn btn-navbar" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
+					            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
 						            <span class="icon-bar"></span>
 						            <span class="icon-bar"></span>
 						            <span class="icon-bar"></span>
