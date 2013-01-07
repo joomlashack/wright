@@ -353,11 +353,7 @@ dl.article-info dd [class^="icon-"], dl.article-info dd [class*=" icon-"] {
 	text-align: center;
 }
 /* @  NavBar second Level   ***************************************/
-.navbar .nav li li.dropdown.open > .dropdown-toggle, 
-.navbar .nav li li.dropdown.active > .dropdown-toggle, 
-.navbar .nav li li.dropdown.open.active > .dropdown-toggle{
-	color: white;
-}
+
 .navbar .open > .dropdown-menu {
 	display: none;
 }
@@ -894,12 +890,6 @@ nav div.toolbar {
     color: #555555;
     text-decoration: none;
 }
-.dropdown-menu .active  > a, .dropdown-menu .active  > a:hover
-{
-	color: white;
-}
-
-
 
 dl.label.label-info{
 	display: inline-block;
