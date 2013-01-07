@@ -873,12 +873,15 @@ nav div.toolbar {
 }
 
 .navbar .nav > li > span.separator {
-    color: #555555;
+    color: #999999;
     float: none;
     padding: 10px 15px;
     text-decoration: none;
-    text-shadow: 0 1px 0 #FFFFFF;
     cursor: default;
+}
+
+.navbar-inverse .nav > li > span.separator {
+	color: #666666;
 }
 
 .dropdown-menu li > span.separator {
@@ -1275,4 +1278,7 @@ p.readmore{
 ::-moz-selection {
 	background: rgb(255,255,0);
 }
-
+/*leading Articles*/
+.items-leading [class*="leading-"]{
+	overflow: hidden;
+}
