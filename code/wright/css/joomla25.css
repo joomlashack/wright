@@ -1278,4 +1278,7 @@ p.readmore{
 ::-moz-selection {
 	background: rgb(255,255,0);
 }
-
+/*leading Articles*/
+.items-leading [class*="leading-"]{
+	overflow: hidden;
+}
