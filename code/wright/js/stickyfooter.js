@@ -7,7 +7,7 @@ jQuery(document).ready(function() {
 	}
 	jQuery(window).load(function () {
 		stickyFooter();
-	}
+	});
 	stickyFooter();
 	jQuery(window).resize(function() {
 		stickyFooter();
