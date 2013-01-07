@@ -192,9 +192,6 @@ p.img_caption, .item p.img_caption, .item-page p.img_caption {
 	visibility: visible;
 }
 
-.dropdown-menu .active > a, .dropdown-menu .active > a:hover {
-	color: white;
-}
 .dropdown-menu .sub-menu {
 	left: 100%;
 	position: absolute;
