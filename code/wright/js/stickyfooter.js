@@ -5,6 +5,9 @@ jQuery(document).ready(function() {
 			jQuery('.wrapper-footer').height(h);
 		}
 	}
+	jQuery(window).load(function () {
+		stickyFooter();
+	}
 	stickyFooter();
 	jQuery(window).resize(function() {
 		stickyFooter();
