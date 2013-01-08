@@ -11,5 +11,20 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 			$$(e.get('data-target'))[0].hide = null;
 		});
 	})(MooTools);
-
 }
+
+(function($) {
+
+	function wToolbar() {
+		$('.wrapper-toolbar').each(function() {
+			$(this).css('min-height',$(this).find('.navbar:first').height() + 'px');
+		});
+		
+	}
+	
+	wToolbar();
+
+	$(window).resize(function() {
+		wToolbar();
+	});
+})(jQuery);
