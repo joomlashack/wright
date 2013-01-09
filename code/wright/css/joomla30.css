@@ -136,7 +136,7 @@ p.img_caption {
 	background: #f7f7f7;
 	font-size: .75em;
 	font-style: italic;
-	text-align: center;
+	text-align: left;
 }
 
 p.img_caption, .item p.img_caption, .item-page p.img_caption {
@@ -243,6 +243,17 @@ p.img_caption, .item p.img_caption, .item-page p.img_caption {
 .img-fulltext-none, .img-intro-none {
 	margin-bottom: 10px;
 }
+
+.img-intro-none img,
+.img-full-none img {
+	width: 100%;
+}
+
+.img-intro-none img.img-polaroid,
+.img-full-none img.img-polaroid {
+	width: 99%;
+}
+
 
 /* @ Categories */
 
@@ -471,8 +482,6 @@ p.img_caption, .item p.img_caption, .item-page p.img_caption {
 
 #footer.sticky {
 	width: 100%;
-	bottom: 0;
-	position: absolute;
 }
 #sliderContainer div.slidermanDescriptionCont div.slidermanDescriptionText div.slideTitle p {
 	font-size: 1.1em;
