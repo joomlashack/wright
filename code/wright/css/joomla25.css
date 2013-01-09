@@ -32,7 +32,7 @@ body.toolbarpadding {
 p.img_caption {
 	font-style: italic;
 	font-size: .75em;
-	text-align: center;
+	text-align: left;
 	background: #f7f7f7;
 }
 /* TEMPLATE SPECIFIC CSS CODE */
@@ -133,8 +133,6 @@ a.joomlashack {
 
 #footer.sticky {
 	width: 100%;
-	bottom: 0;
-	position: absolute;
 }
 
 /* @ end Footer */
@@ -171,10 +169,6 @@ div.search input.button {
 /* @ end Smart Search */
 
 /* @ Article pagination ***************************************/
-.pagenav.pager{
-	float:right;
-}
-/* Article Pagination */
 ul.pagenav{
 	display: block;
 	overflow: hidden;
@@ -501,6 +495,19 @@ span.content_vote {
 }
 
 /* Print & PDF Icons *************************************************************/
+
+ul.actions {
+	min-width: auto;
+	padding: 0;
+}
+ul.actions li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	line-height: inherit;
+}
+
+/*
 ul.actions{
 	float: right;
 	margin-top: 6px;
@@ -514,6 +521,7 @@ ul.actions li {
 ul.actions li {
 	padding: 0px 2px;
 }
+*/
 /* @end */
 
 /*  Style Float Images *************************************************************/
@@ -745,6 +753,16 @@ p.img_caption,
 	clear: none;
 }
 
+.img-intro-none img,
+.img-full-none img {
+	width: 100%;
+}
+
+.img-intro-none img.img-polaroid,
+.img-full-none img.img-polaroid {
+	width: 99%;
+}
+
 /* toc ****************************************************************************************************************************/
 
 div#article-index {
@@ -798,7 +816,7 @@ nav div.toolbar {
 	margin-bottom: 0;
 	line-height: inherit;
 }
-.dropdown-menu .sub-menu {
+.navbar .dropdown-menu .sub-menu {
     left: 100%;
     position: absolute;
     top: 0;
@@ -806,8 +824,8 @@ nav div.toolbar {
     margin-top: -1px;
 }
 
-.dropdown-menu li > span:hover,
-.dropdown-menu .active > span{
+.navbar .dropdown-menu li > span:hover,
+.navbar .dropdown-menu .active > span{
 	background-color: #0081C2;
     background-image: -moz-linear-gradient(center top , #0088CC, #0077B3);
     background-repeat: repeat-x;
@@ -816,8 +834,8 @@ nav div.toolbar {
     text-decoration: none;
 }
 
-.dropdown-menu a,
-.dropdown-menu span.separator {
+.navbar .dropdown-menu a,
+.navbar .dropdown-menu span.separator {
     clear: both;
     display: block;
     font-weight: normal;
@@ -826,11 +844,11 @@ nav div.toolbar {
     white-space: nowrap;
 }
 
-.dropdown-menu li:hover > .sub-menu {
+.navbar .dropdown-menu li:hover > .sub-menu {
     visibility: visible;
 }
 
-.dropdown:hover > .dropdown-menu {
+.navbar .dropdown:hover > .dropdown-menu {
     display: block;
 }
 
@@ -880,7 +898,7 @@ nav div.toolbar {
 	color: #666666;
 }
 
-.dropdown-menu li > span.separator {
+.nav .dropdown-menu li > span.separator {
 	cursor: default;
 }
 
