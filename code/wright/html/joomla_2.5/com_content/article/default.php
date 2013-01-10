@@ -331,7 +331,6 @@ if (!empty($this->item->pagination) AND $this->item->pagination AND $this->item-
 	endforeach;
 /* End Wright v.3: Item elements structure */
 ?>
-sip
 
 <?php echo $this->item->event->afterDisplayContent; ?>
 </div>
