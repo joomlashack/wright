@@ -81,11 +81,6 @@
 				<field name="body_font" type="typography" default="default" label="TPL_JS_WRIGHT_FIELD_BODY_FONT_LABEL" description="TPL_JS_WRIGHT_FIELD_BODY_FONT_DESC" />
 				<field name="header_font" type="typography" default="default" label="TPL_JS_WRIGHT_FIELD_HEADING_FONT_LABEL" description="TPL_JS_WRIGHT_FIELD_HEADING_FONT_DESC" />
 				<field name="columns" type="columns" default="sidebar1:3;main:6;sidebar2:3" sidebars="2" label="TPL_JS_WRIGHT_FIELD_COLUMNS_LABEL" description="TPL_JS_WRIGHT_FIELD_COLUMNS_DESC" />
-				<field name="doctype" type="list" default="html5" label="TPL_JS_WRIGHT_FIELD_DOCTYPE_LABEL" description="TPL_JS_WRIGHT_FIELD_DOCTYPE_DESC">
-					<option value="html5">TPL_JS_WRIGHT_FIELD_DOCTYPE_HTML5</option>
-					<option value="xhtml1transitional">TPL_JS_WRIGHT_FIELD_DOCTYPE_XHTML1_TRANSITIONAL</option>
-					<option value="xhtml1strict">TPL_JS_WRIGHT_FIELD_DOCTYPE_XHTML1_STRICT</option>
-				</field>
 				<field name="buttonspacer" label="TPL_JS_WRIGHT_BOOTSTRAP_TITLE_LABEL" description="TPL_JS_WRIGHT_BOOTSTRAP_TITLE_DESC" type="spacer" />
 				<field name="bs_rowmode" type="list" default="row-fluid" label="TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_LABEL" description="TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_DESC">
 					<option value="row-fluid">TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_FLUID</option>
