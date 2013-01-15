@@ -70,18 +70,18 @@ $canEdit	= $this->item->params->get('access-edit');
 	<ul class="actions<?php echo " dropdown-menu" // Wright v.3: Icons dropdown ?>">
 		<?php if ($params->get('show_print_icon')) : ?>
 		<li class="print-icon">
-			<?php echo JHtml::_('icon.print_popup', $this->item, $params); ?>
+			<?php echo preg_replace("/<img([^>]*)>/i", "<i class=\"icon-print\"></i>", JHtml::_('icon.print_popup', $this->item, $params));  // Wright v.3: Print icon ?>
 		</li>
 		<?php endif; ?>
 		<?php if ($params->get('show_email_icon')) : ?>
 		<li class="email-icon">
-			<?php echo JHtml::_('icon.email', $this->item, $params); ?>
+			<?php echo preg_replace("/<img([^>]*)>/i", "<i class=\"icon-envelope\"></i>", JHtml::_('icon.email', $this->item, $params));  // Wright v.3: Email icon ?>
 		</li>
 		<?php endif; ?>
 
 		<?php if ($canEdit) : ?>
 		<li class="edit-icon">
-			<?php echo JHtml::_('icon.edit', $this->item, $params); ?>
+			<?php echo preg_replace("/<span([^>]*)title=\"([^\"]*)\"([^>]*)>(.*)<img([^>]*)>(.*)<\/span>/sUi", "$4<i class=\"icon-pencil\"></i>$6", JHtml::_('icon.edit', $this->item, $params));  // Wright v.3: Edit icon ?>
 		</li>
 		<?php endif; ?>
 	</ul>
@@ -250,7 +250,7 @@ $canEdit	= $this->item->params->get('access-edit');
 /* Wright v.3: Item elements structure */
 				break;
 			default:
-				
+				// accept any other div or HTML content in tag#id.class form, or /tag for closure
 				if (preg_match("/^([\/]?)([a-z0-9-_]+?)([\#]?)([a-z0-9-_]*?)([\.]?)([a-z0-9-]*)$/iU", $wrightElement, $wrightDiv)) {
 					echo '<' . $wrightDiv[1] . $wrightDiv[2] .
 						($wrightDiv[1] != '' ? '' :
