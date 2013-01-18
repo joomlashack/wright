@@ -1,29 +1,94 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.8
 /**
- * @version		$Id: default.php 22355 2011-11-07 05:11:58Z github_bot $
  * @package		Joomla.Site
- * @subpackage	mod_menu
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @subpackage	mod_login
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access.
+// no direct access
 defined('_JEXEC') or die;
 
-if (!function_exists("wright_joomla_mod_login")) :
-	
-function wright_joomla_mod_login($buffer) {
-	
-	$buffer = preg_replace('/<ul>/Ui', '<ul  class="nav nav-list well">', $buffer);
-		$buffer = preg_replace('/ class="button"/Ui', ' class="button btn btn-primary" ', $buffer);
-	return $buffer;
-				
-}
-	
+/* Wright v.3: Classes for UL */
 
-endif;
+if (!isset($wrightLoginULClass))
+	$wrightLoginULClass = "nav nav-list well";
 
-ob_start("wright_joomla_mod_login");
-require('modules/mod_login/tmpl/default.php');
-ob_end_flush();
+
+/* End Wright v.3: Classes for UL */
+
+JHtml::_('behavior.keepalive');
 ?>
+<?php if ($type == 'logout') : ?>
+<form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form">
+<?php if ($params->get('greeting')) : ?>
+	<div class="login-greeting">
+	<?php if($params->get('name') == 0) : {
+		echo JText::sprintf('MOD_LOGIN_HINAME', htmlspecialchars($user->get('name')));
+	} else : {
+		echo JText::sprintf('MOD_LOGIN_HINAME', htmlspecialchars($user->get('username')));
+	} endif; ?>
+	</div>
+<?php endif; ?>
+	<div class="logout-button">
+		<input type="submit" name="Submit" class="button<?php echo ' btn btn-primary' // Wright v.3: Primary button ?>" value="<?php echo JText::_('JLOGOUT'); ?>" />
+		<input type="hidden" name="option" value="com_users" />
+		<input type="hidden" name="task" value="user.logout" />
+		<input type="hidden" name="return" value="<?php echo $return; ?>" />
+		<?php echo JHtml::_('form.token'); ?>
+	</div>
+</form>
+<?php else : ?>
+<form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form" >
+	<?php if ($params->get('pretext')): ?>
+		<div class="pretext">
+		<p><?php echo $params->get('pretext'); ?></p>
+		</div>
+	<?php endif; ?>
+	<fieldset class="userdata">
+	<p id="form-login-username">
+		<label for="modlgn-username"><?php echo JText::_('MOD_LOGIN_VALUE_USERNAME') ?></label>
+		<input id="modlgn-username" type="text" name="username" class="inputbox"  size="18" />
+	</p>
+	<p id="form-login-password">
+		<label for="modlgn-passwd"><?php echo JText::_('JGLOBAL_PASSWORD') ?></label>
+		<input id="modlgn-passwd" type="password" name="password" class="inputbox" size="18"  />
+	</p>
+	<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
+	<p id="form-login-remember">
+		<label for="modlgn-remember"><?php echo JText::_('MOD_LOGIN_REMEMBER_ME') ?></label>
+		<input id="modlgn-remember" type="checkbox" name="remember" class="inputbox" value="yes"/>
+	</p>
+	<?php endif; ?>
+	<input type="submit" name="Submit" class="button<?php echo ' btn btn-primary' // Wright v.3: Primary button ?>" value="<?php echo JText::_('JLOGIN') ?>" />
+	<input type="hidden" name="option" value="com_users" />
+	<input type="hidden" name="task" value="user.login" />
+	<input type="hidden" name="return" value="<?php echo $return; ?>" />
+	<?php echo JHtml::_('form.token'); ?>
+	</fieldset>
+	<ul<?php echo ' class="' . $wrightLoginULClass . '"' // Wright v.3: List styles  ?>>
+		<li>
+			<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
+			<?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_PASSWORD'); ?></a>
+		</li>
+		<li>
+			<a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
+			<?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_USERNAME'); ?></a>
+		</li>
+		<?php
+		$usersConfig = JComponentHelper::getParams('com_users');
+		if ($usersConfig->get('allowUserRegistration')) : ?>
+		<li>
+			<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
+				<?php echo JText::_('MOD_LOGIN_REGISTER'); ?></a>
+		</li>
+		<?php endif; ?>
+	</ul>
+	<?php if ($params->get('posttext')): ?>
+		<div class="posttext">
+		<p><?php echo $params->get('posttext'); ?></p>
+		</div>
+	<?php endif; ?>
+</form>
+<?php endif; ?>
