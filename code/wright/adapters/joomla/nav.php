@@ -9,8 +9,7 @@ class WrightAdapterJoomlaNav
 		// Set module name
 		if (!isset($args['style'])) $args['style'] = 'raw';
 
-		if (!isset($args['containerClass'])) $args['containerClass'] = 'container';
-		if (!isset($args['rowClass'])) $args['rowClass'] = 'row';
+		if (!isset($args['containerClass'])) $args['containerClass'] = '';
 
 		// Set module name
 		if (!isset($args['wrapClass'])) $args['wrapClass'] = '';
