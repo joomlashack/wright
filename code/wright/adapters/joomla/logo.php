@@ -25,15 +25,13 @@ class WrightAdapterJoomlaLogo
 				<nav id="'.$name.($alt ? '_alt' : '_primary') .'" class="clearfix">
 					<div class="navbar ' . $args['menuWrapClass'] . '">
 						<div class="navbar-inner">
-							<div class="container">
-					            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$name.'">
-						            <span class="icon-bar"></span>
-						            <span class="icon-bar"></span>
-						            <span class="icon-bar"></span>
-					            </a>
-					            <div class="nav-collapse" id="nav-'.$name.'">
-									 <jdoc:include type="modules" name="'.$name.'" style="raw" />
-								</div>
+				            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$name.'">
+					            <span class="icon-bar"></span>
+					            <span class="icon-bar"></span>
+					            <span class="icon-bar"></span>
+				            </a>
+				            <div class="nav-collapse" id="nav-'.$name.'">
+								 <jdoc:include type="modules" name="'.$name.'" style="raw" />
 							</div>
 						</div>
 					</div>

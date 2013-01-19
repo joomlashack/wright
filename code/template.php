@@ -45,7 +45,7 @@ if ($this->countModules('toolbar')) {
         </header>
         <?php if ($this->countModules('menu')) : ?>
         <!-- menu -->
-   		<w:nav containerClass="<?php echo $containerClass ?>" rowClass="<?php echo $gridMode;?>"  name="menu" />
+   		<w:nav name="menu" />
         <?php endif; ?>
         <!-- featured -->
         <?php if ($this->countModules('featured')) : ?>
