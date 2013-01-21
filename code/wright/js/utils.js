@@ -14,9 +14,11 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 }
 
 (function($) {
-
 	function wToolbar() {
-		$('.wrapper-toolbar').each(function() {
+		if (typeof wrightWrapperToolbar === 'undefined')
+			wrightWrapperToolbar = '.wrapper-toolbar';
+			
+		$(wrightWrapperToolbar).each(function() {
 			$(this).css('min-height',$(this).find('.navbar:first').height() + 'px');
 		});
 		
