@@ -26,6 +26,9 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 	
 	wToolbar();
 
+	$(window).load(function () {
+		wToolbar();
+	});
 	$(window).resize(function() {
 		wToolbar();
 	});
