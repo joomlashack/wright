@@ -11,7 +11,7 @@ Wright helps building light, non-bloated, and simple to install Joomla Templates
 
 ### Bootstrapped and Joomla 2.5/3.0 ready
 
-Since v.3, Wright is is based on [Twitter Bootstrap](http://twitter.github.com/bootstrap/) which means the template is responsive and ready for Joomla 2.5.x and Joomla 3.0.x.
+Starting with Wright v.3 the framework is based on [Twitter Bootstrap](http://twitter.github.com/bootstrap/), making templates built on it responsive.  It also supports Joomla 2.5.x and Joomla 3.0.x.
 
 
 ## Quick start
