@@ -8,7 +8,7 @@ The Wright Framework is used to create Joomla Templates.  The name is in honor o
 
 ### The Wright-based Joomla Template - a "Strictly Joomla" approach to templates
 
-Wright helps building light, non-bloated, and simple to install Joomla Templates to make your life easier.  We call them "strictly Joomla" because in most cases you are able to install them using only the Joomla CMS and it's built-in features.  This is different from other template frameworks because they require you to install extra plugins, extensions for the template to work.
+Wright helps building light, non-bloated, and simple to install Joomla Templates to make your life easier.  We call them "strictly Joomla" because in most cases the templates do no require any extra extensions to function, only the Joomla CMS and it's built-in features.  This is different from many other template frameworks because they require you to install extra plugins and/or components for the template to work.
 
 
 ### Bootstrapped and Joomla 2.5/3.0 ready
