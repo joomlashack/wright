@@ -18,8 +18,10 @@ if (!function_exists("wright_joomla_content_category_blog")) :
 		$bootstrap_images = $params->get('bootstrap_images','');
 		$buffer = preg_replace('/<div class="([^>]*)item-image">([^<]*)<img([^>]*)>/Ui','<div class="$1item-image">$2<img width="98%" class="' . $bootstrap_images . '" $3>',$buffer);
 		$buffer = preg_replace('/<div class="img-intro-([a-z]+)">([^<]*)<img([^>]*)>/Ui','<div class="img-intro-$1">$2<img width="98%" class="' . $bootstrap_images . '" $3>',$buffer);		
+		$buffer = preg_replace('/<ul class="dropdown-menu">/Ui', '<ul class="actions dropdown-menu">', $buffer);
 		return $buffer;
 	}
+
 
 endif;
 
