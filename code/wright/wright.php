@@ -285,7 +285,7 @@ class Wright
 						$styles['ie'][] = 'ie6.css';
 					$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
 					if ($this->document->params->get('doctype') == 'html5')
-						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/js/html5.js');
+						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
 					break;
 				default :
 					if (is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'ie' . $major . '.css'))
