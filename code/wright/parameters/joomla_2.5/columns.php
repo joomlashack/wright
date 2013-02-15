@@ -13,7 +13,7 @@ class JFormFieldColumns extends JFormField
 		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/columns/columns.js');
 		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/columns/columns.css');
 		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/basicbootstrap.css');
-		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/fontawesomemore/css/font-awesome.css');
+		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/fontawesome/css/font-awesome.min.css');
 
 		$values = explode(';', $this->value);
 		foreach ($values as $col)
