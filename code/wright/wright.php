@@ -268,35 +268,33 @@ class Wright
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
 		{
-			$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
+			// Switch to allow specific versions of IE to have additional sheets
+			$major = $browser->getMajor();
+			
+			if ((int)$major <= 9) {
+				$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5shiv.js');
+			}
 
-			if (is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'ie.css'))
+			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie.css'))
 			{
 				$styles['ie'][] = 'ie.css';
 			}
 
-			// Switch to allow specific versions of IE to have additional sheets
-			$major = $browser->getMajor();
-
 			switch ($major)
 			{
 				case '6' :
-					if (is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'ie6.css'))
+					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie6.css'))
 						$styles['ie'][] = 'ie6.css';
-					$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
-					if ($this->document->params->get('doctype') == 'html5')
-						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
-					break;
-				default :
-					if (is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'ie' . $major . '.css'))
-						$styles['ie'][] = 'ie' . $major . '.css';
-					if ($this->document->params->get('doctype') == 'html5')
-						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
-					break;
-				case '7':
+					$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
+				case '7' :
 					$styles['fontawesome'][] = 'font-awesome-ie7.min.css';
+					// does not break for leaving defaults
+				default :
+					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie' . $major . '.css'))
+						$styles['ie'][] = 'ie' . $major . '.css';
 			}
 		}
+
 
 		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'rtl.css'))
 			$styles['template'][] = 'rtl.css';
