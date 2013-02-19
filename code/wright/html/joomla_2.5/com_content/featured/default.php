@@ -16,6 +16,10 @@ defined('_JEXEC') or die;
 	$this->wrightBootstrapImages = $template->params->get('wright_bootstrap_images','');
 /* End Wright v.3: Bootstrapped images */
 
+/* Wright v.3: Extra classes (general) */
+	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
+	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
+/* End Wright v.3: Extra classes (general) */
 
 /* Wright v.3: Item elements structure and extra elements */
 	if (!isset($this->wrightLeadingItemElementsStructure)) $this->wrightLeadingItemElementsStructure = Array();
@@ -42,7 +46,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 <?php $leadingcount=0 ; ?>
 <?php if (!empty($this->lead_items)) : ?>
-<div class="items-leading">
+<div class="items-leading<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.3: Leading Items extra Class ?>">
 	<?php foreach ($this->lead_items as &$item) : ?>
 		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.3: Item elements extra elements
 		 ?>">
@@ -63,6 +67,15 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 	$counter=0;
 ?>
 <?php if (!empty($this->intro_items)) : ?>
+	<?php
+		/* Wright v.3: Extra Intro Items Div and Class */
+		if ($this->wrightIntroItemsClass != "") :
+	?>
+		<div class="<?php echo $this->wrightIntroItemsClass ?>">
+	<?php
+		endif;
+		/* End Wright v.3: Extra Intro Items Div and Class */
+	?>
 	<?php foreach ($this->intro_items as $key => &$item) : ?>
 
 	<?php
@@ -116,6 +129,15 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 			<?php endif; ?>
 	<?php endforeach; ?>
+	<?php
+		/* Wright v.3: Extra Intro Items Div and Class */
+		if ($this->wrightIntroItemsClass != "") :
+	?>
+		</div>
+	<?php
+		endif;
+		/* End Wright v.3: Extra Intro Items Div and Class */
+	?>
 <?php endif; ?>
 
 <?php if (!empty($this->link_items)) : ?>
