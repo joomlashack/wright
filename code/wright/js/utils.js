@@ -24,7 +24,15 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 		
 	}
 	
+	function fixImagesIE() {
+		$('img').each(function() {
+			if ($(this).attr('width') != undefined)
+				$(this).width($(this).attr('width'));
+		});
+	}
+	
 	wToolbar();
+	fixImagesIE();
 
 	$(window).load(function () {
 		wToolbar();

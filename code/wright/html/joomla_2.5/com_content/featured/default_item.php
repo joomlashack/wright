@@ -1,9 +1,9 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.8
+// Wright v.3 Override: Joomla 2.5.9
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -225,7 +225,7 @@ $canEdit	= $this->item->params->get('access-edit');
 		$link1 = JRoute::_('index.php?option=com_users&view=login&Itemid=' . $itemId);
 		$returnURL = JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid));
 		$link = new JURI($link1);
-		$link->setVar('return', base64_encode($returnURL));
+		$link->setVar('return', base64_encode(urlencode($returnURL)));
 	endif;
 ?>
 			<p class="readmore">
