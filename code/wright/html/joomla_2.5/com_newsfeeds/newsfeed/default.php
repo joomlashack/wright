@@ -13,11 +13,11 @@ if (!function_exists("wright_joomla_newsfeeds_newsfeed")) :
 	
 	
 	function wright_joomla_newsfeeds_newsfeed($buffer) {
-		$buffer = preg_replace('/<h2 class=" redirect-rtl">/Ui', '<div class="page-header"> <h2>', $buffer);
-		$buffer = preg_replace('/<\/h2>/Ui', '</h2> </div>', $buffer);
+		$buffer = preg_replace("/<h2([^>]*)>/Ui", "<div class=\"page-header\"><h2$1>", $buffer);
+		$buffer = preg_replace("/<\/h2>/Ui", "</h2></div>", $buffer);
 		$buffer = preg_replace('/<ol>/Ui', '<ol class="unstyled">', $buffer);
 		$buffer = preg_replace('/<\/li>/Ui', '</li> <hr>', $buffer);
-				return $buffer;
+		return $buffer;
 	}
 
 endif;
