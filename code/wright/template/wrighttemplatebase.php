@@ -30,7 +30,7 @@ class WrightTemplateBase {
 			if (class_exists("WrightTemplate"))
 				$instance = new WrightTemplate();
 			else
-				$intance = new WrightTemplateBase();
+				$instance = new WrightTemplateBase();
 		}
 
 		return $instance;
