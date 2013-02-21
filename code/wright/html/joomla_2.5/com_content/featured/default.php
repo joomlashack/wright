@@ -44,6 +44,16 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 	</h1>
 <?php endif; ?>
 
+<?php
+	/* Wright v.3: Extra Leading and Intro Items Div and Class */
+	if ($this->wrightLeadingIntroItemsClass != "") :
+?>
+	<div class="<?php echo $this->wrightLeadingIntroItemsClass ?>">
+<?php
+	endif;
+	/* End Wright v.3: Extra Leading and Intro Items Div and Class */
+?>
+
 <?php $leadingcount=0 ; ?>
 <?php if (!empty($this->lead_items)) : ?>
 <div class="items-leading<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.3: Leading Items extra Class ?>">
@@ -139,6 +149,16 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 		/* End Wright v.3: Extra Intro Items Div and Class */
 	?>
 <?php endif; ?>
+
+<?php
+	/* Wright v.3: Extra Leading and Intro Items Div and Class */
+	if ($this->wrightLeadingIntroItemsClass != "") :
+?>
+	</div>
+<?php
+	endif;
+	/* End Wright v.3: Extra Leading and Intro Items Div and Class */
+?>
 
 <?php if (!empty($this->link_items)) : ?>
 	<div class="items-more<?php echo " well"; // Wright v.3: More articles ?>">
