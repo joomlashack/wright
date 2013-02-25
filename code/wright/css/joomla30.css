@@ -716,3 +716,15 @@ ul.menu ul{
 .newsflash-title{
 	margin-top: 10px;
 }
+dl.tabs {
+	margin-bottom: 0;
+}
+.contact dt.tabs {
+	display: inline-block;
+	float: none;
+	padding: 10px 10px 0;
+	width: auto;
+}
+.current dd {
+	padding: 0 10px;
+}
