@@ -94,7 +94,7 @@ text-indent: -1000em;
 }
 div#logo a.image h2 {
 	text-indent: -1000em;
-	float:left;
+	display: none;
 }
 div#logo a.image h3 {
 	text-indent: -1000em;
