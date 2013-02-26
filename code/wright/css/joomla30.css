@@ -735,11 +735,7 @@ dl.tabs {
 	padding: 4px 5px;
 }
 .list-striped li, .list-striped dd, .row-striped .row, .row-striped .row-fluid {
-	border-bottom: 1px solid #ddd;
 	list-style: none;
 	margin-left: 0;
 	padding: 8px;
-}
-.list-striped li:nth-child(odd), .list-striped dd:nth-child(odd), .row-striped .row:nth-child(odd), .row-striped .row-fluid:nth-child(odd) {
-	background-color: #f9f9f9;
 }
