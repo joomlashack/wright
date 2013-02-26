@@ -653,3 +653,18 @@ ul.menu ul{
 .newsflash-title{
 	margin-top: 10px;
 }
+.hide-text {
+	font-size: 0 !important;
+}
+.hide-text::before {
+	font-size: 14px;
+}
+[class^="icon-"], [class*=" icon-"]{
+	font-family: FontAwesome !important;
+}
+.menu [class^="icon-"], .menu [class*=" icon-"]{
+	width: auto;
+}
+.menu [class^="icon-"]::before, .menu [class*=" icon-"]::before{
+	margin-right: 3px;
+}
