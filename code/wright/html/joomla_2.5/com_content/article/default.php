@@ -9,7 +9,6 @@
 
 // no direct access
 defined('_JEXEC') or die;
-
 /* Wright v.3: Helper */
 	include_once(dirname(__FILE__) . '/../com_content.helper.php');
 /* End Wright v.3: Helper */
@@ -177,19 +176,19 @@ endif; ?>
 <?php endif; ?>
 <?php if ($params->get('show_create_date')) : ?>
 	<dd class="create">
-		<i class="icon-folder-close"></i> <?php // Wright v.3: Date icon ?>
+		<i class="icon-calendar"></i> <?php // Wright v.3: Date icon ?>
 	<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC2'))); ?>
 	</dd>
 <?php endif; ?>
 <?php if ($params->get('show_modify_date')) : ?>
 	<dd class="modified">
-		<i class="icon-folder-close"></i> <?php // Wright v.3: Date icon ?>
+		<i class="icon-calendar"></i> <?php // Wright v.3: Date icon ?>
 	<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC2'))); ?>
 	</dd>
 <?php endif; ?>
 <?php if ($params->get('show_publish_date')) : ?>
 	<dd class="published">
-		<i class="icon-folder-close"></i> <?php // Wright v.3: Date icon ?>
+		<i class="icon-calendar"></i> <?php // Wright v.3: Date icon ?>
 	<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?>
 	</dd>
 <?php endif; ?>
@@ -245,7 +244,7 @@ endif; ?>
 		echo ' title="' .htmlspecialchars($images->image_fulltext_caption) .'"'; // Wright v.3: Removed caption (TODO: reconsider to reimplement with JCaption)
 		
 	endif; ?>
-	src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>"/<?php echo ' class="' . $this->wrightBootstrapImages . '"' // Wright v.3: Bootstrapped images ?>/>
+	src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>"<?php echo ' class="' . $this->wrightBootstrapImages . '"' // Wright v.3: Bootstrapped images ?> />
 	<?php
 		// Wright v.3: Caption
 	if ($images->image_intro_caption) {
