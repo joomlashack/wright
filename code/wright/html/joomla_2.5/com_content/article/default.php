@@ -147,7 +147,7 @@ endif; ?>
 	or ($params->get('show_hits'))); ?>
 
 <?php if ($useDefList) : ?>
-	<dl class="article-info">
+	<dl class="article-info<?php echo ' muted'; // Wright v.3: Muted style ?>">
 	<dt class="article-info-term"><?php  echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?></dt>
 <?php endif; ?>
 <?php if ($params->get('show_parent_category') && $this->item->parent_slug != '1:root') : ?>
@@ -211,7 +211,7 @@ endif; ?>
 <?php endif; ?>
 <?php if ($params->get('show_hits')) : ?>
 	<dd class="hits">
-		<i class="icon-signal"></i> <?php // Wright v.3: Hits icon ?>
+		<i class="icon-eye-open"></i> <?php // Wright v.3: Hits icon ?>
 	<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?>
 	</dd>
 <?php endif; ?>
