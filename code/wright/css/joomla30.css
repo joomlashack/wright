@@ -136,15 +136,14 @@ nav div.toolbar {
 	padding-left: 40px;
 	padding-right: 40px;
 }
-p.img_caption {
-	background: #f7f7f7;
-	font-size: .75em;
-	font-style: italic;
-	text-align: left;
-}
-
 p.img_caption, .item p.img_caption, .item-page p.img_caption {
-	clear: none;
+    clear: none;
+}
+p.img_caption {
+    background: none repeat scroll 0 0 #F7F7F7;
+    font-size: 0.75em;
+    font-style: italic;
+    text-align: left;
 }
 
 .aside input {
@@ -228,10 +227,14 @@ p.img_caption, .item p.img_caption, .item-page p.img_caption {
 .icon-cog{
 	margin-right: 3px;
 }
-.items-more {
-	margin-top: 10px;
+.items-more.well {
+    margin-top: 10px;
+    padding: 0;
 }
 
+.items-more h3 {
+    padding: 10px 10px 10px 15px;
+}
 
 /* @ Images and links */
 
