@@ -26,6 +26,10 @@ a [class^="icon-"], a [class*=" icon-"] {
 .icon-white, .nav > .active > a > [class^="icon-"], .nav > .active > a > [class*=" icon-"], .dropdown-menu > li > a:hover > [class^="icon-"], .dropdown-menu > li > a:hover > [class*=" icon-"], .dropdown-menu > .active > a > [class^="icon-"], .dropdown-menu > .active > a > [class*=" icon-"] {
 	background-image: none;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: normal;
+}
 /* @group HTML */
 
 a.joomlashack {
@@ -132,15 +136,14 @@ nav div.toolbar {
 	padding-left: 40px;
 	padding-right: 40px;
 }
-p.img_caption {
-	background: #f7f7f7;
-	font-size: .75em;
-	font-style: italic;
-	text-align: left;
-}
-
 p.img_caption, .item p.img_caption, .item-page p.img_caption {
-	clear: none;
+    clear: none;
+}
+p.img_caption {
+    background: none repeat scroll 0 0 #F7F7F7;
+    font-size: 0.75em;
+    font-style: italic;
+    text-align: left;
 }
 
 .aside input {
@@ -224,10 +227,14 @@ p.img_caption, .item p.img_caption, .item-page p.img_caption {
 .icon-cog{
 	margin-right: 3px;
 }
-.items-more {
-	margin-top: 10px;
+.items-more.well {
+    margin-top: 10px;
+    padding: 0;
 }
 
+.items-more h3 {
+    padding: 10px 10px 10px 15px;
+}
 
 /* @ Images and links */
 
@@ -349,11 +356,31 @@ p.img_caption, .item p.img_caption, .item-page p.img_caption {
 }
 
 /* @ Tabs */
-.nav-tabs .tabs a, .nav-pills .tabs a {
-	line-height: 14px;
-	margin-right: 2px;
-	padding-left: 12px;
-	padding-right: 12px;
+.nav-tabs > .open h3 a {
+	background-color: #FFFFFF;
+    border-color: #DDDDDD #DDDDDD transparent;
+    border-style: solid;
+    border-width: 1px;
+    color: #555555 !important;
+    cursor: default;	
+}
+.nav-tabs h3 a{
+	padding:4px 5px 1px;
+	vertical-align: bottom;
+}
+.bs-docs-sidenav li {
+	margin-bottom: 0;
+}
+.nav-tabs dt a{
+	font-size: .7em;
+	border-radius:5px 5px 0 0; 
+}
+.tabs.nav.nav-tabs dt.tabs {
+	float: left;
+}
+dl.tabs.nav h3 {
+    margin-bottom: 0;
+    margin-right: 5px;
 }
 .newsflash-title_ms1, .newsflash-title_ms2, .newsflash-title_ms3, .newsflash-title_ms4, .newsflash-title {
 	margin-top: 10px;
