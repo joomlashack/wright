@@ -214,9 +214,17 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 	<?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
 	<div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image"> <img
 	<?php if ($images->image_fulltext_caption):
-		echo 'class="caption"'.' title="' .htmlspecialchars($images->image_fulltext_caption) . '"';
+		echo ' title="' .htmlspecialchars($images->image_fulltext_caption) .'"'; // Wright v.3: Removed caption (TODO: reconsider to reimplement with JCaption)
 	endif; ?>
-	src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>"<?php echo ' class="' . $this->wrightBootstrapImages . '"' // Wright v.3: Bootstrapped images ?> /> </div>
+	src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>"<?php echo ' class="' . $this->wrightBootstrapImages . '"' // Wright v.3: Bootstrapped images ?> />
+	<?php
+		// Wright v.3: Caption
+	if ($images->image_intro_caption) {
+		echo '<p class="img_caption">' . $images->image_intro_caption . '</p>';
+	}
+		// End Wright v.3: Caption
+	?>
+	</div>
 	<?php endif; ?>
 
 
