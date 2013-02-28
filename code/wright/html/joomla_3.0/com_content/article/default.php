@@ -187,7 +187,6 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 
 				<?php if ($params->get('show_hits')) : ?>
 					<dd class="hits">
-						<i class="icon-signal"></i> <?php // Wright v.3: Hits icon ?>
 						<span class="icon-eye-open"></span> <?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?>
 					</dd>
 				<?php endif; ?>
@@ -319,7 +318,6 @@ article_info_bottom:
 			<?php endif; ?>
 			<?php if ($params->get('show_hits')) : ?>
 				<dd class="hits">
-					<i class="icon-signal"></i> <?php // Wright v.3: Hits icon ?>
 					<span class="icon-eye-open"></span> <?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?>
 				</dd>
 			<?php endif; ?>
