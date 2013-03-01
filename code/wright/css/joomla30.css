@@ -745,7 +745,7 @@ dl.tabs {
 .hide-text::before {
 	font-size: 14px;
 }
-[class^="icon-"], [class*=" icon-"]{
+[class^="icon-"]::before, [class*=" icon-"]::before{
 	font-family: FontAwesome !important;
 }
 .menu [class^="icon-"], .menu [class*=" icon-"]{
