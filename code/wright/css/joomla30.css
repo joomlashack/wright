@@ -20,6 +20,10 @@
 	vertical-align: middle;
 	margin-top: 0;
 }
+.menu [class^="icon-"]::before, .menu [class*=" icon-"]::before {
+	line-height: normal;
+	margin-right: 4px;
+}
 a [class^="icon-"], a [class*=" icon-"] {
 	text-decoration: none;
 }
@@ -81,6 +85,8 @@ div.cat-children li, div.categories-list li {
 div.categories-list span.item-title, div.cat-children span.item-title {
 	font-size: 18px;
 }
+.categories-list .item-title{
+	padding-bottom: 10px;
 }
 div.newsflash a.readmore, div.newsflash_ms1 a.readmore, div.newsflash_ms2 a.readmore, div.newsflash_ms3 a.readmore, div.newsflash_ms4 a.readmore, div.newsflash_ms5 a.readmore {
     padding-bottom: 10px;
