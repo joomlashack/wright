@@ -46,7 +46,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 <?php
 	/* Wright v.3: Extra Leading and Intro Items Div and Class */
-	if ($this->wrightLeadingIntroItemsClass != "") :
+	if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") :
 ?>
 	<div class="<?php echo $this->wrightLeadingIntroItemsClass ?>">
 <?php
@@ -152,7 +152,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 <?php
 	/* Wright v.3: Extra Leading and Intro Items Div and Class */
-	if ($this->wrightLeadingIntroItemsClass != "") :
+	if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") :
 ?>
 	</div>
 <?php
