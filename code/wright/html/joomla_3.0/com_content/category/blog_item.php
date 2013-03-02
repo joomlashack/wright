@@ -50,14 +50,14 @@ JHtml::_('behavior.framework');
 		<?php if ($this->item->state == 0) : ?>
 			<span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
 		<?php endif; ?>
-
+		</div> <?php // Wright v.3: moved from icons closure ?>
 <?php
 /* Wright v.3: Item elements structure */
-		endif;
+					endif;
 				break;
 			case "icons":
-		if ($params->get('show_title') || $this->item->state == 0 || ($params->get('show_author') && !empty($this->item->author ))) :
-/* End Wright v.3: Item elements structure */
+				if ($params->get('show_title') || $this->item->state == 0 || ($params->get('show_author') && !empty($this->item->author ))) :
+	/* End Wright v.3: Item elements structure */
 ?>
 
 			<?php if ($params->get('show_print_icon') || $params->get('show_email_icon') || $canEdit) : ?>
@@ -75,7 +75,7 @@ JHtml::_('behavior.framework');
 				</ul>
 			</div>
 			<?php endif; ?>
-		</div>
+		<?php /* </div> */ // Wright v.3: moved </div> to title closure ?>
 	<?php endif; ?>
 
 <?php
