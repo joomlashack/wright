@@ -117,7 +117,8 @@ class WrightAdapterJoomlaLogo
 			$html .= '		
 				<div class="navbar ' . $args['menuWrapClass'] . '">
 					<div class="navbar-inner">
-						<div class="' . $args['containerClass'] . '">';
+						<div class="' . $args['containerClass'] . '">
+							<div class="' . $args['rowClass'] . '">';
 		}
 
 
@@ -188,6 +189,7 @@ class WrightAdapterJoomlaLogo
 		// Toolbar closure
 		if ($uniquePosition && $modulename2 == "toolbar") {
 			$html .= '
+							</div>
 						</div>
 					</div>
 				</div>';
