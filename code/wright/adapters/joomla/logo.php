@@ -25,17 +25,29 @@ class WrightAdapterJoomlaLogo
 				<nav id="'.$name.($alt ? '_alt' : '_primary') .'" class="clearfix">
 					<div class="navbar ' . $args['menuWrapClass'] . '">
 						<div class="navbar-inner">
-							<div class="container">
-					            <a class="btn btn-navbar" data-toggle="collapse" data-target="#nav-'.$name.'">
-						            <span class="icon-bar"></span>
-						            <span class="icon-bar"></span>
-						            <span class="icon-bar"></span>
-					            </a>
-					            <div class="nav-collapse" id="nav-'.$name.'">
-									 <jdoc:include type="modules" name="'.$name.'" style="raw" />
-								</div>
+				            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$name.'">
+					            <span class="icon-bar"></span>
+					            <span class="icon-bar"></span>
+					            <span class="icon-bar"></span>
+				            </a>
+				            <div class="nav-collapse" id="nav-'.$name.'">
+								 <jdoc:include type="modules" name="'.$name.'" style="raw" />
 							</div>
 						</div>
+					</div>
+				</nav>
+			';
+		}
+		elseif ($name == 'toolbar') {
+			return '
+				<nav id="'.$name.($alt ? '_alt' : '_primary') .'" class="clearfix">
+		            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$name.'">
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+		            </a>
+		            <div class="nav-collapse" id="nav-'.$name.'">
+						 <jdoc:include type="modules" name="'.$name.'" style="raw" />
 					</div>
 				</nav>
 			';
@@ -51,6 +63,8 @@ class WrightAdapterJoomlaLogo
 
 	public function render($args)
 	{
+		$uniquePosition = false;
+
 		if (!isset($args['name'])) $args['name'] = 'newsflash';
 		if (!isset($args['style'])) $args['style'] = 'xhtml';
 
@@ -95,6 +109,16 @@ class WrightAdapterJoomlaLogo
 		else {
 			$modulename2 = $modulename;
 			$module2name2 = $module2name;
+			$uniquePosition = true;
+		}
+
+		// Toolbar opening
+		if ($uniquePosition && $modulename2 == "toolbar") {
+			$html .= '		
+				<div class="navbar ' . $args['menuWrapClass'] . '">
+					<div class="navbar-inner">
+						<div class="' . $args['containerClass'] . '">
+							<div class="' . $args['rowClass'] . '">';
 		}
 
 
@@ -152,9 +176,7 @@ class WrightAdapterJoomlaLogo
 		else {
 			$logo = JURI::root().'images/'.$doc->document->params->get('logo', 'logo.png');
 		}
-
-
-
+		
 		$html .= '<div id="logo" class="span'.$logowidth.'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
 		
 		if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
@@ -163,6 +185,17 @@ class WrightAdapterJoomlaLogo
 			$html .= $this->renderCompanion($module2name2,$args,$modulewidth2,true);
 			$html .= '</div>';
 		}
+		
+		// Toolbar closure
+		if ($uniquePosition && $modulename2 == "toolbar") {
+			$html .= '
+							</div>
+						</div>
+					</div>
+				</div>';
+		}
+
+
 		
 		return $html;
 	}

@@ -1,72 +1,335 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.9
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // no direct access
 defined('_JEXEC') or die;
-if (!function_exists("wright_joomla_content_article")) :
+/* Wright v.3: Helper */
+	include_once(dirname(__FILE__) . '/../com_content.helper.php');
+/* End Wright v.3: Helper */
+
+/* Wright v.3: Item elements structure and extra elements */
+	if (!isset($this->wrightElementsStructure)) $this->wrightElementsStructure = Array();
+	if (!isset($this->wrightHasImageClass)) $this->wrightHasImageClass = "";
+	if (!isset($this->wrightExtraClass)) $this->wrightExtraClass = "";
 	
-	$wright_bootstrap_images = '';
+	if (empty($this->wrightElementsStructure)) $this->wrightElementsStructure = Array("title","icons","article-info","image","content");
 	
-	function wright_joomla_content_article_image($matches) {
-		$width = '';
-		global $wright_bootstrap_images;
-		if ($matches[1] == "none")
-			$width = ' width="98%"';
-		
-		return '<div class="img-fulltext-' . $matches[1] . '">' . $matches[2] . '<img' . $width . ' class="' . $wright_bootstrap_images . '" ' . $matches[3] . '>';
-	}
+/* End Wright v.3: Item elements structure and extra elements */
 
-	function wright_joomla_content_article_image_full($matches) {
-		$width = '';
-		global $wright_bootstrap_images;
-		if ($matches[1] == "none")
-			$width = ' width="98%"';
-		
-		return '<div class="img-intro-' . $matches[1] . '">' . $matches[2] . '<img' . $width . ' class="' . $wright_bootstrap_images . '" ' . $matches[3] . '>';
-	}
-	
-	function wright_joomla_content_article($buffer) {
+/* Wright v.3: Bootstrapped images */
+	$app = JFactory::getApplication();
+	$template = $app->getTemplate(true);
+	$this->wrightBootstrapImages = $template->params->get('wright_bootstrap_images','');
+/* End Wright v.3: Bootstrapped images */
 
-		// Bootstrapped images
-		global $wright_bootstrap_images;	
-		$app = JFactory::getApplication();
-		$template = $app->getTemplate(true);
-		$params = $template->params;
-		$wright_bootstrap_images = $params->get('bootstrap_images','');
-		$buffer = preg_replace_callback('/<div class="img-fulltext-([a-z]+)">([^<]*)<img([^>]*)>/Ui', 'wright_joomla_content_article_image', $buffer);
-		$buffer = preg_replace_callback('/<div class="img-intro-([a-z]+)">([^<]*)<img([^>]*)>/Ui', 'wright_joomla_content_article_image_full', $buffer);
-		
-		$buffer = preg_replace('/<dd class="category-name">/Ui', '<dd class="category-name"><i class="icon-folder-close"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="create">/Ui', '<dd class="create"><i class="icon-calendar"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="modified">/Ui', '<dd class="modified"><i class="icon-edit"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="published">/Ui', '<dd class="published"><i class="icon-table"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="createdby">/Ui', '<dd class="createdby"><i class="icon-user"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="hits">/Ui', '<dd class="hits"><i class="icon-signal"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="parent-category-name">/Ui', '<dd class="hits"><i class="icon-folder-close"></i>', $buffer);
-	    $buffer = preg_replace('/<ul class="actions">/Ui', '<ul class="btn-group actions">', $buffer);
-		$buffer = preg_replace('/<li class="([^-]+)-icon">/Ui', '<li class="btn $1-icon">', $buffer);
-		$buffer = preg_replace('/<li>Next/Ui', '<li class="disabled"><a>Next</a> ', $buffer);
-		$buffer = preg_replace('/<li>Prev/Ui', '<li class="disabled"><a>Prev</a> ', $buffer);
-		$buffer = preg_replace('/class="tabs"/Ui', 'class="tabs nav nav-tabs"', $buffer); 
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
-
-		$buffer = preg_replace('/<div id="article-index">([^<]*)<h3>([^<]*)<\/h3>([^<]*)<ul>/Ui', '<div id="article-index">$1<h3>$2</h3>$3<ul class="nav nav-tabs nav-stacked">', $buffer);
-		$buffer = preg_replace('/<div id="article-index">([^<]*)<ul>/Ui', '<div id="article-index">$1<ul class="nav nav-tabs nav-stacked">', $buffer);
-		
-		return $buffer;
-	}
-
-endif;
-
-
-ob_start("wright_joomla_content_article");
-require('components/com_content/views/article/tmpl/default.php');
-ob_end_flush();
-
+// Create shortcuts to some parameters.
+$params		= $this->item->params;
+$images = json_decode($this->item->images);
+$urls = json_decode($this->item->urls);
+$canEdit	= $this->item->params->get('access-edit');
+$user		= JFactory::getUser();
 
 ?>
+<div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.3: Item elements extra elements
+ ?>">
+<?php if ($this->params->get('show_page_heading')) : ?>
+	<h1>
+	<?php echo $this->escape($this->params->get('page_heading')); ?>
+	</h1>
+<?php endif; ?>
+<?php
+if (!empty($this->item->pagination) AND $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative)
+{
+ echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper)
+}
+ ?>
+
+<?php 
+/* Wright v.3: Item elements structure */
+	foreach ($this->wrightElementsStructure as $wrightElement) :
+		switch ($wrightElement) :
+			case "title":
+/* End Wright v.3: Item elements structure */
+?>
+
+
+<?php if ($params->get('show_title')) : ?>
+	<?php echo '<div class="page-header">'; // Wright v.3: Article title ?>
+	<h2>
+	<?php if ($params->get('link_titles') && !empty($this->item->readmore_link)) : ?>
+		<a href="<?php echo $this->item->readmore_link; ?>">
+		<?php echo $this->escape($this->item->title); ?></a>
+	<?php else : ?>
+		<?php echo $this->escape($this->item->title); ?>
+	<?php endif; ?>
+	</h2>
+	<?php echo '</div>'; // Wright v.3: Article title ?>
+<?php endif; ?>
+
+<?php
+/* Wright v.3: Item elements structure */
+				break;
+			case "icons":
+/* End Wright v.3: Item elements structure */
+?>
+
+<?php if ($canEdit ||  $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
+	<?php
+		/* Wright v.3: Icons dropdown */
+	?>
+		<div class="btn-group pull-right">
+			<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
+				<i class="icon-cog"></i>
+				<span class="caret"></span>
+			</a>
+	<?php
+		/* End Wright v.3: Icons dropdown */
+	?>
+	<ul class="actions<?php echo " dropdown-menu" // Wright v.3: Icons dropdown ?>">
+	<?php if (!$this->print) : ?>
+		<?php if ($params->get('show_print_icon')) : ?>
+			<li class="print-icon">
+			<?php echo preg_replace("/<img([^>]*)>/i", "<i class=\"icon-print\"></i>", JHtml::_('icon.print_popup', $this->item, $params));  // Wright v.3: Print icon ?>
+			</li>
+		<?php endif; ?>
+
+		<?php if ($params->get('show_email_icon')) : ?>
+			<li class="email-icon">
+			<?php echo preg_replace("/<img([^>]*)>/i", "<i class=\"icon-envelope\"></i>", JHtml::_('icon.email', $this->item, $params));  // Wright v.3: Email icon ?>
+			</li>
+		<?php endif; ?>
+
+		<?php if ($canEdit) : ?>
+			<li class="edit-icon">
+			<?php echo preg_replace("/<span([^>]*)title=\"([^\"]*)\"([^>]*)>(.*)<img([^>]*)>(.*)<\/span>/sUi", "$4<i class=\"icon-pencil\"></i>$6", JHtml::_('icon.edit', $this->item, $params));  // Wright v.3: Edit icon ?>
+			</li>
+		<?php endif; ?>
+
+	<?php else : ?>
+		<li>
+		<?php echo JHtml::_('icon.print_screen',  $this->item, $params); ?>
+		</li>
+	<?php endif; ?>
+
+	</ul>
+	<?php
+		/* Wright v.3: Icons dropdown */
+	?>
+		</div>
+	<?php
+		/* End Wright v.3: Icons dropdown */
+	?>
+<?php endif; ?>
+
+<?php  if (!$params->get('show_intro')) :
+	echo $this->item->event->afterDisplayTitle;
+endif; ?>
+
+<?php echo $this->item->event->beforeDisplayContent; ?>
+
+<?php
+/* Wright v.3: Item elements structure */
+				break;
+			case "article-info":
+/* End Wright v.3: Item elements structure */
+?>
+
+<?php $useDefList = (($params->get('show_author')) or ($params->get('show_category')) or ($params->get('show_parent_category'))
+	or ($params->get('show_create_date')) or ($params->get('show_modify_date')) or ($params->get('show_publish_date'))
+	or ($params->get('show_hits'))); ?>
+
+<?php if ($useDefList) : ?>
+	<dl class="article-info<?php echo ' muted'; // Wright v.3: Muted style ?>">
+	<dt class="article-info-term"><?php  echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?></dt>
+<?php endif; ?>
+<?php if ($params->get('show_parent_category') && $this->item->parent_slug != '1:root') : ?>
+	<dd class="parent-category-name">
+		<i class="icon-folder-close"></i> <?php // Wright v.3: Category icon ?>
+	<?php	$title = $this->escape($this->item->parent_title);
+	$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->parent_slug)).'">'.$title.'</a>';?>
+	<?php if ($params->get('link_parent_category') and $this->item->parent_slug) : ?>
+		<?php echo JText::sprintf('COM_CONTENT_PARENT', $url); ?>
+	<?php else : ?>
+		<?php echo JText::sprintf('COM_CONTENT_PARENT', $title); ?>
+	<?php endif; ?>
+	</dd>
+<?php endif; ?>
+<?php if ($params->get('show_category')) : ?>
+	<dd class="category-name">
+		<i class="icon-folder-close"></i> <?php // Wright v.3: Category icon ?>
+	<?php 	$title = $this->escape($this->item->category_title);
+	$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->catslug)).'">'.$title.'</a>';?>
+	<?php if ($params->get('link_category') and $this->item->catslug) : ?>
+		<?php echo JText::sprintf('COM_CONTENT_CATEGORY', $url); ?>
+	<?php else : ?>
+		<?php echo JText::sprintf('COM_CONTENT_CATEGORY', $title); ?>
+	<?php endif; ?>
+	</dd>
+<?php endif; ?>
+<?php if ($params->get('show_create_date')) : ?>
+	<dd class="create">
+		<i class="icon-calendar"></i> <?php // Wright v.3: Date icon ?>
+	<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC2'))); ?>
+	</dd>
+<?php endif; ?>
+<?php if ($params->get('show_modify_date')) : ?>
+	<dd class="modified">
+		<i class="icon-calendar"></i> <?php // Wright v.3: Date icon ?>
+	<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC2'))); ?>
+	</dd>
+<?php endif; ?>
+<?php if ($params->get('show_publish_date')) : ?>
+	<dd class="published">
+		<i class="icon-calendar"></i> <?php // Wright v.3: Date icon ?>
+	<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?>
+	</dd>
+<?php endif; ?>
+<?php if ($params->get('show_author') && !empty($this->item->author )) : ?>
+	<dd class="createdby">
+		<i class="icon-user"></i> <?php // Wright v.3: Author icon ?>
+	<?php $author = $this->item->created_by_alias ? $this->item->created_by_alias : $this->item->author; ?>
+	<?php if (!empty($this->item->contactid) && $params->get('link_author') == true): ?>
+	<?php
+		$needle = 'index.php?option=com_contact&view=contact&id=' . $this->item->contactid;
+		$menu = JFactory::getApplication()->getMenu();
+		$item = $menu->getItems('link', $needle, true);
+		$cntlink = !empty($item) ? $needle . '&Itemid=' . $item->id : $needle;
+	?>
+		<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', JHtml::_('link', JRoute::_($cntlink), $author)); ?>
+	<?php else: ?>
+		<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
+	<?php endif; ?>
+	</dd>
+<?php endif; ?>
+<?php if ($params->get('show_hits')) : ?>
+	<dd class="hits">
+		<i class="icon-eye-open"></i> <?php // Wright v.3: Hits icon ?>
+	<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?>
+	</dd>
+<?php endif; ?>
+<?php if ($useDefList) : ?>
+	</dl>
+<?php endif; ?>
+
+<?php if (isset ($this->item->toc)) : ?>
+	<?php echo wrightTransformArticleTOC($this->item->toc);  // Wright v.3: TOC transformation (using helper) ?>
+<?php endif; ?>
+
+<?php if (isset($urls) AND ((!empty($urls->urls_position) AND ($urls->urls_position=='0')) OR  ($params->get('urls_position')=='0' AND empty($urls->urls_position) ))
+		OR (empty($urls->urls_position) AND (!$params->get('urls_position')))): ?>
+<?php echo $this->loadTemplate('links'); ?>
+<?php endif; ?>
+
+<?php
+/* Wright v.3: Item elements structure */
+				break;
+			case "image":
+/* End Wright v.3: Item elements structure */
+?>
+
+<?php if ($params->get('access-view')):?>
+<?php  if (isset($images->image_fulltext) and !empty($images->image_fulltext)) : ?>
+<?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
+<div class="img-fulltext-<?php echo htmlspecialchars($imgfloat); ?>">
+<img
+	<?php if ($images->image_fulltext_caption):
+		echo ' title="' .htmlspecialchars($images->image_fulltext_caption) .'"'; // Wright v.3: Removed caption (TODO: reconsider to reimplement with JCaption)
+		
+	endif; ?>
+	src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>"<?php echo ' class="' . $this->wrightBootstrapImages . '"' // Wright v.3: Bootstrapped images ?> />
+	<?php
+		// Wright v.3: Caption
+	if ($images->image_intro_caption) {
+		echo '<p class="img_caption">' . $images->image_intro_caption . '</p>';
+	}
+		// End Wright v.3: Caption
+	?>
+</div>
+<?php endif; ?>
+<?php
+if (!empty($this->item->pagination) AND $this->item->pagination AND !$this->item->paginationposition AND !$this->item->paginationrelative):
+	echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper)
+ endif;
+?>
+
+<?php
+/* Wright v.3: Item elements structure */
+		endif; // access-view
+				break;
+			case "content":
+		if ($params->get('access-view')):   // access-view
+/* End Wright v.3: Item elements structure */
+?>
+
+
+<?php echo wrightTransformArticleContent($this->item->text);  // Wright v.3: Transform article content's plugins (using helper)
+ ?>
+<?php
+if (!empty($this->item->pagination) AND $this->item->pagination AND $this->item->paginationposition AND!$this->item->paginationrelative):
+	 echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper) ?>
+<?php endif; ?>
+
+<?php if (isset($urls) AND ((!empty($urls->urls_position)  AND ($urls->urls_position=='1')) OR ( $params->get('urls_position')=='1') )): ?>
+<?php echo $this->loadTemplate('links'); ?>
+<?php endif; ?>
+	<?php //optional teaser intro text for guests ?>
+<?php elseif ($params->get('show_noauth') == true and  $user->get('guest') ) : ?>
+	<?php echo $this->item->introtext; ?>
+	<?php //Optional link to let them register to see the whole article. ?>
+	<?php if ($params->get('show_readmore') && $this->item->fulltext != null) :
+		$link1 = JRoute::_('index.php?option=com_users&view=login');
+		$link = new JURI($link1);?>
+		<p class="readmore">
+		<a href="<?php echo $link; ?>">
+		<?php $attribs = json_decode($this->item->attribs);  ?>
+		<?php
+		if ($attribs->alternative_readmore == null) :
+			echo JText::_('COM_CONTENT_REGISTER_TO_READ_MORE');
+		elseif ($readmore = $this->item->alternative_readmore) :
+			echo $readmore;
+			if ($params->get('show_readmore_title', 0) != 0) :
+			    echo JHtml::_('string.truncate', ($this->item->title), $params->get('readmore_limit'));
+			endif;
+		elseif ($params->get('show_readmore_title', 0) == 0) :
+			echo JText::sprintf('COM_CONTENT_READ_MORE_TITLE');
+		else :
+			echo JText::_('COM_CONTENT_READ_MORE');
+			echo JHtml::_('string.truncate', ($this->item->title), $params->get('readmore_limit'));
+		endif; ?></a>
+		</p>
+	<?php endif; ?>
+<?php endif; ?>
+<?php
+if (!empty($this->item->pagination) AND $this->item->pagination AND $this->item->paginationposition AND $this->item->paginationrelative):
+	 echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper) ?>
+<?php endif; ?>
+
+<?php 
+/* Wright v.3: Item elements structure */
+				break;
+			default:
+				
+				if (preg_match("/^([\/]?)([a-z0-9-_]+?)([\#]?)([a-z0-9-_]*?)([\.]?)([a-z0-9-]*)$/iU", $wrightElement, $wrightDiv)) {
+					echo '<' . $wrightDiv[1] . $wrightDiv[2] .
+						($wrightDiv[1] != '' ? '' :
+							($wrightDiv[3] != '' ? ' id="' . $wrightDiv[4] . '"' : '') .
+							($wrightDiv[5] != '' ? ' class="' . $wrightDiv[6] . '"' : '')
+						)
+						. '>';
+				}
+				
+		endswitch;
+	endforeach;
+/* End Wright v.3: Item elements structure */
+?>
+
+<?php echo $this->item->event->afterDisplayContent; ?>
+</div>

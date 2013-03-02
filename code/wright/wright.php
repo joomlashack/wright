@@ -56,7 +56,7 @@ class Wright
 		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
 		$this->_urlWright = $this->_urlTemplate . '/wright';
 		$this->_urlBootstrap = $this->_urlWright . '/bootstrap';
-		$this->_urlFontAwesomeMore = $this->_urlWright . '/fontawesomemore';
+		$this->_urlFontAwesome = $this->_urlWright . '/fontawesome';
 		$this->_urlJS = $this->_urlWright . '/js';
 		
 		// versions under 3.0 must load bootstrap
@@ -295,8 +295,8 @@ class Wright
 							$sheet = $this->_urlBootstrap . '/css/' . $style;						
 						}
 					}
-					elseif ($folder == 'fontawesomemore')
-						$sheet = $this->_urlFontAwesomeMore . '/css/' . $style;
+					elseif ($folder == 'fontawesome')
+						$sheet = $this->_urlFontAwesome . '/css/' . $style;
 					else
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
 
@@ -318,18 +318,18 @@ class Wright
         $version = $version[0].$version[1];
 
 		$styles['bootstrap'] = Array();
-		$styles['fontawesomemore'] = Array();
+		$styles['fontawesome'] = Array();
 		$styles['wright'] = Array();
 		$styles['template'] = Array();
 
 		$styles['template'] = JFolder::files(JPATH_THEMES . '/' . $this->document->template . '/css', '\d{1,2}_.*.css');
 
-		// Loads Bootstrap and FontAwesomeMore
+		// Loads Bootstrap and FontAwesome
 		$styles['bootstrap'] = array('bootstrap.min.css');
 		if ($this->document->params->get('responsive',1)) {
 			$styles['bootstrap'][] = 'bootstrap-responsive.min.css';
 		}
-		$styles['fontawesomemore'] = array('font-awesome.css');
+		$styles['fontawesome'] = array('font-awesome.min.css');
 
 		$styles['wright'] = array('typography.css');
         if (is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.css'))
@@ -357,15 +357,17 @@ class Wright
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
 		{
-			$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
+			// Switch to allow specific versions of IE to have additional sheets
+			$major = $browser->getMajor();
+			
+			if ((int)$major <= 9) {
+				$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5shiv.js');
+			}
 
 			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie.css'))
 			{
 				$styles['ie'][] = 'ie.css';
 			}
-
-			// Switch to allow specific versions of IE to have additional sheets
-			$major = $browser->getMajor();
 
 			switch ($major)
 			{
@@ -373,18 +375,12 @@ class Wright
 					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie6.css'))
 						$styles['ie'][] = 'ie6.css';
 					$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
-					if ($this->document->params->get('doctype') == 'html5')
-						$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/js/html5.js');
-					break;
 				case '7' :
-					$styles['fontawesomemore'][] = 'font-awesome-ie7.css';
+					$styles['fontawesome'][] = 'font-awesome-ie7.min.css';
 					// does not break for leaving defaults
 				default :
 					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie' . $major . '.css'))
 						$styles['ie'][] = 'ie' . $major . '.css';
-					if ($this->document->params->get('doctype') == 'html5')
-						$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
-					break;
 			}
 		}
 
