@@ -8,23 +8,15 @@
 
 // no direct access
 defined('_JEXEC') or die;
-if (!function_exists("wright_joomla_content_featured")) :
+if (!function_exists("wright_joomla_content_category")) :
 
-	function wright_joomla_content_featured($buffer) {
-		// Bootstrapped images		
-		$app = JFactory::getApplication();
-		$template = $app->getTemplate(true);
-		$params = $template->params;
-		$bootstrap_images = $params->get('bootstrap_images','');
-		$buffer = preg_replace('/<div class="([^>]*)item-image">([^<]*)<img([^>]*)>/Ui','<div class="$1item-image">$2<img width="98%" class="' . $bootstrap_images . '" $3>',$buffer);
-		$buffer = preg_replace('/<div class="img-intro-([a-z]+)">([^<]*)<img([^>]*)>/Ui','<div class="img-intro-$1">$2<img width="98%" class="' . $bootstrap_images . '" $3>',$buffer);		
-		$buffer = preg_replace('/<div class="btn-group pull-right([a-z]+)">([^dropdown-menu]*)/Ui','<div class="btn-group pull-right$1">$2 . "actions"',$buffer);		
+	function wright_joomla_content_category($buffer) {
 		return $buffer;
 	}
 
 endif;
 
-ob_start("wright_joomla_content_featured");
-require('components/com_content/views/featured/tmpl/default.php');
+ob_start("wright_joomla_content_category");
+require('components/com_content/views/category/tmpl/default.php');
 ob_end_flush();
 
