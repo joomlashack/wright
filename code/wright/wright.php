@@ -160,7 +160,7 @@ class Wright
 
 		if ($this->loadBootstrap)
 			// load bootstrap JS
-			$this->addJSScript($this->_urlJS . '/js/bootstrap.min.js');
+			$this->addJSScript($this->_urlJS . '/bootstrap.min.js');
 		
 		$this->addJSScript($this->_urlJS . '/utils.js');
 		if ($this->document->params->get('stickyFooter', 1)) {
@@ -226,8 +226,6 @@ class Wright
         $version = explode('.', JVERSION);
         $version = $version[0].$version[1];
 
-		$styles['fontawesome'] = Array('font-awesome.min.css');
-
 		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '.css'))
 			$styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '.css';
 
@@ -268,6 +266,9 @@ class Wright
 		//Check to see if custom.css file is present, and if so add it after all other css files
 			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/custom.css'))
 				$styles['template'][] = 'custom.css';
+
+		// Include FontAwesome
+		$styles['fontawesome'] = Array('font-awesome.min.css');
 
 		return $styles;
 	}
