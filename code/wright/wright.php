@@ -145,11 +145,11 @@ class Wright
             switch ($loadJquery) {
                 // load jQuery locally
                 case 1:
-                    $jquery = $this->_urlJS . '/jquery-1.8.2.min.js';
+                    $jquery = $this->_urlJS . '/jquery-1.8.3.min.js';
                     break;
                 // load jQuery from Google
                 default:
-                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js';
+                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js';
                     break;
             }
             
