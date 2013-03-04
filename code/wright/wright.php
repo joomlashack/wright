@@ -253,10 +253,6 @@ class Wright
 
 			switch ($major)
 			{
-				case '6' :
-					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie6.css'))
-						$styles['ie'][] = 'ie6.css';
-					$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
 				case '7' :
 					$styles['fontawesome'][] = 'font-awesome-ie7.min.css';
 					// does not break for leaving defaults
