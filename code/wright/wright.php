@@ -40,7 +40,6 @@ class Wright
 	// Urls
 	private $_urlTemplate = null;
 	private $_urlWright = null;
-	private $_urlBootstrap = null;
 	private $_urlJS = null;
 	
 	function Wright()
@@ -55,7 +54,6 @@ class Wright
 		// Urls
 		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
 		$this->_urlWright = $this->_urlTemplate . '/wright';
-		$this->_urlBootstrap = $this->_urlWright . '/bootstrap';
 		$this->_urlFontAwesome = $this->_urlWright . '/fontawesome';
 		$this->_urlJS = $this->_urlWright . '/js';
 		
@@ -162,7 +160,7 @@ class Wright
 
 		if ($this->loadBootstrap)
 			// load bootstrap JS
-			$this->addJSScript($this->_urlBootstrap . '/js/bootstrap.min.js');
+			$this->addJSScript($this->_urlJS . '/js/bootstrap.min.js');
 		
 		$this->addJSScript($this->_urlJS . '/utils.js');
 		if ($this->document->params->get('stickyFooter', 1)) {
