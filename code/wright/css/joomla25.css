@@ -1151,7 +1151,6 @@ span.spacer{
 .icons-left{
 	float:left; 
 	min-height:16px;
-	margin-left: -20px;
 }
 #mod-finder-advanced{
 	clear: both;
@@ -1163,15 +1162,6 @@ span.spacer{
 }
 .pagenav.disabled a {
     color: gray;
-}
-.category-module.nav li,
-.weblinks.nav li,
-.archive-module.nav li,
-.relateditems.nav li,
-.mostread.nav li,
-.categories-module.nav li,
-.latestnews.nav li {
-	 padding-left: 20px
 }
 .feed-link {
 	 display: inline-block;
