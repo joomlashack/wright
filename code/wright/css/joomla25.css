@@ -880,7 +880,9 @@ nav div.toolbar {
     line-height: 100%;
     vertical-align: baseline;
 }
-
+.navbar a.dropdown-toggle .icon-caret-right{
+	margin-left: 5px;
+}
 .nav > li > span.separator {
     display: block;
     cursor: default;
