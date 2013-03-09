@@ -8,7 +8,7 @@
  * It would be inadvisable to alter the contents of anything inside of this folder
  *
  */
-defined('_JEXEC') or die('You are not allowed to directly access this file');
+//defined('_JEXEC') or die('You are not allowed to directly access this file');
 
 //Adding a check for PHP4 to cut down on support
 if (version_compare(PHP_VERSION, '5', '<'))
@@ -20,6 +20,8 @@ if (version_compare(PHP_VERSION, '5', '<'))
 // includes WrightTemplateBase class for customizations to the template
 require_once(dirname(__FILE__) . '/template/wrighttemplatebase.php');
 
+//include Wright options
+require_once( get_stylesheet_directory() . '/theme-options.php');
 
 class Wright
 {
@@ -51,6 +53,8 @@ class Wright
 		// $this->document = $document;
 		// $this->params = $document->params;
 		// $this->baseurl = $document->baseurl;
+		global $wright_options;
+		$this->params = get_option('wright_options', $wright_options);
 
 		// Urls
 		// $this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
@@ -116,14 +120,15 @@ class Wright
 
 	public function display()
 	{
+
+		// Parse by doctype
+		$this->doctype();
+
 		// Setup the header
 		$this->header();
 
 		// Parse by platform
-		//$this->platform();
-
-		// Parse by doctype
-		//$this->doctype();
+		$this->platform();
 
 		print trim($this->template);
 
@@ -405,9 +410,9 @@ class Wright
 
 	private function doctype()
 	{
-		require(dirname(__FILE__) . '/doctypes/' . $this->document->params->get('doctype', 'html5') . '.php');
-		$adapter_name = 'HtmlAdapter' . $this->document->params->get('doctype', 'html5');
-		$adapter = new $adapter_name($this->document->params);
+		require(dirname(__FILE__) . '/doctypes/' . $this->params['doctype'] . '.php');
+		$adapter_name = 'HtmlAdapter' . $this->params['doctype'];
+		$adapter = new $adapter_name($this->params);
 
 		foreach ($adapter->getTags() as $name => $regex)
 		{
@@ -416,11 +421,13 @@ class Wright
 		}
 
 		// reorder columns based on the order
+		/*
         $this->reorderContent();
 
         if (trim($this->document->params->get('footerscript')) != '') {
             $this->template = str_replace('</body>', '<script type="text/javascript">'.$this->document->params->get('footerscript').'</script></body>', $this->template);
         }
+       */
 		$this->template = str_replace('__cols__', $adapter->cols, $this->template);
 	}
 
