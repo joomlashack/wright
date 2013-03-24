@@ -17,13 +17,16 @@ class JFormFieldStyles extends JFormFieldList
 		// Initialize variables.
 		$options = array();
 
-		$styles = JFolder::files(JPATH_ROOT.'/templates'.'/'.$this->form->getValue('template').'/css', 'style-([^\.]*)\.css');
+		$version = explode('.', JVERSION);
+        $version = $version[0].$version[1];
+
+		$styles = JFolder::files(JPATH_ROOT.'/templates'.'/'.$this->form->getValue('template').'/css', 'joomla' . $version . '-([^\.-]*)\.css');
 
         if (!count($styles)) return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template'), true));
 
 		foreach ($styles as $style)
 		{
-			$item = substr($style, 6, strpos($style, '.css') - 6);
+			$item = substr($style, 9, strpos($style, '.css') - 9);
 			$val	= $item;
 			$text	= ucfirst($item);
 			$options[] = JHTML::_('select.option', $val, JText::_($text));

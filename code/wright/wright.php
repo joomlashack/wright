@@ -40,7 +40,6 @@ class Wright
 	// Urls
 	private $_urlTemplate = null;
 	private $_urlWright = null;
-	private $_urlBootstrap = null;
 	private $_urlJS = null;
 	
 	function Wright()
@@ -55,7 +54,6 @@ class Wright
 		// Urls
 		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
 		$this->_urlWright = $this->_urlTemplate . '/wright';
-		$this->_urlBootstrap = $this->_urlWright . '/bootstrap';
 		$this->_urlFontAwesome = $this->_urlWright . '/fontawesome';
 		$this->_urlJS = $this->_urlWright . '/js';
 		
@@ -78,20 +76,13 @@ class Wright
 		$path = JPATH_THEMES . '/' . $document->template . '/' . 'template.php';
 		$menu = $app->getMenu();
 
-		// If homepage, load up home.php if found
-        if (version_compare(JVERSION, '1.6', 'lt')) {
-            if ($menu->getActive() == $menu->getDefault() && is_file(JPATH_THEMES . '/' . $document->template . '/' . 'home.php'))
-                $path = JPATH_THEMES . '/' . $document->template . '/home.php';
-            elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
-                $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
-        }
-        else {
-            $lang = JFactory::getLanguage();
-            if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . '/' . $document->template . '/home.php'))
-                $path = JPATH_THEMES . '/' . $document->template . '/home.php';
-            elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
-                $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
-        }
+		// If homepage, load up home.php if found, or load custom.php if found
+        $lang = JFactory::getLanguage();
+        if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . '/' . $document->template . '/home.php'))
+            $path = JPATH_THEMES . '/' . $document->template . '/home.php';
+        elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
+            $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
+
 
 
 		// Include our file and capture buffer
@@ -154,11 +145,11 @@ class Wright
             switch ($loadJquery) {
                 // load jQuery locally
                 case 1:
-                    $jquery = $this->_urlJS . '/jquery-1.8.2.min.js';
+                    $jquery = $this->_urlJS . '/jquery-1.8.3.min.js';
                     break;
                 // load jQuery from Google
                 default:
-                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js';
+                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js';
                     break;
             }
             
@@ -169,7 +160,7 @@ class Wright
 
 		if ($this->loadBootstrap)
 			// load bootstrap JS
-			$this->addJSScript($this->_urlBootstrap . '/js/bootstrap.min.js');
+			$this->addJSScript($this->_urlJS . '/bootstrap.min.js');
 		
 		$this->addJSScript($this->_urlJS . '/utils.js');
 		if ($this->document->params->get('stickyFooter', 1)) {
@@ -202,77 +193,7 @@ class Wright
 	{
 		$styles = $this->loadCSSList();
 
-		if ($this->document->params->get('csscache', 'no') == 'yes' && is_writable(JPATH_THEMES . '/' . $this->document->template . '/css'))
-		{
-			$this->processCSSCache($styles);
-		}
-		else
-		{
-			$this->addCSSToHead($styles);
-		}
-	}
-
-	private function processCSSCache($styles)
-	{
-		// Combine css into one file if files have been altered since cached copy
-		$rebuild = false;
-
-		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . $this->document->template . '.css'))
-			$cachetime = filemtime(JPATH_THEMES . '/' . $this->document->template . '/css/' . $this->document->template . '.css');
-		else
-			$cachetime = 0;
-		
-		foreach ($styles as $folder => $files)
-		{
-			if (count($files))
-			{
-				foreach ($files as $style)
-				{
-					if ($folder == 'wright')
-						$file = JPATH_THEMES . '/' . $this->document->template . '/wright/css/' . $style;
-					elseif ($folder == 'template')
-						$file = JPATH_THEMES . '/' . $this->document->template . '/css/' . $style;
-					else
-						$file = JPATH_THEMES . '/' . $this->document->template . '/css/' . $style;
-
-					if (filemtime($file) > $cachetime)
-						$rebuild = true;
-				}
-			}
-		}
-
-		if ($rebuild)
-		{
-			$css = '';
-			foreach ($styles as $folder => $files)
-			{
-				if (count($files))
-				{
-					foreach ($files as $style)
-					{
-						if ($folder == 'wright')
-							$css .= file_get_contents(JPATH_THEMES . '/' . $this->document->template . '/wright/css/' . $style);
-						elseif ($folder == 'template')
-							$css .= file_get_contents(JPATH_THEMES . '/' . $this->document->template . '/css/' . $style);
-						else
-							$css .= file_get_contents(JPATH_THEMES . '/' . $this->document->template . '/css/' . $style);
-					}
-				}
-			}
-
-			// Clean out any charsets
-			$css = str_replace('@charset "utf-8";', '', $css);
-			// Strip comments
-			$css = preg_replace('/\/\*.*?\*\//s', '', $css);
-
-			include('css/csstidy/class.csstidy.php');
-
-			$tidy = new csstidy();
-			$tidy->parse($css);
-
-			file_put_contents(JPATH_THEMES . '/' . $this->document->template . '/css/' . $this->document->template . '.css', $tidy->print->plain());
-		}
-		$this->document->addStyleSheet(JURI::root().'templates/' . $this->document->template . '/css/' . $this->document->template . '.css');
+		$this->addCSSToHead($styles);
 	}
 
 	private function addCSSToHead($styles)
@@ -283,19 +204,7 @@ class Wright
 			{
 				foreach ($files as $style)
 				{
-					if ($folder == 'wright')
-						$sheet = JURI::root().'templates/' . $this->document->template . '/wright/css/' . $style;
-					elseif ($folder == 'template')
-						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
-					elseif ($folder == 'bootstrap') {
-						if ($style == 'style-' . $this->document->params->get('style') . '.bootstrap.min.css') {
-							$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
-						}
-						else {
-							$sheet = $this->_urlBootstrap . '/css/' . $style;						
-						}
-					}
-					elseif ($folder == 'fontawesome')
+					if ($folder == 'fontawesome')
 						$sheet = $this->_urlFontAwesome . '/css/' . $style;
 					else
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
@@ -317,42 +226,13 @@ class Wright
         $version = explode('.', JVERSION);
         $version = $version[0].$version[1];
 
-		$styles['bootstrap'] = Array();
-		$styles['fontawesome'] = Array();
-		$styles['wright'] = Array();
-		$styles['template'] = Array();
+		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '.css'))
+			$styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '.css';
 
-		$styles['template'] = JFolder::files(JPATH_THEMES . '/' . $this->document->template . '/css', '\d{1,2}_.*.css');
-
-		// Loads Bootstrap and FontAwesome
-		$styles['bootstrap'] = array('bootstrap.min.css');
-		if ($this->document->params->get('responsive',1)) {
-			$styles['bootstrap'][] = 'bootstrap-responsive.min.css';
-		}
-		$styles['fontawesome'] = array('font-awesome.min.css');
-
-		$styles['wright'] = array('typography.css');
-        if (is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.css'))
-        {
-            $styles['wright'][] = 'joomla'.$version.'.css';
-        }
-		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.responsive.css')) {
-            $styles['wright'][] = 'joomla'.$version.'.responsive.css';
-		}
-		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template .'/css/responsive.css')) {
-            $styles['template'][] = 'responsive.css';
+		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css')) {
+            $styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css';
 		}
 
-		// Load up a specific bootstrap style if set
-		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'style-' . $this->document->params->get('style') . '.bootstrap.min.css'))
-			$styles['bootstrap'][0] = 'style-' . $this->document->params->get('style') . '.bootstrap.min.css';
-
-		// Load up a specific style if set
-		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'style-' . $this->document->params->get('style') . '.css'))
-			$styles['template'][] = 'style-' . $this->document->params->get('style') . '.css';
-		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'style-' . $this->document->params->get('style') . '.responsive.css')) {
-            $styles['template'][] = 'style-' . $this->document->params->get('style') . '.responsive.css';
-		}
 
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
@@ -371,10 +251,6 @@ class Wright
 
 			switch ($major)
 			{
-				case '6' :
-					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie6.css'))
-						$styles['ie'][] = 'ie6.css';
-					$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
 				case '7' :
 					$styles['fontawesome'][] = 'font-awesome-ie7.min.css';
 					// does not break for leaving defaults
@@ -390,6 +266,9 @@ class Wright
 		//Check to see if custom.css file is present, and if so add it after all other css files
 			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/custom.css'))
 				$styles['template'][] = 'custom.css';
+
+		// Include FontAwesome
+		$styles['fontawesome'] = Array('font-awesome.min.css');
 
 		return $styles;
 	}
