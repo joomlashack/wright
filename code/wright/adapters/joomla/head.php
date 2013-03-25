@@ -4,6 +4,7 @@ class WrightAdapterJoomlaHead
 {
 	public function render($args)
 	{
+		$head = '';
 		$dochtml = JFactory::getDocument();
 		if ($dochtml->params->get('responsive',1)) {
 		    // add viewport meta for tablets
