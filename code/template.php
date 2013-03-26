@@ -20,9 +20,13 @@ if ($gridMode == 'row-fluid') {
 
 $bodyclass = "";
 if ($this->countModules('toolbar')) {
-	$bodyclass = "toolbarpadding";
+    $bodyclass = "toolbarpadding";
 }
-
+$responsivePage = $this->params->get('responsive','1');
+$responsive = ' responsive';
+if ($responsivePage == 0) {
+    $responsive = ' no-responsive';
+}
 ?>
 <doctype>
 <html>
@@ -30,7 +34,7 @@ if ($this->countModules('toolbar')) {
 	
 <w:head />
 </head>
-<body<?php if ($bodyclass != "") :?> class="<?php echo $bodyclass?>"<?php endif; ?>>
+<body<?php if ($bodyclass != "") :?> class="<?php echo $bodyclass . $responsive?>"<?php endif; ?>>
     <?php if ($this->countModules('toolbar')) : ?>
     <!-- menu -->
 	<w:nav containerClass="<?php echo $containerClass ?>" rowClass="<?php echo $gridMode;?>" wrapClass="navbar-fixed-top navbar-inverse" type="toolbar" name="toolbar" />
