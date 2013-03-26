@@ -1,3 +1,9 @@
+var v = process.versions;
+if (v.node < '0.10.1') {
+	console.log('Builder requieres at least Node.JS 0.10.1')
+	return;
+}
+
 var fs = require('fs');
 var os = require('os');
 var recess = require('recess');
@@ -12,7 +18,6 @@ var DS = '/';
 if (isWin) DS = '\\';
 
 var cacheDir = '.cache';
-
 
 function cleanCache() {
 	// Recreates Cache folder
@@ -132,7 +137,6 @@ fs.readdir('libraries/bootstrap/img', function (err, list) {
 });
 
 // JS Libraries
-
 if (fs.existsSync('../js/bootstrap.min.js')) {
 	fs.unlinkSync('../js/bootstrap.min.js');
 }
@@ -156,6 +160,6 @@ var jss = '';
 jslibs.forEach(function (f) {
 	jss += fs.readFileSync(f,{encoding: 'utf8'});
 })
-var jssug = '/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\nAdapted for Wright Framework v.3, from Joomlashack*/\n';
+var jssug = '/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n* Adapted for Wright v.3 Framework, from Joomlashack\n*/\n';
 jssug += UglifyJS(jss, {show_copyright: 'true'});
 fs.writeFileSync('../js/bootstrap.min.js',jssug,{flag: 'a+'});
