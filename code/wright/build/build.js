@@ -80,7 +80,11 @@ fs.readdir('less', function (err, list) {
 
 								recess(df,{compile: true, compress: true}, function (err, obj) {
 									if (err) {
-										console.log('Error compiling ' + dfcss + ': ' + err);
+										console.log('Error compiling ' + dfcss + ':');
+										Object.keys(err).forEach(function (key) {
+											console.log(err[key]);
+										});
+										console.log('');
 									}
 									else if (obj.errors.length > 0) {
 										console.log('Error compiling ' + dfcss + ': ' + obj.errors);
@@ -106,7 +110,11 @@ fs.readdir('less', function (err, list) {
 
 								recess(dfr,{compile: true, compress: true}, function (err, obj) {
 									if (err) {
-										console.log('Error compiling ' + dfcssr + ': ' + err);
+										console.log('Error compiling ' + dfcssr + ':');
+										Object.keys(err).forEach(function (key) {
+											console.log(err[key]);
+										});
+										console.log('');
 									}
 									else if (obj.errors.length > 0) {
 										console.log('Error compiling ' + dfcssr + ': ' + obj.errors);
