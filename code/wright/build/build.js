@@ -1,6 +1,6 @@
 var v = process.versions;
-if (v.node < '0.10.1') {
-	console.log('Builder requieres at least Node.JS 0.10.1')
+if (v.node < '0.10.0') {
+	console.log('Builder requieres at least Node.JS 0.10.0')
 	return;
 }
 
