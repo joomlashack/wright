@@ -21,7 +21,7 @@ abstract class HtmlAdapterAbstract
 
 	public function  __construct($params) {
 		$this->params = $params;
-		$this->setupColumns();
+		//$this->setupColumns();
 	}
 
 	public function getTags()
@@ -49,6 +49,8 @@ abstract class HtmlAdapterAbstract
 
 	public function getBody($matches)
 	{
+
+		return '<body>';
 		$wright = Wright::getInstance();
 		require_once(JPATH_ROOT.'/'.'templates'.'/'.$wright->document->template.'/'.'wright'.'/'.'includes'.'/'.'browser.php');
 		$browser = new Browser();

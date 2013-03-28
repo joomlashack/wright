@@ -8,7 +8,7 @@
  * It would be inadvisable to alter the contents of anything inside of this folder
  *
  */
-defined('_JEXEC') or die('You are not allowed to directly access this file');
+//defined('_JEXEC') or die('You are not allowed to directly access this file');
 
 class WrightTemplateBase {
 	public $suffixes = false;  // checks if template allows stacked suffixes
