@@ -8,7 +8,7 @@
  * It would be inadvisable to alter the contents of anything inside of this folder
  *
  */
-defined('_JEXEC') or die('You are not allowed to directly access this file');
+//defined('_JEXEC') or die('You are not allowed to directly access this file');
 
 //Adding a check for PHP4 to cut down on support
 if (version_compare(PHP_VERSION, '5', '<'))
@@ -20,6 +20,8 @@ if (version_compare(PHP_VERSION, '5', '<'))
 // includes WrightTemplateBase class for customizations to the template
 require_once(dirname(__FILE__) . '/template/wrighttemplatebase.php');
 
+//include Wright options
+require_once( get_stylesheet_directory() . '/theme-options.php');
 
 class Wright
 {
@@ -46,53 +48,57 @@ class Wright
 	function Wright()
 	{
 		// Initialize properties
-		$document = JFactory::getDocument();
-		$app = JFactory::getApplication();
-		$this->document = $document;
-		$this->params = $document->params;
-		$this->baseurl = $document->baseurl;
+		// $document = JFactory::getDocument();
+		// $app = JFactory::getApplication();
+		// $this->document = $document;
+		// $this->params = $document->params;
+		// $this->baseurl = $document->baseurl;
+		global $wright_options;
+		$this->params = get_option('wright_options', $wright_options);
 
 		// Urls
-		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
-		$this->_urlWright = $this->_urlTemplate . '/wright';
-		$this->_urlBootstrap = $this->_urlWright . '/bootstrap';
-		$this->_urlFontAwesome = $this->_urlWright . '/fontawesome';
-		$this->_urlJS = $this->_urlWright . '/js';
+		// $this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
+		// $this->_urlWright = $this->_urlTemplate . '/wright';
+		// $this->_urlBootstrap = $this->_urlWright . '/bootstrap';
+		// $this->_urlFontAwesome = $this->_urlWright . '/fontawesome';
+		// $this->_urlJS = $this->_urlWright . '/js';
 		
-		// versions under 3.0 must load bootstrap
-		if (version_compare(JVERSION, '3.0', 'lt')) {
-			$this->loadBootstrap = true;
-		}
-		else {
-			// Add JavaScript Frameworks
-			JHtml::_('bootstrap.framework');
-		}
+		// // versions under 3.0 must load bootstrap
+		// if (version_compare(JVERSION, '3.0', 'lt')) {
+		// 	$this->loadBootstrap = true;
+		// }
+		// else {
+		// 	// Add JavaScript Frameworks
+		// 	JHtml::_('bootstrap.framework');
+		// }
 
-		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
+		// $this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
 
-		if (is_file(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
-			include_once(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php');
+		// if (is_file(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
+		// 	include_once(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php');
 
-		// Get our template for further parsing, if custom file is found
-		// it will use it instead of the default file
-		$path = JPATH_THEMES . '/' . $document->template . '/' . 'template.php';
-		$menu = $app->getMenu();
+		// // Get our template for further parsing, if custom file is found
+		// // it will use it instead of the default file
+		// $path = JPATH_THEMES . '/' . $document->template . '/' . 'template.php';
+		// $menu = $app->getMenu();
 
-		// If homepage, load up home.php if found
-        if (version_compare(JVERSION, '1.6', 'lt')) {
-            if ($menu->getActive() == $menu->getDefault() && is_file(JPATH_THEMES . '/' . $document->template . '/' . 'home.php'))
-                $path = JPATH_THEMES . '/' . $document->template . '/home.php';
-            elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
-                $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
-        }
-        else {
-            $lang = JFactory::getLanguage();
-            if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . '/' . $document->template . '/home.php'))
-                $path = JPATH_THEMES . '/' . $document->template . '/home.php';
-            elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
-                $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
-        }
+		// // If homepage, load up home.php if found
+  //       if (version_compare(JVERSION, '1.6', 'lt')) {
+  //           if ($menu->getActive() == $menu->getDefault() && is_file(JPATH_THEMES . '/' . $document->template . '/' . 'home.php'))
+  //               $path = JPATH_THEMES . '/' . $document->template . '/home.php';
+  //           elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
+  //               $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
+  //       }
+  //       else {
+  //           $lang = JFactory::getLanguage();
+  //           if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . '/' . $document->template . '/home.php'))
+  //               $path = JPATH_THEMES . '/' . $document->template . '/home.php';
+  //           elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
+  //               $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
+  //       }
 
+			//TODO:detect custom before handling control
+			$path = get_template_directory() . "/template.php";
 
 		// Include our file and capture buffer
 		ob_start();
@@ -114,14 +120,15 @@ class Wright
 
 	public function display()
 	{
+
+		// Parse by doctype
+		$this->doctype();
+
 		// Setup the header
 		$this->header();
 
 		// Parse by platform
 		$this->platform();
-
-		// Parse by doctype
-		$this->doctype();
 
 		print trim($this->template);
 
@@ -130,6 +137,7 @@ class Wright
 
 	public function header()
 	{
+		/*
 		// Remove mootools if set
 		if ($this->document->params->get('mootools', '1') == '0')
 		{
@@ -166,7 +174,13 @@ class Wright
             // ensure that jQuery loads in noConflict mode to avoid mootools conflicts
             $this->document->addScriptDeclaration('jQuery.noConflict();');
 		}
+		*/
 
+		//load jquery
+		wp_enqueue_script('jquery');
+		wp_head();
+
+		/*
 		if ($this->loadBootstrap)
 			// load bootstrap JS
 			$this->addJSScript($this->_urlBootstrap . '/js/bootstrap.min.js');
@@ -195,7 +209,7 @@ class Wright
 		}
 
 		// Build css
-		$this->css();
+		$this->css(); */
 	}
 
 	private function css()
@@ -396,9 +410,9 @@ class Wright
 
 	private function doctype()
 	{
-		require(dirname(__FILE__) . '/doctypes/' . $this->document->params->get('doctype', 'html5') . '.php');
-		$adapter_name = 'HtmlAdapter' . $this->document->params->get('doctype', 'html5');
-		$adapter = new $adapter_name($this->document->params);
+		require(dirname(__FILE__) . '/doctypes/' . $this->params['doctype'] . '.php');
+		$adapter_name = 'HtmlAdapter' . $this->params['doctype'];
+		$adapter = new $adapter_name($this->params);
 
 		foreach ($adapter->getTags() as $name => $regex)
 		{
@@ -407,11 +421,13 @@ class Wright
 		}
 
 		// reorder columns based on the order
+		/*
         $this->reorderContent();
 
         if (trim($this->document->params->get('footerscript')) != '') {
             $this->template = str_replace('</body>', '<script type="text/javascript">'.$this->document->params->get('footerscript').'</script></body>', $this->template);
         }
+       */
 		$this->template = str_replace('__cols__', $adapter->cols, $this->template);
 	}
 
