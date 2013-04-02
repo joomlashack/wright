@@ -1,6 +1,6 @@
 <?php
 
-require_once('wright/wpwright.php');
+require_once(dirname(__FILE__) . '/wright/wpwright.php');
 
 $theme = Wright::getInstance();
 
