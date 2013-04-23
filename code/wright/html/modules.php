@@ -17,8 +17,10 @@ function getPositionAutospanWidth($position) {
         foreach ( $robModules as $robModule ) {
             $modParams = new JRegistry($robModule->params);
             // module width has been fixed?
-            if (stripos($modParams->get('moduleclass_sfx'), 'span')) {
-                $modColumns = preg_replace('/\D/', '', $modParams->get('moduleclass_sfx'));
+
+            $matches = Array();
+            if (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)) {
+                $modColumns = (int)$matches[1];
                 $availableColumns -= $modColumns;
                 $autospanModules--;
             }
@@ -53,14 +55,13 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 
 	$class = $params->get('moduleclass_sfx');
     static $modulenumber = 1;
-    if (stripos($params->get('moduleclass_sfx'), 'span') === false) {
-        $grid = '';
-        if (isset($attribs['grid']))
-            $grid = $attribs['grid'];
-    // user assigned span width in module parameters
-    } else {
-        $grid = preg_replace('/\D/', '', $params->get('moduleclass_sfx'));
-        $spanWidth = $grid;
+    $matches = Array();
+    if (preg_match('/span([0-9]{1,2})/', $params->get('moduleclass_sfx'), $matches)) {
+        // user assigned span width in module parameters
+        $params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $params->get('moduleclass_sfx')));
+        $class = $params->get('moduleclass_sfx');
+        $spanWidth = (int)$matches[1];
+        $module->content = preg_replace('/<div class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<div class="$1 $2"$3>', $module->content);
     }
 
     $class .= ' mod_'.$modulenumbera[$attribs['name']];
