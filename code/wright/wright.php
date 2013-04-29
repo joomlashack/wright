@@ -314,9 +314,6 @@ class Wright
 
 		$browser = JBrowser::getInstance();
 
-        $version = explode('.', JVERSION);
-        $version = $version[0].$version[1];
-
 		$styles['bootstrap'] = Array();
 		$styles['fontawesome'] = Array();
 		$styles['wright'] = Array();
@@ -332,16 +329,32 @@ class Wright
 		$styles['fontawesome'] = array('font-awesome.min.css');
 
 		$styles['wright'] = array('typography.css');
-        if (is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.css'))
-        {
-            $styles['wright'][] = 'joomla'.$version.'.css';
-        }
-		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.responsive.css')) {
-            $styles['wright'][] = 'joomla'.$version.'.responsive.css';
-		}
-		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template .'/css/responsive.css')) {
-            $styles['template'][] = 'responsive.css';
-		}
+
+
+        $version = explode('.', JVERSION);
+        $subversion = (int)$version[1];
+        $cssFound = false;
+
+        while (!$cssFound && $subversion >= 0) {
+	        $version = $version[0].$subversion;
+
+	        if (is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.css')) {
+	        	$cssFound = true;
+
+	            $styles['wright'][] = 'joomla'.$version.'.css';
+
+				if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template .'/wright/css/joomla'.$version.'.responsive.css')) {
+		            $styles['wright'][] = 'joomla'.$version.'.responsive.css';
+				}
+				if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template .'/css/responsive.css')) {
+		            $styles['template'][] = 'responsive.css';
+				}
+
+	        }
+	        else {
+	        	$subversion--;
+	        }
+	    }
 
 		// Load up a specific bootstrap style if set
 		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'style-' . $this->document->params->get('style') . '.bootstrap.min.css'))
