@@ -224,15 +224,27 @@ class Wright
 		$browser = JBrowser::getInstance();
 
         $version = explode('.', JVERSION);
-        $version = $version[0].$version[1];
 
-		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '.css'))
-			$styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '.css';
+        $subversion = (int)$version[1];
 
-		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css')) {
-            $styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css';
-		}
+        $cssFound = false;
 
+        while (!$cssFound && $subversion >= 0) {
+	        $version = $version[0].$subversion;
+
+			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '.css')) {
+
+				$cssFound = true;
+
+				$styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '.css';
+				if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css')) {
+		            $styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css';
+				}
+			}
+			else {
+				$subversion--;
+			}
+        }
 
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
