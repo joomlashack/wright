@@ -28,17 +28,31 @@ class Overrider
 		switch ($type)
 		{
 			case 'mod' :
-                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php'))
-					$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php';
-				else
+				$fileFound = false;
+				$subversion = $version[1];
+				while (!$fileFound && $subversion >= 0) {
+	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php')) {
+	                	$fileFound = true;
+						$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php';
+	                }
+	                $subversion--;
+				}
+				if (!$fileFound)
 					$file = JPATH_SITE.'/modules/'.$extension.'/tmpl/'.$layout.'.php';
 				break;
 
 			case 'com' :
+				$fileFound = false;
+				$subversion = $version[1];
 				list($folder, $view) = explode('.', $extension);
-                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php'))
-					$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php';
-				else
+				while (!$fileFound && $subversion >= 0) {
+	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php')) {
+	                	$fileFound = true;
+						$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php';
+	                }
+	                $subversion--;
+				}
+				if (!$fileFound)
 					$file = JPATH_SITE.'/components/'.$folder.'/views/'.$view.'/tmpl/'.$layout.'.php';		
 				break;
 		}
