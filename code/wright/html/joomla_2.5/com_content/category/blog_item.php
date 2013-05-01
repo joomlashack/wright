@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.9
+// Wright v.3 Override: Joomla 2.5.11
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -21,7 +21,6 @@ $canEdit	= $this->item->params->get('access-edit');
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.framework');
-
 
 ?>
 
