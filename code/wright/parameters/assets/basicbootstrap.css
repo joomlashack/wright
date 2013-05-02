@@ -84,35 +84,35 @@
     width: 6.38298%;
 }
 
-.icon-caret-left:before{
+.icon-arrow-left:before{
     content:"\f0d9";
 }
 
-.icon-caret-right:before{
+.icon-arrow-right:before{
     content:"\f0da";
 }
 
-.icon-caret-left:before, .icon-caret-left:before,
-.icon-caret-right:before, .icon-caret-right:before {
+.icon-arrow-left:before, .icon-arrow-left:before,
+.icon-arrow-right:before, .icon-arrow-right:before {
     display: inline-block;
     text-decoration: inherit;
 }
 
-li .icon-caret-left, li .icon-caret-left,
-li .icon-caret-right, li .icon-caret-right {
+li .icon-arrow-left, li .icon-arrow-left,
+li .icon-arrow-right, li .icon-arrow-right {
     display: inline-block;
     text-align: center;
     width: 1.25em;
 }
 
-a .icon-caret-left, a .icon-caret-left,
-a .icon-caret-right, a .icon-caret-right {
+a .icon-arrow-left, a .icon-arrow-left,
+a .icon-arrow-right, a .icon-arrow-right {
     display: inline-block;
     cursor: pointer;
 }
 
-.icon-caret-left, .icon-caret-left,
-.icon-caret-right, .icon-caret-right {
+.icon-arrow-left, .icon-arrow-left,
+.icon-arrow-right, .icon-arrow-right {
     background-image: none !important;
     background-position: 0 0;
     background-repeat: repeat;
