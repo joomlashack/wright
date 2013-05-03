@@ -46,7 +46,7 @@ cleanCache();
 
 // Iterate LESS styles
 var joomlalessRegEx = /joomla([0-9]+).less/i;
-var stylelessRegEx = /variables-([a-z0-9]+).less/i;
+var stylelessRegEx = /variables-([a-z0-9\-]+).less/i;
 fs.readdir('less', function (err, list) {
 	if (list)
 		list.forEach(function (f) {

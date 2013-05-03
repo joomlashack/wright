@@ -24,7 +24,8 @@ class JFormFieldStyles extends JFormFieldList
 		while (!$filesFound && $subversion >= 0) {
 	        $version = $version[0].$subversion;
 
-			$styles = JFolder::files(JPATH_ROOT.'/templates'.'/'.$this->form->getValue('template').'/css', 'joomla' . $version . '-([^\.-]*)\.css');
+			$styles = JFolder::files(JPATH_ROOT.'/templates'.'/'.$this->form->getValue('template').'/css', 'joomla' . $version . '-([^\.]*)\.css');
+
 	        if (!count($styles)) {
 	        	$subversion--;
 	        }
@@ -38,10 +39,12 @@ class JFormFieldStyles extends JFormFieldList
 
 		foreach ($styles as $style)
 		{
-			$item = substr($style, 9, strpos($style, '.css') - 9);
-			$val	= $item;
-			$text	= ucfirst($item);
-			$options[] = JHTML::_('select.option', $val, JText::_($text));
+			if (!preg_match('/-responsive.css$/', $style)) {
+				$item = substr($style, 9, strpos($style, '.css') - 9);
+				$val	= $item;
+				$text	= ucfirst($item);
+				$options[] = JHTML::_('select.option', $val, JText::_($text));
+			}
 		}
 
 		return $options;
