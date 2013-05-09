@@ -1,29 +1,66 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.11
 /**
- * @version		$Id: default.php 22355 2011-11-07 05:11:58Z github_bot $
  * @package		Joomla.Site
- * @subpackage	mod_menu
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @subpackage	mod_search
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access.
+// no direct access
 defined('_JEXEC') or die;
 
-if (!function_exists("wright_joomla_mod_search")) :	
+/* Wright v.3: Custom Image for style */
+	if ($button && $imagebutton) {
+		$app = JFactory::getApplication();
+		$template = $app->getTemplate(true);
+		$user = JFactory::getUser();
+		$style = JRequest::getVar('templateTheme',$user->getParam('theme',$template->params->get('style','generic')));
+		if (file_exists(JPATH_SITE . '/templates/' . $template->template . '/images/' . $style . '/searchButton.gif')) {
+			$img = JURI::base() . '/templates/' . $template->template . '/images/' . $style . '/searchButton.gif';
+		}
+	}
+/* End Wright v.3: Custom Image for style */
 
-function wright_joomla_mod_search($buffer) {
-	$buffer = preg_replace('/<input([^>]*)class="button([^"]*)"([^>]*)>/Ui', '<input$1class="button$2 btn btn-primary"$3>', $buffer);
-	$buffer = preg_replace('/<input([^>]*)type="image"([^>]*)class="button([^"]*) btn btn-primary"([^>]*)>/Ui', '<input$1type="image"$2class="button$3"$4>', $buffer);
-
-	return $buffer;
-				
-}
-	
-
-endif;
-
-ob_start("wright_joomla_mod_search");
-require('modules/mod_search/tmpl/default.php');
-ob_end_flush();
 ?>
+<form action="<?php echo JRoute::_('index.php');?>" method="post">
+	<div class="search<?php echo $moduleclass_sfx ?>">
+		<?php
+			$output = '<label for="mod-search-searchword">'.$label.'</label><input name="searchword" id="mod-search-searchword" maxlength="'.$maxlength.'"  class="inputbox'.$moduleclass_sfx.'" type="text" size="'.$width.'" value="'.$text.'"  onblur="if (this.value==\'\') this.value=\''.$text.'\';" onfocus="if (this.value==\''.$text.'\') this.value=\'\';" />';
+
+			if ($button) :
+				if ($imagebutton) :
+					$button = '<input type="image" value="'.$button_text.'" class="button'.$moduleclass_sfx.'" src="'.$img.'" onclick="this.form.searchword.focus();"/>';
+				else :
+					$button = '<input type="submit" value="'.$button_text.'" class="btn btn-primary button'.$moduleclass_sfx.'" onclick="this.form.searchword.focus();"/>';  // Wright v.3: Added btn btn-primary
+				endif;
+			endif;
+
+			switch ($button_pos) :
+				case 'top' :
+					$button = $button.'<br />';
+					$output = $button.$output;
+					break;
+
+				case 'bottom' :
+					$button = '<br />'.$button;
+					$output = $output.$button;
+					break;
+
+				case 'right' :
+					$output = $output.$button;
+					break;
+
+				case 'left' :
+				default :
+					$output = $button.$output;
+					break;
+			endswitch;
+
+			echo $output;
+		?>
+	<input type="hidden" name="task" value="search" />
+	<input type="hidden" name="option" value="com_search" />
+	<input type="hidden" name="Itemid" value="<?php echo $mitemid; ?>" />
+	</div>
+</form>
