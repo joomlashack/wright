@@ -15,3 +15,8 @@ p#column_info,
 div#columns {
 	clear: both;
 }
+
+a .icon-arrow-left, a .icon-arrow-left,
+a .icon-arrow-right, a .icon-arrow-right {
+    cursor: pointer;
+}

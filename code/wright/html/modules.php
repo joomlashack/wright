@@ -61,7 +61,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
         $params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $params->get('moduleclass_sfx')));
         $class = $params->get('moduleclass_sfx');
         $spanWidth = (int)$matches[1];
-        $module->content = preg_replace('/<div class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<div class="$1 $2"$3>', $module->content);
+        $module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
     }
 
     $class .= ' mod_'.$modulenumbera[$attribs['name']];

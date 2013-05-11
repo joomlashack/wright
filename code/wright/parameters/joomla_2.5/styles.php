@@ -18,18 +18,33 @@ class JFormFieldStyles extends JFormFieldList
 		$options = array();
 
 		$version = explode('.', JVERSION);
-        $version = $version[0].$version[1];
+		$subversion = (int)$version[1];
+		$filesFound = false;
 
-		$styles = JFolder::files(JPATH_ROOT.'/templates'.'/'.$this->form->getValue('template').'/css', 'joomla' . $version . '-([^\.-]*)\.css');
+		while (!$filesFound && $subversion >= 0) {
+	        $version = $version[0].$subversion;
 
-        if (!count($styles)) return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template'), true));
+			$styles = JFolder::files(JPATH_ROOT.'/templates'.'/'.$this->form->getValue('template').'/css', 'joomla' . $version . '-([^\.]*)\.css');
+
+	        if (!count($styles)) {
+	        	$subversion--;
+	        }
+	        else
+	        	$filesFound = true;
+		}
+
+        if (!count($styles)) {
+	        return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template'), true));
+        }
 
 		foreach ($styles as $style)
 		{
-			$item = substr($style, 9, strpos($style, '.css') - 9);
-			$val	= $item;
-			$text	= ucfirst($item);
-			$options[] = JHTML::_('select.option', $val, JText::_($text));
+			if (!preg_match('/-responsive.css$/', $style)) {
+				$item = substr($style, 9, strpos($style, '.css') - 9);
+				$val	= $item;
+				$text	= ucfirst($item);
+				$options[] = JHTML::_('select.option', $val, JText::_($text));
+			}
 		}
 
 		return $options;
