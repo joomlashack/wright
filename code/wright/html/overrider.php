@@ -1,4 +1,14 @@
 <?php
+/**
+ * @package     Wright
+ * @subpackage  Overrider
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+include_once(JPATH_THEMES.'/'.JFactory::getApplication()->getTemplate().'/wright/html/jlayouthelper.php');
 
 class Overrider
 {
@@ -15,7 +25,7 @@ class Overrider
 		return self::$version;
 	}
 
-	public static function getOverride($extension, $layout = 'default')
+	public static function getOverride($extension, $layout = 'default', $strictOverride = false)
 	{
 		$type = substr($extension, 0, 3);
 
@@ -37,8 +47,10 @@ class Overrider
 	                }
 	                $subversion--;
 				}
-				if (!$fileFound)
+				if (!$fileFound) {
+					if ($strictOverride) return false;
 					$file = JPATH_SITE.'/modules/'.$extension.'/tmpl/'.$layout.'.php';
+				}
 				break;
 
 			case 'com' :
@@ -52,8 +64,10 @@ class Overrider
 	                }
 	                $subversion--;
 				}
-				if (!$fileFound)
+				if (!$fileFound) {
+					if ($strictOverride) return false;
 					$file = JPATH_SITE.'/components/'.$folder.'/views/'.$view.'/tmpl/'.$layout.'.php';		
+				}
 				break;
 
 			case 'lyt' :
@@ -68,8 +82,10 @@ class Overrider
 	                }
 	                $subversion--;
 				}
-				if (!$fileFound)
+				if (!$fileFound) {
+					if ($strictOverride) return false;
 					$file = JPATH_SITE.'/layouts/'.$override.'.php';
+				}
 				break;
 		}
 		return $file;
