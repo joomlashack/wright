@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.0.3
+// Wright v.3 Override: Joomla 3.1.1
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -9,6 +9,10 @@
  */
 
 defined('_JEXEC') or die;
+
+/* Wright v.3: Helper */
+	include_once(dirname(__FILE__) . '/../com_content.helper.php');
+/* End Wright v.3: Helper */
 
 /* Wright v.3: Bootstrapped images */
 	$app = JFactory::getApplication();
@@ -48,6 +52,12 @@ JHtml::_('behavior.caption');
 		<?php endif; ?>
 	</h2>
 	<?php endif; ?>
+
+	<?php if ($this->params->get('show_tags', 1) && !empty($this->category->tags->itemTags)) : ?>
+		<?php $this->category->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
+		<?php echo $this->category->tagLayout->render($this->category->tags->itemTags); ?>
+	<?php endif; ?>
+
 	<?php if ($this->params->get('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
 	<div class="category-desc">
 		<?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
@@ -123,7 +133,7 @@ JHtml::_('behavior.caption');
 				</div><!-- end item -->
 				<?php $counter++; ?>
 			</div><!-- end spann -->
-			<?php if (($rowcount == $this->columns) or ($counter == $introcount)) : ?>			
+			<?php if (($rowcount == $this->columns) or ($counter == $introcount)) : ?>
 		</div><!-- end row -->
 			<?php endif; ?>
 	<?php endforeach; ?>
@@ -155,7 +165,9 @@ JHtml::_('behavior.caption');
 	<?php endif; ?>
 	<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
 	<div class="cat-children">
+	<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
 		<h3> <?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?> </h3>
+	<?php endif; ?>		
 		<?php echo $this->loadTemplate('children'); ?> </div>
 	<?php endif; ?>
 	<?php if (($this->params->def('show_pagination', 1) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->get('pages.total') > 1)) : ?>
