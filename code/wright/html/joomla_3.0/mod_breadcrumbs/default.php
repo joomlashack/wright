@@ -14,6 +14,7 @@ if (!function_exists("wright_joomla_breadcrumbs")) :
 
 
 	function wright_joomla_breadcrumbs($buffer) {
+		$buffer = preg_replace('/icon-location/Ui', 'icon-map-marker', $buffer);
 		$buffer = preg_replace('/<img([^>]*)arrow([^>]*)>/Ui', '&nbsp;<i class="icon-caret-right"></i>&nbsp;', $buffer);
 		return $buffer;
 	}
