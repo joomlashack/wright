@@ -131,10 +131,23 @@ abstract class HtmlAdapterAbstract
 
 	public function getSections($matches)
 	{
-		$class = 'span'.$this->columns['main']->size;
-		if (strpos($matches[1], 'class=')) {
-			preg_match('/class="(.*)"/i', $matches[1], $classes);
-			$class .= ' ' . $classes[1];
+		$useMainSpans = true;
+		if (class_exists("WrightTemplate")) {
+			if (property_exists("WrightTemplate", "useMainSpans")) {
+				$wrightTemplate = WrightTemplate::getInstance();
+				if (!$wrightTemplate->useMainSpans)
+					$useMainSpans = false;
+			}
+		}
+
+		$class = "";
+		// use main Spans only if allowed by template internal configuration
+		if ($useMainSpans) {
+			$class = 'span'.$this->columns['main']->size;
+			if (strpos($matches[1], 'class=')) {
+				preg_match('/class="(.*)"/i', $matches[1], $classes);
+				$class .= ' ' . $classes[1];
+			}
 		}
 
 		$this->columns['main']->exists = true;  // marks that column really exists
@@ -180,10 +193,23 @@ abstract class HtmlAdapterAbstract
 
 		$this->columns[$id]->exists = true;  // marks that column really exists
 
-		$class = 'span'.$this->columns[$id]->size;
-		if (strpos($matches[1], 'class=')) {
-			preg_match('/class="(.*)"/i', $matches[1], $classes);
-			$class .= ' ' . $classes[1];
+		$useMainSpans = true;
+		if (class_exists("WrightTemplate")) {
+			if (property_exists("WrightTemplate", "useMainSpans")) {
+				$wrightTemplate = WrightTemplate::getInstance();
+				if (!$wrightTemplate->useMainSpans)
+					$useMainSpans = false;
+			}
+		}
+
+		$class = "";
+		// use main Spans only if allowed by template internal configuration
+		if ($useMainSpans) {
+			$class = 'span'.$this->columns[$id]->size;
+			if (strpos($matches[1], 'class=')) {
+				preg_match('/class="(.*)"/i', $matches[1], $classes);
+				$class .= ' ' . $classes[1];
+			}
 		}
 
 		if (strpos($matches[1], 'class='))
