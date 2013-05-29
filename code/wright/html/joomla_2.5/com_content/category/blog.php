@@ -10,6 +10,10 @@
 // no direct access
 defined('_JEXEC') or die;
 
+/* Wright v.3: Helper */
+	include_once(dirname(__FILE__) . '/../com_content.helper.php');
+/* End Wright v.3: Helper */
+
 /* Wright v.3: Bootstrapped images */
 	$app = JFactory::getApplication();
 	$template = $app->getTemplate(true);
@@ -29,8 +33,8 @@ defined('_JEXEC') or die;
 
 /* Wright v.3: Extra classes (general) */
 	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
-	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
 	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "";
+	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
 
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
 	if (!isset($this->wrightComplementInnerClass)) $this->wrightComplementInnerClass = "";
@@ -42,9 +46,11 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 ?>
 <div class="blog<?php echo $this->pageclass_sfx;?>">
 <?php if ($this->params->get('show_page_heading')) : ?>
+	<div class="page-header"> <?php // Wright v.3: Added page-header ?>
 	<h1>
 		<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h1>
+	</div> <?php // Wright v.3: Added page-header ?>
 	<?php endif; ?>
 
 	<?php if ($this->params->get('show_category_title', 1) or $this->params->get('page_subheading')) : ?>
@@ -72,15 +78,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 <?php endif; ?>
 
 
-<?php
-	/* Wright v.3: Extra Leading and Intro Items Div and Class */
-	if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") :
-?>
-	<div class="<?php echo $this->wrightLeadingIntroItemsClass ?>">
-<?php
-	endif;
-	/* End Wright v.3: Extra Leading and Intro Items Div and Class */
-?>
+<?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '<div class="' . $this->wrightLeadingIntroItemsClass . '">'; // Wright v.3: Extra Leading and Intro Items Div and Class ?>
 <?php $leadingcount=0 ; ?>
 <?php if (!empty($this->lead_items)) : ?>
 <div class="items-leading<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.3: Leading Items extra Class ?>">
@@ -104,15 +102,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	$counter=0;
 ?>
 <?php if (!empty($this->intro_items)) : ?>
-	<?php
-		/* Wright v.3: Extra Intro Items Div and Class */
-		if ($this->wrightIntroItemsClass != "") :
-	?>
-		<div class="<?php echo $this->wrightIntroItemsClass ?>">
-	<?php
-		endif;
-		/* End Wright v.3: Extra Intro Items Div and Class */
-	?>
+	<?php if ($this->wrightIntroItemsClass != "") echo '<div class="' . $this->wrightIntroItemsClass . '">'; // Wright v.3: Extra Intro Items Div and Class ?>
 	<?php foreach ($this->intro_items as $key => &$item) : ?>
 	<?php
 		$key= ($key-$leadingcount)+1;
@@ -163,77 +153,26 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 			<?php endif; ?>
 	<?php endforeach; ?>
-	<?php
-		/* Wright v.3: Extra Intro Items Div and Class */
-		if ($this->wrightIntroItemsClass != "") :
-	?>
-		</div>
-	<?php
-		endif;
-		/* End Wright v.3: Extra Intro Items Div and Class */
-	?>
+	<?php if ($this->wrightIntroItemsClass != "") echo ('</div>'); // Wright v.3: Extra Intro Items Div and Class ?>
 
 <?php endif; ?>
 
 
-<?php
-	/* Wright v.3: Extra Leading and Intro Items Div and Class */
-	if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") :
-?>
-	</div>
-<?php
-	endif;
-	/* End Wright v.3: Extra Leading and Intro Items Div and Class */
-?>
+<?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '</div>'; // Wright v.3: Extra Leading and Intro Items Div and Class ?>
 
-<?php
-	/* Wright v.3: Outer complements class */
-	if ($this->wrightComplementOuterClass != "") :
-?>
-	<div class="<?php echo $this->wrightComplementOuterClass ?>">
-<?php
-	endif;
-	/* End Wright v.3: Outer complements class */
-?>
-
-<?php
-	/* Wright v.3: Inner complements class */
-	if ($this->wrightComplementInnerClass != "") :
-?>
-	<div class="<?php echo $this->wrightComplementInnerClass ?>">
-<?php
-	endif;
-	/* End Wright v.3: Inner complements class */
-?>
+<?php if ($this->wrightComplementOuterClass != "") echo '<div class="' . $this->wrightComplementOuterClass . '">' // Wright v.3: Outer complements class  ?>
 
 <?php if (!empty($this->link_items)) : ?>
 
-	<?php echo $this->loadTemplate('links'); ?>
+	<?php if ($this->wrightComplementInnerClass != "") echo '<div class="' . $this->wrightComplementInnerClass . '">' // Wright v.3: Inner complements class  ?>
+		<?php echo $this->loadTemplate('links'); ?>
+
+	<?php if ($this->wrightComplementInnerClass != "") echo '</div>' // Wright v.3: Inner complements class  ?>
 
 <?php endif; ?>
 
-<?php
-	/* Wright v.3: Inner complements class */
-	if ($this->wrightComplementInnerClass != "") :
-?>
-	</div>
-<?php
-	endif;
-	/* End Wright v.3: Inner complements class */
-?>
-
-<?php
-	/* Wright v.3: Inner complements class */
-	if ($this->wrightComplementInnerClass != "") :
-?>
-	<div class="<?php echo $this->wrightComplementInnerClass ?>">
-<?php
-	endif;
-	/* End Wright v.3: Inner complements class */
-?>
-
 	<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
-		<div class="cat-children">
+		<div class="cat-children<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 		<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
 		<h3>
 		<?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
@@ -243,28 +182,8 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 		</div>
 	<?php endif; ?>
 
-<?php
-	/* Wright v.3: Inner complements class */
-	if ($this->wrightComplementInnerClass != "") :
-?>
-	</div>
-<?php
-	endif;
-	/* End Wright v.3: Inner complements class */
-?>
-
-<?php
-	/* Wright v.3: Inner complements class */
-	if ($this->wrightComplementInnerClass != "") :
-?>
-	<div class="<?php echo $this->wrightComplementInnerClass ?>">
-<?php
-	endif;
-	/* End Wright v.3: Inner complements class */
-?>
-
 <?php if (($this->params->def('show_pagination', 1) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->get('pages.total') > 1)) : ?>
-		<div class="pagination">
+		<div class="pagination<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 						<?php  if ($this->params->def('show_pagination_results', 1)) : ?>
 						<p class="counter">
 								<?php echo $this->pagination->getPagesCounter(); ?>
@@ -275,24 +194,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 		</div>
 <?php  endif; ?>
 
-<?php
-	/* Wright v.3: Inner complements class */
-	if ($this->wrightComplementInnerClass != "") :
-?>
-	</div>
-<?php
-	endif;
-	/* End Wright v.3: Inner complements class */
-?>
+<?php if ($this->wrightComplementOuterClass != "") echo '</div>' // Wright v.3: Outer complements class  ?>
 
-<?php
-	/* Wright v.3: Outer complements class */
-	if ($this->wrightComplementOuterClass != "") :
-?>
-	</div>
-<?php
-	endif;
-	/* End Wright v.3: Outer complements class */
-?>
 
 </div>
