@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.0.3
+// Wright v.3 Override: Joomla 3.1.1
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -10,16 +10,15 @@
 
 defined('_JEXEC') or die;
 
+/* Wright v.3: Helper */
+	include_once(dirname(__FILE__) . '/../com_content.helper.php');
+/* End Wright v.3: Helper */
+
 /* Wright v.3: Bootstrapped images */
 	$app = JFactory::getApplication();
 	$template = $app->getTemplate(true);
 	$this->wrightBootstrapImages = $template->params->get('wright_bootstrap_images','');
 /* End Wright v.3: Bootstrapped images */
-
-/* Wright v.3: Extra classes (general) */
-	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
-	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
-/* End Wright v.3: Extra classes (general) */
 
 /* Wright v.3: Item elements structure and extra elements */
 	if (!isset($this->wrightLeadingItemElementsStructure)) $this->wrightLeadingItemElementsStructure = Array();
@@ -30,6 +29,15 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightIntroHasImageClass)) $this->wrightIntroHasImageClass = "";
 	if (!isset($this->wrightIntroExtraClass)) $this->wrightIntroExtraClass = "";
 /* End Wright v.3: Item elements structure and extra elements */
+
+/* Wright v.3: Extra classes (general) */
+	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
+	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "";
+	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
+
+	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
+	if (!isset($this->wrightComplementInnerClass)) $this->wrightComplementInnerClass = "";
+/* End Wright v.3: Extra classes (general) */
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
@@ -47,16 +55,7 @@ JHtml::_('behavior.caption');
 </div>
 <?php endif; ?>
 
-<?php
-	/* Wright v.3: Extra Leading and Intro Items Div and Class */
-	if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") :
-?>
-	<div class="<?php echo $this->wrightLeadingIntroItemsClass ?>">
-<?php
-	endif;
-	/* End Wright v.3: Extra Leading and Intro Items Div and Class */
-?>
-
+<?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '<div class="' . $this->wrightLeadingIntroItemsClass . '">'; // Wright v.3: Extra Leading and Intro Items Div and Class ?>
 <?php $leadingcount = 0; ?>
 <?php if (!empty($this->lead_items)) : ?>
 <div class="items-leading<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.3: Leading Items extra Class ?>">
@@ -82,15 +81,7 @@ JHtml::_('behavior.caption');
 	$counter = 0;
 ?>
 <?php if (!empty($this->intro_items)) : ?>
-	<?php
-		/* Wright v.3: Extra Intro Items Div and Class */
-		if ($this->wrightIntroItemsClass != "") :
-	?>
-		<div class="<?php echo $this->wrightIntroItemsClass ?>">
-	<?php
-		endif;
-		/* End Wright v.3: Extra Intro Items Div and Class */
-	?>
+	<?php if ($this->wrightIntroItemsClass != "") echo '<div class="' . $this->wrightIntroItemsClass . '">'; // Wright v.3: Extra Intro Items Div and Class ?>
 	<?php foreach ($this->intro_items as $key => &$item) : ?>
 
 		<?php
@@ -100,10 +91,10 @@ JHtml::_('behavior.caption');
 
 		if ($rowcount == 1) : ?>
 
-		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> row-fluid">
+		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> row-fluid<?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
 		<?php endif; ?>
 			<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?> span<?php echo round((12 / $this->columns));?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.3: Item elements extra elements
-		 ?>">
+			 ?>">
 			<?php
 					$this->item = &$item;
 					$this->item->wrightElementsStructure = $this->wrightIntroItemElementsStructure;  // Wright v.3: Item elements structure
@@ -118,43 +109,31 @@ JHtml::_('behavior.caption');
 		<?php endif; ?>
 
 	<?php endforeach; ?>
-	<?php
-		/* Wright v.3: Extra Intro Items Div and Class */
-		if ($this->wrightIntroItemsClass != "") :
-	?>
-		</div>
-	<?php
-		endif;
-		/* End Wright v.3: Extra Intro Items Div and Class */
-	?>
+	<?php if ($this->wrightIntroItemsClass != "") echo ('</div>'); // Wright v.3: Extra Intro Items Div and Class ?>
 <?php endif; ?>
 
-<?php
-	/* Wright v.3: Extra Leading and Intro Items Div and Class */
-	if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") :
-?>
-	</div>
-<?php
-	endif;
-	/* End Wright v.3: Extra Leading and Intro Items Div and Class */
-?>
+<?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '</div>'; // Wright v.3: Extra Leading and Intro Items Div and Class ?>
+
+
 
 <?php if (!empty($this->link_items)) : ?>
-	<div class="items-more<?php echo " well"; // Wright v.3: More articles ?>">
+	<div class="items-more well<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class (also added well class)  ?>">
 	<?php echo $this->loadTemplate('links'); ?>
 	</div>
 <?php endif; ?>
 
 <?php if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->pagesTotal > 1)) : ?>
-	<div class="pagination">
+	<div class="pagination<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 
 		<?php if ($this->params->def('show_pagination_results', 1)) : ?>
 			<p class="counter pull-right">
 				<?php echo $this->pagination->getPagesCounter(); ?>
 			</p>
 		<?php  endif; ?>
-				<?php echo wrightTransformArticlePagination($this->pagination->getPagesLinks());  // Wright v.3: Page Navigation transformation (using helper) ?>
+				<?php echo $this->pagination->getPagesLinks(); ?>
 	</div>
 <?php endif; ?>
+
+
 
 </div>

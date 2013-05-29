@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 $app = JFactory::getApplication();
 
 $this->wrightLeadingIntroItemsClass = ''; //  Class added to the leading and intro articles (adds an extra wrapper)
+$this->wrightLeadingItemsClass = '';  // Class added to the leading items container (all the leading articles)
 $this->wrightLeadingExtraClass = ''; // Class added to each leading article
 $this->wrightIntroItemsClass = '';  // Class added to the intro articles (adds an extra wrapper)
 $this->wrightIntroRowsClass = ''; // Class added to each row of intro articles

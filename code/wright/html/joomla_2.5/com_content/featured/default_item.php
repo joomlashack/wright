@@ -35,7 +35,6 @@ $canEdit	= $this->item->params->get('access-edit');
 ?>
 
 <?php if ($params->get('show_title')) : ?>
-	<?php echo '<div class="page-header">'; // Wright v.3: Article title ?>
 	<h2>
 		<?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
 			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid)); ?>">
@@ -44,7 +43,6 @@ $canEdit	= $this->item->params->get('access-edit');
 			<?php echo $this->escape($this->item->title); ?>
 		<?php endif; ?>
 	</h2>
-	<?php echo '</div>'; // Wright v.3: Article title ?>
 <?php endif; ?>
 
 <?php

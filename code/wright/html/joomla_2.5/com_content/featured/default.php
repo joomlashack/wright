@@ -20,7 +20,6 @@ defined('_JEXEC') or die;
 	$this->wrightBootstrapImages = $template->params->get('wright_bootstrap_images','');
 /* End Wright v.3: Bootstrapped images */
 
-
 /* Wright v.3: Item elements structure and extra elements */
 	if (!isset($this->wrightLeadingItemElementsStructure)) $this->wrightLeadingItemElementsStructure = Array();
 	if (!isset($this->wrightLeadingHasImageClass)) $this->wrightLeadingHasImageClass = "";
