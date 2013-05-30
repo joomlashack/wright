@@ -1,5 +1,13 @@
 <?php
+/**
+ * @package     Wright
+ * @subpackage  Doctype
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
 
+defined('_JEXEC') or die('You are not allowed to directly access this file');
 abstract class HtmlAdapterAbstract
 {
 	protected $columns = array();
@@ -39,7 +47,11 @@ abstract class HtmlAdapterAbstract
 	}
 
 	public function getHtml($matches) {
-		return '<html>';
+		$lang = JFactory::getLanguage();
+		$tag = $lang->getTag();
+		$dir = ($lang->isRTL() ? "rtl" : "ltr");
+
+		return '<html lang="' . $tag . '" dir="' . $dir . '">';
 	}
 
 	public function getHtmlComments($matches)
