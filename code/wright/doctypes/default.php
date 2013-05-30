@@ -143,11 +143,10 @@ abstract class HtmlAdapterAbstract
 		$class = "";
 		// use main Spans only if allowed by template internal configuration
 		if ($useMainSpans) {
-			$class = 'span'.$this->columns['main']->size;
-			if (strpos($matches[1], 'class=')) {
-				preg_match('/class="(.*)"/i', $matches[1], $classes);
-				$class .= ' ' . $classes[1];
-			}
+			$class .= 'span'.$this->columns['main']->size;
+		}
+		if (preg_match('/class="(.*)"/u', $matches[1], $classes)) {
+			$class .= ' ' . $classes[1];
 		}
 
 		$this->columns['main']->exists = true;  // marks that column really exists
@@ -206,10 +205,9 @@ abstract class HtmlAdapterAbstract
 		// use main Spans only if allowed by template internal configuration
 		if ($useMainSpans) {
 			$class = 'span'.$this->columns[$id]->size;
-			if (strpos($matches[1], 'class=')) {
-				preg_match('/class="(.*)"/i', $matches[1], $classes);
-				$class .= ' ' . $classes[1];
-			}
+		}
+		if (preg_match('/class="(.*)"/u', $matches[1], $classes)) {
+			$class .= ' ' . $classes[1];
 		}
 
 		if (strpos($matches[1], 'class='))
