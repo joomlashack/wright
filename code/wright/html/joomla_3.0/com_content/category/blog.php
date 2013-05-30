@@ -37,6 +37,7 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
 
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
+	if (!isset($this->wrightComplementExtraClass)) $this->wrightComplementExtraClass = "";
 	if (!isset($this->wrightComplementInnerClass)) $this->wrightComplementInnerClass = "";
 /* End Wright v.3: Extra classes (general) */
 
@@ -134,23 +135,29 @@ JHtml::_('behavior.caption');
 	<?php if ($this->wrightComplementOuterClass != "") echo '<div class="' . $this->wrightComplementOuterClass . '">' // Wright v.3: Outer complements class  ?>
 
 			<?php if (!empty($this->link_items)) : ?>
+			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 			<div class="items-more<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 			<?php echo $this->loadTemplate('links'); ?>
 			</div>
+			<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
 			<?php endif; ?>
 			<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
+			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 			<div class="cat-children<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 			<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
 				<h3> <?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?> </h3>
 			<?php endif; ?>		
 				<?php echo $this->loadTemplate('children'); ?> </div>
 			<?php endif; ?>
+			<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
 			<?php if (($this->params->def('show_pagination', 1) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->get('pages.total') > 1)) : ?>
+			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 			<div class="pagination<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 				<?php  if ($this->params->def('show_pagination_results', 1)) : ?>
 				<p class="counter pull-right"> <?php echo $this->pagination->getPagesCounter(); ?> </p>
 				<?php endif; ?>
 				<?php echo $this->pagination->getPagesLinks(); ?> </div>
+				<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
 			<?php  endif; ?>
 
 	<?php if ($this->wrightComplementOuterClass != "") echo '</div>' // Wright v.3: Outer complements class  ?>
