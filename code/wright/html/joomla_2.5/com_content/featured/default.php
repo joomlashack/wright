@@ -36,6 +36,7 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
 
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
+	if (!isset($this->wrightComplementExtraClass)) $this->wrightComplementExtraClass = "";
 	if (!isset($this->wrightComplementInnerClass)) $this->wrightComplementInnerClass = "";
 /* End Wright v.3: Extra classes (general) */
 
@@ -141,12 +142,15 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 <?php if ($this->wrightComplementOuterClass != "") echo '<div class="' . $this->wrightComplementOuterClass . '">' // Wright v.3: Outer complements class  ?>
 
 <?php if (!empty($this->link_items)) : ?>
+	<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 	<div class="items-more<?php echo " well"; // Wright v.3: More articles ?><?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 	<?php echo $this->loadTemplate('links'); ?>
 	</div>
+	<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
 <?php endif; ?>
 
 <?php if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->get('pages.total') > 1)) : ?>
+	<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 	<div class="pagination<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 
 		<?php if ($this->params->def('show_pagination_results', 1)) : ?>
@@ -156,6 +160,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 		<?php  endif; ?>
 				<?php echo wrightTransformArticlePagination($this->pagination->getPagesLinks());  // Wright v.3: Page Navigation transformation (using helper) ?>
 	</div>
+	<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
 <?php endif; ?>
 <?php if ($this->wrightComplementOuterClass != "") echo '</div>' // Wright v.3: Outer complements class  ?>
 
