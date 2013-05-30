@@ -68,7 +68,7 @@ if (!function_exists("wright_joomla_nav")) :
 		$matches2[11] = $matches[11];
 		$matches2[12] = $matches[12];
 		
-		return convert_li($matches2);
+		return convert_li($matches2, '');
 	}
 
 
