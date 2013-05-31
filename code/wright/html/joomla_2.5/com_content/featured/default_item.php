@@ -183,7 +183,8 @@ $canEdit	= $this->item->params->get('access-edit');
 <?php if ($params->get('show_hits')) : ?>
 		<dd class="hits">
 			<i class="icon-eye-open"></i> <?php // Wright v.3: Icon ?>
-		<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?>
+			<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits) . $wrightAfterIcon;  // Wright v.3: Icon for non-mobile version ?>
+			<?php echo $wrightBeforeIconM . JText::sprintf($this->item->hits) . $wrightAfterIconM;  // Wright v.3: Icon for mobile version ?>
 		</dd>
 <?php endif; ?>
 <?php if (($params->get('show_author')) or ($params->get('show_category')) or ($params->get('show_create_date')) or ($params->get('show_modify_date')) or ($params->get('show_publish_date')) or ($params->get('show_parent_category')) or ($params->get('show_hits'))) : ?>

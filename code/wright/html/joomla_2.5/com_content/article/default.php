@@ -41,9 +41,11 @@ $user		= JFactory::getUser();
 <div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.3: Item elements extra elements
  ?>">
 <?php if ($this->params->get('show_page_heading')) : ?>
+	<?php echo '<div class="page-header">'; // Wright v.3: Page header ?>
 	<h1>
 	<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h1>
+	<?php echo '</div>'; // Wright v.3: Page header?>
 <?php endif; ?>
 <?php
 if (!empty($this->item->pagination) AND $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative)
@@ -62,7 +64,7 @@ if (!empty($this->item->pagination) AND $this->item->pagination && !$this->item-
 
 
 <?php if ($params->get('show_title')) : ?>
-	<?php echo '<div class="page-header">'; // Wright v.3: Article title ?>
+	<?php echo '<div class="page-header">'; // Wright v.3: Page header ?>
 	<h2>
 	<?php if ($params->get('link_titles') && !empty($this->item->readmore_link)) : ?>
 		<a href="<?php echo $this->item->readmore_link; ?>">
@@ -71,7 +73,7 @@ if (!empty($this->item->pagination) AND $this->item->pagination && !$this->item-
 		<?php echo $this->escape($this->item->title); ?>
 	<?php endif; ?>
 	</h2>
-	<?php echo '</div>'; // Wright v.3: Article title ?>
+	<?php echo '</div>'; // Wright v.3: Page header?>
 <?php endif; ?>
 
 <?php
@@ -224,7 +226,8 @@ endif; ?>
 <?php if ($params->get('show_hits')) : ?>
 	<dd class="hits">
 		<i class="icon-eye-open"></i> <?php // Wright v.3: Icon ?>
-	<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?>
+		<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); . $wrightAfterIcon;  // Wright v.3: Icon for non-mobile version ?>
+		<?php echo $wrightBeforeIconM . JText::sprintf($this->item->hits); . $wrightAfterIconM;  // Wright v.3: Icon for mobile version ?>
 	</dd>
 <?php endif; ?>
 <?php if ($useDefList) : ?>

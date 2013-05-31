@@ -30,6 +30,11 @@ $info    = $this->item->params->get('info_block_position', 0);
 <?php 
 /* Wright v.3: Item elements structure */
 	if (empty($this->item->wrightElementsStructure)) $this->item->wrightElementsStructure = Array("title","icons","article-info","image","content");
+
+	$wrightBeforeIcon = '<span class="hidden-phone">';
+	$wrightAfterIcon = '</span>';
+	$wrightBeforeIconM = '<span class="visible-phone">';
+	$wrightAfterIconM = '</span>';
 	
 	foreach ($this->item->wrightElementsStructure as $wrightElement) :
 		switch ($wrightElement) :
@@ -98,24 +103,28 @@ $info    = $this->item->params->get('info_block_position', 0);
 				<?php $author = ($this->item->created_by_alias ? $this->item->created_by_alias : $author); ?>
 				<?php if (!empty($this->item->contactid ) && $params->get('link_author') == true) : ?>
 					<?php
-					echo JText::sprintf('COM_CONTENT_WRITTEN_BY',
-						JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid), $author)
-					); ?>
+					echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY',
+						JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid), $author)) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php
+					echo $wrightBeforeIconM . JText::sprintf(JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid), $author)) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				<?php else :?>
-					<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY', $author) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIconM . JText::sprintf($author) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				<?php endif; ?>
 			</dd>
 		<?php endif; ?>
 
 		<?php if ($params->get('show_parent_category') && !empty($this->item->parent_slug)) : ?>
 			<dd class="parent-category-name">
-				<i class="icon-folder-close"></i> <?php // Wright v.3: Category icon ?>
+				<i class="icon-circle-arrow-up"></i> <?php // Wright v.3: Icon ?>
 				<?php $title = $this->escape($this->item->parent_title);
 				$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->parent_slug)).'">'.$title.'</a>';?>
 				<?php if ($params->get('link_parent_category') && !empty($this->item->parent_slug)) : ?>
-					<?php echo JText::sprintf('COM_CONTENT_PARENT', $url); ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_PARENT', $url) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIconM . JText::sprintf($url) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				<?php else : ?>
-					<?php echo JText::sprintf('COM_CONTENT_PARENT', $title); ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_PARENT', $title) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIconM . JText::sprintf($title) . $wrightAfterIconM; // Wright v.3: Icon for mobile  ?>
 				<?php endif; ?>
 			</dd>
 		<?php endif; ?>
@@ -126,38 +135,45 @@ $info    = $this->item->params->get('info_block_position', 0);
 				<?php $title = $this->escape($this->item->category_title);
 				$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->catslug)).'">'.$title.'</a>';?>
 				<?php if ($params->get('link_category') && $this->item->catslug) : ?>
-					<?php echo JText::sprintf('COM_CONTENT_CATEGORY', $url); ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_CATEGORY', $url) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIconM . JText::sprintf($url) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				<?php else : ?>
-					<?php echo JText::sprintf('COM_CONTENT_CATEGORY', $title); ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_CATEGORY', $title) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIconM . JText::sprintf($title) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				<?php endif; ?>
 			</dd>
 		<?php endif; ?>
 
 		<?php if ($params->get('show_publish_date')) : ?>
 			<dd class="published">
-				<span class="icon-calendar"></span> <?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC3'))); ?>
+				<span class="icon-calendar"></span>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 			</dd>
 		<?php endif; ?>
 
 		<?php if ($info == 0) : ?>
 			<?php if ($params->get('show_modify_date')) : ?>
 				<dd class="modified">
-				<span class="icon-calendar"></span>
-				<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))); ?>
+				<span class="icon-edit"></span> <?php // Wright v.3: Icon changed ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				</dd>
 			<?php endif; ?>
 
 			<?php if ($params->get('show_create_date')) : ?>
 				<dd class="create">
-					<span class="icon-calendar"></span>
-					<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))); ?>
+					<span class="icon-pencil"></span> <?php // Wright v.3: Icon changed ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				</dd>
 			<?php endif; ?>
 
 			<?php if ($params->get('show_hits')) : ?>
 				<dd class="hits">
 					<span class="icon-eye-open"></span>
-					<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIconM . JText::sprintf($this->item->hits) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				</dd>
 			<?php endif; ?>
 
