@@ -39,5 +39,5 @@ echo '@import "../fontawesome/css/font-awesome.min.css";' . "\n";
 
 if ($fileFound) {
 	echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '.css','r');
-	echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '-responsive.css','r');
+	echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '-extended.css','r');
 }

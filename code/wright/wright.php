@@ -61,8 +61,9 @@ class Wright
 			$this->loadBootstrap = true;
 		}
 		else {
-			// Add JavaScript Frameworks
+			// Add JavaScript CSS and Framework
 			JHtml::_('bootstrap.framework');
+			JHtml::_('bootstrap.loadCss', true, $this->document->direction);
 		}
 
 		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
@@ -81,8 +82,6 @@ class Wright
             $path = JPATH_THEMES . '/' . $document->template . '/home.php';
         elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
             $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
-
-
 
 		// Include our file and capture buffer
 		ob_start();
@@ -144,11 +143,11 @@ class Wright
             switch ($loadJquery) {
                 // load jQuery locally
                 case 1:
-                    $jquery = $this->_urlJS . '/jquery-1.8.3.min.js';
+                    $jquery = $this->_urlJS . '/jquery.min.js';
                     break;
                 // load jQuery from Google
                 default:
-                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js';
+                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
                     break;
             }
             
@@ -228,21 +227,23 @@ class Wright
 
         $cssFound = false;
 
-        while (!$cssFound && $subversion >= 0) {
-	        $version = $version[0].$subversion;
+        if (version_compare(JVERSION, '3.0', 'lt')) {
+	        while (!$cssFound && $subversion >= 0) {
+		        $version = $version[0].$subversion;
 
-			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '.css')) {
+				if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '.css')) {
 
-				$cssFound = true;
+					$cssFound = true;
 
-				$styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '.css';
-				if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css')) {
-		            $styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css';
+					$styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '.css';
+					if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css')) {
+			            $styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css';
+					}
 				}
-			}
-			else {
-				$subversion--;
-			}
+				else {
+					$subversion--;
+				}
+	        }
         }
 
 		// Add some stuff for lovely IE if needed
@@ -279,7 +280,7 @@ class Wright
 				$styles['template'][] = 'custom.css';
 
 		// Include FontAwesome
-		$styles['fontawesome'] = Array('font-awesome.min.css');
+		$styles['fontawesome'] = Array();
 
 		return $styles;
 	}
