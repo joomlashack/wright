@@ -15,10 +15,29 @@ $app = JFactory::getApplication('site');
 $app->initialise();
 
 $version = explode('.', JVERSION);
-$version = $version[0].$version[1];
+$mainversion = $version[0];
+$subversion = $version[1];
 
 $template = $app->getTemplate(true);
 $style = $template->params->get('style','generic');
 
+$version = "";
+
+
+$fileFound = false;
+while (!$fileFound && $subversion >= 0) {
+	$version = $mainversion . $subversion;
+	if (file_exists(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '.css'))
+		$fileFound = true;
+	else
+		$subversion--;
+}
+
 header("Content-Type: text/css");
-echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '.css','r');
+
+echo '@import "../fontawesome/css/font-awesome.min.css";' . "\n";
+
+if ($fileFound) {
+	echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '.css','r');
+	echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '-responsive.css','r');
+}
