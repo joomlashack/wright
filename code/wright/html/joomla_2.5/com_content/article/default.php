@@ -226,8 +226,8 @@ endif; ?>
 <?php if ($params->get('show_hits')) : ?>
 	<dd class="hits">
 		<i class="icon-eye-open"></i> <?php // Wright v.3: Icon ?>
-		<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); . $wrightAfterIcon;  // Wright v.3: Icon for non-mobile version ?>
-		<?php echo $wrightBeforeIconM . JText::sprintf($this->item->hits); . $wrightAfterIconM;  // Wright v.3: Icon for mobile version ?>
+		<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits) . $wrightAfterIcon;  // Wright v.3: Icon for non-mobile version ?>
+		<?php echo $wrightBeforeIconM . JText::sprintf($this->item->hits) . $wrightAfterIconM;  // Wright v.3: Icon for mobile version ?>
 	</dd>
 <?php endif; ?>
 <?php if ($useDefList) : ?>

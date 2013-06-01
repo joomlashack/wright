@@ -202,11 +202,16 @@ class Wright
 			{
 				foreach ($files as $style)
 				{
-					if ($folder == 'fontawesome')
-						$sheet = $this->_urlFontAwesome . '/css/' . $style;
-					else
-						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
-
+					switch ($folder) {
+						case 'fontawesome':
+							$sheet = $this->_urlFontAwesome . '/css/' . $style;
+							break;
+						case 'wrighttemplatecss':
+							$sheet = $this->_urlWright . '/css/' . $style;
+							break;
+						default:
+							$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
+					}
 					$this->document->addStyleSheet($sheet);
 				}
 			}
@@ -228,22 +233,9 @@ class Wright
         $cssFound = false;
 
         if (version_compare(JVERSION, '3.0', 'lt')) {
-	        while (!$cssFound && $subversion >= 0) {
-		        $version = $version[0].$subversion;
-
-				if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '.css')) {
-
-					$cssFound = true;
-
-					$styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '.css';
-					if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css')) {
-			            $styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css';
-					}
-				}
-				else {
-					$subversion--;
-				}
-	        }
+        	$styles['wrighttemplatecss'][] = 'template.css.php';
+        	if ($this->document->params->get('responsive','1') == '1')
+        		$styles['wrighttemplatecss'][] = 'template-responsive.css.php';
         }
 
 		// Add some stuff for lovely IE if needed

@@ -169,11 +169,7 @@ fs.readdir('less', function (err, list) {
 fs.readdir('libraries/bootstrap/img', function (err, list) {
 	if (list)
 		list.forEach(function (f) {
-			// ncp('libraries/bootstrap/img/' + f,'../images/' + f, function(err) {
-			// 	if (err) {
-			// 		console.log('Error copying images: ' + err);
-			// 	}
-			// });
+			copyFileSync('libraries/bootstrap/img/' + f,'../images/' + f,'binary');
 		});
 });
 
