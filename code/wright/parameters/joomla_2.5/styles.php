@@ -39,7 +39,7 @@ class JFormFieldStyles extends JFormFieldList
 
 		foreach ($styles as $style)
 		{
-			if (!preg_match('/-responsive.css$/', $style)) {
+			if (!preg_match('/-responsive.css$/', $style) && !preg_match('/-extended.css$/', $style)) {
 				$item = substr($style, 9, strpos($style, '.css') - 9);
 				$val	= $item;
 				$text	= ucfirst($item);
