@@ -19,10 +19,10 @@ $mainversion = $version[0];
 $subversion = $version[1];
 
 $template = $app->getTemplate(true);
-$style = $template->params->get('style','generic');
+$user = JFactory::getUser();
+$style = JRequest::getVar('templateTheme',$user->getParam('theme',$template->params->get('style','generic')));
 
 $version = "";
-
 
 $fileFound = false;
 while (!$fileFound && $subversion >= 0) {

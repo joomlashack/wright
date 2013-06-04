@@ -19,7 +19,9 @@ $mainversion = $version[0];
 $subversion = $version[1];
 
 $template = $app->getTemplate(true);
-$style = $template->params->get('style','generic');
+$user = JFactory::getUser();
+$style = JRequest::getVar('templateTheme',$user->getParam('theme',$template->params->get('style','generic')));
+
 $responsive = ($template->params->get('responsive','1') == '1' ? true : false);
 
 header("Content-Type: text/css");
