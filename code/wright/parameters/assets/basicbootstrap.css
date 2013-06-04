@@ -39,6 +39,7 @@
     -moz-box-sizing: border-box;
     display: block;
     float: left;
+    margin-left:2.564102564102564%;
     min-height: 30px;
     width: 100%;
 }
@@ -51,39 +52,41 @@
     width: 100%;
 }
 .row-fluid .span11 {
-    width: 91.4894%;
+    width: 91.45299145299145%;
 }
 .row-fluid .span10 {
-    width: 82.9787%;
+    width: 82.90598290598291%;
 }
 .row-fluid .span9 {
-    width: 74.4681%;
+    width: 74.35897435897436%;
 }
 .row-fluid .span8 {
-    width: 65.9574%;
+    width: 65.81196581196582%;
 }
 .row-fluid .span7 {
-    width: 57.4468%;
+    width: 57.26495726495726%;
 }
 .row-fluid .span6 {
-    width: 48.9362%;
+    width: 48.717948717948715%;
 }
 .row-fluid .span5 {
-    width: 40.4255%;
+    width: 40.17094017094017%;
 }
 .row-fluid .span4 {
-    width: 31.9149%;
+    width: 31.623931623931625%;
 }
 .row-fluid .span3 {
-    width: 23.4043%;
+    width: 23.076923076923077%;
 }
 .row-fluid .span2 {
-    width: 14.8936%;
+    width: 14.52991452991453%
 }
 .row-fluid .span1 {
-    width: 6.38298%;
+    width: 5.982905982905983%;
 }
-
+.row-fluid [class*="span"]:first-child {
+    margin-left: 0;
+}
 .icon-arrow-left:before{
     content:"\f0d9";
 }
