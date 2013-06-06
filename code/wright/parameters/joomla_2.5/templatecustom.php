@@ -11,11 +11,8 @@ jimport('joomla.form.formfield');
 
 defined('_JEXEC') or die('You are not allowed to directly access this file');
 
-$app = JFactory::getApplication();
-$template = $app->getTemplate(true);
-
-if (file_exists(JPATH_THEMES . '/parameters/templatecustom.php'))
-	require_once(JPATH_THEMES . '/parameters/templatecustom.php');
+if (file_exists(realpath(dirname(__FILE__).'/../../../parameters/templatecustom.php')))
+	require_once(realpath(dirname(__FILE__).'/../../../parameters/templatecustom.php'));
 else {
 	
 	class JFormFieldTemplateCustom extends JFormField
