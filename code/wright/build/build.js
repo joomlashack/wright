@@ -11,7 +11,7 @@ var copyFileSync = function(srcFile, destFile, encoding) {
 
 var fs = require('fs');
 var os = require('os');
-var recess = require('recess');
+var less = require('less');
 var UglifyJS = require("uglify-js");
 
 var exec = require('child_process').exec;
@@ -71,90 +71,93 @@ fs.readdir('less', function (err, list) {
 								var st = f2.match(stylelessRegEx);  // Style from variables-xx.less file
 								st = st[1];
 
-								// Create compiled less file for Joomla / Style
+								// Less source and CSS compiled files
 								var df = cacheDir + '/style-joomla' + jv + '-' + st + '.less';
 								var dfext = cacheDir + '/style-joomla' + jv + '-' + st + '-extended.less';
+								var dfr = cacheDir + '/style-joomla' + jv + '-' + st + '-responsive.less';
 								var dfcss = 'joomla' + jv + '-' + st + '.css';
 								var dfcssext = 'joomla' + jv + '-' + st + '-extended.css';
+								var dfcssr = 'joomla' + jv + '-' + st + '-responsive.css';
 								var s = '';
 
-								s += '@import "../../../less/variables-' + st + '.less"; ';  
-								s += '@import "../less/bootstrap.less"; ';
+								// Bootstrap base files
+								s += '@import "../../less/variables-' + st + '.less"; ';  
+								s += '@import "less/bootstrap.less"; ';
 								fs.writeFileSync(df, s);
 
+								// Bootstrap extended files (Joomla specifics)
 								s = '';
-								s += '@import "../../../less/variables-' + st + '.less"; ';  
-								s += '@import "../libraries/bootstrap/less/mixins.less"; ';  
-								s += '@import "../less/typography.less"; ';  
-								s += '@import "../less/joomla' + jv + '.less"; ';
+								s += '@import "../../less/variables-' + st + '.less"; ';  
+								s += '@import "libraries/bootstrap/less/mixins.less"; ';  
+								s += '@import "less/typography.less"; ';  
+								s += '@import "less/joomla' + jv + '.less"; ';
 								if (fs.existsSync('../../less/template.less'))  // Template file (if exists)
-									s += '@import "../../../less/template.less"; ';
+									s += '@import "../../less/template.less"; ';
 								if (fs.existsSync('../../less/style-' + st + '.less'))  // Style file (if exists)
-									s += '@import "../../../less/style-' + st + '.less"; ';
+									s += '@import "../../less/style-' + st + '.less"; ';
 								fs.writeFileSync(dfext, s);
 
-								recess(df,{compile: true, compress: true}, function (err, obj) {
+								// Bootstrap responsive files
+								var s = '';
+								s += '@import "../../less/variables-' + st + '.less"; ';  // Global style variables
+								s += '@import "less/responsive.less"; ';  // Bootstrap responsive less file
+								s += '@import "less/joomla' + jv + '-responsive.less"; ';  // Joomla version responsive file
+								if (fs.existsSync('../../less/template-responsive.less'))  // Template responsive file (if exists)
+									s += '@import "../../less/template-responsive.less"; ';
+								if (fs.existsSync('../../less/style-' + st + '-responsive.less'))  // Style responsive file (if exists)
+									s += '@import "../../less/style-' + st + '-responsive.less"; ';
+								fs.writeFileSync(dfr, s);
+
+								var parserOptions = {};
+
+								// Bootstrap base file
+								var parser = new less.Parser(parserOptions);
+								var data = fs.readFileSync(df,'utf8');
+								parser.parse(data, function (err, tree) {
 									if (err) {
-										console.log('Error compiling ' + dfcss + ':');
-										Object.keys(err).forEach(function (key) {
-											console.log(err[key]);
-										});
-										console.log('');
-									}
-									else if (obj.errors.length > 0) {
-										console.log('Error compiling ' + dfcss + ': ' + obj.errors);
+										console.log('Error compiling ' + dfcss + ':' + err);
 									}
 									else {
+										var css = tree.toCSS({
+											compress: true,
+											yuicompress: true
+										});
 										console.log('Compiled file ' + dfcss);
-										fs.writeFileSync('../../css/' + dfcss, obj.output);
+										fs.writeFileSync('../../css/' + dfcss, css);
 									}
 								});
 
 								// extended file (Joomla and template specifics)
-								recess(dfext,{compile: true, compress: true}, function (err, obj) {
+								var parserext = new less.Parser(parserOptions);
+								var dataext = fs.readFileSync(dfext,'utf8');
+								parserext.parse(dataext, function (err, tree) {
 									if (err) {
-										console.log('Error compiling ' + dfcssext + ':');
-										Object.keys(err).forEach(function (key) {
-											console.log(err[key]);
-										});
-										console.log('');
-									}
-									else if (obj.errors.length > 0) {
-										console.log('Error compiling ' + dfcssext + ': ' + obj.errors);
+										console.log('Error compiling ' + dfcssext + ':' + err);
 									}
 									else {
+										var css = tree.toCSS({
+											compress: true,
+											yuicompress: true
+										});
 										console.log('Compiled file ' + dfcssext);
-										fs.writeFileSync('../../css/' + dfcssext, obj.output);
+										fs.writeFileSync('../../css/' + dfcssext, css);
 									}
 								});
 
-								// Create responsive files
-								var dfr = cacheDir + '/style-joomla' + jv + '-' + st + '-responsive.less';
-								var dfcssr = 'joomla' + jv + '-' + st + '-responsive.css';
-								var s = '';
-								s += '@import "../../../less/variables-' + st + '.less"; ';  // Global style variables
-								s += '@import "../less/responsive.less"; ';  // Bootstrap responsive less file
-								s += '@import "../less/joomla' + jv + '-responsive.less"; ';  // Joomla version responsive file
-								if (fs.existsSync('../../less/template-responsive.less'))  // Template responsive file (if exists)
-									s += '@import "../../../less/template-responsive.less"; ';
-								if (fs.existsSync('../../less/style-' + st + '-responsive.less'))  // Style responsive file (if exists)
-									s += '@import "../../../less/style-' + st + '-responsive.less"; ';
-								fs.writeFileSync(dfr, s);
-
-								recess(dfr,{compile: true, compress: true}, function (err, obj) {
+								// extended file (Joomla and template specifics)
+								var parserr = new less.Parser(parserOptions);
+								var datar = fs.readFileSync(dfr,'utf8');
+								parserr.parse(datar, function (err, tree) {
 									if (err) {
-										console.log('Error compiling ' + dfcssr + ':');
-										Object.keys(err).forEach(function (key) {
-											console.log(err[key]);
-										});
-										console.log('');
-									}
-									else if (obj.errors.length > 0) {
-										console.log('Error compiling ' + dfcssr + ': ' + obj.errors);
+										console.log('Error compiling ' + dfcssr + ':' + err);
 									}
 									else {
+										var css = tree.toCSS({
+											compress: true,
+											yuicompress: true
+										});
 										console.log('Compiled file ' + dfcssr);
-										fs.writeFileSync('../../css/' + dfcssr, obj.output);
+										fs.writeFileSync('../../css/' + dfcssr, css);
 									}
 								});
 							}
