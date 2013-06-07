@@ -252,12 +252,19 @@ class Wright
 		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
 		$styles['wright'] = array('reset.css', 'layout.css', 'typography.css');
 		
-        $version = explode('.', JVERSION);
-        $version = $version[0].$version[1];
-        if (is_file(JPATH_THEMES .'/'. $this->document->template .'/wright/css/joomla'.$version.'.css'))
-        {
-            $styles['wright'][] = 'joomla'.$version.'.css';
-        }
+		$fileFound = false;
+		$version = explode('.', JVERSION);
+		$subversion = $version[1];
+		while (!$fileFound && $subversion >= 0) {
+			$versioncss = $version[0].$subversion;
+			if (is_file(JPATH_THEMES .'/'. $this->document->template .'/wright/css/joomla'.$versioncss.'.css'))
+			{
+				$styles['wright'][] = 'joomla'.$versioncss.'.css';
+				$fileFound = true;
+			}
+			else
+				$subversion--;
+		}
 
 		$styles['template'] = JFolder::files(JPATH_THEMES .'/'. $this->document->template .'/'. 'css', '\d{1,2}_.*.css');
 
