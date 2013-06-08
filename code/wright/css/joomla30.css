@@ -54,25 +54,7 @@ dl.article-info dd {
 	padding:0;
 	width:auto;
 }
-dl.article-info dd.parent-category-name,
-dl.article-info dd.category-name {
-	background:url(../images/icons/16/folder.png) no-repeat 0 3px;
-}
-dl.article-info dd.create {
-	background:url(../images/icons/16/calendar_add.png) no-repeat 0 3px;
-}
-dl.article-info dd.modified {
-	background:url(../images/icons/16/calendar_edit.png) no-repeat 0 3px;
-}
-dl.article-info dd.published {
-	background:url(../images/icons/16/calendar.png) no-repeat 0 3px;
-}
-dl.article-info dd.createdby {
-	background:url(../images/icons/16/user_suit.png) no-repeat 0 3px;
-}
-dl.article-info dd.hits {
-	background:url(../images/icons/16/chart_bar.png) no-repeat 0 3px;
-}
+
 .cols-1 {
 	display: block;
 	float: none !important;
@@ -715,4 +697,42 @@ ul.menu ul{
 .newsflash-title_ms4,
 .newsflash-title{
 	margin-top: 10px;
+}
+dl.tabs {
+	margin-bottom: 0;
+}
+.contact dt.tabs {
+	display: inline-block;
+	float: none;
+	padding: 10px 10px 0;
+	width: auto;
+}
+.current dd {
+	padding: 0 10px;
+}
+.btn-toolbar .btn-group {
+	display: inline-block;
+}
+.list-condensed li {
+	padding: 4px 5px;
+}
+.list-striped li, .list-striped dd, .row-striped .row, .row-striped .row-fluid {
+	list-style: none;
+	margin-left: 0;
+	padding: 8px;
+}
+.hide-text {
+	font-size: 0 !important;
+}
+.hide-text::before {
+	font-size: 14px;
+}
+[class^="icon-"]::before, [class*=" icon-"]::before{
+	font-family: FontAwesome !important;
+}
+.menu [class^="icon-"], .menu [class*=" icon-"]{
+	width: auto;
+}
+.menu [class^="icon-"]::before, .menu [class*=" icon-"]::before{
+	margin-right: 3px;
 }

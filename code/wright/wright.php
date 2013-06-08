@@ -1,13 +1,12 @@
 <?php
 /**
- * @package Joomlashack Wright Framework
- * @copyright Joomlashack 2010-2012. All Rights Reserved.
- * 
- * @description Wright is a framework layer for Joomla to improve stability of Joomlashack Templates
- * 
- * It would be inadvisable to alter the contents of anything inside of this folder
- * 
+ * @package     Wright
+ * @subpackage  Main package
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 defined('_JEXEC') or die('You are not allowed to directly access this file');
 
 //Adding a check for PHP4 to cut down on support
@@ -228,8 +227,8 @@ class Wright
 						$sheet = JURI::root().'templates/' . $this->document->template . '/wright/css/' . $style;
 					elseif ($folder == 'template')
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
-					elseif ($folder == 'fontawesomemore')
-						$sheet = JURI::root().'templates/' . $this->document->template . '/wright/fontawesomemore/css/' . $style;
+					elseif ($folder == 'fontawesome')
+						$sheet = JURI::root().'templates/' . $this->document->template . '/wright/fontawesome/css/' . $style;
 					else
 						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
 
@@ -247,17 +246,24 @@ class Wright
 
 		$browser = JBrowser::getInstance();
 
-		$styles['fontawesomemore'] = array('font-awesome.css');
+		$styles['fontawesome'] = array('font-awesome.min.css');
 
 		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
 		$styles['wright'] = array('reset.css', 'layout.css', 'typography.css');
 		
-        $version = explode('.', JVERSION);
-        $version = $version[0].$version[1];
-        if (is_file(JPATH_THEMES .'/'. $this->document->template .'/wright/css/joomla'.$version.'.css'))
-        {
-            $styles['wright'][] = 'joomla'.$version.'.css';
-        }
+		$fileFound = false;
+		$version = explode('.', JVERSION);
+		$subversion = $version[1];
+		while (!$fileFound && $subversion >= 0) {
+			$versioncss = $version[0].$subversion;
+			if (is_file(JPATH_THEMES .'/'. $this->document->template .'/wright/css/joomla'.$versioncss.'.css'))
+			{
+				$styles['wright'][] = 'joomla'.$versioncss.'.css';
+				$fileFound = true;
+			}
+			else
+				$subversion--;
+		}
 
 		$styles['template'] = JFolder::files(JPATH_THEMES .'/'. $this->document->template .'/'. 'css', '\d{1,2}_.*.css');
 
@@ -268,35 +274,33 @@ class Wright
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
 		{
-			$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
+			// Switch to allow specific versions of IE to have additional sheets
+			$major = $browser->getMajor();
+			
+			if ((int)$major <= 9) {
+				$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5shiv.js');
+			}
 
-			if (is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'ie.css'))
+			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie.css'))
 			{
 				$styles['ie'][] = 'ie.css';
 			}
 
-			// Switch to allow specific versions of IE to have additional sheets
-			$major = $browser->getMajor();
-
 			switch ($major)
 			{
 				case '6' :
-					if (is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'ie6.css'))
+					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie6.css'))
 						$styles['ie'][] = 'ie6.css';
-					$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
-					if ($this->document->params->get('doctype') == 'html5')
-						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/js/html5.js');
-					break;
+					$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
+				case '7' :
+					$styles['fontawesome'][] = 'font-awesome-ie7.min.css';
+					// does not break for leaving defaults
 				default :
-					if (is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'ie' . $major . '.css'))
+					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie' . $major . '.css'))
 						$styles['ie'][] = 'ie' . $major . '.css';
-					if ($this->document->params->get('doctype') == 'html5')
-						$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5.js');
-					break;
-				case '7':
-					$styles['fontawesomemore'][] = 'font-awesome-ie7.css';
 			}
 		}
+
 
 		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'rtl.css'))
 			$styles['template'][] = 'rtl.css';

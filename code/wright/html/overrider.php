@@ -15,56 +15,51 @@ class Overrider
 		return self::$version;
 	}
 
-	public static function getOverride($extension, $layout = 'default')
-	{
-		$type = substr($extension, 0, 3);
+    public static function getOverride($extension, $layout = 'default', $strictOverride = false)
+    {
+        $type = substr($extension, 0, 3);
 
-		$file = '';
+        $file = '';
 
-		$app = JFactory::getApplication();
+        $app = JFactory::getApplication();
 
         $version = self::getVersion();
 
-		switch ($type)
-		{
-			case 'mod' :
-                while (!is_file(JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php'))
-                {
-                    // If running down the list, we need to jump down a major number version
-                    // then make sure we don't drop below minimum support
-                    // lastly just decrement the minor number
-                    if ($version[1] == 0) {
-                        $version[0]--;
-                        $version[1] = 9;
-                    } elseif ($version[0] == 1 && $version[1] == 5) {
-                        die ('/joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php');
+        switch ($type)
+        {
+            case 'mod' :
+                $fileFound = false;
+                $subversion = $version[1];
+                while (!$fileFound && $subversion >= 0) {
+                    if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php')) {
+                        $fileFound = true;
+                        $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php';
                     }
-                    else {
-                        $version[1]--;
-                    }
+                    $subversion--;
                 }
-				$file = JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$extension.'/'.$layout.'.php';
-				break;
-			case 'com' :
-				list($folder, $view) = explode('.', $extension);
-                while (!is_file(JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php'))
-                {
-                    // If running down the list, we need to jump down a major number version
-                    // then make sure we don't drop below minimum support
-                    // lastly just decrement the minor number
-                    if ($version[1] == 0) {
-                        $version[0]--;
-                        $version[1] = 9;
-                    } elseif ($version[0] == 1 && $version[1] == 5) {
-                        die (JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php');
-                    }
-                    else {
-                        $version[1]--;
-                    }
+                if (!$fileFound) {
+                    if ($strictOverride) return false;
+                    $file = JPATH_SITE.'/modules/'.$extension.'/tmpl/'.$layout.'.php';
                 }
-                $file = JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.implode('.', $version).'/'.$folder.'/'.$view.'/'.$layout.'.php';
-				break;
-		}
-		return $file;
-	}
+                break;
+
+            case 'com' :
+                $fileFound = false;
+                $subversion = $version[1];
+                list($folder, $view) = explode('.', $extension);
+                while (!$fileFound && $subversion >= 0) {
+                    if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php')) {
+                        $fileFound = true;
+                        $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php';
+                    }
+                    $subversion--;
+                }
+                if (!$fileFound) {
+                    if ($strictOverride) return false;
+                    $file = JPATH_SITE.'/components/'.$folder.'/views/'.$view.'/tmpl/'.$layout.'.php';      
+                }
+                break;
+        }
+        return $file;
+    }
 }
