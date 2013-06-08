@@ -25,19 +25,33 @@ $style = JRequest::getVar('templateTheme',$user->getParam('theme',$template->par
 $version = "";
 
 $fileFound = false;
+$bootstrapOverride = JPATH_THEMES . '/' . $template->template . '/css/style-' . $style . '.bootstrap.min.css';
+
+$file = '';
+$fileext = '';
+
 while (!$fileFound && $subversion >= 0) {
 	$version = $mainversion . $subversion;
-	if (file_exists(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '.css'))
+	if (file_exists(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '-extended.css')) {
+		$fileext = JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '-extended.css';
 		$fileFound = true;
+	}
 	else
 		$subversion--;
+}
+
+if (file_exists($bootstrapOverride)) {
+	$file = $bootstrapOverride;
+}
+else {
+	$file = JPATH_THEMES . '/' . $template->template . '/css/style-' . $style . '.css';
 }
 
 header("Content-Type: text/css");
 
 echo '@import "../fontawesome/css/font-awesome.min.css";' . "\n";
 
+echo file_get_contents($file,'r');
 if ($fileFound) {
-	echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '.css','r');
 	echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '-extended.css','r');
 }

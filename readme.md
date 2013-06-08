@@ -1,6 +1,6 @@
-# [Joomlashack Wright v3.0](http://wright.joomlashack.com)
+# [Joomlashack Wright v3.1](http://wright.joomlashack.com)
 
-Latest version: **v.3.0.20**
+Latest version: **v.3.1**
 
 The Wright Framework is used to create Joomla Templates.  The name is in honor of the famous architect, Frank Lloyd Wright, because the framework is like a blueprint.   It provides a solid foundation to build from, and helps to keep the entire template together while merging some unique features and tools.  This is the end result, which is a great tool integrated with the templates, providing many benefits.
 
@@ -11,9 +11,9 @@ The Wright Framework is used to create Joomla Templates.  The name is in honor o
 Wright helps building light, non-bloated, and simple to install Joomla Templates to make your life easier.  We call them "strictly Joomla" because in most cases you are able to install them using only the Joomla CMS and it's built-in features.  This is different from other template frameworks because they require you to install extra plugins, extensions for the template to work.
 
 
-### Bootstrapped and Joomla 2.5/3.0 ready
+### Bootstrapped and Joomla 2.5/3.x ready
 
-Starting with Wright v.3 the framework is based on [Twitter Bootstrap](http://twitter.github.com/bootstrap/), making templates built on it responsive.  It also supports Joomla 2.5.x and Joomla 3.0.x.
+Starting with Wright v.3 the framework is based on [Twitter Bootstrap](http://twitter.github.com/bootstrap/), making templates built on it responsive.  It also supports Joomla 2.5.x and Joomla 3.x.x
 
 
 ## Quick start
