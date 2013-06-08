@@ -67,6 +67,7 @@ class WrightAdapterJoomlaLogo
 
 		if (!isset($args['name'])) $args['name'] = 'newsflash';
 		if (!isset($args['style'])) $args['style'] = 'xhtml';
+		if (!isset($args['addid'])) $args['addid'] = '';
 
 		// class for the wrapper of the menu nav bar
 		if (!isset($args['menuWrapClass'])) $args['menuWrapClass'] = '';
@@ -124,7 +125,7 @@ class WrightAdapterJoomlaLogo
 
 		// If user wants a module, load it instead of image
 		if ($doc->document->params->get('logo', 'template') == 'module') {
-			$html .= '<div id="logo" class="span'.$doc->document->params->get('logowidth', '6').'"><jdoc:include type="modules" name="logo" /></div>';
+			$html .= '<div id="logo' . $args['addid'] . '" class="span'.$doc->document->params->get('logowidth', '6').'"><jdoc:include type="modules" name="logo" /></div>';
 
 
 			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
@@ -140,7 +141,7 @@ class WrightAdapterJoomlaLogo
 		// If user wants just a title, print it out
 		elseif ($doc->document->params->get('logo', 'template') == 'title') {
 		
-			$html .= '<div id="logo" class="span'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="title">'.$title.'</a></div>';
+			$html .= '<div id="logo' . $args['addid'] . '" class="span'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="title">'.$title.'</a></div>';
 
 			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
 				$html .= '<div id="'.$modulename2.'" class="span'.$modulewidth2.'">';
@@ -177,7 +178,7 @@ class WrightAdapterJoomlaLogo
 			$logo = JURI::root().'images/'.$doc->document->params->get('logo', 'logo.png');
 		}
 		
-		$html .= '<div id="logo" class="span'.$logowidth.'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
+		$html .= '<div id="logo' . $args['addid'] . '" class="span'.$logowidth.'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
 		
 		if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
 			$html .= '<div id="'.$modulename2.'" class="span'.$modulewidth2.'">';

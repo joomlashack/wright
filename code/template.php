@@ -11,18 +11,6 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-// get the bootstrap row mode ( row / row-fluid )
-$gridMode = $this->params->get('bs_rowmode','row-fluid');
-$containerClass = 'container';
-if ($gridMode == 'row-fluid') {
-    $containerClass = 'container-fluid';
-}
-
-$bodyclass = "";
-if ($this->countModules('toolbar')) {
-	$bodyclass = "toolbarpadding";
-}
-
 ?>
 <doctype>
 <html>
@@ -30,7 +18,7 @@ if ($this->countModules('toolbar')) {
 	
 <w:head />
 </head>
-<body<?php if ($bodyclass != "") :?> class="<?php echo $bodyclass?>"<?php endif; ?>>
+<body<?php if ($bodyclass != "") :?> class="<?php echo $bodyclass . $responsive?>"<?php endif; ?>>
     <?php if ($this->countModules('toolbar')) : ?>
     <!-- menu -->
 	<w:nav containerClass="<?php echo $containerClass ?>" rowClass="<?php echo $gridMode;?>" wrapClass="navbar-fixed-top navbar-inverse" type="toolbar" name="toolbar" />

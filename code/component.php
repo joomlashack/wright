@@ -1,12 +1,18 @@
 <?php
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
+
+$lang = JFactory::getLanguage();
+$tag = $lang->getTag();
+$dir = ($lang->isRTL() ? "rtl" : "ltr");
+
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
+<!DOCTYPE html>
+<html lang="<?php echo $tag ?>" dir="<?php echo $dir ?>">
 <head>
 <jdoc:include type="head" />
-<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/wright/css/template.css.php" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/wright/css/template-responsive.css.php" type="text/css" />
 </head>
 <body class="contentpane">
 	<jdoc:include type="message" />

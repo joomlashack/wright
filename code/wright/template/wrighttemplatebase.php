@@ -21,6 +21,8 @@ class WrightTemplateBase {
 
 	public $JDocumentHTML = null;  // if using forced sidebar has to be set with the local JDocumentHTML ($this from inside the template itself)
 
+	public $useMainSpans = true; // use Bootstrap's span classes for main content and sidebars
+
 	private $_isThereALogo = null;  // local variable to know if there is a logo for the site
 
 	public static function getInstance() {
