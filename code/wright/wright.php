@@ -1,13 +1,12 @@
 <?php
 /**
- * @package Joomlashack Wright Framework
- * @copyright Joomlashack 2010-2012. All Rights Reserved.
- * 
- * @description Wright is a framework layer for Joomla to improve stability of Joomlashack Templates
- * 
- * It would be inadvisable to alter the contents of anything inside of this folder
- * 
+ * @package     Wright
+ * @subpackage  Main package
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 defined('_JEXEC') or die('You are not allowed to directly access this file');
 
 //Adding a check for PHP4 to cut down on support
