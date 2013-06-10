@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     Oficina
+ * @package     Wright
  * @subpackage  Functions
  *
  * @copyright   Copyright (C) 2005 - 2013 Joomlashack. Meritage Assets.  All rights reserved.
