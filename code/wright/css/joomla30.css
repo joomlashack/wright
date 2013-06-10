@@ -746,3 +746,7 @@ dl.tabs {
 .menu [class^="icon-"]::before, .menu [class*=" icon-"]::before{
 	margin-right: 3px;
 }
+
+a.btn.dropdown-toggle span.icon-cog {
+	display: none;
+}
