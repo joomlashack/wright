@@ -655,6 +655,16 @@ div#pathway span.sep img {
 	display: none;
 }
 
+ul.breadcrumb {
+	list-style: none;
+}
+
+ul.breadcrumb li {
+	list-style: none;
+	float: left;
+	margin: 0 10px 0 0;
+}
+
 
 /* Text selection */
 
