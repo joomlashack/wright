@@ -1,3 +1,5 @@
+var disableToolbarResize = false;
+
 if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) { 
 	(function($) { 
 		    Element.implement({
@@ -21,7 +23,6 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 		$(wrightWrapperToolbar).each(function() {
 			$(this).css('min-height',$(this).find('.navbar:first').height() + 'px');
 		});
-		
 	}
 	
 	function fixImagesIE() {
@@ -35,9 +36,11 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 	fixImagesIE();
 
 	$(window).load(function () {
-		wToolbar();
+		if (!disableToolbarResize)
+			wToolbar();
 	});
 	$(window).resize(function() {
-		wToolbar();
+		if (!disableToolbarResize)
+			wToolbar();
 	});
 })(jQuery);
