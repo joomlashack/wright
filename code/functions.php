@@ -1,12 +1,12 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2011 Joomlashack / Meritage Assets
- * @author		Jeremy Wilken - Joomlashack
- * @package		Wright
+ * @package     Wright
+ * @subpackage  Functions
  *
- * Use this file to add any PHP to the template before it is executed
+ * @copyright   Copyright (C) 2005 - 2013 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
- 
+
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
 
