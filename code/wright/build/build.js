@@ -73,8 +73,8 @@ fs.readdir('../../less', function(err, list) {
 				var s = '';
 
 				// Bootstrap base files
-				s += '@import "../../less/variables-' + st + '.less"; ';  
-				s += '@import "less/bootstrap.less"; ';
+				s += '@import url("../../less/variables-' + st + '.less"); ';  
+				s += '@import url("less/bootstrap.less"); ';
 				fs.writeFileSync(df, s);
 
 				var parserOptions = {};
@@ -113,25 +113,25 @@ fs.readdir('../../less', function(err, list) {
 
 								// Bootstrap extended files (Joomla specifics)
 								s = '';
-								s += '@import "../../less/variables-' + st + '.less"; ';  
-								s += '@import "libraries/bootstrap/less/mixins.less"; ';  
-								s += '@import "less/typography.less"; ';  
-								s += '@import "less/joomla' + jv + '.less"; ';
+								s += '@import url("../../less/variables-' + st + '.less"); ';  
+								s += '@import url("libraries/bootstrap/less/mixins.less"); ';  
+								s += '@import url("less/typography.less"); ';  
+								s += '@import url("less/joomla' + jv + '.less"); ';
 								if (fs.existsSync('../../less/template.less'))  // Template file (if exists)
-									s += '@import "../../less/template.less"; ';
+									s += '@import url("../../less/template.less"); ';
 								if (fs.existsSync('../../less/style-' + st + '.less'))  // Style file (if exists)
-									s += '@import "../../less/style-' + st + '.less"; ';
+									s += '@import url("../../less/style-' + st + '.less"); ';
 								fs.writeFileSync(dfext, s);
 
 								// Bootstrap responsive files
 								var s = '';
-								s += '@import "../../less/variables-' + st + '.less"; ';  // Global style variables
-								s += '@import "less/responsive.less"; ';  // Bootstrap responsive less file
-								s += '@import "less/joomla' + jv + '-responsive.less"; ';  // Joomla version responsive file
+								s += '@import url("../../less/variables-' + st + '.less"); ';  // Global style variables
+								s += '@import url("less/responsive.less"); ';  // Bootstrap responsive less file
+								s += '@import url("less/joomla' + jv + '-responsive.less"); ';  // Joomla version responsive file
 								if (fs.existsSync('../../less/template-responsive.less'))  // Template responsive file (if exists)
-									s += '@import "../../less/template-responsive.less"; ';
+									s += '@import url("../../less/template-responsive.less"); ';
 								if (fs.existsSync('../../less/style-' + st + '-responsive.less'))  // Style responsive file (if exists)
-									s += '@import "../../less/style-' + st + '-responsive.less"; ';
+									s += '@import url("../../less/style-' + st + '-responsive.less"); ';
 								fs.writeFileSync(dfr, s);
 
 								var parserOptions = {};
