@@ -49,7 +49,7 @@ else {
 
 header("Content-Type: text/css");
 
-echo '@import "../fontawesome/css/font-awesome.min.css";' . "\n";
+echo '@import url("../fontawesome/css/font-awesome.min.css");' . "\n";
 
 echo file_get_contents($file,'r');
 if ($fileFound) {
