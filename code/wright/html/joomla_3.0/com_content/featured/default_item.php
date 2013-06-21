@@ -31,6 +31,9 @@ $info    = $this->item->params->get('info_block_position', 0);
 /* Wright v.3: Item elements structure */
 	if (empty($this->item->wrightElementsStructure)) $this->item->wrightElementsStructure = Array("title","icons","article-info","image","content");
 
+	$infoAbove = ($info == 0 || $info == 2);
+	$infoBelow = ($info == 1);
+
 	$wrightBeforeIcon = '<span class="hidden-phone">';
 	$wrightAfterIcon = '</span>';
 	$wrightBeforeIconM = '<span class="visible-phone">';
@@ -83,6 +86,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 /* Wright v.3: Item elements structure */
 				break;
 			case "article-info":
+				if ($infoAbove) :
 /* End Wright v.3: Item elements structure */
 ?>
 
@@ -183,7 +187,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 
 <?php
 /* Wright v.3: Item elements structure */
-				goto article_info_bottom;
+				endif;
 				break;
 			case "image":
 /* End Wright v.3: Item elements structure */
@@ -221,10 +225,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 
 <?php
 /* Wright v.3: Item elements structure */
-				goto content_bottom;
-				break;
-article_info_bottom:
-		// TODO: make sure that if the "below" or "split" config is selected for article info, it can go below the text
+				if ($infoBelow) :
 /* End Wright v.3: Item elements structure */
 ?>
 
@@ -309,6 +310,7 @@ article_info_bottom:
 
 <?php
 /* Wright v.3: Item elements structure */
+				endif;
 				break;
 content_bottom:
 /* End Wright v.3: Item elements structure */

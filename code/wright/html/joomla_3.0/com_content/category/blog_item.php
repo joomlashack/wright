@@ -31,6 +31,10 @@ JHtml::_('behavior.framework');
 /* Wright v.3: Item elements structure */
 	if (empty($this->item->wrightElementsStructure)) $this->item->wrightElementsStructure = Array("title","icons","article-info","image","content");
 	$this->item->wrightBootstrapImages = $this->wrightBootstrapImages;
+
+	$blockPosition = $params->get('info_block_position', 0);
+	$infoAbove = ($blockPosition == 0 || $blockPosition == 2);
+	$infoBelow = ($blockPosition == 1);
 	
 	foreach ($this->item->wrightElementsStructure as $wrightElement) :
 		switch ($wrightElement) :
@@ -53,6 +57,7 @@ JHtml::_('behavior.framework');
 /* Wright v.3: Item elements structure */
 				break;
 			case "article-info":
+				if ($infoAbove) :
 /* End Wright v.3: Item elements structure */
 ?>
 
@@ -66,7 +71,7 @@ JHtml::_('behavior.framework');
 
 <?php
 /* Wright v.3: Item elements structure */
-				goto article_info_bottom;
+				endif;
 				break;
 			case "image":
 /* End Wright v.3: Item elements structure */
@@ -88,10 +93,7 @@ JHtml::_('behavior.framework');
 
 <?php
 /* Wright v.3: Item elements structure */
-				goto content_bottom;
-				break;
-article_info_bottom:
-		// TODO: make sure that if the "below" or "split" config is selected for article info, it can go below the text
+				if ($infoBelow) :
 /* End Wright v.3: Item elements structure */
 ?>
 
@@ -101,6 +103,7 @@ article_info_bottom:
 
 <?php
 /* Wright v.3: Item elements structure */
+				endif;
 				break;
 content_bottom:
 /* End Wright v.3: Item elements structure */
