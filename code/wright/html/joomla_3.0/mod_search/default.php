@@ -13,13 +13,24 @@ defined('_JEXEC') or die;
 /* Wright v.3: Custom Image for style */
 	if ($button && $imagebutton) {
 		$app = JFactory::getApplication();
-		$template = $app->getTemplate(true);
+		$objTemplate = $app->getTemplate(true);
 		$user = JFactory::getUser();
-		$style = JRequest::getVar('templateTheme',$user->getParam('theme',$template->params->get('style','generic')));
-		if (file_exists(JPATH_SITE . '/templates/' . $template->template . '/images/' . $style . '/searchButton.gif')) {
-			$img = JURI::base() . '/templates/' . $template->template . '/images/' . $style . '/searchButton.gif';
+		$style = JRequest::getVar('templateTheme',$user->getParam('theme',$objTemplate->params->get('style','generic')));
+		if (file_exists(JPATH_SITE . '/templates/' . $objTemplate->template . '/images/' . $style . '/searchButton.gif')) {
+			$img = JURI::base() . '/templates/' . $objTemplate->template . '/images/' . $style . '/searchButton.gif';
 		}
 	}
+
+	$xbuttonclass = '';
+	switch ($button_pos) {
+		case 'left':
+			$xbuttonclass = ' pull-left';
+			break;
+		case 'right':
+			$xbuttonclass = ' pull-right';
+			break;
+	}
+
 /* End Wright v.3: Custom Image for style */
 
 ?>
@@ -30,7 +41,7 @@ defined('_JEXEC') or die;
 
 				if ($button) :
 					if ($imagebutton) :
-						$button = ' <input type="image" value="' . $button_text . '" class="button" src="' . $img . '" onclick="this.form.searchword.focus();"/>';
+						$button = ' <input type="image" value="' . $button_text . '" class="button' . $xbuttonclass . '" src="' . $img . '" onclick="this.form.searchword.focus();"/>';  // Wright v.3: Added extra button class
 					else :
 						$button = ' <button class="button btn btn-primary" onclick="this.form.searchword.focus();">' . $button_text . '</button>';
 					endif;
