@@ -120,7 +120,7 @@ p.img_caption {
 }
 
 .elements {
-	border-bottom: 1px solid #CCC;
+	border-bottom: 1px solid @hrBorder - #111;
 	background: @white;
 }
 .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
@@ -289,7 +289,7 @@ h6 { font-size: 12px; line-height: 14px; }
 .module-header {
 	padding-bottom: 17px;
 	margin: 20px 0 18px 0;
-	border-bottom: 1px solid #eeeeee;
+	border-bottom: 1px solid @grayLighter;
 }
 /* Single Item */
 .item-title {
@@ -386,7 +386,7 @@ h6 { font-size: 12px; line-height: 14px; }
 		margin: 2px 0 0; // override default ul
 		list-style: none;
 		background-color: @dropdownBackground;
-		border: 1px solid #ccc; // Fallback for IE7-8
+		border: 1px solid @hrBorder - #111; // Fallback for IE7-8
 		border: 1px solid @dropdownBorder;
 		*border-right-width: 2px;
 		*border-bottom-width: 2px;
@@ -431,7 +431,7 @@ h6 { font-size: 12px; line-height: 14px; }
 	  left: 9px;
 	  display: inline-block;
 	  border-right: 7px solid transparent;
-	  border-bottom: 7px solid #ccc;
+	  border-bottom: 7px solid @hrBorder - #111;
 	  border-left: 7px solid transparent;
 	  border-bottom-color: rgba(0, 0, 0, 0.2);
 	  content: '';
@@ -469,9 +469,9 @@ dl.tabs dt.tabs {
 	margin-left: 3px;
 	padding: 4px 10px;
 	background-color: #F0F0F0;
-	border-top: 1px solid #CCC;
-	border-left: 1px solid #CCC;
-	border-right: 1px solid #CCC;
+	border-top: 1px solid @hrBorder - #111;
+	border-left: 1px solid @hrBorder - #111;
+	border-right: 1px solid @hrBorder - #111;
 }
 dl.tabs dt:hover {
 	background-color: #F9F9F9;
@@ -493,14 +493,14 @@ dl.tabs dt.tabs h3 a:hover {
 	text-decoration: none;
 }
 dl.tabs dt.open h3 a {
-	color: #000;
+	color: @black;
 	text-decoration: none;
 }
 div.current dd.tabs {
 	margin: 0;
 	padding: 10px;
 	clear: both;
-	border: 1px solid #CCC;
+	border: 1px solid @hrBorder - #111;
 	background-color: @white;
 }
 #sidebar1,#sidebar2{
