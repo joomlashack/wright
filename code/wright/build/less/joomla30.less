@@ -101,9 +101,9 @@ p.img_caption {
 
 .dropdown-menu li > span:hover, .dropdown-menu .active > span {
 	background-color: #0081C2;
-	background-image: -moz-linear-gradient(center top , #0088CC, #0077B3);
+	#gradient > .vertical(@linkColor,@linkColorHover);
 	background-repeat: repeat-x;
-	color: #FFFFFF;
+	color: @white;
 	outline: 0 none;
 	text-decoration: none;
 }
@@ -121,7 +121,7 @@ p.img_caption {
 
 .elements {
 	border-bottom: 1px solid #CCC;
-	background: #FFF;
+	background: @white;
 }
 .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
 	margin-top: 0;
@@ -158,17 +158,12 @@ p.img_caption {
 	color: gray;
 }
 #footer {
-	color: #fff;
+	#gradient > .vertical(@grayDarker,@grayDarker - #111);
+	color: @white;
 	overflow: hidden;
 	background-color: #1b1b1b;
-	background-image: -moz-linear-gradient(top,#222,#111);
-	background-image: -webkit-gradient(linear,0 0,0 100%,from(#222),to(#111));
-	background-image: -webkit-linear-gradient(top,#222,#111);
-	background-image: -o-linear-gradient(top,#222,#111);
-	background-image: linear-gradient(to bottom,#222,#111);
 	background-repeat: repeat-x;
 	border-color: #252525;
-	filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff222222',endColorstr='#ff111111',GradientType=0)
 }
 
 #footer.sticky {
@@ -235,7 +230,7 @@ p.img_caption {
 	margin-bottom:9px;
 }
 .accordion-group {
-	background:#fff;
+	background:@white;
 }
 .select[multiple], select[size] {
 	height:28px;
@@ -397,9 +392,8 @@ h6 { font-size: 12px; line-height: 14px; }
 		*border-bottom-width: 2px;
 		.border-radius(6px);
 		.box-shadow(0 5px 10px rgba(0,0,0,.2));
-		-webkit-background-clip: padding-box;
-		 -moz-background-clip: padding;
-		      background-clip: padding-box;
+		.background-clip(padding-box);
+
 		
 		// Aligns the dropdown menu to right
 		&.pull-right {
@@ -448,7 +442,7 @@ h6 { font-size: 12px; line-height: 14px; }
 	  left: 10px;
 	  display: inline-block;
 	  border-right: 6px solid transparent;
-	  border-bottom: 6px solid #ffffff;
+	  border-bottom: 6px solid @white;
 	  border-left: 6px solid transparent;
 	  content: '';
 	}
@@ -483,8 +477,8 @@ dl.tabs dt:hover {
 	background-color: #F9F9F9;
 }
 dl.tabs dt.open {
-	background-color: #FFF;
-	border-bottom: 1px solid #FFF;
+	background-color: @white;
+	border-bottom: 1px solid @white;
 }
 dl.tabs dt.tabs h3 {
 	margin: 0;
@@ -507,7 +501,7 @@ div.current dd.tabs {
 	padding: 10px;
 	clear: both;
 	border: 1px solid #CCC;
-	background-color: #FFF;
+	background-color: @white;
 }
 #sidebar1,#sidebar2{
 	input{
