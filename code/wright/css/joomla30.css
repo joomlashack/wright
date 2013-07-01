@@ -647,12 +647,14 @@ div#pathway span.sep {
 	margin: 0 5px;
 }
 
-div#pathway span.sep img {
+div#pathway span.sep img,
+ul.breadcrumb span.divider img {
 	display: none;
 }
 
 ul.breadcrumb {
 	list-style: none;
+	display: inline;
 }
 
 ul.breadcrumb li {
@@ -660,7 +662,6 @@ ul.breadcrumb li {
 	float: left;
 	margin: 0 10px 0 0;
 }
-
 
 /* Text selection */
 
@@ -769,3 +770,6 @@ div.tags a.label {
 	padding: 2px;
 	font-size: 0.8em;
 }
+
+
+.icon-location:before{content:"\f041"}
