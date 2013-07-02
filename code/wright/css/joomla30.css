@@ -588,10 +588,6 @@ ul.dropdown-menu li {
 	margin-left: 10px;
 }
 
-div.btn-group i.icon-cog {
-	display: none;
-}
-
 ul.dropdown-menu li a {
 	text-decoration: none;
 }
@@ -651,10 +647,21 @@ div#pathway span.sep {
 	margin: 0 5px;
 }
 
-div#pathway span.sep img {
+div#pathway span.sep img,
+ul.breadcrumb span.divider img {
 	display: none;
 }
 
+ul.breadcrumb {
+	list-style: none;
+	display: inline;
+}
+
+ul.breadcrumb li {
+	list-style: none;
+	float: left;
+	margin: 0 10px 0 0;
+}
 
 /* Text selection */
 
@@ -736,3 +743,33 @@ dl.tabs {
 .menu [class^="icon-"]::before, .menu [class*=" icon-"]::before{
 	margin-right: 3px;
 }
+.btn-group {
+	position: relative;
+}
+.btn-group .dropdown-menu {
+	display: none;
+	position: absolute;
+	left: -70px;
+	top: 100%;
+	z-index: 999;
+	list-style: none;
+	background-color: #fff;
+	padding: 3px;
+	min-width: 70px;
+	border: #333 1px solid;
+	text-align: right;
+}
+.btn-group .dropdown-menu li {
+	float: none;
+	text-align: right;
+}
+div.tags a.label {
+	text-decoration: none;
+	border: 1px solid #0088CC;
+	border-radius: 5px;
+	padding: 2px;
+	font-size: 0.8em;
+}
+
+
+.icon-location:before{content:"\f041"}

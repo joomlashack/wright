@@ -29,7 +29,7 @@ class Wright
 	public $baseurl;
 	public $author;
 	
-	public $revision = "{version}";
+	public $revision = "2.6.12_beta";
 
 	function Wright()
 	{
@@ -270,6 +270,9 @@ class Wright
 		// Load up a specific style if set
 		if (is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'style-' . $this->document->params->get('style') . '.css'))
 			$styles['template'][] = 'style-' . $this->document->params->get('style') . '.css';
+
+		if ($this->document->params->get('mootools', '1') == '1')
+			$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/utils.js');
 
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
