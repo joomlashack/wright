@@ -653,8 +653,11 @@ ul.breadcrumb span.divider img {
 }
 
 ul.breadcrumb {
+	display: block;
 	list-style: none;
-	display: inline;
+	overflow: hidden;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 ul.breadcrumb li {
@@ -771,5 +774,12 @@ div.tags a.label {
 	font-size: 0.8em;
 }
 
-
 .icon-location:before{content:"\f041"}
+
+img{
+	max-width: 100%;
+}
+.menu a[class^="icon-"], .menu a[class*=" icon-"],
+.nav a[class^="icon-"], .nav a[class*=" icon-"]{
+	line-height: 1.3em;
+}
