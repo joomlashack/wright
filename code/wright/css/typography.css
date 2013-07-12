@@ -171,64 +171,148 @@ img.alignleft, img.floatleft, img.image-left {
 body.b_arial {
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
+body.b_arial .nav li a[class*=" icon-"],
+body.b_arial .menu li a[class*=" icon-"] {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
 body.b_baskerville {
+	font-family: Baskerville, "Times New Roman", Times, serif;
+}
+body.b_baskerville .nav li a[class*=" icon-"],
+body.b_baskerville .menu li a[class*=" icon-"] {
 	font-family: Baskerville, "Times New Roman", Times, serif;
 }
 body.b_cambria {
 	font-family: Cambria, Georgia, Times, "Times New Roman", serif;
 }
+body.b_cambria .nav li a[class*=" icon-"],
+body.b_cambria .menu li a[class*=" icon-"] {
+	font-family: Cambria, Georgia, Times, "Times New Roman", serif;
+}
 body.b_centurygothic {
+	font-family: "Century Gothic", "Apple Gothic", sans-serif;
+}
+body.b_centurygothic .nav li a[class*=" icon-"],
+body.b_centurygothic .menu li a[class*=" icon-"] {
 	font-family: "Century Gothic", "Apple Gothic", sans-serif;
 }
 body.b_consolas {
 	font-family: Consolas, "Lucida Console", Monaco, monospace;
 }
+body.b_consolas .nav li a[class*=" icon-"],
+body.b_consolas .menu li a[class*=" icon-"] {
+	font-family: Consolas, "Lucida Console", Monaco, monospace;
+}
 body.b_copperplatelight {
+	font-family: "Copperplate Light", "Copperplate Gothic Light", serif;
+}
+body.b_copperplatelight .nav li a[class*=" icon-"],
+body.b_copperplatelight .menu li a[class*=" icon-"] {
 	font-family: "Copperplate Light", "Copperplate Gothic Light", serif;
 }
 body.b_couriernew {
 	font-family: "Courier New", Courier, monospace;
 }
+body.b_couriernew .nav li a[class*=" icon-"],
+body.b_couriernew .menu li a[class*=" icon-"] {
+	font-family: "Courier New", Courier, monospace;
+}
 body.b_franklingothic {
+	font-family: "Franklin Gothic Medium", "Arial Narrow Bold", Arial, sans-serif;
+}
+body.b_franklingothic .nav li a[class*=" icon-"],
+body.b_franklingothic .menu li a[class*=" icon-"] {
 	font-family: "Franklin Gothic Medium", "Arial Narrow Bold", Arial, sans-serif;
 }
 body.b_futura {
 	font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
 }
+body.b_futura .nav li a[class*=" icon-"],
+body.b_futura .menu li a[class*=" icon-"] {
+	font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
+}
 body.b_garamond {
+	font-family: Garamond, "Hoefler Text", "Times New Roman", Times, serif;
+}
+body.b_garamond .nav li a[class*=" icon-"],
+body.b_garamond .menu li a[class*=" icon-"] {
 	font-family: Garamond, "Hoefler Text", "Times New Roman", Times, serif;
 }
 body.b_geneva {
 	font-family: Geneva, "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
 }
+body.b_geneva .nav li a[class*=" icon-"],
+body.b_geneva .menu li a[class*=" icon-"] {
+	font-family: Geneva, "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+}
 body.b_georgia {
+	font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+body.b_georgia .nav li a[class*=" icon-"],
+body.b_georgia .menu li a[class*=" icon-"] {
 	font-family: Georgia, Cambria, "Times New Roman", Times, serif;
 }
 body.b_gillsans {
 	font-family: "Gill Sans", Calibri, "Trebuchet MS", sans-serif;
 }
+body.b_gillsans .nav li a[class*=" icon-"],
+body.b_gillsans .menu li a[class*=" icon-"] {
+	font-family: "Gill Sans", Calibri, "Trebuchet MS", sans-serif;
+}
 body.b_helvetica {
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+body.b_helvetica .nav li a[class*=" icon-"],
+body.b_helvetica .menu li a[class*=" icon-"] {
 	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 body.b_impact {
 	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
+body.b_impact .nav li a[class*=" icon-"],
+body.b_impact .menu li a[class*=" icon-"] {
+	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
 body.b_lucidasans {
+	font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+body.b_lucidasans .nav li a[class*=" icon-"],
+body.b_lucidasans .menu li a[class*=" icon-"] {
 	font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
 }
 body.b_palatino {
 	font-family: Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif;
 }
+body.b_palatino .nav li a[class*=" icon-"],
+body.b_palatino .menu li a[class*=" icon-"] {
+	font-family: Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif;
+}
 body.b_tahoma {
+	font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+body.b_tahoma .nav li a[class*=" icon-"],
+body.b_tahoma .menu li a[class*=" icon-"] {
 	font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 body.b_times {
 	font-family: Times, "Times New Roman", Georgia, serif;
 }
+body.b_times .nav li a[class*=" icon-"],
+body.b_times .menu li a[class*=" icon-"] {
+	font-family: Times, "Times New Roman", Georgia, serif;
+}
 body.b_trebuchetms {
 	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", " Lucida Sans", Arial, sans-serif;
 }
+body.b_trebuchetms .nav li a[class*=" icon-"],
+body.b_trebuchetms .menu li a[class*=" icon-"] {
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", " Lucida Sans", Arial, sans-serif;
+}
 body.b_verdana {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body.b_verdana .nav li a[class*=" icon-"],
+body.b_verdana .menu li a[class*=" icon-"] {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /* Header styles */
