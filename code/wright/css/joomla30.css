@@ -594,11 +594,16 @@ ul.dropdown-menu li a {
 
 fieldset.filters div.alert {
 	background: none;
-	border: 1px solid #666;
-	padding: 10px;
+	border:none;
 	box-shadow: 0 0;
+	padding:0;
 }
-
+fieldset.filters button {
+	background: #0099CC;
+	border: 1px solid #00799F;
+	color: #FFF;
+	padding: 4px 10px;
+}
 div.btn-toolbar div.btn-group {
 	float: left;
 }
@@ -782,4 +787,39 @@ img{
 .menu a[class^="icon-"], .menu a[class*=" icon-"],
 .nav a[class^="icon-"], .nav a[class*=" icon-"]{
 	line-height: 1.3em;
+}
+#login-form,#mod-finder-searchform{
+	background-color: #F8F8F8;
+	border: 1px solid #ccc;
+	font-size:12px;
+	margin:0 0 20px 0;
+	padding:20px;
+}
+#login-form input,
+#mod-finder-searchform input{
+	border: 1px solid #ccc;
+	max-width: 100%;
+	padding: 4px;
+}
+#login-form .controls{
+	margin-bottom: 10px;
+}
+#mod-finder-searchform input{
+	vertical-align: top;
+}
+#mod-finder-searchform button{
+	background: #0099CC;
+	border: 1px solid #00799F;
+	color: #FFF;
+	padding: 4px 10px;
+}
+.feed ul.newsfeed li{
+	margin: 10px;
+	padding: 10px;
+}
+iframe{
+	max-width: 100%;
+}
+.items-more ol{
+	border-top: 1px solid #ccc;
 }
