@@ -1418,11 +1418,10 @@ padding:3px 3px 3px 20px;
 /* FEED DISPLAY MODULE */
 .feed{}
 .feed h4{}
-.feed ul.newsfeed,
-.feed ul.newsfeed li{
-margin:0;
-padding:0;
-list-style:none;
+.feed ul.newsfeed{
+	margin:0;
+	padding:0;
+	list-style:none;
 }
 .feed ul.newsfeed{
 margin:20px 0 0 0;
