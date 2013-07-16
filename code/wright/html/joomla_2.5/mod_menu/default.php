@@ -15,7 +15,7 @@ if (!function_exists("wright_joomla_nav")) :
 		return "<ul" . $matches[1] . "class" . $matches[2] . "\"nav " . $matches[3] . "\"" . $matches[4] . ">";
 	}
 
-	function convert_li($matches, $img) {
+	function convert_li($matches, $img = '') {
 		$class = "";
 		$classa = "";
 		$link = "#";
