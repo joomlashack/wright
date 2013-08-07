@@ -21,16 +21,6 @@ defined('_JEXEC') or die;
 		}
 	}
 
-	$xbuttonclass = '';
-	switch ($button_pos) {
-		case 'left':
-			$xbuttonclass = ' pull-left';
-			break;
-		case 'right':
-			$xbuttonclass = ' pull-right';
-			break;
-	}
-
 /* End Wright v.3: Custom Image for style */
 
 ?>
@@ -41,7 +31,7 @@ defined('_JEXEC') or die;
 
 				if ($button) :
 					if ($imagebutton) :
-						$button = ' <input type="image" value="' . $button_text . '" class="button' . $xbuttonclass . '" src="' . $img . '" onclick="this.form.searchword.focus();"/>';  // Wright v.3: Added extra button class
+						$button = ' <input type="image" value="' . $button_text . '" class="button" src="' . $img . '" onclick="this.form.searchword.focus();"/>';
 					else :
 						$button = ' <button class="button btn btn-primary" onclick="this.form.searchword.focus();">' . $button_text . '</button>';
 					endif;
