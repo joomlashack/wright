@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.1
+// Wright v.3 Override: Joomla 3.1.5
 /**
  * @package     Joomla.Site
  * @subpackage  mod_tags_popular

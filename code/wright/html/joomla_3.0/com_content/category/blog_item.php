@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.1
+// Wright v.3 Override: Joomla 3.1.5
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -20,7 +20,6 @@ defined('_JEXEC') or die;
 $params = $this->item->params;
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 $canEdit = $this->item->params->get('access-edit');
-JHtml::_('behavior.tooltip');
 JHtml::_('behavior.framework');
 ?>
 <?php if ($this->item->state == 0) : ?>
@@ -32,10 +31,10 @@ JHtml::_('behavior.framework');
 	if (empty($this->item->wrightElementsStructure)) $this->item->wrightElementsStructure = Array("title","icons","article-info","image","content");
 	$this->item->wrightBootstrapImages = $this->wrightBootstrapImages;
 
-	$blockPosition = $params->get('info_block_position', 0);
-	$infoAbove = ($blockPosition == 0 || $blockPosition == 2);
-	$infoBelow = ($blockPosition == 1);
-	
+	// moved useDefList to the top, to set it throught the switch
+	$useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
+	|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author') );
+
 	foreach ($this->item->wrightElementsStructure as $wrightElement) :
 		switch ($wrightElement) :
 			case "title":
@@ -57,13 +56,11 @@ JHtml::_('behavior.framework');
 /* Wright v.3: Item elements structure */
 				break;
 			case "article-info":
-				if ($infoAbove) :
 /* End Wright v.3: Item elements structure */
 ?>
 
 <?php // Todo Not that elegant would be nice to group the params ?>
-<?php $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
-	|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author') ); ?>
+<?php // Wright v.3: Moved useDefList set to before the switch ?>
 
 <?php if ($useDefList) : ?>
 	<?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'above')); ?>
@@ -71,13 +68,12 @@ JHtml::_('behavior.framework');
 
 <?php
 /* Wright v.3: Item elements structure */
-				endif;
 				break;
 			case "image":
 /* End Wright v.3: Item elements structure */
 ?>
 
-<?php echo JLayoutHelper::render('joomla.content.intro_image', $this->item);  // Wright v.3: Fixed intro_image (it was using content_intro_image) -- it has a fix in Joomla 3.1.2 ?>
+<?php echo JLayoutHelper::render('joomla.content.intro_image', $this->item); ?>
 
 <?php
 /* Wright v.3: Item elements structure */
@@ -91,23 +87,9 @@ JHtml::_('behavior.framework');
 <?php endif; ?>
 <?php echo $this->item->event->beforeDisplayContent; ?> <?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper) ?>
 
-<?php
-/* Wright v.3: Item elements structure */
-				if ($infoBelow) :
-/* End Wright v.3: Item elements structure */
-?>
-
 <?php if ($useDefList) : ?>
 	<?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below')); ?>
 <?php  endif; ?>
-
-<?php
-/* Wright v.3: Item elements structure */
-				endif;
-				break;
-content_bottom:
-/* End Wright v.3: Item elements structure */
-?>
 
 <?php if ($params->get('show_readmore') && $this->item->readmore) :
 	if ($params->get('access-view')) :
@@ -118,7 +100,7 @@ content_bottom:
 		$itemId = $active->id;
 		$link1 = JRoute::_('index.php?option=com_users&view=login&Itemid=' . $itemId);
 		$returnURL = JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid));
-		$link = new JURI($link1);
+		$link = new JUri($link1);
 		$link->setVar('return', base64_encode($returnURL));
 	endif; ?>
 
@@ -160,9 +142,5 @@ content_bottom:
 	endforeach;
 /* End Wright v.3: Item elements structure */
 ?>
-
-<?php if ($this->item->state == 0) : ?>
-</div>
-<?php endif; ?>
 
 <?php echo $this->item->event->afterDisplayContent; ?>

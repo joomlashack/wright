@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.1
+// Wright v.3 Override: Joomla 3.1.5
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
@@ -14,7 +14,7 @@ $canEdit = $displayData['params']->get('access-edit');
 
 ?>
 
-<div id="icons">
+<div class="icons">
 	<?php if (empty($displayData['print'])) : ?>
 
 		<?php if ($canEdit || $displayData['params']->get('show_print_icon') || $displayData['params']->get('show_email_icon')) : ?>

@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.1
+// Wright v.3 Override: Joomla 3.1.5
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -59,9 +59,9 @@ JHtml::_('behavior.caption');
 <?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '<div class="' . $this->wrightLeadingIntroItemsClass . '">'; // Wright v.3: Extra Leading and Intro Items Div and Class ?>
 <?php $leadingcount = 0; ?>
 <?php if (!empty($this->lead_items)) : ?>
-<div class="items-leading<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.3: Leading Items extra Class ?>">
+<div class="items-leading clearfix<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.3: Leading Items extra Class ?>">
 	<?php foreach ($this->lead_items as &$item) : ?>
-		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.3: Item elements extra elements
+		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?> clearfix<?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.3: Item elements extra elements
 		 ?>">
 			<?php
 				$this->item = &$item;
@@ -69,13 +69,11 @@ JHtml::_('behavior.caption');
 				echo $this->loadTemplate('item');
 			?>
 		</div>
-		<div class="clearfix"></div>
 		<?php
 			$leadingcount++;
 		?>
 	<?php endforeach; ?>
 </div>
-<div class="clearfix"></div>
 <?php endif; ?>
 <?php
 	$introcount = (count($this->intro_items));

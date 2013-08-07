@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.1
+// Wright v.3 Override: Joomla 3.1.5
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -65,14 +65,13 @@ JHtml::_('behavior.caption');
 	<?php endif; ?>
 
 	<?php if ($this->params->get('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
-	<div class="category-desc">
+	<div class="category-desc clearfix">
 		<?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
 			<img src="<?php echo $this->category->getParams()->get('image'); ?>"/>
 		<?php endif; ?>
 		<?php if ($this->params->get('show_description') && $this->category->description) : ?>
 			<?php echo JHtml::_('content.prepare', $this->category->description, '', 'com_content.category'); ?>
 		<?php endif; ?>
-		<div class="clr"></div>
 	</div>
 	<?php endif; ?>
 
@@ -81,7 +80,7 @@ JHtml::_('behavior.caption');
 
 	<?php $leadingcount = 0; ?>
 	<?php if (!empty($this->lead_items)) : ?>
-	<div class="items-leading<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.3: Leading Items extra Class ?>">
+	<div class="items-leading clearfix<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.3: Leading Items extra Class ?>">
 		<?php foreach ($this->lead_items as &$item) : ?>
 		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.3: Item elements extra elements
 		 ?>">
@@ -91,13 +90,11 @@ JHtml::_('behavior.caption');
 				echo $this->loadTemplate('item');
 			?>
 		</div>
-		<div class="clearfix"></div>
 		<?php
 			$leadingcount++;
 		?>
 		<?php endforeach; ?>
 	</div><!-- end items-leading -->
-	<div class="clearfix"></div>
 	<?php endif; ?>
 	<?php
 	$introcount = (count($this->intro_items));
@@ -112,7 +109,7 @@ JHtml::_('behavior.caption');
 		$row = $counter / $this->columns;
 
 		if ($rowcount == 1) : ?>
-		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> row-fluid<?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
+		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> row-fluid clearfix<?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
 		<?php endif; ?>
 			<div class="span<?php echo round((12 / $this->columns));?>">
 				<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.3: Item elements extra elements
@@ -124,7 +121,7 @@ JHtml::_('behavior.caption');
 				?>
 				</div><!-- end item -->
 				<?php $counter++; ?>
-			</div><!-- end spann -->
+			</div><!-- end span -->
 			<?php if (($rowcount == $this->columns) or ($counter == $introcount)) : ?>
 		</div><!-- end row -->
 			<?php endif; ?>
@@ -146,7 +143,7 @@ JHtml::_('behavior.caption');
 			<div class="cat-children<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 			<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
 				<h3> <?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?> </h3>
-			<?php endif; ?>		
+			<?php endif; ?>
 				<?php echo $this->loadTemplate('children'); ?> </div>
 			<?php endif; ?>
 			<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>

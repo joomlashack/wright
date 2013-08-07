@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.1
+// Wright v.3 Override: Joomla 3.1.5
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -38,6 +38,10 @@ $info    = $this->item->params->get('info_block_position', 0);
 	$wrightAfterIcon = '</span>';
 	$wrightBeforeIconM = '<span class="visible-phone">';
 	$wrightAfterIconM = '</span>';
+
+	// moved useDefList to the top, to set it throught the switch
+	$useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
+	|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author') );
 	
 	foreach ($this->item->wrightElementsStructure as $wrightElement) :
 		switch ($wrightElement) :
@@ -91,8 +95,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 ?>
 
 <?php // Todo Not that elegant would be nice to group the params ?>
-<?php $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
-	|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author') ); ?>
+<?php // Wright v.3: Moved useDefList set to before the switch ?>
 
 <?php if ($useDefList && ($info == 0 ||  $info == 2)) : ?>
 	<dl class="article-info  muted">
@@ -160,7 +163,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 			<?php if ($params->get('show_modify_date')) : ?>
 				<dd class="modified">
 				<span class="icon-edit"></span> <?php // Wright v.3: Icon changed ?>
-					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
 					<?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				</dd>
 			<?php endif; ?>
@@ -168,7 +171,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 			<?php if ($params->get('show_create_date')) : ?>
 				<dd class="create">
 					<span class="icon-pencil"></span> <?php // Wright v.3: Icon changed ?>
-					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
 					<?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				</dd>
 			<?php endif; ?>
@@ -183,6 +186,16 @@ $info    = $this->item->params->get('info_block_position', 0);
 
 		<?php endif; ?>
 	</dl>
+	
+	<?php
+		/* Wright v.3: Added tags */
+	 if ($this->params->get('show_tags', 1)) : ?>
+		<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
+		<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+	<?php endif;
+		/* End Wright v.3: Added tags */
+	?>
+
 <?php endif; ?>
 
 <?php
@@ -283,7 +296,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 
 		<?php if ($params->get('show_create_date')) : ?>
 			<dd class="create">
-				<span class="icon-calendar"></span> <?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))); ?>
+				<span class="icon-calendar"></span> <?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))); ?>
 			</dd>
 		<?php endif; ?>
 
@@ -309,11 +322,9 @@ $info    = $this->item->params->get('info_block_position', 0);
 <?php endif; ?>
 
 <?php
-/* Wright v.3: Item elements structure */
+/* Wright v.3: Item elements structure (infoBelow) */
 				endif;
-				break;
-content_bottom:
-/* End Wright v.3: Item elements structure */
+/* End Wright v.3: Item elements structure (infoBelow) */
 ?>
 
 <?php if ($params->get('show_readmore') && $this->item->readmore) :
@@ -325,7 +336,7 @@ content_bottom:
 		$itemId = $active->id;
 		$link1 = JRoute::_('index.php?option=com_users&view=login&Itemid=' . $itemId);
 		$returnURL = JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid));
-		$link = new JURI($link1);
+		$link = new JUri($link1);
 		$link->setVar('return', base64_encode($returnURL));
 	endif; ?>
 

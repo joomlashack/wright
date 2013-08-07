@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.1
+// Wright v.3 Override: Joomla 3.1.5
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
@@ -14,7 +14,6 @@ defined('_JEXEC') or die;
 $params = $displayData->params;
 $canEdit = $displayData->params->get('access-edit');
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-JHtml::_('behavior.tooltip');
 JHtml::_('behavior.framework');
 ?>
 
