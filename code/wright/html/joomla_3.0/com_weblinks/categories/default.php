@@ -15,7 +15,7 @@ if (!function_exists("wright_joomla_weblinks_categories")) :
 	
 	function wright_joomla_weblinks_categories($buffer) {
 			
-			$buffer = preg_replace('/<a/Ui', '<i class="icon-folder-close"> </i><a', $buffer);
+			$buffer = preg_replace('/<a href="\//Ui', '<i class="icon-folder-close"> </i><a href="/', $buffer);
 			
 				return $buffer;
 				
