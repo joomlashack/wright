@@ -28,6 +28,7 @@ if (!function_exists("wright_joomla_content_archive")) :
 		$buffer = preg_replace('/ class="button"/Ui', 'class="button btn" style="display:block; float:right; margin-left:5px;"', $buffer);
 		$buffer = preg_replace('/<h2>/Ui', '<div class="page-header"> <h2>', $buffer);
 		$buffer = preg_replace('/<\/h2>/Ui', '</h2> </div>', $buffer);
+		$buffer = preg_replace('/id="adminForm"/Ui', 'id="adminForm" class="form-inline"', $buffer);
 		return $buffer;
 	}
 
