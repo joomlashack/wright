@@ -17,7 +17,7 @@ defined('_JEXEC') or die('Restricted access');
 <doctype>
 <html>
 <head>
-	
+
 <w:head />
 </head>
 <body<?php if ($bodyclass != "") :?> class="<?php echo $bodyclass . $responsive?>"<?php endif; ?>>
@@ -104,13 +104,13 @@ defined('_JEXEC') or die('Restricted access');
         <!-- bottom-menu -->
 		<w:nav containerClass="<?php echo $containerClass ?>" rowClass="<?php echo $gridMode;?>" name="bottom-menu" />
         <?php endif; ?>
-        
+
     </div>
-    
+
     <!-- footer -->
     <div class="wrapper-footer">
 	    <footer id="footer" <?php if ($this->params->get('stickyFooter',1)) : ?> class="sticky"<?php endif;?>>
-	    	 <div class="<?php echo $containerClass ?>">
+	    	 <div class="<?php echo $containerClass ?> footer-content">
 	    		<?php if ($this->countModules('footer')) : ?>
 					<w:module type="<?php echo $gridMode; ?>" name="footer" chrome="wrightflexgrid" />
 			 	<?php endif; ?>
@@ -118,6 +118,6 @@ defined('_JEXEC') or die('Restricted access');
 			</div>
 	    </footer>
     </div>
-	
+
 </body>
 </html>

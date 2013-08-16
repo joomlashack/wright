@@ -82,6 +82,32 @@ p.img_caption {
 	width: 100%;
 }
 /* @group Menu */
+.navbar .nav > li > span.separator {
+    color: @navbarLinkColor;
+    &:hover{
+		background-color: @navbarLinkBackgroundHover;
+		color:@navbarLinkColorHover;
+	}
+}
+.navbar-inverse .nav > li > span.separator {
+	color: @navbarInverseLinkColor;
+	&:hover{
+		background-color: @navbarInverseLinkBackgroundHover;
+		color:@navbarInverseLinkColorHover;
+	}
+}
+.navbar .nav > .active > span.separator,.navbar .nav > .active > span.separator:hover, .navbar .nav > .active > span.separator:focus {
+    background-color: @navbarLinkBackgroundActive;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125) inset;
+    color: @navbarLinkColorActive;
+    text-decoration: none;
+}
+.navbar-inverse .navbar .nav > .active > span.separator, .navbar-inverse .navbar .nav > .active > span.separator:hover, .navbar-inverse .navbar .nav > .active > span.separator:focus {
+    background-color: @navbarInverseLinkBackgroundActive;
+    color: @navbarInverseLinkColorActive;
+}
+
+
 .dropdown:hover > .dropdown-menu {
 	display: block;
 }
@@ -98,12 +124,21 @@ p.img_caption {
 .dropdown-menu li > span.separator {
 	cursor: default;
 }
+.nav .dropdown-menu li > span.separator {
+	color:@dropdownLinkColor;
+	&:hover{
+		background-color: @dropdownLinkBackgroundHover;
+		color:@dropdownLinkColorHover;
+	}
+}
+.nav .dropdown-menu .active > span.separator {
+	background-color: @dropdownLinkBackgroundActive;
+	color: @dropdownLinkColorActive;
+}
 
 .dropdown-menu li > span:hover, .dropdown-menu .active > span {
-	background-color: #0081C2;
 	#gradient > .vertical(@linkColor,@linkColorHover);
 	background-repeat: repeat-x;
-	color: @white;
 	outline: 0 none;
 	text-decoration: none;
 }
@@ -154,7 +189,7 @@ p.img_caption {
 }
 
 #header #logo a.image h2 { display: none;}
-#footer a:hover {
+#footer .footer-content a:hover {
 	color: gray;
 }
 #footer {
@@ -394,18 +429,18 @@ h6 { font-size: 12px; line-height: 14px; }
 		.box-shadow(0 5px 10px rgba(0,0,0,.2));
 		.background-clip(padding-box);
 
-		
+
 		// Aligns the dropdown menu to right
 		&.pull-right {
 			right: 0;
 			left: auto;
 		}
-		
+
 		// Dividers (basically an hr) within the dropdown
 		.divider {
 			.nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
 		}
-		
+
 		// Links within the dropdown menu
 		a {
 			display: block;

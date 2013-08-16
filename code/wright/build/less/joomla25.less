@@ -38,7 +38,7 @@ p.img_caption {
 /* TEMPLATE SPECIFIC CSS CODE */
 #header {
 	background:@bodyBackground;
-	margin-bottom: 10px; 
+	margin-bottom: 10px;
 }
 #header #logo a.image h2 { display: none; }
 
@@ -64,9 +64,9 @@ p.img_caption {
 
 
 /* positions margins */
-#header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2, 
+#header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2,
 #bottom-menu {
-	margin-bottom: 10px;  
+	margin-bottom: 10px;
 }
 #below-content { margin-top: 10px; }
 
@@ -95,7 +95,7 @@ h5{
 	font-size: 1.2em;
 }
 h6{
-	font-size: 1em; 
+	font-size: 1em;
 }
 /* @ end headings */
 
@@ -115,7 +115,7 @@ a.joomlashack {
 }
 
 
-#footer a:hover{
+#footer .footer-content a:hover{
 	color: gray;
 }
 #footer{
@@ -177,7 +177,7 @@ ul.pagenav li.pagenav-prev{
 	float: left;
 }
 ul.pagenav li.pagenav-next{
-	float: right;	
+	float: right;
 }
 .pagination ul{
 	display: inline-block;
@@ -227,7 +227,7 @@ li{
 	min-width: 150px;
 }
 ul.nobullet{
-	list-style: none outside none; 
+	list-style: none outside none;
 }
 /* @ Users Manager   ***************************************/
 /* @ edit your profile */
@@ -371,7 +371,7 @@ div.categories-list > ul li:before, div.categories-list > ul li:after {
 }
 
 
-div.categories-list ul, 
+div.categories-list ul,
 div.categories-list li,
 div.cat-children li {
 	list-style: none;
@@ -390,7 +390,7 @@ div.categories-list li{
 }
 div.categories-list ul ul li:last-child,
 div.cat-children ul ul li:last-child{
-	border-bottom-color:transparent; 
+	border-bottom-color:transparent;
 	margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -399,8 +399,8 @@ div.cat-children ul ul{
 	margin-left: 20px;
 	margin-top: 20px;
 }
-div.categories-list li.first, 
-div.cat-children li.first, 
+div.categories-list li.first,
+div.cat-children li.first,
 div.cat-children li.last {
 	margin-left: 0;
 }
@@ -411,7 +411,7 @@ div.categories-list span.item-title, div.cat-children span.item-title {
 	font-size: 18px;
 	display: block;
 	margin: 10px 0px;
-	
+
 }
 div.categories-list ul ul span.item-title,
 div.cat-children ul ul span.item-title{
@@ -548,7 +548,7 @@ ul.actions li {
 	border-left-width: 0px;
 }
 .pagination li span{
-	border-width: 0;	
+	border-width: 0;
 }
 .pagination span {
 	padding: 0px;
@@ -609,7 +609,7 @@ body.dark div.panel {
 }
 .login-fields {
 	margin: 10px 0px;
-	
+
 }
 .login-fields label {
 	min-width: 80px;
@@ -893,28 +893,48 @@ nav div.toolbar {
 }
 
 .navbar .nav > li > span.separator {
-    color: #999999;
+    color: @navbarLinkColor;
     float: none;
     padding: 10px 15px;
     text-decoration: none;
     cursor: default;
+    &:hover{
+    	background-color: @navbarLinkBackgroundHover;
+    	color:@navbarLinkColorHover;
+    }
 }
 
 .navbar-inverse .nav > li > span.separator {
-	color: #666666;
+	color: @navbarInverseLinkColor;
+	&:hover{
+		background-color: @navbarInverseLinkBackgroundHover;
+		color:@navbarInverseLinkColorHover;
+	}
 }
 
 .nav .dropdown-menu li > span.separator {
 	cursor: default;
+	color:@dropdownLinkColor;
+	&:hover{
+		background-color: @dropdownLinkBackgroundHover;
+		color:@dropdownLinkColorHover;
+	}
+}
+.nav .dropdown-menu .active > span.separator {
+	background-color: @dropdownLinkBackgroundActive;
+	color: @dropdownLinkColorActive;
 }
 
-.navbar .nav > .active > span.separator, .navbar .nav > .active > span.separator:hover, .navbar .nav > .active > span.separator:focus {
-    background-color: #E5E5E5;
+.navbar .nav > .active > span.separator,.navbar .nav > .active > span.separator:hover, .navbar .nav > .active > span.separator:focus {
+    background-color: @navbarLinkBackgroundActive;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125) inset;
-    color: #555555;
+    color: @navbarLinkColorActive;
     text-decoration: none;
 }
-
+.navbar-inverse .navbar .nav > .active > span.separator, .navbar-inverse .navbar .nav > .active > span.separator:hover, .navbar-inverse .navbar .nav > .active > span.separator:focus {
+    background-color: @navbarInverseLinkBackgroundActive;
+    color: @navbarInverseLinkColorActive;
+}
 dl.label.label-info{
 	display: inline-block;
 	margin: 0;
@@ -944,10 +964,10 @@ dl.label.label-info dt{
 	clear: both;
 }
 
-.content_vote input[type="submit"], 
-.content_vote input[type="reset"], 
+.content_vote input[type="submit"],
+.content_vote input[type="reset"],
 .content_vote input[type="button"],
-.content_vote input[type="radio"], 
+.content_vote input[type="radio"],
 .content_vote input[type="checkbox"]{
 	margin-left: 5px;
     margin-right: 5px;
@@ -972,7 +992,7 @@ dl.label.label-info dt{
 	clear: both;
 }
 .result-title:first-child{
-	border-top-color:transparent; 
+	border-top-color:transparent;
 }
 .result-title{
     border-top: 1px solid #eee;
@@ -1002,7 +1022,7 @@ dl.label.label-info dt{
     border-style: solid;
     border-width: 1px;
     color: #555555 !important;
-    cursor: default;	
+    cursor: default;
 }
 .nav-tabs h3 a{
 	padding:4px 5px 1px;
@@ -1013,7 +1033,7 @@ dl.label.label-info dt{
 }
 .nav-tabs dt a{
 	font-size: .7em;
-	border-radius:5px 5px 0 0; 
+	border-radius:5px 5px 0 0;
 }
 .tabs.nav.nav-tabs dt.tabs {
 	float: left;
@@ -1052,7 +1072,7 @@ dl.tabs.nav h3{
 	margin-bottom: 0;
 }
 .contact-form dt label{
-	min-width: 65px; 
+	min-width: 65px;
 }
 .result-created{
 	color: #999999;
@@ -1088,7 +1108,7 @@ div:first-child + .panel {
     margin-bottom: 18px;
     margin-top: 0;
     overflow:hidden;
-    padding: 17px 20px 18px;	
+    padding: 17px 20px 18px;
 }
 #users-profile-core dl dd,
 #users-profile-custom dl dd{
@@ -1109,7 +1129,7 @@ div:first-child + .panel {
 	min-width: 190px;
 }
 #sidebar1 input.button,
-#sidebar2 input.button 
+#sidebar2 input.button
 {
 	min-width: inherit;
 }
@@ -1145,7 +1165,7 @@ div:first-child + .panel {
 }
 .items-more h3{
 	padding-right:10px;
-	padding-left:15px; 
+	padding-left:15px;
 }
 /* User Registration  ************************************************************/
 span.spacer{
@@ -1153,9 +1173,9 @@ span.spacer{
 	display: block;
 }
 /* Module class  ************************************************************/
-    
+
 .icons-left{
-	float:left; 
+	float:left;
 	min-height:16px;
 }
 #mod-finder-advanced{
@@ -1202,7 +1222,7 @@ aside .nav.menu.nav-tabs{
 	float:none;
 }
 aside input {
-	width:60%; 
+	width:60%;
 }
 .img-intro-left, .img-fulltext-left {
     float: left;
