@@ -17,10 +17,6 @@ if ($gridMode == 'row-fluid') {
     $containerClass = 'container-fluid';
 }
 
-$bodyclass = "";
-if ($this->countModules('toolbar')) {
-    $bodyclass = "toolbarpadding";
-}
 $responsivePage = $this->params->get('responsive','1');
 $responsive = ' responsive';
 if ($responsivePage == 0) {
