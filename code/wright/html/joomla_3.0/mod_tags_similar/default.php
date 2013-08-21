@@ -19,6 +19,7 @@ defined('_JEXEC') or die;
 		<li>
 			<?php $item->route = new JHelperRoute; ?>
 			<a href="<?php echo JRoute::_(TagsHelperRoute::getItemRoute($item->content_item_id, $item->core_alias, $item->core_catid, $item->core_language, $item->type_alias, $item->router)); ?>">
+				<i class="icon-file icons-left"></i>  <?php // Wright v.3: Added icon ?>
 				<?php if (!empty($item->core_title)) :
 					echo htmlspecialchars($item->core_title);
 				endif; ?>

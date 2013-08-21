@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
 <?php foreach ($list as $item) :	?>
 <li><?php $route = new TagsHelperRoute; ?>
 	<a href="<?php echo JRoute::_(TagsHelperRoute::getTagRoute($item->tag_id . ':' . $item->alias)); ?>">
-		<i class="icon-tag"></i>  <?php // Wright v.3: Added icon ?>
+		<i class="icon-tag icons-left"></i>  <?php // Wright v.3: Added icon ?>
 		<?php echo htmlspecialchars($item->title); ?></a>
 </li>
 <?php endforeach; ?>
