@@ -7,8 +7,11 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// no direct access
+// No direct access.
 defined('_JEXEC') or die;
 
-require('components/com_contact/views/categories/tmpl/default.php');
+$app = JFactory::getApplication();
 
+require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
+include(Overrider::getOverride('com_contact.categories','default_items'));
+?>

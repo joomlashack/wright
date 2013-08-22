@@ -1,31 +1,47 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
- * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @subpackage	com_contact
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // no direct access
 defined('_JEXEC') or die;
-if (!function_exists("wright_joomla_contact_category")) :
 
-	
-	
-	
-	function wright_joomla_contact_category($buffer) {
-			$buffer = preg_replace('/<h2>/Ui', '<div class="page-header"> <h2>', $buffer);
-			$buffer = preg_replace('/<\/h2>/Ui', '</h2> </div>', $buffer);
-			$buffer = preg_replace('/<table class="category">/Ui', '<table class="category table table-striped table-hover">', $buffer);
-			$buffer = preg_replace('/<span class="item-title">/Ui', '<span class="item-title"><i class="icon-folder-close"> </i>', $buffer);
-			$buffer = preg_replace('/<dl>/Ui', '<dl class="label label-info">', $buffer);
-				return $buffer;
-				
-	}
+?>
+<div class="contact-category<?php echo $this->pageclass_sfx;?>">
+<?php if ($this->params->get('show_page_heading')) : ?>
+<h1>
+	<?php echo $this->escape($this->params->get('page_heading')); ?>
+</h1>
+<?php endif; ?>
+<?php if($this->params->get('show_category_title', 1)) : ?>
+<div class="page-header"> <?php // Wright v.3: Page header ?>
+	<h2>
+		<?php echo JHtml::_('content.prepare', $this->category->title, '', 'com_contact.category'); ?>
+	</h2>
+</div> <?php // Wright v.3: Page header ?>
+<?php endif; ?>
+<?php if ($this->params->def('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
+	<div class="category-desc">
+	<?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
+		<img src="<?php echo $this->category->getParams()->get('image'); ?>"/>
+	<?php endif; ?>
+	<?php if ($this->params->get('show_description') && $this->category->description) : ?>
+		<?php echo JHtml::_('content.prepare', $this->category->description, '', 'com_contact.category'); ?>
+	<?php endif; ?>
+	<div class="clr"></div>
+	</div>
+<?php endif; ?>
 
-endif;
+<?php echo $this->loadTemplate('items'); ?>
 
-ob_start("wright_joomla_contact_category");
-require('components/com_contact/views/category/tmpl/default.php');
-ob_end_flush();
-
+<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
+<div class="cat-children">
+	<h3><?php echo JText::_('JGLOBAL_SUBCATEGORIES') ; ?></h3>
+	<?php echo $this->loadTemplate('children'); ?>
+</div>
+<?php endif; ?>
+</div>

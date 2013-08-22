@@ -13,5 +13,5 @@ defined('_JEXEC') or die;
 $app = JFactory::getApplication();
 
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
-include(Overrider::getOverride('com_contact.featured'));
+include(Overrider::getOverride('com_contact.category','default_items'));
 ?>

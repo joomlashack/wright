@@ -8,6 +8,7 @@
  */
 
 defined('_JEXEC') or die;
+include_once(JPATH_THEMES.'/'.JFactory::getApplication()->getTemplate().'/wright/html/libraries/wrighthtml.php');
 include_once(JPATH_THEMES.'/'.JFactory::getApplication()->getTemplate().'/wright/html/jlayouthelper.php');
 
 class Overrider

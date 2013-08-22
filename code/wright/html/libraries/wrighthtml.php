@@ -7,8 +7,10 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// no direct access
-defined('_JEXEC') or die;
+defined('JPATH_PLATFORM') or die;
 
-require('components/com_contact/views/categories/tmpl/default.php');
+JHTML::addIncludePath(JPATH_THEMES.'/'.JFactory::getApplication()->getTemplate().'/wright/html/libraries/html');
 
+class JWrightHtml extends JHtml
+{
+}
