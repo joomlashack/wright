@@ -8,7 +8,7 @@
 	<authorUrl>http://www.joomlashack.com</authorUrl>
 	<copyright>Copyright Joomlashack 2013. All rights reserved</copyright>
 	<license>GNU GPLv2</license>
-	<version>3.1.3_beta5</version>
+	<version>3.1.3_beta6</version>
     <description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
 
 	<languages folder="language">
@@ -18,6 +18,9 @@
 		<!-- es-ES -->
 		<language tag="es-ES">es-ES/es-ES.tpl_js_wright.ini</language>
 		<language tag="es-ES">es-ES/es-ES.tpl_js_wright.sys.ini</language>
+		<!-- de-DE -->
+		<language tag="de-DE">de-DE/de-DE.tpl_js_wright.ini</language>
+		<language tag="de-DE">de-DE/de-DE.tpl_js_wright.sys.ini</language>
 	</languages>
 
 	<files>
