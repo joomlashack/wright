@@ -14,12 +14,14 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 ?>
 <div class="archive<?php echo $this->pageclass_sfx;?>">
 <?php if ($this->params->get('show_page_heading')) : ?>
-<h1>
-	<?php echo $this->escape($this->params->get('page_heading')); ?>
-</h1>
+<div class="page-header">  <?php // Wright v.3: Added page header ?>
+	<h1>
+		<?php echo $this->escape($this->params->get('page_heading')); ?>
+	</h1>
+</div>  <?php // Wright v.3: Added page header ?>
 <?php endif; ?>
-<form id="adminForm" action="<?php echo JRoute::_('index.php')?>" method="post">
-	<fieldset class="filters form-actions"> <?php // Wright v.3: Added form-actions class ?>
+<form id="adminForm" action="<?php echo JRoute::_('index.php')?>" method="post" class="form-inline">  <?php // Wright v.3: Added form-inline class ?>
+	<fieldset class="filters well well-small"> <?php // Wright v.3: Added well well-small classes ?>
 	<legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
 	<div class="filter-search">
 		<?php if ($this->params->get('filter_field') != 'hide') : ?>

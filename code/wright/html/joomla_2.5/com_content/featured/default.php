@@ -49,9 +49,9 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 <div class="blog-featured<?php echo $this->pageclass_sfx;?>">
 <?php if ( $this->params->get('show_page_heading')!=0) : ?>
 	<div class="page-header"> <?php // Wright v.3: Added page-header ?>
-	<h1>
-	<?php echo $this->escape($this->params->get('page_heading')); ?>
-	</h1>
+		<h1>
+		<?php echo $this->escape($this->params->get('page_heading')); ?>
+		</h1>
 	</div> <?php // Wright v.3: Added page-header ?>
 <?php endif; ?>
 

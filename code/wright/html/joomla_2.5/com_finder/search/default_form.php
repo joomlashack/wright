@@ -64,7 +64,7 @@ defined('_JEXEC') or die;
 	});
 </script>
 
-<form id="finder-search" action="<?php echo JRoute::_($this->query->toURI()); ?>" method="get">
+<form id="finder-search" action="<?php echo JRoute::_($this->query->toURI()); ?>" method="get" class="form-search">  <?php // Wright v.3: Added form-search class ?>
 	<?php echo $this->getFields(); ?>
 
 	<?php
@@ -75,7 +75,7 @@ defined('_JEXEC') or die;
 		<input type="hidden" name="o" value="<?php echo $this->escape($this->state->get('list.ordering')); ?>" />
 	<?php endif; ?>
 
-	<fieldset class="word form-actions">  <?php // Wright v.3:  Added form-actions class ?>
+	<fieldset class="word well well-small">  <?php // Wright v.3: Added well well-small classes ?>
 		<label for="q">
 			<?php echo JText::_('COM_FINDER_SEARCH_TERMS'); ?>
 		</label>

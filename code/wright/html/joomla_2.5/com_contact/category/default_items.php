@@ -19,9 +19,9 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	<p> <?php echo JText::_('COM_CONTACT_NO_ARTICLES'); ?>	 </p>
 <?php else : ?>
 
-<form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline"> <?php // Wright v.3: Added form-inline class ?>
 <?php if ($this->params->get('show_pagination_limit')) : ?>
-	<fieldset class="filters form-actions"> <?php // Wright v.3: Added form-actions class ?>
+	<fieldset class="filters well well-small"> <?php // Wright v.3: Added well well-small classes ?>
 	<legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
 
 		<div class="display-limit">

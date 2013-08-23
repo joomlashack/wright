@@ -31,7 +31,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 
 <form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm">
 	<?php if ($this->params->get('show_headings') || $this->params->get('filter_field') != 'hide' || $this->params->get('show_pagination_limit')) :?>
-	<fieldset class="filters form-actions"> <?php // Wright v.3: Added form-actions class ?>
+	<fieldset class="filters well well-small"> <?php // Wright v.3: Added well well-small classes ?>
 		<?php if ($this->params->get('filter_field') != 'hide') :?>
 		<legend class="hidelabeltxt">
 			<?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?>

@@ -13,16 +13,29 @@ defined('_JEXEC') or die;
 ?>
 <div class="contact-category<?php echo $this->pageclass_sfx;?>">
 <?php if ($this->params->get('show_page_heading')) : ?>
-<h1>
-	<?php echo $this->escape($this->params->get('page_heading')); ?>
-</h1>
+<div class="page-header">  <?php // Wright v.3: Added page header ?>
+	<h1>
+		<?php echo $this->escape($this->params->get('page_heading')); ?>
+	</h1>
+</div>  <?php // Wright v.3: Added page header ?>
 <?php endif; ?>
 <?php if($this->params->get('show_category_title', 1)) : ?>
-<div class="page-header"> <?php // Wright v.3: Page header ?>
-	<h2>
-		<?php echo JHtml::_('content.prepare', $this->category->title, '', 'com_contact.category'); ?>
-	</h2>
-</div> <?php // Wright v.3: Page header ?>
+	<?php
+	if (!$this->params->get('show_page_heading')) : ?>
+	<div class="page-header">
+	<?php endif;
+		/* End Wright v.3: Added page header */
+	?>
+		<h2>
+			<?php echo JHtml::_('content.prepare', $this->category->title, '', 'com_contact.category'); ?>
+		</h2>
+	<?php
+		/* Wright v.3: Added page header */
+	if (!$this->params->get('show_page_heading')) : ?>
+	</div>
+	<?php endif;
+		/* End Wright v.3: Added page header */
+	?>
 <?php endif; ?>
 <?php if ($this->params->def('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
 	<div class="category-desc">

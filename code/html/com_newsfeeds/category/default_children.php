@@ -10,5 +10,8 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-require('components/com_content/views/categories/tmpl/default.php');
+$app = JFactory::getApplication();
 
+require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
+include(Overrider::getOverride('com_newsfeeds.category','default_children'));
+?>

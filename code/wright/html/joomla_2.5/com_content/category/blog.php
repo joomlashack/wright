@@ -49,20 +49,33 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 ?>
 <div class="blog<?php echo $this->pageclass_sfx;?>">
 <?php if ($this->params->get('show_page_heading')) : ?>
-	<h1>
-		<?php echo $this->escape($this->params->get('page_heading')); ?>
-	</h1>
+	<div class="page-header">  <?php // Wright v.3: Added page header ?>
+		<h1>
+			<?php echo $this->escape($this->params->get('page_heading')); ?>
+		</h1>  <?php // Wright v.3: Added page header ?>
+	</div>
 	<?php endif; ?>
 
 	<?php if ($this->params->get('show_category_title', 1) or $this->params->get('page_subheading')) : ?>
-	<div class="page-header"> <?php // Wright v.3: Added page-header ?>
-		<h2>
-			<?php echo $this->escape($this->params->get('page_subheading')); ?>
-			<?php if ($this->params->get('show_category_title')) : ?>
-				<span class="subheading-category"><?php echo $this->category->title;?></span>
-			<?php endif; ?>
-		</h2>
-	</div> <?php // Wright v.3: Added page-header ?>
+		<?php
+		if (!$this->params->get('show_page_heading')) : ?>
+		<div class="page-header">
+		<?php endif;
+			/* End Wright v.3: Added page header */
+		?>
+			<h2>
+				<?php echo $this->escape($this->params->get('page_subheading')); ?>
+				<?php if ($this->params->get('show_category_title')) : ?>
+					<span class="subheading-category"><?php echo $this->category->title;?></span>
+				<?php endif; ?>
+			</h2>
+		<?php
+			/* Wright v.3: Added page header */
+		if (!$this->params->get('show_page_heading')) : ?>
+		</div>
+		<?php endif;
+			/* End Wright v.3: Added page header */
+		?>
 	<?php endif; ?>
 
 

@@ -64,16 +64,27 @@ if (!empty($this->item->pagination) AND $this->item->pagination && !$this->item-
 
 
 <?php if ($params->get('show_title')) : ?>
-	<?php echo '<div class="page-header">'; // Wright v.3: Page header ?>
-	<h2>
-	<?php if ($params->get('link_titles') && !empty($this->item->readmore_link)) : ?>
-		<a href="<?php echo $this->item->readmore_link; ?>">
-		<?php echo $this->escape($this->item->title); ?></a>
-	<?php else : ?>
-		<?php echo $this->escape($this->item->title); ?>
-	<?php endif; ?>
-	</h2>
-	<?php echo '</div>'; // Wright v.3: Page header?>
+	<?php
+	if (!$this->params->get('show_page_heading')) : ?>
+	<div class="page-header">
+	<?php endif;
+		/* End Wright v.3: Added page header */
+	?>
+		<h2>
+		<?php if ($params->get('link_titles') && !empty($this->item->readmore_link)) : ?>
+			<a href="<?php echo $this->item->readmore_link; ?>">
+			<?php echo $this->escape($this->item->title); ?></a>
+		<?php else : ?>
+			<?php echo $this->escape($this->item->title); ?>
+		<?php endif; ?>
+		</h2>
+	<?php
+		/* Wright v.3: Added page header */
+	if (!$this->params->get('show_page_heading')) : ?>
+	</div>
+	<?php endif;
+		/* End Wright v.3: Added page header */
+	?>
 <?php endif; ?>
 
 <?php

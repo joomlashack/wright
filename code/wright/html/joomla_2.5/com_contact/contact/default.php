@@ -20,16 +20,29 @@ $cparams = JComponentHelper::getParams ('com_media');
 ?>
 <div class="contact<?php echo $this->pageclass_sfx?>">
 <?php if ($this->params->get('show_page_heading')) : ?>
-<h1>
-	<?php echo $this->escape($this->params->get('page_heading')); ?>
-</h1>
+<div class="page-header">  <?php // Wright v.3: Added page header ?>
+	<h1>
+		<?php echo $this->escape($this->params->get('page_heading')); ?>
+	</h1>
+</div>  <?php // Wright v.3: Added page header ?>
 <?php endif; ?>
 	<?php if ($this->contact->name && $this->params->get('show_name')) : ?>
-		<div class="page-header"> <?php // Wright v.3: Page header ?>
+		<?php
+		if (!$this->params->get('show_page_heading')) : ?>
+		<div class="page-header">
+		<?php endif;
+			/* End Wright v.3: Added page header */
+		?>
 			<h2>
 				<span class="contact-name"><?php echo $this->contact->name; ?></span>
-			</h2> <?php // Wright v.3: Page header ?>
+			</h2>
+		<?php
+			/* Wright v.3: Added page header */
+		if (!$this->params->get('show_page_heading')) : ?>
 		</div>
+		<?php endif;
+			/* End Wright v.3: Added page header */
+		?>
 	<?php endif;  ?>
 	<?php if ($this->params->get('show_contact_category') == 'show_no_link') : ?>
 		<h3>
@@ -45,8 +58,8 @@ $cparams = JComponentHelper::getParams ('com_media');
 		</h3>
 	<?php endif; ?>
 	<?php if ($this->params->get('show_contact_list') && count($this->contacts) > 1) : ?>
-		<form action="#" method="get" name="selectForm" id="selectForm">
-			<fieldset class="filters form-actions">  <?php // Wright v.3: Added fieldset ?>
+		<form action="#" method="get" name="selectForm" id="selectForm" class="form-inline"> <?php // Wright v.3: Added form-inline class ?>
+			<fieldset class="filters well well-small">  <?php // Wright v.3: Added fieldset ?>
 				<?php echo JText::_('COM_CONTACT_SELECT_CONTACT'); ?>
 				<?php echo JHtml::_('select.genericlist',  $this->contacts, 'id', 'class="inputbox" onchange="document.location.href = this.value"', 'link', 'name', $this->contact->link);?>
 			</fieldset>  <?php // Wright v.3: Added fieldset ?>
