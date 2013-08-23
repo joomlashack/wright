@@ -59,7 +59,6 @@ p.img_caption {
 /* CONTENT BUTTONS */
 .btn-group.actions .btn img { height: 16px; }
 
-
 /* positions margins */
 #header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2,
 #bottom-menu {
@@ -301,6 +300,9 @@ dl.article-info dd {
 	border-radius:6px;
 	border:0 none;
 }
+.filters button {
+	margin-bottom: 10px;
+}
 dl.article-info dd:hover {
 	background-color: #FBF4F4;
 }
@@ -490,33 +492,18 @@ span.content_vote {
 
 /* Print & PDF Icons *************************************************************/
 
-ul.actions {
-	min-width: auto;
+ul.actions.dropdown-menu {
+	min-width: 50px;
 	padding: 0;
-}
-ul.actions li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	line-height: inherit;
+
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		line-height: inherit;
+	}
 }
 
-/*
-ul.actions{
-	float: right;
-	margin-top: 6px;
-	padding: 0;
-}
-ul.actions li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-ul.actions li {
-	padding: 0px 2px;
-}
-*/
-/* @end */
 
 /*  Style Float Images *************************************************************/
 .alignleft{
@@ -1081,7 +1068,6 @@ dl.tabs.nav h3{
 }
 .contact-links,
 .contact-articles{
-	float: left;
 	min-width: 200px;
 }
 .contact-links + h3{
@@ -1304,11 +1290,11 @@ p.readmore{
 /* Text selection */
 
 ::selection {
-	background:rgb(255,255,0);
+	background:#D2EAF6;
 }
 
 ::-moz-selection {
-	background: rgb(255,255,0);
+	background: #D2EAF6;
 }
 /*leading Articles*/
 .items-leading [class*="leading-"]{
@@ -1327,4 +1313,12 @@ iframe{
 .contentpane {
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+
+body.contentpane {
+	div.icons-actions,
+	div.content_vote {
+		display: none;
+	}
 }

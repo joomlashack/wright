@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.11
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	com_content

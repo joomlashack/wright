@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.11
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -62,7 +62,7 @@ JHtml::_('behavior.framework');
 	<?php
 		/* Wright v.3: Icons dropdown */
 	?>
-		<div class="btn-group pull-right">
+		<div class="btn-group pull-right icons-actions">   <?php // Wright v.3: Added icons-actions class ?>
 			<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
 				<i class="icon-cog"></i>
 				<span class="caret"></span>

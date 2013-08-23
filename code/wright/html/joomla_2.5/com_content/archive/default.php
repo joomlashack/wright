@@ -1,4 +1,5 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -8,33 +9,34 @@
 
 // no direct access
 defined('_JEXEC') or die;
-if (!function_exists("wright_joomla_content_archive")) :
 
-	function replace_content_archive_readmore($matches) {
-		return '<p class="readmore">' . $matches[1] . '<a' . $matches[2] . ' class="btn">';
-	}
-	
-	function wright_joomla_content_archive($buffer) {
-		
-		$buffer = preg_replace('/<dd class="category-name">/Ui', '<dd class="category-name"><i class="icon-folder-close"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="create">/Ui', '<dd class="create"><i class="icon-calendar"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="modified">/Ui', '<dd class="modified"><i class="icon-edit"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="published">/Ui', '<dd class="published"><i class="icon-table"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="createdby">/Ui', '<dd class="createdby"><i class="icon-user"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="hits">/Ui', '<dd class="hits"><i class="icon-signal"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="parent-category-name">/Ui', '<dd class="hits"><i class="icon-folder-close"></i>', $buffer);
-		$buffer = preg_replace_callback('/<p class="readmore">([^<]*)<a([^>]*)>/Ui', "replace_content_archive_readmore", $buffer);	
-		$buffer = preg_replace('/<fieldset class="filters">/Ui', '<fieldset class="filters form-actions">', $buffer);
-		$buffer = preg_replace('/ class="button"/Ui', 'class="button btn" style="display:block; float:right; margin-left:5px;"', $buffer);
-		$buffer = preg_replace('/<h2>/Ui', '<div class="page-header"> <h2>', $buffer);
-		$buffer = preg_replace('/<\/h2>/Ui', '</h2> </div>', $buffer);
-		$buffer = preg_replace('/id="adminForm"/Ui', 'id="adminForm" class="form-inline"', $buffer);
-		return $buffer;
-	}
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
+?>
+<div class="archive<?php echo $this->pageclass_sfx;?>">
+<?php if ($this->params->get('show_page_heading')) : ?>
+<h1>
+	<?php echo $this->escape($this->params->get('page_heading')); ?>
+</h1>
+<?php endif; ?>
+<form id="adminForm" action="<?php echo JRoute::_('index.php')?>" method="post">
+	<fieldset class="filters form-actions"> <?php // Wright v.3: Added form-actions class ?>
+	<legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
+	<div class="filter-search">
+		<?php if ($this->params->get('filter_field') != 'hide') : ?>
+		<label class="filter-search-lbl" for="filter-search"><?php echo JText::_('COM_CONTENT_'.$this->params->get('filter_field').'_FILTER_LABEL').'&#160;'; ?></label>
+		<input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->filter); ?>" class="inputbox" onchange="document.getElementById('adminForm').submit();" />
+		<?php endif; ?>
 
-endif;
+		<?php echo $this->form->monthField; ?>
+		<?php echo $this->form->yearField; ?>
+		<?php echo $this->form->limitField; ?>
+		<button type="submit" class="button btn"><?php echo JText::_('JGLOBAL_FILTER_BUTTON'); ?></button> <?php // Wright v.3: Added btn class ?>
+	</div>
+	<input type="hidden" name="view" value="archive" />
+	<input type="hidden" name="option" value="com_content" />
+	<input type="hidden" name="limitstart" value="0" />
+	</fieldset>
 
-ob_start("wright_joomla_content_archive");
-require('components/com_content/views/archive/tmpl/default.php');
-ob_end_flush();
-
+	<?php echo $this->loadTemplate('items'); ?>
+</form>
+</div>

@@ -1,4 +1,5 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -8,20 +9,49 @@
 
 // no direct access
 defined('_JEXEC') or die;
-if (!function_exists("wright_joomla_content_categories_default_items")) :
-
-	
-	
-	function wright_joomla_content_categories_default_items($buffer) {
-		
-		$buffer = preg_replace('/<dl>/Ui', '<dl class="label label-info">', $buffer);
-		
-		return $buffer;
+$class = ' class="first"';
+if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
+?>
+<ul>
+<?php foreach($this->items[$this->parent->id] as $id => $item) : ?>
+	<?php
+	if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) :
+	if (!isset($this->items[$this->parent->id][$id + 1]))
+	{
+		$class = ' class="last"';
 	}
+	?>
+	<li<?php echo $class; ?>>
+	<?php $class = ''; ?>
+		<span class="item-title"><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id));?>">
+			<i class="icon-folder-open"></i> <?php // Wright v.3: Added icon ?>
+			<?php echo $this->escape($item->title); ?></a>
+		</span>
+		<?php if ($this->params->get('show_subcat_desc_cat') == 1) :?>
+		<?php if ($item->description) : ?>
+			<div class="category-desc">
+				<?php echo JHtml::_('content.prepare', $item->description, '', 'com_content.categories'); ?>
+			</div>
+		<?php endif; ?>
+        <?php endif; ?>
+		<?php if ($this->params->get('show_cat_num_articles_cat') == 1) :?>
+			<dl class="label label-info"><dt>
+				<?php echo JText::_('COM_CONTENT_NUM_ITEMS'); ?></dt>
+				<dd><?php echo $item->numitems; ?></dd>
+			</dl>
+		<?php endif; ?>
 
-endif;
+		<?php if (count($item->getChildren()) > 0) :
+			$this->items[$item->id] = $item->getChildren();
+			$this->parent = $item;
+			$this->maxLevelcat--;
+			echo $this->loadTemplate('items');
+			$this->parent = $item->getParent();
+			$this->maxLevelcat++;
+		endif; ?>
 
-ob_start("wright_joomla_content_categories_default_items");
-require('components/com_content/views/categories/tmpl/default_items.php');
-ob_end_flush();
-
+	</li>
+	<?php endif; ?>
+<?php endforeach; ?>
+</ul>
+<?php endif; ?>

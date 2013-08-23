@@ -1,61 +1,65 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // no direct access
 defined('_JEXEC') or die;
-if (!function_exists("wright_joomla_content_category")) :
 
-	function replace_readmore_category($matches) {
-		return '<p class="readmore">' . $matches[1] . '<a' . $matches[2] . ' class="btn btn-small btn-primary">';
+/* Wright v.3: Helper */
+	include_once(dirname(__FILE__) . '/../com_content.helper.php');
+/* End Wright v.3: Helper */
 
-	}
+JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
-	function wright_joomla_content_category($buffer) {
+?>
+<div class="category-list<?php echo $this->pageclass_sfx;?>">
 
-		$buffer = preg_replace('/<dd class="category-name">/Ui', '<dd class="category-name"><i class="icon-folder-close"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="create">/Ui', '<dd class="create"><i class="icon-calendar"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="modified">/Ui', '<dd class="modified"><i class="icon-edit"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="published">/Ui', '<dd class="published"><i class="icon-table"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="createdby">/Ui', '<dd class="createdby"><i class="icon-user"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="hits">/Ui', '<dd class="hits"><i class="icon-signal"></i>', $buffer);
-		$buffer = preg_replace('/<dd class="parent-category-name">/Ui', '<dd class="hits"><i class="icon-folder-close"></i>', $buffer);
-	    $buffer = preg_replace('/<ul class="actions">/Ui', '<ul class="btn-group actions">', $buffer);
-		$buffer = preg_replace('/<li class="([^-]+)-icon">/Ui', '<li class="btn $1-icon">', $buffer);
+	<?php if ($this->params->get('show_page_heading')) : ?>
+	<h1>
+		<?php echo $this->escape($this->params->get('page_heading')); ?>
+	</h1>
+	<?php endif; ?>
 
-		$buffer = preg_replace_callback('/<p class="readmore">([^<]*)<a([^>]*)>/Ui', "replace_readmore", $buffer);
-		$buffer = preg_replace('/ class="button"/Ui', 'class="button btn " style="display:block; float:right; margin-left:5px;"', $buffer);
+	<?php if ($this->params->get('show_category_title', 1) or $this->params->get('page_subheading')) : ?>
+	<div class="page-header">  <?php // Wright v.3: Added page header ?>
+		<h2>
+			<?php echo $this->escape($this->params->get('page_subheading')); ?>
+			<?php if ($this->params->get('show_category_title')) : ?>
+				<span class="subheading-category"><?php echo $this->category->title;?></span>
+			<?php endif; ?>
+		</h2>
+	</div>  <?php // Wright v.3: Added page header ?>
+	<?php endif; ?>
 
-		$buffer = preg_replace('/<h2>/Ui', '<div class="page-header"> <h2>', $buffer);
-		$buffer = preg_replace('/<\/h2>/Ui', '</h2> </div>', $buffer);
-		$buffer = preg_replace('/<div class="items-more">/Ui', '<div class="items-more well">', $buffer);
-		$buffer = preg_replace('/<ol>/Ui', '<ol class="nav nav-list">', $buffer);
+	<?php if ($this->params->get('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
+	<div class="category-desc">
+		<?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
+			<img src="<?php echo $this->category->getParams()->get('image'); ?>"/>
+		<?php endif; ?>
+		<?php if ($this->params->get('show_description') && $this->category->description) : ?>
+			<?php echo JHtml::_('content.prepare', $this->category->description, '', 'com_content.category'); ?>
+		<?php endif; ?>
+		<div class="clr"></div>
+	</div>
+	<?php endif; ?>
 
-		$buffer = preg_replace('/<span class="item-title">/Ui', '<span class="item-title"><i class="icon-folder-open"></i>', $buffer);
-		$buffer = preg_replace('/<dl>/Ui', '<dl class="label label-info">', $buffer);
+	<div class="cat-items">
+		<?php echo $this->loadTemplate('articles'); ?>
+	</div>
 
-		$buffer = preg_replace('/<span class="pagenav">/Ui', '<span class="pagenav disabled"><a>', $buffer);
-		$buffer = preg_replace('/<\/span><\/li>/Ui', '</a></span></li>', $buffer);
-
-		$buffer = preg_replace('/<table class="category">/Ui', '<table class="category table table-striped table-hover">', $buffer);
-
-		$buffer = preg_replace('/Display #/Ui', '<label> Display # </label>', $buffer);
-
-		$buffer = preg_replace('/<div class="blog">/Ui', '<div class="blog row-fluid">', $buffer);
-		$buffer = preg_replace('/id="adminForm">/Ui', 'id="adminForm" class="form-inline"', $buffer);
-		$buffer = preg_replace('/class="filter-search">/Ui', 'class="filter-search pull-left"', $buffer);
-
-
-		return $buffer;
-	}
-
-endif;
-
-ob_start("wright_joomla_content_category");
-require('components/com_content/views/category/tmpl/default.php');
-ob_end_flush();
-
+	<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
+	<div class="cat-children">
+		<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
+		<h3>
+			<?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
+		</h3>
+		<?php endif; ?>
+		<?php echo $this->loadTemplate('children'); ?>
+	</div>
+	<?php endif; ?>
+</div>

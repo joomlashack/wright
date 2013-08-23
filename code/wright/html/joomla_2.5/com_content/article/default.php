@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.11
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -87,7 +87,7 @@ if (!empty($this->item->pagination) AND $this->item->pagination && !$this->item-
 	<?php
 		/* Wright v.3: Icons dropdown */
 	?>
-		<div class="btn-group pull-right">
+		<div class="btn-group pull-right icons-actions">  <?php // Wright v.3: Added icons-actions class ?>
 			<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
 				<i class="icon-cog"></i>
 				<span class="caret"></span>
@@ -216,7 +216,8 @@ endif; ?>
 		$item = $menu->getItems('link', $needle, true);
 		$cntlink = !empty($item) ? $needle . '&Itemid=' . $item->id : $needle;
 	?>
-		<?php echo $wrightBeforeIconM . JText::sprintf('COM_CONTENT_WRITTEN_BY', JHtml::_('link', JRoute::_($cntlink), $author)) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
+		<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY', JHtml::_('link', JRoute::_($cntlink), $author)) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
+		<?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('link', JRoute::_($cntlink), $author)) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 	<?php else: ?>
 		<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY', $author) . $wrightAfterIcon;  // Wright v.3: Icon for non-mobile version ?>
 		<?php echo $wrightBeforeIconM . JText::sprintf($author) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>

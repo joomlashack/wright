@@ -46,8 +46,10 @@ $cparams = JComponentHelper::getParams ('com_media');
 	<?php endif; ?>
 	<?php if ($this->params->get('show_contact_list') && count($this->contacts) > 1) : ?>
 		<form action="#" method="get" name="selectForm" id="selectForm">
-			<?php echo JText::_('COM_CONTACT_SELECT_CONTACT'); ?>
-			<?php echo JHtml::_('select.genericlist',  $this->contacts, 'id', 'class="inputbox" onchange="document.location.href = this.value"', 'link', 'name', $this->contact->link);?>
+			<fieldset class="filters form-actions">  <?php // Wright v.3: Added fieldset ?>
+				<?php echo JText::_('COM_CONTACT_SELECT_CONTACT'); ?>
+				<?php echo JHtml::_('select.genericlist',  $this->contacts, 'id', 'class="inputbox" onchange="document.location.href = this.value"', 'link', 'name', $this->contact->link);?>
+			</fieldset>  <?php // Wright v.3: Added fieldset ?>
 		</form>
 	<?php endif; ?>
 	<?php  if ($this->params->get('presentation_style')!='plain'){?>
@@ -55,7 +57,9 @@ $cparams = JComponentHelper::getParams ('com_media');
 	<?php  echo JHtml::_($this->params->get('presentation_style').'.panel', JText::_('COM_CONTACT_DETAILS'), 'basic-details'); } ?>
 	<?php if ($this->params->get('presentation_style')=='plain'):?>
 		<?php  echo '<h3>'. JText::_('COM_CONTACT_DETAILS').'</h3>';  ?>
+		<div class="well">  <?php // Wright v.3: Added well to contact info ?>
 	<?php endif; ?>
+
 	<?php if ($this->contact->image && $this->params->get('show_image')) : ?>
 		<div class="contact-image">
 			<?php echo JHtml::_('image', $this->contact->image, JText::_('COM_CONTACT_IMAGE_DETAILS'), array('align' => 'middle')); ?>
@@ -74,6 +78,13 @@ $cparams = JComponentHelper::getParams ('com_media');
 			<?php echo JText::_('COM_CONTACT_VCARD');?></a>
 	<?php endif; ?>
 	<p></p>
+	<?php
+	/* Wright v.3: Added well to contact info */
+	if ($this->params->get('presentation_style')=='plain'):?>
+	</div>
+	<?php endif;
+	/* End Wright v.3: Added well to contact info */
+	 ?>
 	<?php if ($this->params->get('show_email_form') && ($this->contact->email_to || $this->contact->user_id)) : ?>
 
 		<?php if ($this->params->get('presentation_style')!='plain'):?>

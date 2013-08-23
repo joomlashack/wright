@@ -23,7 +23,7 @@ $params = &$this->item->params;
 <?php else : ?>
 
 <form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm">
-	<fieldset class="filters">
+	<fieldset class="filters form-actions"> <?php // Wright v.3: Added form-actions class ?>
 	<legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
 	<?php if ($this->params->get('show_pagination_limit')) : ?>
 		<div class="display-limit">

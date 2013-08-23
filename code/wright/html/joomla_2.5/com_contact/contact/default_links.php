@@ -9,6 +9,8 @@
 
 defined('_JEXEC') or die;
 
+$extraclass = ($this->params->get('presentation_style')=='plain' ? " well" : "");  // Wright v.3: Added well class
+
 if ('plain' == $this->params->get('presentation_style')) :
 	echo '<h3>'.JText::_('COM_CONTACT_LINKS').'</h3>';
 else :
@@ -16,7 +18,7 @@ else :
 endif;
 ?>
 
-<div class="contact-links well"> <?php // Wright v.3: Added well class ?>
+<div class="contact-links<?php echo $extraclass; // Wright v.3: Added well class ?>">
 	<ul class="nav nav-list"> <?php // Wright v.3: Added nav nav-list classes ?>
 		<?php
 		    foreach(range('a', 'e') as $char) :// letters 'a' to 'e'

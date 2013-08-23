@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.11
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -49,20 +49,20 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 ?>
 <div class="blog<?php echo $this->pageclass_sfx;?>">
 <?php if ($this->params->get('show_page_heading')) : ?>
-	<div class="page-header"> <?php // Wright v.3: Added page-header ?>
 	<h1>
 		<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h1>
-	</div> <?php // Wright v.3: Added page-header ?>
 	<?php endif; ?>
 
 	<?php if ($this->params->get('show_category_title', 1) or $this->params->get('page_subheading')) : ?>
-	<h2>
-		<?php echo $this->escape($this->params->get('page_subheading')); ?>
-		<?php if ($this->params->get('show_category_title')) : ?>
-			<span class="subheading-category"><?php echo $this->category->title;?></span>
-		<?php endif; ?>
-	</h2>
+	<div class="page-header"> <?php // Wright v.3: Added page-header ?>
+		<h2>
+			<?php echo $this->escape($this->params->get('page_subheading')); ?>
+			<?php if ($this->params->get('show_category_title')) : ?>
+				<span class="subheading-category"><?php echo $this->category->title;?></span>
+			<?php endif; ?>
+		</h2>
+	</div> <?php // Wright v.3: Added page-header ?>
 	<?php endif; ?>
 
 
@@ -80,6 +80,11 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	</div>
 <?php endif; ?>
 
+<?php if (empty($this->lead_items) && empty($this->link_items) && empty($this->intro_items)) : ?>
+	<?php if ($this->params->get('show_no_articles', 1)) : ?>
+		<p><?php echo JText::_('COM_CONTENT_NO_ARTICLES'); ?></p>
+	<?php endif; ?>
+<?php endif; ?>
 
 <?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '<div class="' . $this->wrightLeadingIntroItemsClass . '">'; // Wright v.3: Extra Leading and Intro Items Div and Class ?>
 <?php $leadingcount=0 ; ?>
