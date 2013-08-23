@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.11
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	mod_login
@@ -32,7 +32,7 @@ JHtml::_('behavior.keepalive');
 	</div>
 <?php endif; ?>
 	<div class="logout-button">
-		<input type="submit" name="Submit" class="button<?php echo ' btn btn-primary' // Wright v.3: Primary button ?>" value="<?php echo JText::_('JLOGOUT'); ?>" />
+		<input type="submit" name="Submit" class="button<?php echo ' btn btn-danger' // Wright v.3: Added btn btn-danger class ?>" value="<?php echo JText::_('JLOGOUT'); ?>" />
 		<input type="hidden" name="option" value="com_users" />
 		<input type="hidden" name="task" value="user.logout" />
 		<input type="hidden" name="return" value="<?php echo $return; ?>" />
@@ -40,7 +40,7 @@ JHtml::_('behavior.keepalive');
 	</div>
 </form>
 <?php else : ?>
-<form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form" >
+<form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form" class="form-horizontal" > <?php // Wright v.3: Added form-horizontal class ?>
 	<?php if ($params->get('pretext')): ?>
 		<div class="pretext">
 		<p><?php echo $params->get('pretext'); ?></p>
@@ -61,7 +61,7 @@ JHtml::_('behavior.keepalive');
 		<input id="modlgn-remember" type="checkbox" name="remember" class="inputbox" value="yes"/>
 	</p>
 	<?php endif; ?>
-	<input type="submit" name="Submit" class="button<?php echo ' btn btn-primary' // Wright v.3: Primary button ?>" value="<?php echo JText::_('JLOGIN') ?>" />
+	<input type="submit" name="Submit" class="button<?php echo ' btn' // Wright v.3: Added btn class ?>" value="<?php echo JText::_('JLOGIN') ?>" />
 	<input type="hidden" name="option" value="com_users" />
 	<input type="hidden" name="task" value="user.login" />
 	<input type="hidden" name="return" value="<?php echo $return; ?>" />

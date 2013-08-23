@@ -1,4 +1,5 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	mod_articles_news
@@ -14,16 +15,23 @@ $item_heading = $params->get('item_heading', 'h4');
 
 	<<?php echo $item_heading; ?> class="newsflash-title<?php echo $params->get('moduleclass_sfx'); ?>">
 	<?php if ($params->get('link_titles') && $item->link != '') : ?>
-		<a href="<?php echo $item->link;?>">
-			<?php echo $item->title;?></a>
+		<legend>  <?php // Wright v.3: Added legend tag ?>
+			<a href="<?php echo $item->link;?>">
+				<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
+				<?php echo $item->title;?></a>
+		</legend>  <?php // Wright v.3: Added legend tag ?>
 	<?php else : ?>
-		<?php echo $item->title; ?>
+		<legend>  <?php // Wright v.3: Added legend tag ?>
+			<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
+			<?php echo $item->title; ?>
+		</legend>  <?php // Wright v.3: Added legend tag ?>
 	<?php endif; ?>
 	</<?php echo $item_heading; ?>>
 
 <?php endif; ?>
 
 <?php
+	/* Wright v.3: Added intro image */
 	$images = json_decode($item->images);
 	if ($params->get('image','1')) :
 		if (isset($images->image_intro) and !empty($images->image_intro)) :
@@ -36,6 +44,7 @@ $item_heading = $params->get('item_heading', 'h4');
 <?php
 		endif;
 	endif;
+	/* End Wright v.3: Added intro image */
 ?>
 
 <?php if (!$params->get('intro_only')) :

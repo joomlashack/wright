@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.11
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	mod_search
@@ -32,7 +32,7 @@ defined('_JEXEC') or die;
 				if ($imagebutton) :
 					$button = '<input type="image" value="'.$button_text.'" class="button'.$moduleclass_sfx.'" src="'.$img.'" onclick="this.form.searchword.focus();"/>';
 				else :
-					$button = '<input type="submit" value="'.$button_text.'" class="btn btn-primary button'.$moduleclass_sfx.'" onclick="this.form.searchword.focus();"/>';  // Wright v.3: Added btn btn-primary
+					$button = '<input type="submit" value="'.$button_text.'" class="btn button'.$moduleclass_sfx.'" onclick="this.form.searchword.focus();"/>';  // Wright v.3: Added btn class
 				endif;
 			endif;
 

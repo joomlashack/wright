@@ -1,29 +1,128 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.14
 /**
- * @version		$Id: default.php 22355 2011-11-07 05:11:58Z github_bot $
  * @package		Joomla.Site
- * @subpackage	mod_menu
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @subpackage	mod_feed
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access.
+// no direct access
 defined('_JEXEC') or die;
-
-if (!function_exists("wright_joomla_mod_feed")) :
-	
-function wright_joomla_mod_feed($buffer) {
-	
-	$buffer = preg_replace('/<ul class="newsfeed">/Ui', '<ul class="newsfeed nobullet">', $buffer);
-	$buffer = preg_replace('/<li class="newsfeed-item">/Ui', '<li class="newsfeed-item"><i class="icon-external-link icons-left"></i>', $buffer);
-	return $buffer;
-				
-}
-	
-
-endif;
-
-ob_start("wright_joomla_mod_feed");
-require('modules/mod_feed/tmpl/default.php');
-ob_end_flush();
 ?>
+
+<?php
+if ($feed != false)
+{
+	//image handling
+	$iUrl	= isset($feed->image->url)	? $feed->image->url	: null;
+	$iTitle = isset($feed->image->title) ? $feed->image->title : null;
+	?>
+	<div style="direction: <?php echo $rssrtl ? 'rtl' :'ltr'; ?>; text-align: <?php echo $rssrtl ? 'right' :'left'; ?> ! important"  class="feed<?php echo $moduleclass_sfx; ?>">
+	<?php
+	// feed description
+	if (!is_null($feed->title) && $params->get('rsstitle', 1)) {
+		?>
+
+				<h4>
+					<a href="<?php echo str_replace('&', '&amp', $feed->link); ?>" target="_blank">
+					<?php echo $feed->title; ?></a>
+				</h4>
+
+		<?php
+	}
+
+	// feed description
+	if ($params->get('rssdesc', 1)) {
+	?>
+		<?php echo $feed->description; ?>
+
+		<?php
+	}
+
+	// feed image
+	if ($params->get('rssimage', 1) && $iUrl) {
+	?>
+		<img src="<?php echo $iUrl; ?>" alt="<?php echo @$iTitle; ?>"/>
+
+	<?php
+	}
+
+	$actualItems = count($feed->items);
+	$setItems	= $params->get('rssitems', 5);
+
+	if ($setItems > $actualItems) {
+		$totalItems = $actualItems;
+	} else {
+		$totalItems = $setItems;
+	}
+	?>
+
+			<ul class="newsfeed<?php echo $params->get('moduleclass_sfx'); ?> nav nav-list">  <?php // Wright v.3: Added nav nav-list classes ?>
+			<?php
+			$words = $params->def('word_count', 0);
+			for ($j = 0; $j < $totalItems; $j ++)
+			{
+				$currItem = & $feed->items[$j];
+				// item title
+				?>
+				<li class="newsfeed-item">
+					<i class="icon-external-link"></i>  <?php // Wright v.3: Added icon ?>
+					<?php	if (!is_null($currItem->get_link())) {
+					?>
+				<?php if (!is_null($feed->title) && $params->get('rsstitle', 1))
+
+					{ echo '<h5 class="feed-link">';}
+				else
+				{
+				echo '<h4 class="feed-link">';
+				}
+				?>
+
+				<a href="<?php echo $currItem->get_link(); ?>" target="_blank">
+					<?php echo $currItem->get_title(); ?></a>
+					<?php if (!is_null($feed->title) && $params->get('rsstitle', 1))
+
+					{ echo '</h5>';}
+						else
+						{ echo '</h4>';}
+				?>
+				<?php
+				}
+
+				// item description
+				if ($params->get('rssitemdesc', 1))
+				{
+					// item description
+					$text = $currItem->get_description();
+					$text = str_replace('&apos;', "'", $text);
+					$text=strip_tags($text);
+					// word limit check
+					if ($words)
+					{
+						$texts = explode(' ', $text);
+						$count = count($texts);
+						if ($count > $words)
+						{
+							$text = '';
+							for ($i = 0; $i < $words; $i ++) {
+								$text .= ' '.$texts[$i];
+							}
+							$text .= '...';
+						}
+					}
+					?>
+
+						<p><?php echo $text; ?></p>
+
+					<?php
+				}
+				?>
+				</li>
+				<?php
+			}
+			?>
+			</ul>
+
+	</div>
+<?php } ?>

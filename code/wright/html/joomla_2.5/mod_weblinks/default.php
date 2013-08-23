@@ -1,31 +1,52 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.14
 /**
- * @version		$Id: default.php 22355 2011-11-07 05:11:58Z github_bot $
  * @package		Joomla.Site
- * @subpackage	mod_menu
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @subpackage	mod_weblinks
+ * @copyright	Copyright (C) 2005 - 2009 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access.
 defined('_JEXEC') or die;
-
-if (!function_exists("wright_joomla_mod_weblinks")) :
-
-function wright_joomla_mod_weblinks_icons($matches) {
-		return '<a' . $matches[1] . '><i class="icon-link icons-left"></i>' . $matches[2] .'</a>';
-	}
-function wright_joomla_mod_weblinks($buffer) {
-	$buffer = preg_replace('/class="weblinks([^"]*)">/Ui', 'class="weblinks$1 nav">', $buffer);
-	$buffer = preg_replace_callback('/<a([^>]*)>([^<]*)<\/a>/Ui', 'wright_joomla_mod_weblinks_icons', $buffer);
-	return $buffer;
-				
-}
-	
-
-endif;
-
-ob_start("wright_joomla_mod_weblinks");
-require('modules/mod_weblinks/tmpl/default.php');
-ob_end_flush();
 ?>
+<ul class="weblinks<?php echo $moduleclass_sfx; ?> nav nav-list">  <?php // Wright v.3: Added nav nav-list classes ?>
+<?php foreach ($list as $item) :	?>
+<li>
+	<?php
+	$link = $item->link;
+	switch ($params->get('target', 3))
+	{
+		case 1:
+			// open in a new window
+			echo '<a href="'. $link .'" target="_blank" rel="'.$params->get('follow', 'no follow').'">'.
+			'<i class="icon-link"></i>' .  // Wright v.3: Added icon
+			htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8') .'</a>';
+			break;
+
+		case 2:
+			// open in a popup window
+			echo "<a href=\"#\" onclick=\"window.open('". $link ."', '', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=550'); return false\">".
+			'<i class="icon-link"></i>' .  // Wright v.3: Added icon
+				htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8') .'</a>';
+			break;
+
+		default:
+			// open in parent window
+			echo '<a href="'. $link .'" rel="'.$params->get('follow', 'no follow').'">'.
+			'<i class="icon-link"></i>' .  // Wright v.3: Added icon
+				htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8') .'</a>';
+			break;
+	}
+	?>
+	<?php if ($params->get('description', 0)) : ?>
+		<?php echo nl2br($item->description); ?>
+	<?php endif; ?>
+
+	<?php if ($params->get('hits', 0)) : ?>
+		<span class="label label-info"> <?php // Wright v.3: Added label label-info classes ?>
+			<?php echo /*'(' .*/ $item->hits . ' ' . JText::_('MOD_WEBLINKS_HITS') /*. ')'*/; // Wright v.3: removed parenthesis ?>
+		</span>
+	<?php endif; ?>
+</li>
+<?php endforeach; ?>
+</ul>

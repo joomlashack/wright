@@ -202,11 +202,13 @@ $canEdit	= $this->item->params->get('access-edit');
 	<?php $imgfloat = (empty($images->float_intro)) ? $params->get('float_intro') : $images->float_intro; ?>
 
 	<div class="img-intro-<?php echo htmlspecialchars($imgfloat); ?>">
-	<img
-		<?php if ($images->image_intro_caption):
-			echo ' title="' .htmlspecialchars($images->image_intro_caption) .'"';  // Wright v.3: Removed caption (TODO: reconsider to reimplement with JCaption)
-		endif; ?>
-		src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>"<?php echo ' class="' . $this->wrightBootstrapImages . '"' // Wright v.3: Bootstrapped images ?>/>
+		<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid)); ?>">  <?php // Wright v.3: Added link to the intro image ?>
+			<img
+				<?php if ($images->image_intro_caption):
+					echo ' title="' .htmlspecialchars($images->image_intro_caption) .'"';  // Wright v.3: Removed caption (TODO: reconsider to reimplement with JCaption)
+				endif; ?>
+				src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>"<?php echo ' class="' . $this->wrightBootstrapImages . '"' // Wright v.3: Bootstrapped images ?>/>
+		</a>  <?php // Wright v.3: Added link to the intro image ?>
 		<?php
 			// Wright v.3: Caption
 		if ($images->image_intro_caption) {
