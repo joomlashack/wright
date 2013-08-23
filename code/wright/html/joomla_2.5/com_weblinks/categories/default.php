@@ -1,29 +1,43 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
- * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @subpackage	com_weblinks
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // no direct access
 defined('_JEXEC') or die;
-if (!function_exists("wright_joomla_weblinks_categories")) :
 
-	
-	
-	
-	function wright_joomla_weblinks_categories($buffer) {
-			
-			$buffer = preg_replace('/<a href="\//Ui', '<i class="icon-folder-close"> </i><a href="/', $buffer);
-			
-				return $buffer;
-				
-	}
+JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
-endif;
+?>
+<div class="categories-list<?php echo $this->pageclass_sfx;?>">
+<?php if ($this->params->get('show_page_heading')) : ?>
+<div class="page-header">  <?php // Wright v.3: Added page header ?>
+	<h1>
+		<?php echo $this->escape($this->params->get('page_heading')); ?>
+	</h1>
+</div>  <?php // Wright v.3: Added page header ?>
+<?php endif; ?>
 
-ob_start("wright_joomla_weblinks_categories");
-require('components/com_weblinks/views/categories/tmpl/default.php');
-ob_end_flush();
-
+<?php if ($this->params->get('show_base_description')) : ?>
+	<?php 	//If there is a description in the menu parameters use that; ?>
+		<?php if($this->params->get('categories_description')) : ?>
+			<div class="category-desc base-desc">
+			<?php echo JHtml::_('content.prepare', $this->params->get('categories_description'), '', 'com_weblinks.categories'); ?>
+			</div>
+		<?php  else: ?>
+			<?php //Otherwise get one from the database if it exists. ?>
+			<?php  if ($this->parent->description) : ?>
+				<div class="category-desc base-desc">
+					<?php echo JHtml::_('content.prepare', $this->parent->description, '', 'com_weblinks.categories'); ?>
+				</div>
+			<?php  endif; ?>
+		<?php  endif; ?>
+	<?php endif; ?>
+<?php
+echo $this->loadTemplate('items');
+?>
+</div>
