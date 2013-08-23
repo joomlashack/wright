@@ -13,5 +13,5 @@ defined('_JEXEC') or die;
 $app = JFactory::getApplication();
 
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
-include(Overrider::getOverride('com_search.search'));
+include(Overrider::getOverride('com_search.search','default_results'));
 ?>

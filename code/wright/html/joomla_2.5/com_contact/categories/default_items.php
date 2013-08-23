@@ -24,7 +24,7 @@ if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 	<li<?php echo $class; ?>>
 	<?php $class = ''; ?>
 		<span class="item-title">
-			<i class="icon-folder-close"> </i>  <?php // Wright v.3: Icon ?>
+			<i class="icon-folder-open"> </i>  <?php // Wright v.3: Icon ?>
 			<a href="<?php echo JRoute::_(ContactHelperRoute::getCategoryRoute($item->id));?>">
 			<?php echo $this->escape($item->title); ?></a>
 		</span>

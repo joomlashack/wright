@@ -97,7 +97,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 
 					<td class="item-title">
 						<a href="<?php echo JRoute::_(ContactHelperRoute::getContactRoute($item->slug, $item->catid)); ?>">
-							<i class="icon-folder-close"> </i>  <?php // Wright v.3: Added Icon ?>
+							<i class="icon-folder-open"> </i>  <?php // Wright v.3: Added Icon ?>
 							<?php echo $item->name; ?></a>
 					</td>
 

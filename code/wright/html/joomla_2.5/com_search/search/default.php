@@ -1,28 +1,33 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
- * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @subpackage	com_search
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // no direct access
 defined('_JEXEC') or die;
-if (!function_exists("wright_joomla_search_search")) :
+?>
 
-	
-	
-	
-	function wright_joomla_search_search($buffer) {
-		$buffer = preg_replace('/ class="button"/Ui', 'class="button btn btn-primary " style="margin-bottom:10px; margin-left:5px;"', $buffer);
-		$buffer = preg_replace('/<span class="small">/Ui', '<span class="label label-info small">', $buffer);
-		
-				return $buffer;
-	}
+<div class="search<?php echo $this->pageclass_sfx; ?>">
+<?php if ($this->params->get('show_page_heading')) : ?>
+<div class="page-header">  <?php // Wright v.3: Added page header ?>
+	<h1>
+		<?php if ($this->escape($this->params->get('page_heading'))) :?>
+			<?php echo $this->escape($this->params->get('page_heading')); ?>
+		<?php else : ?>
+			<?php echo $this->escape($this->params->get('page_title')); ?>
+		<?php endif; ?>
+	</h1>
+</div>  <?php // Wright v.3: Added page header ?>
+<?php endif; ?>
 
-endif;
-
-ob_start("wright_joomla_search_search");
-require('components/com_search/views/search/tmpl/default.php');
-ob_end_flush();
-
+<?php echo $this->loadTemplate('form'); ?>
+<?php if ($this->error==null && count($this->results) > 0) :
+	echo $this->loadTemplate('results');
+else :
+	echo $this->loadTemplate('error');
+endif; ?>
+</div>

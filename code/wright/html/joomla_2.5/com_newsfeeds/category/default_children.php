@@ -24,7 +24,7 @@ if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) :
 	<li<?php echo $class; ?>>
 		<?php $class = ''; ?>
 			<span class="item-title"><a href="<?php echo JRoute::_(NewsfeedsHelperRoute::getCategoryRoute($child->id));?>">
-				<i class="icon-folder-close"></i>  <?php // Wright v.3: Added icon ?>
+				<i class="icon-folder-open"></i>  <?php // Wright v.3: Added icon ?>
 				<?php echo $this->escape($child->title); ?></a>
 			</span>
 

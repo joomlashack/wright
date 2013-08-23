@@ -55,7 +55,7 @@ $params = &$this->params;
 
 <?php if ($params->get('show_category')) : ?>
 		<dd class="category-name">
-			<i class="icon-folder-close"></i> <?php // Wright v.3: Icon ?>
+			<i class="icon-folder-open"></i> <?php // Wright v.3: Icon ?>
 			<?php	$title = $this->escape($item->category_title);
 					$url = '<a href="' . JRoute::_(ContentHelperRoute::getCategoryRoute($item->catslug)) . '">' . $title . '</a>'; ?>
 			<?php if ($params->get('link_category') && $item->catslug) : ?>
