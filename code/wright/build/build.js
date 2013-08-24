@@ -115,7 +115,8 @@ fs.readdir('../../less', function(err, list) {
 								s = '';
 								s += '@import url("../../less/variables-' + st + '.less"); ';  
 								s += '@import url("libraries/bootstrap/less/mixins.less"); ';  
-								s += '@import url("less/typography.less"); ';  
+								s += '@import url("less/typography.less"); ';
+								s += '@import url("less/joomla.less"); ';
 								s += '@import url("less/joomla' + jv + '.less"); ';
 								if (fs.existsSync('../../less/template.less'))  // Template file (if exists)
 									s += '@import url("../../less/template.less"); ';
@@ -127,6 +128,7 @@ fs.readdir('../../less', function(err, list) {
 								var s = '';
 								s += '@import url("../../less/variables-' + st + '.less"); ';  // Global style variables
 								s += '@import url("less/responsive.less"); ';  // Bootstrap responsive less file
+								s += '@import url("less/joomla-responsive.less"); ';  // Joomla general responsive file
 								s += '@import url("less/joomla' + jv + '-responsive.less"); ';  // Joomla version responsive file
 								if (fs.existsSync('../../less/template-responsive.less'))  // Template responsive file (if exists)
 									s += '@import url("../../less/template-responsive.less"); ';

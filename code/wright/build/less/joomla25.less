@@ -1,44 +1,3 @@
-/*
-Joomla 2.5 specific styles
-====================================================
-Table of Contents:
-Ctrl/Cmd + F to find the @groups named below
-
-@group Article Column Structure
-@group Categories/Archives
-@group Article Info
-@group Pagination
-@group Contact
-@group Misc. Joomla! Styles
-
-*/
-
-
-/* @group Article Column Structure */
-
-/* DEFAULT HTML *****************************/
-html {
-	height: 100%;
-}
-body{
-	min-height: 100%;
-	position: relative;
-}
-
-/* style the default Joomla image captions */
-p.img_caption {
-	font-style: italic;
-	font-size: .75em;
-	text-align: left;
-	background: #f7f7f7;
-}
-/* TEMPLATE SPECIFIC CSS CODE */
-#header {
-	background:@bodyBackground;
-	margin-bottom: 10px;
-}
-#header #logo a.image h2 { display: none; }
-
 #pathway{
 	background:#FFF;
 }
@@ -46,71 +5,12 @@ p.img_caption {
 	border-bottom:1px solid #E0E0E0;
 	background:#F8F8F8;
 }
-.elements{
-	border-bottom:1px solid #CCC;
-	background:#FFF;
-}
 #container{
 	border-bottom:1px solid #CCC;
 	background:#FFF;
 }
 
-
-/* CONTENT BUTTONS */
-.btn-group.actions .btn img { height: 16px; }
-
-/* positions margins */
-#header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2,
-#bottom-menu {
-	margin-bottom: 10px;
-}
-#below-content { margin-top: 10px; }
-
-/* @ headings ***************************************/
-h1, h2, h3, h4, h5, h6{
-	line-height: normal;
-}
-/* @ end headings */
-
-/* @ Footer **************************************/
-
-.footer1, .footer2 {
-    text-align: center;
-}
-
-a.joomlashack {
-    display: block;
-    margin: 10px auto;
-    text-align: center;
-    text-indent: -1000em;
-    width: 75px;
-    background: url("../images/jscright.png") no-repeat scroll 0 0 transparent;
-}
-
-
-#footer .footer-content a:hover{
-	color: gray;
-}
-#footer{
-	color:#fff;
-	overflow:hidden;
-	background-color:#1b1b1b;
-	background-image:-moz-linear-gradient(top,#222,#111);
-	background-image:-webkit-gradient(linear,0 0,0 100%,from(#222),to(#111));
-	background-image:-webkit-linear-gradient(top,#222,#111);
-	background-image:-o-linear-gradient(top,#222,#111);
-	background-image:linear-gradient(to bottom,#222,#111);
-	background-repeat:repeat-x;border-color:#252525;
-	filter:progid:dximagetransform.microsoft.gradient(startColorstr='#ff222222',endColorstr='#ff111111',GradientType=0)
-}
-
-#footer.sticky {
-	width: 100%;
-}
-
-/* @ end Footer */
-
-/* @ loging ***************************************/
+/* @ login ***************************************/
 .login{
 	margin-right:10px;
 }
@@ -126,92 +26,16 @@ a.joomlashack {
 
 /* @ end Login */
 
-/* @ Search  ***************************************/
-div.search input.button {
-	min-height: 32px;
-}
 
-/* @ end Search */
 
 /* @ Smart Search  ***************************************/
 #finder-filter-select-list{
 	list-style: none;
 	margin-left: 10px;
 }
-
-div.finder {
-	#advanced-search {
-		span.term {
-			font-style: italic;
-		}
-	}
-}
-
 /* @ end Smart Search */
 
-/* @ Article pagination ***************************************/
-ul.pagenav{
-	display: block;
-	overflow: hidden;
-}
-ul.pagenav li.pagenav-prev{
-	float: left;
-}
-ul.pagenav li.pagenav-next{
-	float: right;
-}
-.pagination ul{
-	display: inline-block;
-}
-ul.pagenav, .pagination ul {
-	text-align:center;
-	margin: auto;
-	list-style: none;
-}
-.pagination ul li {
-	display:inline;
-}
-/* @ end Article pagination */
 
-/* @ Select exept sidebar's  ***************************************/
-select{
-	border-radius: 5px;
-	width: 224px;
-}
-
-/* @ end Select exept sidebar's */
-
-/* @ Tag general ***************************************/
-
-dd {
-	margin-bottom: 10px;
-}
-label{
-	float: left;
-	line-height: 26px;
-	margin-right: 10px;
-}
-.search label{
-	min-width:0;
-}
-li{
-	margin-bottom: 3px;
-	line-height: normal;
-}
-
-.newsfeed-category select#limit,
-.blog-featured select#limit,
-.contact-category select#limit {
-	float: none;
-}
-#finder-filter-select-list label{
-	min-width: 150px;
-}
-/* @ Users Manager   ***************************************/
-/* @ edit your profile */
-dt label{
-	min-width: 155px;
-}
 
 /* @ Blog   ***************************************/
 .contentpaneopen, .blog {
@@ -233,11 +57,7 @@ dt label{
 .items-row {
 	overflow:hidden
 }
-/*
-.column-1, .column-2, .column-3, .column-4 {
-	padding:10px 5px;
-}
-*/
+
 .leading {
 	clear: both;
 }
@@ -286,13 +106,6 @@ dl.article-info dd:hover > i {
 }
 /* @ Icons   ***************************************/
 
-[class^="icon-"], [class*=" icon-"]{
-	background-image: none;
-	width: auto;
-	height: auto;
-	vertical-align: middle;
-	margin-top: 0;
-}
 .nav li a [class^="icon-"],
 .nav li a [class*=" icon-"] {
 	margin: 0 3px;
@@ -329,8 +142,6 @@ dl.article-info dd [class^="icon-"], dl.article-info dd [class*=" icon-"] {
 /* @end */
 
 
-
-
 /* @group Categories/Archives *****************************************/
 
 /* Clearfix style applied for li's in categories view, to ensure closing floated images */
@@ -342,7 +153,6 @@ div.categories-list > ul li:before, div.categories-list > ul li:after {
     display: table;
     line-height: 0;
 }
-
 
 div.categories-list ul,
 div.categories-list li,
@@ -421,8 +231,6 @@ ul.categories-module p {
 /* @end */
 
 
-
-
 /* @group Article Info  *****************************************/
 
 
@@ -495,12 +303,7 @@ ul.actions.dropdown-menu {
 .pagination  {
 	display: table;
 	text-align: center;
-	font-size: 12px;
 	margin: 10px auto 20px auto;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-khtml-border-radius: 5px;
 }
 .pagination li:first-child span{
 	border-left-width: 0px;
@@ -521,7 +324,7 @@ div.disabled{
 	text-align: center;
 }
 .counter {
-	color: #999;
+	color: @grayDark;
 	display: block;
 	float: left;
 	margin-right:5px;
@@ -666,7 +469,6 @@ span.star {
 img.calendar{
 	margin-left: 3px;
 }
-
 
 .formelm-area label{
 	min-width: 108px;
@@ -966,10 +768,6 @@ dl.label.label-info dt{
 	 margin-bottom: 10px;
 }
 
-
-
-
-
 /* Contact Form **********************************************************************/
 
 .contact #selectForm{
@@ -1210,10 +1008,6 @@ color: #468847;
 }
 p.readmore{
 	float: right;
-}
-.page-header{
-	padding: 0;
-	margin: 20px 0 20px;
 }
 .hide-text{
 	display: none;

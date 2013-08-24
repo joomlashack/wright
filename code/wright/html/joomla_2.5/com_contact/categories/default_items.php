@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 $class = ' class="first"';
 if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 ?>
-<ul>
+<?php // <ul> Wright v.3: commented out ul ?>
 <?php foreach($this->items[$this->parent->id] as $id => $item) : ?>
 	<?php
 	if($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) :
@@ -21,13 +21,13 @@ if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 		$class = ' class="last"';
 	}
 	?>
-	<li<?php echo $class; ?>>
+	<div<?php echo $class; ?>>  <?php // Wright v.3: changed li for div ?>
 	<?php $class = ''; ?>
-		<span class="item-title">
-			<i class="icon-folder-open"> </i>  <?php // Wright v.3: Icon ?>
+		<h3 class="item-title">  <?php // Wright v.3: Changed span to h3 ?>
 			<a href="<?php echo JRoute::_(ContactHelperRoute::getCategoryRoute($item->id));?>">
+			<i class="icon-folder-open"> </i>  <?php // Wright v.3: Icon ?>
 			<?php echo $this->escape($item->title); ?></a>
-		</span>
+		</h3>  <?php // Wright v.3: Changed span to h3?>
 
 		<?php if ($this->params->get('show_subcat_desc_cat') == 1) :?>
 		<?php if ($item->description) : ?>
@@ -53,8 +53,8 @@ if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 			$this->maxLevelcat++;
 		endif; ?>
 
-	</li>
+	</div> <?php // Wright v.3: changed li for div ?>
 	<?php endif; ?>
 <?php endforeach; ?>
-</ul>
+<?php // </ul> Wright v.3: commented out ul ?>
 <?php endif; ?>
