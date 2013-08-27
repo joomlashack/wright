@@ -46,7 +46,7 @@ endif;
 </div>  <?php // Wright v.3: Added page header ?>
 <?php endif; ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_content&a_id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-horizontal">  <?php // Wright v.3: Added form-horizontal class ?>
+<form action="<?php echo JRoute::_('index.php?option=com_content&a_id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-vertical">  <?php // Wright v.3: Added form-vertical class ?>
 	<fieldset>
 		<legend><?php echo JText::_('JEDITOR'); ?></legend>
 

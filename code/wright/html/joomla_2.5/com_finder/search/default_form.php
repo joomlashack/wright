@@ -75,21 +75,37 @@ defined('_JEXEC') or die;
 		<input type="hidden" name="o" value="<?php echo $this->escape($this->state->get('list.ordering')); ?>" />
 	<?php endif; ?>
 
-	<fieldset class="word well well-small">  <?php // Wright v.3: Added well well-small classes ?>
-		<label for="q">
-			<?php echo JText::_('COM_FINDER_SEARCH_TERMS'); ?>
-		</label>
-		<input type="text" name="q" id="q" size="30" value="<?php echo $this->escape($this->query->input); ?>" class="inputbox" />
-		<?php if ($this->escape($this->query->input) != '' || $this->params->get('allow_empty_search')):?>
-			<button name="Search" type="submit" class="button btn btn-primary"><?php echo JText::_('JSEARCH_FILTER_SUBMIT');?></button>  <?php // Wright v.3:  Added btn-btn-primary classes ?>
-		<?php else: ?>
-			<button name="Search" type="" class="button btn btn-primary"><?php echo JText::_('JSEARCH_FILTER_SUBMIT');?></button>  <?php // Wright v.3:  Added btn-btn-primary classes ?>
-		<?php endif; ?>
-</fieldset>
+	<fieldset class="word">  
+		<div class="well well-small"><?php // Wright v.3: Added well ?>
+			<label for="q">
+				<?php echo JText::_('COM_FINDER_SEARCH_TERMS'); ?>
+			</label>
+			<input type="text" name="q" id="q" size="30" value="<?php echo $this->escape($this->query->input); ?>" class="inputbox" />
+			<?php if ($this->escape($this->query->input) != '' || $this->params->get('allow_empty_search')):?>
+				<button name="Search" type="submit" class="button btn btn-primary">
+						<span class="icon-search icon-white"></span><?php // Wright v.3:  Added icon ?>
+						<?php echo JText::_('JSEARCH_FILTER_SUBMIT');?></button>  <?php // Wright v.3:  Added btn-btn-primary classes ?>
+			<?php else: ?>
+				<button name="Search" type="" class="button btn btn-primary disabled">
+						<span class="icon-search icon-white"></span><?php // Wright v.3:  Added icon ?>
+						<?php echo JText::_('JSEARCH_FILTER_SUBMIT');?></button>  <?php // Wright v.3:  Added btn-btn-primary disabled classes ?>
+			<?php endif; ?>
 
-	<?php if ($this->params->get('show_advanced', 1)): ?>
-		<a id="advanced-search-toggle"><?php echo JText::_('COM_FINDER_ADVANCED_SEARCH_TOGGLE'); ?></a>
+			<?php /* Wright v.3: Moved advanced search button to the form */
+				if ($this->params->get('show_advanced', 1)): ?>
+				<a id="advanced-search-toggle" class="btn">  <?php // Wright v.3: Added btn class ?>
+					<span class="icon-list"></span>  <?php // Wright v.3: Added icon ?>
+					<?php echo JText::_('COM_FINDER_ADVANCED_SEARCH_TOGGLE'); ?></a>
 
+			<?php endif;
+			/* End Wright v.3: Moved advanced search button to the form */ ?>
+
+
+		</div> <?php // Wright v.3: Added well ?>
+	</fieldset>
+
+	<?php /* Wright v.3: Moved advanced search button to the form */
+		if ($this->params->get('show_advanced', 1)): ?>
 		<div id="advanced-search">
 			<?php if ($this->params->get('show_advanced_tips', 1)): ?>
 				<div class="advanced-search-tip well">
@@ -100,5 +116,7 @@ defined('_JEXEC') or die;
 				<?php echo JHtml::_('filter.select', $this->query, $this->params); ?>
 			</div>
 		</div>
-	<?php endif; ?>
+	<?php endif;
+	/* End Wright v.3: Moved advanced search button to the form */ ?>
+
 </form>
