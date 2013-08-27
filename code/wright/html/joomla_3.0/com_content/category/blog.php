@@ -52,11 +52,23 @@ JHtml::_('behavior.caption');
 	</div>
 	<?php endif; ?>
 	<?php if ($this->params->get('show_category_title', 1) or $this->params->get('page_subheading')) : ?>
+
+	<?php /* Wright v.3: Adds page header if h1 is missing */
+	if (!$this->params->get('show_page_heading')) : ?>
+	<div class="page-header">
+	<?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
+
 	<h2> <?php echo $this->escape($this->params->get('page_subheading')); ?>
 		<?php if ($this->params->get('show_category_title')) : ?>
 		<span class="subheading-category"><?php echo $this->category->title;?></span>
 		<?php endif; ?>
 	</h2>
+
+	<?php /* Wright v.3: Adds page header if h1 is missing */
+	if (!$this->params->get('show_page_heading')) : ?>
+	</div>
+	<?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
+
 	<?php endif; ?>
 
 	<?php if ($this->params->get('show_tags', 1) && !empty($this->category->tags->itemTags)) : ?>

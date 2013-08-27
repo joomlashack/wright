@@ -246,6 +246,7 @@ JHtml::_('behavior.framework');
 ?>
 		<p class="readmore">
 				<a href="<?php echo $link; ?>"<?php echo ' class="btn"' // Wright v.3: Readmore ?>>
+					<span class="icon-chevron-right"></span>  <?php // Wright v.3: Added icon ?>
 					<?php if (!$params->get('access-view')) :
 						echo JText::_('COM_CONTENT_REGISTER_TO_READ_MORE');
 					elseif ($readmore = $this->item->alternative_readmore) :

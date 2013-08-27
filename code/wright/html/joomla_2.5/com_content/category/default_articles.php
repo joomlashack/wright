@@ -29,7 +29,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 
 <?php else : ?>
 
-<form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline"> <?php // Wright v.3: Added form-inline class ?>
 	<?php if ($this->params->get('show_headings') || $this->params->get('filter_field') != 'hide' || $this->params->get('show_pagination_limit')) :?>
 	<fieldset class="filters well well-small"> <?php // Wright v.3: Added well well-small classes ?>
 		<?php if ($this->params->get('filter_field') != 'hide') :?>
@@ -37,14 +37,14 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?>
 		</legend>
 
-		<div class="filter-search">
+		<div class="filter-search pull-left"> <?php // Wright v.3: Added pull-left class ?>
 			<label class="filter-search-lbl" for="filter-search"><?php echo JText::_('COM_CONTENT_'.$this->params->get('filter_field').'_FILTER_LABEL').'&#160;'; ?></label>
 			<input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="inputbox" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTENT_FILTER_SEARCH_DESC'); ?>" />
 		</div>
 		<?php endif; ?>
 
 		<?php if ($this->params->get('show_pagination_limit')) : ?>
-		<div class="display-limit">
+		<div class="display-limit pull-right"> <?php // Wright v.3: Added pull-right class ?>
 			<label class="filter-search-lbl" for="limit"> <?php // Wright v.3: Added label ?>
 			<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
 			</label> <?php // Wright v.3: Added label ?>
@@ -59,7 +59,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	</fieldset>
 	<?php endif; ?>
 
-	<table class="category table table-striped table-hover">  <?php // Wright v.3: Added table table-striped table-hover classes ?>
+	<table class="category table table-striped table-hover table-bordered">  <?php // Wright v.3: Added table table-striped table-hover table-bordered classes ?>
 		<?php if ($this->params->get('show_headings')) :?>
 		<thead>
 			<tr>

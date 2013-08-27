@@ -23,9 +23,12 @@ $class = ' class="first"';
 		?>
 		<li<?php echo $class; ?>>
 			<?php $class = ''; ?>
-			<span class="item-title"><?php echo "<i class='icon-folder-open'></i>"; // Wright v.3: Children categories icon ?><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($child->id));?>">
+			<h3>  <?php // Wright v.3: Added h3 ?>
+			<span class="item-title"><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($child->id));?>">
+				<i class="icon-folder-open"></i>  <?php // Wright v.3: Added icon ?>
 				<?php echo $this->escape($child->title); ?></a>
 			</span>
+			</h3>  <?php // Wright v.3: Added h3 ?>
 
 			<?php if ($this->params->get('show_subcat_desc') == 1) :?>
 			<?php if ($child->description) : ?>

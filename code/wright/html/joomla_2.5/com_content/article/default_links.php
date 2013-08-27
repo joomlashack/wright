@@ -19,7 +19,7 @@ $params = $this->item->params;
 if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))) :
 ?>
 <div class="content-links">
-	<ul>
+	<ul class="nav nav-tabs nav-stacked">  <?php // Wright v.3: Added nav nav-tabs nav-stacked classes ?>
 		<?php
 			$urlarray = array(
 			array($urls->urla, $urls->urlatext, $urls->targeta, 'a'),

@@ -32,7 +32,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 		<?php echo $this->form->monthField; ?>
 		<?php echo $this->form->yearField; ?>
 		<?php echo $this->form->limitField; ?>
-		<button type="submit" class="button btn"><?php echo JText::_('JGLOBAL_FILTER_BUTTON'); ?></button> <?php // Wright v.3: Added btn class ?>
+		<button type="submit" class="button btn btn-primary"><?php echo JText::_('JGLOBAL_FILTER_BUTTON'); ?></button> <?php // Wright v.3: Added btn btn-primary classes ?>
 	</div>
 	<input type="hidden" name="view" value="archive" />
 	<input type="hidden" name="option" value="com_content" />

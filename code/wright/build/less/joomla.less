@@ -38,7 +38,6 @@ iframe{
 			color: #333;
 		}
 		i{
-			color: @textColor;
 			margin-right: 5px;
 		}
 	}
@@ -104,7 +103,8 @@ dl.article-info {
 	dt {
 		display:none;
 	}
-	dd {
+	dd, 
+	dd > div {
 		.border-radius(12px);
 		background:none;
 		clear:none;
@@ -253,6 +253,10 @@ p.img_caption {
 	background-color: #1b1b1b;
 	background-repeat: repeat-x;
 	border-color: #252525;
+
+	.moduletable, .module {
+		margin-bottom: 0;
+	}
 }
 
 #footer.sticky {
@@ -369,6 +373,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Module */
+
+.moduletable, .module {
+	margin-bottom: 20px;
+}
 .module-header {
 	padding-bottom: 17px;
 	margin: 20px 0 18px 0;
@@ -609,6 +617,7 @@ div.finder {
 /* Categories */
 
 div.cat_children,
+div.cat-children,
 div.categories-list {
 	> div {
 		border-bottom: 1px solid #eee;
@@ -623,5 +632,100 @@ div.categories-list {
 		padding-bottom: 9px;
 		margin-bottom: 30px;
 	}
+	h3 {
+		padding-top: 12px;
+	}
 }
 
+
+/* @ Blog   ***************************************/
+.contentpaneopen, .blog {
+	width: 100%;
+}
+.blog {
+	margin: 0 0 20px 0;
+}
+.article_column {
+	padding: 10px 0;
+}
+.column_separator {
+	padding: 20px 1%;
+}
+.items-leading {
+	display: inline-block;
+	width: 100%;
+}
+.items-row {
+	overflow:hidden
+}
+
+.leading {
+	clear: both;
+}
+p.readmore {
+	margin: 0;
+	padding: 0;
+	clear: both;
+	float: right;
+}
+
+/* Wrapper More links  ************************************************************/
+.items-more {
+	padding: 0;
+	margin-top: 10px;
+}
+.items-more h3{
+	padding-right:10px;
+	padding-left:15px;
+}
+
+
+/* Print window **************************/
+
+.contentpane {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+
+body.contentpane {
+	div.icons-actions,
+	.content_vote {
+		display: none;
+	}
+}
+
+
+/* Pagination *************************************************************/
+
+.pagination  {
+	display: table;
+	text-align: center;
+	margin: 10px auto 20px auto;
+}
+.pagination li:first-child span{
+	border-left-width: 0px;
+}
+.pagination li span{
+	border-width: 0;
+}
+.pagination span {
+	padding: 0px;
+}
+div.disabled{
+	display: inline;
+}
+.pagenavcounter {
+	display: inline-block;
+	line-height:35px;
+	margin-right:5px;
+	text-align: center;
+}
+.counter {
+	color: @grayDark;
+	display: block;
+	float: left;
+	margin-right:5px;
+	line-height: 40px;
+}
+/* @end */

@@ -23,10 +23,12 @@ if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 	?>
 	<li<?php echo $class; ?>>
 	<?php $class = ''; ?>
+		<h3>  <?php // Wright v.3: Added h3 ?>
 		<span class="item-title"><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id));?>">
 			<i class="icon-folder-open"></i> <?php // Wright v.3: Added icon ?>
 			<?php echo $this->escape($item->title); ?></a>
 		</span>
+		</h3>  <?php // Wright v.3: Added h3 ?>
 		<?php if ($this->params->get('show_subcat_desc_cat') == 1) :?>
 		<?php if ($item->description) : ?>
 			<div class="category-desc">

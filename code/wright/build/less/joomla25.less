@@ -37,35 +37,7 @@
 
 
 
-/* @ Blog   ***************************************/
-.contentpaneopen, .blog {
-	width: 100%;
-}
-.blog {
-	margin: 0 0 20px 0;
-}
-.article_column {
-	padding: 10px 0;
-}
-.column_separator {
-	padding: 20px 1%;
-}
-.items-leading {
-	display: inline-block;
-	width: 100%;
-}
-.items-row {
-	overflow:hidden
-}
 
-.leading {
-	clear: both;
-}
-p.readmore {
-	margin: 0;
-	padding: 0;
-	clear: both;
-}
 
 /* @ Article Info  ***************************************/
 dl.article-info {
@@ -162,7 +134,6 @@ div.cat-children li {
 	padding: 0;
 }
 .cat-children ul{
-	padding: 0 0 0 10px;
 	margin: 0;
 }
 div.cat-children li,
@@ -179,7 +150,7 @@ div.cat-children ul ul li:last-child{
 }
 div.categories-list ul ul,
 div.cat-children ul ul{
-	margin-left: 20px;
+	margin-left: 10px;
 	margin-top: 20px;
 }
 div.categories-list li.first,
@@ -188,19 +159,13 @@ div.cat-children li.last {
 	margin-left: 0;
 }
 div.categories-list li.first ul li, div.categories-list li.last ul li, div.cat-children li.first ul li, div.cat-children li.last ul li {
-	margin-left: 20px;
+	margin-left: 10px;
 }
 div.categories-list span.item-title, div.cat-children span.item-title {
-	font-size: 18px;
 	display: block;
 	margin: 10px 0px;
 
 }
-div.categories-list ul ul span.item-title,
-div.cat-children ul ul span.item-title{
-	font-size: 16px;
-}
-
 span.article-count, span.weblink-count, span.contact-count, span.newsfeed-count {
 	float: right;
 	clear: both;
@@ -298,39 +263,6 @@ ul.actions.dropdown-menu {
 }
 
 
-/* Category Pagination *************************************************************/
-
-.pagination  {
-	display: table;
-	text-align: center;
-	margin: 10px auto 20px auto;
-}
-.pagination li:first-child span{
-	border-left-width: 0px;
-}
-.pagination li span{
-	border-width: 0;
-}
-.pagination span {
-	padding: 0px;
-}
-div.disabled{
-	display: inline;
-}
-.pagenavcounter {
-	display: inline-block;
-	line-height:35px;
-	margin-right:5px;
-	text-align: center;
-}
-.counter {
-	color: @grayDark;
-	display: block;
-	float: left;
-	margin-right:5px;
-	line-height: 40px;
-}
-/* @end */
 
 /* @group Contact *******************************************************************************************/
 
@@ -362,9 +294,6 @@ body.dark div.panel {
 .filter-search button.button.btn{
 	display:inline-block !important;
 	float:none !important;
-}
-.display-limit {
-	float: left;
 }
 .fl-right {
 	float: right;
@@ -898,15 +827,7 @@ div:first-child + .panel {
 	min-width: 50px;
 }
 
-/* Wrapper More links  ************************************************************/
-.items-more.well{
-	padding: 0;
-	margin-top: 10px;
-}
-.items-more h3{
-	padding-right:10px;
-	padding-left:15px;
-}
+
 /* User Registration  ************************************************************/
 span.spacer{
 	overflow: hidden;
@@ -942,9 +863,6 @@ div.newsflash_ms5 a.readmore {
 	padding-bottom: 10px;
 }
 
-.moduletable, .module {
-	margin-bottom: 20px;
-}
 #breadcrumbs .module,
 #breadcrumbs .moduletable{
 	margin: 0;
@@ -1013,9 +931,6 @@ color: #3A87AD;
 .text-success {
 color: #468847;
 }
-p.readmore{
-	float: right;
-}
 .hide-text{
 	display: none;
 }
@@ -1034,10 +949,7 @@ p.readmore{
 ::-moz-selection {
 	background: #D2EAF6;
 }
-/*leading Articles*/
-.items-leading [class*="leading-"]{
-	overflow: hidden;
-}
+
 .no-responsive{
 	min-width: 940px;
 }
@@ -1048,15 +960,4 @@ p.readmore{
 iframe{
 	max-width:100%;
 }
-.contentpane {
-	padding-left: 20px;
-	padding-right: 20px;
-}
 
-
-body.contentpane {
-	div.icons-actions,
-	div.content_vote {
-		display: none;
-	}
-}

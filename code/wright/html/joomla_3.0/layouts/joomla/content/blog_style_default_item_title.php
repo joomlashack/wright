@@ -18,7 +18,7 @@ JHtml::_('behavior.framework');
 ?>
 
 	<?php if ($params->get('show_title') || $displayData->state == 0 || ($params->get('show_author') && !empty($displayData->author ))) : ?>
-		<div class="page-header">
+		<?php // <div class="page-header"> Wright v.3: Removed page-header ?>
 
 			<?php if ($params->get('show_title')) : ?>
 				<h2>
@@ -34,5 +34,5 @@ JHtml::_('behavior.framework');
 			<?php if ($displayData->state == 0) : ?>
 				<span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
 			<?php endif; ?>
-		</div>
+		<?php // </div> Wright v.3: Removed page-header ?>
 	<?php endif; ?>

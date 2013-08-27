@@ -68,7 +68,10 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 ?>
 
 	<?php if ($params->get('show_title') || $params->get('show_author')) : ?>
-	<div class="page-header">
+		<?php /* Wright v.3: Adds page header if h1 is missing */
+		if (!$params->get('show_page_heading')) : ?>
+		<div class="page-header">
+		<?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
 		<h2>
 			<?php if ($this->item->state == 0) : ?>
 				<span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
@@ -81,7 +84,10 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 				<?php endif; ?>
 			<?php endif; ?>
 		</h2>
-	</div>
+		<?php /* Wright v.3: Adds page header if h1 is missing */
+		if (!$params->get('show_page_heading')) : ?>
+		</div>
+		<?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
 	<?php endif; ?>
 
 <?php
@@ -93,7 +99,7 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 
 	<?php if (!$this->print) : ?>
 		<?php if ($canEdit || $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
-		<div class="btn-group pull-right">
+		<div class="btn-group pull-right icons-actions">   <?php // Wright v.3: Added icons-actions class ?>
 			<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <span class="icon-cog"></span> <span class="caret"></span> </a>
 			<?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
 			<ul class="dropdown-menu actions">

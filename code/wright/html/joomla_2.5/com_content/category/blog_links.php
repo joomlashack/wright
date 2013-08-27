@@ -12,10 +12,10 @@ defined('_JEXEC') or die;
 ?>
 
 
-<div class="items-more<?php echo " well"; // Wright v.3: More articles ?>">
+<div class="items-more">
 
 <h3><?php echo JText::_('COM_CONTENT_MORE_ARTICLES'); ?></h3>
-<ol<?php echo ' class="nav nav-list"'; // Wright v.3: More articles ?>>
+<ol class="nav nav-tabs nav-stacked">  <?php // Wright v.3: Added nav nav-tabs nav-stacked classes ?>
 <?php
 	foreach ($this->link_items as &$item) :
 ?>
