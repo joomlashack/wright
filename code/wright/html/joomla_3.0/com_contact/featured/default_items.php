@@ -1,39 +1,48 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.14
+// Wright v.3 Override: Joomla 3.1.5
 /**
- * @package		Joomla.Site
- * @subpackage	com_contact
- * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @package     Joomla.Site
+ * @subpackage  com_contact
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// no direct access
 defined('_JEXEC') or die;
-
 JHtml::_('behavior.framework');
 
 $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
+
+// Create a shortcut for params.
+$params = &$this->item->params;
 ?>
+
 <?php if (empty($this->items)) : ?>
-	<p> <?php echo JText::_('COM_CONTACT_NO_ARTICLES'); ?>	 </p>
+	<p> <?php echo JText::_('COM_CONTACT_NO_CONTACTS'); ?>	 </p>
 <?php else : ?>
 
-<form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline"> <?php // Wright v.3: Added form-inline class ?>
-<?php if ($this->params->get('show_pagination_limit')) : ?>
-	<fieldset class="filters well well-small"> <?php // Wright v.3: Added well well-small classes ?>
+<form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">  <?php // Wright v.3: Added form-inline class ?>
+	<fieldset class="filters">
 	<legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
-
+	<div class="well well-small">   <?php // Wright v.3: Added well ?>
+	<?php if ($this->params->get('show_pagination_limit')) : ?>
 		<div class="display-limit">
 			<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
 			<?php echo $this->pagination->getLimitBox(); ?>
 		</div>
+	<?php endif; ?>
+		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
+			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+	</div>  <?php // Wright v.3: Added well ?>
 	</fieldset>
-<?php endif; ?>
-	<table class="category table table-striped table-hover"> <?php // Wright v.3: Added table table-striped table-hover classes ?>
+
+	<table class="category table table-striped table-hover">  <?php // Wright v.3: Added table table-striped table-hover classes ?>
 		<?php if ($this->params->get('show_headings')) : ?>
 		<thead><tr>
-
+			<th class="item-num">
+				<?php echo JText::_('JGLOBAL_NUM'); ?>
+			</th>
 			<th class="item-title">
 				<?php echo JHtml::_('grid.sort', 'COM_CONTACT_CONTACT_EMAIL_NAME_LABEL', 'a.name', $listDirn, $listOrder); ?>
 			</th>
@@ -88,14 +97,16 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<?php endif; ?>
 
 		<tbody>
-			<?php foreach($this->items as $i => $item) : ?>
-				<?php if ($this->items[$i]->published == 0) : ?>
-					<tr class="system-unpublished cat-list-row<?php echo $i % 2; ?>">
-				<?php else: ?>
-					<tr class="cat-list-row<?php echo $i % 2; ?>" >
-				<?php endif; ?>
+			<?php foreach ($this->items as $i => $item) : ?>
+				<tr class="<?php echo ($i % 2) ? "odd" : "even"; ?>">
+					<td class="item-num">
+						<?php echo $i; ?>
+					</td>
 
 					<td class="item-title">
+						<?php if ($this->items[$i]->published == 0) : ?>
+							<span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
+						<?php endif; ?>
 						<a href="<?php echo JRoute::_(ContactHelperRoute::getContactRoute($item->slug, $item->catid)); ?>">
 							<?php echo $item->name; ?></a>
 					</td>
@@ -147,26 +158,11 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 						<?php echo $item->country; ?>
 					</td>
 					<?php endif; ?>
-
 				</tr>
 			<?php endforeach; ?>
 
 		</tbody>
 	</table>
 
-	<?php if ($this->params->get('show_pagination')) : ?>
-	<div class="pagination">
-		<?php if ($this->params->def('show_pagination_results', 1)) : ?>
-		<p class="counter">
-			<?php echo $this->pagination->getPagesCounter(); ?>
-		</p>
-		<?php endif; ?>
-		<?php echo $this->pagination->getPagesLinks(); ?>
-	</div>
-	<?php endif; ?>
-	<div>
-		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-	</div>
 </form>
 <?php endif; ?>

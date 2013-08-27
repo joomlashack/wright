@@ -12,7 +12,6 @@ body {
 }
 
 #header {
-	background: @bodyBackground;
 	margin-bottom: 10px;
 	#logo {
 		a.image {
@@ -43,7 +42,24 @@ iframe{
 			margin-right: 5px;
 		}
 	}
+	ul {
+		padding: 0 0 0 10px;
+		margin: 0;
+		li  {
+			border-bottom: 1px solid #eee;
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+		}
+		ul {
+			margin-left: 20px;
+			margin-top: 20px;
+			li {
+				border-bottom: 0;
+			}
+		}
+	}
 }
+
 .contentpane {
 	padding-left: 20px;
 	padding-right: 20px;

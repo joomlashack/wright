@@ -20,7 +20,7 @@ JHtml::_('behavior.tooltip');
 	<form id="contact-form" action="<?php echo JRoute::_('index.php'); ?>" method="post" class="form-validate form-horizontal">  <?php // Wright v.3: Added form-horizontal class ?>
 		<fieldset>
 			<legend><?php echo JText::_('COM_CONTACT_FORM_LABEL'); ?></legend>
-			<dl>
+			<dl class="dl-horizontal">  <?php // Wright v.3: Added dl-horizontal class ?>
 				<dt><?php echo $this->form->getLabel('contact_name'); ?></dt>
 				<dd><?php echo $this->form->getInput('contact_name'); ?></dd>
 				<dt><?php echo $this->form->getLabel('contact_email'); ?></dt>
@@ -53,14 +53,17 @@ JHtml::_('behavior.tooltip');
 			          <?php endif ?>
 			     <?php endforeach;?>
 				<dt></dt>
-				<dd class=""><button class="button btn btn-primary validate" type="submit"><?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>  <?php // Wright v.3: Added btn btn-primary classes ?>
-					<input type="hidden" name="option" value="com_contact" />
-					<input type="hidden" name="task" value="contact.submit" />
-					<input type="hidden" name="return" value="<?php echo $this->return_page;?>" />
-					<input type="hidden" name="id" value="<?php echo $this->contact->slug; ?>" />
-					<?php echo JHtml::_( 'form.token' ); ?>
-				</dd>
+			<?php // Wright v.3: Closed <dl> and moved the submit button to a separate div ?>
 			</dl>
+			<div class="form-actions">
+				<button class="button btn btn-primary validate" type="submit"><?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>  <?php // Wright v.3: Added btn btn-primary classes ?>
+				<input type="hidden" name="option" value="com_contact" />
+				<input type="hidden" name="task" value="contact.submit" />
+				<input type="hidden" name="return" value="<?php echo $this->return_page;?>" />
+				<input type="hidden" name="id" value="<?php echo $this->contact->slug; ?>" />
+				<?php echo JHtml::_( 'form.token' ); ?>
+			</div>
+			<?php // End Wright v.3: Closed <dl> and moved the submit button to a separate div ?>
 		</fieldset>
 	</form>
 </div>

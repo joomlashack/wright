@@ -773,15 +773,17 @@ dl.label.label-info dt{
 .contact #selectForm{
 	margin-top: 10px;
 }
-.nav-tabs > .open h3 a {
-	background-color: #FFFFFF;
+.nav-tabs > .open h3 a,
+.nav-tabs > .open p a {
+	background-color: @white;
     border-color: #DDDDDD #DDDDDD transparent;
     border-style: solid;
     border-width: 1px;
     color: #555555 !important;
     cursor: default;
 }
-.nav-tabs h3 a{
+.nav-tabs h3 a,
+.nav-tabs p a{
 	padding:4px 5px 1px;
 	vertical-align: bottom;
 }
@@ -789,7 +791,6 @@ dl.label.label-info dt{
 	margin-bottom: 0;
 }
 .nav-tabs dt a{
-	font-size: .7em;
 	border-radius:5px 5px 0 0;
 }
 .tabs.nav.nav-tabs dt.tabs {
@@ -811,12 +812,14 @@ dl.label.label-info dt{
     margin: 0;
     padding: 0 10px;
 }
-#contact-slider .panel h3 {
+#contact-slider .panel h3,
+#contact-slider .panel p {
     background-color: transparent;
     box-shadow: 0 0;
     margin: 0;
 }
-.panel h3 {
+.panel h3,
+.panel p {
     margin-bottom: 0;
     margin-left: -10px;
     padding: 5px;
@@ -824,11 +827,13 @@ dl.label.label-info dt{
     position: relative;
     z-index: 2;
 }
-dl.tabs.nav h3{
+dl.tabs.nav h3,
+dl.tabs.nav p {
 	margin-bottom: 0;
 	margin-right: 5px;
 }
-#contact-slider dt h3{
+#contact-slider dt h3,
+#contact-slider dt p {
 	margin-bottom: 0;
 }
 .contact-form dt label{
@@ -838,7 +843,8 @@ dl.tabs.nav h3{
 .contact-articles{
 	min-width: 200px;
 }
-.contact-links + h3{
+.contact-links + h3,
+.contact-links + p {
 	clear: both;
 }
 
@@ -849,7 +855,8 @@ div:first-child + .panel {
     border-bottom: 1px solid #ddd;
     border-radius: 0 0 5px 5px;
 }
- .panel h3.pane-toggler-down a{
+ .panel h3.pane-toggler-down a,
+ .panel p.pane-toggler-down a {
 	color: black;
 }
 

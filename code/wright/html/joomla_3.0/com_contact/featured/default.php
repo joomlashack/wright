@@ -1,29 +1,40 @@
 <?php
+// Wright v.3 Override: Joomla 3.1.5
 /**
- * @package		Joomla.Site
- * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @package     Joomla.Site
+ * @subpackage  com_contact
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// no direct access
 defined('_JEXEC') or die;
-if (!function_exists("wright_joomla_contact_category")) :
 
-	
-	
-	
-	function wright_joomla_contact_category($buffer) {
-			$buffer = preg_replace('/<h2>/Ui', '<div class="page-header"> <h2>', $buffer);
-			$buffer = preg_replace('/<\/h2>/Ui', '</h2> </div>', $buffer);
-			$buffer = preg_replace('/<table class="category">/Ui', '<table class="category table table-striped table-hover">', $buffer);
-				return $buffer;
-				
-	}
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
-endif;
+// If the page class is defined, add to class as suffix.
+// It will be a separate class if the user starts it with a space
+?>
+<div class="blog-featured<?php echo $this->pageclass_sfx;?>">
+<?php if ($this->params->get('show_page_heading') != 0 ) : ?>
+	<div class="page-header">  <?php // Wright v.3: Added page header ?>
+		<h1>
+		<?php echo $this->escape($this->params->get('page_heading')); ?>
+		</h1>
+	</div>  <?php // Wright v.3: Added page header ?>
+<?php endif; ?>
 
-ob_start("wright_joomla_contact_category");
-require('components/com_contact/views/featured/tmpl/default.php');
-ob_end_flush();
+<?php echo $this->loadTemplate('items'); ?>
+<?php if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->pagesTotal > 1)) : ?>
+	<div class="pagination">
 
+		<?php if ($this->params->def('show_pagination_results', 1)) : ?>
+			<p class="counter">
+				<?php echo $this->pagination->getPagesCounter(); ?>
+			</p>
+		<?php  endif; ?>
+				<?php echo $this->pagination->getPagesLinks(); ?>
+	</div>
+<?php endif; ?>
+
+</div>
