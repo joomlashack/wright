@@ -11,6 +11,7 @@
 defined('_JEXEC') or die('You are not allowed to directly access this file');
 
 class WrightTemplateBase {
+	public $templateName = null; // sets Template Name
 	public $suffixes = false;  // checks if template allows stacked suffixes
 	public $fullHeightSidebars = false;  // checks if this template uses full height sidebars
 
@@ -78,5 +79,38 @@ class WrightTemplateBase {
 		require_once(dirname(__FILE__) . '/../adapters/joomla/logo.php');
 		$this->_isThereALogo = WrightAdapterJoomlaLogo::isThereALogo();
 		return $this->_isThereALogo;
+	}
+
+	public function getTemplate()
+	{
+		static $template;
+
+		if ($this->templateName == '')
+			return false;
+
+		if (!isset($template))
+		{
+			// Load the template name from the database
+			$db = JFactory::getDbo();
+			$query = $db->getQuery(true);
+			$query->select('template, s.params');
+			$query->from('#__template_styles as s');
+			$query->leftJoin('#__extensions as e ON e.type='.$db->quote('template').' AND e.element=s.template AND e.client_id=s.client_id');
+			$query->where('e.name = ' . $db->quote($this->templateName), 'AND');
+			$query->order('home');
+			$db->setQuery($query);
+
+			$template = $db->loadObject();
+
+			$template->template = JFilterInput::getInstance()->clean($template->template, 'cmd');
+			$template->params = new JRegistry($template->params);
+
+			if (!file_exists(JPATH_THEMES . '/' . $template->template . '/index.php'))
+			{
+				$template->params = new JRegistry();
+				$template->template = '';
+			}
+		}
+		return $template;
 	}
 }
