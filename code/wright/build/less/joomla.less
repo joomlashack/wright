@@ -26,11 +26,14 @@ body {
     margin-bottom: 10px;
 }
 
+#breadcrumbs .module,
+#breadcrumbs .moduletable{
+	margin: 0;
+}
+
 #below-content { margin-top: 10px; }
 
-iframe{
-	max-width:100%;
-}
+
 .cat-children {
 	h3 a{
 		color: @linkColor;
@@ -288,22 +291,8 @@ dl.label.label-info dt{
 	font-size: 1.1em;
 	line-height: 14px;
 }
-/* Text selection */
 
-::selection {
-	background:#D2EAF6;
-}
 
-::-moz-selection {
-	background: #D2EAF6;
-}
-.no-responsive{
-	min-width: 940px;
-}
-
-.visible-phone, .visible-tablet {
-	display: none;
-}
 .contact{
 	.thumbnail.pull-right{
 		+ .dl-horizontal:after{
@@ -614,9 +603,19 @@ h1, h2, h3, h4, h5, h6 {
 	input{
 		height: 30px;
 		margin-bottom: 5px;
-		max-width: 100%;
+		max-width: 80%;
 		.box-sizing(border-box);
 		&#modlgn-remember{height: 11px;}
+		width: auto;
+	}
+
+	.form-horizontal {
+		.control-label {
+			width: auto;
+		}
+		.controls {
+			margin-left: 5px;
+		}
 	}
 }
 
@@ -772,4 +771,70 @@ div.disabled{
 .result-text,
 .result-title{
 	 margin-bottom: 10px;
+}
+
+
+/* @ Sidebar special style  ***************************************/
+
+#sidebar1 select,
+#sidebar2 select{
+	width:auto;
+	min-width: 90%;
+}
+#sidebar1 input.button,
+#sidebar2 input.button
+{
+	min-width: inherit;
+}
+#sidebar1 input.button.btn,
+#sidebar2 input.button.btn{
+	clear: none;
+}
+#sidebar1 input#modlgn-remember,
+#sidebar2 input#modlgn-remember{
+	min-width: inherit;
+}
+
+#sidebar1,
+#sidebar2{
+	overflow: hidden
+}
+
+.stats-module dd,
+.stats-module dt{
+	float: left;
+}
+.stats-module dt{
+	clear: both;
+	min-width: 50px;
+}
+
+
+/* Text selection and general utility classes */
+
+::selection {
+	background:#D2EAF6;
+}
+
+::-moz-selection {
+	background: #D2EAF6;
+}
+.no-responsive{
+	min-width: 940px;
+}
+
+.visible-phone, .visible-tablet {
+	display: none;
+}
+
+.no-responsive{
+	min-width: 940px;
+}
+
+iframe{
+	max-width:100%;
+}
+
+.clear {
+	clear: both;
 }

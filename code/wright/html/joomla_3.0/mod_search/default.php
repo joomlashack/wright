@@ -33,7 +33,7 @@ defined('_JEXEC') or die;
 					if ($imagebutton) :
 						$button = ' <input type="image" value="' . $button_text . '" class="button" src="' . $img . '" onclick="this.form.searchword.focus();"/>';
 					else :
-						$button = ' <button class="button btn btn-primary" onclick="this.form.searchword.focus();">' . $button_text . '</button>';
+						$button = ' <button class="button btn" onclick="this.form.searchword.focus();">' . $button_text . '</button>'; // Wright v.3: Removed btn-primary class
 					endif;
 				endif;
 

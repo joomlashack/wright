@@ -58,7 +58,7 @@ if ($feed != false)
 	}
 	?>
 
-			<ul class="newsfeed<?php echo $params->get('moduleclass_sfx'); ?> nav nav-list">  <?php // Wright v.3: Added nav nav-list classes ?>
+			<ul class="newsfeed<?php echo $params->get('moduleclass_sfx'); ?> list-striped">  <?php // Wright v.3: Added list-striped class ?>
 			<?php
 			$words = $params->def('word_count', 0);
 			for ($j = 0; $j < $totalItems; $j ++)

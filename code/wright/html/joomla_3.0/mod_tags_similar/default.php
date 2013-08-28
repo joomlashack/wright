@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 <?php JLoader::register('TagsHelperRoute', JPATH_BASE . '/components/com_tags/helpers/route.php'); ?>
 <div class="tagssimilar<?php echo $moduleclass_sfx; ?>">
 <?php if ($list) : ?>
-	<ul class="nav nav-pills nav-stacked" > <?php // Wright v.3: Pills style ?>
+	<ul class="nav nav-list" > <?php // Wright v.3: Nav List ?>
 	<?php foreach ($list as $i => $item) : ?>
 		<li>
 			<?php $item->route = new JHelperRoute; ?>

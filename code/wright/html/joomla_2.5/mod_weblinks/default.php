@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die;
 ?>
-<ul class="weblinks<?php echo $moduleclass_sfx; ?> nav nav-list">  <?php // Wright v.3: Added nav nav-list classes ?>
+<ul class="weblinks<?php echo $moduleclass_sfx; ?> list-striped">  <?php // Wright v.3: Added list-striped class ?>
 <?php foreach ($list as $item) :	?>
 <li>
 	<?php

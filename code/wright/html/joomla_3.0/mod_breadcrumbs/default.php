@@ -1,27 +1,75 @@
 <?php
+// Wright v.3 Override: Joomla 3.1.5
 /**
- * @version		$Id: default.php 22355 2011-11-07 05:11:58Z github_bot $
- * @package		Joomla.Site
- * @subpackage	mod_menu
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @package     Joomla.Site
+ * @subpackage  mod_breadcrumbs
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access.
 defined('_JEXEC') or die;
 
-if (!function_exists("wright_joomla_breadcrumbs")) :
+JHtml::_('bootstrap.tooltip');
 
 
-	function wright_joomla_breadcrumbs($buffer) {
-		$buffer = preg_replace('/icon-location/Ui', 'icon-map-marker', $buffer);
-		$buffer = preg_replace('/<img([^>]*)arrow([^>]*)>/Ui', '&nbsp;<i class="icon-caret-right"></i>&nbsp;', $buffer);
-		return $buffer;
+$separator = '<i class="icon-caret-right"></i>';  // Wright v.3: Joomla 3.x separator style
+
+?>
+
+<ul class="breadcrumb<?php echo $moduleclass_sfx; ?>">
+	<?php
+	if ($params->get('showHere', 1))
+	{
+		echo '<li class="active"><span class="divider icon-map-marker hasTooltip" title="' . JText::_('MOD_BREADCRUMBS_HERE') . '"></span></li>';  // Wright v.3: Changed icon-location for icon-map-marker
 	}
 
-endif;
+	// Get rid of duplicated entries on trail including home page when using multilanguage
+	for ($i = 0; $i < $count; $i++)
+	{
+		if ($i == 1 && !empty($list[$i]->link) && !empty($list[$i - 1]->link) && $list[$i]->link == $list[$i - 1]->link)
+		{
+			unset($list[$i]);
+		}
+	}
 
-ob_start("wright_joomla_breadcrumbs");
-require('modules/mod_breadcrumbs/tmpl/default.php');
-ob_end_flush();
-?>
+	// Find last and penultimate items in breadcrumbs list
+	end($list);
+	$last_item_key = key($list);
+	prev($list);
+	$penult_item_key = key($list);
+
+	// Make a link if not the last item in the breadcrumbs
+	$show_last = $params->get('showLast', 1);
+
+	// Generate the trail
+	foreach ($list as $key => $item) :
+	if ($key != $last_item_key)
+	{
+		// Render all but last item - along with separator
+		echo '<li>';
+		if (!empty($item->link))
+		{
+			echo '<a href="' . $item->link . '" class="pathway">' . $item->name . '</a>';
+		}
+		else
+		{
+			echo '<span>' . $item->name . '</span>';
+		}
+
+		if (($key != $penult_item_key) || $show_last)
+		{
+			echo '<span class="divider">' . $separator . '</span>';
+		}
+
+		echo '</li>';
+	}
+	elseif ($show_last)
+	{
+		// Render last item if read.
+		echo '<li>';
+		echo '<span>' . $item->name . '</span>';
+		echo '</li>';
+	}
+	endforeach; ?>
+</ul>

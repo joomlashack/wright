@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 ?>
 <?php JLoader::register('TagsHelperRoute', JPATH_BASE . '/components/com_tags/helpers/route.php'); ?>
 <div class="tagspopular<?php echo $moduleclass_sfx; ?>">
-<ul class="nav nav-pills nav-stacked" > <?php // Wright v.3: Pills style ?>
+<ul class="nav nav-list" > <?php // Wright v.3: nav-list ?>
 <?php foreach ($list as $item) :	?>
 <li><?php $route = new TagsHelperRoute; ?>
 	<a href="<?php echo JRoute::_(TagsHelperRoute::getTagRoute($item->tag_id . ':' . $item->alias)); ?>">

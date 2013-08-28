@@ -16,16 +16,11 @@ $separator = '<span class="divider"><i class="icon-caret-right"></i></span>';  /
 
 <div class="breadcrumbs<?php echo $moduleclass_sfx; ?>">
 	<ul class="breadcrumb">  <?php // Wright v.3: Added breadcrumb list ?>
-		
 		<?php if ($params->get('showHere', 1))
 			{
 		?>
-			<?php /* Wright v.3: New "show here marker" */ ?>
-			<li>
-				<span class="divider icon-map-marker hasTip" title="<?php echo JText::_('MOD_BREADCRUMBS_HERE') ?>"></span>
-			</li>
-			<?php /* End Wright v.3: New "show here marker" */ ?>
-		<?php
+			<?php // Wright v.3: New "show here" marker
+			echo '<li><span class="divider icon-map-marker hasTip" title="' . JText::_('MOD_BREADCRUMBS_HERE') . '"></span></li>';
 				//Wright v.3: Commented out original first marker.   echo '<span class="showHere">' .JText::_('MOD_BREADCRUMBS_HERE').'</span>';
 			}
 
