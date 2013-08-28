@@ -1,7 +1,7 @@
 var disableToolbarResize = false;
 
 if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) { 
-	// fix for Bootstrap Carousel - conflicting with mootools-more
+	fix for Bootstrap Carousel - conflicting with mootools-more
 	(function($) {
 		    Element.implement({
 		        slide: function(how, mode){
@@ -9,20 +9,6 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 		        }
 		    });
     	})(jQuery);
-	(function($) { 
-		// fix for Bootstrap Collapse - conflicting with mootools-more
-		$$('[data-toggle=collapse]').each(function (e) {
-			if ($$(e.get('data-target'))[0])
-				$$(e.get('data-target'))[0].hide = null;
-			if ($$(e.get('href'))[0])
-				$$(e.get('href'))[0].hide = null;
-		});
-
-		// fix for Bootstrap Tooltips - conflicting with mootools-more
-		$$('.hasTooltip').each(function (e) {
-			e.hide = null;
-		});
-	})(MooTools);
 }
 
 (function($) {
