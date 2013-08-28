@@ -70,12 +70,14 @@ if ($lang->isRTL() && $myrtl == 0) {
 <?php endif; ?>
 
 <!-- Show items -->
-<ol class="unstyled">  <?php // Wright v.3: Added unstyled class ?>
+<ol class="list-striped">  <?php // Wright v.3: Added list-striped class ?>
 	<?php foreach ($this->newsfeed->items as $item) :  ?>
 		<li>
 			<?php if (!is_null($item->get_link())) : ?>
-				<a href="<?php echo $item->get_link(); ?>" target="_blank">
+				<h3>  <?php // Wright v.3: Added h3 ?>
+					<a href="<?php echo $item->get_link(); ?>" target="_blank">
 					<?php echo $item->get_title(); ?></a>
+				</h3>  <?php // Wright v.3: Added h3 ?>
 			<?php endif; ?>
 			<?php if ($this->params->get('show_item_description') && $item->get_description()) : ?>
 				<div class="feed-item-description">
@@ -91,7 +93,6 @@ if ($lang->isRTL() && $myrtl == 0) {
 				</div>
 			<?php endif; ?>
 			</li>
-			<hr />  <?php // Wright v.3: Added break between feeds ?>
 		<?php endforeach; ?>
 		</ol>
 </div>
