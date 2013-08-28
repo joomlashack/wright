@@ -5,11 +5,13 @@ define('DS', DIRECTORY_SEPARATOR);
 
 if (!defined('_JDEFINES')) {
 	define('JPATH_BASE', dirname(__FILE__).'/../../../..');
+	define('JPATH_WRIGHT_TEMPLATE', dirname(__FILE__).'/../..');
 	define('JPATH_SITE', JPATH_BASE);
 	require_once JPATH_BASE.'/includes/defines.php';
 }
 
 require_once JPATH_BASE.'/includes/framework.php';
+require_once JPATH_WRIGHT_TEMPLATE . '/wrighttemplate.php';
 
 $app = JFactory::getApplication('site');
 $app->initialise();
@@ -18,7 +20,9 @@ $version = explode('.', JVERSION);
 $mainversion = $version[0];
 $subversion = $version[1];
 
-$template = $app->getTemplate(true);
+$wrightTemplate = wrightTemplate::getInstance();
+$template = $wrightTemplate->getTemplate();
+
 $user = JFactory::getUser();
 $style = JRequest::getVar('templateTheme',$user->getParam('theme',$template->params->get('style','generic')));
 
