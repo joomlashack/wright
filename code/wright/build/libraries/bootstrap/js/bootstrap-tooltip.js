@@ -221,9 +221,16 @@
     }
 
   , hide: function () {
+	  /* >>> JUI >>> */
+	  /* ORIGINAL:
       var that = this
         , $tip = this.tip()
         , e = $.Event('hide')
+      */
+      var that = this
+        , $tip = this.tip()
+        , e = $.Event('hideme')
+      /* <<< JUI <<< */
 
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
@@ -345,7 +352,12 @@
   , trigger: 'hover focus'
   , title: ''
   , delay: 0
+  /* >>> JUI >>> */
+  /* ORIGINAL:
   , html: false
+  */
+  , html: true
+  /* <<< JUI <<< */
   , container: false
   }
 
