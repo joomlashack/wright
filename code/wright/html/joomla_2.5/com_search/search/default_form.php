@@ -13,14 +13,20 @@ $lang = JFactory::getLanguage();
 $upper_limit = $lang->getUpperLimitSearchWord();
 ?>
 
-<form id="searchForm" action="<?php echo JRoute::_('index.php?option=com_search');?>" method="post" class="form-search">  <?php // Wright v.3: Added form-search class ?>
+<form id="searchForm" action="<?php echo JRoute::_('index.php?option=com_search');?>" method="post" class="form-vertical">  <?php // Wright v.3: Added form-search class ?>
 
 	<fieldset class="word">
 		<label for="search-searchword">
 			<?php echo JText::_('COM_SEARCH_SEARCH_KEYWORD'); ?>
 		</label>
-		<input type="text" name="searchword" id="search-searchword" size="30" maxlength="<?php echo $upper_limit; ?>" value="<?php echo $this->escape($this->origkeyword); ?>" class="inputbox" />
-		<button name="Search" onclick="this.form.submit()" class="button btn btn-primary"><?php echo JText::_('COM_SEARCH_SEARCH');?></button>  <?php // Wright v.3: Added btn btn-primary classes ?>
+		<div class="btn-group pull-left"> <?php // Wright v.3: Added btn-group ?>
+			<input type="text" name="searchword" id="search-searchword" size="30" maxlength="<?php echo $upper_limit; ?>" value="<?php echo $this->escape($this->origkeyword); ?>" class="inputbox" />
+		</div> <?php // Wright v.3: Added btn-group ?>
+		<div class="btn-group pull-left"> <?php // Wright v.3: Added btn-group ?>
+			<button name="Search" onclick="this.form.submit()" class="button btn btn-primary"> <?php // Wright v.3: Added btn btn-primary pull-left classes ?>
+				<span class="icon-search icon-white"></span> <?php // Wright v.3: Added icon ?>
+				<?php echo JText::_('COM_SEARCH_SEARCH');?></button>
+		</div> <?php // Wright v.3: Added btn-group ?>
 		<input type="hidden" name="task" value="search" />
 	</fieldset>
 
