@@ -38,7 +38,7 @@ JHtml::_('behavior.keepalive');
 
 	<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post" class="form-horizontal">  <?php // Wright v.3: Added form-horizontal class ?>
 
-		<fieldset>
+		<fieldset class="well">  <?php // Wright v.3: Added well class ?>
 			<?php foreach ($this->form->getFieldset('credentials') as $field): ?>
 				<?php if (!$field->hidden): ?>
 					<div class="login-fields"><?php echo $field->label; ?>
@@ -58,20 +58,20 @@ JHtml::_('behavior.keepalive');
 	</form>
 </div>
 <div>
-	<ul class="unstyled nav nav-pills">  <?php // Wright v.3: Added nav nav-pills classes ?>
+	<ul class="nav nav-tabs nav-stacked">  <?php // Wright v.3: Added nav nav-tabs nav-stacked classes ?>
 		<li>
-			<a class="btn button" href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">  <?php // Wright v.3: Added btn button classes ?>
+			<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
 			<?php echo JText::_('COM_USERS_LOGIN_RESET'); ?></a>
 		</li>
 		<li>
-			<a class="btn button"  href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
+			<a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
 			<?php echo JText::_('COM_USERS_LOGIN_REMIND'); ?></a>
 		</li>
 		<?php
 		$usersConfig = JComponentHelper::getParams('com_users');
 		if ($usersConfig->get('allowUserRegistration')) : ?>
 		<li>
-			<a class="btn button"  href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
+			<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
 				<?php echo JText::_('COM_USERS_LOGIN_REGISTER'); ?></a>
 		</li>
 		<?php endif; ?>

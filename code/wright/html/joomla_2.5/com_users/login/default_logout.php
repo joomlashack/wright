@@ -35,11 +35,15 @@ defined('_JEXEC') or die;
 	</div>
 	<?php endif ; ?>
 
-	<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.logout'); ?>" method="post" class="form-inline">  <?php // Wright v.3: Added form-inline class ?>
-		<div>
-			<button type="submit" class="button btn btn-danger"><?php echo JText::_('JLOGOUT'); ?></button>  <?php // Wright v.3: Added btn-danger class ?>
-			<input type="hidden" name="return" value="<?php echo base64_encode($this->params->get('logout_redirect_url', $this->form->getValue('return'))); ?>" />
-			<?php echo JHtml::_('form.token'); ?>
+	<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.logout'); ?>" method="post" class="form-horizontal">  <?php // Wright v.3: Added form-horizontal class ?>
+		<div class="control-group">  <?php // Wright v.3: Added control-group class ?>
+			<div class="controls">  <?php // Wright v.3: Added controls div ?>
+				<button type="submit" class="button btn btn-primary">  <?php // Wright v.3: Added btn-primary class ?>
+					<span class="icon-arrow-left icon-white"></span>  <?php // Wright v.3: Added icon ?>
+					<?php echo JText::_('JLOGOUT'); ?></button>
+				<input type="hidden" name="return" value="<?php echo base64_encode($this->params->get('logout_redirect_url', $this->form->getValue('return'))); ?>" />
+				<?php echo JHtml::_('form.token'); ?>
+			</div>  <?php // Wright v.3: Added controls div ?>
 		</div>
 	</form>
 </div>
