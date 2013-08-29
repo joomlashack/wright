@@ -35,7 +35,9 @@ if ($item->parent) {
 		echo '<i class="icon-caret-right"></i>';
 	else
 		echo '<b class="caret"></b>';
-	echo '</a>';
 }
+?></span><?php
+if ($item->parent)
+	echo '</a>';
 // End Wright v.3: Closing pseudo-link for sub-menus
-?></span>
+?>
