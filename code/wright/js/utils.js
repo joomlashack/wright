@@ -1,7 +1,7 @@
 var disableToolbarResize = false;
 
 if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) { 
-	fix for Bootstrap Carousel - conflicting with mootools-more
+	// fix for Bootstrap Carousel - conflicting with mootools-more
 	(function($) {
 		    Element.implement({
 		        slide: function(how, mode){
