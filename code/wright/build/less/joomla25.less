@@ -520,125 +520,6 @@ nav div.toolbar {
 .wrapper-toolbar{
 	min-height: 40px;
 }
-/* Menu - Bootstrap Dropdown Navbar - Addition for multi-level ***********************************************************************************/
-
-.navbar .nav li {
-	margin-bottom: 0;
-	line-height: inherit;
-}
-.navbar .dropdown-menu .sub-menu {
-    left: 100%;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    margin-top: -1px;
-}
-
-.navbar .dropdown-menu li > span:hover,
-.navbar .dropdown-menu .active > span{
-	background-color: #0081C2;
-    background-image: -moz-linear-gradient(center top , #0088CC, #0077B3);
-    background-repeat: repeat-x;
-    color: #FFFFFF;
-    outline: 0 none;
-    text-decoration: none;
-}
-
-.navbar .dropdown-menu a,
-.navbar .dropdown-menu span.separator {
-    clear: both;
-    display: block;
-    font-weight: normal;
-    line-height: 18px;
-    padding: 3px 15px;
-    white-space: nowrap;
-}
-
-.navbar .dropdown-menu li:hover > .sub-menu {
-    visibility: visible;
-}
-
-.navbar .dropdown:hover > .dropdown-menu {
-    display: block;
-}
-
-
-.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
-    margin-top: 0;
-}
-
-.navbar .sub-menu:before {
-    border-bottom: 7px solid transparent;
-    border-left: none;
-    border-right: 7px solid rgba(0, 0, 0, 0.2);
-    border-top: 7px solid transparent;
-    left: -7px;
-    top: 10px;
-}
-.navbar .sub-menu:after {
-    border-top: 6px solid transparent;
-    border-left: none;
-    border-right: 6px solid #fff;
-    border-bottom: 6px solid transparent;
-    left: 10px;
-    top: 11px;
-    left: -6px;
-}
-
-.navbar a.dropdown-toggle i {
-    height: 100%;
-    line-height: 100%;
-    vertical-align: baseline;
-}
-
-.nav > li > span.separator {
-    display: block;
-    cursor: default;
-}
-
-.navbar .nav > li > span.separator {
-    color: @navbarLinkColor;
-    float: none;
-    padding: 10px 15px;
-    text-decoration: none;
-    cursor: default;
-    &:hover{
-    	background-color: @navbarLinkBackgroundHover;
-    	color:@navbarLinkColorHover;
-    }
-}
-
-.navbar-inverse .nav > li > span.separator {
-	color: @navbarInverseLinkColor;
-	&:hover{
-		background-color: @navbarInverseLinkBackgroundHover;
-		color:@navbarInverseLinkColorHover;
-	}
-}
-
-.nav .dropdown-menu li > span.separator {
-	cursor: default;
-	color:@dropdownLinkColor;
-	&:hover{
-		background-color: @dropdownLinkBackgroundHover;
-		color:@dropdownLinkColorHover;
-	}
-}
-.nav .dropdown-menu .active > span.separator {
-	background-color: @dropdownLinkBackgroundActive;
-	color: @dropdownLinkColorActive;
-}
-
-.navbar .nav > .active > span.separator,.navbar .nav > .active > span.separator:hover, .navbar .nav > .active > span.separator:focus {
-    background-color: @navbarLinkBackgroundActive;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125) inset;
-    color: @navbarLinkColorActive;
-    text-decoration: none;
-}
-.navbar-inverse .navbar .nav > .active > span.separator, .navbar-inverse .navbar .nav > .active > span.separator:hover, .navbar-inverse .navbar .nav > .active > span.separator:focus {
-    background-color: @navbarInverseLinkBackgroundActive;
-    color: @navbarInverseLinkColorActive;
-}
 
 
 .feed-description{
@@ -841,18 +722,7 @@ line-height: 14px;
 	z-index:1;
 }
 
-.nav .dropdown-toggle .caret {
-border-bottom-color: #666;
-border-top-color: #666;
-}
-.nav .dropdown-toggle.btn-primary .caret, .nav .dropdown-toggle.btn-danger .caret, .nav .dropdown-toggle.btn-warning .caret, .nav .dropdown-toggle.btn-success .caret, .nav .dropdown-toggle.btn-info .caret, .nav .dropdown-toggle.btn-inverse .caret {
-border-bottom-color: white;
-border-top-color: white;
-}
-.nav .dropdown-toggle.btn-primary .caret, .nav .dropdown-toggle.btn-danger .caret, .nav .dropdown-toggle.btn-warning .caret, .nav .dropdown-toggle.btn-success .caret, .nav .dropdown-toggle.btn-info .caret, .nav .dropdown-toggle.btn-inverse .caret {
-border-bottom-color: white;
-border-top-color: white;
-}
+
 .text-warning {
 color: #C09853;
 }
