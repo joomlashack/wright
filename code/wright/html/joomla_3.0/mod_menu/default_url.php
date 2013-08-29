@@ -23,7 +23,7 @@ if (preg_match_all('/icon-([\S]+)/', $item->anchor_css, $matches)) {
 $class = ($item->anchor_css || $item->parent) ? 'class="'.$item->anchor_css. ($item->parent ? ' dropdown-toggle disabled' : '') . '" ' : '';  // Wright v.3:  Added parent classes for Bootstrap
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
 $toggle = $item->parent ? ' data-toggle="dropdown-menus"' : '';  // Wright v.3: Added data-toggle attribute to parents
-$caret = $item->parent ? ($item->level > 1 ? '<i class="icon-caret-right">' : '<b class="caret"></b>') : '';  // Wright v.3: Added caret
+$caret = $item->parent ? ($item->level > 1 ? '<i class="icon-caret-right"></i>' : '<b class="caret"></b>') : '';  // Wright v.3: Added caret
 if ($item->menu_image)
 	{
 		$item->params->get('menu_text', 1 ) ?
