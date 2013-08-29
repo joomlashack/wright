@@ -23,7 +23,7 @@ else { $linktype = $item->title;
 
 // Wright v.3: Opening pseudo-link for sub-menus
 if ($item->parent) {
-	echo '<a href="#" class="dropdown-toggle disabled" data-toggle="dropdown">';
+	echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
 }
 // End Wright v.3: Opening pseudo-link for sub-menus
 
