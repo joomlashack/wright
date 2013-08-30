@@ -14,7 +14,7 @@
  
 function wrightTransformArticleContent($content) {
 	// Page Break Plugin
-	$content = preg_replace("/class=\"tabs\"/Uis", 'class="tabs nav nav-tabs"', $content);  // Add tabs
+	$content = preg_replace("/dl([^>]*)class=\"tabs\"/Uis", 'dl$1class="tabs nav nav-tabs"', $content);  // Add tabs
  	$content = preg_replace("/<div class=\"pagination\">(.*)<li>([^>]*)<\/li>(.*)<\/div>/Uis", "<div class=\"pagination\">$1<li class=\"disabled\"><a href=\"#\" />$2</a></li>$3</div>", $content);  // Inside pagination
 
 	return $content;

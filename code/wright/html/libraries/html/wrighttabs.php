@@ -43,7 +43,7 @@ abstract class JHtmlWrightTabs extends JHtmlTabs
 	 */
 	public static function panel($text, $id)
 	{
-		return '</dd><dt class="tabs ' . $id . '"><span><p><a href="javascript:void(0);">' . $text . '</a></p></span></dt><dd class="tabs nav nav-tabs">';  // Wright v.3: Added nav nav-tabs classes
+		return '</dd><dt class="tabs ' . $id . '"><span><p><a href="javascript:void(0);">' . $text . '</a></p></span></dt><dd class="tabs">';  // Wright v.3: Added nav class
 	}
 
 }
