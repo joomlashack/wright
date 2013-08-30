@@ -23,7 +23,7 @@ if (preg_match_all('/icon-([\S]+)/', $item->anchor_css, $matches)) {
 $class = ($item->anchor_css || $item->parent) ? 'class="'.$item->anchor_css. ($item->parent ? ' dropdown-toggle disabled' : '') . '" ' : '';  // Wright v.3:  Added parent classes for Bootstrap
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
 $toggle = $item->parent ? ' data-toggle="dropdown-menus"' : '';  // Wright v.3: Added data-toggle attribute to parents
-$caret = $item->parent ? ($item->level > 1 ? '<i class="icon-caret-right">' : '<b class="caret"></b>') : '';  // Wright v.3: Added caret
+$caret = $item->parent ? ($item->level > 1 ? '<i class="icon-caret-right"></i>' : '<b class="caret"></b>') : '';  // Wright v.3: Added caret
 
 if ($item->menu_image)
 	{
@@ -37,15 +37,15 @@ else { $linktype = '<span ' . $class . '>' . $item->title . '</span>';  // Wrigh
 switch ($item->browserNav) :
 	default:
 	case 0:
-?><a <?php echo $toggle; // Wright v.3: Removed class and added toggle for submenus ?>href="<?php echo $item->flink; ?>" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a><?php
+?><a <?php echo $toggle; // Wright v.3: Removed class and added toggle for submenus ?> href="<?php echo $item->flink; ?>" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a><?php
 		break;
 	case 1:
 		// _blank
-?><a <?php echo $toggle; // Wright v.3: Removed class and added toggle for submenus ?>href="<?php echo $item->flink; ?>" target="_blank" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a><?php
+?><a <?php echo $toggle; // Wright v.3: Removed class and added toggle for submenus ?> href="<?php echo $item->flink; ?>" target="_blank" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a><?php
 		break;
 	case 2:
 	// window.open
-?><a <?php echo $toggle; // Wright v.3: Removed class and added toggle for submenus ?>href="<?php echo $item->flink; ?>" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a>
+?><a <?php echo $toggle; // Wright v.3: Removed class and added toggle for submenus ?> href="<?php echo $item->flink; ?>" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a>
 <?php
 		break;
 endswitch;
