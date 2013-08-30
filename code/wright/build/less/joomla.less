@@ -106,7 +106,7 @@ dl.article-info {
 	dt {
 		display:none;
 	}
-	dd, 
+	dd,
 	dd > div {
 		.border-radius(12px);
 		background:none;
@@ -705,50 +705,34 @@ h1, h2, h3, h4, h5, h6 {
   #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
 }
 
-// Page break
-// dl.tabs {
-// 	float: left;
-// 	margin-bottom: -1px;
-// }
-// dl.tabs dt.tabs {
-// 	float: left;
-// 	margin-left: 3px;
-// 	padding: 4px 10px;
-// 	background-color: #F0F0F0;
-// 	border-top: 1px solid @hrBorder - #111;
-// 	border-left: 1px solid @hrBorder - #111;
-// 	border-right: 1px solid @hrBorder - #111;
-// }
-// dl.tabs dt:hover {
-// 	background-color: #F9F9F9;
-// }
-// dl.tabs dt.open {
-// 	background-color: @white;
-// 	border-bottom: 1px solid @white;
-// }
-// dl.tabs dt.tabs h3 {
-// 	margin: 0;
-// 	font-size: 1.1em;
-// 	font-weight: normal;
-// }
-// dl.tabs dt.tabs h3 a {
-// 	color: @linkColor;
-// }
-// dl.tabs dt.tabs h3 a:hover {
-// 	color: #005580;
-// 	text-decoration: none;
-// }
-// dl.tabs dt.open h3 a {
-// 	color: @black;
-// 	text-decoration: none;
-// }
-// div.current dd.tabs {
-// 	margin: 0;
-// 	padding: 10px;
-// 	clear: both;
-// 	border: 1px solid @hrBorder - #111;
-// 	background-color: @white;
-// }
+.nav-tabs dt a{
+	border-radius:5px 5px 0 0;
+}
+.tabs.nav.nav-tabs dt.tabs {
+	float: left;
+}
+dl.tabs.nav h3,
+dl.tabs.nav p {
+	margin-bottom: 0;
+	margin-right: 5px;
+}
+.nav-tabs a{
+	padding:4px 5px 1px;
+	vertical-align: bottom;
+}
+.nav-tabs > .open {
+	 h3,p{
+		 a {
+			background-color: @white;
+		    border-color: #DDDDDD #DDDDDD transparent;
+		    border-style: solid;
+		    border-width: 1px;
+		    color: #555555 !important;
+		    cursor: default;
+		}
+	 }
+}
+
 #sidebar1,#sidebar2{
 	input{
 		height: 30px;
