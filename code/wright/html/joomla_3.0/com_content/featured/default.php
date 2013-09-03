@@ -120,7 +120,7 @@ JHtml::_('behavior.caption');
 <?php if (!empty($this->link_items)) : ?>
 	<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 
-	<div class="items-more well<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class (also added well class)  ?>">
+	<div class="items-more<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class (also added well class)  ?>">
 	<?php echo $this->loadTemplate('links'); ?>
 	</div>
 	<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>

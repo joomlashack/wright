@@ -13,7 +13,7 @@ require_once JPATH_SITE . '/components/com_content/helpers/route.php';
 
 ?>
 <?php if ($this->params->get('show_articles')) : ?>
-<div class="contact-articles<?php echo $extraclass; // Wright v.3: Added well class ?>">
+<div class="contact-articles">
 
 	<ol class="nav nav nav-tabs nav-stacked"> <?php // Wright v.3: Added nav nav-tabs nav-stacked classes ?>
 		<?php foreach ($this->item->articles as $article) :	?>
