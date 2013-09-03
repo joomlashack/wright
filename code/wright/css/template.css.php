@@ -6,7 +6,6 @@ define('DS', DIRECTORY_SEPARATOR);
 if (!defined('_JDEFINES')) {
 	define('JPATH_BASE', dirname(__FILE__).'/../../../..');
 	define('JPATH_WRIGHT_TEMPLATE', dirname(__FILE__).'/../..');
-	define('JPATH_SITE', JPATH_BASE);
 	require_once JPATH_BASE.'/includes/defines.php';
 }
 
