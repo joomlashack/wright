@@ -15,16 +15,16 @@ $item_heading = $params->get('item_heading', 'h4');
 
 	<<?php echo $item_heading; ?> class="newsflash-title<?php echo $params->get('moduleclass_sfx'); ?>">
 	<?php if ($params->get('link_titles') && $item->link != '') : ?>
-		<legend>  <?php // Wright v.3: Added legend tag ?>
+		<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
 			<a href="<?php echo $item->link;?>">
 				<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
 				<?php echo $item->title;?></a>
-		</legend>  <?php // Wright v.3: Added legend tag ?>
+		</div>  <?php // Wright v.3: Added page-header style ?>
 	<?php else : ?>
-		<legend>  <?php // Wright v.3: Added legend tag ?>
+		<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
 			<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
 			<?php echo $item->title; ?>
-		</legend>  <?php // Wright v.3: Added legend tag ?>
+		</div>  <?php // Wright v.3: Added page-header style ?>
 	<?php endif; ?>
 	</<?php echo $item_heading; ?>>
 
