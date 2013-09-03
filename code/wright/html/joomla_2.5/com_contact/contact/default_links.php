@@ -16,7 +16,7 @@ else :
 endif;
 ?>
 
-<div class="contact-links<?php echo $extraclass; // Wright v.3: Added well class ?>">
+<div class="contact-links">
 	<ul class="nav nav nav-tabs nav-stacked"> <?php // Wright v.3: Added nav nav-tabs nav-stacked classes ?>
 		<?php
 		    foreach(range('a', 'e') as $char) :// letters 'a' to 'e'
