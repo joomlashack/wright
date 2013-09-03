@@ -1,4 +1,12 @@
 <?php
+/**
+ * @package     Wright
+ * @subpackage  Modules
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Joomlashack.  Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.module.helper');
@@ -33,11 +41,9 @@ function getPositionAutospanWidth($position) {
     return (int)$spanWidth;
 }
 
-
-
 /**
- * WRIGHT FLEX GRID
- * (i.e. <jdoc:include type="modules" name="user1" grid="<?php echo $user2gridcount;?>" style="wrightflexgrid" />)
+ * Wright Flex Grid
+ * (i.e. <w:module type="{row/row-fluid}" name="position" chrome="wrightflexgrid" extradivs="{optional}" extraclass="{optional}" />
  */
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $app = JFactory::getApplication();
@@ -52,17 +58,50 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $robModules = JModuleHelper::getModules($attribs['name']);
 	
 	$extradivs = explode(',',$attribs['extradivs']);
+    $extraclass = ($attribs['extraclass'] != '' ? ' ' . $attribs['extraclass'] : '');
 
 	$class = $params->get('moduleclass_sfx');
     static $modulenumber = 1;
     $matches = Array();
-    if (preg_match('/span([0-9]{1,2})/', $params->get('moduleclass_sfx'), $matches)) {
+    if (preg_match('/span([0-9]{1,2})/', $class, $matches)) {
         // user assigned span width in module parameters
-        $params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $params->get('moduleclass_sfx')));
+        $params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
         $class = $params->get('moduleclass_sfx');
         $spanWidth = (int)$matches[1];
         $module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
     }
+
+
+    $featured = false;
+    $featuredImg = '';
+    $featuredSubtitle = '';
+    $moduleTitle = '';
+    if (preg_match("/featured/", $class)) {
+        $featured = true;
+        $linkTitle = '';
+
+        $classold = $class;
+        $class = preg_replace("/featured/", "", $class);
+        $module->content = preg_replace("/$classold/", $class, $module->content);
+        $params->set('moduleclass_sfx',$class);
+        if (preg_match('/<img([^>]*)>/i', $module->content, $matches)) {
+            $module->content = preg_replace('/<img([^>]*)>/i', '', $module->content, 1);
+            $featuredImg = '<div class="wrightmodule-imgfeatured">'.'<img' . $matches[1] . '>'.'</div>';
+        }
+        if (preg_match('/<h4([^>]*)>([^<]*)<\/h4>/i', $module->content, $matches)) {
+            $module->content = preg_replace('/<h4([^>]*)>([^<]*)<\/h4>/i', '', $module->content, 1);
+            $featuredSubtitle = '<h4' . $matches[1] . ' class="wrightmodule-subtitle">' . $matches[2] . '</h4>';
+        }
+        if (preg_match('/<a([^>]*)href=\"([^\"]*)\"([^>]*)>Title<\/a>/i', $module->content, $matches)) {
+            $module->content = preg_replace('/<a([^>]*)href=\"([^\"]*)\"([^>]*)>Title<\/a>/i', '', $module->content, 1);
+            $linkTitle = $matches[2];
+            $moduleTitle = '<h3><a href="' . $linkTitle . '">' . $module->title . '</a></h3>';
+        }
+    }
+
+    if ($moduleTitle == '')
+        $moduleTitle = '<h3>' . $module->title . '</h3>';
+
 
     $class .= ' mod_'.$modulenumbera[$attribs['name']];
     $modulenumber++;
@@ -83,40 +122,67 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     }
     $modulenumbera[$attribs['name']]++;
     ?>
-<div class="module<?php echo $class; ?> <?php if (!$module->showtitle) : ?>no_title <?php endif; ?>span<?php echo ($spanWidth) ?>">
-<?php if ($module->showtitle) : ?>
+<div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> span<?php echo $spanWidth . $extraclass ?>">
+<?php
+    if ($featured)
+        echo $featuredImg . '<div class="wrightmodule-content">' . $featuredSubtitle;
+
+    if ($module->showtitle) : ?>
 	<?php if (in_array('title',$extradivs)) : ?>	<div class="module_title"> <?php endif; ?>
-		<h3><?php echo $module->title; ?></h3>		
+    <?php echo $moduleTitle; ?>
 	<?php if (in_array('title',$extradivs)) : ?>	</div> <?php endif; ?>
 <?php endif; ?>
 <?php
-echo $module->content;
+    echo $module->content;
+    if ($featured)
+        echo '</div>';
 ?>
 </div>
 <?php
 }
 
-function modChrome_wrightmenu($module, &$params, &$attribs) {
+/**
+ * Wright Featured Module
+ * (i.e. <w:module name="position" chrome="wrightfeatured" extraclass="{optional}" />
+ */
+function modChrome_wrightfeatured($module, &$params, &$attribs) {
+    $class = $params->get('moduleclass_sfx');
+    $extraclass = ($attribs['extraclass'] != '' ? ' ' . $attribs['extraclass'] : '');
+    ?>
+<?php
+    if (preg_match("/featured/", $class)) {
+        $img = '';
+        $h4 = '';
+        $linkTitle = '';
 
-	// only force menus without the navbar class
-	if ($module->module == 'mod_menu' && !substr_count($params->get('moduleclass_sfx'), ' navbar')) {
-
-		// add the navbar class to the menus
-		$params->set('moduleclass_sfx',$params->get('moduleclass_sfx') . ' navbar');
-		$params->set('class_sfx',$params->get('class_sfx') . ' nav-dropdown');
-
-		// force to show children items
-		$params->set('showAllChildren', 1);
-
-		$module->params = $params;
-		$module->content = JModuleHelper::renderModule($module);
-		modChrome_wrightflexgrid($module, $params, $attribs);
-		//$attribs['style'] = 'wrightflexgrid';
-
-	}
-	else
-	{
-		modChrome_wrightflexgrid($module, $params, $attribs);
-	}
-
+        $classold = $class;
+        $class = preg_replace("/featured/", "", $class);
+        $module->content = preg_replace("/$classold/", $class, $module->content);
+        $params->set('moduleclass_sfx',$class);
+        if (preg_match('/<img([^>]*)>/i', $module->content, $matches)) {
+            $module->content = preg_replace('/<img([^>]*)>/i', '', $module->content, 1);
+            $img = '<div class="wrightmodule-imgfeatured">'.'<img' . $matches[1] . '>'.'</div>';
+        }
+        if (preg_match('/<h4([^>]*)>([^<]*)<\/h4>/i', $module->content, $matches)) {
+            $module->content = preg_replace('/<h4([^>]*)>([^<]*)<\/h4>/i', '', $module->content, 1);
+            $h4 = '<h4' . $matches[1] . ' class="wrightmodule-subtitle">' . $matches[2] . '</h4>';
+        }
+        if (preg_match('/<a([^>]*)href=\"([^\"]*)\"([^>]*)>Title<\/a>/i', $module->content, $matches)) {
+            $module->content = preg_replace('/<a([^>]*)href=\"([^\"]*)\"([^>]*)>Title<\/a>/i', '', $module->content, 1);
+            $linkTitle = $matches[2];
+        }
+    }
+?>
+<div class="moduletable<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?><?php echo $extraclass ?>">
+<?php
+    echo $img;
+    echo "<div class=\"wrightmodule-content\">";
+    echo $h4;
+    if ($module->showtitle)
+        echo "<h3>" . ($linkTitle != "" ? "<a href='$linkTitle'>" : "") . $module->title . ($linkTitle != "" ? "</a>" : "") . "</h3>";
+    echo $module->content;
+    echo "</div>";
+?>
+</div>
+<?php
 }
