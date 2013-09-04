@@ -899,10 +899,6 @@ iframe{
 // --------------------------------------------------
 */
 
-.hasTooltip {
-	position: relative;
-}
-
 .tooltip {
   position: absolute;
   z-index: 1030;
@@ -925,7 +921,7 @@ iframe{
 }
 
 .tooltip.right {
-	margin-top:  3px;
+	margin-left:  3px;
 	padding: 0 5px;
 }
 
