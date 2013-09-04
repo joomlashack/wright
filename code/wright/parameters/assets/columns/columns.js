@@ -1,10 +1,14 @@
 window.addEvent('load', function() {
 	checkColumns();
 	$$('select.columns').addEvent('change', function() {
-		checkColumns();
-		setColumnParam();
+		changeColumns();
 	});
 });
+
+function changeColumns() {
+	checkColumns();
+	setColumnParam();
+}
 
 function setColumnParam() {
 	var widths = new Array();
