@@ -9,11 +9,21 @@
 
 defined('_JEXEC') or die('You are not allowed to directly access this file');
 
-//Adding a check for PHP4 to cut down on support
-if (version_compare(PHP_VERSION, '5', '<'))
-{
-	print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and our products require PHP 5.2 or greater. Please contact your host to use PHP 5.2 or greater. All versions of PHP prior to this are unsupported, by us and by the PHP community.';
-	die();
+if (version_compare(JVERSION, '3.0', 'lt')) {
+	// check for PHP 5.2.4 if Joomla < 3.0
+	if (version_compare(PHP_VERSION, '5.2.4', 'lt')) {
+		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 2.5 requires PHP 5.2.4 or greater. Please contact your host to use PHP 5.2.4 or greater (Joomla 5.3+ recommended).
+			<br />Please check Joomla requirements in <a href="http://www.joomla.org/technical-requirements.html">http://www.joomla.org/technical-requirements.html</a>';
+		die();
+	}
+}
+else {
+	// check for PHP 5.3.1 if Joomla >= 3.0
+	if (version_compare(PHP_VERSION, '5.3.1', 'lt')) {
+		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 3.x requires PHP 5.3.1 or greater. Please contact your host to use PHP 5.3.1 or greater.
+			<br />Please check Joomla requirements in <a href="http://www.joomla.org/technical-requirements.html">http://www.joomla.org/technical-requirements.html</a>';
+		die();
+	}
 }
 
 // includes WrightTemplateBase class for customizations to the template
@@ -29,7 +39,7 @@ class Wright
 	public $baseurl;
 	public $author;
 	
-	public $revision = "2.6.12_beta";
+	public $revision = "{version}";
 
 	function Wright()
 	{
