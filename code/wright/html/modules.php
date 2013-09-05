@@ -147,6 +147,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
  */
 function modChrome_wrightfeatured($module, &$params, &$attribs) {
     $class = $params->get('moduleclass_sfx');
+    $extradivs = explode(',',$attribs['extradivs']);
     $extraclass = ($attribs['extraclass'] != '' ? ' ' . $attribs['extraclass'] : '');
     ?>
 <?php
@@ -178,8 +179,11 @@ function modChrome_wrightfeatured($module, &$params, &$attribs) {
     echo $img;
     echo "<div class=\"wrightmodule-content\">";
     echo $h4;
-    if ($module->showtitle)
+    if ($module->showtitle) {
+        if (in_array('title',$extradivs)) : ?> <div class="module_title"> <?php endif;
         echo "<h3>" . ($linkTitle != "" ? "<a href='$linkTitle'>" : "") . $module->title . ($linkTitle != "" ? "</a>" : "") . "</h3>";
+        if (in_array('title',$extradivs)) : ?> </div> <?php endif;
+    }
     echo $module->content;
     echo "</div>";
 ?>
