@@ -56,5 +56,5 @@ endif; ?>
 <?php echo $item->introtext; ?>
 
 <?php if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
-	echo '<a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a>';
+	echo '<p class="readmore"><a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a></p>'; // Wright v.3: Added p.readmore
 endif; ?>
