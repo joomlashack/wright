@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.5
+// Wright v.3 Override: Joomla 3.1.5 (Replaced for default_separator.php as it's a more complete structure)
 /**
  * @package     Joomla.Site
  * @subpackage  mod_menu
