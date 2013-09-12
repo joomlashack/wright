@@ -20,13 +20,10 @@ if ($item->menu_image) {
 else { $linktype = $item->title;
 }
 
-// Wright v.3: Opening pseudo-link for sub-menus
-if ($item->parent) {
-	echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
-}
-// End Wright v.3: Opening pseudo-link for sub-menus
+$class = ($item->parent ? ' dropdown-toggle' : '');  // Wright v.3:  Added parent classes for Bootstrap
 
-?><span class="separator<?php if (!$item->parent) : ?> separator-only<?php endif;  // Wright v.3: Added separator-only class to separators without children ?>"><?php echo $title; ?><?php echo $linktype; ?><?php
+
+?><a href="#" class="separator<?php echo $class ?>" <?php echo $title; ?>><?php echo $linktype; ?><?php
 // Wright v.3: Closing pseudo-link for sub-menus
 if ($item->parent) {
 	// Opens a caret-right for levels 2 and above
@@ -35,8 +32,4 @@ if ($item->parent) {
 	else
 		echo '<b class="caret"></b>';
 }
-?></span><?php
-if ($item->parent)
-	echo '</a>';
-// End Wright v.3: Closing pseudo-link for sub-menus
-?>
+?></a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure ?>
