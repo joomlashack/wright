@@ -29,40 +29,16 @@
 		}
 	}
 
-	.nav-collapse .nav > li > span.separator, .nav-collapse .dropdown-menu {
-		span.separator {
-		    border-radius: 3px 3px 3px 3px;
-		    color: @navbarLinkColor;
-		    font-weight: bold;
-		    padding: 9px 15px;
-		    display: block;
-		    &:hover {
-		    	color: @navbarLinkColorHover;
-		    	background-color: @navbarLinkBackgroundHover;
-		    }
-		}
-	}
-
-	.nav-collapse .nav > li > span.separator, .nav-collapse .dropdown-menu a span.separator {
-		padding: 0;
-	}
-
-	.dropdown-menu li span.separator.separator-only {
-		padding: 9px 15px;
-	}
-	.navbar-inverse .nav-collapse .nav>li>a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:hover,
-	.navbar-inverse .nav-collapse .nav>li>span.separator:hover, .navbar-inverse .nav-collapse .dropdown-menu span.separator:hover{
+	.navbar-inverse .nav-collapse .nav>li>a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:hover{
 		background-color: @dropdownLinkBackgroundHover;
 	}
-	.navbar-inverse .nav-collapse .nav>li>a,
-	.navbar-inverse .nav-collapse .nav>li>span.separator{
+	.navbar-inverse .nav-collapse .nav>li>a{
 		color: @navbarInverseLinkColor;
 		&:hover{
 			color: @navbarInverseLinkColorHover;
 		}
 	}
-	.navbar-inverse .nav-collapse .dropdown-menu a,
-	.navbar-inverse .nav-collapse .dropdown-menu span.separator{
+	.navbar-inverse .nav-collapse .dropdown-menu a{
 		color: @dropdownLinkColor;
 		&:hover{
 			color: @dropdownLinkColorHover;
