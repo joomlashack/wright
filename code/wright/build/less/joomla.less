@@ -294,7 +294,10 @@ dl.label.label-info dt{
 	text-align: center;
 }
 .hide-text{
-	display: none;
+	[class^="icon-"], [class*=" icon-"]{
+		font-size: @baseFontSize;
+		line-height: @baseLineHeight;
+	}
 }
 /* @ Images and links */
 .item-image {
