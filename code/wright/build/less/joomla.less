@@ -641,9 +641,14 @@ dl.tabs.nav p {
 		height: 30px;
 		margin-bottom: 5px;
 		max-width: 80%;
-		.box-sizing(border-box);
 		&#modlgn-remember{height: 11px;}
 		width: auto;
+		&[type='text'],
+		&[type='password'],
+		&[type='submit'],
+		&[type='button'] {
+			.box-sizing(border-box);
+		}
 	}
 
 	.form-horizontal {
