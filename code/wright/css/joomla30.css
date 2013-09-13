@@ -654,7 +654,8 @@ div#pathway span.sep {
 
 div#pathway span.sep img,
 ul.breadcrumb span.divider img {
-	display: none;
+	display: inline-block;
+	margin: 0 5px;
 }
 
 ul.breadcrumb {
@@ -668,7 +669,7 @@ ul.breadcrumb {
 ul.breadcrumb li {
 	list-style: none;
 	float: left;
-	margin: 0 10px 0 0;
+	margin: 0;
 }
 
 /* Text selection */
