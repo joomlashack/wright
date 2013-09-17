@@ -166,6 +166,11 @@ dl.label.label-info dt{
 
 /* Menu - Bootstrap Dropdown Navbar - Addition for multi-level ***********************************************************************************/
 
+.navbar-inner,
+.navbar-inverse .navbar-inner {
+	filter: none;
+}
+
 .nav .dropdown-toggle .caret {
 	border-bottom-color: #666;
 	border-top-color: #666;
@@ -229,6 +234,21 @@ dl.label.label-info dt{
     height: 100%;
     line-height: 100%;
     vertical-align: baseline;
+}
+
+/* @ Icons   ***************************************/
+
+.nav li a [class^="icon-"],
+.nav li a [class*=" icon-"] {
+	margin: 0 3px;
+}
+a [class^="icon-"], a [class*=" icon-"] {
+	text-decoration: none;
+}
+
+.icon-white, .nav > .active > a > [class^="icon-"], .nav > .active > a > [class*=" icon-"], .dropdown-menu > li > a:hover > [class^="icon-"], .dropdown-menu > li > a:hover > [class*=" icon-"], .dropdown-menu > .active > a > [class^="icon-"], .dropdown-menu > .active > a > [class*=" icon-"],
+.icon-white, .nav-tabs > .active > a > [class^="icon-"], .nav-tabs > .active > a > [class*=" icon-"], .nav-pills > .active > a > [class^="icon-"], .nav-pills > .active > a > [class*=" icon-"], .nav-list > .active > a > [class^="icon-"], .nav-list > .active > a > [class*=" icon-"], .navbar-inverse .nav > .active > a > [class^="icon-"], .navbar-inverse .nav > .active > a > [class*=" icon-"], .dropdown-menu > li > a:hover > [class^="icon-"], .dropdown-menu > li > a:hover > [class*=" icon-"], .dropdown-menu > .active > a > [class^="icon-"], .dropdown-menu > .active > a > [class*=" icon-"] {
+	background-image: none;
 }
 
 // Hover/Focus state
@@ -648,9 +668,14 @@ dl.tabs.nav p {
 		height: 30px;
 		margin-bottom: 5px;
 		max-width: 80%;
-		.box-sizing(border-box);
 		&#modlgn-remember{height: 11px;}
 		width: auto;
+		&[type='text'],
+		&[type='password'],
+		&[type='submit'],
+		&[type='button'] {
+			.box-sizing(border-box);
+		}
 	}
 
 	.form-horizontal {
