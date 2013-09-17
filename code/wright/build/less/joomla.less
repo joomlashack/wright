@@ -299,6 +299,14 @@ dl.label.label-info dt{
 		line-height: @baseLineHeight;
 	}
 }
+a{
+	&.hide-text{
+		color : @linkColor;
+		&:hover{
+			color : @linkColorHover;
+		}
+	}
+}
 /* @ Images and links */
 .item-image {
 	max-width: 100%;
@@ -602,7 +610,11 @@ h1, h2, h3, h4, h5, h6 {
   background-color: @dropdownLinkBackgroundHover;
   #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
 }
-
+.nav-tabs h3, .nav-tabs p, .nav-tabs>li{
+	.hide-text{
+		font-size: 0;
+	}
+}
 .nav-tabs dt a{
 	border-radius:5px 5px 0 0;
 }
