@@ -129,22 +129,10 @@ class Wright
 
 	public function header()
 	{
-		// Remove mootools if set
-		if ($this->document->params->get('mootools', '1') == '0')
-		{
-			$dochead = $this->document->getHeadData();
-			reset($dochead['scripts']);
-			foreach ($dochead['scripts'] as $script => $type)
-			{
-				if (strpos($script, 'media/system/js/caption.js') || strpos($script, 'media/system/js/mootools.js') || strpos($script, 'media/system/js/mootools-core.js') || strpos($script, 'media/system/js/mootools-more.js'))
-				{
-					unset($dochead['scripts'][$script]);
-				}
-			}
-			$this->document->setHeadData($dochead);
-		}
-		else {
-			JHtml::_('behavior.framework', true);
+		JHtml::_('behavior.framework', true);
+
+		if ($this->document->params->get('modal', '1') == '1') {
+			JHtml::_('behavior.modal');
 		}
 
 		// load jQuery ?
