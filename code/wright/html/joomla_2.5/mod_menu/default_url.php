@@ -12,25 +12,31 @@ defined('_JEXEC') or die;
 
 // Wright v.3: Created additional structure for icons
 $structIcons = '';
+$span1 = '';
+$span2 = '';
 if (preg_match_all('/icon-([\S]+)/', $item->anchor_css, $matches)) {
 	$item->anchor_css = preg_replace('/icon-([\S]+)/', '', $item->anchor_css);
 	$icons = 'icon-' . implode(' icon-',$matches[1]);
 	$structIcons = '<i class="' . $icons . '"></i>';
 }
+if (preg_match_all('/hide-text/', $item->anchor_css, $matches)) {
+	$span1 = '<span class="hidden-text">';
+	$span2 = '</span>';
+}
 // End Wright v.3: Created additional structure for icons
 
 // Note. It is important to remove spaces between elements.
-$class = ($item->anchor_css || $item->parent) ? 'class="'.$item->anchor_css. ($item->parent ? ' dropdown-toggle disabled' : '') . '" ' : '';  // Wright v.3:  Added parent classes for Bootstrap
+$class = ($item->anchor_css || $item->parent) ? 'class="'.$item->anchor_css. ($item->parent ? ' dropdown-toggle' : '') . '" ' : '';  // Wright v.3:  Added parent classes for Bootstrap (removed "disable")
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
 $toggle = $item->parent ? ' data-toggle="dropdown-menus"' : '';  // Wright v.3: Added data-toggle attribute to parents
 $caret = $item->parent ? ($item->level > 1 ? '<i class="icon-caret-right"></i>' : '<b class="caret"></b>') : '';  // Wright v.3: Added caret
 
 if ($item->menu_image) {
 		$item->params->get('menu_text', 1 ) ?
-		$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" /><span class="image-title">'.$item->title.'</span> ' :
-		$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />';
+		$linktype = $span1 . '<img src="'.$item->menu_image.'" alt="'.$item->title.'" /><span class="image-title">'.$item->title.'</span> ' . $span2 : // Wright v.3: Added optional spans
+		$linktype = $span1 . '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />' . $span2; // Wright v.3: Added optional spans
 }
-else { $linktype = $item->title;
+else { $linktype = $span1 . $item->title . $span2; // Wright v.3: Added optional spans
 }
 
 $flink = $item->flink;

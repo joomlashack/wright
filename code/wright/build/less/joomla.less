@@ -1,4 +1,3 @@
-
 html {
 	height: 100%;
 }
@@ -313,18 +312,11 @@ a [class^="icon-"], a [class*=" icon-"] {
 .footer1, .footer2 {
 	text-align: center;
 }
-.hide-text{
-	[class^="icon-"], [class*=" icon-"]{
-		font-size: @baseFontSize;
-		line-height: @baseLineHeight;
-	}
-}
-a{
-	&.hide-text{
-		color : @linkColor;
-		&:hover{
-			color : @linkColorHover;
-		}
+.nav a.hide-text{
+	font-size: @baseFontSize;
+	line-height: @baseLineHeight;
+	span.hidden-text {
+		display: none;
 	}
 }
 /* @ Images and links */
@@ -629,11 +621,6 @@ h1, h2, h3, h4, h5, h6 {
   color: @dropdownLinkColorHover;
   background-color: @dropdownLinkBackgroundHover;
   #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
-}
-.nav-tabs h3, .nav-tabs p, .nav-tabs>li{
-	.hide-text{
-		font-size: 0;
-	}
 }
 .nav-tabs dt a{
 	border-radius:5px 5px 0 0;
