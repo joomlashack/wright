@@ -2,7 +2,7 @@
 // Wright v.3 Override: Joomla 3.1.5
 /**
  * @package     Joomla.Site
- * @subpackage  com_newsfeeds
+ * @subpackage  com_weblinks
  *
  * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -12,27 +12,26 @@ defined('_JEXEC') or die;
 
 JHtml::_('bootstrap.tooltip');
 
-require_once(JPATH_BASE . '/components/com_newsfeeds/helpers/route.php');  // Wright v.3: Included required helper
-
 $class = ' class="first"';
+
 if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 ?>
 	<?php foreach($this->items[$this->parent->id] as $id => $item) : ?>
 		<?php
 		if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) :
-			if (!isset($this->items[$this->parent->id][$id + 1]))
-			{
-				$class = ' class="last"';
-			}
-			?>
-			<div <?php echo $class; ?> >
-			<?php $class = ''; ?>
+		if (!isset($this->items[$this->parent->id][$id + 1]))
+		{
+			$class = ' class="last"';
+		}
+		?>
+		<div <?php echo $class; ?> >
+		<?php $class = ''; ?>
 				<h3 class="item-title">  <?php // Wright v.3: Removed page-header ?>
-				<a href="<?php echo JRoute::_(NewsfeedsHelperRoute::getCategoryRoute($item->id));?>">
+				<a href="<?php echo JRoute::_(WeblinksHelperRoute::getCategoryRoute($item->id));?>">
 					<i class="icon-folder-open"></i>  <?php // Wright v.3: Added icon ?>
 					<?php echo $this->escape($item->title); ?></a>
-					<?php if ($this->params->get('show_cat_items_cat') == 1) :?>
-						<span class="badge badge-info tip hasTooltip" title="<?php echo JHtml::tooltipText('COM_NEWSFEEDS_NUM_ITEMS'); ?>">
+					<?php if ($this->params->get('show_cat_num_articles_cat') == 1) :?>
+						<span class="badge badge-info tip hasTooltip" title="<?php echo JHtml::tooltipText('COM_WEBLINKS_NUM_ITEMS'); ?>">
 							<?php echo $item->numitems; ?>
 						</span>
 					<?php endif; ?>
@@ -43,21 +42,21 @@ if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 				<?php if ($this->params->get('show_subcat_desc_cat') == 1) :?>
 					<?php if ($item->description) : ?>
 						<div class="category-desc">
-							<?php echo JHtml::_('content.prepare', $item->description, '', 'com_newsfeeds.categories'); ?>
+				<?php echo JHtml::_('content.prepare', $item->description, '', 'com_weblinks.categories'); ?>
 						</div>
 					<?php endif; ?>
 				<?php endif; ?>
 
 				<?php if (count($item->getChildren()) > 0) :?>
 					<div class="collapse fade" id="category-<?php echo $item->id;?>">
-					<?php
-					$this->items[$item->id] = $item->getChildren();
-					$this->parent = $item;
-					$this->maxLevelcat--;
-					echo $this->loadTemplate('items');
-					$this->parent = $item->getParent();
-					$this->maxLevelcat++;
-					?>
+						<?php
+						$this->items[$item->id] = $item->getChildren();
+						$this->parent = $item;
+						$this->maxLevelcat--;
+						echo $this->loadTemplate('items');
+						$this->parent = $item->getParent();
+						$this->maxLevelcat++;
+						?>
 					</div>
 				<?php endif; ?>
 			</div>
