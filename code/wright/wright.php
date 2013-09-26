@@ -181,6 +181,11 @@ class Wright
 			$this->document->params->set('style', $user->getParam('theme'));
 		}
 
+		if ($this->document->params->get('documentationMode','0') == '1') {
+			$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
+			$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
+		}
+
 		// Build css
 		$this->css();
 	}
