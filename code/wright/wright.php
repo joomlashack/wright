@@ -236,6 +236,10 @@ class Wright
         		$styles['wrighttemplatecss'][] = 'template-responsive.css.php';
         }
 
+        if ($this->document->params->get('documentationMode','0') == '1') {
+        	$styles['template'][] = 'docs.css';
+        }
+
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
 		{
