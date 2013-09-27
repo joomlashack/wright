@@ -21,11 +21,11 @@ if ($item->menu_image)
 else { $linktype = $item->title;
 }
 
-$class = ($item->parent ? ' dropdown-toggle' : '');  // Wright v.3:  Added parent classes for Bootstrap
+$class = ($item->deeper ? ' dropdown-toggle' : '');  // Wright v.3:  Added parent classes for Bootstrap
 
 ?><a href="#" class="separator<?php echo $class; // Wright v.3: Added class ?>"<?php echo $title; ?>><?php echo $linktype; ?><?php
 // Wright v.3: Closing pseudo-link for sub-menus
-if ($item->parent) {
+if ($item->deeper) {
 	// Opens a caret-right for levels 2 and above
 	if ($item->level > 1)
 		echo '<i class="icon-caret-right"></i>';

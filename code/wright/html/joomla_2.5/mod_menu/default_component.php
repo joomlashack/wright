@@ -26,10 +26,10 @@ if (preg_match_all('/hide-text/', $item->anchor_css, $matches)) {
 // End Wright v.3: Created additional structure for icons
 
 // Note. It is important to remove spaces between elements.
-$class = ($item->anchor_css || $item->parent) ? 'class="'.$item->anchor_css. ($item->parent ? ' dropdown-toggle' : '') . '" ' : '';  // Wright v.3:  Added parent classes for Bootstrap (removed "disable")
+$class = ($item->anchor_css || $item->deeper) ? 'class="'.$item->anchor_css. ($item->deeper ? ' dropdown-toggle' : '') . '" ' : '';  // Wright v.3:  Added parent classes for Bootstrap (removed "disable")
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
-$toggle = $item->parent ? ' data-toggle="dropdown-menus"' : '';  // Wright v.3: Added data-toggle attribute to parents
-$caret = $item->parent ? ($item->level > 1 ? '<i class="icon-caret-right"></i>' : '<b class="caret"></b>') : '';  // Wright v.3: Added caret
+$toggle = $item->deeper ? ' data-toggle="dropdown-menus"' : '';  // Wright v.3: Added data-toggle attribute to parents
+$caret = $item->deeper ? ($item->level > 1 ? '<i class="icon-caret-right"></i>' : '<b class="caret"></b>') : '';  // Wright v.3: Added caret
 
 if ($item->menu_image) {
 		$item->params->get('menu_text', 1 ) ?

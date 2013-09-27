@@ -53,12 +53,12 @@ foreach ($list as $i => &$item) :
 
 	if ($item->deeper)
 	{
-		$class .= ' deeper';
+		$class .= ' deeper dropdown'; // Wright v.3: Added dropdown class
 	}
 
 	if ($item->parent)
 	{
-		$class .= ' parent dropdown'; // Wright v.3: Added dropdown class
+		$class .= ' parent';
 	}
 
 	if (!empty($class))
