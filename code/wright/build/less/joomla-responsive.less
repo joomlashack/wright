@@ -29,6 +29,29 @@
 		}
 	}
 
+	.nav-collapse {
+		.dropdown-menu {
+			a {
+				color: darken(@navbarLinkColor,20%);
+				&:hover{
+					color: darken(@navbarLinkColorHover,20%);;
+				}
+			}
+
+			a:hover {
+				color: @white;
+			}
+
+			.active {
+				> a,
+				> a:hover,
+				> a:focus {
+					color: @white;
+				}
+			}
+		}
+	}
+
 	.navbar-inverse .nav-collapse .nav>li>a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:hover{
 		background-color: @dropdownLinkBackgroundHover;
 	}
@@ -39,9 +62,9 @@
 		}
 	}
 	.navbar-inverse .nav-collapse .dropdown-menu a{
-		color: @dropdownLinkColor;
+		color: lighten(@navbarInverseLinkColor,20%);
 		&:hover{
-			color: @dropdownLinkColorHover;
+			color: lighten(@navbarInverseLinkColorHover,20%);;
 		}
 	}
 

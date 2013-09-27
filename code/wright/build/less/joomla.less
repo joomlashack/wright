@@ -633,21 +633,29 @@ dl.tabs.nav p {
 	margin-bottom: 0;
 	margin-right: 5px;
 }
-.nav-tabs a{
-	padding:4px 5px 1px;
-	vertical-align: bottom;
-}
-.nav-tabs > .open {
-	 h3,p{
-		 a {
-			background-color: @white;
-		    border-color: #DDDDDD #DDDDDD transparent;
-		    border-style: solid;
-		    border-width: 1px;
-		    color: #555555 !important;
-		    cursor: default;
+
+.nav-tabs {
+	a {
+		padding:4px 5px 1px;
+		vertical-align: bottom;
+	}
+	.tabs {
+		h3, p {
+			a {
+				border: 1px solid transparent;
+			}
 		}
-	 }
+	}
+	.open {
+		h3, p {
+			a {
+				background-color: @white;
+			    border-color: #DDDDDD #DDDDDD transparent;
+			    color: #555555 !important;
+			    cursor: default;
+			}
+		}
+	}
 }
 
 #sidebar1,#sidebar2{
