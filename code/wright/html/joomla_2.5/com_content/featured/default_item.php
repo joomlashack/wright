@@ -202,19 +202,32 @@ $canEdit	= $this->item->params->get('access-edit');
 	<?php $imgfloat = (empty($images->float_intro)) ? $params->get('float_intro') : $images->float_intro; ?>
 
 	<div class="img-intro-<?php echo htmlspecialchars($imgfloat); ?>">
-		<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid)); ?>">  <?php // Wright v.3: Added link to the intro image ?>
+		<?php
+		/* Wright v.3: Added link to the image from the article */
+			if ($params->get('access-view')) :
+		?>
+			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid)); ?>">
+		<?php
+			endif;
+		/* End Wright v.3: Added link to the image from the article */
+		?>
 			<img
 				<?php if ($images->image_intro_caption):
-					echo ' title="' .htmlspecialchars($images->image_intro_caption) .'"';  // Wright v.3: Removed caption (TODO: reconsider to reimplement with JCaption)
+					echo 'class="caption ' . $this->wrightBootstrapImages . '"'.' title="' .htmlspecialchars($images->image_intro_caption) .'"';  // Wright .v.3: Added image class
+				/* Wright v.3: Image class when no caption present */
+				else:
+					echo 'class="' . $this->wrightBootstrapImages . '"';
+				/* End Wright v.3: Image class when no caption present */
 				endif; ?>
-				src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>"<?php echo ' class="' . $this->wrightBootstrapImages . '"' // Wright v.3: Bootstrapped images ?>/>
-		</a>  <?php // Wright v.3: Added link to the intro image ?>
+				src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>" />
 		<?php
-			// Wright v.3: Caption
-		if ($images->image_intro_caption) {
-			echo '<p class="img_caption">' . $images->image_intro_caption . '</p>';
-		}
-			// End Wright v.3: Caption
+		/* Wright v.3: Added link to the image from the article */
+			if ($params->get('access-view')) :
+		?>
+			</a>
+		<?php
+			endif;
+		/* End Wright v.3: Added link to the image from the article */
 		?>
 	</div>
 <?php endif; ?>
