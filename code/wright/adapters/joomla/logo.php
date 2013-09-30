@@ -74,6 +74,18 @@ class WrightAdapterJoomlaLogo
 
 		$doc = Wright::getInstance();
 		$app = JFactory::getApplication();
+		$user = JFactory::getUser();
+
+		// Alternate logo (logo-alt.png) when template supports it
+		$wrightLogoAltOpt = $doc->document->params->get('wrightLogoAlt', '0');
+		if ($wrightLogoAltOpt < 0) {
+			$wrightLogoAltOpt = $user->getParam('wrightLogoAlt');
+		}
+		else {
+			$user->setParam('wrightLogoAlt', $wrightLogoAltOpt);
+			$user->save(true);
+		}
+		$wrightLogoAlt = ($wrightLogoAltOpt ? '-alt' : '');
 
 		$title = '<h2>'.(($doc->document->params->get('headline', '') !== '') ? $doc->document->params->get('headline') : $app->getCfg('sitename')).'</h2>';
 		$title .= ($doc->document->params->get('tagline', '') !== '') ? '<h3>'.$doc->document->params->get('tagline').'</h3>' : '';
@@ -162,20 +174,20 @@ class WrightAdapterJoomlaLogo
 				$logotone =  $doc->document->params->get('Tone','' );
 			}
 
-			if (is_file(JPATH_ROOT.'/'.'templates'.'/'.$doc->document->template.'/'.'images'.'/'.$doc->document->params->get('style').'/'.'logo' . $logotone. '.png'))
-				$logo = JURI::root().'templates/'.$doc->document->template.'/images/'.$doc->document->params->get('style').'/logo' . $logotone. '.png';
-			elseif (is_file(JPATH_ROOT.'/'.'templates'.'/'.$doc->document->template.'/'.'images'.'/'.$doc->document->params->get('style').'/'.'logo.png'))
-				$logo = JURI::root().'templates/'.$doc->document->template.'/images/'.$doc->document->params->get('style').'/logo.png';
-			elseif (is_file(JPATH_ROOT.'/'.'templates/'.$doc->document->template.'/images/logo' . $logotone. '.png'))
-				$logo = JURI::root().'templates/'.$doc->document->template.'/images/logo' . $logotone. '.png';
-			elseif (is_file(JPATH_ROOT.'/'.'templates/'.$doc->document->template.'/images/logo.png'))
-				$logo = JURI::root().'templates/'.$doc->document->template.'/images/logo.png';
+			if (is_file(JPATH_ROOT.'/'.'templates'.'/'.$doc->document->template.'/'.'images'.'/'.$doc->document->params->get('style').'/'.'logo' . $logotone. $wrightLogoAlt . '.png'))
+				$logo = JURI::root().'templates/'.$doc->document->template.'/images/'.$doc->document->params->get('style').'/logo' . $logotone. $wrightLogoAlt . '.png';
+			elseif (is_file(JPATH_ROOT.'/'.'templates'.'/'.$doc->document->template.'/'.'images'.'/'.$doc->document->params->get('style').'/'.'logo' . $wrightLogoAlt . '.png'))
+				$logo = JURI::root().'templates/'.$doc->document->template.'/images/'.$doc->document->params->get('style').'/logo' . $wrightLogoAlt . '.png';
+			elseif (is_file(JPATH_ROOT.'/'.'templates/'.$doc->document->template.'/images/logo' . $logotone. $wrightLogoAlt . '.png'))
+				$logo = JURI::root().'templates/'.$doc->document->template.'/images/logo' . $logotone. $wrightLogoAlt . '.png';
+			elseif (is_file(JPATH_ROOT.'/'.'templates/'.$doc->document->template.'/images/logo' . $wrightLogoAlt . '.png'))
+				$logo = JURI::root().'templates/'.$doc->document->template.'/images/logo' . $wrightLogoAlt . '.png';
 			else {
-				$logo = JURI::root().'templates/'.$doc->document->template.'/wright/images/logo.png';
+				$logo = JURI::root().'templates/'.$doc->document->template.'/wright/images/logo' . $wrightLogoAlt . '.png';
 			}
 		}
 		else {
-			$logo = JURI::root().'images/'.$doc->document->params->get('logo', 'logo.png');
+			$logo = JURI::root().'images/'.$doc->document->params->get('logo', 'logo' . $wrightLogoAlt . '.png');
 		}
 		
 		$html .= '<div id="logo' . $args['addid'] . '" class="span'.$logowidth.'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
