@@ -7,7 +7,7 @@ class WrightAdapterJoomlaFooter
 		$doc = Wright::getInstance();
 		$js = $doc->generateJS();
 
-		if ($doc->document->params->get('rebrand', 'no') !== 'yes')
+		if ($doc->document->params->get('wrightRebrand', 'no') !== 'yes')
 		{
 			
 			$anchors = array(	"Joomla Template" => 50, "Joomla Templates" => 100);

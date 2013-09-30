@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-	function stickyFooter() {
+	function wrightStickyFooter() {
 		if (jQuery('#footer')) {
 			var h = jQuery('#footer').height();
 			jQuery('.wrapper-footer').height(h);
@@ -9,10 +9,10 @@ jQuery(document).ready(function() {
 		jQuery('#footer.sticky').css('bottom','0')
 			.css('position','absolute')
 			.css('z-index','1000');
-		stickyFooter();
+		wrightStickyFooter();
 	});
-	stickyFooter();
+	wrightStickyFooter();
 	jQuery(window).resize(function() {
-		stickyFooter();
+		wrightStickyFooter();
 	});
 });

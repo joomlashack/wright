@@ -23,9 +23,9 @@ $wrightTemplate = wrightTemplate::getInstance();
 $template = $wrightTemplate->getTemplate();
 
 $user = JFactory::getUser();
-$style = JRequest::getVar('templateTheme',$user->getParam('theme',$template->params->get('style','generic')));
+$style = JRequest::getVar('wrightStyle',$user->getParam('wrightStyle',$template->params->get('wrightStyle','generic')));
 
-$responsive = ($template->params->get('responsive','1') == '1' ? true : false);
+$responsive = ($template->params->get('wrightResponsive','1') == '1' ? true : false);
 
 header("Content-Type: text/css");
 

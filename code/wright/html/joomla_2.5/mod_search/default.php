@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
 		$app = JFactory::getApplication();
 		$template = $app->getTemplate(true);
 		$user = JFactory::getUser();
-		$style = JRequest::getVar('templateTheme',$user->getParam('theme',$template->params->get('style','generic')));
+		$style = JRequest::getVar('wrightStyle',$user->getParam('wrightStyle',$template->params->get('wrightStyle','generic')));
 		if (file_exists(JPATH_SITE . '/templates/' . $template->template . '/images/' . $style . '/searchButton.gif')) {
 			$img = JURI::base() . '/templates/' . $template->template . '/images/' . $style . '/searchButton.gif';
 		}

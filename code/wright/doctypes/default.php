@@ -92,37 +92,37 @@ abstract class HtmlAdapterAbstract
 
 		// if specific style add to class list
 		$xml = simplexml_load_file(JPATH_ROOT.'/'.'templates'.'/'.$wright->document->template.'/'.'templateDetails.xml');
-		$theme = $xml->xpath('//style[@name="'.$wright->params->get('style').'"]');
+		$theme = $xml->xpath('//style[@name="'.$wright->params->get('wrightStyle').'"]');
 		if (count($theme)) $class .= ' '.$theme[0]['type'];
 
 		// If user has custom typography selected, we need to add the classes to trigger it
-		if ($this->params->get('body_font', 'default') !== 'default') {
-			if ($this->params->get('body_font') == 'googlefonts') {
-				if (strpos($this->params->get('body_googlefont'), ',')) {
-					$gfont = substr($this->params->get('body_googlefont', 'Cuprum'), 0, strpos($this->params->get('body_googlefont', 'Cuprum'), ','));
+		if ($this->params->get('wrightBodyFont', 'default') !== 'default') {
+			if ($this->params->get('wrightBodyFont') == 'googlefonts') {
+				if (strpos($this->params->get('wrightBodyGoogleFont'), ',')) {
+					$gfont = substr($this->params->get('wrightBodyGoogleFont', 'Cuprum'), 0, strpos($this->params->get('wrightBodyGoogleFont', 'Cuprum'), ','));
 				}
 				else {
-					$gfont = $this->params->get('body_googlefont', 'Cuprum');
+					$gfont = $this->params->get('wrightBodyGoogleFont', 'Cuprum');
 				}
 				$class .= ' b_' . strtolower(str_replace('+', '', $gfont));
 			}
 			else {
-				$class .= ' b_' . $this->params->get('body_font', 'verdana');
+				$class .= ' b_' . $this->params->get('wrightBodyFont', 'verdana');
 			}
 		}
-		if ($this->params->get('header_font', 'default') !== 'default') {
-			if ($this->params->get('header_font') == 'googlefonts') {
-				if (strpos($this->params->get('header_googlefont'), ',')) {
-					$gfont = substr($this->params->get('header_googlefont', 'Cuprum'), 0, strpos($this->params->get('header_googlefont', 'Cuprum'), ','));
+		if ($this->params->get('wrightHeaderFont', 'default') !== 'default') {
+			if ($this->params->get('wrightHeaderFont') == 'googlefonts') {
+				if (strpos($this->params->get('wrightHeaderGoogleFont'), ',')) {
+					$gfont = substr($this->params->get('wrightHeaderGoogleFont', 'Cuprum'), 0, strpos($this->params->get('wrightHeaderGoogleFont', 'Cuprum'), ','));
 				}
 				else {
-					$gfont = $this->params->get('header_googlefont', 'Cuprum');
+					$gfont = $this->params->get('wrightHeaderGoogleFont', 'Cuprum');
 				}
 
 				$class .= ' h_' . strtolower(str_replace('+', '', $gfont));
 			}
 			else {
-				$class .= ' h_' . $this->params->get('header_font', 'helvetica');
+				$class .= ' h_' . $this->params->get('wrightHeaderFont', 'helvetica');
 			}
 		}
 		if (JRequest::getVar('Itemid')) $class .= ' id_'.JRequest::getVar('Itemid');
@@ -344,7 +344,7 @@ abstract class HtmlAdapterAbstract
 				}
 		}
 
-		foreach (explode(';', $doc->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3')) as $item)
+		foreach (explode(';', $doc->document->params->get('wrightColumns', 'sidebar1:3;main:6;sidebar2:3')) as $item)
 		{
 			list ($col, $val) = explode(':', $item);
 

@@ -25,7 +25,7 @@ defined('_JEXEC') or die;
 /* Wright v.3: Bootstrapped images */
 	$app = JFactory::getApplication();
 	$template = $app->getTemplate(true);
-	$this->wrightBootstrapImages = $template->params->get('wright_bootstrap_images','');
+	$this->wrightBootstrapImages = $template->params->get('wrightBootstrapImages','');
 /* End Wright v.3: Bootstrapped images */
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');

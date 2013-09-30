@@ -109,7 +109,7 @@ defined('_JEXEC') or die('Restricted access');
 
     <!-- footer -->
     <div class="wrapper-footer">
-	    <footer id="footer" <?php if ($this->params->get('stickyFooter',1)) : ?> class="sticky"<?php endif;?>>
+	    <footer id="footer" <?php if ($this->params->get('wrightStickyFooter',1)) : ?> class="sticky"<?php endif;?>>
 	    	 <div class="<?php echo $containerClass ?> footer-content">
 	    		<?php if ($this->countModules('footer')) : ?>
 					<w:module type="<?php echo $gridMode; ?>" name="footer" chrome="wrightflexgrid" />

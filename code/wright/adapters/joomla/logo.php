@@ -7,7 +7,7 @@ class WrightAdapterJoomlaLogo
 		$dochtml = JFactory::getDocument();
 
 		// if is set as a module position 'logo', checks if there is any module in that position
-		if ($dochtml->params->get('logo', 'template') == 'module') {
+		if ($dochtml->params->get('wrightLogo', 'template') == 'module') {
 			if ($dochtml->countModules('logo'))
 				return true;
 			return false;
@@ -53,7 +53,7 @@ class WrightAdapterJoomlaLogo
 			';
 		}
 		else {
-			if ($doc->document->params->get('logowidth') !== '12' && $doc->countModules($name)) {
+			if ($doc->document->params->get('wrightLogoWidth') !== '12' && $doc->countModules($name)) {
 				return '<div id="'.$name.($alt ? '_alt' : '_primary') . '" class="clearfix"> <jdoc:include type="modules" name="'.$name.'" style="'.$args['style'].'" /> </div>';			}
 		}
 	
@@ -75,15 +75,15 @@ class WrightAdapterJoomlaLogo
 		$doc = Wright::getInstance();
 		$app = JFactory::getApplication();
 
-		$title = '<h2>'.(($doc->document->params->get('headline', '') !== '') ? $doc->document->params->get('headline') : $app->getCfg('sitename')).'</h2>';
-		$title .= ($doc->document->params->get('tagline', '') !== '') ? '<h3>'.$doc->document->params->get('tagline').'</h3>' : '';
+		$title = '<h2>'.(($doc->document->params->get('wrightHeadline', '') !== '') ? $doc->document->params->get('wrightHeadline') : $app->getCfg('sitename')).'</h2>';
+		$title .= ($doc->document->params->get('wrightTagline', '') !== '') ? '<h3>'.$doc->document->params->get('wrightTagline').'</h3>' : '';
 
 
 		// checks if one ore two modules will be around the logo, and calculates sizes
 		$html = "";
-		$modulewidth = 12 - $doc->document->params->get('logowidth', '6');
+		$modulewidth = 12 - $doc->document->params->get('wrightLogoWidth', '6');
 		$modulewidth2 = $modulewidth;
-		$logowidth = $doc->document->params->get('logowidth', '6');
+		$logowidth = $doc->document->params->get('wrightLogoWidth', '6');
 		
 		$modules = 0;
 		$modulename = (isset($args['name']) ? $args['name'] : "");
@@ -100,7 +100,7 @@ class WrightAdapterJoomlaLogo
 			$modulewidth = ceil($modulewidth/2);
 			$logowidth = 12 - $modulewidth - $modulewidth2;
 			
-			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename) || $doc->countModules($module2name))) {
+			if ($doc->document->params->get('wrightLogoWidth') !== '12' && ($doc->countModules($modulename) || $doc->countModules($module2name))) {
 				$html .= '<div id="'.$modulename.'" class="span'.$modulewidth.'">';
 				$html .= $this->renderCompanion($modulename,$args,$modulewidth);
 				$html .= $this->renderCompanion($module2name,$args,$modulewidth,true);
@@ -124,11 +124,11 @@ class WrightAdapterJoomlaLogo
 
 
 		// If user wants a module, load it instead of image
-		if ($doc->document->params->get('logo', 'template') == 'module') {
-			$html .= '<div id="logo' . $args['addid'] . '" class="span'.$doc->document->params->get('logowidth', '6').'"><jdoc:include type="modules" name="logo" /></div>';
+		if ($doc->document->params->get('wrightLogo', 'template') == 'module') {
+			$html .= '<div id="logo' . $args['addid'] . '" class="span'.$doc->document->params->get('wrightLogoWidth', '6').'"><jdoc:include type="modules" name="logo" /></div>';
 
 
-			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
+			if ($doc->document->params->get('wrightLogoWidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
 				$html .= '<div id="'.$modulename2.'" class="span'.$modulewidth2.'">';
 				$html .= $this->renderCompanion($modulename2,$args,$modulewidth2);
 				$html .= $this->renderCompanion($module2name2,$args,$modulewidth2,true);
@@ -139,11 +139,11 @@ class WrightAdapterJoomlaLogo
 		}
 
 		// If user wants just a title, print it out
-		elseif ($doc->document->params->get('logo', 'template') == 'title') {
+		elseif ($doc->document->params->get('wrightLogo', 'template') == 'title') {
 		
-			$html .= '<div id="logo' . $args['addid'] . '" class="span'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="title">'.$title.'</a></div>';
+			$html .= '<div id="logo' . $args['addid'] . '" class="span'.$doc->document->params->get('wrightLogoWidth', '6').'"><a href="'.JURI::root().'" class="title">'.$title.'</a></div>';
 
-			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
+			if ($doc->document->params->get('wrightLogoWidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
 				$html .= '<div id="'.$modulename2.'" class="span'.$modulewidth2.'">';
 				$html .= $this->renderCompanion($modulename2,$args,$modulewidth2);
 				$html .= $this->renderCompanion($module2name2,$args,$modulewidth2,true);
@@ -154,18 +154,18 @@ class WrightAdapterJoomlaLogo
 		}
 
 		// If user wants an image, decide which image to load
-		elseif ($doc->document->params->get('logo', 'template') == 'template') {
+		elseif ($doc->document->params->get('wrightLogo', 'template') == 'template') {
 			// added support for logo tone (light = "", dark = "-Dark")
 			$user = JFactory::getUser();
-			$logotone = ($user->getParam('templateTone',''));
+			$logotone = ($user->getParam('wrightTemplateTone',''));
 			if ($logotone == '') {
-				$logotone =  $doc->document->params->get('Tone','' );
+				$logotone =  $doc->document->params->get('wrightTemplateTone','' );
 			}
 
-			if (is_file(JPATH_ROOT.'/'.'templates'.'/'.$doc->document->template.'/'.'images'.'/'.$doc->document->params->get('style').'/'.'logo' . $logotone. '.png'))
-				$logo = JURI::root().'templates/'.$doc->document->template.'/images/'.$doc->document->params->get('style').'/logo' . $logotone. '.png';
-			elseif (is_file(JPATH_ROOT.'/'.'templates'.'/'.$doc->document->template.'/'.'images'.'/'.$doc->document->params->get('style').'/'.'logo.png'))
-				$logo = JURI::root().'templates/'.$doc->document->template.'/images/'.$doc->document->params->get('style').'/logo.png';
+			if (is_file(JPATH_ROOT.'/'.'templates'.'/'.$doc->document->template.'/'.'images'.'/'.$doc->document->params->get('wrightStyle').'/'.'logo' . $logotone. '.png'))
+				$logo = JURI::root().'templates/'.$doc->document->template.'/images/'.$doc->document->params->get('wrightStyle').'/logo' . $logotone. '.png';
+			elseif (is_file(JPATH_ROOT.'/'.'templates'.'/'.$doc->document->template.'/'.'images'.'/'.$doc->document->params->get('wrightStyle').'/'.'logo.png'))
+				$logo = JURI::root().'templates/'.$doc->document->template.'/images/'.$doc->document->params->get('wrightStyle').'/logo.png';
 			elseif (is_file(JPATH_ROOT.'/'.'templates/'.$doc->document->template.'/images/logo' . $logotone. '.png'))
 				$logo = JURI::root().'templates/'.$doc->document->template.'/images/logo' . $logotone. '.png';
 			elseif (is_file(JPATH_ROOT.'/'.'templates/'.$doc->document->template.'/images/logo.png'))
@@ -175,12 +175,12 @@ class WrightAdapterJoomlaLogo
 			}
 		}
 		else {
-			$logo = JURI::root().'images/'.$doc->document->params->get('logo', 'logo.png');
+			$logo = JURI::root().'images/'.$doc->document->params->get('wrightLogo', 'logo.png');
 		}
 		
 		$html .= '<div id="logo' . $args['addid'] . '" class="span'.$logowidth.'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
 		
-		if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
+		if ($doc->document->params->get('wrightLogoWidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
 			$html .= '<div id="'.$modulename2.'" class="span'.$modulewidth2.'">';
 			$html .= $this->renderCompanion($modulename2,$args,$modulewidth2);
 			$html .= $this->renderCompanion($module2name2,$args,$modulewidth2,true);

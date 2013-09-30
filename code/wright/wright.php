@@ -131,12 +131,12 @@ class Wright
 	{
 		JHtml::_('behavior.framework', true);
 
-		if ($this->document->params->get('modal', '1') == '1') {
+		if ($this->document->params->get('wrightModal', '1') == '1') {
 			JHtml::_('behavior.modal');
 		}
 
 		// load jQuery ?
-		if ($this->loadBootstrap && $loadJquery = $this->document->params->get('jquery', 0))
+		if ($loadJquery = $this->document->params->get('wrightjQuery', 1))
 		{
             switch ($loadJquery) {
                 // load jQuery locally
@@ -145,43 +145,48 @@ class Wright
                     break;
                 // load jQuery from Google
                 default:
-                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
+                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js';
                     break;
             }
             
             $this->document->addScript($jquery);
             // ensure that jQuery loads in noConflict mode to avoid mootools conflicts
             $this->document->addScriptDeclaration('jQuery.noConflict();');
-		}
 
-		if ($this->loadBootstrap)
+            if ($this->document->params->get('wrightjQueryMigrationPlugin', 0)) {
+				$this->document->addScript($this->_urlJS . '/jquery-migrate.min.js');
+        	}
+
 			// load bootstrap JS
-			$this->addJSScript($this->_urlJS . '/bootstrap.min.js');
+			if ($this->loadBootstrap && $loadJquery)
+				$this->addJSScript($this->_urlJS . '/bootstrap.min.js');
 		
-		$this->addJSScript($this->_urlJS . '/utils.js');
-		if ($this->document->params->get('stickyFooter', 1)) {
-			$this->addJSScript($this->_urlJS . '/stickyfooter.js');
+			// loads utils and sticky footer scripts
+			$this->addJSScript($this->_urlJS . '/utils.js');
+			if ($this->document->params->get('wrightStickyFooter', 1)) {
+				$this->addJSScript($this->_urlJS . '/stickyfooter.js');
+			}			
 		}
 
 		// Add header script if set
-		if (trim($this->document->params->get('headerscript', '')) !== '')
+		if (trim($this->document->params->get('wrightJavascriptHeader', '')) !== '')
 		{
-            $this->addJSScriptDeclaration($this->document->params->get('headerscript'));
+            $this->addJSScriptDeclaration($this->document->params->get('wrightJavascriptHeader'));
 		}
 
 		// set custom template theme for user
 		$user = JFactory::getUser();
-		if (!is_null(JRequest::getVar('templateTheme', NULL)))
+		if (!is_null(JRequest::getVar('wrightStyle', NULL)))
 		{
-			$user->setParam('theme', JRequest::getVar('templateTheme'));
+			$user->setParam('wrightStyle', JRequest::getVar('wrightStyle'));
 			$user->save(true);
 		}
-		if ($user->getParam('theme'))
+		if ($user->getParam('wrightStyle'))
 		{
-			$this->document->params->set('style', $user->getParam('theme'));
+			$this->document->params->set('wrightStyle', $user->getParam('wrightStyle'));
 		}
 
-		if ($this->document->params->get('documentationMode','0') == '1') {
+		if ($this->document->params->get('wrightDocumentationMode','0') == '1' && $loadJquery) {
 			$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
 			$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
 		}
@@ -237,7 +242,7 @@ class Wright
 
         if (version_compare(JVERSION, '3.0', 'lt')) {
         	$styles['wrighttemplatecss'][] = 'template.css.php';
-        	if ($this->document->params->get('responsive','1') == '1')
+        	if ($this->document->params->get('wrightResponsive','1') == '1')
         		$styles['wrighttemplatecss'][] = 'template-responsive.css.php';
         }
 
@@ -286,8 +291,8 @@ class Wright
 
 	private function doctype()
 	{
-		require(dirname(__FILE__) . '/doctypes/' . $this->document->params->get('doctype', 'html5') . '.php');
-		$adapter_name = 'HtmlAdapter' . $this->document->params->get('doctype', 'html5');
+		require(dirname(__FILE__) . '/doctypes/' . $this->document->params->get('wrightDoctype', 'html5') . '.php');
+		$adapter_name = 'HtmlAdapter' . $this->document->params->get('wrightDoctype', 'html5');
 		$adapter = new $adapter_name($this->document->params);
 
 		foreach ($adapter->getTags() as $name => $regex)
@@ -299,8 +304,8 @@ class Wright
 		// reorder columns based on the order
         $this->reorderContent();
 
-        if (trim($this->document->params->get('footerscript')) != '') {
-            $this->template = str_replace('</body>', '<script type="text/javascript">'.$this->document->params->get('footerscript').'</script></body>', $this->template);
+        if (trim($this->document->params->get('wrightFooterScript')) != '') {
+            $this->template = str_replace('</body>', '<script type="text/javascript">'.$this->document->params->get('wrightFooterScript').'</script></body>', $this->template);
         }
 		$this->template = str_replace('__cols__', $adapter->cols, $this->template);
 	}
@@ -395,7 +400,7 @@ class Wright
 	    $reorderedContent = '';
 
 	    // get column configuration
-	    $columnCfg = $this->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3');
+	    $columnCfg = $this->document->params->get('wrightColumns', 'sidebar1:3;main:6;sidebar2:3');
 	    $colStrings = explode(';', $columnCfg);
 	    if ($colStrings) {
 	        foreach ($colStrings as $colString) {
@@ -441,7 +446,7 @@ class Wright
 	}
 	
 	private function addJSScript($url) {
-		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
+		$javascriptBottom = ($this->document->params->get('wrightJavascriptBottom', 1) == 1 ? true : false);
 
 		if ($javascriptBottom) {
 			$this->_jsScripts[] = $url;
@@ -453,7 +458,7 @@ class Wright
 	}
 	
 	private function addJSScriptDeclaration($script) {
-		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
+		$javascriptBottom = ($this->document->params->get('wrightJavascriptBottom', 1) == 1 ? true : false);
 
 		if ($javascriptBottom) {
 			$this->_jsDeclarations[] = $script;
@@ -465,7 +470,7 @@ class Wright
 	}
 	
 	public function generateJS() {
-		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
+		$javascriptBottom = ($this->document->params->get('wrightJavascriptBottom', 1) == 1 ? true : false);
 		if ($javascriptBottom) {
 			$script = "\n";
 			if ($this->_jsScripts)

@@ -11,13 +11,13 @@
 defined('_JEXEC') or die('Restricted access');
 
 // get the bootstrap row mode ( row / row-fluid )
-$gridMode = $this->params->get('bs_rowmode','row-fluid');
+$gridMode = $this->params->get('wrightRowMode','row-fluid');
 $containerClass = 'container';
 if ($gridMode == 'row-fluid') {
     $containerClass = 'container-fluid';
 }
 
-$responsivePage = $this->params->get('responsive','1');
+$responsivePage = $this->params->get('wrightResponsive','1');
 $responsive = ' responsive';
 if ($responsivePage == 0) {
     $responsive = ' no-responsive';
