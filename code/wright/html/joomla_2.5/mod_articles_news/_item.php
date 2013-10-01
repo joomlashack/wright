@@ -7,6 +7,8 @@
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
+$wrightEnableIcons = (isset($wrightEnableIcons) ? $wrightEnableIcons : true);  // Wright v.3: Enable icons parameter
+
 // no direct access
 defined('_JEXEC') or die;
 $item_heading = $params->get('item_heading', 'h4');
@@ -17,13 +19,13 @@ $item_heading = $params->get('item_heading', 'h4');
 	<?php if ($params->get('link_titles') && $item->link != '') : ?>
 		<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
 			<a href="<?php echo $item->link;?>">
-				<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
+				<?php if ($wrightEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 				<?php echo $item->title;?>
 			</a>
 		</div>  <?php // Wright v.3: Added page-header style ?>
 	<?php else : ?>
 		<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
-			<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
+			<?php if ($wrightEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 			<?php echo $item->title; ?>
 		</div>  <?php // Wright v.3: Added page-header style ?>
 	<?php endif; ?>
