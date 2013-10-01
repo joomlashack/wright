@@ -76,6 +76,7 @@ body {
 
 .nav li a [class^="icon-"],
 .nav li a [class*=" icon-"] {
+	color: @linkColor;
 	display: inline-block;
 	.ie7-inline-block();
 }
@@ -168,6 +169,36 @@ dl.label.label-info dt{
 .navbar-inner,
 .navbar-inverse .navbar-inner {
 	filter: none;
+}
+
+.navbar-inner {
+	.nav li a {
+		[class^="icon-"],
+		[class*=" icon-"] {
+			color: @navbarLinkColor;
+		}
+		&:hover {
+			[class^="icon-"],
+			[class*=" icon-"] {
+				color: @navbarLinkColorHover;
+			}
+		}
+	}
+}
+
+.navbar-inverse .navbar-inner {
+	.nav li a {
+		[class^="icon-"],
+		[class*=" icon-"] {
+			color: @navbarInverseLinkColor;
+		}
+		&:hover {
+			[class^="icon-"],
+			[class*=" icon-"] {
+				color: @navbarInverseLinkColorHover;
+			}
+		}
+	}
 }
 
 .nav .dropdown-toggle .caret {
