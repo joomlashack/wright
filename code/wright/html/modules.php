@@ -182,6 +182,7 @@ function modChrome_wrightfeatured($module, &$params, &$attribs) {
     if ($module->showtitle) {
         if (in_array('title',$extradivs)) : ?> <div class="module_title"> <?php endif;
         echo "<h3>" . ($linkTitle != "" ? "<a href='$linkTitle'>" : "") . $module->title . ($linkTitle != "" ? "</a>" : "") . "</h3>";
+        if (in_array('in-title',$extradivs)) : ?> <div class="module_title_in"></div> <?php endif;
         if (in_array('title',$extradivs)) : ?> </div> <?php endif;
     }
     echo $module->content;
