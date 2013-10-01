@@ -130,6 +130,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     if ($module->showtitle) : ?>
 	<?php if (in_array('title',$extradivs)) : ?>	<div class="module_title"> <?php endif; ?>
     <?php echo $moduleTitle; ?>
+    <?php if (in_array('in-title',$extradivs)) : ?> <div class="module_title_in"></div> <?php endif; ?>
 	<?php if (in_array('title',$extradivs)) : ?>	</div> <?php endif; ?>
 <?php endif; ?>
 <?php

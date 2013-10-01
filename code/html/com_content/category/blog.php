@@ -27,6 +27,10 @@ $this->wrightComplementInnerClass = ''; // Class added to each complement (links
 $this->wrightLeadingItemElementsStructure = Array();
 $this->wrightIntroItemElementsStructure = Array();
 
+$this->wrightIntroHasImageClass = "";  // optional extra class when image is present
+
+$this->wrightExtraDivH1 = false;  // adds an extra div next to the h1 titles
+
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
 include(Overrider::getOverride('com_content.category','blog'));
 ?>

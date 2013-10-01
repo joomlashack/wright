@@ -39,6 +39,10 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
 	if (!isset($this->wrightComplementExtraClass)) $this->wrightComplementExtraClass = "";
 	if (!isset($this->wrightComplementInnerClass)) $this->wrightComplementInnerClass = "";
+
+	if (!isset($this->wrightIntroRowMode)) $this->wrightIntroRowMode = 'row-fluid';
+
+	if (!isset($this->wrightExtraDivH1)) $this->wrightExtraDivH1 = false;
 /* End Wright v.3: Extra classes (general) */
 
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
@@ -49,6 +53,7 @@ JHtml::_('behavior.caption');
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<div class="page-header">
 		<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
+		<?php if ($this->wrightExtraDivH1) : ?> <div class="title_in"></div> <?php endif;  // Wright v.3: Added optional extra div ?>
 	</div>
 	<?php endif; ?>
 	<?php if ($this->params->get('show_category_title', 1) or $this->params->get('page_subheading')) : ?>

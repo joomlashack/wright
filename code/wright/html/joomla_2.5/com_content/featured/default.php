@@ -38,8 +38,9 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
 	if (!isset($this->wrightComplementExtraClass)) $this->wrightComplementExtraClass = "";
 	if (!isset($this->wrightComplementInnerClass)) $this->wrightComplementInnerClass = "";
-/* End Wright v.3: Extra classes (general) */
 
+	if (!isset($this->wrightExtraDivH1)) $this->wrightExtraDivH1 = false;
+/* End Wright v.3: Extra classes (general) */
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
@@ -52,6 +53,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 		<h1>
 		<?php echo $this->escape($this->params->get('page_heading')); ?>
 		</h1>
+		<?php if ($this->wrightExtraDivH1) : ?> <div class="title_in"></div> <?php endif;  // Wright v.3: Added optional extra div ?>
 	</div> <?php // Wright v.3: Added page-header ?>
 <?php endif; ?>
 
