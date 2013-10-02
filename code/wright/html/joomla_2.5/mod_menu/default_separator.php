@@ -20,16 +20,10 @@ if ($item->menu_image) {
 else { $linktype = $item->title;
 }
 
-$class = ($item->deeper ? ' dropdown-toggle' : '');  // Wright v.3:  Added parent classes for Bootstrap
-
-
-?><a href="#" class="separator<?php echo $class ?>" <?php echo $title; ?>><?php echo $linktype; ?><?php
+?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" class="separator"<?php echo $item->licollapse  // Wright v.3: Added collapsible option ?>><?php echo $title; ?><?php echo $linktype; ?><?php
 // Wright v.3: Closing pseudo-link for sub-menus
 if ($item->deeper) {
 	// Opens a caret-right for levels 2 and above
-	if ($item->level > 1)
-		echo '<i class="icon-caret-right"></i>';
-	else
-		echo '<b class="caret"></b>';
+	echo '<b class="caret"></b>';
 }
 ?></a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure ?>

@@ -26,10 +26,9 @@ if (preg_match_all('/hide-text/', $item->anchor_css, $matches)) {
 // End Wright v.3: Created additional structure for icons
 
 // Note. It is important to remove spaces between elements.
-$class = ($item->anchor_css || $item->deeper) ? 'class="'.$item->anchor_css. ($item->deeper ? ' dropdown-toggle' : '') . '" ' : '';  // Wright v.3:  Added parent classes for Bootstrap (removed "disable")
+$class = $item->anchor_css ? 'class="'.$item->anchor_css.'" ' : '';
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
-$toggle = $item->deeper ? ' data-toggle="dropdown-menus"' : '';  // Wright v.3: Added data-toggle attribute to parents
-$caret = $item->deeper ? ($item->level > 1 ? '<i class="icon-caret-right"></i>' : '<b class="caret"></b>') : '';  // Wright v.3: Added caret
+$caret = $item->deeper ? '<b class="caret"></b>' : '';  // Wright v.3: Added caret
 
 if ($item->menu_image) {
 		$item->params->get('menu_text', 1 ) ?
@@ -45,15 +44,15 @@ else { $linktype = $span1 . $item->title . $span2; // Wright v.3: Added optional
 switch ($item->browserNav) :
 	default:
 	case 0:
-?><a <?php echo $class . $toggle; // Wright v.3: Added toggle for submenus ?> href="<?php echo $item->flink; ?>" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a><?php
+?><a<?php echo $item->licollapse  // Wright v.3: Added collapsible option ?> <?php echo $class; ?>href="<?php echo $item->flink; ?>" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a><?php
 		break;
 	case 1:
 		// _blank
-?><a <?php echo $class . $toggle; // Wright v.3: Added toggle for submenus ?> href="<?php echo $item->flink; ?>" target="_blank" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a><?php
+?><a<?php echo $item->licollapse  // Wright v.3: Added collapsible option ?> <?php echo $class; ?>href="<?php echo $item->flink; ?>" target="_blank" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a><?php
 		break;
 	case 2:
 	// window.open
-?><a <?php echo $class . $toggle; // Wright v.3: Added toggle for submenus ?> href="<?php echo $item->flink; ?>" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a>
+?><a<?php echo $item->licollapse  // Wright v.3: Added collapsible option ?> <?php echo $class; ?>href="<?php echo $item->flink; ?>" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.3: Added icons structure ?><?php echo $caret // Wright v.3: Added caret ?></a>
 <?php
 		break;
 endswitch;

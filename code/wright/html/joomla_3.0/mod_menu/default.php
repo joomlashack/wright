@@ -11,6 +11,19 @@
 defined('_JEXEC') or die;
 
 // Note. It is important to remove spaces between elements.
+
+/* Wright v.3: Distinguish collapsible and non-collapsible menus.  If the position is an official menu position in the template, or if it has the suffixe "no-collapse", it won't do the collapse */
+$wrightCollapseMenus = true;
+if (preg_match('/no\-collapse/', $class_sfx)) {
+	$wrightCollapseMenus = false;
+}
+else {
+	$wrightTemplate = WrightTemplate::getInstance();
+	if (in_array($module->position, $wrightTemplate->menuPositions))
+		$wrightCollapseMenus = false;
+}
+/* End Wright v.3: Distinguish collapsible and non-collapsible menus */
+
 ?>
 <?php // The menu class is deprecated. Use nav instead. ?>
 <ul class="nav menu<?php echo $class_sfx;?>"<?php
@@ -23,6 +36,7 @@ defined('_JEXEC') or die;
 ?>>
 <?php
 foreach ($list as $i => &$item) :
+	$active = false;  // Wright v.3: Active toggle for collapsible menus
 	$class = 'item-'.$item->id;
 	if ($item->id == $active_id)
 	{
@@ -31,6 +45,7 @@ foreach ($list as $i => &$item) :
 
 	if (in_array($item->id, $path))
 	{
+		$active = true;  // Wright v.3: Active toggle for collapsible menus
 		$class .= ' active';
 	}
 	elseif ($item->type == 'alias')
@@ -53,7 +68,7 @@ foreach ($list as $i => &$item) :
 
 	if ($item->deeper)
 	{
-		$class .= ' deeper dropdown'; // Wright v.3: Added dropdown class
+		$class .= ' deeper dropdown';  // Wright v.3: Added dropdown class to parent items
 	}
 
 	if ($item->parent)
@@ -66,7 +81,23 @@ foreach ($list as $i => &$item) :
 		$class = ' class="'.trim($class) .'"';
 	}
 
-	echo '<li'.$class.'>';
+	/* Wright v.3: Unique tagging for collapsible submenus */
+	$ulid = '';
+	$licollapse = '';
+	$idul = '';
+	$uladd = '';
+	if ($item->type == "separator" || $item->type == "heading")
+		$item->flink = '#';
+	if ($item->deeper && $wrightCollapseMenus) {
+		$ulid = 'wul_' . uniqid();
+		$item->licollapse = ' data-toggle="collapse"';
+		$item->flink = '#' . $ulid;
+		$idul = ' id="' . $ulid . '"';
+		$uladd = ' collapse' . ($active ? ' in' : '');
+	}
+	/* End Wright v.3: Unique tagging for collapsible submenus */
+
+	echo '<li'.$class . '>';  // Wright v.3: Added collapsible option
 
 	// Render the menu item.
 	switch ($item->type) :
@@ -86,7 +117,7 @@ foreach ($list as $i => &$item) :
 	if ($item->deeper)
 	{
 		$submenu = $item->level > 1 ? ' sub-menu' : '';  // Wright v.3 adds sub-menu for level 2 and beyond
-		echo '<ul class="nav-child unstyled small dropdown-menu' . $submenu . '">';  // Wright v.3: Added dropdown-menu class for submenus
+		echo '<ul' . $idul . ' class="nav-child unstyled small dropdown-menu' . $uladd . $submenu . '">';  // Wright v.3: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)

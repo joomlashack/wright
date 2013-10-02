@@ -26,6 +26,8 @@ class WrightTemplateBase {
 
 	private $_isThereALogo = null;  // local variable to know if there is a logo for the site
 
+	public $menuPositions = Array('toolbar','menu','bottom-menu');  // menu positions in the template - using the <w:nav> adapter
+
 	public static function getInstance() {
 		static $instance = null;
 		if ($instance === null) {
