@@ -349,34 +349,9 @@ dl.label.label-info dt{
 
 // Special styles in menus (tabs, pills)
 
-.nav.nav-tabs {
-	li {
-		> a {
-			color: @linkColor;
- 			[class^="icon-"],
-			[class*=" icon-"] {
-				color: @linkColor;
-			}
-			.caret {
-				border-top-color: @linkColor;
-			}
-			&:hover {
-				color: @linkColorHover;
-     			[class^="icon-"],
-				[class*=" icon-"] {
-					color: @linkColorHover;
-				}
-				.caret {
-					border-top-color: @linkColorHover;
-				}
-			}
-		}
-	}
-}
-
+.nav.nav-tabs,
 .nav.nav-pills {
-	li,
-	li.active {
+	li {
 		> a {
 			[class^="icon-"],
 			[class*=" icon-"] {
@@ -400,8 +375,10 @@ dl.label.label-info dt{
 		}
 		.dropdown,
 		.dropdown-menu {
+			background-color: @dropdownBackground;
 			li {
 				> a {
+					background-color: transparent;
 					.caret {
 						border-top-color: transparent;
 						border-left-color: @dropdownLinkColor;
@@ -416,6 +393,32 @@ dl.label.label-info dt{
 					.caret {
 						border-left-color: @white;
 					}
+				}
+			}
+		}
+	}
+}
+
+.nav.nav-tabs {
+	li {
+		> a {
+			[class^="icon-"],
+			[class*=" icon-"] {
+				color: @navbarLinkColor;
+			}
+			.caret {
+				border-top-color: @navbarLinkColor;				
+			}
+		}
+		&.active {
+			> a {
+				color: @navbarLinkColorActive;
+				[class^="icon-"],
+				[class*=" icon-"] {
+					color: @navbarLinkColorActive;
+				}
+				.caret {
+					border-top-color: @navbarLinkColorActive;				
 				}
 			}
 		}
@@ -507,6 +510,17 @@ dl.label.label-info dt{
     	&.nav-stacked,
     	&.nav-pills {
 	      	li {
+	      		.dropdown,
+	      		.dropdown-menu {
+	      			li {
+	      				> a {
+		            		.caret {
+		              			border-left-color: transparent;
+		              			border-top-color: @white;
+		            		}
+	      				}
+	      			}
+	      		}
 	        	&.active {
 	          		> a {
 	            		color: @white;
@@ -519,13 +533,13 @@ dl.label.label-info dt{
 	              			border-left-color: transparent;
 	            		}
 	            		&:hover {
-	              			color: @linkColorHover;
+	              			color: @black;
 	              			[class^="icon-"],
 	              			[class*=" icon-"] {
-	                			color: @linkColorHover;
+	                			color: @black;
 	              			}
 	              			.caret {
-	                			border-top-color: @linkColorHover;
+	                			border-top-color: @black;
 	              			}
 	            		}
 	          		}
@@ -534,18 +548,18 @@ dl.label.label-info dt{
     	}
   	}
 	.tabbable {
-    	.nav {
+    	.nav.nav-stacked {
       		li {
         		> a {
           			background-color: transparent;
           			&:hover {
-            			color: @linkColorHover;
+            			color: @black;
             			[class^="icon-"],
             			[class*=" icon-"] {
-              				color: @linkColorHover;
+              				color: @black;
             			}
             			.caret {
-              				border-top-color: @linkColorHover;
+              				border-top-color: @black;
             			}
           			}
         		}
@@ -561,6 +575,20 @@ dl.label.label-info dt{
 	              			border-top-color: @black;
 	            		}
           			}
+        		}
+        		.dropdown,
+        		.dropdown-menu {
+        			li {
+        				> a {
+		        			[class^="icon-"],
+		        			[class*=" icon-"] {
+		          				color: @dropdownLinkColor;
+		        			}
+		        			.caret {
+		          				border-top-color: @dropdownLinkColor;
+		        			}
+        				}
+        			}        			
         		}
       		}
     	}
