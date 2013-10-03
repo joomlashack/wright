@@ -171,7 +171,7 @@ dl.label.label-info dt{
 	li {
 		margin-bottom: 0;
 		line-height: inherit;
-		a {
+		> a {
 			.caret {
 				border-top-color: @navbarLinkColor;
 				border-bottom-color: @navbarLinkColor;
@@ -196,7 +196,7 @@ dl.label.label-info dt{
 			}
 		}
 		&.active {
-			a {
+			> a {
 				.caret {
 					border-top-color: @navbarLinkColorActive;						
 					border-bottom-color: @navbarLinkColorActive;						
@@ -204,6 +204,13 @@ dl.label.label-info dt{
 				[class^="icon-"],
 				[class*=" icon-"] {
 					color: @navbarLinkColorActive;
+				}
+				&:hover {
+					color: @navbarLinkColorHover;
+					[class^="icon-"],
+					[class*=" icon-"] {
+						color: @navbarLinkColorHover;
+					}
 				}
 			}
 		}
@@ -258,7 +265,7 @@ dl.label.label-info dt{
 				&:before {
 				    border-bottom: 7px solid transparent;
 				    border-left: none;
-				    border-right: 7px solid @navbarBackgroundHighlight;
+				    border-right: 7px solid @dropdownBackground;
 				    border-top: 7px solid transparent;
 				    left: -7px;
 				    top: 10px;
@@ -269,7 +276,7 @@ dl.label.label-info dt{
 				&:after {
 				    border-top: 6px solid transparent;
 				    border-left: none;
-				    border-right: 7px solid @navbarBackgroundHighlight;
+				    border-right: 7px solid @dropdownBackground;
 				    border-bottom: 6px solid transparent;
 				    left: 10px;
 				    top: 11px;
@@ -300,8 +307,9 @@ dl.label.label-info dt{
 	.navbar .nav,
 	.navbar .nav .navbar-inner {
 		filter: none;
-		li {
-			a {
+		li,
+		li.dropdown {
+			> a {
 				.caret {
 					border-top-color: @navbarInverseLinkColor;
 					border-bottom-color: @navbarInverseLinkColor;
@@ -311,6 +319,7 @@ dl.label.label-info dt{
 					color: @navbarInverseLinkColor;
 				}
 				&:hover {
+					color: @navbarInverseLinkColorHover;
 					.caret {
 						border-top-color: @navbarInverseLinkColorHover;
 						border-bottom-color: @navbarInverseLinkColorHover;
@@ -322,7 +331,7 @@ dl.label.label-info dt{
 				}
 			}
 			&.active {
-				a {
+				> a {
 					.caret {
 						border-top-color: @navbarInverseLinkColorActive;
 						border-bottom-color: @navbarInverseLinkColorActive;
@@ -349,7 +358,23 @@ dl.label.label-info dt{
 					color: @linkColor;
 				}
 				.caret {
-					float: right;
+					border-top-color: @linkColor;
+					border-bottom-color: @linkColor;
+					position: absolute;
+					right: 5px;
+					top: 5px;
+				}
+				&:hover {
+					color: @dropdownLinkColorHover;
+					background-color: @dropdownLinkBackgroundHover;
+					[class^="icon-"],
+					[class*=" icon-"] {
+						color: @dropdownLinkColorHover;
+					}
+					.caret {
+						border-bottom-color: @dropdownLinkColorHover;
+						border-top-color: @dropdownLinkColorHover;
+					}
 				}
 			}
 		}
@@ -381,6 +406,14 @@ dl.label.label-info dt{
 							border-bottom: 4px solid transparent;
 							border-top: 4px solid @dropdownLinkColorHover;
 						}
+					}
+				}
+				&.active {
+					.caret {
+						border-left: 4px solid transparent;
+						border-right: 4px solid transparent;
+						border-bottom: 4px solid transparent;
+						border-top: 4px solid @dropdownLinkColorActive;
 					}
 				}
 			}
