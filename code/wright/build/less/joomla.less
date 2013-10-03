@@ -351,17 +351,23 @@ dl.label.label-info dt{
 
 .nav.nav-tabs {
 	li {
-		&.active {
-			> a {
-				&:hover {
-					color: @black;
-         			[class^="icon-"],
-					[class*=" icon-"] {
-						color: @black;
-					}
-					.caret {
-						border-top-color: @black;
-					}
+		> a {
+			color: @linkColor;
+ 			[class^="icon-"],
+			[class*=" icon-"] {
+				color: @linkColor;
+			}
+			.caret {
+				border-top-color: @linkColor;
+			}
+			&:hover {
+				color: @linkColorHover;
+     			[class^="icon-"],
+				[class*=" icon-"] {
+					color: @linkColorHover;
+				}
+				.caret {
+					border-top-color: @linkColorHover;
 				}
 			}
 		}
@@ -369,7 +375,8 @@ dl.label.label-info dt{
 }
 
 .nav.nav-pills {
-	li {
+	li,
+	li.active {
 		> a {
 			[class^="icon-"],
 			[class*=" icon-"] {
@@ -388,6 +395,27 @@ dl.label.label-info dt{
 				}
 				.caret {
 					border-top-color: @white;
+				}
+			}
+		}
+		.dropdown,
+		.dropdown-menu {
+			li {
+				> a {
+					.caret {
+						border-top-color: transparent;
+						border-left-color: @dropdownLinkColor;
+					}
+					&:hover {
+						.caret {
+							border-left-color: @dropdownLinkColorHover;
+						}
+					}
+				}
+				&.active {
+					.caret {
+						border-left-color: @white;
+					}
 				}
 			}
 		}
@@ -491,13 +519,13 @@ dl.label.label-info dt{
 	              			border-left-color: transparent;
 	            		}
 	            		&:hover {
-	              			color: @black;
+	              			color: @linkColorHover;
 	              			[class^="icon-"],
 	              			[class*=" icon-"] {
-	                			color: @black;
+	                			color: @linkColorHover;
 	              			}
 	              			.caret {
-	                			border-top-color: @black;
+	                			border-top-color: @linkColorHover;
 	              			}
 	            		}
 	          		}
@@ -511,13 +539,13 @@ dl.label.label-info dt{
         		> a {
           			background-color: transparent;
           			&:hover {
-            			color: @black;
+            			color: @linkColorHover;
             			[class^="icon-"],
             			[class*=" icon-"] {
-              				color: @black;
+              				color: @linkColorHover;
             			}
             			.caret {
-              				border-top-color: @black;
+              				border-top-color: @linkColorHover;
             			}
           			}
         		}
