@@ -160,135 +160,132 @@ dl.label.label-info dt{
 
 /* Menu - Bootstrap Dropdown Navbar - Addition for multi-level ***********************************************************************************/
 
-// Overall menus
- 
-.nav {
+// Navbar position menu
+
+.nav,
+.navbar-inner,
+.nav .navbar-inner,
+.navbar .nav,
+.navbar .nav .navbar-inner {
+	filter: none;
 	li {
-		a {
+		margin-bottom: 0;
+		line-height: inherit;
+		a {
+			.caret {
+				border-top-color: @navbarLinkColor;
+				border-bottom-color: @navbarLinkColor;
+			}
 			[class^="icon-"],
 			[class*=" icon-"] {
-				color: @linkColor;
+				color: @navbarLinkColor;
 				display: inline-block;
 				.ie7-inline-block();
 				margin: 0 3px;
 				text-decoration: none;
-			}			
-		}
-	}
-}
-
-// Navbar position menu
-
-.navbar-inner {
-	filter: none;
-	.nav {
-		li {
-			margin-bottom: 0;
-			line-height: inherit;
-			a {
+			}
+			&:hover {
 				.caret {
-					border-top-color: @navbarLinkColor;
-					border-bottom-color: @navbarLinkColor;
+					border-top-color: @navbarLinkColorHover;
+					border-bottom-color: @navbarLinkColorHover;
 				}
 				[class^="icon-"],
 				[class*=" icon-"] {
-					color: @navbarLinkColor;
+					color: @navbarLinkColorHover;
 				}
-				&:hover {
+			}
+		}
+		&.active {
+			a {
+				.caret {
+					border-top-color: @navbarLinkColorActive;						
+					border-bottom-color: @navbarLinkColorActive;						
+				}
+				[class^="icon-"],
+				[class*=" icon-"] {
+					color: @navbarLinkColorActive;
+				}
+			}
+		}
+		.dropdown-menu,
+		.dropdown {
+			li {
+				> a {
+					color: @dropdownLinkColor;
 					.caret {
-						border-top-color: @navbarLinkColorHover;
-						border-bottom-color: @navbarLinkColorHover;
+						border-bottom: 4px solid transparent;
+						border-left: 4px solid @dropdownLinkColor;
+						border-top: 4px solid transparent;
 					}
 					[class^="icon-"],
 					[class*=" icon-"] {
-						color: @navbarLinkColorHover;
+						color: @dropdownLinkColor;
 					}
-				}
-			}
-			&.active {
-				a {
-					.caret {
-						border-top-color: @navbarLinkColorActive;						
-						border-bottom-color: @navbarLinkColorActive;						
-					}
-					[class^="icon-"],
-					[class*=" icon-"] {
-						color: @navbarLinkColorActive;
-					}
-				}
-			}
-			.dropdown-menu {
-				li {
-					a {
+					&:hover {
+						color: @dropdownLinkColorHover;
 						.caret {
 							border-bottom: 4px solid transparent;
-							border-left: 4px solid @dropdownLinkColor;
+							border-left: 4px solid @dropdownLinkColorHover;
 							border-top: 4px solid transparent;
 						}
 						[class^="icon-"],
 						[class*=" icon-"] {
-							color: @dropdownLinkColor;
-						}
-						&:hover {
-							.caret {
-								border-bottom: 4px solid transparent;
-								border-left: 4px solid @dropdownLinkColorHover;
-								border-top: 4px solid transparent;
-							}
-							[class^="icon-"],
-							[class*=" icon-"] {
-								color: @dropdownLinkColorHover;
-							}
-						}
-					}
-					&.active {
-						a {
-							.caret {
-								border-bottom: 4px solid transparent;
-								border-left: 4px solid @dropdownLinkColorActive;
-								border-top: 4px solid transparent;
-							}
+							color: @dropdownLinkColorHover;
 						}
 					}
 				}
-				.sub-menu {
-					left: 100%;
-					position: absolute;
-					top: 0;
-					visibility: hidden;
-					margin-top: -1px;
-					&:before {
-					    border-bottom: 7px solid transparent;
-					    border-left: none;
-					    border-right: 7px solid @navbarBackgroundHighlight;
-					    border-top: 7px solid transparent;
-					    left: -7px;
-					    top: 10px;
-					    position: absolute;
-					    content: "";
-					    display: inline-block;
-					}
-					&:after {
-					    border-top: 6px solid transparent;
-					    border-left: none;
-					    border-right: 7px solid @navbarBackgroundHighlight;
-					    border-bottom: 6px solid transparent;
-					    left: 10px;
-					    top: 11px;
-					    left: -6px;
-					    position: absolute;
-					    content: "";
-					    display: inline-block;
+				&.active {
+					> a {
+						color: @dropdownLinkColorActive;
+						.caret {
+							border-bottom: 4px solid transparent;
+							border-left: 4px solid @dropdownLinkColorActive;
+							border-top: 4px solid transparent;
+						}
+						[class^="icon-"],
+						[class*=" icon-"] {
+							color: @dropdownLinkColorActive;
+						}
 					}
 				}
 			}
-			&:hover {
-				> .dropdown-menu {
-					display: block
+			.sub-menu {
+				left: 100%;
+				position: absolute;
+				top: 0;
+				visibility: hidden;
+				margin-top: -1px;
+				&:before {
+				    border-bottom: 7px solid transparent;
+				    border-left: none;
+				    border-right: 7px solid @navbarBackgroundHighlight;
+				    border-top: 7px solid transparent;
+				    left: -7px;
+				    top: 10px;
+				    position: absolute;
+				    content: "";
+				    display: inline-block;
 				}
-				> .sub-menu {
-					visibility: visible;
+				&:after {
+				    border-top: 6px solid transparent;
+				    border-left: none;
+				    border-right: 7px solid @navbarBackgroundHighlight;
+				    border-bottom: 6px solid transparent;
+				    left: 10px;
+				    top: 11px;
+				    left: -6px;
+				    position: absolute;
+				    content: "";
+				    display: inline-block;
 				}
+			}
+		}
+		&:hover {
+			> .dropdown-menu {
+				display: block
+			}
+			> .sub-menu {
+				visibility: visible;
 			}
 		}
 	}
@@ -297,40 +294,42 @@ dl.label.label-info dt{
 // Inverse navbar position menu
 
 .navbar-inverse {
-	.navbar-inner {
+	.nav,
+	.navbar-inner,
+	.nav .navbar-inner,
+	.navbar .nav,
+	.navbar .nav .navbar-inner {
 		filter: none;
-		.nav {
-			li {
-				a {
+		li {
+			a {
+				.caret {
+					border-top-color: @navbarInverseLinkColor;
+					border-bottom-color: @navbarInverseLinkColor;
+				}
+				[class^="icon-"],
+				[class*=" icon-"] {
+					color: @navbarInverseLinkColor;
+				}
+				&:hover {
 					.caret {
-						border-top-color: @navbarInverseLinkColor;
-						border-bottom-color: @navbarInverseLinkColor;
+						border-top-color: @navbarInverseLinkColorHover;
+						border-bottom-color: @navbarInverseLinkColorHover;
 					}
 					[class^="icon-"],
 					[class*=" icon-"] {
-						color: @navbarInverseLinkColor;
-					}
-					&:hover {
-						.caret {
-							border-top-color: @navbarInverseLinkColorHover;
-							border-bottom-color: @navbarInverseLinkColorHover;
-						}
-						[class^="icon-"],
-						[class*=" icon-"] {
-							color: @navbarInverseLinkColorHover;
-						}
+						color: @navbarInverseLinkColorHover;
 					}
 				}
-				&.active {
-					a {
-						.caret {
-							border-top-color: @navbarInverseLinkColorActive;
-							border-bottom-color: @navbarInverseLinkColorActive;
-						}
-						[class^="icon-"],
-						[class*=" icon-"] {
-							color: @navbarInverseLinkColorActive;
-						}
+			}
+			&.active {
+				a {
+					.caret {
+						border-top-color: @navbarInverseLinkColorActive;
+						border-bottom-color: @navbarInverseLinkColorActive;
+					}
+					[class^="icon-"],
+					[class*=" icon-"] {
+						color: @navbarInverseLinkColorActive;
 					}
 				}
 			}
@@ -338,17 +337,24 @@ dl.label.label-info dt{
 	}
 }
 
+// Menus in non-nav modules
+
 .module {
 	.nav {
 		li {
-			a {
+			> a {
 				padding: 5px;
+				[class^="icon-"],
+				[class*=" icon-"] {
+					color: @linkColor;
+				}
 				.caret {
 					float: right;
 				}
 			}
 		}
-		.dropdown-menu {
+		.dropdown-menu,
+		.dropdown {
 			position: relative;
 			display: block;
 			background-color: transparent;
@@ -360,13 +366,31 @@ dl.label.label-info dt{
 			padding: 0;
 			margin: 0 5px;
 			li {
-				a {
+				> a {
 					white-space: normal;
+					.caret {
+						border-left: 4px solid transparent;
+						border-right: 4px solid transparent;
+						border-bottom: 4px solid transparent;
+						border-top: 4px solid @dropdownLinkColor;
+					}
+					&:hover {
+						.caret {
+							border-left: 4px solid transparent;
+							border-right: 4px solid transparent;
+							border-bottom: 4px solid transparent;
+							border-top: 4px solid @dropdownLinkColorHover;
+						}
+					}
 				}
 			}
 			.sub-menu {
 				box-shadow: none;
 				margin: 0 10px;
+				position: relative;
+				visibility: visible;
+				margin-top: 0;
+				left: 0;
 			}
 		}
 	}

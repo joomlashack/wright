@@ -83,7 +83,7 @@ foreach ($list as $i => &$item) :
 
 	/* Wright v.3: Unique tagging for collapsible submenus */
 	$ulid = '';
-	$licollapse = '';
+	$item->licollapse = '';
 	$idul = '';
 	$uladd = '';
 	if ($item->type == "separator" || $item->type == "heading")
