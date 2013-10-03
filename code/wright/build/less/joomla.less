@@ -308,8 +308,7 @@ dl.label.label-info dt{
 	.navbar .nav,
 	.navbar .nav .navbar-inner {
 		filter: none;
-		li,
-		li.dropdown {
+		li {
 			> a {
 				.caret {
 					border-top-color: @navbarInverseLinkColor;
@@ -340,6 +339,28 @@ dl.label.label-info dt{
 					[class^="icon-"],
 					[class*=" icon-"] {
 						color: @navbarInverseLinkColorActive;
+					}
+					&:hover {
+						color: @navbarInverseLinkColorHover;
+						.caret {
+							border-top-color: @navbarInverseLinkColorHover;
+							border-bottom-color: @navbarInverseLinkColorHover;
+						}
+						[class^="icon-"],
+						[class*=" icon-"] {
+							color: @navbarInverseLinkColorHover;
+						}
+					}
+				}
+			}
+			&.dropdown,
+			&.dropdown-menu {
+				> a {
+					&:hover {
+						.caret {
+							border-top-color: @navbarInverseLinkColorHover;
+							border-bottom-color: @navbarInverseLinkColorHover;
+						}
 					}
 				}
 			}
@@ -412,13 +433,13 @@ dl.label.label-info dt{
 		}
 		&.active {
 			> a {
-				color: @navbarLinkColorActive;
+				color: @black;
 				[class^="icon-"],
 				[class*=" icon-"] {
-					color: @navbarLinkColorActive;
+					color: @black;
 				}
 				.caret {
-					border-top-color: @navbarLinkColorActive;				
+					border-top-color: @black;				
 				}
 			}
 		}
@@ -587,6 +608,15 @@ dl.label.label-info dt{
 		        			.caret {
 		          				border-top-color: @dropdownLinkColor;
 		        			}
+        				}
+        				&.active {
+		            		[class^="icon-"],
+		            		[class*=" icon-"] {
+		              			color: @black;
+		            		}
+		            		.caret {
+		              			border-top-color: @black;
+		            		}
         				}
         			}        			
         		}
