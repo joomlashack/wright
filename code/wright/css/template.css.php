@@ -52,9 +52,8 @@ else {
 
 header("Content-Type: text/css");
 
-echo '@import url("../fontawesome/css/font-awesome.min.css");' . "\n";
-
 echo file_get_contents($file,'r');
 if ($fileFound) {
 	echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '-extended.css','r');
 }
+echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/wright/css/font-awesome.min.css','r');
