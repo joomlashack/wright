@@ -393,6 +393,16 @@ dl.label.label-info dt{
 			.caret {
 				border-top-color: @linkColor;
 			}
+			&:hover,
+			&:focus {
+				[class^="icon-"],
+				[class*=" icon-"] {
+					color: @linkColorHover;
+				}
+				.caret {
+					border-top-color: @linkColorHover;
+				}
+			}
 		}
 		&.active {
 			> a {
