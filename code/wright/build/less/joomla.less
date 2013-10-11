@@ -21,6 +21,9 @@ body {
 	}
 }
 
+// Adding font-awesome missing focus states
+.icon-white,.nav-pills>.active>a>[class^="icon-"],.nav-pills>.active>a>[class*=" icon-"],.nav-list>.active>a>[class^="icon-"],.nav-list>.active>a>[class*=" icon-"],.navbar-inverse .nav>.active>a>[class^="icon-"],.navbar-inverse .nav>.active>a>[class*=" icon-"],.dropdown-menu>li>a:focus>[class^="icon-"],.dropdown-menu>li>a:focus>[class*=" icon-"],.dropdown-menu>.active>a>[class^="icon-"],.dropdown-menu>.active>a>[class*=" icon-"],.dropdown-submenu:focus>a>[class^="icon-"],.dropdown-submenu:focus>a>[class*=" icon-"]{background-image:none;}
+
 #header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2, #grid-bottom3, #bottom-menu {
     margin-bottom: 10px;
 }
@@ -76,9 +79,6 @@ body {
 
 a [class^="icon-"], a [class*=" icon-"] {
 	text-decoration: none;
-}
-.icon-white, .nav > .active > a > [class^="icon-"], .nav > .active > a > [class*=" icon-"], .dropdown-menu > li > a:hover > [class^="icon-"], .dropdown-menu > li > a:hover > [class*=" icon-"], .dropdown-menu > .active > a > [class^="icon-"], .dropdown-menu > .active > a > [class*=" icon-"] {
-	background-image: none;
 }
 a.joomlashack {
 	display: block;
@@ -184,7 +184,8 @@ dl.label.label-info dt{
 				margin: 0 3px;
 				text-decoration: none;
 			}
-			&:hover {
+			&:hover,
+			&:focus {
 				.caret {
 					border-top-color: @navbarLinkColorHover;
 					border-bottom-color: @navbarLinkColorHover;
@@ -205,7 +206,8 @@ dl.label.label-info dt{
 				[class*=" icon-"] {
 					color: @navbarLinkColorActive;
 				}
-				&:hover {
+				&:hover,
+				&:focus {
 					color: @navbarLinkColorHover;
 					[class^="icon-"],
 					[class*=" icon-"] {
@@ -229,7 +231,8 @@ dl.label.label-info dt{
 					[class*=" icon-"] {
 						color: @dropdownLinkColor;
 					}
-					&:hover {
+					&:hover,
+					&:focus {
 						color: @dropdownLinkColorHover;
 						.caret {
 							border-bottom: 4px solid transparent;
@@ -288,7 +291,8 @@ dl.label.label-info dt{
 				}
 			}
 		}
-		&:hover {
+		&:hover,
+		&:focus {
 			> .dropdown-menu {
 				display: block
 			}
@@ -318,7 +322,8 @@ dl.label.label-info dt{
 				[class*=" icon-"] {
 					color: @navbarInverseLinkColor;
 				}
-				&:hover {
+				&:hover,
+				&:focus {
 					color: @navbarInverseLinkColorHover;
 					.caret {
 						border-top-color: @navbarInverseLinkColorHover;
@@ -340,7 +345,8 @@ dl.label.label-info dt{
 					[class*=" icon-"] {
 						color: @navbarInverseLinkColorActive;
 					}
-					&:hover {
+					&:hover,
+					&:focus {
 						color: @navbarInverseLinkColorHover;
 						.caret {
 							border-top-color: @navbarInverseLinkColorHover;
@@ -356,7 +362,8 @@ dl.label.label-info dt{
 			&.dropdown,
 			&.dropdown-menu {
 				> a {
-					&:hover {
+					&:hover,
+					&:focus {
 						.caret {
 							border-top-color: @navbarInverseLinkColorHover;
 							border-bottom-color: @navbarInverseLinkColorHover;
@@ -404,7 +411,8 @@ dl.label.label-info dt{
 						border-top-color: transparent;
 						border-left-color: @dropdownLinkColor;
 					}
-					&:hover {
+					&:hover,
+					&:focus {
 						.caret {
 							border-left-color: @dropdownLinkColorHover;
 						}
@@ -464,7 +472,8 @@ dl.label.label-info dt{
 					right: 5px;
 					top: 5px;
 				}
-				&:hover {
+				&:hover,
+				&:focus {
 					color: @dropdownLinkColorHover;
 					background-color: @dropdownLinkBackgroundHover;
 					[class^="icon-"],
@@ -501,7 +510,8 @@ dl.label.label-info dt{
 						border-bottom: 4px solid transparent;
 						border-top: 4px solid @dropdownLinkColor;
 					}
-					&:hover {
+					&:hover,
+					&:focus {
 						.caret {
 							border-left: 4px solid transparent;
 							border-right: 4px solid transparent;
@@ -537,7 +547,7 @@ dl.label.label-info dt{
 	      				> a {
 		            		.caret {
 		              			border-left-color: transparent;
-		              			border-top-color: @white;
+		              			border-top-color: @dropdownLinkColor;
 		            		}
 	      				}
 	      			}
@@ -553,7 +563,8 @@ dl.label.label-info dt{
 	              			border-top-color: @white;
 	              			border-left-color: transparent;
 	            		}
-	            		&:hover {
+	            		&:hover,
+	            		&:focus {
 	              			color: @black;
 	              			[class^="icon-"],
 	              			[class*=" icon-"] {
@@ -573,7 +584,8 @@ dl.label.label-info dt{
       		li {
         		> a {
           			background-color: transparent;
-          			&:hover {
+          			&:hover,
+          			&:focus {
             			color: @black;
             			[class^="icon-"],
             			[class*=" icon-"] {
