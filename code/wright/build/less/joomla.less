@@ -435,15 +435,6 @@ dl.label.label-info dt{
 
 .nav.nav-tabs {
 	li {
-		> a {
-			[class^="icon-"],
-			[class*=" icon-"] {
-				color: @navbarLinkColor;
-			}
-			.caret {
-				border-top-color: @navbarLinkColor;				
-			}
-		}
 		&.active {
 			> a {
 				color: @black;
@@ -546,6 +537,13 @@ dl.label.label-info dt{
     	&.nav-stacked,
     	&.nav-pills {
 	      	li {
+	      		> a {
+	      			-webkit-text-shadow: none;
+	      			-moz-text-shadow: none;
+	      			-ms-text-shadow: none;
+	      			-o-text-shadow: none;
+	      			text-shadow: none;
+	      		}
 	      		.dropdown,
 	      		.dropdown-menu {
 	      			li {
@@ -554,6 +552,21 @@ dl.label.label-info dt{
 		              			border-left-color: transparent;
 		              			border-top-color: @dropdownLinkColor;
 		            		}
+	      				}
+	      				&.active {
+	      					> a {
+			            		.caret {
+			              			border-left-color: transparent;
+			              			border-top-color: @dropdownLinkColorActive;
+			            		}
+			            		&:hover,
+			            		&:focus {
+				            		.caret {
+				              			border-left-color: transparent;
+				              			border-top-color: @black;
+				            		}			            			
+			            		}
+	      					}
 	      				}
 	      			}
 	      		}
@@ -614,13 +627,8 @@ dl.label.label-info dt{
   	}
 }
 
-.hide-text {
-	[class^="icon-"],
-	[class*=" icon-"] {
-		font-size: @baseFontSize;
-		line-height: @baseLineHeight;
-	}
-	.hidden-text {
+a.hidden-text {
+	span.hidden-text {
 		display: none;
 	}
 }

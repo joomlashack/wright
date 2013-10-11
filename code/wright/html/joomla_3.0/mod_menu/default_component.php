@@ -19,7 +19,7 @@ if (preg_match_all('/icon-([\S]+)/', $item->anchor_css, $matches)) {
 	$icons = 'icon-' . implode(' icon-',$matches[1]);
 	$structIcons = '<i class="' . $icons . '"></i>';
 }
-if (preg_match_all('/hide-text/', $item->anchor_css, $matches)) {
+if (preg_match_all('/hidden-text/', $item->anchor_css, $matches)) {
 	$span1 = '<span class="hidden-text">';
 	$span2 = '</span>';
 }
