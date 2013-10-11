@@ -22,7 +22,12 @@ body {
 }
 
 // Adding font-awesome missing focus states
-.icon-white,.nav-pills>.active>a>[class^="icon-"],.nav-pills>.active>a>[class*=" icon-"],.nav-list>.active>a>[class^="icon-"],.nav-list>.active>a>[class*=" icon-"],.navbar-inverse .nav>.active>a>[class^="icon-"],.navbar-inverse .nav>.active>a>[class*=" icon-"],.dropdown-menu>li>a:focus>[class^="icon-"],.dropdown-menu>li>a:focus>[class*=" icon-"],.dropdown-menu>.active>a>[class^="icon-"],.dropdown-menu>.active>a>[class*=" icon-"],.dropdown-submenu:focus>a>[class^="icon-"],.dropdown-submenu:focus>a>[class*=" icon-"]{background-image:none;}
+.dropdown-menu>li>a:focus>[class^="icon-"],
+.dropdown-menu>li>a:focus>[class*=" icon-"],
+.dropdown-submenu:focus>a>[class^="icon-"],
+.dropdown-submenu:focus>a>[class*=" icon-"] {
+	background-image:none;
+}
 
 #header, #menu, #featured, #grid-top, #main-content, #breadcrumbs, #grid-bottom, #grid-bottom2, #grid-bottom3, #bottom-menu {
     margin-bottom: 10px;
@@ -580,61 +585,44 @@ dl.label.label-info dt{
     	}
   	}
 	.tabbable {
-    	.nav.nav-stacked {
-      		li {
-        		> a {
-          			background-color: transparent;
-          			&:hover,
-          			&:focus {
-            			color: @black;
-            			[class^="icon-"],
-            			[class*=" icon-"] {
-              				color: @black;
-            			}
-            			.caret {
-              				border-top-color: @black;
-            			}
-          			}
-        		}
-        		&.active {
-          			> a {
-	            		background-color: transparent;
-	            		color: @black;
-	            		[class^="icon-"],
-	            		[class*=" icon-"] {
-	              			color: @black;
-	            		}
+  		li {
+    		.dropdown,
+    		.dropdown-menu {
+    			li {
+    				> a {
+	        			.caret {
+	          				border-top-color: @dropdownLinkColor;
+	              			border-left-color: transparent;
+	        			}
+		    			&:hover,
+		    			&:focus {
+		    				.caret {
+		    					border-top-color: @dropdownLinkColorHover;
+		    					border-left-color: transparent;
+		    				}
+		    			}
+    				}
+    				&.active {
 	            		.caret {
-	              			border-top-color: @black;
+	              			border-top-color: @dropdownLinkColorActive;
+	              			border-left-color: transparent;
 	            		}
-          			}
-        		}
-        		.dropdown,
-        		.dropdown-menu {
-        			li {
-        				> a {
-		        			[class^="icon-"],
-		        			[class*=" icon-"] {
-		          				color: @dropdownLinkColor;
-		        			}
-		        			.caret {
-		          				border-top-color: @dropdownLinkColor;
-		        			}
-        				}
-        				&.active {
-		            		[class^="icon-"],
-		            		[class*=" icon-"] {
-		              			color: @black;
-		            		}
-		            		.caret {
-		              			border-top-color: @black;
-		            		}
-        				}
-        			}        			
-        		}
-      		}
-    	}
+    				}
+    			}        			
+    		}
+  		}
   	}
+}
+
+.hide-text {
+	[class^="icon-"],
+	[class*=" icon-"] {
+		font-size: @baseFontSize;
+		line-height: @baseLineHeight;
+	}
+	.hidden-text {
+		display: none;
+	}
 }
 
 
@@ -648,13 +636,7 @@ dl.label.label-info dt{
 .footer1, .footer2 {
 	text-align: center;
 }
-.nav a.hide-text{
-	font-size: @baseFontSize;
-	line-height: @baseLineHeight;
-	span.hidden-text {
-		display: none;
-	}
-}
+
 /* @ Images and links */
 .item-image {
 	max-width: 100%;
