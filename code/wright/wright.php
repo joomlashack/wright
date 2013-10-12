@@ -62,7 +62,6 @@ class Wright
 		// Urls
 		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
 		$this->_urlWright = $this->_urlTemplate . '/wright';
-		$this->_urlFontAwesome = $this->_urlWright . '/fontawesome';
 		$this->_urlJS = $this->_urlWright . '/js';
 		
 		// versions under 3.0 must load bootstrap
@@ -206,9 +205,6 @@ class Wright
 				foreach ($files as $style)
 				{
 					switch ($folder) {
-						case 'fontawesome':
-							$sheet = $this->_urlFontAwesome . '/css/' . $style;
-							break;
 						case 'wrighttemplatecss':
 							$sheet = $this->_urlWright . '/css/' . $style;
 							break;
@@ -262,8 +258,6 @@ class Wright
 
 			switch ($major)
 			{
-				case '7' :
-					$styles['fontawesome'][] = 'font-awesome-ie7.min.css';
 					// does not break for leaving defaults
 				default :
 					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie' . $major . '.css'))
@@ -277,9 +271,6 @@ class Wright
 		//Check to see if custom.css file is present, and if so add it after all other css files
 			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/custom.css'))
 				$styles['template'][] = 'custom.css';
-
-		// Include FontAwesome
-		$styles['fontawesome'] = Array();
 
 		return $styles;
 	}
