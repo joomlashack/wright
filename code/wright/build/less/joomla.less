@@ -591,6 +591,13 @@ dl.label.label-info dt{
 		              			border-left-color: transparent;
 		              			border-top-color: @dropdownLinkColor;
 		            		}
+		            		&:hover,
+		            		&:focus {
+		            			.caret {
+			              			border-left-color: transparent;
+			              			border-top-color: @dropdownLinkColorHover;         				
+		            			}
+		            		}
 	      				}
 	      				&.active {
 	      					> a {
@@ -600,9 +607,14 @@ dl.label.label-info dt{
 			            		}
 			            		&:hover,
 			            		&:focus {
+			            			color: @dropdownLinkColorHover;
+				            		[class^="icon-"],
+				            		[class*=" icon-"] {
+				             			color: @dropdownLinkColorHover;
+				            		}
 				            		.caret {
 				              			border-left-color: transparent;
-				              			border-top-color: @black;
+				              			border-top-color: @dropdownLinkColorHover;
 				            		}			            			
 			            		}
 	      					}
@@ -611,24 +623,24 @@ dl.label.label-info dt{
 	      		}
 	        	&.active {
 	          		> a {
-	            		color: @white;
+	            		color: @dropdownLinkColorActive;
 	            		[class^="icon-"],
 	            		[class*=" icon-"] {
-	             			color: @white;
+	             			color: @dropdownLinkColorActive;
 	            		}
 	            		.caret {
-	              			border-top-color: @white;
+	              			border-top-color: @dropdownLinkColorActive;
 	              			border-left-color: transparent;
 	            		}
 	            		&:hover,
 	            		&:focus {
-	              			color: @black;
+	              			color: @dropdownLinkColorHover;
 	              			[class^="icon-"],
 	              			[class*=" icon-"] {
-	                			color: @black;
+	                			color: @dropdownLinkColorHover;
 	              			}
 	              			.caret {
-	                			border-top-color: @black;
+	                			border-top-color: @dropdownLinkColorHover;
 	              			}
 	            		}
 	          		}
