@@ -1,7 +1,16 @@
+/* Phone and tablets */
 @media (max-width: 979px) {
+
 	body,
 	body.toolbarpadding {
 		padding-top: 0;
+	}
+
+	.item-comment .item-image{
+		display:none;
+	}
+	.well {
+		padding: 10px;
 	}
 
 	.navbar-fixed-top {
@@ -97,25 +106,9 @@
 		}
 	}
 }
+
+/* Phones */
 @media (max-width: 767px){
-	#footer{
-		margin-left: -20px;
-		margin-right: -20px;
-	}
-}
-@media (max-width: 480px) {
-	.item-info > span {
-		display:block;
-	}
-	.blog-item .pull-right.item-image {
-		margin:0 0 18px 0;
-	}
-	.blog-item .pull-left.item-image {
-		margin:0 0 18px 0;
-		float:none;
-	}
-}
-@media (max-width: 768px) {
 	body {
 		padding-top: 0;
 	}
@@ -216,13 +209,21 @@
 		display:block;
 		margin-bottom:9px;
 	}
-}
-@media (max-width: 980px) {
-
-	.item-comment .item-image{
-		display:none;
+	#footer{
+		margin-left: -20px;
+		margin-right: -20px;
 	}
-	.well {
-		padding: 10px;
+}
+/* Phones (small resolution) */
+@media (max-width: 480px) {
+	.item-info > span {
+		display:block;
+	}
+	.blog-item .pull-right.item-image {
+		margin:0 0 18px 0;
+	}
+	.blog-item .pull-left.item-image {
+		margin:0 0 18px 0;
+		float:none;
 	}
 }
