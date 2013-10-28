@@ -1,25 +1,33 @@
 <?php
 /**
- * @package Joomlashack Wright Framework
- * @copyright Joomlashack 2010-2013. All Rights Reserved.
+ * @package     Wright
+ * @subpackage  Main package
  *
- * @description Wright is a framework layer for Joomla to improve stability of Joomlashack Templates
- *
- * It would be inadvisable to alter the contents of anything inside of this folder
- *
+ * @copyright   Copyright (C) 2005 - 2013 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 defined('_JEXEC') or die('You are not allowed to directly access this file');
 
-//Adding a check for PHP4 to cut down on support
-if (version_compare(PHP_VERSION, '5', '<'))
-{
-	print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and our products require PHP 5.2 or greater. Please contact your host to use PHP 5.2 or greater. All versions of PHP prior to this are unsupported, by us and by the PHP community.';
-	die();
+if (version_compare(JVERSION, '3.0', 'lt')) {
+	// check for PHP 5.2.4 if Joomla < 3.0
+	if (version_compare(PHP_VERSION, '5.2.4', 'lt')) {
+		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 2.5 requires PHP 5.2.4 or greater. Please contact your host to use PHP 5.2.4 or greater (Joomla 5.3+ recommended).
+			<br />Please check Joomla requirements in <a href="http://www.joomla.org/technical-requirements.html">http://www.joomla.org/technical-requirements.html</a>';
+		die();
+	}
+}
+else {
+	// check for PHP 5.3.1 if Joomla >= 3.0
+	if (version_compare(PHP_VERSION, '5.3.1', 'lt')) {
+		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 3.x requires PHP 5.3.1 or greater. Please contact your host to use PHP 5.3.1 or greater.
+			<br />Please check Joomla requirements in <a href="http://www.joomla.org/technical-requirements.html">http://www.joomla.org/technical-requirements.html</a>';
+		die();
+	}
 }
 
 // includes WrightTemplateBase class for customizations to the template
 require_once(dirname(__FILE__) . '/template/wrighttemplatebase.php');
-
 
 class Wright
 {
@@ -62,12 +70,14 @@ class Wright
 			$this->loadBootstrap = true;
 		}
 		else {
-			// Add JavaScript Frameworks
+			// Add JavaScript CSS and Framework
 			JHtml::_('bootstrap.framework');
+			JHtml::_('bootstrap.loadCss', true, $this->document->direction);
 		}
 
 		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
 
+		require_once(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'wrighttemplate.php');
 		if (is_file(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
 			include_once(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php');
 
@@ -82,8 +92,6 @@ class Wright
             $path = JPATH_THEMES . '/' . $document->template . '/home.php';
         elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
             $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
-
-
 
 		// Include our file and capture buffer
 		ob_start();
@@ -121,22 +129,10 @@ class Wright
 
 	public function header()
 	{
-		// Remove mootools if set
-		if ($this->document->params->get('mootools', '1') == '0')
-		{
-			$dochead = $this->document->getHeadData();
-			reset($dochead['scripts']);
-			foreach ($dochead['scripts'] as $script => $type)
-			{
-				if (strpos($script, 'media/system/js/caption.js') || strpos($script, 'media/system/js/mootools.js') || strpos($script, 'media/system/js/mootools-core.js') || strpos($script, 'media/system/js/mootools-more.js'))
-				{
-					unset($dochead['scripts'][$script]);
-				}
-			}
-			$this->document->setHeadData($dochead);
-		}
-		else {
-			JHtml::_('behavior.framework', true);
+		JHtml::_('behavior.framework', true);
+
+		if ($this->document->params->get('modal', '1') == '1') {
+			JHtml::_('behavior.modal');
 		}
 
 		// load jQuery ?
@@ -145,11 +141,11 @@ class Wright
             switch ($loadJquery) {
                 // load jQuery locally
                 case 1:
-                    $jquery = $this->_urlJS . '/jquery-1.8.3.min.js';
+                    $jquery = $this->_urlJS . '/jquery.min.js';
                     break;
                 // load jQuery from Google
                 default:
-                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js';
+                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
                     break;
             }
             
@@ -185,6 +181,11 @@ class Wright
 			$this->document->params->set('style', $user->getParam('theme'));
 		}
 
+		if ($this->document->params->get('documentationMode','0') == '1') {
+			$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
+			$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
+		}
+
 		// Build css
 		$this->css();
 	}
@@ -204,11 +205,16 @@ class Wright
 			{
 				foreach ($files as $style)
 				{
-					if ($folder == 'fontawesome')
-						$sheet = $this->_urlFontAwesome . '/css/' . $style;
-					else
-						$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
-
+					switch ($folder) {
+						case 'fontawesome':
+							$sheet = $this->_urlFontAwesome . '/css/' . $style;
+							break;
+						case 'wrighttemplatecss':
+							$sheet = $this->_urlWright . '/css/' . $style;
+							break;
+						default:
+							$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
+					}
 					$this->document->addStyleSheet($sheet);
 				}
 			}
@@ -224,15 +230,20 @@ class Wright
 		$browser = JBrowser::getInstance();
 
         $version = explode('.', JVERSION);
-        $version = $version[0].$version[1];
 
-		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '.css'))
-			$styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '.css';
+        $subversion = (int)$version[1];
 
-		if ($this->document->params->get('responsive',1) && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/' . 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css')) {
-            $styles['template'][] = 'joomla' . $version . '-' . $this->document->params->get('style') . '-responsive.css';
-		}
+        $cssFound = false;
 
+        if (version_compare(JVERSION, '3.0', 'lt')) {
+        	$styles['wrighttemplatecss'][] = 'template.css.php';
+        	if ($this->document->params->get('responsive','1') == '1')
+        		$styles['wrighttemplatecss'][] = 'template-responsive.css.php';
+        }
+
+        if ($this->document->params->get('documentationMode','0') == '1') {
+        	$styles['template'][] = 'docs.css';
+        }
 
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
@@ -268,7 +279,7 @@ class Wright
 				$styles['template'][] = 'custom.css';
 
 		// Include FontAwesome
-		$styles['fontawesome'] = Array('font-awesome.min.css');
+		$styles['fontawesome'] = Array();
 
 		return $styles;
 	}

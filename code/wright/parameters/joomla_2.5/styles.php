@@ -17,19 +17,22 @@ class JFormFieldStyles extends JFormFieldList
 		// Initialize variables.
 		$options = array();
 
-		$version = explode('.', JVERSION);
-        $version = $version[0].$version[1];
+		$filesFound = false;
 
-		$styles = JFolder::files(JPATH_ROOT.'/templates'.'/'.$this->form->getValue('template').'/css', 'joomla' . $version . '-([^\.-]*)\.css');
+		$styles = JFolder::files(JPATH_ROOT.'/templates'.'/'.$this->form->getValue('template').'/css', 'style-([^\.]*)\.css');
 
-        if (!count($styles)) return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template'), true));
+        if (!count($styles)) {
+	        return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template'), true));
+        }
 
 		foreach ($styles as $style)
 		{
-			$item = substr($style, 9, strpos($style, '.css') - 9);
-			$val	= $item;
-			$text	= ucfirst($item);
-			$options[] = JHTML::_('select.option', $val, JText::_($text));
+			if (!preg_match('/-responsive.css$/', $style) && !preg_match('/-extended.css$/', $style)) {
+				$item = substr($style, 6, strpos($style, '.css') - 6);
+				$val	= $item;
+				$text	= ucfirst($item);
+				$options[] = JHTML::_('select.option', $val, JText::_($text));
+			}
 		}
 
 		return $options;

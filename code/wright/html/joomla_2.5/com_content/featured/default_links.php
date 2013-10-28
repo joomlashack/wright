@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.9
+// Wright v.3 Override: Joomla 2.5.14
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 
 <h3><?php echo JText::_('COM_CONTENT_MORE_ARTICLES'); ?></h3>
 
-<ol<?php echo ' class="nav nav-list"'; // Wright v.3: More articles ?>>
+<ol class="nav nav-tabs nav-stacked">  <?php // Wright v.3: Added nav nav-tabs nav-stacked classes ?>
 <?php foreach ($this->link_items as &$item) : ?>
 	<li>
 		<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catslug)); ?>">

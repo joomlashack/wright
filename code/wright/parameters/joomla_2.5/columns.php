@@ -12,8 +12,9 @@ class JFormFieldColumns extends JFormField
 		$doc = JFactory::getDocument();
 		$doc->addScript(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/columns/columns.js');
 		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/columns/columns.css');
-		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/basicbootstrap.css');
-		$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/fontawesomemore/css/font-awesome.css');
+		if (version_compare(JVERSION, '3.0', 'lt')) {
+			$doc->addStylesheet(str_replace('/administrator/', '/', JURI::base()).'templates/'.$this->form->getValue('template').'/wright/parameters/assets/basicbootstrap.css');
+		}
 
 		$values = explode(';', $this->value);
 		foreach ($values as $col)
@@ -40,13 +41,11 @@ class JFormFieldColumns extends JFormField
 
 		$html .= '<input type="hidden" name="'.$this->name.'" id="'.$this->name.'" value="'.$this->value.'" />';
 
-		
-
-		//$html .= '<div'
-
 		foreach ($columns as $column)
 		{
-			$html .= '<div id="column_'.$column[0].'" class="col span' . $column[1] . '" style="text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\''.$column[0].'\', \'left\')"><i class="icon-caret-left"></i></a><a onclick="swapColumns(\''.$column[0].'\', \'right\')"><i class="icon-caret-right"></i></a></span><span style="display: block; text-align:center;">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMN_'.strtoupper($column[0])) . '</span> ' . JHtml::_('select.genericlist',  $options, 'ignore['.$column[0].']', $class, 'value', 'text', $column[1], 'columns_'.$column[0]) . '</div>';
+			$html .= '<div id="column_'.$column[0].'" class="col span' . $column[1] . '" style="text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\''.$column[0].'\', \'left\')"><i class="icon-arrow-left"></i></a><a onclick="swapColumns(\''.$column[0].'\', \'right\')"><i class="icon-arrow-right"></i></a></span><span style="display: block; text-align:center;">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMN_'.strtoupper($column[0])) . '</span> ' .
+
+				JHtml::_('select.genericlist',  $options, 'ignore['.$column[0].']', $class . ' onchange="changeColumns();"', 'value', 'text', $column[1], 'columns_'.$column[0]) . '</div>';
 		}
 
 		$html .= '<div style="display: none; clear: both;"></div></div>';

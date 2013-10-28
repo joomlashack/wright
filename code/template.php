@@ -16,7 +16,7 @@
 
                 </header><!-- .entry-header -->
 
-                
+
                 <div class="entry-content">
                     <w:content />
                 </div><!-- .entry-content -->
