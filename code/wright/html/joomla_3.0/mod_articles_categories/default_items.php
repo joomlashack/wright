@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.5
+// Wright v.3 Override: Joomla 3.2.0
 /**
  * @package     Joomla.Site
  * @subpackage  mod_articles_categories
@@ -16,7 +16,9 @@ foreach ($list as $item) :
   <h<?php echo $params->get('item_heading') + $levelup; ?>>
 		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>">
 		<i class="icon-folder-open"></i>  <?php // Wright v.3: Added icon ?>
-		<?php echo $item->title;?></a>
+		<?php echo $item->title;?><?php if($params->get('numitems')): ?>
+			(<?php echo $item->numitems; ?>)
+		<?php endif; ?></a>
    </h<?php echo $params->get('item_heading') + $levelup; ?>>
 
 		<?php

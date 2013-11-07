@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.5
+// Wright v.3 Override: Joomla 3.2.0
 /**
  * @package     Joomla.Site
  * @subpackage  mod_feed
@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 <?php
 if (!empty($feed) && is_string($feed))
 {
-		echo $feed;
+	echo $feed;
 }
 else
 {
@@ -29,7 +29,7 @@ else
 	// feed description
 	elseif ($lang->isRTL() && $myrtl == 1)
 	{
-			$direction = " redirect-ltr";
+		$direction = " redirect-ltr";
 	}
 
 	elseif ($lang->isRTL() && $myrtl == 2)
@@ -63,7 +63,7 @@ else
 		{
 			?>
 					<h2 class="<?php echo $direction; ?>">
-						<a href="<?php echo str_replace('&', '&amp', $feed->link->uri); ?>" target="_blank"> <?php // Wright v.3: Added ->uri to fix link ?>
+						<a href="<?php echo str_replace('&', '&amp', $feed->link->uri); ?>" target="_blank">
 						<?php echo $feed->title; ?></a>
 					</h2>
 			<?php
@@ -79,7 +79,6 @@ else
 		if ($params->get('rssimage', 1) && $iUrl) :
 		?>
 			<img src="<?php echo $iUrl; ?>" alt="<?php echo @$iTitle; ?>"/>
-
 		<?php endif; ?>
 
 	<!-- Show items -->
@@ -95,10 +94,8 @@ else
 			?>
 			<?php
 				$uri = (!empty($feed[$i]->guid) || !is_null($feed[$i]->guid)) ? $feed[$i]->guid : $feed[$i]->uri;
-
 				$uri = substr($uri, 0, 4) != 'http' ? $params->get('rsslink') : $uri;
 				$text = !empty($feed[$i]->content) ||  !is_null($feed[$i]->content) ? $feed[$i]->content : $feed[$i]->description;
-
 			?>
 				<li>
 					<?php if (!empty($uri)) : ?>
@@ -124,6 +121,8 @@ else
 					</li>
 			<?php } ?>
 			</ul>
+		</ul>
+	</div>
 	<?php }
 	}
 }

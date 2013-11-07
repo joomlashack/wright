@@ -1,4 +1,5 @@
 <?php
+// Wright v.3 Override: Joomla 3.2.0
 /**
  * @package     Joomla.Site
  * @subpackage  com_tags
@@ -10,6 +11,7 @@
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.framework');
+JHtml::_('formbehavior.chosen', 'select');
 
 $n			= count($this->items);
 $listOrder	= $this->escape($this->state->get('list.ordering'));
@@ -18,10 +20,10 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 ?>
 
 <form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm">
-	<?php if ($this->params->get('filter_field') != 'hide' || $this->params->get('show_pagination_limit')) :?>
+	<?php if ($this->params->get('filter_field') || $this->params->get('show_pagination_limit')) : ?>
 	<div class="well well-small">  <?php // Wright v.3: Added well ?>
 		<fieldset class="filters btn-toolbar">
-			<?php if ($this->params->get('filter_field') != 'hide') :?>
+			<?php if ($this->params->get('filter_field')) :?>
 				<div class="btn-group">
 					<label class="filter-search-lbl element-invisible" for="filter-search">
 						<?php echo JText::_('COM_TAGS_TITLE_FILTER_LABEL').'&#160;'; ?>

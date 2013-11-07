@@ -66,8 +66,8 @@ $separator = '<i class="icon-caret-right"></i>';  // Wright v.3: Joomla 3.x sepa
 	}
 	elseif ($show_last)
 	{
-		// Render last item if read.
-		echo '<li>';
+		// Render last item if reqd.
+		echo '<li class="active">';
 		echo '<span>' . $item->name . '</span>';
 		echo '</li>';
 	}

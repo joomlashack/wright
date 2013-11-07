@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.5
+// Wright v.3 Override: Joomla 3.2.0
 /**
  * @package     Joomla.Site
  * @subpackage  com_newsfeeds
@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 JHtml::_('behavior.caption');
+JHtml::_('formbehavior.chosen', 'select');
 
 $pageClass = $this->params->get('pageclass_sfx');
 ?>

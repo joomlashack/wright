@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.5
+// Wright v.3 Override: Joomla 3.2.0
 /**
  * @package     Joomla.Site
  * @subpackage  com_search
@@ -9,6 +9,7 @@
  */
 
 defined('_JEXEC') or die;
+JHtml::_('formbehavior.chosen', 'select');
 ?>
 
 <div class="search<?php echo $this->pageclass_sfx; ?>">

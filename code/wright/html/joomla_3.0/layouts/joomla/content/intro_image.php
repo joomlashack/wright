@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.5
+// Wright v.3 Override: Joomla 3.2.0
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
@@ -9,8 +9,7 @@
  */
 
 defined('_JEXEC') or die;
-$params  = $displayData->params; // Wright v.3: Added params (fixed in Joomla 3.1.2)
-
+$params  = $displayData->params;
 ?>
 <?php $images = json_decode($displayData->images); ?>
 <?php if (isset($images->image_intro) && !empty($images->image_intro)) : ?>
