@@ -231,6 +231,8 @@ class Wright
 
         $cssFound = false;
 
+        $styles = Array();
+
         if (version_compare(JVERSION, '3.0', 'lt')) {
         	$styles['wrighttemplatecss'][] = 'template.css.php';
         	if ($this->document->params->get('responsive','1') == '1')
@@ -269,8 +271,8 @@ class Wright
 			$styles['template'][] = 'rtl.css';
 
 		//Check to see if custom.css file is present, and if so add it after all other css files
-			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/custom.css'))
-				$styles['template'][] = 'custom.css';
+		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/custom.css'))
+			$styles['template'][] = 'custom.css';
 
 		return $styles;
 	}
