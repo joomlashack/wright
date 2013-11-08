@@ -221,78 +221,85 @@ dl.label.label-info dt{
 				}
 			}
 		}
-		.dropdown-menu,
-		.dropdown {
-			border: 0;
-			li {
-				> a {
-					color: @dropdownLinkColor;
-					.caret {
-						border-bottom: 4px solid transparent;
-						border-left: 4px solid @dropdownLinkColor;
-						border-top: 4px solid transparent;
-					}
-					[class^="icon-"],
-					[class*=" icon-"] {
+		&.dropdown {
+			.dropdown-menu {
+				border: 0;
+				li {
+					> a {
 						color: @dropdownLinkColor;
+						.caret {
+							border-bottom: 4px solid transparent;
+							border-left: 4px solid @dropdownLinkColor;
+							border-top: 4px solid transparent;
+						}
+						[class^="icon-"],
+						[class*=" icon-"] {
+							color: @dropdownLinkColor;
+						}
+						&:hover,
+						&:focus {
+							color: @dropdownLinkColorHover;
+							.caret {
+								border-bottom: 4px solid transparent;
+								border-left: 4px solid @dropdownLinkColorHover;
+								border-top: 4px solid transparent;
+							}
+							[class^="icon-"],
+							[class*=" icon-"] {
+								color: @dropdownLinkColorHover;
+							}
+						}
+					}
+					&.active {
+						> a {
+							color: @dropdownLinkColorActive;
+							.caret {
+								border-bottom: 4px solid transparent;
+								border-left: 4px solid @dropdownLinkColorActive;
+								border-top: 4px solid transparent;
+							}
+							[class^="icon-"],
+							[class*=" icon-"] {
+								color: @dropdownLinkColorActive;
+							}
+						}
+					}
+					.sub-menu {
+						left: 100%;
+						position: absolute;
+						top: 0;
+						visibility: hidden;
+						margin-top: -1px;
+						&:before {
+						    border-bottom: 7px solid transparent;
+						    border-left: none;
+						    border-right: 7px solid @dropdownBackground;
+						    border-top: 7px solid transparent;
+						    left: -7px;
+						    top: 10px;
+						    position: absolute;
+						    content: "";
+						    display: inline-block;
+						}
+						&:after {
+						    border-top: 6px solid transparent;
+						    border-left: none;
+						    border-right: 7px solid @dropdownBackground;
+						    border-bottom: 6px solid transparent;
+						    left: 10px;
+						    top: 11px;
+						    left: -6px;
+						    position: absolute;
+						    content: "";
+						    display: inline-block;
+						}
 					}
 					&:hover,
 					&:focus {
-						color: @dropdownLinkColorHover;
-						.caret {
-							border-bottom: 4px solid transparent;
-							border-left: 4px solid @dropdownLinkColorHover;
-							border-top: 4px solid transparent;
-						}
-						[class^="icon-"],
-						[class*=" icon-"] {
-							color: @dropdownLinkColorHover;
+						.sub-menu {
+							visibility: visible;
 						}
 					}
-				}
-				&.active {
-					> a {
-						color: @dropdownLinkColorActive;
-						.caret {
-							border-bottom: 4px solid transparent;
-							border-left: 4px solid @dropdownLinkColorActive;
-							border-top: 4px solid transparent;
-						}
-						[class^="icon-"],
-						[class*=" icon-"] {
-							color: @dropdownLinkColorActive;
-						}
-					}
-				}
-			}
-			.sub-menu {
-				left: 100%;
-				position: absolute;
-				top: 0;
-				visibility: hidden;
-				margin-top: -1px;
-				&:before {
-				    border-bottom: 7px solid transparent;
-				    border-left: none;
-				    border-right: 7px solid @dropdownBackground;
-				    border-top: 7px solid transparent;
-				    left: -7px;
-				    top: 10px;
-				    position: absolute;
-				    content: "";
-				    display: inline-block;
-				}
-				&:after {
-				    border-top: 6px solid transparent;
-				    border-left: none;
-				    border-right: 7px solid @dropdownBackground;
-				    border-bottom: 6px solid transparent;
-				    left: 10px;
-				    top: 11px;
-				    left: -6px;
-				    position: absolute;
-				    content: "";
-				    display: inline-block;
 				}
 			}
 		}
@@ -300,9 +307,6 @@ dl.label.label-info dt{
 		&:focus {
 			> .dropdown-menu {
 				display: block
-			}
-			> .sub-menu {
-				visibility: visible;
 			}
 		}
 	}
@@ -364,14 +368,15 @@ dl.label.label-info dt{
 					}
 				}
 			}
-			&.dropdown,
-			&.dropdown-menu {
-				> a {
-					&:hover,
-					&:focus {
-						.caret {
-							border-top-color: @navbarInverseLinkColorHover;
-							border-bottom-color: @navbarInverseLinkColorHover;
+			&.dropdown {
+				.dropdown-menu {
+					> a {
+						&:hover,
+						&:focus {
+							.caret {
+								border-top-color: @navbarInverseLinkColorHover;
+								border-bottom-color: @navbarInverseLinkColorHover;
+							}
 						}
 					}
 				}
@@ -425,32 +430,33 @@ dl.label.label-info dt{
 				}
 			}
 		}
-		.dropdown,
-		.dropdown-menu {
-			background-color: @dropdownBackground;
-			li {
-				> a {
-					background-color: transparent;
-					.caret {
-						border-top-color: transparent;
-						border-left-color: @dropdownLinkColor;
-					}
-					&:hover,
-					&:focus {
-						.caret {
-							border-left-color: @dropdownLinkColorHover;
-						}
-					}
-				}
-				&.active {
+		&.dropdown {
+			.dropdown-menu {
+				background-color: @dropdownBackground;
+				li {
 					> a {
+						background-color: transparent;
 						.caret {
-							border-left-color: @dropdownLinkColorActive;
+							border-top-color: transparent;
+							border-left-color: @dropdownLinkColor;
 						}
 						&:hover,
 						&:focus {
 							.caret {
+								border-left-color: @dropdownLinkColorHover;
+							}
+						}
+					}
+					&.active {
+						> a {
+							.caret {
 								border-left-color: @dropdownLinkColorActive;
+							}
+							&:hover,
+							&:focus {
+								.caret {
+									border-left-color: @dropdownLinkColorActive;
+								}
 							}
 						}
 					}
@@ -510,85 +516,87 @@ dl.label.label-info dt{
 					}
 				}
 			}
-		}
-		.dropdown-menu,
-		.dropdown {
-			position: relative;
-			display: block;
-			background-color: transparent;
-			float: none;
-			border: 0;
-			box-shadow: none;
-			border-radius: 0;
-			min-width: 0;
-			padding: 0;
-			ul {
-				margin: 0 5px;
-			}
-			li {
-				> a {
-					white-space: normal;
-					.caret {
-						border-left: 4px solid transparent;
-						border-right: 4px solid transparent;
-						border-bottom: 4px solid transparent;
-						border-top: 4px solid @dropdownLinkColor;
+			&.dropdown {
+				.dropdown-menu {
+					position: relative;
+					display: block;
+					background-color: transparent;
+					float: none;
+					border: 0;
+					box-shadow: none;
+					border-radius: 0;
+					min-width: 0;
+					padding: 0;
+					ul {
+						margin: 0 5px;
 					}
-					&:hover,
-					&:focus {
-						.caret {
-							border-left: 4px solid transparent;
-							border-right: 4px solid transparent;
-							border-bottom: 4px solid transparent;
-							border-top: 4px solid @dropdownLinkColorHover;
-						}
-					}
-				}
-				&.active {
-					> a {
-						color: @dropdownLinkColorActive;
-						[class^="icon-"],
-						[class*=" icon-"] {
-							color: @dropdownLinkColorActive;
-						}
-						.caret {
-							border-left: 4px solid transparent;
-							border-right: 4px solid transparent;
-							border-bottom: 4px solid transparent;
-							border-top: 4px solid @dropdownLinkColorActive;
-						}
-						&:hover,
-						&:focus {
-							color: @dropdownLinkColorHover;
-							[class^="icon-"],
-							[class*=" icon-"] {
-								color: @dropdownLinkColorHover;
-							}
+					li {
+						> a {
+							white-space: normal;
 							.caret {
 								border-left: 4px solid transparent;
 								border-right: 4px solid transparent;
 								border-bottom: 4px solid transparent;
-								border-top: 4px solid @dropdownLinkColorHover;
+								border-top: 4px solid @dropdownLinkColor;
 							}
+							&:hover,
+							&:focus {
+								.caret {
+									border-left: 4px solid transparent;
+									border-right: 4px solid transparent;
+									border-bottom: 4px solid transparent;
+									border-top: 4px solid @dropdownLinkColorHover;
+								}
+							}
+						}
+						&.active {
+							> a {
+								color: @dropdownLinkColorActive;
+								[class^="icon-"],
+								[class*=" icon-"] {
+									color: @dropdownLinkColorActive;
+								}
+								.caret {
+									border-left: 4px solid transparent;
+									border-right: 4px solid transparent;
+									border-bottom: 4px solid transparent;
+									border-top: 4px solid @dropdownLinkColorActive;
+								}
+								&:hover,
+								&:focus {
+									color: @dropdownLinkColorHover;
+									[class^="icon-"],
+									[class*=" icon-"] {
+										color: @dropdownLinkColorHover;
+									}
+									.caret {
+										border-left: 4px solid transparent;
+										border-right: 4px solid transparent;
+										border-bottom: 4px solid transparent;
+										border-top: 4px solid @dropdownLinkColorHover;
+									}
+								}
+							}
+						}
+					}
+					.sub-menu {
+						box-shadow: none;
+						margin: 0 10px;
+						position: relative;
+						visibility: visible;
+						margin-top: 0;
+						left: 0;
+						&:before,
+						&:after {
+							display: none;
 						}
 					}
 				}
 			}
-			.sub-menu {
-				box-shadow: none;
-				margin: 0 10px;
-				position: relative;
-				visibility: visible;
-				margin-top: 0;
-				left: 0;
-				&:before,
-				&:after {
-					display: none;
-				}
-			}
 		}
     	&.nav-stacked,
-    	&.nav-pills {
+    	&.nav-pills,
+    	&.nav-list {
 	      	li {
 	      		> a {
 	      			-webkit-text-shadow: none;
@@ -597,42 +605,43 @@ dl.label.label-info dt{
 	      			-o-text-shadow: none;
 	      			text-shadow: none;
 	      		}
-	      		.dropdown,
-	      		.dropdown-menu {
-	      			li {
-	      				> a {
-		            		.caret {
-		              			border-left-color: transparent;
-		              			border-top-color: @dropdownLinkColor;
-		            		}
-		            		&:hover,
-		            		&:focus {
-		            			.caret {
-			              			border-left-color: transparent;
-			              			border-top-color: @dropdownLinkColorHover;         				
-		            			}
-		            		}
-	      				}
-	      				&.active {
-	      					> a {
+	      		&.dropdown {
+	      			.dropdown-menu {
+		      			li {
+		      				> a {
 			            		.caret {
 			              			border-left-color: transparent;
-			              			border-top-color: @dropdownLinkColorActive;
+			              			border-top-color: @dropdownLinkColor;
 			            		}
 			            		&:hover,
 			            		&:focus {
-			            			color: @dropdownLinkColorHover;
-				            		[class^="icon-"],
-				            		[class*=" icon-"] {
-				             			color: @dropdownLinkColorHover;
-				            		}
+			            			.caret {
+				              			border-left-color: transparent;
+				              			border-top-color: @dropdownLinkColorHover;         				
+			            			}
+			            		}
+		      				}
+		      				&.active {
+		      					> a {
 				            		.caret {
 				              			border-left-color: transparent;
-				              			border-top-color: @dropdownLinkColorHover;
-				            		}			            			
-			            		}
-	      					}
-	      				}
+				              			border-top-color: @dropdownLinkColorActive;
+				            		}
+				            		&:hover,
+				            		&:focus {
+				            			color: @dropdownLinkColorHover;
+					            		[class^="icon-"],
+					            		[class*=" icon-"] {
+					             			color: @dropdownLinkColorHover;
+					            		}
+					            		.caret {
+					              			border-left-color: transparent;
+					              			border-top-color: @dropdownLinkColorHover;
+					            		}			            			
+				            		}
+		      					}
+		      				}
+		      			}
 	      			}
 	      		}
 	        	&.active {
@@ -664,39 +673,40 @@ dl.label.label-info dt{
   	}
 	.tabbable {
   		li {
-    		.dropdown,
-    		.dropdown-menu {
-    			li {
-    				> a {
-	        			.caret {
-	          				border-top-color: @dropdownLinkColor;
-	              			border-left-color: transparent;
-	        			}
-		    			&:hover,
-		    			&:focus {
-		    				.caret {
-		    					border-top-color: @dropdownLinkColorHover;
-		    					border-left-color: transparent;
-		    				}
-		    			}
-    				}
-    				&.active {
-    					> a {
-		            		.caret {
-		              			border-top-color: @dropdownLinkColorActive;
+  			&.dropdown {
+  				.dropdown-menu {
+	    			li {
+	    				> a {
+		        			.caret {
+		          				border-top-color: @dropdownLinkColor;
 		              			border-left-color: transparent;
-		            		}
-		            		&:hover,
-		            		&:focus {
-		            			.caret {
+		        			}
+			    			&:hover,
+			    			&:focus {
+			    				.caret {
 			    					border-top-color: @dropdownLinkColorHover;
 			    					border-left-color: transparent;
-		            			}
-		            		}
-    					}
-    				}
-    			}        			
-    		}
+			    				}
+			    			}
+	    				}
+	    				&.active {
+	    					> a {
+			            		.caret {
+			              			border-top-color: @dropdownLinkColorActive;
+			              			border-left-color: transparent;
+			            		}
+			            		&:hover,
+			            		&:focus {
+			            			.caret {
+				    					border-top-color: @dropdownLinkColorHover;
+				    					border-left-color: transparent;
+			            			}
+			            		}
+	    					}
+	    				}
+	    			}
+  				}
+  			}
   		}
   	}
 }
