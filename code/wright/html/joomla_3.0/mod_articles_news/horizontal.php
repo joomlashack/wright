@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.16
+// Wright v.3 Override: Joomla 3.2
 /**
  * @package		Joomla.Site
  * @subpackage	mod_articles_news
@@ -12,7 +12,8 @@ defined('_JEXEC') or die;
 
 ?>
 
-<ul class="newsflash-horiz<?php echo $params->get('moduleclass_sfx') . " unstyled row-fluid"; // Wright v.3: Added row-fluid  class ?>">
+
+<ul class="newsflash-horiz<?php echo $params->get('moduleclass_sfx'); . " unstyled row-fluid" // Wright v.3: Added row-fluid  class ?>">
 <?php for ($i = 0, $n = count($list); $i < $n; $i ++) :
 	$item = $list[$i]; ?>
 	<li class="span3"> <?php // Wright v.3: Added span3 class for 4 columns ?>
