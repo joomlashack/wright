@@ -47,7 +47,8 @@ class JFormFieldColumns extends JFormField
 
 		foreach ($columns as $column)
 		{
-			$html .= '<div id="column_'.$column[0].'" class="col span' . $column[1] . '" style="text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\''.$column[0].'\', \'left\')"><i class="icon-arrow-left"></i></a><a onclick="swapColumns(\''.$column[0].'\', \'right\')"><i class="icon-arrow-right"></i></a></span><span style="display: block; text-align:center;">' . JText::_(ucfirst($column[0])) . '</span> ' . JHtml::_('select.genericlist',  $options, 'ignore['.$column[0].']', $class, 'value', 'text', $column[1], 'columns_'.$column[0]) . '</div>';
+			$html .= '<div id="column_'.$column[0].'" class="col span' . $column[1] . '" style="text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\''.$column[0].'\', \'left\')"><i class="icon-arrow-left"></i></a><a onclick="swapColumns(\''.$column[0].'\', \'right\')"><i class="icon-arrow-right"></i></a></span><span style="display: block; text-align:center;">' . JText::_(ucfirst($column[0])) . '</span> ' .
+			JHtml::_('select.genericlist',  $options, 'ignore['.$column[0].']', $class . ' onchange="changeColumns();"', 'value', 'text', $column[1], 'columns_'.$column[0]) . '</div>';
 		}
 
 		$html .= '<div style="display: none; clear: both;"></div></div>';

@@ -1,5 +1,13 @@
 <?php
+/**
+ * @package     Wright
+ * @subpackage  Doctype
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
 
+defined('_JEXEC') or die('You are not allowed to directly access this file');
 abstract class HtmlAdapterAbstract
 {
 	protected $columns = array();
@@ -38,7 +46,11 @@ abstract class HtmlAdapterAbstract
 	}
 
 	public function getHtml($matches) {
-		return '<html>';
+		$lang = JFactory::getLanguage();
+		$tag = $lang->getTag();
+		$dir = ($lang->isRTL() ? "rtl" : "ltr");
+
+		return '<html lang="' . $tag . '" dir="' . $dir . '">';
 	}
 
 	public function getHtmlComments($matches)
@@ -70,7 +82,6 @@ abstract class HtmlAdapterAbstract
 		}
 
 		// if specific style add to class list
-		//$class .= ' '.$wright->params->get('style');
 		$xml = simplexml_load_file(JPATH_ROOT.'/templates/'.$wright->document->template.'/templateDetails.xml');
 		$theme = $xml->xpath('//style[@name="'.$wright->params->get('style').'"]');
 		if (count($theme)) $class .= ' '.$theme[0]['type'];

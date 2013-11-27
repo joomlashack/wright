@@ -615,7 +615,7 @@ div#pathway span.sep {
 }
 
 div#pathway span.sep img {
-	display: none;
+	display: inline-block;
 }
 
 /* Text selection */
