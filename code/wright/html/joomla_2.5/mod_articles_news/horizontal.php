@@ -12,17 +12,34 @@ defined('_JEXEC') or die;
 
 ?>
 
-<ul class="newsflash-horiz<?php echo $params->get('moduleclass_sfx') . " unstyled row-fluid"; // Wright v.3: Added row-fluid  class ?>">
-<?php for ($i = 0, $n = count($list); $i < $n; $i ++) :
-	$item = $list[$i]; ?>
-	<li class="span3"> <?php // Wright v.3: Added span3 class for 4 columns ?>
-	<?php require JModuleHelper::getLayoutPath('mod_articles_news', '_item');
+<?php
+	$cont = 0;
+?>
 
-	if ($n > 1 && (($i < $n - 1) || $params->get('showLastSeparator'))) : ?>
+<div class="newsflash-horiz<?php echo $params->get('moduleclass_sfx'); // Wright v.3: Changed ul for div element ?>">
+	<?php for ($i = 0, $n = count($list); $i < $n; $i ++) :
+		$item = $list[$i]; ?>
 
-	<span class="article-separator">&#160;</span>
+		<?php if ($cont % 4 ==  0): // Wright v.3: Added row-fluid wrapp  ?>
+			<div class="row-fluid">
+		<?php endif; ?>
 
-	<?php endif; ?>
-	</li>
-<?php endfor; ?>
-</ul>
+		<div class="span3"> <?php // Wright v.3: Added span3 class for 4 columns ?>
+
+			<?php require JModuleHelper::getLayoutPath('mod_articles_news', '_item');
+
+			if ($n > 1 && (($i < $n - 1) || $params->get('showLastSeparator'))) : ?>
+
+				<span class="article-separator">&#160;</span>
+
+			<?php endif; ?>
+		</div>
+		<?php if ($cont % 4 ==  3): ?>
+			</div>
+		<?php endif; ?>
+		<?php
+			$cont = $cont + 1;
+		?>
+	<?php endfor; ?>
+</div>
+
