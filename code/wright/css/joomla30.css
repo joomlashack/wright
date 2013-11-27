@@ -1034,3 +1034,12 @@ dl> dd + dt
 {
 	margin-bottom: -1px;
 }
+
+.nav.nav-tabs.nav-stacked > li
+{
+	float: none;
+}
+.nav.nav-tabs.nav-stacked > li > a
+{
+	margin-right: 0;
+}
