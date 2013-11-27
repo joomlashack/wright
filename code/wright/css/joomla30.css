@@ -495,20 +495,20 @@ div.pagenavcounter {
 /* Article Pagination */
 
 ul.pagenav, div.pagination ul {
-   
+
     list-style: none outside none;
     margin: 10px auto;
     padding: 1px 5px;
     text-align: center;
 }
-ul.pagenav li, 
+ul.pagenav li,
 div.pagination ul li {
 	display:inline;
 	background-color:#eee;
 	padding: 2px 5px;
 	color: #4F4F4F;
 }
-ul.pagenav li a, 
+ul.pagenav li a,
 div.pagination ul li a {
 	margin: -2px -5px;
 	display:inline-block;
@@ -518,7 +518,7 @@ div.pagination ul li a {
 	padding: 0 5px;
 	-moz-transition:all 0.2s ease-in 0s;
 }
-ul.pagenav li a:hover, 
+ul.pagenav li a:hover,
 div.pagination ul li a:hover {
 	box-shadow: 0 0 5px #999;
 }
@@ -552,7 +552,7 @@ div.pagination ul li a:hover {
  	padding-bottom:5px;
 }
 .panel h3 a{
-	
+
 
 }
 
@@ -579,7 +579,7 @@ a [class^="icon-"], a [class*=" icon-"] {
 
 
 ul.dropdown-menu {
-	list-style: none;	
+	list-style: none;
 }
 
 ul.dropdown-menu li {
@@ -687,7 +687,7 @@ ul.menu {
 	margin: 0;
 }
 aside ul.menu ul li{
-	margin-left: 10px;	
+	margin-left: 10px;
 }
 ul.menu ul{
     list-style:none;
@@ -983,4 +983,54 @@ iframe{
     margin-left: -5px;
     border-width: 0 5px 5px;
     border-bottom-color: #000000;
+}
+/*-------------------------------*/
+
+.nav-tabs {
+	border-bottom: 1px solid #DDDDDD;
+}
+.nav-tabs:before, .nav-tabs:after {
+	content: " ";
+	display: table;
+}
+.nav-tabs:after {
+	clear: both;
+}
+
+.nav-tabs > li {
+	float: left;
+	margin-bottom: -1px;
+	margin-left: 0;
+}
+.nav-tabs > li > a {
+	border-radius: 4px 4px 0 0;
+	border: 1px solid rgba(0, 0, 0, 0);
+	display: block;
+	line-height: 1.42857;
+	margin-right: 2px;
+	padding: 10px 15px;
+	position: relative;
+	text-decoration: none;
+}
+.nav-tabs > li > a:hover {
+	border-color: #EEEEEE #EEEEEE #DDDDDD;
+	background-color: #EEEEEE;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background-color: #FFFFFF;
+	border-color: #DDDDDD #DDDDDD rgba(0, 0, 0, 0);
+	border-image: none;
+	border-style: solid;
+	border-width: 1px;
+	color: #555555;
+	cursor: default;
+}
+
+dl> dd + dt
+{
+	margin-bottom: -1px;
 }
