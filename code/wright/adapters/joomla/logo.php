@@ -16,8 +16,9 @@ class WrightAdapterJoomlaLogo
 		// in any other case, there is always a logo (at least as Wright's default image logo.png)
 		return true;
 	}
-	
+
 	public function renderCompanion($name, $args, $width, $alt = false) {
+		//TODO: update to use the factory
 		$doc = Wright::getInstance();
 
 		if ($name == 'menu') {
@@ -56,9 +57,9 @@ class WrightAdapterJoomlaLogo
 			if ($doc->document->params->get('logowidth') !== '12' && $doc->countModules($name)) {
 				return '<div id="'.$name.($alt ? '_alt' : '_primary') . '" class="clearfix"> <jdoc:include type="modules" name="'.$name.'" style="'.$args['style'].'" /> </div>';			}
 		}
-	
+
 		return '';
-	
+
 	}
 
 	public function render($args)
@@ -67,10 +68,12 @@ class WrightAdapterJoomlaLogo
 
 		if (!isset($args['name'])) $args['name'] = 'newsflash';
 		if (!isset($args['style'])) $args['style'] = 'xhtml';
+		if (!isset($args['addid'])) $args['addid'] = '';
 
 		// class for the wrapper of the menu nav bar
 		if (!isset($args['menuWrapClass'])) $args['menuWrapClass'] = '';
 
+		//TODO: update to use the factory
 		$doc = Wright::getInstance();
 		$app = JFactory::getApplication();
 
@@ -83,22 +86,22 @@ class WrightAdapterJoomlaLogo
 		$modulewidth = 12 - $doc->document->params->get('logowidth', '6');
 		$modulewidth2 = $modulewidth;
 		$logowidth = $doc->document->params->get('logowidth', '6');
-		
+
 		$modules = 0;
 		$modulename = (isset($args['name']) ? $args['name'] : "");
-		$modulename2 = (isset($args['name']) ? $args['name'] . 2 : "");		
+		$modulename2 = (isset($args['name']) ? $args['name'] . 2 : "");
 
 		$module2name = (isset($args['name2']) ? $args['name2'] : "");
-		$module2name2 = (isset($args['name2']) ? $args['name2'] . 2 : "");		
-		
+		$module2name2 = (isset($args['name2']) ? $args['name2'] . 2 : "");
+
 		if ($logowidth !== '12' && ($doc->countModules($modulename) || $doc->countModules($module2name))) $modules++;
 		if ($logowidth !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) $modules++;
-		
+
 		if ($modules == 2) {
 			$modulewidth2 = floor($modulewidth/2);
 			$modulewidth = ceil($modulewidth/2);
 			$logowidth = 12 - $modulewidth - $modulewidth2;
-			
+
 			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename) || $doc->countModules($module2name))) {
 				$html .= '<div id="'.$modulename.'" class="span'.$modulewidth.'">';
 				$html .= $this->renderCompanion($modulename,$args,$modulewidth);
@@ -114,7 +117,7 @@ class WrightAdapterJoomlaLogo
 
 		// Toolbar opening
 		if ($uniquePosition && $modulename2 == "toolbar") {
-			$html .= '		
+			$html .= '
 				<div class="navbar ' . $args['menuWrapClass'] . '">
 					<div class="navbar-inner">
 						<div class="' . $args['containerClass'] . '">
@@ -124,7 +127,7 @@ class WrightAdapterJoomlaLogo
 
 		// If user wants a module, load it instead of image
 		if ($doc->document->params->get('logo', 'template') == 'module') {
-			$html .= '<div id="logo" class="span'.$doc->document->params->get('logowidth', '6').'"><jdoc:include type="modules" name="logo" /></div>';
+			$html .= '<div id="logo' . $args['addid'] . '" class="span'.$doc->document->params->get('logowidth', '6').'"><jdoc:include type="modules" name="logo" /></div>';
 
 
 			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
@@ -139,8 +142,8 @@ class WrightAdapterJoomlaLogo
 
 		// If user wants just a title, print it out
 		elseif ($doc->document->params->get('logo', 'template') == 'title') {
-		
-			$html .= '<div id="logo" class="span'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="title">'.$title.'</a></div>';
+
+			$html .= '<div id="logo' . $args['addid'] . '" class="span'.$doc->document->params->get('logowidth', '6').'"><a href="'.JURI::root().'" class="title">'.$title.'</a></div>';
 
 			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
 				$html .= '<div id="'.$modulename2.'" class="span'.$modulewidth2.'">';
@@ -176,16 +179,16 @@ class WrightAdapterJoomlaLogo
 		else {
 			$logo = JURI::root().'images/'.$doc->document->params->get('logo', 'logo.png');
 		}
-		
-		$html .= '<div id="logo" class="span'.$logowidth.'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
-		
+
+		$html .= '<div id="logo' . $args['addid'] . '" class="span'.$logowidth.'"><a href="'.JURI::root().'" class="image">'.$title.'<img src="'.$logo.'" alt="" title="" /></a></div>';
+
 		if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2))) {
 			$html .= '<div id="'.$modulename2.'" class="span'.$modulewidth2.'">';
 			$html .= $this->renderCompanion($modulename2,$args,$modulewidth2);
 			$html .= $this->renderCompanion($module2name2,$args,$modulewidth2,true);
 			$html .= '</div>';
 		}
-		
+
 		// Toolbar closure
 		if ($uniquePosition && $modulename2 == "toolbar") {
 			$html .= '
@@ -196,7 +199,7 @@ class WrightAdapterJoomlaLogo
 		}
 
 
-		
+
 		return $html;
 	}
 }

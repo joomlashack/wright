@@ -1,16 +1,14 @@
+var disableToolbarResize = false;
+
 if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) { 
-	(function($) { 
+	// fix for Bootstrap Carousel - conflicting with mootools-more
+	(function($) {
 		    Element.implement({
 		        slide: function(how, mode){
 		            return this;
 		        }
 		    });
     	})(jQuery);
-	(function($) { 
-		$$('[data-toggle=collapse]').each(function (e) {
-			$$(e.get('data-target'))[0].hide = null;
-		});
-	})(MooTools);
 }
 
 (function($) {
@@ -21,7 +19,6 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 		$(wrightWrapperToolbar).each(function() {
 			$(this).css('min-height',$(this).find('.navbar:first').height() + 'px');
 		});
-		
 	}
 	
 	function fixImagesIE() {
@@ -35,9 +32,11 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 	fixImagesIE();
 
 	$(window).load(function () {
-		wToolbar();
+		if (!disableToolbarResize)
+			wToolbar();
 	});
 	$(window).resize(function() {
-		wToolbar();
+		if (!disableToolbarResize)
+			wToolbar();
 	});
 })(jQuery);

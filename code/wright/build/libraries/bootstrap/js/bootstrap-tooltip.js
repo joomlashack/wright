@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-tooltip.js v2.3.1
+ * bootstrap-tooltip.js v2.3.2
  * http://twitter.github.com/bootstrap/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ===========================================================
@@ -221,9 +221,16 @@
     }
 
   , hide: function () {
+	  /* >>> JUI >>> */
+	  /* ORIGINAL:
       var that = this
         , $tip = this.tip()
         , e = $.Event('hide')
+      */
+      var that = this
+        , $tip = this.tip()
+        , e = $.Event('hideme')
+      /* <<< JUI <<< */
 
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
@@ -345,7 +352,12 @@
   , trigger: 'hover focus'
   , title: ''
   , delay: 0
+  /* >>> JUI >>> */
+  /* ORIGINAL:
   , html: false
+  */
+  , html: true
+  /* <<< JUI <<< */
   , container: false
   }
 

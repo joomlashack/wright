@@ -13,7 +13,7 @@
  
 function wrightTransformArticleContent($content) {
 	// Page Break Plugin
-	$content = preg_replace("/class=\"tabs\"/Uis", 'class="tabs nav nav-tabs"', $content);
+	$content = preg_replace("/dl([^>]*)class=\"tabs\"/Uis", 'dl$1class="tabs nav nav-tabs"', $content);  // Add tabs
 
 	return $content;
 }

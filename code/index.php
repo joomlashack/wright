@@ -1,7 +1,7 @@
 <?php
 
-require_once(dirname(__FILE__) . '/wright/wpwright.php');
+require_once(dirname(__FILE__) . '/wright/wrightfactory.php');
 
-$theme = Wright::getInstance();
+$theme = WrightFactory::getInstance();
 
 $theme->display();

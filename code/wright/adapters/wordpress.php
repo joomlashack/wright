@@ -2,7 +2,6 @@
 
 class WrightAdapterWordpress {
 
-
 	public function get($config) {
 
 		$tag = key($config);
@@ -16,6 +15,5 @@ class WrightAdapterWordpress {
 		return $item->render($config[$tag]);
 
 	}
-
 
 }

@@ -1,28 +1,44 @@
 <?php
+// Wright v.3 Override: Joomla 2.5.14
 /**
- * @package		Joomla.Site
- * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @package     Joomla.Site
+ * @subpackage  com_finder
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-// no direct access
 defined('_JEXEC') or die;
-if (!function_exists("wright_joomla_finder_search")) :
 
-	
-	
-	
-	function wright_joomla_finder_search($buffer) {
-		$buffer = preg_replace('/ class="button"/Ui', 'class="button btn btn-primary"', $buffer);
-		$buffer = preg_replace('/<span class="small">/Ui', '<span class="label label-info small">', $buffer);
-		
-				return $buffer;
-	}
+JHtml::_('behavior.framework');
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+JHtml::stylesheet('com_finder/finder.css', false, true, false);
+?>
 
-endif;
+<div class="finder<?php echo $this->pageclass_sfx; ?>">
+<?php if ($this->params->get('show_page_heading')) : ?>
+<div class="page-header">  <?php // Wright v.3: Added page header ?>
+	<h1>
+		<?php if ($this->escape($this->params->get('page_heading'))) : ?>
+			<?php echo $this->escape($this->params->get('page_heading')); ?>
+		<?php else : ?>
+			<?php echo $this->escape($this->params->get('page_title')); ?>
+		<?php endif; ?>
+	</h1>
+</div>  <?php // Wright v.3: Added page header ?>
+<?php endif; ?>
 
-ob_start("wright_joomla_finder_search");
-require('components/com_finder/views/search/tmpl/default.php');
-ob_end_flush();
+<?php if ($this->params->get('show_search_form', 1)): ?>
+	<div id="search-form">
+		<?php echo $this->loadTemplate('form'); ?>
+	</div>
+<?php endif;
 
+// Load the search results layout if we are performing a search.
+if ($this->query->search === true):
+?>
+	<div id="search-results">
+		<?php echo $this->loadTemplate('results'); ?>
+	</div>
+<?php endif; ?>
+</div>

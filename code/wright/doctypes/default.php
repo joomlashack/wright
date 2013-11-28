@@ -1,5 +1,13 @@
 <?php
+/**
+ * @package     Wright
+ * @subpackage  Doctype
+ *
+ * @copyright   Copyright (C) 2005 - 2013 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
 
+defined('_JEXEC') or die('You are not allowed to directly access this file');
 abstract class HtmlAdapterAbstract
 {
 	protected $columns = array();
@@ -39,7 +47,11 @@ abstract class HtmlAdapterAbstract
 	}
 
 	public function getHtml($matches) {
-		return '<html>';
+		$lang = JFactory::getLanguage();
+		$tag = $lang->getTag();
+		$dir = ($lang->isRTL() ? "rtl" : "ltr");
+
+		return '<html lang="' . $tag . '" dir="' . $dir . '">';
 	}
 
 	public function getHtmlComments($matches)
@@ -51,6 +63,7 @@ abstract class HtmlAdapterAbstract
 	{
 
 		return '<body>';
+		//TODO: update to use the factory
 		$wright = Wright::getInstance();
 		require_once(JPATH_ROOT.'/'.'templates'.'/'.$wright->document->template.'/'.'wright'.'/'.'includes'.'/'.'browser.php');
 		$browser = new Browser();
@@ -75,7 +88,7 @@ abstract class HtmlAdapterAbstract
 			preg_match_all('/data-([0-9]+)="([^"]*)"/', $matches[1], $dataclasses, PREG_SET_ORDER);
 			if ($dataclasses) {
 				foreach ($dataclasses as $dc) {
-					$data .= ' data-' . $dc[1] . '="' . $dc[2] . '"';					
+					$data .= ' data-' . $dc[1] . '="' . $dc[2] . '"';
 				}
 			}
 		}
@@ -133,9 +146,21 @@ abstract class HtmlAdapterAbstract
 
 	public function getSections($matches)
 	{
-		$class = 'span'.$this->columns['main']->size;
-		if (strpos($matches[1], 'class=')) {
-			preg_match('/class="(.*)"/i', $matches[1], $classes);
+		$useMainSpans = true;
+		if (class_exists("WrightTemplate")) {
+			if (property_exists("WrightTemplate", "useMainSpans")) {
+				$wrightTemplate = WrightTemplate::getInstance();
+				if (!$wrightTemplate->useMainSpans)
+					$useMainSpans = false;
+			}
+		}
+
+		$class = "";
+		// use main Spans only if allowed by template internal configuration
+		if ($useMainSpans) {
+			$class .= 'span'.$this->columns['main']->size;
+		}
+		if (preg_match('/class="(.*)"/u', $matches[1], $classes)) {
 			$class .= ' ' . $classes[1];
 		}
 
@@ -155,6 +180,7 @@ abstract class HtmlAdapterAbstract
 		preg_match('/id=\"(.*)\"/isU', $matches[1], $ids);
 		$id = $ids[1];
 
+		//TODO: update to use the factory
 		$doc = Wright::getInstance();
 
 		if (!$doc->document->countModules($id)) {
@@ -170,21 +196,33 @@ abstract class HtmlAdapterAbstract
 			}
 
 			$editmode = false;
-			
+
 			// Check editing mode
 			if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form' || JRequest::getVar('layout') == 'edit') {
 				$editmode = true;
 			}
-			
+
 			if (!$forcedSidebar || $editmode)
 				return;
 		}
 
 		$this->columns[$id]->exists = true;  // marks that column really exists
 
-		$class = 'span'.$this->columns[$id]->size;
-		if (strpos($matches[1], 'class=')) {
-			preg_match('/class="(.*)"/i', $matches[1], $classes);
+		$useMainSpans = true;
+		if (class_exists("WrightTemplate")) {
+			if (property_exists("WrightTemplate", "useMainSpans")) {
+				$wrightTemplate = WrightTemplate::getInstance();
+				if (!$wrightTemplate->useMainSpans)
+					$useMainSpans = false;
+			}
+		}
+
+		$class = "";
+		// use main Spans only if allowed by template internal configuration
+		if ($useMainSpans) {
+			$class = 'span'.$this->columns[$id]->size;
+		}
+		if (preg_match('/class="(.*)"/u', $matches[1], $classes)) {
 			$class .= ' ' . $classes[1];
 		}
 
@@ -284,6 +322,8 @@ abstract class HtmlAdapterAbstract
 
 	private function setupColumns()
 	{
+
+		//TODO: update to use the factory
 		$doc = Wright::getInstance();
 
 		// Get our column info straight
@@ -294,7 +334,7 @@ abstract class HtmlAdapterAbstract
 
 		$wrightTemplate = null;
 		$editmode = false;
-		
+
 		// Check editing mode
 		if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form' || JRequest::getVar('layout') == 'edit') {
 			$editmode = true;

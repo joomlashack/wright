@@ -6,8 +6,9 @@ jQuery(document).ready(function() {
 		}
 	}
 	jQuery(window).load(function () {
-		jQuery('#footer.sticky').css('bottom','0');
-		jQuery('#footer.sticky').css('position','absolute');
+		jQuery('#footer.sticky').css('bottom','0')
+			.css('position','absolute')
+			.css('z-index','1000');
 		stickyFooter();
 	});
 	stickyFooter();
