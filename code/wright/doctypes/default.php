@@ -63,6 +63,7 @@ abstract class HtmlAdapterAbstract
 	{
 
 		return '<body>';
+		//TODO: update to use the factory
 		$wright = Wright::getInstance();
 		require_once(JPATH_ROOT.'/'.'templates'.'/'.$wright->document->template.'/'.'wright'.'/'.'includes'.'/'.'browser.php');
 		$browser = new Browser();
@@ -87,7 +88,7 @@ abstract class HtmlAdapterAbstract
 			preg_match_all('/data-([0-9]+)="([^"]*)"/', $matches[1], $dataclasses, PREG_SET_ORDER);
 			if ($dataclasses) {
 				foreach ($dataclasses as $dc) {
-					$data .= ' data-' . $dc[1] . '="' . $dc[2] . '"';					
+					$data .= ' data-' . $dc[1] . '="' . $dc[2] . '"';
 				}
 			}
 		}
@@ -179,6 +180,7 @@ abstract class HtmlAdapterAbstract
 		preg_match('/id=\"(.*)\"/isU', $matches[1], $ids);
 		$id = $ids[1];
 
+		//TODO: update to use the factory
 		$doc = Wright::getInstance();
 
 		if (!$doc->document->countModules($id)) {
@@ -194,12 +196,12 @@ abstract class HtmlAdapterAbstract
 			}
 
 			$editmode = false;
-			
+
 			// Check editing mode
 			if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form' || JRequest::getVar('layout') == 'edit') {
 				$editmode = true;
 			}
-			
+
 			if (!$forcedSidebar || $editmode)
 				return;
 		}
@@ -320,6 +322,8 @@ abstract class HtmlAdapterAbstract
 
 	private function setupColumns()
 	{
+
+		//TODO: update to use the factory
 		$doc = Wright::getInstance();
 
 		// Get our column info straight
@@ -330,7 +334,7 @@ abstract class HtmlAdapterAbstract
 
 		$wrightTemplate = null;
 		$editmode = false;
-		
+
 		// Check editing mode
 		if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form' || JRequest::getVar('layout') == 'edit') {
 			$editmode = true;

@@ -4,18 +4,19 @@ class WrightAdapterJoomlaFooter
 {
 	public function render($args)
 	{
+		//TODO: update to use the factory
 		$doc = Wright::getInstance();
 		$js = $doc->generateJS();
 
 		if ($doc->document->params->get('rebrand', 'no') !== 'yes')
 		{
-			
+
 			$anchors = array(	"Joomla Template" => 50, "Joomla Templates" => 100);
 			$links = array(     "Joomla Templates" => "professional-joomla-templates",	"Joomla Template" => "professional-joomla-templates" );
 			$endlines  = array(	": by JoomlaShack" => 50,	": from JoomlaShack" => 100);
 			$host = "http://www.joomlashack.com/";
 			$class = 'joomlashack';
-		
+
 
 			$url = $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
@@ -24,13 +25,13 @@ class WrightAdapterJoomlaFooter
 			$nums = "";
 			for ($i=0; $i<strlen($md5); $i++) {
 				$j = ord(substr($md5,$i,1));
-				
+
 				if ($j == 43 ||
 					$j == 43 ||
 					$j >= 48 && $j <= 57)
 					$nums .= substr($md5,$i,1);
 			}
-			
+
 			$first = substr($nums,0,2);
 			$second = substr($nums,2,2);
 			$third  = substr($nums,4,2);
@@ -57,7 +58,7 @@ class WrightAdapterJoomlaFooter
 		{
 			return $js;
 		}
-		
-		
+
+
 	}
 }

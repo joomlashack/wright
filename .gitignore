@@ -35,3 +35,16 @@ nbproject
 .idea
 node_modules
 dist
+code/css/joomla25-generic-extended.css
+code/css/joomla25-generic-responsive.css
+code/css/joomla30-generic-extended.css
+code/css/joomla30-generic-responsive.css
+code/css/jui/bootstrap-extended.css
+code/css/jui/bootstrap-responsive.min.css
+code/css/jui/bootstrap.min.css
+code/css/style-generic.css
+code/js/jui/bootstrap.min.js
+code/js/jui/jquery.min.js
+code/wright/images/glyphicons-halflings-white.png
+code/wright/images/glyphicons-halflings.png
+bootstrap.min.js
