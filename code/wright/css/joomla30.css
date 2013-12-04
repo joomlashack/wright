@@ -855,6 +855,15 @@ iframe{
 	background-color: transparent;
 	border: none;
 }
+.collapse {
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    transition: height 0.35s ease 0s;
+}
+.collapse.in {
+    height: auto;
+}
 .dl-horizontal dt {
 	clear: left;
 	float: left;
