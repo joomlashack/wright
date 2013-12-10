@@ -12,17 +12,50 @@ defined('_JEXEC') or die;
 
 ?>
 
-<ul class="newsflash-horiz<?php echo $params->get('moduleclass_sfx') . " unstyled row-fluid"; // Wright v.3: Added row-fluid  class ?>">
-<?php for ($i = 0, $n = count($list); $i < $n; $i ++) :
-	$item = $list[$i]; ?>
-	<li class="span3"> <?php // Wright v.3: Added span3 class for 4 columns ?>
-	<?php require JModuleHelper::getLayoutPath('mod_articles_news', '_item');
+<?php
+	$cont = 0; // Wright v.3: Added cont variable for close row-fluid element
+?>
 
-	if ($n > 1 && (($i < $n - 1) || $params->get('showLastSeparator'))) : ?>
+<?php // Wright v.3: ?>
 
-	<span class="article-separator">&#160;</span>
+	<div class="newsflash-horiz<?php echo $params->get('moduleclass_sfx'); // Wright v.3: Changed ul for div element ?>">
+		<?php for ($i = 0, $n = count($list); $i < $n; $i ++) :
+			$item = $list[$i]; ?>
 
-	<?php endif; ?>
-	</li>
-<?php endfor; ?>
-</ul>
+			<?php // Wright v.3: ?>
+				<?php if ($cont % 4 ==  0):?>
+					<div class="row-fluid">
+				<?php endif; ?>
+			<?php // End Wright v.3: Added row-fluid wrapp ?>
+
+			<?php // Wright v.3: ?>
+				<div class="span3">
+
+					<?php require JModuleHelper::getLayoutPath('mod_articles_news', '_item');
+
+					if ($n > 1 && (($i < $n - 1) || $params->get('showLastSeparator'))) : ?>
+
+						<span class="article-separator">&#160;</span>
+
+					<?php endif; ?>
+
+				</div>
+			<?php // End Wright v.3: Added span3 class for 4 columns ?>
+
+			<?php // Wright v.3: ?>
+
+				<?php if ($cont % 4 ==  3 || $cont == $n - 1): ?>
+					</div>
+				<?php endif; ?>
+
+				<?php
+					$cont = $cont + 1;
+				?>
+
+			<?php // End Wright v.3: Added close of row-fluid wrapp and  increase $cont variable ?>
+
+		<?php endfor; ?>
+	</div>
+
+<?php // End Wright v.3: Changed structure list for flex grid of Bootstrap ?>
+
