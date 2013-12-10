@@ -109,7 +109,12 @@
 
         <!-- Node.JS tasks for building the latest CSS and JS code -->
         <if>
-            <equals arg1="${wright.responsive}" arg2="1" />
+            <and>
+                <equals arg1="${wright.responsive}" arg2="1" />
+                <not>
+                    <equals arg1="${node.skip}" arg2="true" />
+                </not>
+            </and>
             <then>
                 <available file="${www.dir}/templates/${tpl.folder}/wright/build/node_modules" type="dir" property="node.installed" />
 
