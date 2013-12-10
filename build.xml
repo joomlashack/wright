@@ -5,92 +5,193 @@
 
     <target name="autobuild" >
         <if>
-            <available file="autobuild.properties" type="file" />
+            <available file="../autobuild.properties" type="file" />
             <then>
-
-                <property file="build.properties" override="true"/>
-                <property file="autobuild.properties" override="true"/>
-                <property name="src" value="./code/"/>
+                <property file="../build.properties" override="true"/>
+                <property file="../autobuild.properties" override="true"/>
+                <property name="src" value="../code/"/>
+                <property name="wrightsrc" value="./code/"/>
                 <xmlproperty file="${src}/templateDetails.xml" prefix="templateDetails" keepRoot="false" />
-                <xmlproperty file="${src}/templateDetails.xml" prefix="wrightDetails" keepRoot="false" />
+                <xmlproperty file="${wrightsrc}/templateDetails.xml" prefix="wrightDetails" keepRoot="false" />
 
-                <!-- Template files and folders -->
-                <copy todir="${www.dir}/templates/${tpl.folder}" overwrite="true">
-                    <fileset dir="${src}">
-                        <exclude name="language/**"/>
-                    </fileset>
-                </copy>
-
-                <!-- Updates template/wright version in wright.php -->
-                <wrightversion todir="${www.dir}/templates/${tpl.folder}" version="${templateDetails.version}" />
-
-                <!-- Node.JS tasks for building the latest CSS and JS code -->
-                <if>
-                    <equals arg1="${wright.responsive}" arg2="1" />
-                    <then>
-                        <available file="${www.dir}/templates/${tpl.folder}/wright/build/node_modules" type="dir" property="node.installed" />
-
-                        <if>
-                            <available file="${www.dir}/templates/${tpl.folder}/wright/build/node_modules" type="dir" />
-                            <else>
-                                <exec command="./install.sh" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
-                            </else>
-                        </if>
-
-                        <exec command="node build.js" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
-                        <delete dir="${www.dir}/templates/${tpl.folder}/less" />
-                    </then>
-                </if>
-
-                <!-- en-GB language files -->
-                <if>
-                    <available file="${www.dir}/language/en-GB" type="dir" />
-                    <then>
-                        <copy todir="${www.dir}/language/en-GB" overwrite="true">
-                            <fileset dir="${src}/language/en-GB">
-                                <include name="**"/>
-                            </fileset>
-                        </copy>
-                    </then>
-                </if>
-
-                <!-- es-ES language files -->
-                <if>
-                    <available file="${www.dir}/language/es-ES" type="dir" />
-                    <then>
-                        <copy todir="${www.dir}/language/es-ES" overwrite="true">
-                            <fileset dir="${src}/language/es-ES">
-                                <include name="**"/>
-                            </fileset>
-                        </copy>
-                    </then>
-                </if>
-
-                <!-- de-DE language files -->
-                <if>
-                    <available file="${www.dir}/language/de-DE" type="dir" />
-                    <then>
-                        <copy todir="${www.dir}/language/de-DE" overwrite="true">
-                            <fileset dir="${src}/language/de-DE">
-                                <include name="**"/>
-                            </fileset>
-                        </copy>
-                    </then>
-                </if>
-
-                <templateversion todir="${www.dir}" template="${templateDetails.name}" version="${templateDetails.version}" />
-
+                <phingcall target="autobuild-do" />
             </then>
             <else>
-                <echo msg="File not found: autobuild.properties" />
+                <if>
+                    <available file="autobuild.properties" type="file" />
+                    <then>
+                        <property file="build.properties" override="true"/>
+                        <property file="autobuild.properties" override="true"/>
+                        <property name="src" value="./code/"/>
+                        <property name="wrightsrc" value="./code/"/>
+                        <xmlproperty file="${src}/templateDetails.xml" prefix="templateDetails" keepRoot="false" />
+                        <xmlproperty file="${wrightsrc}/templateDetails.xml" prefix="wrightDetails" keepRoot="false" />
+
+                        <phingcall target="autobuild-do" />
+                    </then>
+                    <else>
+                        <echo msg="File not found: autobuild.properties" />
+                    </else>
+                </if>
             </else>
         </if>
     </target>
 
+    <target name="autobuild-do">
+
+        <!-- Template files and folders -->
+        <copy todir="${www.dir}/templates/${tpl.folder}" overwrite="true">
+            <fileset dir="${src}">
+                <exclude name="language/**"/>
+            </fileset>
+        </copy>
+
+        <if>
+            <!-- Check actions for Wright Framework template itself -->
+            <equals arg1="${wright.is_wright}" arg2="1" />
+            <then>
+                <!-- Updates template/wright version in wright.php -->
+                <wrightversion todir="${www.dir}/templates/${tpl.folder}" version="${templateDetails.version}" />
+            </then>
+            <else>
+                <!-- Wright Framework files and folders -->
+                <copy todir="${www.dir}/templates/${tpl.folder}/wright" overwrite="true">
+                    <fileset dir="${wrightsrc}/wright">
+                    </fileset>
+                </copy>
+
+                <!-- Updates template/wright version in wright.php -->
+                <wrightversion todir="${www.dir}/templates/${tpl.folder}" version="${templateDetails.version}_${wrightDetails.version}" />
+
+                <!-- Copy common Wright files (without replacing to prevail any template specific override) -->
+                <copy file="${wrightsrc}/index.php" tofile="${www.dir}/templates/${tpl.folder}/index.php" />
+                <copy file="${wrightsrc}/favicon.ico" tofile="${www.dir}/templates/${tpl.folder}/favicon.ico" />
+                <copy file="${wrightsrc}/component.php" tofile="${www.dir}/templates/${tpl.folder}/component.php" />
+
+                <!-- html, css and js folders only copied for responsive (Wright v.3) templates, until standardized in Wright v.2 -->
+                <if>
+                    <equals arg1="${wright.responsive}" arg2="1" />
+                    <then>
+                        <copy todir="${www.dir}/templates/${tpl.folder}/html">
+                            <fileset dir="${wrightsrc}/html">
+                                <exclude name=".svn" />
+                                <exclude name=".svn/**" />
+                                <exclude name=".git" />
+                                <exclude name=".git/**" />
+                                <exclude name=".project" />
+                                <exclude name=".DS_Store" />
+                            </fileset>
+                        </copy>
+                        <copy todir="${www.dir}/templates/${tpl.folder}/css">
+                            <fileset dir="${wrightsrc}/css">
+                                <exclude name=".svn" />
+                                <exclude name=".svn/**" />
+                                <exclude name=".git" />
+                                <exclude name=".git/**" />
+                                <exclude name=".project" />
+                                <exclude name=".DS_Store" />
+                            </fileset>
+                        </copy>
+                        <copy todir="${www.dir}/templates/${tpl.folder}/js">
+                            <fileset dir="${wrightsrc}/js">
+                                <exclude name=".svn" />
+                                <exclude name=".svn/**" />
+                                <exclude name=".git" />
+                                <exclude name=".git/**" />
+                                <exclude name=".project" />
+                                <exclude name=".DS_Store" />
+                            </fileset>
+                        </copy>
+                    </then>
+                </if>
+            </else> 
+        </if>
+
+        <!-- Node.JS tasks for building the latest CSS and JS code -->
+        <if>
+            <equals arg1="${wright.responsive}" arg2="1" />
+            <then>
+                <available file="${www.dir}/templates/${tpl.folder}/wright/build/node_modules" type="dir" property="node.installed" />
+
+                <if>
+                    <available file="${www.dir}/templates/${tpl.folder}/wright/build/node_modules" type="dir" />
+                    <else>
+                        <exec command="./install.sh" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
+                    </else>
+                </if>
+
+                <exec command="node build.js" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
+                <delete dir="${www.dir}/templates/${tpl.folder}/less" />
+            </then>
+        </if>
+
+        <!-- en-GB language files -->
+        <if>
+            <available file="${www.dir}/language/en-GB" type="dir" />
+            <then>
+                <copy todir="${www.dir}/language/en-GB" overwrite="true">
+                    <fileset dir="${src}/language/en-GB">
+                        <include name="**"/>
+                    </fileset>
+                </copy>
+            </then>
+        </if>
+
+        <!-- es-ES language files -->
+        <if>
+            <available file="${www.dir}/language/es-ES" type="dir" />
+            <then>
+                <copy todir="${www.dir}/language/es-ES" overwrite="true">
+                    <fileset dir="${src}/language/es-ES">
+                        <include name="**"/>
+                    </fileset>
+                </copy>
+            </then>
+        </if>
+
+        <!-- de-DE language files -->
+        <if>
+            <available file="${www.dir}/language/de-DE" type="dir" />
+            <then>
+                <copy todir="${www.dir}/language/de-DE" overwrite="true">
+                    <fileset dir="${src}/language/de-DE">
+                        <include name="**"/>
+                    </fileset>
+                </copy>
+            </then>
+        </if>
+
+        <templateversion todir="${www.dir}" template="${templateDetails.name}" version="${templateDetails.version}" />
+
+    </target>
+
+
     <target name="clean">
-        <property file="build.properties" override="true"/>
-        <property file="autobuild.properties" override="true"/>
-        <property name="src" value="./code/"/>
+        <if>
+            <!-- Actions for cleaning template -->
+            <available file="../autobuild.properties" type="file" />
+            <then>
+                <property file="../build.properties" override="true"/>
+                <property file="../autobuild.properties" override="true"/>
+                <property name="src" value="./code/"/>
+                <phingcall target="clean-do" />
+            </then>
+            <else>
+                <if>
+                    <!-- Actions for cleaning Wright -->
+                    <available file="autobuild.properties" type="file" />
+                    <then>
+                        <property file="build.properties" override="true"/>
+                        <property file="autobuild.properties" override="true"/>
+                        <property name="src" value="./code/"/>
+                        <phingcall target="clean-do" />
+                    </then>
+                </if>
+            </else>
+        </if>
+    </target>
+
+    <target name="clean-do">
         <delete dir="${www.dir}/templates/${tpl.folder}/less" />
         <delete dir="${www.dir}/templates/${tpl.folder}/wright/build" />
     </target>
