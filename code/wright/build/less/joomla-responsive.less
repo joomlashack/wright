@@ -23,47 +23,48 @@
 	.navbar .nav,
 	.navbar .nav .navbar-inner {
 		li {
-			.dropdown,
-			.dropdown-menu {
-				display: block;
-				position: relative;
-				li {
-					> a {
-						.caret {
-							border-left: 4px solid transparent;
-							border-right: 4px solid transparent;
-							border-bottom: 4px solid transparent;
-							border-top: 4px solid @dropdownLinkColor;
-						}
-						&:hover {
-							.caret {
-								border-left: 4px solid transparent;
-								border-right: 4px solid transparent;
-								border-bottom: 4px solid transparent;
-								border-top: 4px solid @dropdownLinkColorHover;
-							}
-						}
-					}
-					&.active {
+			&.dropdown {
+				.dropdown-menu {
+					display: block;
+					position: relative;
+					li {
 						> a {
 							.caret {
 								border-left: 4px solid transparent;
 								border-right: 4px solid transparent;
 								border-bottom: 4px solid transparent;
-								border-top: 4px solid @dropdownLinkColorActive;
+								border-top: 4px solid @dropdownLinkColor;
+							}
+							&:hover {
+								.caret {
+									border-left: 4px solid transparent;
+									border-right: 4px solid transparent;
+									border-bottom: 4px solid transparent;
+									border-top: 4px solid @dropdownLinkColorHover;
+								}
 							}
 						}
-					}
-				}
-				.sub-menu {
-					display: block;
-					left: auto;
-					position: relative;
-					top: auto;
-					visibility: visible;
-					&:before,
-					&:after {
-						display: none;
+						&.active {
+							> a {
+								.caret {
+									border-left: 4px solid transparent;
+									border-right: 4px solid transparent;
+									border-bottom: 4px solid transparent;
+									border-top: 4px solid @dropdownLinkColorActive;
+								}
+							}
+						}
+						.sub-menu {
+							display: block;
+							left: auto;
+							position: relative;
+							top: auto;
+							visibility: visible;
+							&:before,
+							&:after {
+								display: none;
+							}
+						}
 					}
 				}
 			}
@@ -77,17 +78,18 @@
 		.navbar .nav,
 		.navbar .nav .navbar-inner {
 			li {
-				.dropdown,
-				.dropdown-menu {
-					li {
-						> a {
-							color: lighten(@navbarInverseLinkColor, 25%);
-							[class^="icon-"],
-							[class*=" icon-"] {
+				&.dropdown {
+					.dropdown-menu {
+						li {
+							> a {
 								color: lighten(@navbarInverseLinkColor, 25%);
-							}
-							.caret {
-								border-top-color: lighten(@navbarInverseLinkColor, 25%);
+								[class^="icon-"],
+								[class*=" icon-"] {
+									color: lighten(@navbarInverseLinkColor, 25%);
+								}
+								.caret {
+									border-top-color: lighten(@navbarInverseLinkColor, 25%);
+								}
 							}
 						}
 					}
