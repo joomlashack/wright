@@ -23,6 +23,7 @@ Thumbs.db
 nbproject
 *.sublime-project
 *.sublime-workspace
+sftp-config.json
 
 # Komodo
 *.komodoproject
@@ -35,3 +36,6 @@ nbproject
 .idea
 node_modules
 dist
+
+# Build system
+autobuild.properties

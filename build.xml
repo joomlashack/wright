@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="wright" default="autobuild" basedir=".">
+
+    <taskdef file="phing/tasks.properties" />
+
+    <target name="autobuild" >
+        <property file="build.properties" override="true"/>
+        <property file="autobuild.properties" override="true"/>
+        <property name="src" value="./code/"/>
+        <xmlproperty file="${src}/templateDetails.xml" prefix="templateDetails" keepRoot="false" />
+        <xmlproperty file="${src}/templateDetails.xml" prefix="wrightDetails" keepRoot="false" />
+
+        <!-- Template files and folders -->
+        <copy todir="${www.dir}/templates/${tpl.folder}" overwrite="true">
+            <fileset dir="${src}">
+                <exclude name="language/**"/>
+            </fileset>
+        </copy>
+
+        <!-- Updates template/wright version in wright.php -->
+        <wrightversion todir="${www.dir}/templates/${tpl.folder}" version="${templateDetails.version}" />
+
+        <!-- Node.JS tasks for building the latest CSS and JS code -->
+        <if>
+            <equals arg1="${wright.responsive}" arg2="1" />
+            <then>
+                <available file="${www.dir}/templates/${tpl.folder}/wright/build/node_modules" type="dir" property="node.installed" />
+
+                <if>
+                    <available file="${www.dir}/templates/${tpl.folder}/wright/build/node_modules" type="dir" />
+                    <else>
+                        <exec command="./install.sh" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
+                    </else>
+                </if>
+
+                <exec command="node build.js" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
+                <delete dir="${www.dir}/templates/${tpl.folder}/less" />
+            </then>
+        </if>
+
+        <!-- en-GB language files -->
+        <if>
+            <available file="${www.dir}/language/en-GB" type="dir" />
+            <then>
+                <copy todir="${www.dir}/language/en-GB" overwrite="true">
+                    <fileset dir="${src}/language/en-GB">
+                        <include name="**"/>
+                    </fileset>
+                </copy>
+            </then>
+        </if>
+
+        <!-- es-ES language files -->
+        <if>
+            <available file="${www.dir}/language/es-ES" type="dir" />
+            <then>
+                <copy todir="${www.dir}/language/es-ES" overwrite="true">
+                    <fileset dir="${src}/language/es-ES">
+                        <include name="**"/>
+                    </fileset>
+                </copy>
+            </then>
+        </if>
+
+        <!-- de-DE language files -->
+        <if>
+            <available file="${www.dir}/language/de-DE" type="dir" />
+            <then>
+                <copy todir="${www.dir}/language/de-DE" overwrite="true">
+                    <fileset dir="${src}/language/de-DE">
+                        <include name="**"/>
+                    </fileset>
+                </copy>
+            </then>
+        </if>
+
+        <templateversion todir="${www.dir}" template="${templateDetails.name}" version="${templateDetails.version}" />
+    </target>
+
+    <target name="clean">
+        <property file="build.properties" override="true"/>
+        <property file="autobuild.properties" override="true"/>
+        <property name="src" value="./code/"/>
+        <delete dir="${www.dir}/templates/${tpl.folder}/less" />
+        <delete dir="${www.dir}/templates/${tpl.folder}/wright/build" />
+    </target>
+
+</project>
