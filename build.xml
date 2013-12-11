@@ -121,7 +121,15 @@
                 <if>
                     <available file="${www.dir}/templates/${tpl.folder}/wright/build/node_modules" type="dir" />
                     <else>
-                        <exec command="./install.sh" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
+                        <if>
+                            <equals arg1="${host.os}" arg2="WINNT" />
+                            <then>
+                                <exec command="install.bat" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
+                            </then>
+                            <else>
+                                <exec command="./install.sh" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
+                            </else>
+                        </if>
                     </else>
                 </if>
 
