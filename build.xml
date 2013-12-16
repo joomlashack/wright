@@ -140,7 +140,10 @@
 
         <!-- en-GB language files -->
         <if>
-            <available file="${www.dir}/language/en-GB" type="dir" />
+            <and>
+                <available file="${www.dir}/language/en-GB" type="dir" />
+                <available file="${src}/language/en-GB" type="dir" />
+            </and>
             <then>
                 <copy todir="${www.dir}/language/en-GB" overwrite="true">
                     <fileset dir="${src}/language/en-GB">
@@ -152,7 +155,10 @@
 
         <!-- es-ES language files -->
         <if>
-            <available file="${www.dir}/language/es-ES" type="dir" />
+            <and>
+                <available file="${www.dir}/language/es-ES" type="dir" />
+                <available file="${src}/language/es-ES" type="dir" />
+            </and>
             <then>
                 <copy todir="${www.dir}/language/es-ES" overwrite="true">
                     <fileset dir="${src}/language/es-ES">
@@ -164,7 +170,10 @@
 
         <!-- de-DE language files -->
         <if>
-            <available file="${www.dir}/language/de-DE" type="dir" />
+            <and>
+                <available file="${www.dir}/language/de-DE" type="dir" />
+                <available file="${src}/language/de-DE" type="dir" />
+            </and>
             <then>
                 <copy todir="${www.dir}/language/de-DE" overwrite="true">
                     <fileset dir="${src}/language/de-DE">
@@ -174,8 +183,12 @@
             </then>
         </if>
 
-        <templateversion todir="${www.dir}" template="${templateDetails.name}" version="${templateDetails.version}" />
-
+        <if>
+            <equals arg1="${wright.responsive}" arg2="1" />
+            <then>
+                <templateversion todir="${www.dir}" template="${templateDetails.name}" version="${templateDetails.version}" />
+            </then>
+        </if>
     </target>
 
 
