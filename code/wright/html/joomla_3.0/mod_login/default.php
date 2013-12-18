@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.2.0
+// Wright v.3 Override: Joomla 3.2.1
 /**
  * @package     Joomla.Site
  * @subpackage  mod_login
