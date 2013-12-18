@@ -63,7 +63,7 @@ else
 		{
 			?>
 					<h2 class="<?php echo $direction; ?>">
-						<a href="<?php echo str_replace('&', '&amp', $feed->link->uri); ?>" target="_blank">
+						<a href="<?php echo str_replace('&', '&amp;', $rssurl); ?>" target="_blank">
 						<?php echo $feed->title; ?></a>
 					</h2>
 			<?php
@@ -81,19 +81,20 @@ else
 			<img src="<?php echo $iUrl; ?>" alt="<?php echo @$iTitle; ?>"/>
 		<?php endif; ?>
 
+
 	<!-- Show items -->
 	<?php if (!empty($feed))
 	{ ?>
 		<ul class="newsfeed<?php echo $params->get('moduleclass_sfx'); ?> list-striped"><?php // Wright v.3: Added list-striped class and moved inside the feed validation ?>
-	<?php // <ul>  Wright v.3: commented out wrong <ul> ?>
-		<?php for  ($i = 0; $i < $params->get('rssitems', 5); $i++)
+		<?php for ($i = 0; $i < $params->get('rssitems', 5); $i++)
 		{
-			if( !$feed->offsetExists($i)) {
+			if (!$feed->offsetExists($i))
+			{
 				break;
 			}
 			?>
 			<?php
-				$uri = (!empty($feed[$i]->guid) || !is_null($feed[$i]->guid)) ? $feed[$i]->guid : $feed[$i]->uri;
+				$uri = (!empty($feed[$i]->uri) || !is_null($feed[$i]->uri)) ? $feed[$i]->uri : $feed[$i]->guid;
 				$uri = substr($uri, 0, 4) != 'http' ? $params->get('rsslink') : $uri;
 				$text = !empty($feed[$i]->content) ||  !is_null($feed[$i]->content) ? $feed[$i]->content : $feed[$i]->description;
 			?>
@@ -115,14 +116,12 @@ else
 							$text = JHtml::_('string.truncate', $text, $params->get('word_count'));
 							echo str_replace('&apos;', "'", $text);
 						?>
-
 						</div>
 					<?php endif; ?>
-					</li>
-			<?php } ?>
-			</ul>
+				</li>
+		<?php } ?>
 		</ul>
+	<?php } ?>
 	</div>
 	<?php }
-	}
 }

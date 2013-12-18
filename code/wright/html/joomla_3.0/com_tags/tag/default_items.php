@@ -89,6 +89,6 @@ $n = count($this->items);
 				</li>
 		<?php endforeach; ?>
 	</ul>
-</form>
 
-<?php endif; ?>
+	<?php endif; ?>
+</form>
