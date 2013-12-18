@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.16
+// Wright v.3 Override: Joomla 2.5.17
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -20,7 +20,7 @@ defined('_JEXEC') or die;
 	foreach ($this->link_items as &$item) :
 ?>
 	<li>
-		<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid)); ?>">
+		<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language)); ?>">
 			<?php echo $item->title; ?></a>
 	</li>
 <?php endforeach; ?>

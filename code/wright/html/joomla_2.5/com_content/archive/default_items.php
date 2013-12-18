@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.16
+// Wright v.3 Override: Joomla 2.5.17
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -27,7 +27,7 @@ $params = &$this->params;
 
 		<h2>
 		<?php if ($params->get('link_titles')): ?>
-			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catslug)); ?>">
+			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catslug, $item->language)); ?>">
 				<?php echo $this->escape($item->title); ?></a>
 		<?php else: ?>
 				<?php echo $this->escape($item->title); ?>
