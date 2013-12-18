@@ -49,7 +49,7 @@ defined('_JEXEC') or die;
 
 			if ($params->get('hits', 0))
 			{
-				echo /*'(' .*/ $item->hits . ' ' . JText::_('MOD_WEBLINKS_HITS') /*. ')'*/; // Wright v.3: removed parenthesis ?>
+				echo /*'(' .*/ $item->hits . ' ' . JText::_('MOD_WEBLINKS_HITS') /*. ')'*/; // Wright v.3: removed parenthesis
 			}
 			?>
 		</li>
