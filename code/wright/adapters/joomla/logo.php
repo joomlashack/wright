@@ -22,7 +22,7 @@ class WrightAdapterJoomlaLogo
 
 		if ($name == 'menu') {
 
-			if ($doc->countModules('menu')){
+			if ($doc->countModules($name)){
 				return '
 					<nav id="'.$name.($alt ? '_alt' : '_primary') .'" class="clearfix">
 						<div class="navbar ' . $args['menuWrapClass'] . '">
