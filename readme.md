@@ -92,7 +92,7 @@ Wright v.2 is still supported in **v.2** and **develop-v.2** branches.  They are
 
 ## Copyright and license
 
-Copyright 2010-2013 Joomlashack
+Copyright 2010-2014 Joomlashack
 
 Licensed under the GNU/GPL v3 (the "License");
 This framework is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.  
