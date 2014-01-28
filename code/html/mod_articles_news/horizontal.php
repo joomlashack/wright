@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 $app = JFactory::getApplication();
 
-$wrightEnableIcons = true;  // Optionally disable icons in items
+$wrightMaxColumns = 4;  // Max number of columns in horizontal layout
 
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
 require(Overrider::getOverride('mod_articles_news','horizontal'));
