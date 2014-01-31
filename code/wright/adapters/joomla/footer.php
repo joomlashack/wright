@@ -11,7 +11,7 @@ class WrightAdapterJoomlaFooter
 		{
 			$generateLink = true;
 			if (class_exists("WrightTemplate")) {
-				if (property_exists("WrightTemplate", "useMainSpans")) {
+				if (property_exists("WrightTemplate", "includeFooterLink")) {
 					$wrightTemplate = WrightTemplate::getInstance();
 					if (!$wrightTemplate->includeFooterLink)
 						$generateLink = false;
