@@ -13,15 +13,12 @@ defined('_JEXEC') or die('You are not allowed to directly access this file');
 class WrightTemplateBase {
 	public $suffixes = false;  // checks if template allows stacked suffixes
 	public $fullHeightSidebars = false;  // checks if this template uses full height sidebars
-
 	public $specialClasses = Array();  // special stacked suffixes classes
-	
 	public $forcedSidebar = "";  // optional forced sidebar position, starts with nothing to be decided by fixed position (parameter) or auto setting
 	public $forcedSidebarPositions = Array();  // positions that cause the forced sidebar, must be set here
-	
 	public $JDocumentHTML = null;  // if using forced sidebar has to be set with the local JDocumentHTML ($this from inside the template itself)
-	
 	private $_isThereALogo = null;  // local variable to know if there is a logo for the site
+	public $includeFooterLink = true; // select wether to include a link with the footer copyright or not
 
 	public static function getInstance() {
 		static $instance = null;
