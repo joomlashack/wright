@@ -121,6 +121,5 @@ defined('_JEXEC') or die('Restricted access');
 		</div>
 	</div>
 </div>
-<?php //echo $this->document->params->get("footerscript",""); ?>
 </body>
 </html>

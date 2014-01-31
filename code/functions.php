@@ -9,3 +9,8 @@
 
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
+
+// WrightTemplate class, for special settings on Wright
+class WrightTemplate extends WrightTemplateBase {
+	public $includeFooterLink = false;
+}
