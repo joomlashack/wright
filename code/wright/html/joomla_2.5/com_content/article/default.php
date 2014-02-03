@@ -17,8 +17,10 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightElementsStructure)) $this->wrightElementsStructure = Array();
 	if (!isset($this->wrightHasImageClass)) $this->wrightHasImageClass = "";
 	if (!isset($this->wrightExtraClass)) $this->wrightExtraClass = "";
-	
-	if (empty($this->wrightElementsStructure)) $this->wrightElementsStructure = Array("title","icons","article-info","image","content");
+	if (!isset($this->wrightLegendTop)) $this->wrightLegendTop= "";
+	if (!isset($this->wrightLegendBottom)) $this->wrightLegendBottom= "";
+
+	if (empty($this->wrightElementsStructure)) $this->wrightElementsStructure = Array("title","icons","article-info","image","legendtop","content","legendbottom");
 	
 /* End Wright v.3: Item elements structure and extra elements */
 
@@ -286,6 +288,20 @@ if (!empty($this->item->pagination) AND $this->item->pagination AND !$this->item
 <?php
 /* Wright v.3: Item elements structure */
 		endif; // access-view
+				break;
+			case "legendtop":
+				if ($this->wrightLegendTop != '') :
+?>
+	<div class="wrightlegend-top"><?php echo $this->wrightLegendTop ?></div>
+<?php
+				endif;
+				break;
+			case "legendbottom":
+				if ($this->wrightLegendBottom != '') :
+?>
+	<div class="wrightlegend-bottom"><?php echo $this->wrightLegendBottom ?></div>
+<?php
+				endif;
 				break;
 			case "content":
 		if ($params->get('access-view')):   // access-view

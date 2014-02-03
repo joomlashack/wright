@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override Helper: Joomla 2.5.11
+// Wright v.3 Override Helper: Joomla 2.5.17
 /**
  * @version
  * @package		Wright
@@ -37,6 +37,10 @@ function wrightTransformArticlePager($content) {
 	$content = preg_replace("/<li class=\"pagenav-next\">/iUs", "<li class=\"pagenav-next next\">", $content);
 	$content = preg_replace("/<li class=\"pagenav-prev\">/iUs", "<li class=\"pagenav-prev previous\">", $content);
 	return $content;
+}
+
+function getBlogItemLink($item) {
+	return JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language));
 }
 
 
