@@ -134,7 +134,6 @@
                 </if>
 
                 <exec command="node build.js" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
-                <delete dir="${www.dir}/templates/${tpl.folder}/less" />
             </then>
         </if>
 
