@@ -39,6 +39,13 @@
 
     <target name="autobuild-do">
 
+        <!-- Delete template files and folders except node files -->
+        <delete includeemptydirs="true">
+            <fileset dir="${www.dir}/templates/${tpl.folder}">
+                <exclude name="wright/build/node_modules/**" />
+            </fileset>
+        </delete>
+
         <!-- Template files and folders -->
         <copy todir="${www.dir}/templates/${tpl.folder}" overwrite="true">
             <fileset dir="${src}">
