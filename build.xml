@@ -58,6 +58,7 @@
                         <exclude name="css/joomla**-responsive.css" />
                         <exclude name="css/jui/**" />
                         <exclude name="js/jui/**" />
+                        <exclude name="wright/js/bootstrap.min.js" />
                     </fileset>
                 </delete>
             </else>
