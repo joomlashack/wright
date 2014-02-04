@@ -152,11 +152,11 @@ function modChrome_wrightfeatured($module, &$params, &$attribs) {
     $extraclass = ($attribs['extraclass'] != '' ? ' ' . $attribs['extraclass'] : '');
     ?>
 <?php
-    if (preg_match("/featured/", $class)) {
-        $img = '';
-        $h4 = '';
-        $linkTitle = '';
+    $img = '';
+    $h4 = '';
+    $linkTitle = '';
 
+    if (preg_match("/featured/", $class)) {
         $classold = $class;
         $class = preg_replace("/featured/", "", $class);
         $module->content = preg_replace("/$classold/", $class, $module->content);
