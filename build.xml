@@ -40,11 +40,26 @@
     <target name="autobuild-do">
 
         <!-- Delete template files and folders except node files -->
-        <delete includeemptydirs="true">
-            <fileset dir="${www.dir}/templates/${tpl.folder}">
-                <exclude name="wright/build/node_modules/**" />
-            </fileset>
-        </delete>
+        <if>
+            <equals arg1="${node.skip}" arg2="true" />
+            <then>
+                <delete includeemptydirs="true">
+                    <fileset dir="${www.dir}/templates/${tpl.folder}">
+                        <exclude name="wright/build/node_modules/**" />
+                        <exclude name="css/style-**.css" />
+                        <exclude name="css/joomla**-extended.css" />
+                        <exclude name="css/joomla**-responsive.css" />
+                    </fileset>
+                </delete>
+            </then>
+            <else>
+                <delete includeemptydirs="true">
+                    <fileset dir="${www.dir}/templates/${tpl.folder}">
+                        <exclude name="wright/build/node_modules/**" />
+                    </fileset>
+                </delete>
+            </else>
+        </if>
 
         <!-- Template files and folders -->
         <copy todir="${www.dir}/templates/${tpl.folder}" overwrite="true">
