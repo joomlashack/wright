@@ -32,5 +32,23 @@ function wrightTransformArticlePager($content) {
 	return $content;
 }
 
+function getBlogItemLink($item) {
+	if ($item->params->get('access-view'))
+	{
+		$link = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid));
+	}
+	else
+	{
+		$menu = JFactory::getApplication()->getMenu();
+		$active = $menu->getActive();
+		$itemId = $active->id;
+		$link1 = JRoute::_('index.php?option=com_users&view=login&Itemid=' . $itemId);
+		$returnURL = JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid));
+		$link = new JUri($link1);
+		$link->setVar('return', base64_encode($returnURL));
+	}
+	return $link;
+}
+
 
 ?>
