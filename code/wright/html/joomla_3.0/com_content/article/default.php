@@ -18,8 +18,10 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightElementsStructure)) $this->wrightElementsStructure = Array();
 	if (!isset($this->wrightHasImageClass)) $this->wrightHasImageClass = "";
 	if (!isset($this->wrightExtraClass)) $this->wrightExtraClass = "";
+	if (!isset($this->wrightLegendTop)) $this->wrightLegendTop= "";
+	if (!isset($this->wrightLegendBottom)) $this->wrightLegendBottom= "";
 	
-	if (empty($this->wrightElementsStructure)) $this->wrightElementsStructure = Array("title","icons","article-info","image","content");
+	if (empty($this->wrightElementsStructure)) $this->wrightElementsStructure = Array("title","icons","article-info","image","legendtop","content","legendbottom");
 	
 	$wrightBeforeIcon = '<span class="hidden-phone">';
 	$wrightAfterIcon = '</span>';
@@ -434,6 +436,20 @@ if (!empty($this->item->pagination) && $this->item->pagination && $this->item->p
 
 <?php 
 /* Wright v.3: Item elements structure */
+				break;
+			case "legendtop":
+				if ($this->wrightLegendTop != '') :
+?>
+	<div class="wrightlegend-top"><?php echo $this->wrightLegendTop ?></div>
+<?php
+				endif;
+				break;
+			case "legendbottom":
+				if ($this->wrightLegendBottom != '') :
+?>
+	<div class="wrightlegend-bottom"><?php echo $this->wrightLegendBottom ?></div>
+<?php
+				endif;
 				break;
 			default:
 				

@@ -12,6 +12,11 @@ if (!defined('_JDEFINES')) {
 require_once JPATH_BASE.'/includes/framework.php';
 require_once JPATH_WRIGHT_TEMPLATE . '/wrighttemplate.php';
 
+// extracts template URL (removing /wright/css from the path)
+$templateURL = JURI::root(true);
+$templateURL = substr($templateURL,0,strrpos($templateURL,'/'));
+$templateURL = substr($templateURL,0,strrpos($templateURL,'/'));
+
 $app = JFactory::getApplication('site');
 $app->initialise();
 
@@ -43,7 +48,8 @@ while (!$fileFound && $subversion >= 0) {
 		$subversion--;
 }
 
-
-if ($fileFound) {
-	echo file_get_contents(JPATH_THEMES . '/' . $template->template . '/css/joomla' . $version . '-' . $style . '-responsive.css','r');
-}
+if ($fileFound) :
+?>
+	@import url('<?php echo $templateURL . '/css/joomla' . $version . '-' . $style . '-responsive.css'; ?>');
+<?php
+endif;

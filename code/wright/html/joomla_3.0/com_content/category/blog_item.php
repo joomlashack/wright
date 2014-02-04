@@ -28,8 +28,11 @@ JHtml::_('behavior.framework');
 
 <?php 
 /* Wright v.3: Item elements structure */
-	if (empty($this->item->wrightElementsStructure)) $this->item->wrightElementsStructure = Array("title","icons","article-info","image","content");
+	if (empty($this->item->wrightElementsStructure)) $this->item->wrightElementsStructure = Array("title","icons","article-info","image","legendtop","content","legendbottom");
 	$this->item->wrightBootstrapImages = $this->wrightBootstrapImages;
+
+	if (!isset($this->item->wrightLegendTop)) $this->item->wrightLegendTop = '';
+	if (!isset($this->item->wrightLegendBottom)) $this->item->wrightLegendBottom = '';
 
 	// moved useDefList to the top, to set it throught the switch
 	$useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
@@ -126,6 +129,20 @@ JHtml::_('behavior.framework');
 
 <?php 
 /* Wright v.3: Item elements structure */
+				break;
+			case "legendtop":
+				if ($this->item->wrightLegendTop != '') :
+?>
+	<div class="wrightlegend-top"><?php echo $this->item->wrightLegendTop ?></div>
+<?php
+				endif;
+				break;
+			case "legendbottom":
+				if ($this->item->wrightLegendBottom != '') :
+?>
+	<div class="wrightlegend-bottom"><?php echo $this->item->wrightLegendBottom ?></div>
+<?php
+				endif;
 				break;
 			default:
 				
