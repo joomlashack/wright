@@ -49,6 +49,8 @@
                         <exclude name="css/style-**.css" />
                         <exclude name="css/joomla**-extended.css" />
                         <exclude name="css/joomla**-responsive.css" />
+                        <exclude name="css/jui/**" />
+                        <exclude name="js/jui/**" />
                     </fileset>
                 </delete>
             </then>
