@@ -58,19 +58,16 @@ var stylelessRegEx = /variables-([a-z0-9\-]+).less/i;
 
 var filesToParse = new Array();
 var filesToParseNo = 0;
-var parserOptions = {};
-var parser = new less.Parser(parserOptions);
 var parsedFiles = 0;
 
 function parseLessFiles() {
+	var parserOptions = {};
+	var parser = new less.Parser(parserOptions);
+
 	var df = filesToParse[parsedFiles][0];
 	var dfcss = filesToParse[parsedFiles][1];
 
 	var data = fs.readFileSync(df,'utf8');
-
-	console.log(df);
-	console.log(dfcss);
-	console.log(data);
 
 	parser.parse(data, function (err, tree) {
 		if (err) {
@@ -86,6 +83,7 @@ function parseLessFiles() {
 
 			parsedFiles++;
 			if (parsedFiles < filesToParseNo) {
+				parser = null;
 				parseLessFiles();
 			}
 		}
