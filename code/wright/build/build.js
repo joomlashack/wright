@@ -90,6 +90,13 @@ function parseLessFiles() {
 	});
 }
 
+// Read command line arguments
+var buildThemesString = '["all"]';
+if (process.argv[2] != undefined) {
+	buildThemesString = '["' + process.argv[2].replace(',','","') + '"]';
+}
+var buildThemes = JSON.parse(buildThemesString);
+
 // Iterate styles
 var list = fs.readdirSync('../../less');
 if (list) {
@@ -110,10 +117,13 @@ if (list) {
 			fs.writeFileSync(df, s);
 
 			// Bootstrap base file
-			filesToParse[filesToParseNo] = new Array();
-			filesToParse[filesToParseNo][0] = df;
-			filesToParse[filesToParseNo][1] = dfcss;
-			filesToParseNo++;
+			if (buildThemes.indexOf(st) != -1 || buildThemes.indexOf('all') != -1) {
+				filesToParse[filesToParseNo] = new Array();
+				filesToParse[filesToParseNo][0] = df;
+				filesToParse[filesToParseNo][1] = dfcss;
+				filesToParse[filesToParseNo][2] = st;
+				filesToParseNo++;
+			}
 
 			var list2 = fs.readdirSync('less');
 			if (list2) {
@@ -155,17 +165,21 @@ if (list) {
 							s += '@import url("../../less/style-' + st + '-responsive.less"); ';
 						fs.writeFileSync(dfr, s);
 
-						// extended file (Joomla and template specifics)
-						filesToParse[filesToParseNo] = new Array();
-						filesToParse[filesToParseNo][0] = dfext;
-						filesToParse[filesToParseNo][1] = dfcssext;
-						filesToParseNo++;
+						if (buildThemes.indexOf(st) != -1 || buildThemes.indexOf('all') != -1) {
+							// extended file (Joomla and template specifics)
+							filesToParse[filesToParseNo] = new Array();
+							filesToParse[filesToParseNo][0] = dfext;
+							filesToParse[filesToParseNo][1] = dfcssext;
+							filesToParse[filesToParseNo][2] = st;
+							filesToParseNo++;
 
-						// extended file (Joomla and template specifics)
-						filesToParse[filesToParseNo] = new Array();
-						filesToParse[filesToParseNo][0] = dfr;
-						filesToParse[filesToParseNo][1] = dfcssr;
-						filesToParseNo++;
+							// extended file (Joomla and template specifics)
+							filesToParse[filesToParseNo] = new Array();
+							filesToParse[filesToParseNo][0] = dfr;
+							filesToParse[filesToParseNo][1] = dfcssr;
+							filesToParse[filesToParseNo][2] = st;
+							filesToParseNo++;
+						}
 					}
 				});
 			}

@@ -41,8 +41,15 @@
 
         <!-- Delete template files and folders except node files -->
         <if>
-            <equals arg1="${node.skip}" arg2="true" />
+            <equals arg1="${node.build}" arg2="all" />
             <then>
+                <delete includeemptydirs="true">
+                    <fileset dir="${www.dir}/templates/${tpl.folder}">
+                        <exclude name="wright/build/node_modules/**" />
+                    </fileset>
+                </delete>
+            </then>
+            <else>
                 <delete includeemptydirs="true">
                     <fileset dir="${www.dir}/templates/${tpl.folder}">
                         <exclude name="wright/build/node_modules/**" />
@@ -51,13 +58,6 @@
                         <exclude name="css/joomla**-responsive.css" />
                         <exclude name="css/jui/**" />
                         <exclude name="js/jui/**" />
-                    </fileset>
-                </delete>
-            </then>
-            <else>
-                <delete includeemptydirs="true">
-                    <fileset dir="${www.dir}/templates/${tpl.folder}">
-                        <exclude name="wright/build/node_modules/**" />
                     </fileset>
                 </delete>
             </else>
@@ -136,7 +136,7 @@
             <and>
                 <equals arg1="${wright.responsive}" arg2="1" />
                 <not>
-                    <equals arg1="${node.skip}" arg2="true" />
+                    <equals arg1="${node.build}" arg2="" />
                 </not>
             </and>
             <then>
@@ -157,7 +157,7 @@
                     </else>
                 </if>
 
-                <exec command="node build.js" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
+                <exec command="node build ${node.build}" logoutput="true" dir="${www.dir}/templates/${tpl.folder}/wright/build" />
             </then>
         </if>
 
