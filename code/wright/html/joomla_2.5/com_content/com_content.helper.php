@@ -55,5 +55,10 @@ function getBlogItemLink($item) {
 	return $link;
 }
 
+function getIntroImageFloat($item) {
+	$images = json_decode($item->images);
+	return (empty($images->float_intro)) ? $item->params->get('float_intro') : $images->float_intro;
+}
+
 
 ?>

@@ -109,6 +109,7 @@ JHtml::_('behavior.caption');
 			<?php
 				$this->item = &$item;
 				$this->item->wrightElementsStructure = $this->wrightLeadingItemElementsStructure;  // Wright v.3: Item elements order
+				$this->item->wrightType = 'leading';  // Wright v.3: Adding item type to identify in the proper override
 				echo $this->loadTemplate('item');
 			?>
 		</div>
@@ -136,6 +137,7 @@ JHtml::_('behavior.caption');
 					<?php
 					$this->item = &$item;
 					$this->item->wrightElementsStructure = $this->wrightIntroItemElementsStructure;  // Wright v.3: Item elements structure
+					$this->item->wrightType = 'intro';  // Wright v.3: Adding item type to identify in the proper override
 					echo $this->loadTemplate('item');
 				?>
 				</div><!-- end item -->
