@@ -1339,16 +1339,19 @@ iframe{
 	background-repeat: no-repeat;
 	height: 30px;
 	width: 30px;
-	.transition(background-position ease-in .2s);
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	.transition(background-position ease-in .1s);
 }
 .wright-joomla-black{
 	background-position: 0 0;
 	&:hover{
-		background-position: 0 30px;
+		background-position: 0 -30px;
 	}
 }
 .wright-joomla-white{
-	background-position: 0 30px;
+	background-position: 0 -30px;
 	&:hover{
 		background-position: 0 0;
 	}
