@@ -1332,3 +1332,24 @@ iframe{
 .clear {
 	clear: both;
 }
+
+.wright-joomla-black,
+.wright-joomla-white{
+	background-image: url(../wright/images/icons/icon-joomla.png);
+	background-repeat: no-repeat;
+	height: 30px;
+	width: 30px;
+	.transition(background-position ease-in .2s);
+}
+.wright-joomla-black{
+	background-position: 0 0;
+	&:hover{
+		background-position: 0 30px;
+	}
+}
+.wright-joomla-white{
+	background-position: 0 30px;
+	&:hover{
+		background-position: 0 0;
+	}
+}
