@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.5
+// Wright v.3 Override: Joomla 3.2.2
 /**
  * @package     Joomla.Site
  * @subpackage  mod_menu
@@ -14,10 +14,13 @@ defined('_JEXEC') or die;
 
 /* Wright v.3: Distinguish collapsible and non-collapsible menus.  If the position is an official menu position in the template, or if it has the suffixe "no-collapse", it won't do the collapse */
 $wrightCollapseMenus = true;
-if (preg_match('/no\-collapse/', $class_sfx)) {
+
+if (preg_match('/no\-collapse/', $class_sfx))
+{
 	$wrightCollapseMenus = false;
 }
-else {
+else
+{
 	$wrightTemplate = WrightTemplate::getInstance();
 	if (in_array($module->position, $wrightTemplate->menuPositions))
 		$wrightCollapseMenus = false;
@@ -28,16 +31,19 @@ else {
 <?php // The menu class is deprecated. Use nav instead. ?>
 <ul class="nav menu<?php echo $class_sfx;?>"<?php
 	$tag = '';
+
 	if ($params->get('tag_id') != null)
 	{
-		$tag = $params->get('tag_id').'';
-		echo ' id="'.$tag.'"';
+		$tag = $params->get('tag_id') . '';
+		echo ' id="' . $tag . '"';
 	}
 ?>>
 <?php
-foreach ($list as $i => &$item) :
+foreach ($list as $i => &$item)
+{
 	$active = false;  // Wright v.3: Active toggle for collapsible menus
-	$class = 'item-'.$item->id;
+	$class = 'item-' . $item->id;
+
 	if ($item->id == $active_id)
 	{
 		$class .= ' current';
@@ -51,6 +57,7 @@ foreach ($list as $i => &$item) :
 	elseif ($item->type == 'alias')
 	{
 		$aliasToId = $item->params->get('aliasoptions');
+
 		if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
 		{
 			$class .= ' active';
@@ -78,7 +85,7 @@ foreach ($list as $i => &$item) :
 
 	if (!empty($class))
 	{
-		$class = ' class="'.trim($class) .'"';
+		$class = ' class="' . trim($class) . '"';
 	}
 
 	/* Wright v.3: Unique tagging for collapsible submenus */
@@ -86,9 +93,14 @@ foreach ($list as $i => &$item) :
 	$item->licollapse = '';
 	$idul = '';
 	$uladd = '';
+
 	if ($item->type == "separator" || $item->type == "heading")
+	{
 		$item->flink = '#';
-	if ($item->deeper && $wrightCollapseMenus) {
+	}
+
+	if ($item->deeper && $wrightCollapseMenus)
+	{
 		$ulid = 'wul_' . uniqid();
 		$item->licollapse = ' data-toggle="collapse"';
 		$item->flink = '#' . $ulid;
@@ -97,7 +109,7 @@ foreach ($list as $i => &$item) :
 	}
 	/* End Wright v.3: Unique tagging for collapsible submenus */
 
-	echo '<li'.$class . '>';  // Wright v.3: Added collapsible option
+	echo '<li' . $class . '>';  // Wright v.3: Added collapsible option
 
 	// Render the menu item.
 	switch ($item->type) :
@@ -105,7 +117,7 @@ foreach ($list as $i => &$item) :
 		case 'url':
 		case 'component':
 		case 'heading':
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_'.$item->type);
+			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
 			break;
 
 		default:
@@ -122,12 +134,14 @@ foreach ($list as $i => &$item) :
 	// The next item is shallower.
 	elseif ($item->shallower)
 	{
+		// The next item is shallower.
 		echo '</li>';
 		echo str_repeat('</ul></li>', $item->level_diff);
 	}
-	// The next item is on the same level.
-	else {
+	else
+	{
+		// The next item is on the same level.
 		echo '</li>';
 	}
-endforeach;
+}
 ?></ul>

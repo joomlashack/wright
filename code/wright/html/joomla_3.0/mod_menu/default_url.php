@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.5
+// Wright v.3 Override: Joomla 3.2.2
 /**
  * @package     Joomla.Site
  * @subpackage  mod_menu
@@ -14,27 +14,32 @@ defined('_JEXEC') or die;
 $structIcons = '';
 $span1 = '';
 $span2 = '';
-if (preg_match_all('/icon-([\S]+)/', $item->anchor_css, $matches)) {
+if (preg_match_all('/icon-([\S]+)/', $item->anchor_css, $matches))
+{
 	$item->anchor_css = preg_replace('/icon-([\S]+)/', '', $item->anchor_css);
 	$icons = 'icon-' . implode(' icon-',$matches[1]);
 	$structIcons = '<i class="' . $icons . '"></i>';
 }
-if (preg_match_all('/hidden-text/', $item->anchor_css, $matches)) {
+if (preg_match_all('/hidden-text/', $item->anchor_css, $matches))
+{
 	$span1 = '<span class="hidden-text">';
 	$span2 = '</span>';
 }
 // End Wright v.3: Created additional structure for icons
 
 // Note. It is important to remove spaces between elements.
-$class = $item->anchor_css ? 'class="'.$item->anchor_css.'" ' : '';  // Wright v.3:  Removed "disable"
-$title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
+$class = $item->anchor_css ? 'class="' . $item->anchor_css . '" ' : '';  // Wright v.3:  Removed "disable"
+$title = $item->anchor_title ? 'title="' . $item->anchor_title . '" ' : '';
 $caret = $item->deeper ? '<b class="caret"></b>' : '';  // Wright v.3: Added caret
-if ($item->menu_image) {
+if ($item->menu_image)
+	{
 		$item->params->get('menu_text', 1 ) ?
-		$linktype = $span1 . '<img src="'.$item->menu_image.'" alt="'.$item->title.'" /><span class="image-title">'.$item->title.'</span> ' . $span2 : // Wright v.3: Added optional spans
-		$linktype = $span1 . '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />' . $span2; // Wright v.3: Added optional spans
+		$linktype = $span1 . '<img src="' . $item->menu_image . '" alt="' . $item->title . '" /><span class="image-title">' . $item->title . '</span> ' . $span2 : // Wright v.3: Added optional spans
+		$linktype = $span1 . '<img src="' . $item->menu_image . '" alt="' . $item->title . '" />' . $span2; // Wright v.3: Added optional spans
 }
-else { $linktype = $span1 . $item->title . $span2; // Wright v.3: Added optional spans
+else
+{
+	$linktype = $span1 . $item->title . $span2; // Wright v.3: Added optional spans
 }
 
 $flink = $item->flink;
