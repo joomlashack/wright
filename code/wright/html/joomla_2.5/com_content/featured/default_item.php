@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.17
+// Wright v.3 Override: Joomla 2.5.18
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -20,7 +20,7 @@ $images = json_decode($this->item->images);
 $canEdit	= $this->item->params->get('access-edit');
 ?>
 
-<?php if ($this->item->state == 0) : ?>
+<?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())) : ?>
 <div class="system-unpublished">
 <?php endif; ?>
 
@@ -308,7 +308,7 @@ $canEdit	= $this->item->params->get('access-edit');
 ?>
 
 
-<?php if ($this->item->state == 0) : ?>
+<?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())) : ?>
 </div>
 <?php endif; ?>
 
