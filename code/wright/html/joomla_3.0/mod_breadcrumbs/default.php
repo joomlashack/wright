@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.1.5
+// Wright v.3 Override: Joomla 3.2.2
 /**
  * @package     Joomla.Site
  * @subpackage  mod_breadcrumbs
@@ -21,7 +21,11 @@ $separator = '<i class="icon-caret-right"></i>';  // Wright v.3: Joomla 3.x sepa
 	<?php
 	if ($params->get('showHere', 1))
 	{
-		echo '<li class="active"><span class="divider icon-map-marker hasTooltip" title="' . JText::_('MOD_BREADCRUMBS_HERE') . '"></span></li>';  // Wright v.3: Changed icon-location for icon-map-marker
+		echo '<li class="active">' . JText::_('MOD_BREADCRUMBS_HERE') . '&#160;</span></li>';
+	}
+	else
+	{
+		echo '<li class="active"><span class="divider icon-map-marker"></span></li>';  // Wright v.3: Changed icon-location for icon-map-marker
 	}
 
 	// Get rid of duplicated entries on trail including home page when using multilanguage

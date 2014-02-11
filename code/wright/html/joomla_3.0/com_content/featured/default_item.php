@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.2.1
+// Wright v.3 Override: Joomla 3.2.2
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -23,7 +23,8 @@ $info    = $this->item->params->get('info_block_position', 0);
 
 ?>
 
-<?php if ($this->item->state == 0) : ?>
+<?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())
+	|| ((strtotime($this->item->publish_down) < strtotime(JFactory::getDate())) && $this->item->publish_down != '0000-00-00 00:00:00' )) : ?>
 	<div class="system-unpublished">
 <?php endif; ?>
 
@@ -63,6 +64,13 @@ $info    = $this->item->params->get('info_block_position', 0);
 
 <?php if ($this->item->state == 0) : ?>
 	<span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
+<?php endif; ?>
+
+<?php if (strtotime($this->item->publish_up) > strtotime(JFactory::getDate())) : ?>
+	<span class="label label-warning"><?php echo JText::_('JNOTPUBLISHEDYET'); ?></span>
+<?php endif; ?>
+<?php if ((strtotime($this->item->publish_down) < strtotime(JFactory::getDate())) && $this->item->publish_down != '0000-00-00 00:00:00') : ?>
+	<span class="label label-warning"><?php echo JText::_('JEXPIRED'); ?></span>
 <?php endif; ?>
 
 <?php
@@ -110,12 +118,9 @@ $info    = $this->item->params->get('info_block_position', 0);
 			<i class="icon-user"></i> <?php // Wright v.3: Author icon ?>
 				<?php $author = $this->item->author; ?>
 				<?php $author = ($this->item->created_by_alias ? $this->item->created_by_alias : $author); ?>
-				<?php if (!empty($this->item->contactid ) && $params->get('link_author') == true) : ?>
-					<?php
-					echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY',
-						JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid), $author)) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
-					<?php
-					echo $wrightBeforeIconM . JText::sprintf(JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid), $author)) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
+				<?php if (!empty($this->item->contact_link) && $params->get('link_author') == true) : ?>
+					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY', JHtml::_('link', $this->item->contact_link, $author)) . $wrightAfterIcon; ?>
+					<?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('link', $this->item->contact_link, $author)) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 				<?php else :?>
 					<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY', $author) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
 					<?php echo $wrightBeforeIconM . JText::sprintf($author) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
@@ -411,7 +416,8 @@ $info    = $this->item->params->get('info_block_position', 0);
 /* End Wright v.3: Item elements structure */
 ?>
 
-<?php if ($this->item->state == 0) : ?>
+<?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())
+	|| ((strtotime($this->item->publish_down) < strtotime(JFactory::getDate())) && $this->item->publish_down != '0000-00-00 00:00:00' )) : ?>
 </div>
 <?php endif; ?>
 

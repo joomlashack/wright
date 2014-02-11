@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override Helper: Joomla 2.5.17
+// Wright v.3 Override Helper: Joomla 2.5.18
 /**
  * @version
  * @package		Wright
