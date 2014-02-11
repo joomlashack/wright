@@ -1333,26 +1333,24 @@ iframe{
 	clear: both;
 }
 
-.wright-joomla-black,
-.wright-joomla-white{
+// icons joomla
+
+
+[class^="icon-wright-joomla"]:before, [class*=" icon-wright-joomla"]:before{
 	background-image: url(../wright/images/icons/icon-joomla.png);
 	background-repeat: no-repeat;
-	height: 30px;
-	width: 30px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	.transition(background-position ease-in .1s);
+	content: '';
 }
-.wright-joomla-black{
+
+.icon-wright-joomla:before{
 	background-position: 0 0;
+	height: 14px;
+	width: 14px;
 	&:hover{
-		background-position: 0 -30px;
+		background-position: 0 -15px;
 	}
 }
-.wright-joomla-white{
-	background-position: 0 -30px;
-	&:hover{
-		background-position: 0 0;
-	}
-}
+
