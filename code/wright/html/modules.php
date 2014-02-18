@@ -123,7 +123,11 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $modulenumbera[$attribs['name']]++;
     ?>
 <div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> span<?php echo $spanWidth . $extraclass ?>">
+<?php if (in_array('module',$extradivs)) : ?>
+    <div class="module-inner">
 <?php
+    endif;
+
     if ($featured)
         echo $featuredImg . '<div class="wrightmodule-content">' . $featuredSubtitle;
 
@@ -137,6 +141,11 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     echo $module->content;
     if ($featured)
         echo '</div>';
+?>
+<?php if (in_array('module',$extradivs)) : ?>
+    </div>
+<?php
+    endif;
 ?>
 </div>
 <?php
