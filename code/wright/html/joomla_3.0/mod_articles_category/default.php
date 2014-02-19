@@ -12,6 +12,8 @@ defined('_JEXEC') or die;
 
 $wrightTypeList = (isset($wrightTypeList) ? $wrightTypeList : ' list-striped'); // Wright v.3: Optional list-striped class
 
+$wrightEnableIcons = (isset($wrightEnableIcons) ? $wrightEnableIcons : true);  // Wright v.3: Enable icons parameter
+
 ?>
 <ul class="category-module<?php echo $moduleclass_sfx; ?><?php echo $wrightTypeList; // Wright v.3: Optional list-striped class ?>">
 <?php if ($grouped) : ?>
@@ -22,7 +24,7 @@ $wrightTypeList = (isset($wrightTypeList) ? $wrightTypeList : ' list-striped'); 
 			    <li class="clearfix">  <?php // Wright v.3: Added clearfix class ?>
 					<?php if ($params->get('link_titles') == 1) : ?>
 						<a class="mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">
-						<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
+						<i class="icon-file"></i> <?php // Wright v.3: Added icon ?>
 						<?php echo $item->title; ?>
 						</a>
 					<?php else : ?>
@@ -94,11 +96,11 @@ $wrightTypeList = (isset($wrightTypeList) ? $wrightTypeList : ' list-striped'); 
 	    <li class="clearfix">  <?php // Wright v.3: Added clearfix class ?>
 			<?php if ($params->get('link_titles') == 1) : ?>
 				<a class="mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">
-				<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
+				<?php if($wrightEnableIcons): ?><i class="icon-file"></i> <?php endif; ?> <?php // Wright v.3: Added icon ?>
 				<?php echo $item->title; ?>
 				</a>
 			<?php else : ?>
-				<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
+				<?php if($wrightEnableIcons): ?><i class="icon-file"></i> <?php endif; ?> <?php // Wright v.3: Added icon ?>
 				<?php echo $item->title; ?>
 			<?php endif; ?>
 
