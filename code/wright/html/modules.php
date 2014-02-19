@@ -88,8 +88,8 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
             $module->content = preg_replace('/<img([^>]*)>/i', '', $module->content, 1);
             $featuredImg = '<div class="wrightmodule-imgfeatured">'.'<img' . $matches[1] . '>'.'</div>';
         }
-        if (preg_match('/<h4([^>]*)>([^<]*)<\/h4>/i', $module->content, $matches)) {
-            $module->content = preg_replace('/<h4([^>]*)>([^<]*)<\/h4>/i', '', $module->content, 1);
+        if (preg_match('/<h4([^>]*)>(.+?)<\/h4>/ims', $module->content, $matches)) {
+            $module->content = preg_replace('/<h4([^>]*)>(.+?)<\/h4>/ims', '', $module->content, 1);
             $featuredSubtitle = '<h4' . $matches[1] . ' class="wrightmodule-subtitle">' . $matches[2] . '</h4>';
         }
         if (preg_match('/<a([^>]*)href=\"([^\"]*)\"([^>]*)>Title<\/a>/i', $module->content, $matches)) {
@@ -174,8 +174,8 @@ function modChrome_wrightfeatured($module, &$params, &$attribs) {
             $module->content = preg_replace('/<img([^>]*)>/i', '', $module->content, 1);
             $img = '<div class="wrightmodule-imgfeatured">'.'<img' . $matches[1] . '>'.'</div>';
         }
-        if (preg_match('/<h4([^>]*)>([^<]*)<\/h4>/i', $module->content, $matches)) {
-            $module->content = preg_replace('/<h4([^>]*)>([^<]*)<\/h4>/i', '', $module->content, 1);
+        if (preg_match('/<h4([^>]*)>(.+?)<\/h4>/ims', $module->content, $matches)) {
+            $module->content = preg_replace('/<h4([^>]*)>(.+?)<\/h4>/ims', '', $module->content, 1);
             $h4 = '<h4' . $matches[1] . ' class="wrightmodule-subtitle">' . $matches[2] . '</h4>';
         }
         if (preg_match('/<a([^>]*)href=\"([^\"]*)\"([^>]*)>Title<\/a>/i', $module->content, $matches)) {
