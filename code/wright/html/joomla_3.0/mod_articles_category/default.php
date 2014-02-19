@@ -10,21 +10,14 @@
 
 defined('_JEXEC') or die;
 
-/* Wright v.3: Optional list-striped class */
-if ($grouped) {
-	$ulclass = " unstyled";
-}
-else {
-	$ulclass = " list-striped";
-}
-/* End Wright v.3: Optional list-striped class */
+$wrightTypeList = (isset($wrightTypeList) ? $wrightTypeList : ' list-striped'); // Wright v.3: Optional list-striped class
 
 ?>
-<ul class="category-module<?php echo $moduleclass_sfx; ?><?php echo $ulclass; // Wright v.3: Optional list-striped class ?>">
+<ul class="category-module<?php echo $moduleclass_sfx; ?><?php echo $wrightTypeList; // Wright v.3: Optional list-striped class ?>">
 <?php if ($grouped) : ?>
 	<?php foreach ($list as $group_name => $group) : ?>
 	<li>
-		<ul class="list-striped">  <?php // Wright v.3: Added list-striped class ?>
+		<ul class="<?php echo $wrightTypeList; ?>">  <?php // Wright v.3: Added list-striped class ?>
 			<?php foreach ($group as $item) : ?>
 			    <li class="clearfix">  <?php // Wright v.3: Added clearfix class ?>
 					<?php if ($params->get('link_titles') == 1) : ?>
