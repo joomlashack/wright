@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-$wrightEnableIcons = (isset($wrightEnableIcons) ? $wrightEnableIcons : true);  // Wright v.3: Enable icons parameter
+$wrightNewsEnableIcons = (isset($wrightNewsEnableIcons) ? $wrightNewsEnableIcons : true);  // Wright v.3: Enable icons parameter
 
 $wrightEnableIntroText = (isset($wrightEnableIntroText) ? $wrightEnableIntroText : true);  // Wright v.3: Enable intro text parameter
 
@@ -27,13 +27,13 @@ $item_heading = $params->get('item_heading', 'h4');
 			<?php if ($params->get('link_titles') && $item->link != '') : ?>
 				<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
 					<a href="<?php echo $item->link;?>">
-						<?php if ($wrightEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
+						<?php if ($wrightNewsEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 						<?php echo $item->title;?>
 					</a>
 				</div>  <?php // Wright v.3: Added page-header style ?>
 			<?php else : ?>
 				<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
-					<?php if ($wrightEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
+					<?php if ($wrightNewsEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 					<?php echo $item->title; ?>
 				</div>  <?php // Wright v.3: Added page-header style ?>
 			<?php endif; ?>
@@ -82,13 +82,13 @@ endif; ?>
 			<?php if ($params->get('link_titles') && $item->link != '') : ?>
 				<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
 					<a href="<?php echo $item->link;?>">
-						<?php if ($wrightEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
+						<?php if ($wrightNewsEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 						<?php echo $item->title;?>
 					</a>
 				</div>  <?php // Wright v.3: Added page-header style ?>
 			<?php else : ?>
 				<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
-					<?php if ($wrightEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
+					<?php if ($wrightNewsEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 					<?php echo $item->title; ?>
 				</div>  <?php // Wright v.3: Added page-header style ?>
 			<?php endif; ?>
