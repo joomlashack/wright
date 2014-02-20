@@ -109,6 +109,7 @@ $wrightEnableIcons = (isset($wrightEnableIcons) ? $wrightEnableIcons : true);  /
             <?php echo $item->displayHits; ?>  </span>
         <?php endif; ?></a>
         <?php else :?>
+		<?php if ($wrightEnableIcons) : ?><i class="icon-file"></i> <?php endif; ?>  <?php // Wright v.3: Added icon and removed parenthesis ?>
         <?php echo $item->title; ?>
         	<?php if ($item->displayHits) :?>
 			<span class="mod-articles-category-hits">
