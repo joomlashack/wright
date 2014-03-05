@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Main package
  *
- * @copyright   Copyright (C) 2005 - 2013 Joomlashack. Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2014 Joomlashack. Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -304,7 +304,7 @@ class Wright
 				case '6' :
 					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie6.css'))
 						$styles['ie'][] = 'ie6.css';
-					$this->addJSScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
+					$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/dd_belatedpng.js');
 				case '7' :
 					$styles['fontawesome'][] = 'font-awesome-ie7.min.css';
 					// does not break for leaving defaults

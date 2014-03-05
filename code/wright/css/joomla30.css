@@ -675,12 +675,13 @@ ul.breadcrumb li {
 /* Text selection */
 
 ::selection {
-	background:rgb(255,255,0);
+	background:#D2EAF6;
 }
 
 ::-moz-selection {
-	background: rgb(255,255,0);
+	background: #D2EAF6;
 }
+
 /** module menu in sidebar */
 ul.menu {
 	list-style: none;
