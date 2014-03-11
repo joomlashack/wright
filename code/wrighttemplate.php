@@ -15,5 +15,4 @@ require_once(dirname(__FILE__).'/wright/template/wrighttemplatebase.php');
 // WrightTemplate class, for special settings on Wright
 class WrightTemplate extends WrightTemplateBase {
 	public $templateName = 'js_wright';
-	public $includeFooterLink = false;
 }
