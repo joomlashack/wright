@@ -49,7 +49,7 @@ class WrightAdapterJoomlaFooter
 			  }
 			}
 
-			return '<a class="joomlashack" href="'.$host.'"><img src="./templates/js_wright/wright/images/jscright.png" alt ="'.$anchor.$endline.'" /> </a>' . $js;
+			return '<a class="joomlashack" href="'.$host.'"><img src="./templates/'.JFactory::getApplication()->getTemplate().'/wright/images/jscright.png" alt ="'.$anchor.$endline.'" /> </a>' . $js;
 		}
 		else
 		{
