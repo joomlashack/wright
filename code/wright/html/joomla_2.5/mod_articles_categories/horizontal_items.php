@@ -10,22 +10,23 @@
 // no direct access
 defined('_JEXEC') or die;
 
+/* Wright v.3: Added configuration horizontal/vertical */
+$wrightOrientationList = (isset($wrightOrientationList) ? $wrightOrientationList : 'vertical');  // Wright v.3: Max columns to be used
+/* Wright v.3: End Added configuration horizontal/vertical */
+
 /* Wright v.3: Grab parameter for max column number, setting it to one of the allowed Bootstrap values */
 $wrightMaxColumns = (isset($wrightMaxColumns) ? $wrightMaxColumns : 4);  // Wright v.3: Max columns to be used
-	/* Wright v.3: Added configuration horizontal/vertical */
-
-		$wrightOrientationList = (isset($wrightOrientationList) ? $wrightOrientationList : 'vertical');  // Wright v.3: Max columns to be used
-		if($wrightOrientationList = 'vertical'){
-			$wrightMaxColumns = 12;
-		}
-
-	/* Wright v.3: End Added configuration horizontal/vertical */
 if ($wrightMaxColumns > 6) {
+
 	$wrightMaxColumns = 6;
 }
 elseif ($wrightMaxColumns == 5) {
 	$wrightMaxColumns = 6;
 }
+if($wrightOrientationList == 'vertical'){
+	$wrightMaxColumns = 1;
+}
+
 $span = (12 / $wrightMaxColumns);
 /* End Wright v.3: Grab parameter for max column number */
 
@@ -37,9 +38,8 @@ $wrightEnableIcons = (isset($wrightEnableIcons) ? $wrightEnableIcons : true);  /
 
 $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrightMaxColumns)
 
-for ($i = 0, $n = count($list); $i < $n; $i ++) :
-$item = $list[$i];
-
+foreach ($list as $item) :
+	$n = count($list);
 ?>
 
 		<?php // Wright v.3: Added row-fluid for each horizontal set of columns ?>
@@ -53,7 +53,7 @@ $item = $list[$i];
 		<div class="span<?php echo $span; if ($_SERVER['PHP_SELF'] == JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) echo ' active';?>"> <?php $levelup=$item->level-$startLevel -1; ?>
 
 			<?php // Wright v.3: Added image of Category ?>
-				<?php if ($item->getParams()->get('image')) : ?>
+				<?php if ($params->get('show_description', 0)) : ?>
 					<img src="<?php echo $item->getParams()->get('image'); ?>" class='img-block'>
 				<?php endif; ?>
 			<?php // End Wright v.3: Added image of Category  ?>
@@ -72,26 +72,28 @@ $item = $list[$i];
 
 			</h<?php echo $params->get('item_heading')+ $levelup; ?>>
 
-			<?php if ($params->get('show_description', 1)) : ?>
-				<?php
-				if($params->get('show_children', 0) && (($params->get('maxlevel', 0) == 0) || ($params->get('maxlevel') >= ($item->level - $startLevel))) && count($item->getChildren()))
-				{
+			<?php
+			if($params->get('show_description', 0))
+			{
+				echo JHtml::_('content.prepare', $item->description, $item->getParams(), 'mod_articles_categories.content');
+			}
+			if($params->get('show_children', 0) && (($params->get('maxlevel', 0) == 0) || ($params->get('maxlevel') >= ($item->level - $startLevel))) && count($item->getChildren()))
+			{
 
-					echo '<div class="nav nav-list">';  // Wright v.3: Added nav nav-list classes
-					$temp = $list;
-					$list = $item->getChildren();
-					require JModuleHelper::getLayoutPath('mod_articles_categories', $params->get('layout', 'default').'_items');
-					$list = $temp;
-					echo '</div>';
-				}
-				?>
-			<?php endif; ?>
+				echo '<ul>';
+				$temp = $list;
+				$list = $item->getChildren();
+				require JModuleHelper::getLayoutPath('mod_articles_categories', $params->get('layout', 'default').'_items');
+				$list = $temp;
+				echo '</ul>';
+			}
+			?>
 
 		</div>
 	<?php // Wright v.3: Added span class for each column ?>
 	<?php /* Wright v.3: Close row-fluid */ ?>
 
-		<?php if ($c % $wrightMaxColumns ==  ($wrightMaxColumns-1) || $c == $n - 1): ?>
+		<?php if ($c % $wrightMaxColumns ==  ($wrightMaxColumns - 1) || $c == $n - 1): ?>
 			</div>
 		<?php endif; ?>
 
@@ -99,7 +101,7 @@ $item = $list[$i];
 			$c = $c + 1;
 		?>
 	<?php /* End Wright v.3: Close row-fluid */ ?>
-<?php endfor; ?>
+<?php endforeach; ?>
 
 
 

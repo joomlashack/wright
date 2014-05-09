@@ -10,7 +10,7 @@
 // no direct access
 defined('_JEXEC') or die;
 ?>
-<ul class="categories-module<?php echo $moduleclass_sfx; ?>">  <?php // Wright v.3: Added nav nav-list classes ?>
+<div class="categories-module<?php echo $moduleclass_sfx; ?>">  <?php // Wright v.3: Added nav nav-list classes ?>
 <?php
 require JModuleHelper::getLayoutPath('mod_articles_categories', $params->get('layout', 'showImage').'showImage_items');
-?></ul>
+?></div>

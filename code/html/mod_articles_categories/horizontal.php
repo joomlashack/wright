@@ -12,5 +12,8 @@ defined('_JEXEC') or die;
 
 $app = JFactory::getApplication();
 
+$wrightMaxColumns = 3;
+$wrightEnableIcons = false;
+
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
-require(Overrider::getOverride('mod_articles_categories','showImage_items'));
+require(Overrider::getOverride('mod_articles_categories', 'horizontal'));
