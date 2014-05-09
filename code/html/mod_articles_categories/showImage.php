@@ -16,4 +16,4 @@ $wrightMaxColumns = 3;
 $wrightEnableIcons = false;
 
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
-require(Overrider::getOverride('mod_articles_categories', 'showImage'));
+require(Overrider::getOverride('mod_articles_categories'));
