@@ -22,7 +22,6 @@ class WrightTemplateBase {
 	public $JDocumentHTML = null;  // if using forced sidebar has to be set with the local JDocumentHTML ($this from inside the template itself)
 	public $useMainSpans = true; // use Bootstrap's span classes for main content and sidebars
 	public $menuPositions = Array('toolbar','menu','bottom-menu');  // menu positions in the template - using the <w:nav> adapter
-	public $includeFooterLink = true; // select wether to include a link with the footer copyright or not
 
 	public static function getInstance() {
 		static $instance = null;
