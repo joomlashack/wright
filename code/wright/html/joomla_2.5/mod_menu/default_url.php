@@ -29,7 +29,7 @@ if (preg_match_all('/hidden-text/', $item->anchor_css, $matches)) {
 $class = $item->anchor_css ? 'class="'.$item->anchor_css.'" ' : '';
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
 
-if ($wrightCollapseMenus) {
+if ($menuType == 'vertical') {
 	$caret = $item->deeper ? '<b class="caret"></b>' : '';  // Wright v.3: Added caret
 }
 else{

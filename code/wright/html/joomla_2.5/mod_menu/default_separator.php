@@ -25,7 +25,7 @@ else { $linktype = $item->title;
 if ($item->deeper) {
 	// Opens a caret-right for levels 2 and above
 
-	if ($wrightCollapseMenus) {
+	if ($menuType == 'vertical') {
 		echo '<b class="caret"></b>';
 	}
 	else{
