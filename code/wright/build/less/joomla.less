@@ -229,6 +229,14 @@ dl.label.label-info dt{
 						}
 					}
 				}
+				// Fixing dropdown-menu item active (only inverse)
+				.dropdown-menu > .active >a{
+					color: @dropdownLinkColorActive;
+					&:hover,
+					&:focus{
+						color: @dropdownLinkColorActive;
+					}
+				}
 			}
 		}
 	}
