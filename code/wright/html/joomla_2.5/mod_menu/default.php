@@ -19,14 +19,25 @@ if (preg_match('/no\-collapse/', $class_sfx)) {
 }
 else {
 	$wrightTemplate = WrightTemplate::getInstance();
+
 	if (in_array($module->position, $wrightTemplate->menuPositions))
+		$wrightCollapseMenus = false;
+
+	if (preg_match('/navbar/', $params->get('moduleclass_sfx'))) 
 		$wrightCollapseMenus = false;
 }
 /* End Wright v.3: Distinguish collapsible and non-collapsible menus */
 
+$navlist = ' nav-list';
+if ($class_sfx != '' || !$wrightCollapseMenus)
+	$navlist = '';
+
 ?>
 
-<ul class="menu<?php echo $class_sfx;?> nav"<?php  // Wright v.3: Added nav class
+<?php 
+?>
+
+<ul class="menu<?php echo $class_sfx . $navlist;?> nav"<?php  // Wright v.3: Added nav class
 	$tag = '';
 	if ($params->get('tag_id')!=NULL) {
 		$tag = $params->get('tag_id').'';
@@ -60,7 +71,13 @@ foreach ($list as $i => &$item) :
 	}
 
 	if ($item->parent) {
-		$class .= ' parent';
+		if($item->level > 1 && !$wrightCollapseMenus)
+		{
+			$class .= ' parent dropdown-submenu'; // Wright v.3: Add dropdown-submenu class
+		}
+		else{
+			$class .= ' parent ';
+		}
 	}
 
 	if (!empty($class)) {
@@ -100,8 +117,11 @@ foreach ($list as $i => &$item) :
 
 	// The next item is deeper.
 	if ($item->deeper) {
-		$submenu = $item->level > 1 ? ' sub-menu' : '';  // Wright v.3 adds sub-menu for level 2 and beyond
-		echo '<ul' . $idul . ' class="dropdown-menu' . $uladd . $submenu . '">';  // Wright v.3: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
+
+		// Wright v.3 adds sub-menu for level 2 and beyond
+		
+		$dropdownmenu = $wrightCollapseMenus ? '' : ' dropdown-menu';  // Wright v.3 adds sub-menu for level 2 and beyond
+		echo '<ul' . $idul . ' class="' . $dropdownmenu . $uladd . '">';  // Wright v.3: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
 	}
 	// The next item is shallower.
 	elseif ($item->shallower) {

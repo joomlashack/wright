@@ -24,6 +24,13 @@ else { $linktype = $item->title;
 // Wright v.3: Closing pseudo-link for sub-menus
 if ($item->deeper) {
 	// Opens a caret-right for levels 2 and above
-	echo '<b class="caret"></b>';
+
+	if ($wrightCollapseMenus) {
+		echo '<b class="caret"></b>';
+	}
+	else{
+		if($item->level == 1) 
+			echo '<b class="caret"></b>'; // Wright v.3: Added caret
+	}
 }
 ?></a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure ?>
