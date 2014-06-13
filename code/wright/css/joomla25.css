@@ -602,10 +602,7 @@ dl.tabs dt.open a{
 
 
 .panel h3.pane-toggler-down a{
-	border-bottom: 1px solid #E0E0E0;
     display: block;
-    margin: 0 0 -5px;
- 	padding-bottom:5px;
 }
 .panel h3 a{
 }
