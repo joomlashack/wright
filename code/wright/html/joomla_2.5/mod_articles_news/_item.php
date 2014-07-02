@@ -13,18 +13,36 @@ $wrightEnableIntroText = (isset($wrightEnableIntroText) ? $wrightEnableIntroText
 
 $wrightTitlePosition = (isset($wrightTitlePosition) ? $wrightTitlePosition : 'above');  // Wright v.3: Title Position (above/below) parameter
 
+$wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : false);  // Wright v.3: Enable Link in content parameter
+
+$wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : false);  // Wright v.3: Enable Link in content parameter
+
 // no direct access
 defined('_JEXEC') or die;
 $item_heading = $params->get('item_heading', 'h4');
 ?>
-
+<?php echo $wrightEnableLinkContent?'<div class="item-content" style="cursor:pointer" onclick="location.href=\''.$item->link.'\'">':'' ?> 
 <?php if ($wrightTitlePosition == 'above') : ?> <?php /* Wright v.3: Added title above */ ?>
-
 	<?php if ($params->get('item_title')) : ?>
-
+<?php
+	if($wrightImageFirst):
+		$images = json_decode($item->images);
+		if ($params->get('image','1')) :
+			if (isset($images->image_intro) and !empty($images->image_intro)) :
+?>
+				<div class="img-intro-left">
+					<a href="<?php echo $item->link;?>">
+						<img src="<?php echo $images->image_intro; ?>" class="" alt="<?php echo $images->image_intro_alt; ?>" />
+					</a>
+				</div>
+<?php
+			endif;
+		endif;
+	endif;
+?>
 		<<?php echo $item_heading; ?> class="newsflash-title<?php echo $params->get('moduleclass_sfx'); ?>">
 			<?php if ($params->get('link_titles') && $item->link != '') : ?>
-				<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
+				<div class="page-header"> <?php // Wright v.3: Added link onclick en all content ?> 
 					<a href="<?php echo $item->link;?>">
 						<?php if ($wrightNewsEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 						<?php echo $item->title;?>
@@ -44,16 +62,18 @@ $item_heading = $params->get('item_heading', 'h4');
 
 <?php
 	/* Wright v.3: Added intro image */
-	$images = json_decode($item->images);
-	if ($params->get('image','1')) :
-		if (isset($images->image_intro) and !empty($images->image_intro)) :
+	if(!$wrightImageFirst):
+		$images = json_decode($item->images);
+		if ($params->get('image','1')) :
+			if (isset($images->image_intro) and !empty($images->image_intro)) :
 ?>
-	<div class="img-intro-left">
-		<a href="<?php echo $item->link;?>">
-			<img src="<?php echo $images->image_intro; ?>" class="" alt="<?php echo $images->image_intro_alt; ?>" />
-		</a>
-	</div>
+				<div class="img-intro-left">
+					<a href="<?php echo $item->link;?>">
+						<img src="<?php echo $images->image_intro; ?>" class="" alt="<?php echo $images->image_intro_alt; ?>" />
+					</a>
+				</div>
 <?php
+			endif;
 		endif;
 	endif;
 	/* End Wright v.3: Added intro image */
@@ -79,7 +99,7 @@ endif; ?>
 
 		<<?php echo $item_heading; ?> class="newsflash-title<?php echo $params->get('moduleclass_sfx'); ?>">
 			<?php if ($params->get('link_titles') && $item->link != '') : ?>
-				<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
+				<div class="page-header"> <?php // Wright v.3: Added link onclick en all content ?> 
 					<a href="<?php echo $item->link;?>">
 						<?php if ($wrightNewsEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 						<?php echo $item->title;?>
@@ -100,3 +120,6 @@ endif; ?>
 <?php if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
 	echo '<p class="readmore"><a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a></p>';  // Wright v.3:  Added p.readmore
 endif; ?>
+<?php echo $wrightEnableLinkContent?'</div>':'' ?>
+
+
