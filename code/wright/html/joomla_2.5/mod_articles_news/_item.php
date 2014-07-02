@@ -22,8 +22,6 @@ defined('_JEXEC') or die;
 $item_heading = $params->get('item_heading', 'h4');
 ?>
 <?php echo $wrightEnableLinkContent?'<div class="item-content" style="cursor:pointer" onclick="location.href=\''.$item->link.'\'">':'' ?> 
-<?php if ($wrightTitlePosition == 'above') : ?> <?php /* Wright v.3: Added title above */ ?>
-	<?php if ($params->get('item_title')) : ?>
 <?php
 	if($wrightImageFirst):
 		$images = json_decode($item->images);
@@ -40,6 +38,8 @@ $item_heading = $params->get('item_heading', 'h4');
 		endif;
 	endif;
 ?>
+<?php if ($wrightTitlePosition == 'above') : ?> <?php /* Wright v.3: Added title above */ ?>
+	<?php if ($params->get('item_title')) : ?>
 		<<?php echo $item_heading; ?> class="newsflash-title<?php echo $params->get('moduleclass_sfx'); ?>">
 			<?php if ($params->get('link_titles') && $item->link != '') : ?>
 				<div class="page-header"> <?php // Wright v.3: Added link onclick en all content ?> 
