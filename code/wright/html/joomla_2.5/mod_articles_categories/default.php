@@ -7,12 +7,10 @@
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-$wrightHorizontal = (isset($wrightHorizontal) ? $wrightHorizontal : true);  // Wright v.3: Enable positio horizontal parameter
-
+$wrightHorizontal = (isset($wrightHorizontal) ? $wrightHorizontal : false);  // Wright v.3: Enable positio horizontal parameter
 // no direct access
 defined('_JEXEC') or die;
 ?>
-
 <?php if($wrightHorizontal){ ?>
 	<div class="container-fluid">
    		<?php

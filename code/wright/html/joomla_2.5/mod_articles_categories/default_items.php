@@ -13,14 +13,11 @@ defined('_JEXEC') or die;
 if ($wrightMaxColumns > 6) {
 	$wrightMaxColumns = 6;
 }
-elseif ($wrightMaxColumns == 5) {
-	$wrightMaxColumns = 6;
-}
+
 $span = (12 / $wrightMaxColumns);
 /* End Wright v.3: Grab parameter for max column number */
 
 $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrightMaxColumns)
-$n = 0;
 foreach ($list as $item) :
 ?>
 <?php if($wrightHorizontal){ ?>
@@ -55,7 +52,7 @@ foreach ($list as $item) :
 		}
 		?>
  </div>
- <?php if ($c % $wrightMaxColumns ==  ($wrightMaxColumns-1) || $c == $n - 1): ?>
+ <?php if ($c % $wrightMaxColumns ==  ($wrightMaxColumns-1) || count($list) == $c): ?>
 	</div>
 <?php endif; ?>
  <?php
@@ -66,7 +63,7 @@ foreach ($list as $item) :
   <h<?php echo $params->get('item_heading')+ $levelup; ?>>
 		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>">
 			<i class="icon-folder-open"></i>  <?php // Wright v.3: Added icon ?>
-		<?php echo $item->title;?>jjj</a>
+		<?php echo $item->title;?></a>
    </h<?php echo $params->get('item_heading')+ $levelup; ?>>
 
 		<?php
