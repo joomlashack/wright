@@ -6,21 +6,25 @@
  * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
-$wrightMaxColumns = (isset($wrightMaxColumns) ? $wrightMaxColumns : 3);  // Wright v.3: Max columns to be used
 // no direct access
 defined('_JEXEC') or die;
+
+$wrightMaxColumns = (isset($wrightMaxColumns) ? $wrightMaxColumns : 3);  // Wright v.3: Max columns to be used
 /* Wright v.3: Grab parameter for max column number, setting it to one of the allowed Bootstrap values */
 if ($wrightMaxColumns > 6) {
 	$wrightMaxColumns = 6;
 }
 
-$span = (12 / $wrightMaxColumns);
+$span = (int)(12 / $wrightMaxColumns);
 /* End Wright v.3: Grab parameter for max column number */
 
 $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrightMaxColumns)
 foreach ($list as $item) :
 ?>
-<?php if($wrightHorizontal){ ?>
+<?php
+	/* Wright v.3: If horizontal display is enabled, displays categories showing category image (when available) and in horizontal / column layout */
+ if ($wrightHorizontal) {
+ ?>
 <?php if ($c % $wrightMaxColumns ==  0):?>
 	<div class="row-fluid">
 <?php endif; ?>
@@ -38,7 +42,7 @@ foreach ($list as $item) :
 		<?php
 		if($params->get('show_description', 0))
 		{
-			echo JHtml::_('content.prepare', $item->description, $item->getParams(), 'mod_articles_categories.content');
+			echo '<span class="intro-text">' . JHtml::_('content.prepare', $item->description, $item->getParams(), 'mod_articles_categories.content') . '</span>';
 		}
 		if($params->get('show_children', 0) && (($params->get('maxlevel', 0) == 0) || ($params->get('maxlevel') >= ($item->level - $startLevel))) && count($item->getChildren()))
 		{
@@ -58,7 +62,11 @@ foreach ($list as $item) :
  <?php
 	$c = $c + 1;
 ?>
-<?php }else{ ?>
+<?php }
+ else
+ 	{
+	/* End Wright v.3: If horizontal display is enabled, displays categories showing category image (when available) and in horizontal / column layout */
+ ?>
 <li <?php if ($_SERVER['PHP_SELF'] == JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) echo ' class="active"';?>> <?php $levelup=$item->level-$startLevel -1; ?>
   <h<?php echo $params->get('item_heading')+ $levelup; ?>>
 		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>">
@@ -83,5 +91,6 @@ foreach ($list as $item) :
 		}
 		?>
  </li>
-<?php } ?>
+<?php } // Wright v.3: If horizontal display is enabled, displays categories showing category image (when available) and in horizontal / column layout */
+ ?>
 <?php endforeach; ?>
