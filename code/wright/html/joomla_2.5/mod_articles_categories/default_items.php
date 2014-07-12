@@ -10,6 +10,8 @@
 defined('_JEXEC') or die;
 
 $wrightMaxColumns = (isset($wrightMaxColumns) ? $wrightMaxColumns : 3);  // Wright v.3: Max columns to be used
+$wrightHorizontal = (isset($wrightHorizontal) ? $wrightHorizontal : false);  // Wright v.3: Horizontal view
+$wrightHorizontalLinkedDescriptions = (isset($wrightHorizontalLinkedDescriptions) ? $wrightHorizontalLinkedDescriptions : false);  // Wright v.3: Link categories on horizontal view
 /* Wright v.3: Grab parameter for max column number, setting it to one of the allowed Bootstrap values */
 if ($wrightMaxColumns > 6) {
 	$wrightMaxColumns = 6;
@@ -34,16 +36,35 @@ foreach ($list as $item) :
 		<img src="<?php echo $item->getParams()->get('image'); ?>" class="img-block">
 	</a>
  <?php } ?>
+<span class="category-title">
   <h<?php echo $params->get('item_heading')+ $levelup; ?>>
 		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>">
 		<?php echo $item->title;?></a>
    </h<?php echo $params->get('item_heading')+ $levelup; ?>>
-
+</span>
 		<?php
-		if($params->get('show_description', 0))
-		{
-			echo '<span class="intro-text">' . JHtml::_('content.prepare', $item->description, $item->getParams(), 'mod_articles_categories.content') . '</span>';
-		}
+		if($params->get('show_description', 0)) :
+		?>
+			<span class="category-separator">
+				-
+			</span>
+			<span class="category-description">
+		<?php
+			if ($wrightHorizontalLinkedDescriptions) :
+		?>
+			<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>">
+		<?php
+			endif;
+			echo JHtml::_('content.prepare', $item->description, $item->getParams(), 'mod_articles_categories.content');
+			if ($wrightHorizontalLinkedDescriptions) :
+		?>
+			</a>
+		<?php
+			endif;
+		?>
+			</span>
+		<?php
+		endif;
 		if($params->get('show_children', 0) && (($params->get('maxlevel', 0) == 0) || ($params->get('maxlevel') >= ($item->level - $startLevel))) && count($item->getChildren()))
 		{
 
