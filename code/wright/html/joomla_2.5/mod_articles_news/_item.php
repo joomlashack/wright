@@ -21,7 +21,6 @@ $wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : false);  // 
 defined('_JEXEC') or die;
 $item_heading = $params->get('item_heading', 'h4');
 ?>
-<?php echo $wrightEnableLinkContent?'<div class="item-content" style="cursor:pointer" onclick="location.href=\''.$item->link.'\'">':'' ?> 
 <?php
 	if($wrightImageFirst):
 		$images = json_decode($item->images);
@@ -120,6 +119,5 @@ endif; ?>
 <?php if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
 	echo '<p class="readmore"><a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a></p>';  // Wright v.3:  Added p.readmore
 endif; ?>
-<?php echo $wrightEnableLinkContent?'</div>':'' ?>
 
 
