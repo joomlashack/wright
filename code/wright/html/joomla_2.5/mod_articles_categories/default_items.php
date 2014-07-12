@@ -56,7 +56,7 @@ foreach ($list as $item) :
 		}
 		?>
  </div>
- <?php if ($c % $wrightMaxColumns ==  ($wrightMaxColumns-1) || count($list) == $c): ?>
+ <?php if ($c % $wrightMaxColumns == ($wrightMaxColumns-1) || (count($list)-1) == $c): ?>
 	</div>
 <?php endif; ?>
  <?php
