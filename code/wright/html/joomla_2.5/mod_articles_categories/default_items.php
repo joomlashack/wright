@@ -28,7 +28,7 @@ foreach ($list as $item) :
  if ($wrightHorizontal) {
  ?>
 <?php if ($c % $wrightMaxColumns ==  0):?>
-	<div class="row-fluid">
+	<div class="row-fluid categories-module<?php echo $moduleclass_sfx; ?>">
 <?php endif; ?>
 <div class="span<?php echo $span ?>" <?php if ($_SERVER['PHP_SELF'] == JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) echo ' class="active"';?>> <?php $levelup=$item->level-$startLevel -1; ?>
   <?php if($item->getParams()->get('image')){  ?>
