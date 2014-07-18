@@ -21,6 +21,8 @@ elseif ($wrightMaxColumns == 5) {
 $span = (12 / $wrightMaxColumns);
 /* End Wright v.3: Grab parameter for max column number */
 
+$wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : false);  // Wright v.3: Enable Link in content parameter
+
 $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrightMaxColumns)
 ?>
 
