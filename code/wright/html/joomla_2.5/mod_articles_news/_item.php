@@ -13,30 +13,29 @@ $wrightEnableIntroText = (isset($wrightEnableIntroText) ? $wrightEnableIntroText
 
 $wrightTitlePosition = (isset($wrightTitlePosition) ? $wrightTitlePosition : 'above');  // Wright v.3: Title Position (above/below) parameter
 
+$wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : false);  // Wright v.3: Enable Link in content parameter
+
 $wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : false);  // Wright v.3: Enable Link in content parameter
 
 // no direct access
 defined('_JEXEC') or die;
 $item_heading = $params->get('item_heading', 'h4');
 ?>
-<div class="newsflash-item-content">
 <?php
-	// wright v.3 : show image if Image first is true
 	if($wrightImageFirst):
 		$images = json_decode($item->images);
 		if ($params->get('image','1')) :
 			if (isset($images->image_intro) and !empty($images->image_intro)) :
-?>				
+?>
 				<div class="img-intro-left">
 					<a href="<?php echo $item->link;?>">
-						<img src="<?php echo $images->image_intro; ?>"  id="<?php echo $item->id; ?>" alt="<?php echo $images->image_intro_alt; ?>" />
+						<img src="<?php echo $images->image_intro; ?>" class="" alt="<?php echo $images->image_intro_alt; ?>" />
 					</a>
 				</div>
 <?php
 			endif;
 		endif;
 	endif;
-	// End wright v.3 : show image if Image first is true
 ?>
 <?php if ($wrightTitlePosition == 'above') : ?> <?php /* Wright v.3: Added title above */ ?>
 	<?php if ($params->get('item_title')) : ?>
@@ -69,7 +68,7 @@ $item_heading = $params->get('item_heading', 'h4');
 ?>
 				<div class="img-intro-left">
 					<a href="<?php echo $item->link;?>">
-						<img src="<?php echo $images->image_intro; ?>"  id="<?php echo $item->id; ?>" alt="<?php echo $images->image_intro_alt; ?>" />
+						<img src="<?php echo $images->image_intro; ?>" class="" alt="<?php echo $images->image_intro_alt; ?>" />
 					</a>
 				</div>
 <?php
@@ -120,27 +119,5 @@ endif; ?>
 <?php if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
 	echo '<p class="readmore"><a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a></p>';  // Wright v.3:  Added p.readmore
 endif; ?>
-<?php 
-	// Wright v.3 : Added change image in hover 
-	$fileExtention=explode(".",$images->image_intro);
-	preg_match('/[^\.]+/',$images->image_intro, $imgt);
-	$fileHover=$imgt[0].'-hover.'.$fileExtention[1];
 
-	if (file_exists($fileHover)) {
-	    echo '<script type="text/javascript">
-	jQuery(document).ready(function($) {
-	    jQuery("#'.$item->id.'")
-	        .mouseover(function() { 
-	            var src = jQuery("#'.$item->id.'").attr("src").match(/[^\.]+/) + "-hover.'.$fileExtention[1].'";
-	            jQuery("#'.$item->id.'").attr("src", src);
-	        })
-	        .mouseout(function() {
-	            var src = jQuery("#'.$item->id.'").attr("src").replace("-hover.png", ".'.$fileExtention[1].'");
-	            jQuery("#'.$item->id.'").attr("src", src);
-	        });
-	});
-	</script>';
-	} 
-	// End Wright v.3 : Added change image in hover 
-?>
-</div>
+
