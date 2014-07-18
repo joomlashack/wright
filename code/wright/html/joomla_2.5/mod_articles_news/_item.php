@@ -13,9 +13,9 @@ $wrightEnableIntroText = (isset($wrightEnableIntroText) ? $wrightEnableIntroText
 
 $wrightTitlePosition = (isset($wrightTitlePosition) ? $wrightTitlePosition : 'above');  // Wright v.3: Title Position (above/below) parameter
 
-$wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : false);  // Wright v.3: Enable Link in content parameter
+$wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : true);  // Wright v.3: Enable Link in content parameter
 
-$wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : false);  // Wright v.3: Enable Link in content parameter
+$wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : true);  // Wright v.3: Enable Link in content parameter
 
 // no direct access
 defined('_JEXEC') or die;
@@ -29,10 +29,29 @@ $item_heading = $params->get('item_heading', 'h4');
 		$images = json_decode($item->images);
 		if ($params->get('image','1')) :
 			if (isset($images->image_intro) and !empty($images->image_intro)) :
-?>
+				$fileExtention=explode(".",$images->image_intro);
+				preg_match('/[^\.]+/',$images->image_intro, $imgt);
+				$fileHover=$imgt[0].'-hover.'.$fileExtention[1];
+				
+				if (file_exists($fileHover)) {
+				    echo '<script type="text/javascript">
+				jQuery(document).ready(function($) {
+				    jQuery("#'.$item->id.'")
+				        .mouseover(function() { 
+				            var src = jQuery("#'.$item->id.'").attr("src").match(/[^\.]+/) + "-hover.'.$fileExtention[1].'";
+				            jQuery("#'.$item->id.'").attr("src", src);
+				        })
+				        .mouseout(function() {
+				            var src = jQuery("#'.$item->id.'").attr("src").replace("-hover.png", ".'.$fileExtention[1].'");
+				            jQuery("#'.$item->id.'").attr("src", src);
+				        });
+				});
+				</script>';
+				} 
+?>				
 				<div class="img-intro-left">
 					<a href="<?php echo $item->link;?>">
-						<img src="<?php echo $images->image_intro; ?>" class="" alt="<?php echo $images->image_intro_alt; ?>" />
+						<img src="<?php echo $images->image_intro; ?>"  id="<?php echo $item->id; ?>" alt="<?php echo $images->image_intro_alt; ?>" />
 					</a>
 				</div>
 <?php
