@@ -13,9 +13,9 @@ $wrightEnableIntroText = (isset($wrightEnableIntroText) ? $wrightEnableIntroText
 
 $wrightTitlePosition = (isset($wrightTitlePosition) ? $wrightTitlePosition : 'above');  // Wright v.3: Title Position (above/below) parameter
 
-$wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : true);  // Wright v.3: Enable Link in content parameter
+$wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : false);  // Wright v.3: Enable Link in content parameter
 
-$wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : true);  // Wright v.3: Enable Link in content parameter
+$wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : false);  // Wright v.3: Enable Link in content parameter
 
 // no direct access
 defined('_JEXEC') or die;
