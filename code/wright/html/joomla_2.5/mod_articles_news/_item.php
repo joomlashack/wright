@@ -129,7 +129,7 @@ endif; ?>
 	if (file_exists($fileHover)) {
 	    echo '<script type="text/javascript">
 	jQuery(document).ready(function($) {
-	    jQuery("#'.$item->id.'")
+	    jQuery("#'.$item->id.'").parent().parent().parent()
 	        .mouseover(function() {
 	            var src = jQuery("#'.$item->id.'").attr("src").match(/[^\.]+/) + "-hover.'.$fileExtention[1].'";
 	            jQuery("#'.$item->id.'").attr("src", src);
