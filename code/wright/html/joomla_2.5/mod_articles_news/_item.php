@@ -13,7 +13,7 @@ $wrightEnableIntroText = (isset($wrightEnableIntroText) ? $wrightEnableIntroText
 
 $wrightTitlePosition = (isset($wrightTitlePosition) ? $wrightTitlePosition : 'above');  // Wright v.3: Title Position (above/below) parameter
 
-$wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : false);  // Wright v.3: Enable Link in content parameter
+$wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : true);  // Wright v.3: Enable Link in content parameter
 
 // no direct access
 defined('_JEXEC') or die;
@@ -130,14 +130,16 @@ endif; ?>
 	    echo '<script type="text/javascript">
 	jQuery(document).ready(function($) {
 	    jQuery("#'.$item->id.'").parent().parent().parent()
-	        .mouseover(function() {
+	        .hover(function() {
 	            var src = jQuery("#'.$item->id.'").attr("src").match(/[^\.]+/) + "-hover.'.$fileExtention[1].'";
 	            jQuery("#'.$item->id.'").attr("src", src);
-	        })
-	        .mouseout(function() {
+	        },function () {
 	            var src = jQuery("#'.$item->id.'").attr("src").replace("-hover.png", ".'.$fileExtention[1].'");
 	            jQuery("#'.$item->id.'").attr("src", src);
 	        });
+	        
+	    
+	       
 	});
 	</script>';
 	}
