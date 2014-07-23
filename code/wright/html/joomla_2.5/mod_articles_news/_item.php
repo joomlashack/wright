@@ -130,14 +130,13 @@ endif; ?>
 	    echo '<script type="text/javascript">
 	jQuery(document).ready(function($) {
 	    jQuery("#'.$item->id.'").parent().parent().parent()
-	        .mouseover(function() {
+	        .hover(function() {
 	            var src = jQuery("#'.$item->id.'").attr("src").match(/[^\.]+/) + "-hover.'.$fileExtention[1].'";
 	            jQuery("#'.$item->id.'").attr("src", src);
-	        })
-	        .mouseout(function() {
+	        },function () {
 	            var src = jQuery("#'.$item->id.'").attr("src").replace("-hover.png", ".'.$fileExtention[1].'");
 	            jQuery("#'.$item->id.'").attr("src", src);
-	        });
+	        });  
 	});
 	</script>';
 	}
