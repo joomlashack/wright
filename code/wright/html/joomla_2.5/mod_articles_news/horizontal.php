@@ -21,6 +21,8 @@ elseif ($wrightMaxColumns == 5) {
 $span = (12 / $wrightMaxColumns);
 /* End Wright v.3: Grab parameter for max column number */
 
+$wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : false);  // Wright v.3: Enable Link in content parameter
+
 $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrightMaxColumns)
 ?>
 
@@ -34,7 +36,7 @@ $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrigh
 			<?php endif; ?>
 		<?php // End Wright v.3: Added row-fluid for each horizontal set of columns ?>
 
-			<div class="span<?php echo $span ?>"> <?php // Wright v.3: Added span class for each column ?>
+			<div class="span<?php echo $span ?>" <?php echo $wrightEnableLinkContent ? 'style="cursor:pointer" onclick="location.href=\'' . $item->link . '\'"' : '' ?>> <?php // Wright v.3: Added span class for each column ?>
 				<?php require JModuleHelper::getLayoutPath('mod_articles_news', '_item');
 
 				if ($n > 1 && (($i < $n - 1) || $params->get('showLastSeparator'))) : ?>

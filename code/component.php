@@ -9,12 +9,20 @@
 
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
+
+
+// Include the framework
+require(dirname(__FILE__).'/'.'wright'.'/'.'wright.php');
+
+// Initialize the framework and
+$tpl = Wright::getInstance();
+$tpl->header();
+
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
 	<head>
 		<jdoc:include type="head" />
-		<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
 	</head>
 	<body class="contentpane">
 		<jdoc:include type="message" />

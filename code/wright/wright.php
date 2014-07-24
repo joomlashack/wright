@@ -19,8 +19,8 @@ if (version_compare(JVERSION, '3.0', 'lt')) {
 }
 else {
 	// check for PHP 5.3.1 if Joomla >= 3.0
-	if (version_compare(PHP_VERSION, '5.3.1', 'lt')) {
-		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 3.x requires PHP 5.3.1 or greater. Please contact your host to use PHP 5.3.1 or greater.
+	if (version_compare(PHP_VERSION, '5.3.10', 'lt')) {
+		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 3.x requires PHP 5.3.10 or greater. Please contact your host to use PHP 5.3.10 or greater.
 			<br />Please check Joomla requirements in <a href="http://www.joomla.org/technical-requirements.html">http://www.joomla.org/technical-requirements.html</a>';
 		die();
 	}
@@ -49,6 +49,9 @@ class Wright
 	private $_urlTemplate = null;
 	private $_urlWright = null;
 	private $_urlJS = null;
+
+	private $_selectedStyle = '';
+	private $_baseVersion = '';
 	
 	function Wright()
 	{
@@ -128,6 +131,9 @@ class Wright
 
 	public function header()
 	{
+		$user = JFactory::getUser();
+		$input = JFactory::getApplication()->input;
+
 		JHtml::_('behavior.framework', true);
 
 		if ($this->document->params->get('modal', '1') == '1') {
@@ -169,10 +175,9 @@ class Wright
 		}
 
 		// set custom template theme for user
-		$user = JFactory::getUser();
-		if (!is_null(JRequest::getVar('templateTheme', NULL)))
+		if (!is_null($input->getVar('templateTheme', NULL)))
 		{
-			$user->setParam('theme', JRequest::getVar('templateTheme'));
+			$user->setParam('theme', $input->getVar('templateTheme'));
 			$user->save(true);
 		}
 		if ($user->getParam('theme'))
@@ -183,6 +188,25 @@ class Wright
 		if ($this->document->params->get('documentationMode','0') == '1') {
 			$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
 			$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
+		}
+
+		// Selected style and version
+        $this->_selectedStyle = $input->getVar('templateTheme', $user->getParam('theme', $this->document->params->get('style', 'generic')));
+		$version = explode('.', JVERSION);
+		$mainversion = $version[0];
+		$subversion = $version[1];
+
+		$fileFound = false;
+		while (!$fileFound && $subversion >= 0) {
+			$this->_baseVersion = $mainversion . $subversion;
+			if (file_exists(JPATH_THEMES . '/' . $this->document->template . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css')) {
+				$fileext = $this->_urlTemplate . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
+				$fileFound = true;
+			}
+			else
+			{
+				$subversion--;
+			}
 		}
 
 		// Build css
@@ -224,19 +248,22 @@ class Wright
 		jimport('joomla.environment.browser');
 
 		$browser = JBrowser::getInstance();
-
-        $version = explode('.', JVERSION);
-
-        $subversion = (int)$version[1];
-
-        $cssFound = false;
+		$doc = JFactory::getDocument();
 
         $styles = Array();
 
-        if (version_compare(JVERSION, '3.0', 'lt')) {
-        	$styles['wrighttemplatecss'][] = 'template.css.php';
-        	if ($this->document->params->get('responsive','1') == '1')
-        		$styles['wrighttemplatecss'][] = 'template-responsive.css.php';
+       	$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
+   		$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
+    	if ($this->document->params->get('responsive','1') == '1')
+    	{
+	   		$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
+    	}
+    	$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
+
+        if (version_compare(JVERSION, '3.0', 'ge')) {
+			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
+			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
+			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
         }
 
         if ($this->document->params->get('documentationMode','0') == '1') {
