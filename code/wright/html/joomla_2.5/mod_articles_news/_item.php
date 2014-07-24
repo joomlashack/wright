@@ -129,13 +129,18 @@ endif; ?>
 	if (file_exists($fileHover)) {
 	    echo '<script type="text/javascript">
 	jQuery(document).ready(function($) {
+		var srcHover = jQuery("#'.$item->id.'").attr("src").match(/[^\.]+/) + "-hover.'.$fileExtention[1].'";
+		var src = jQuery("#'.$item->id.'").attr("src").replace("-hover.png", ".'.$fileExtention[1].'");
+
+		jQuery("#'.$item->id.'").after(\'<img src="\'+srcHover+\'" id="hover-'.$item->id.'" style="display:none">\');
+
 	    jQuery("#'.$item->id.'").parent().parent().parent()
-	        .hover(function() {
-	            var src = jQuery("#'.$item->id.'").attr("src").match(/[^\.]+/) + "-hover.'.$fileExtention[1].'";
-	            jQuery("#'.$item->id.'").attr("src", src);
+	        .hover(function() {	            
+	            jQuery("#'.$item->id.'").hide();
+	            jQuery("#hover-'.$item->id.'").show();
 	        },function () {
-	            var src = jQuery("#'.$item->id.'").attr("src").replace("-hover.png", ".'.$fileExtention[1].'");
-	            jQuery("#'.$item->id.'").attr("src", src);
+	            jQuery("#'.$item->id.'").show();
+	            jQuery("#hover-'.$item->id.'").hide();
 	        });  
 	});
 	</script>';
