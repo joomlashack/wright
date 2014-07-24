@@ -139,10 +139,13 @@ endif; ?>
 	        .hover(function() {	            
 	            jQuery("#'.$item->id.'").hide();
 	            jQuery("#hover-'.$item->id.'").show();
-	        },function () {
+	        },
+		    function () {
 	            jQuery("#'.$item->id.'").show();
 	            jQuery("#hover-'.$item->id.'").hide();
-	        });  
+	        }).on("click touchend", function() {
+		        location.href="'.$item->link .'";
+		    });  
 	});
 	</script>';
 	}
