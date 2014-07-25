@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die;
 
-* Wright v.3: Grab parameter for max column number, setting it to one of the allowed Bootstrap values */
+/* Wright v.3: Grab parameter for max column number, setting it to one of the allowed Bootstrap values */
 $wrightMaxColumns = (isset($wrightMaxColumns) ? $wrightMaxColumns : 4);  // Wright v.3: Max columns to be used
 if ($wrightMaxColumns > 6) {
 	$wrightMaxColumns = 6;
