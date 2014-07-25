@@ -127,17 +127,24 @@ endif; ?>
 	$fileHover=$imgt[0].'-hover.'.$fileExtention[1];
 
 	if (file_exists($fileHover)) {
-	    echo '<script type="text/javascript">
+		    echo '<script type="text/javascript">
 	jQuery(document).ready(function($) {
+		var srcHover = jQuery("#'.$item->id.'").attr("src").match(/[^\.]+/) + "-hover.'.$fileExtention[1].'";
+		var src = jQuery("#'.$item->id.'").attr("src").replace("-hover.png", ".'.$fileExtention[1].'");
+
+		jQuery("#'.$item->id.'").after(\'<img src="\'+srcHover+\'" id="hover-'.$item->id.'" style="display:none">\');
+
 	    jQuery("#'.$item->id.'").parent().parent().parent()
-	        .mouseover(function() {
-	            var src = jQuery("#'.$item->id.'").attr("src").match(/[^\.]+/) + "-hover.'.$fileExtention[1].'";
-	            jQuery("#'.$item->id.'").attr("src", src);
-	        })
-	        .mouseout(function() {
-	            var src = jQuery("#'.$item->id.'").attr("src").replace("-hover.png", ".'.$fileExtention[1].'");
-	            jQuery("#'.$item->id.'").attr("src", src);
-	        });
+	        .hover(function() {	            
+	            jQuery("#'.$item->id.'").hide();
+	            jQuery("#hover-'.$item->id.'").show();
+	        },
+		    function () {
+	            jQuery("#'.$item->id.'").show();
+	            jQuery("#hover-'.$item->id.'").hide();
+	        }).on("click touchend", function() {
+		        location.href="'.$item->link .'";
+		    });  
 	});
 	</script>';
 	}
