@@ -83,7 +83,6 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 
         $classold = $class;
         $class = preg_replace("/featured/", "", $class);
-        $module->content = preg_replace("/$classold/", $class, $module->content);
         $params->set('moduleclass_sfx',$class);
         if (preg_match('/<a([^>]*)href=\"([^\"]*)\"([^>]*)>Title<\/a>/i', $module->content, $matches)) {
             $module->content = preg_replace('/<a([^>]*)href=\"([^\"]*)\"([^>]*)>Title<\/a>/i', '', $module->content, 1);
@@ -173,7 +172,6 @@ function modChrome_wrightfeatured($module, &$params, &$attribs) {
     if (preg_match("/featured/", $class)) {
         $classold = $class;
         $class = preg_replace("/featured/", "", $class);
-        $module->content = preg_replace("/$classold/", $class, $module->content);
         $params->set('moduleclass_sfx',$class);
         if (preg_match('/<a([^>]*)href=\"([^\"]*)\"([^>]*)>Title<\/a>/i', $module->content, $matches)) {
             $module->content = preg_replace('/<a([^>]*)href=\"([^\"]*)\"([^>]*)>Title<\/a>/i', '', $module->content, 1);
