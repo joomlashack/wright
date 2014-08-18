@@ -22,7 +22,7 @@ class JFormFieldStyles extends JFormFieldList
 		$styles = JFolder::files(JPATH_ROOT.'/templates'.'/'.$this->form->getValue('template').'/css', 'style-([^\.]*)\.css');
 
         if (!count($styles)) {
-	        return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template'), true));
+	        return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template')));
         }
 
 		foreach ($styles as $style)
