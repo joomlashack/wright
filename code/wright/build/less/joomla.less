@@ -371,6 +371,15 @@ dl.label.label-info dt{
 				}
 			}
 			&.dropdown {
+				> a {
+					&:hover,
+					&:focus {
+						.caret {
+							border-top-color: @navbarInverseLinkColorHover;
+							border-bottom-color: @navbarInverseLinkColorHover;
+						}
+					}
+				}
 				.dropdown-menu {
 					li {
 						> a {
