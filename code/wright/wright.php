@@ -89,11 +89,11 @@ class Wright
 		$menu = $app->getMenu();
 
 		// If homepage, load up home.php if found, or load custom.php if found
-        $lang = JFactory::getLanguage();
-        if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . '/' . $document->template . '/home.php'))
-            $path = JPATH_THEMES . '/' . $document->template . '/home.php';
-        elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
-            $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
+		$lang = JFactory::getLanguage();
+		if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . '/' . $document->template . '/home.php'))
+			$path = JPATH_THEMES . '/' . $document->template . '/home.php';
+		elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
+			$path = JPATH_THEMES . '/' . $document->template . '/custom.php';
 
 		// Include our file and capture buffer
 		ob_start();
@@ -143,20 +143,20 @@ class Wright
 		// load jQuery ?
 		if ($this->loadBootstrap && $loadJquery = $this->document->params->get('jquery', 0))
 		{
-            switch ($loadJquery) {
-                // load jQuery locally
-                case 1:
-                    $jquery = $this->_urlJS . '/jquery.min.js';
-                    break;
-                // load jQuery from Google
-                default:
-                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
-                    break;
-            }
-            
-            $this->document->addScript($jquery);
-            // ensure that jQuery loads in noConflict mode to avoid mootools conflicts
-            $this->document->addScriptDeclaration('jQuery.noConflict();');
+			switch ($loadJquery) {
+				// load jQuery locally
+				case 1:
+					$jquery = $this->_urlJS . '/jquery.min.js';
+					break;
+				// load jQuery from Google
+				default:
+					$jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
+					break;
+			}
+			
+			$this->document->addScript($jquery);
+			// ensure that jQuery loads in noConflict mode to avoid mootools conflicts
+			$this->document->addScriptDeclaration('jQuery.noConflict();');
 		}
 
 		if ($this->loadBootstrap)
@@ -171,7 +171,12 @@ class Wright
 		// Add header script if set
 		if (trim($this->document->params->get('headerscript', '')) !== '')
 		{
-            $this->addJSScriptDeclaration($this->document->params->get('headerscript'));
+			$this->addJSScriptDeclaration($this->document->params->get('headerscript'));
+		}
+
+		if ($this->document->params->get('documentationMode','0') == '1') {
+			$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
+			$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
 		}
 
 		// set custom template theme for user
@@ -180,26 +185,32 @@ class Wright
 			$user->setParam('theme', $input->getVar('templateTheme'));
 			$user->save(true);
 		}
-		if ($user->getParam('theme'))
-		{
-			$this->document->params->set('style', $user->getParam('theme'));
-		}
 
-		if ($this->document->params->get('documentationMode','0') == '1') {
-			$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
-			$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
-		}
+		$this->_selectedStyle = $input->getVar('templateTheme', $user->getParam('theme', $this->document->params->get('style', 'generic')));
 
-		// Selected style and version
-        $this->_selectedStyle = $input->getVar('templateTheme', $user->getParam('theme', $this->document->params->get('style', 'generic')));
+	   	if (!$this->checkStyleFiles())
+	   	{
+			$this->_selectedStyle = $this->document->params->get('style', 'generic');
+			$this->checkStyleFiles();
+	   	}
+
+		// Build css
+		$this->css();
+	}
+
+	private function checkStyleFiles()
+	{
 		$version = explode('.', JVERSION);
 		$mainversion = $version[0];
 		$subversion = $version[1];
 
 		$fileFound = false;
-		while (!$fileFound && $subversion >= 0) {
+
+		while (!$fileFound && $subversion >= 0)
+		{
 			$this->_baseVersion = $mainversion . $subversion;
-			if (file_exists(JPATH_THEMES . '/' . $this->document->template . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css')) {
+			if (file_exists(JPATH_THEMES . '/' . $this->document->template . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css'))
+			{
 				$fileext = $this->_urlTemplate . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
 				$fileFound = true;
 			}
@@ -209,8 +220,7 @@ class Wright
 			}
 		}
 
-		// Build css
-		$this->css();
+		return $fileFound;
 	}
 
 	private function css()
@@ -250,25 +260,25 @@ class Wright
 		$browser = JBrowser::getInstance();
 		$doc = JFactory::getDocument();
 
-        $styles = Array();
+		$styles = Array();
 
-       	$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
+	   	$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
    		$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
-    	if ($this->document->params->get('responsive','1') == '1')
-    	{
+		if ($this->document->params->get('responsive','1') == '1')
+		{
 	   		$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
-    	}
-    	$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
+		}
+		$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
 
-        if (version_compare(JVERSION, '3.0', 'ge')) {
+		if (version_compare(JVERSION, '3.0', 'ge')) {
 			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
 			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
 			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
-        }
+		}
 
-        if ($this->document->params->get('documentationMode','0') == '1') {
-        	$styles['template'][] = 'docs.css';
-        }
+		if ($this->document->params->get('documentationMode','0') == '1') {
+			$styles['template'][] = 'docs.css';
+		}
 
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
@@ -317,11 +327,11 @@ class Wright
 		}
 
 		// reorder columns based on the order
-        $this->reorderContent();
+		$this->reorderContent();
 
-        if (trim($this->document->params->get('footerscript')) != '') {
-            $this->template = str_replace('</body>', '<script type="text/javascript">'.$this->document->params->get('footerscript').'</script></body>', $this->template);
-        }
+		if (trim($this->document->params->get('footerscript')) != '') {
+			$this->template = str_replace('</body>', '<script type="text/javascript">'.$this->document->params->get('footerscript').'</script></body>', $this->template);
+		}
 		$this->template = str_replace('__cols__', $adapter->cols, $this->template);
 	}
 
@@ -395,68 +405,68 @@ class Wright
 		return eval($str);
 	}
 
-    /**
-     * Reorder main content / sidebars in the order selected by the user
-     */
+	/**
+	 * Reorder main content / sidebars in the order selected by the user
+	 */
 	private function reorderContent() {
 
-	    /**
-	     * regular patterns to identify every column
-	     * Added id to avoid the annoying bug that avoids the user to use HTML5 tags
-	     */
-	    $patterns = array(  'sidebar1' => '/<aside(.*)id="sidebar1">(.*)<\/aside>/isU',
-	                        'sidebar2' => '/<aside(.*)id="sidebar2">(.*)<\/aside>/isU',
-	                        'main' => '/<section(.*)id="main"(.*)>(.*)<\/section>/isU'
-	    );
+		/**
+		 * regular patterns to identify every column
+		 * Added id to avoid the annoying bug that avoids the user to use HTML5 tags
+		 */
+		$patterns = array(  'sidebar1' => '/<aside(.*)id="sidebar1">(.*)<\/aside>/isU',
+							'sidebar2' => '/<aside(.*)id="sidebar2">(.*)<\/aside>/isU',
+							'main' => '/<section(.*)id="main"(.*)>(.*)<\/section>/isU'
+		);
 
-	    // only this columns
-	    $allowedColNames = array_keys($patterns);
-	    $reorderedCols = array();
-	    $reorderedContent = '';
+		// only this columns
+		$allowedColNames = array_keys($patterns);
+		$reorderedCols = array();
+		$reorderedContent = '';
 
-	    // get column configuration
-	    $columnCfg = $this->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3');
-	    $colStrings = explode(';', $columnCfg);
-	    if ($colStrings) {
-	        foreach ($colStrings as $colString) {
-	            list ($colName, $colWidth) = explode(':', $colString);
-	            if(in_array($colName, $allowedColNames)) {
-	                $reorderedCols[] = $colName;
-	            }
-	        }
-	    }
+		// get column configuration
+		$columnCfg = $this->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3');
+		$colStrings = explode(';', $columnCfg);
+		if ($colStrings) {
+			foreach ($colStrings as $colString) {
+				list ($colName, $colWidth) = explode(':', $colString);
+				if(in_array($colName, $allowedColNames)) {
+					$reorderedCols[] = $colName;
+				}
+			}
+		}
 
-	    // get column contents with regular expressions
-	    $patternFound = false;
-	    foreach ($patterns as $column => $pattern) {
+		// get column contents with regular expressions
+		$patternFound = false;
+		foreach ($patterns as $column => $pattern) {
 
-	        // save the content into a variable
-	        $$column = null;
-	        if (preg_match($pattern, $this->template, $matches)) {
-	            $$column = $matches[0];
+			// save the content into a variable
+			$$column = null;
+			if (preg_match($pattern, $this->template, $matches)) {
+				$$column = $matches[0];
 
-	            $replacement = '';
-	            // replace first column found with string '##wricolumns##' to reorder content later
-	            if (!$patternFound) {
-	                $replacement = '##wricolumns##';
-	                $patternFound = true;
-	            }
-	            $this->template = preg_replace($pattern, $replacement, $this->template);
-	        }
-	    }
+				$replacement = '';
+				// replace first column found with string '##wricolumns##' to reorder content later
+				if (!$patternFound) {
+					$replacement = '##wricolumns##';
+					$patternFound = true;
+				}
+				$this->template = preg_replace($pattern, $replacement, $this->template);
+			}
+		}
 
-	    // if columns reordered and column content found replace contents
-	    if ($reorderedCols && $patternFound) {
-	        foreach ($reorderedCols as $colName) {
-	            if (!is_null($$colName)) {
-	                $reorderedContent .= $$colName;
-	            }
-	        }
-	    }
+		// if columns reordered and column content found replace contents
+		if ($reorderedCols && $patternFound) {
+			foreach ($reorderedCols as $colName) {
+				if (!is_null($$colName)) {
+					$reorderedContent .= $$colName;
+				}
+			}
+		}
 
-	    $this->template = preg_replace('/##wricolumns##/isU', $reorderedContent, $this->template);
+		$this->template = preg_replace('/##wricolumns##/isU', $reorderedContent, $this->template);
 
-	    return $reorderedContent;
+		return $reorderedContent;
 
 	}
 	
