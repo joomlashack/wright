@@ -10,9 +10,16 @@
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
 
-require_once(dirname(__FILE__).'/wright/template/wrighttemplatebase.php');
+require_once dirname(__FILE__) . '/wright/template/wrighttemplatebase.php';
 
-// WrightTemplate class, for special settings on Wright
-class WrightTemplate extends WrightTemplateBase {
+/**
+ * WrightTemplate class, for special settings on Wright
+ *
+ * @package     Wright
+ * @subpackage  TemplateBase
+ * @since       3.0
+ */
+class WrightTemplate extends WrightTemplateBase
+{
 	public $templateName = 'js_wright';
 }

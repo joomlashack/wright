@@ -1,41 +1,55 @@
-# Numerous always-ignore extensions
-*.diff
-*.err
-*.orig
-*.log
-*.rej
-*.swo
-*.swp
-*.zip
-*.vi
-*~
-*.sass-cache
-
-# OS or Editor folders
+# OSX
 .DS_Store
 ._*
+.Spotlight-V100
+.Trashes
+ 
+# Windows
 Thumbs.db
-.cache
+Desktop.ini
+ 
+# PHPStorm
+.idea/
+ 
+# Sublime Text
+*.sublime*
+sftp-config.json
+ 
+# Eclipse
+.buildpath
 .project
 .settings
-.tmproj
-*.esproj
-nbproject
-*.sublime-project
-*.sublime-workspace
-sftp-config.json
-
-# Komodo
-*.komodoproject
-.komodotools
-
-# Folders to ignore
-.hg
-.svn
-.CVS
-.idea
-node_modules
-dist
-
-# Build system
+ 
+# Netbeans (custom)
+.netbeans/*
+/nbproject/*
+ 
+# Temp files
+*.tmp
+*.bak
+*.swp
+*~.nib
+*~
+ 
+# Phing build script
+build.properties
 autobuild.properties
+ 
+# Packages #
+*.zip
+*.tar.*
+ 
+# Composer
+composer.lock
+/vendor
+ 
+# Test related files
+/tests/system/servers/configdef.php
+/tests/system/webdriver/tests/logs/
+/tests/acceptance.suite.yml
+codecept.phar
+ 
+# Never ignore
+!.gitignore
+!index.html
+!index.php

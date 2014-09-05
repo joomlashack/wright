@@ -10,15 +10,19 @@
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
 
-// get the bootstrap row mode ( row / row-fluid )
-$gridMode = $this->params->get('bs_rowmode','row-fluid');
+// Get the bootstrap row mode ( row / row-fluid )
+$gridMode = $this->params->get('bs_rowmode', 'row-fluid');
 $containerClass = 'container';
-if ($gridMode == 'row-fluid') {
-    $containerClass = 'container-fluid';
+
+if ($gridMode == 'row-fluid')
+{
+	$containerClass = 'container-fluid';
 }
 
-$responsivePage = $this->params->get('responsive','1');
+$responsivePage = $this->params->get('responsive', '1');
 $responsive = ' responsive';
-if ($responsivePage == 0) {
-    $responsive = ' no-responsive';
+
+if ($responsivePage == 0)
+{
+	$responsive = ' no-responsive';
 }
