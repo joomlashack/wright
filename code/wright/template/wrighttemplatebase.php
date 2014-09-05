@@ -49,6 +49,9 @@ class WrightTemplateBase
 	// Menu positions in the template - using the <w:nav> adapter
 	public $menuPositions = Array('toolbar', 'menu', 'bottom-menu');
 
+	// Documentation link (for the help section in the template backend configuration)
+	public $documentationLink = null;
+
 	/**
 	 * Function to get an instance of this class
 	 *

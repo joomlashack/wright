@@ -1,4 +1,13 @@
-<?php // $Id: datetime.php 19 2010-08-03 01:24:09Z jeremy $
+<?php
+/**
+ * @package     Wright
+ * @subpackage  Parameters
+ *
+ * @copyright   Copyright (C) 2005 - 2014 Joomlashack. Meritage Assets.  All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+// Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.html.html');
@@ -8,15 +17,27 @@ jimport('joomla.form.formfield');
 jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
 
+/**
+ * Typography options
+ *
+ * @package     Wright
+ * @subpackage  Parameters
+ * @since       2.0
+ */
 class JFormFieldTypography extends JFormFieldList
 {
 	public $type = 'Typography';
 
+	/**
+	 * Typography options
+	 *
+	 * @return  array  Options
+	 */
 	protected function getOptions()
 	{
 		$options = array();
 
-		$class = ( $this->element['class'] ? 'class="'.$this->element['class'].'"' : 'class="inputbox"' );
+		$class = ( $this->element['class'] ? 'class="' . $this->element['class'] . '"' : 'class="inputbox"' );
 
 		$stacks = array( 'JDEFAULT' => 'TPL_JS_WRIGHT_FIELD_DEFAULT',
 							'Arial' => 'sans-serif',
