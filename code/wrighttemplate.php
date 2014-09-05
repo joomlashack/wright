@@ -21,5 +21,7 @@ require_once dirname(__FILE__) . '/wright/template/wrighttemplatebase.php';
  */
 class WrightTemplate extends WrightTemplateBase
 {
-	public $templateName = 'js_wright';
+	public $templateName = '{templateName}';
+
+	public $documentationLink = '{documentationLink}';
 }

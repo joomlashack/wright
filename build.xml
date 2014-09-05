@@ -9,6 +9,7 @@
             <then>
                 <property file="../build.properties" override="true"/>
                 <property file="../autobuild.properties" override="true"/>
+                <property file="../readme.properties" override="true"/>
                 <property name="src" value="../code/"/>
                 <property name="wrightsrc" value="./code/"/>
                 <xmlproperty file="${src}/templateDetails.xml" prefix="templateDetails" keepRoot="false" />
@@ -22,6 +23,7 @@
                     <then>
                         <property file="build.properties" override="true"/>
                         <property file="autobuild.properties" override="true"/>
+                        <property file="readme.properties" override="true"/>
                         <property name="src" value="./code/"/>
                         <property name="wrightsrc" value="./code/"/>
                         <xmlproperty file="${src}/templateDetails.xml" prefix="templateDetails" keepRoot="false" />
@@ -38,7 +40,6 @@
     </target>
 
     <target name="autobuild-do">
-
         <!-- Delete template files and folders except node files -->
         <if>
             <equals arg1="${node.build}" arg2="all" />
@@ -76,7 +77,7 @@
             <equals arg1="${wright.is_wright}" arg2="1" />
             <then>
                 <!-- Updates template/wright version in wright.php -->
-                <wrightversion todir="${www.dir}/templates/${tpl.folder}" version="${templateDetails.version}" />
+                <templatedetails todir="${www.dir}/templates/${tpl.folder}" version="${templateDetails.version}" templatename="${tpl.folder}" documentationlink="${readme.docs}" />
             </then>
             <else>
                 <!-- Wright Framework files and folders -->
@@ -86,7 +87,7 @@
                 </copy>
 
                 <!-- Updates template/wright version in wright.php -->
-                <wrightversion todir="${www.dir}/templates/${tpl.folder}" version="${templateDetails.version}_${wrightDetails.version}" />
+                <templatedetails todir="${www.dir}/templates/${tpl.folder}" version="${templateDetails.version}_${wrightDetails.version}" templatename="${tpl.folder}" documentationlink="${readme.docs}" />
 
                 <!-- Copy common Wright files (without replacing to prevail any template specific override) -->
                 <copy file="${wrightsrc}/index.php" tofile="${www.dir}/templates/${tpl.folder}/index.php" />

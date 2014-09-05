@@ -136,7 +136,7 @@ class Wright
 	}
 
 	/**
-	 * Method to return this class
+	 * Method to get an instance of this class
 	 *
 	 * @return  object  Wright class
 	 */
