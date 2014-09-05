@@ -375,7 +375,7 @@ class Wright
 
 			if ((int) $major <= 9)
 			{
-				$this->document->addScript(JURI::root() . 'templates/' . $this->document->template . '/wright/js/html5shiv.js');
+				$this->document->addScript(JURI::root() . 'templates/' . $this->document->template . '/wright/js/html5shiv.min.js');
 			}
 
 			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie.css'))
