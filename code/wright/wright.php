@@ -116,6 +116,19 @@ class Wright
 			include_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php';
 		}
 
+		// Get the bootstrap row mode ( row )
+		$wrightGridMode = $this->params->get('bs_rowmode', 'row');
+		$wrightContainerClass = 'container';
+
+		if ($wrightGridMode == 'row-fluid')
+		{
+			$wrightContainerClass = 'container-fluid';
+		}
+
+		// Body classes
+		$wrightBodyClass = '';
+		$wrightBodyClass .= ($this->params->get('responsive', '1') == 1 ? ' responsive' : ' no-responsive');
+
 		// Get our template for further parsing, if custom file is found
 		// it will use it instead of the default file
 		$path = JPATH_THEMES . '/' . $document->template . '/' . 'template.php';
