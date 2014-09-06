@@ -16,5 +16,5 @@ if (file_exists(realpath(dirname(__FILE__) . '/../../../parameters/templatecusto
 }
 else
 {
-	require_once realpath(dirname(__FILE__)) . 'templatecustomclass.php';
+	require_once realpath(dirname(__FILE__)) . '/templatecustomclass.php';
 }
