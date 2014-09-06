@@ -86,13 +86,14 @@
                     </fileset>
                 </copy>
 
-                <!-- Updates template/wright version in wright.php -->
-                <templatedetails todir="${www.dir}/templates/${tpl.folder}" version="${templateDetails.version}_${wrightDetails.version}" templatename="${tpl.folder}" documentationlink="${readme.docs}" />
-
                 <!-- Copy common Wright files (without replacing to prevail any template specific override) -->
                 <copy file="${wrightsrc}/index.php" tofile="${www.dir}/templates/${tpl.folder}/index.php" />
                 <copy file="${wrightsrc}/favicon.ico" tofile="${www.dir}/templates/${tpl.folder}/favicon.ico" />
                 <copy file="${wrightsrc}/component.php" tofile="${www.dir}/templates/${tpl.folder}/component.php" />
+                <copy file="${wrightsrc}/wrighttemplate.php" tofile="${www.dir}/templates/${tpl.folder}/wrighttemplate.php" />
+
+                <!-- Updates template/wright version in wright.php -->
+                <templatedetails todir="${www.dir}/templates/${tpl.folder}" version="${templateDetails.version}_${wrightDetails.version}" templatename="${tpl.folder}" documentationlink="${readme.docs}" />
 
                 <!-- html, css and js folders only copied for responsive (Wright v.3) templates, until standardized in Wright v.2 -->
                 <if>
