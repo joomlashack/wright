@@ -11,5 +11,11 @@
 defined('_JEXEC') or die;
 $app = JFactory::getApplication();
 
-require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
-require(Overrider::getOverride('mod_articles_latest'));
+// Adds nav nav-list to the list, to give it a menu-type look
+$wrightAddNavs = true;
+
+// Adds an icon to each article
+$wrightAddIcon = true;
+
+require_once JPATH_THEMES . '/' . $app->getTemplate() . '/wright/html/overrider.php';
+require Overrider::getOverride('mod_articles_latest');
