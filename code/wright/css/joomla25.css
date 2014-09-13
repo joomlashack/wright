@@ -507,20 +507,20 @@ div.pagenavcounter {
 /* Article Pagination */
 
 ul.pagenav, div.pagination ul {
-   
+
     list-style: none outside none;
     margin: 10px auto;
     padding: 1px 5px;
     text-align: center;
 }
-ul.pagenav li, 
+ul.pagenav li,
 div.pagination ul li {
 	display:inline;
 	background-color:#eee;
 	padding: 2px 5px;
 	color: #4F4F4F;
 }
-ul.pagenav li a, 
+ul.pagenav li a,
 div.pagination ul li a {
 	margin: -2px -5px;
 	display:inline-block;
@@ -530,7 +530,7 @@ div.pagination ul li a {
 	padding: 0 5px;
 	-moz-transition:all 0.2s ease-in 0s;
 }
-ul.pagenav li a:hover, 
+ul.pagenav li a:hover,
 div.pagination ul li a:hover {
 	box-shadow: 0 0 5px #999;
 }
@@ -630,7 +630,7 @@ ul.menu {
 	margin: 0;
 }
 aside ul.menu ul li{
-	margin-left: 10px;	
+	margin-left: 10px;
 }
 ul.menu ul{
     list-style:none;
@@ -664,4 +664,8 @@ ul.menu ul{
 }
 .menu [class^="icon-"]::before, .menu [class*=" icon-"]::before{
 	margin-right: 3px;
+}
+
+.open > .dropdown-menu {
+	display: block;
 }
