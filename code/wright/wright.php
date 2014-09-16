@@ -39,9 +39,6 @@ class Wright
 	public $baseurl;
 	public $author;
 
-	public $_jsScripts = Array();
-	public $_jsDeclarations = Array();
-
 	public $revision = "{version}";
 
 	function Wright()
@@ -416,42 +413,4 @@ class Wright
 		return eval($str);
 	}
 
-	/**
-	* Generate javascript when set at the bottom of the document
-	*
-	* @return  string
-	*/
-	public function generateJS()
-	{
-		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
-
-		if ($javascriptBottom)
-		{
-			$script = "\n";
-
-			if ($this->_jsScripts)
-			{
-				foreach ($this->_jsScripts as $js)
-				{
-					$script .= "<script src='$js' type='text/javascript'></script>\n";
-				}
-			}
-
-			if ($this->_jsDeclarations)
-			{
-				$script .= "<script type='text/javascript'>\n";
-
-				foreach ($this->_jsDeclarations as $js)
-				{
-					$script .= "$js\n";
-				}
-
-				$script .= "</script>\n";
-			}
-
-			return $script;
-		}
-
-		return "";
-	}
 }
