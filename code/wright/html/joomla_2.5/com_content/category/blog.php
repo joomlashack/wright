@@ -190,6 +190,16 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 <?php if ($this->wrightComplementOuterClass != "") echo '<div class="' . $this->wrightComplementOuterClass . '">' // Wright v.3: Outer complements class  ?>
 
+<?php if ($this->MoreItemsGridOrientation['activeLayout']) { // Wright v.3: Bootstrap grid layout 
+		
+			if ( (empty($this->children[$this->category->id]) && $this->maxLevel == 0) || empty($this->link_items)) {
+				
+				$this->MoreItemsGridOrientation['moreitemsLayout'] = 12;
+				$this->MoreItemsGridOrientation['subcategoriesLayout'] = 12;
+			}		
+		}
+?>
+
 <?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
 	<?php echo '<div class="' . $this->MoreItemsGridOrientation['containerLayout'] . '">' ?>
 	<?php echo '<div class="' . $this->wrightIntroRowMode . '">' ?>
@@ -198,7 +208,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 <?php if (!empty($this->link_items)) : ?>
 
 	<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
-	<?php echo '<div class="span' . $this->MoreItemsGridOrientation['moreitemLayout'] . '">' ?>
+	<?php echo '<div class="span' . $this->MoreItemsGridOrientation['moreitemsLayout'] . '">' ?>
 	<?php endif; ?>
 	
 	<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
