@@ -39,6 +39,9 @@ class Wright
 	public $baseurl;
 	public $author;
 
+	public $_jsScripts = Array();
+	public $_jsDeclarations = Array();
+
 	public $revision = "{version}";
 
 	function Wright()
