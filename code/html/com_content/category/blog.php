@@ -31,7 +31,7 @@ $this->wrightIntroHasImageClass = "";  // optional extra class when image is pre
 
 $this->wrightExtraDivH1 = false;  // adds an extra div next to the h1 titles
 
-$this->MoreItemsGridOrientation = Array(); // Layout options for the moreitmes and subcaterogies modules, (active, global container class, div span class 1,2,3 etc for the (1) moreitems and the (2)subcategories on a row oriented layout.
+$this->MoreItemsGridOrientation = Array(); // Wright v.3: Layout options for the moreitmes and subcaterogies modules, (active, global container class, div span class 1,2,3 etc for the (1) moreitems and the (2)subcategories on a row oriented layout).
 
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
 include(Overrider::getOverride('com_content.category','blog'));
