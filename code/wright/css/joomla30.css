@@ -1053,3 +1053,7 @@ dl> dd + dt
 {
 	margin-right: 0;
 }
+
+.open > .dropdown-menu {
+	display: block;
+}
