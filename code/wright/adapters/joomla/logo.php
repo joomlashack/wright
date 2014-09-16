@@ -82,12 +82,19 @@ class WrightAdapterJoomlaLogo
 
 		// Alternate logo (logo-alt.png) when template supports it
 		$wrightLogoAltOpt = $doc->document->params->get('wrightLogoAlt', '0');
-		if ($wrightLogoAltOpt < 0) {
+		if ($wrightLogoAltOpt < 0)
+		{
 			$wrightLogoAltOpt = $user->getParam('wrightLogoAlt');
 		}
-		else {
-			$user->setParam('wrightLogoAlt', $wrightLogoAltOpt);
-			$user->save(true);
+		else
+		{
+			$userOption = $user->getParam('wrightLogoAlt', '0');
+
+			if ($userOption != $wrightLogoAltOpt)
+			{
+				$user->setParam('wrightLogoAlt', $wrightLogoAltOpt);
+				$user->save(true);
+			}
 		}
 		$wrightLogoAlt = ($wrightLogoAltOpt ? '-alt' : '');
 
