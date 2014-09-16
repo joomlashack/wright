@@ -38,7 +38,7 @@ class Wright
 	public $params;
 	public $baseurl;
 	public $author;
-	
+
 	public $revision = "{version}";
 
 	function Wright()
@@ -73,7 +73,7 @@ class Wright
             elseif (is_file(JPATH_THEMES .'/'. $document->template .'/'. 'custom.php'))
                 $path = JPATH_THEMES .'/'. $document->template .'/'. 'custom.php';
         }
-        
+
 
 		// Include our file and capture buffer
 		ob_start();
@@ -260,7 +260,7 @@ class Wright
 
 		// Load stylesheets by scanning directory for any prefixed with an number and underscore: 1_***.cs
 		$styles['wright'] = array('reset.css', 'layout.css', 'typography.css');
-		
+
 		$fileFound = false;
 		$version = explode('.', JVERSION);
 		$subversion = $version[1];
@@ -289,7 +289,7 @@ class Wright
 		{
 			// Switch to allow specific versions of IE to have additional sheets
 			$major = $browser->getMajor();
-			
+
 			if ((int)$major <= 9) {
 				$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5shiv.js');
 			}
@@ -317,7 +317,7 @@ class Wright
 
 		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'rtl.css'))
 			$styles['template'][] = 'rtl.css';
-			
+
 		//Check to see if custom.css file is present, and if so add it after all other css files
 			if (is_file(JPATH_THEMES .'/'. $this->document->template .'/'. 'css' .'/'. 'custom.css'))
 				$styles['template'][] = 'custom.css';
@@ -411,5 +411,44 @@ class Wright
 		$str = 'return ' . implode(' ', $words) . ';';
 
 		return eval($str);
+	}
+
+	/**
+	* Generate javascript when set at the bottom of the document
+	*
+	* @return  string
+	*/
+	public function generateJS()
+	{
+		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
+
+		if ($javascriptBottom)
+		{
+			$script = "\n";
+
+			if ($this->_jsScripts)
+			{
+				foreach ($this->_jsScripts as $js)
+				{
+					$script .= "<script src='$js' type='text/javascript'></script>\n";
+				}
+			}
+
+			if ($this->_jsDeclarations)
+			{
+				$script .= "<script type='text/javascript'>\n";
+
+				foreach ($this->_jsDeclarations as $js)
+				{
+					$script .= "$js\n";
+				}
+
+				$script .= "</script>\n";
+			}
+
+			return $script;
+		}
+
+		return "";
 	}
 }
