@@ -157,8 +157,13 @@ class WrightAdapterJoomlaLogo
 		}
 		else
 		{
-			$user->setParam('wrightLogoAlt', $wrightLogoAltOpt);
-			$user->save(true);
+			$userOption = $user->getParam('wrightLogoAlt', '0');
+
+			if ($userOption != $wrightLogoAltOpt)
+			{
+				$user->setParam('wrightLogoAlt', $wrightLogoAltOpt);
+				$user->save(true);
+			}
 		}
 
 		$wrightLogoAlt = ($wrightLogoAltOpt ? '-alt' : '');
