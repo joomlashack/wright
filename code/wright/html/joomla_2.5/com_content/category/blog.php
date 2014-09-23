@@ -43,7 +43,10 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightIntroRowMode)) $this->wrightIntroRowMode = 'row-fluid';
 
 	if (!isset($this->wrightExtraDivH1)) $this->wrightExtraDivH1 = false;
-/* End Wright v.3: Extra classes (general) */
+
+	if (!isset($this->MoreItemsGridOrientation)) $this->MoreItemsGridOrientation = Array();
+
+ /* End Wright v.3: Extra classes (general) */
 
 
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
@@ -183,13 +186,31 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 <?php endif; ?>
 
-
 <?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '</div>'; // Wright v.3: Extra Leading and Intro Items Div and Class ?>
 
 <?php if ($this->wrightComplementOuterClass != "") echo '<div class="' . $this->wrightComplementOuterClass . '">' // Wright v.3: Outer complements class  ?>
 
+<?php if ($this->MoreItemsGridOrientation['activeLayout']) { // Wright v.3: Bootstrap grid layout 
+		
+			if ( (empty($this->children[$this->category->id]) && $this->maxLevel == 0) || empty($this->link_items)) {
+				
+				$this->MoreItemsGridOrientation['moreitemsLayout'] = 12;
+				$this->MoreItemsGridOrientation['subcategoriesLayout'] = 12;
+			}		
+		}
+?>
+
+<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
+	<?php echo '<div class="' . $this->MoreItemsGridOrientation['containerLayout'] . '">' ?>
+	<?php echo '<div class="' . $this->wrightIntroRowMode . '">' ?>
+<?php endif; // Wright v.3: Bootstrap grid layout ?>
+
 <?php if (!empty($this->link_items)) : ?>
 
+	<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
+	<?php echo '<div class="span' . $this->MoreItemsGridOrientation['moreitemsLayout'] . '">' ?>
+	<?php endif; ?>
+	
 	<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 	<?php if ($this->wrightComplementInnerClass != "") echo '<div class="' . $this->wrightComplementInnerClass . '">' // Wright v.3: Inner complements class  ?>
 		<?php echo $this->loadTemplate('links'); ?>
@@ -197,9 +218,18 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	<?php if ($this->wrightComplementInnerClass != "") echo '</div>' // Wright v.3: Inner complements class  ?>
 	<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
 
+	<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
+
+	<?php echo '</div>' // Wright v.3: Bootstrap grid layout ?>
+	<?php endif; ?>
 <?php endif; ?>
 
 	<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
+		
+		<?php if ($this->MoreItemsGridOrientation['activeLayout']) : ?>
+		<?php echo '<div class="span' . $this->MoreItemsGridOrientation['subcategoriesLayout'] . '">' ?>
+		<?php endif; ?>	
+
 		<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 		<div class="cat-children<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 		<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
@@ -210,7 +240,15 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 			<?php echo $this->loadTemplate('children'); ?>
 		</div>
 		<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
+		<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
+		<?php echo '</div>' ?>
+		<?php endif; // Wright v.3: Bootstrap grid layout ?>
 	<?php endif; ?>
+
+<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?> 
+
+	<?php echo '</div></div>' ?>
+<?php endif; // Wright v.3: Bootstrap grid layout ?>
 
 <?php if (($this->params->def('show_pagination', 1) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->get('pages.total') > 1)) : ?>
 		<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
@@ -227,6 +265,5 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 <?php  endif; ?>
 
 <?php if ($this->wrightComplementOuterClass != "") echo '</div>' // Wright v.3: Outer complements class  ?>
-
 
 </div>
