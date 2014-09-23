@@ -39,9 +39,9 @@ class Wright
 	public $author;
 
 	public $revision = "{version}";
-
+	
 	private $loadBootstrap = false;
-
+	
 	public $_jsScripts = Array();
 	public $_jsDeclarations = Array();
 
@@ -52,7 +52,7 @@ class Wright
 
 	private $_selectedStyle = '';
 	private $_baseVersion = '';
-
+	
 	function Wright()
 	{
 		// Initialize properties
@@ -66,7 +66,7 @@ class Wright
 		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
 		$this->_urlWright = $this->_urlTemplate . '/wright';
 		$this->_urlJS = $this->_urlWright . '/js';
-
+		
 		// versions under 3.0 must load bootstrap
 		if (version_compare(JVERSION, '3.0', 'lt')) {
 			$this->loadBootstrap = true;
@@ -150,10 +150,10 @@ class Wright
                     break;
                 // load jQuery from Google
                 default:
-                    $jquery = 'https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
+                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
                     break;
             }
-
+            
             $this->document->addScript($jquery);
             // ensure that jQuery loads in noConflict mode to avoid mootools conflicts
             $this->document->addScriptDeclaration('jQuery.noConflict();');
@@ -162,7 +162,7 @@ class Wright
 		if ($this->loadBootstrap)
 			// load bootstrap JS
 			$this->addJSScript($this->_urlJS . '/bootstrap.min.js');
-
+		
 		$this->addJSScript($this->_urlJS . '/utils.js');
 		if ($this->document->params->get('stickyFooter', 1)) {
 			$this->addJSScript($this->_urlJS . '/stickyfooter.js');
@@ -275,7 +275,7 @@ class Wright
 		{
 			// Switch to allow specific versions of IE to have additional sheets
 			$major = $browser->getMajor();
-
+			
 			if ((int)$major <= 9) {
 				$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5shiv.js');
 			}
@@ -459,7 +459,7 @@ class Wright
 	    return $reorderedContent;
 
 	}
-
+	
 	private function addJSScript($url) {
 		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
 
@@ -471,7 +471,7 @@ class Wright
 			$document->addScript($url);
 		}
 	}
-
+	
 	private function addJSScriptDeclaration($script) {
 		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
 
@@ -483,7 +483,7 @@ class Wright
 			$document->addScriptDeclaration($script);
 		}
 	}
-
+	
 	public function generateJS() {
 		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
 		if ($javascriptBottom) {
