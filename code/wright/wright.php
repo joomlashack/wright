@@ -150,7 +150,7 @@ class Wright
                     break;
                 // load jQuery from Google
                 default:
-                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
+                    $jquery = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js';
                     break;
             }
             
