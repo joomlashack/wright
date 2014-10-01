@@ -95,9 +95,9 @@ JHtml::_('bootstrap.tooltip');
 			</div>
 		</div>
 		<?php
-			$usersConfig = JComponentHelper::getParams('com_users');
-			if ($usersConfig->get('allowUserRegistration')) : ?>
+			$usersConfig = JComponentHelper::getParams('com_users'); ?>
 			<ul class="nav nav-tabs nav-stacked"> <?php // Wright v.3: nav classes (removed unstyled) ?>
+			<?php if ($usersConfig->get('allowUserRegistration')) : ?>
 				<li>
 					<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration&Itemid='.UsersHelperRoute::getRegistrationRoute()); ?>">
 					<?php echo JText::_('MOD_LOGIN_REGISTER'); ?> <span class="icon-arrow-right"></span></a>
