@@ -34,7 +34,7 @@ JHtml::_('behavior.framework');
 	if (empty($this->item->wrightElementsStructure)) $this->item->wrightElementsStructure = Array("title","icons","article-info","image","legendtop","content","legendbottom");
 	if (!isset($this->item->wrightLegendTop)) $this->item->wrightLegendTop = '';
 	if (!isset($this->item->wrightLegendBottom)) $this->item->wrightLegendBottom = '';
-	
+
 	foreach ($this->item->wrightElementsStructure as $wrightElement) :
 		switch ($wrightElement) :
 			case "title":
@@ -211,7 +211,7 @@ JHtml::_('behavior.framework');
 		/* Wright v.3: Added link to the image from the article */
 			if ($params->get('access-view')) :
 		?>
-			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid)); ?>">
+			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)); ?>">
 		<?php
 			endif;
 		/* End Wright v.3: Added link to the image from the article */
