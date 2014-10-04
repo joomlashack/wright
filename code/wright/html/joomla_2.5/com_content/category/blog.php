@@ -270,7 +270,8 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 				{
 					$wrightPreRowContent .= '<a href="' . JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language)) . '">';
 				}
-				$wrightPreRowContent .= '<img src="' . $articleImages->image_intro . '" alt="' . htmlspecialchars($images->image_intro_alt) . '" />';
+				$imageClass = $this->wrightBootstrapImages;
+				$wrightPreRowContent .= '<img src="' . $articleImages->image_intro . '" alt="' . htmlspecialchars($articleImages->image_intro_alt) . '" class="' . $imageClass . '"' . ($articleImages->image_intro_caption ? ' title="' . $articleImages->image_intro_caption . '"' : '') . ' />';
 				if ($item->params->get('access-view'))
 				{
 					$wrightPreRowContent .= '</a>';

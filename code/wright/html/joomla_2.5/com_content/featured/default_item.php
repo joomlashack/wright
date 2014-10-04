@@ -208,7 +208,7 @@ $canEdit	= $this->item->params->get('access-edit');
 		/* Wright v.3: Added link to the image from the article */
 			if ($params->get('access-view')) :
 		?>
-			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid)); ?>">
+			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)); ?>">
 		<?php
 			endif;
 		/* End Wright v.3: Added link to the image from the article */
