@@ -220,6 +220,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	<?php
 		/* Wright v.3: Row buffer storage and image print in separate row */
 		$wrightImagesRowExist = false;
+
 		if ($this->wrightImagesRow)
 		{
 			ob_start();
@@ -239,7 +240,8 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	<?php
 		/* Wright v.3: Parse and detect article images */
 		$articleImages = json_decode($item->images);
-		if ($articleImages)
+
+		if ($articleImages && $articleImages->image_intro != '')
 		{
 			$wrightImagesRowExist = true;
 		}
@@ -294,10 +296,13 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 				if ($this->wrightImagesRow)
 				{
 					$wrightRowContent = ob_get_clean();
-
 					$wrightPreRowContent .= '</div></div>';
 
-					echo $wrightPreRowContent;
+					if ($wrightImagesRowExist)
+					{
+						echo $wrightPreRowContent;
+					}
+
 					echo $wrightRowContent;
 				}
 				/* End Wright v.3: Row buffer storage and image print in separate row */
