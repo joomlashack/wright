@@ -113,13 +113,6 @@ class Wright
 		$wrightBodyClass = '';
 		$wrightBodyClass .= ($this->params->get('responsive', '1') == 1 ? ' responsive' : ' no-responsive');
 
-		require_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'wrighttemplate.php';
-
-		if (is_file(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
-		{
-			include_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php';
-		}
-
 		// Get the bootstrap row mode ( row )
 		$wrightGridMode = $this->params->get('bs_rowmode', 'row');
 		$wrightContainerClass = 'container';
@@ -127,6 +120,13 @@ class Wright
 		if ($wrightGridMode == 'row-fluid')
 		{
 			$wrightContainerClass = 'container-fluid';
+		}
+
+		require_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'wrighttemplate.php';
+
+		if (is_file(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
+		{
+			include_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php';
 		}
 
 		// Get our template for further parsing, if custom file is found
