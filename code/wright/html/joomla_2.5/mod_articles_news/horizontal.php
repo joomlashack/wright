@@ -23,7 +23,15 @@ $span = (12 / $wrightMaxColumns);
 $wrightDivideRows = isset($wrightDivideRows) ? $wrightDivideRows : false;
 
 $wrightProcessSecondRow = false;
-$tempWrightShowImage = $params->get('image', 0);
+$wrightTempShowImage = $params->get('image', 0);
+$wrightTempShowTitle = $params->get('item_title', 0);
+$wrightTempEnableIntroText = isset($wrightEnableIntroText) ? $wrightEnableIntroText : 0;
+$wrightTempReadMore = $params->get('readmore', 0);
+
+$wrightGeneralClass = isset($wrightGeneralClass) ? $wrightGeneralClass : '';
+
+$wrightDivideRowsContainer1 = isset($wrightDivideRowsContainer1) ? $wrightDivideRowsContainer1 : '';
+$wrightDivideRowsContainer2 = isset($wrightDivideRowsContainer2) ? $wrightDivideRowsContainer2 : '';
 
 /* End Wright v.3: Grab parameter for max column number */
 
@@ -32,7 +40,7 @@ $wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkC
 $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrightMaxColumns)
 ?>
 
-<div class="newsflash-horiz<?php echo $params->get('moduleclass_sfx'); // Wright v.3: Changed ul for div element ?>">
+<div class="newsflash-horiz<?php echo $params->get('moduleclass_sfx'); // Wright v.3: Changed ul for div element ?><?php if ($wrightGeneralClass != '') : ?> <?php echo $wrightGeneralClass; endif; // Wright v.3: Added optional general class ?>">
 	<?php for ($i = 0, $n = count($list); $i < $n; $i ++) :
 		$item = $list[$i]; ?>
 
@@ -41,19 +49,25 @@ $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrigh
 				$rowcounter = 1;  // Wright v.3: Row counter
 			?>
 				<?php if ($wrightDivideRows) : ?>
-					<?php if (!$wrightProcessSecondRow) :
-							$tempShowTitle = $params->get('item_title', 0);
-							$tempWrightEnableIntroText = $wrightEnableIntroText;
+					<?php if (!$wrightProcessSecondRow) : ?>
+					<?php if ($wrightDivideRowsContainer1 != '') : ?>
+					<div class="<?php echo $wrightDivideRowsContainer1 ?>">
+					<?php endif; ?>
+					<?php
 							$wrightProcessSecondRow = false;
 							$params->set('item_title', 0);
+							$params->set('readmore', 0);
 							$wrightEnableIntroText = 0;
-							$params->set('image', $tempWrightShowImage);
-						elseif ($wrightProcessSecondRow) :
+							$params->set('image', $wrightTempShowImage);
+						else :
 					?>
-					<div class="container">
+					<?php if ($wrightDivideRowsContainer2 != '') : ?>
+					<div class="<?php echo $wrightDivideRowsContainer2 ?>">
+					<?php endif; ?>
 					<?php
-							$params->set('item_title', $tempShowTitle);
-							$wrightEnableIntroText = $tempWrightEnableIntroText;
+							$params->set('item_title', $wrightTempShowTitle);
+							$params->set('readmore', $wrightTempReadMore);
+							$wrightEnableIntroText = $wrightTempEnableIntroText;
 							$params->set('image', 0);
 						endif;
 					endif;
@@ -77,7 +91,13 @@ $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrigh
 				</div>
 				<?php if ($wrightDivideRows) : ?>
 					<?php if ($wrightProcessSecondRow) : ?>
-					</div>
+						<?php if ($wrightDivideRowsContainer2 != '') : ?>
+						</div>
+						<?php endif; ?>
+					<?php else : ?>
+						<?php if ($wrightDivideRowsContainer1 != '') : ?>
+						</div>
+						<?php endif; ?>
 					<?php endif; ?>
 				<?php
 						if (!$wrightProcessSecondRow)
