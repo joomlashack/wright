@@ -33,7 +33,7 @@ $wrightGeneralClass = isset($wrightGeneralClass) ? $wrightGeneralClass : '';
 $wrightDivideRowsContainer1 = isset($wrightDivideRowsContainer1) ? $wrightDivideRowsContainer1 : '';
 $wrightDivideRowsContainer2 = isset($wrightDivideRowsContainer2) ? $wrightDivideRowsContainer2 : '';
 
-/* End Wright v.3: Grab parameter for max column number */
+/* Wright v.3: Read parameters like columns or others */
 
 $wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : false);  // Wright v.3: Enable Link in content parameter
 
@@ -46,9 +46,8 @@ $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrigh
 
 		<?php // Wright v.3: Added row-fluid for each horizontal set of columns ?>
 			<?php if ($c % $wrightMaxColumns == 0) :
-				$rowcounter = 1;  // Wright v.3: Row counter
-			?>
-				<?php if ($wrightDivideRows) : ?>
+					$rowcounter = 1;  // Wright v.3: Row counter
+					if ($wrightDivideRows) : ?>
 					<?php if (!$wrightProcessSecondRow) : ?>
 					<?php if ($wrightDivideRowsContainer1 != '') : ?>
 					<div class="<?php echo $wrightDivideRowsContainer1 ?>">
