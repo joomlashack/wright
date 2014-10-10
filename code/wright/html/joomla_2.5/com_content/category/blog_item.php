@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 2.5.18
+// Wright v.3 Override: Joomla 2.5.27
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
@@ -98,7 +98,7 @@ JHtml::_('behavior.framework');
 	?>
 <?php endif; ?>
 
-<?php if (!$params->get('show_intro')) : ?>
+<?php if (!$params->get('show_title')) : // Wright v.3: Used show_title instead of show_intro (right check) ?>
 	<?php echo $this->item->event->afterDisplayTitle; ?>
 <?php endif; ?>
 
@@ -177,7 +177,7 @@ JHtml::_('behavior.framework');
 		<?php $author = ($this->item->created_by_alias ? $this->item->created_by_alias : $author);?>
 
 			<?php if (!empty($this->item->contactid ) &&  $params->get('link_author') == true):?>
-				<?php  echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY' ,
+				<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY' ,
 				 JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid), $author)) . $wrightAfterIcon;  // Wright v.3: Icon for non-mobile version ?>
 				<?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid), $author)) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 			<?php else :?>
@@ -244,7 +244,11 @@ JHtml::_('behavior.framework');
 /* End Wright v.3: Item elements structure */
 ?>
 
-<?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper) ?>
+<?php
+	if ($params->get('show_intro')) : // Wright v3. Added conditional to display intro text
+		echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper)
+ 	endif; // Wright v3. Added conditional to display intro text
+  ?>
 
 <?php if ($params->get('show_readmore') && $this->item->readmore) :
 	if ($params->get('access-view')) :
