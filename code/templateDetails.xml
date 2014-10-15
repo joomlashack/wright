@@ -2,13 +2,13 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
 <extension version="2.5" type="template" method="upgrade" client="site">
 	<name>js_wright</name>
-	<creationDate>September 2014</creationDate>
+	<creationDate>October 2014</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>http://www.joomlashack.com</authorUrl>
 	<copyright>Copyright Joomlashack 2010-2014. All rights reserved</copyright>
 	<license>GNU GPLv2</license>
-	<version>3.1.4.5</version>
+	<version>3.1.4.6</version>
     <description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
 
 	<languages folder="language">
@@ -63,6 +63,7 @@
 		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_2.5">
 			<fieldset name="basic">
                 <!-- Start of default Wright params -->
+				<field name="wright" type="wright"/>
 				<field name="helper" type="help" label="TPL_JS_WRIGHT_FIELD_NEED_HELP_LABEL" description="TPL_JS_WRIGHT_FIELD_NEED_HELP_DESC"/>
 				<field name="rebrand" type="rebrand" default="no" label="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_LABEL" description="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_DESC" />
 				<field name="style" type="styles" default="generic" label="TPL_JS_WRIGHT_FIELD_STYLE_LABEL" description="TPL_JS_WRIGHT_FIELD_STYLE_DESC" />

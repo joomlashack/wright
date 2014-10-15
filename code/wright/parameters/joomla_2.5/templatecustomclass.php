@@ -10,11 +10,16 @@
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
 
-if (file_exists(realpath(dirname(__FILE__) . '/../../../parameters/templatecustom.php')))
+jimport('joomla.form.formfield');
+
+/**
+ * Template custom parameters (no parameter if it's not set by the template)
+ *
+ * @package     Wright
+ * @subpackage  Parameters
+ * @since       2.0
+ */
+class JFormFieldTemplateCustom extends JFormField
 {
-	require_once realpath(dirname(__FILE__) . '/../../../parameters/templatecustom.php');
-}
-else
-{
-	require_once realpath(dirname(__FILE__)) . '/templatecustomclass.php';
+	protected $type = 'templatecustom';
 }

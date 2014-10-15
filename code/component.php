@@ -12,15 +12,19 @@ defined('_JEXEC') or die('Restricted access');
 
 
 // Include the framework
-require(dirname(__FILE__).'/'.'wright'.'/'.'wright.php');
+require dirname(__FILE__) . '/wright/wright.php';
 
-// Initialize the framework and
+// Initialize the framework and include header
 $tpl = Wright::getInstance();
 $tpl->header();
 
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
+<html lang="<?php
+	echo $this->language;
+		?>" dir="<?php
+	echo $this->direction;
+		?>" >
 	<head>
 		<jdoc:include type="head" />
 	</head>
