@@ -118,12 +118,9 @@ class Wright
 
 		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
 
-		require_once JPATH_SITE . '/templates/' . $document->template . DIRECTORY_SEPARATOR . 'wrighttemplate.php';
-
-		if (is_file(JPATH_SITE . '/templates/' . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
-		{
-			include_once JPATH_SITE . '/templates/' . $document->template . DIRECTORY_SEPARATOR . 'functions.php';
-		}
+		// Body classes
+		$wrightBodyClass = '';
+		$wrightBodyClass .= ($this->params->get('responsive', '1') == 1 ? ' responsive' : ' no-responsive');
 
 		// Get the bootstrap row mode ( row )
 		$wrightGridMode = $this->params->get('bs_rowmode', 'row');
@@ -134,9 +131,12 @@ class Wright
 			$wrightContainerClass = 'container-fluid';
 		}
 
-		// Body classes
-		$wrightBodyClass = '';
-		$wrightBodyClass .= ($this->params->get('responsive', '1') == 1 ? ' responsive' : ' no-responsive');
+		require_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'wrighttemplate.php';
+
+		if (is_file(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
+		{
+			include_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php';
+		}
 
 		// Get our template for further parsing, if custom file is found
 		// it will use it instead of the default file
@@ -224,7 +224,7 @@ class Wright
 
 				// Load jQuery from Google
 				default:
-					$jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
+					$jquery = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js';
 					break;
 			}
 
