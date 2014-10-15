@@ -326,7 +326,6 @@ class Wright
 			{
 				$this->addJSScriptDeclaration('jQuery("#wrightBCW").modal();');
 				$session->set('hideWarning', 1, 'WrightTemplate_' . $this->document->template);
-				JFactory::getApplication()->enqueueMessage($hideWarning);
 			}
 		}
 	}
