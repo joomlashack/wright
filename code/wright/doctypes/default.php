@@ -62,7 +62,6 @@ abstract class HtmlAdapterAbstract
 	public function getBody($matches)
 	{
 		$wright = Wright::getInstance();
-		require_once(JPATH_ROOT.'/'.'templates'.'/'.$wright->document->template.'/'.'wright'.'/'.'includes'.'/'.'browser.php');
 		$browser = new Browser();
 		$browser_version = explode('.', $browser->getVersion());
 		$class = 'is_'.strtolower($browser->getBrowser()) . ' v_' . $browser_version[0];

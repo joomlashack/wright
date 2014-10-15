@@ -90,6 +90,12 @@ class Wright
 		$this->params = $document->params;
 		$this->baseurl = $document->baseurl;
 
+		if ($app->isAdmin())
+		{
+			// If Wright is instanciated in backend, it stops loading
+			return;
+		}
+
 		// Urls
 		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
 		$this->_urlWright = $this->_urlTemplate . '/wright';
@@ -107,13 +113,16 @@ class Wright
 			JHtml::_('bootstrap.loadCss', true, $this->document->direction);
 		}
 
+		// Browser library
+		include_once JPATH_SITE . '/templates/' . $this->document->template . '/wright/includes/Browser.php';
+
 		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
 
-		require_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'wrighttemplate.php';
+		require_once JPATH_SITE . '/templates/' . $document->template . DIRECTORY_SEPARATOR . 'wrighttemplate.php';
 
-		if (is_file(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
+		if (is_file(JPATH_SITE . '/templates/' . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
 		{
-			include_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php';
+			include_once JPATH_SITE . '/templates/' . $document->template . DIRECTORY_SEPARATOR . 'functions.php';
 		}
 
 		// Get the bootstrap row mode ( row )
@@ -131,15 +140,15 @@ class Wright
 
 		// Get our template for further parsing, if custom file is found
 		// it will use it instead of the default file
-		$path = JPATH_THEMES . '/' . $document->template . '/' . 'template.php';
+		$path = JPATH_SITE . '/templates/' . $document->template . '/' . 'template.php';
 		$menu = $app->getMenu();
 
 		// If homepage, load up home.php if found, or load custom.php if found
 		$lang = JFactory::getLanguage();
-		if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . '/' . $document->template . '/home.php'))
-			$path = JPATH_THEMES . '/' . $document->template . '/home.php';
-		elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
-			$path = JPATH_THEMES . '/' . $document->template . '/custom.php';
+		if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_SITE . '/templates/' . $document->template . '/home.php'))
+			$path = JPATH_SITE . '/templates/' . $document->template . '/home.php';
+		elseif (is_file(JPATH_SITE . '/templates/' . $document->template . '/custom.php'))
+			$path = JPATH_SITE . '/templates/' . $document->template . '/custom.php';
 
 		// Include our file and capture buffer
 		ob_start();
@@ -265,8 +274,56 @@ class Wright
 			$this->checkStyleFiles();
 		}
 
+		$this->browserCompatibilityCheck();
+
 		// Build css
 		$this->css();
+	}
+
+	/**
+	 * Adds browser compatibility check if it's selected in the backed
+	 *
+	 * @return  void
+	 */
+	private function browserCompatibilityCheck()
+	{
+		if ($this->document->params->get('browsercompatibilityswitch', '0') == '1')
+		{
+			$session = JFactory::getSession();
+			$hideWarning = $session->get('hideWarning', 0, 'WrightTemplate_' . $this->document->template);
+			$showWarning = false;
+
+			if (!$hideWarning)
+			{
+				$browser = new Browser;
+				$browserName = $browser->getBrowser();
+				$browserVersion = $browser->getVersion();
+
+				$browserCompatibility = json_decode($this->document->params->get('browsercompatibility', ''));
+
+				if ($browserCompatibility == '')
+				{
+					$browserCompatibility = $this->setupDefaultBrowserCompatibility();
+				}
+
+				if (array_key_exists($browserName, $browserCompatibility))
+				{
+					if (version_compare($browserVersion, $browserCompatibility[$browserName]->minimumVersion, 'lt'))
+					{
+						$showWarning = true;
+					}
+				}
+				else
+				{
+					$showWarning = true;
+				}
+			}
+
+			if ($showWarning)
+			{
+				JFactory::getApplication()->enqueueMessage('Warning');
+			}
+		}
 	}
 
 	/**
@@ -286,7 +343,7 @@ class Wright
 		{
 			$this->_baseVersion = $mainversion . $subversion;
 
-			if (file_exists(JPATH_THEMES . '/' . $this->document->template . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css'))
+			if (file_exists(JPATH_SITE . '/templates/' . $this->document->template . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css'))
 			{
 				$fileext = $this->_urlTemplate . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
 				$fileFound = true;
@@ -391,20 +448,20 @@ class Wright
 				$this->document->addScript(JURI::root() . 'templates/' . $this->document->template . '/wright/js/html5shiv.min.js');
 			}
 
-			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie.css'))
+			if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/ie.css'))
 			{
 				$styles['ie'][] = 'ie.css';
 			}
 
-			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie' . $major . '.css'))
+			if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/ie' . $major . '.css'))
 				$styles['ie'][] = 'ie' . $major . '.css';
 		}
 
-		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/rtl.css'))
+		if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl.css'))
 			$styles['template'][] = 'rtl.css';
 
 		// Check to see if custom.css file is present, and if so add it after all other css files
-		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/custom.css'))
+		if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/custom.css'))
 		{
 			$styles['template'][] = 'custom.css';
 		}
@@ -694,5 +751,48 @@ class Wright
 		}
 
 		return "";
+	}
+
+	/**
+	 * Setup test values
+	 *
+	 * @return  array
+	 */
+	public function setupDefaultBrowserCompatibility()
+	{
+		$defaultInput = array();
+
+		$chromeObject = new stdClass;
+		$firefoxObject = new stdClass;
+		$ieObject = new stdClass;
+		$safariObject = new stdClass;
+		$operaObject = new stdClass;
+		$iOSObject = new stdClass;
+
+		$chromeObject->minimumVersion = '35';
+		$chromeObject->recommended = true;
+		$firefoxObject->minimumVersion = '28';
+		$firefoxObject->recommended = false;
+		$ieObject->minimumVersion = '8';
+		$ieObject->recommended = false;
+		$safariObject->minimumVersion = '7';
+		$safariObject->recommended = false;
+		$operaObject->minimumVersion = '24';
+		$operaObject->recommended = false;
+		$iOSObject->minimumVersion = '6';
+		$iOSObject->recommended = false;
+
+		$defaultInput = array(
+			Browser::BROWSER_CHROME => $chromeObject,
+			Browser::BROWSER_FIREFOX => $firefoxObject,
+			Browser::BROWSER_IE => $ieObject,
+			Browser::BROWSER_SAFARI => $safariObject,
+			Browser::BROWSER_OPERA => $operaObject,
+			Browser::BROWSER_IPAD => $iOSObject,
+			Browser::BROWSER_IPHONE => $iOSObject,
+			Browser::BROWSER_IPOD => $iOSObject
+		);
+
+		return $defaultInput;
 	}
 }
