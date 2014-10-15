@@ -118,7 +118,7 @@ class Wright
 		}
 
 		// Browser library
-		include_once JPATH_SITE . '/templates/' . $this->document->template . '/wright/includes/Browser.php';
+		include_once JPATH_SITE . '/templates/' . $this->document->template . '/wright/includes/browser.php';
 
 		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
 
