@@ -1,0 +1,15 @@
+.wright-browser-table th {
+	border-bottom: #000000 1px solid;
+}
+
+.wright-browser-table td {
+	text-align: center;
+}
+
+.wright-browser-table td input[type=text] {
+	width: 50px;
+}
+
+.wright-browser-table td.text-left {
+	text-align: left;
+}

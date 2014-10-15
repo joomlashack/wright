@@ -76,6 +76,10 @@ class Wright
 
 	private $_baseVersion = '';
 
+	public $_showBrowserWarning = false;
+
+	public $_browserCompatibility = null;
+
 	/**
 	 * Main Wright function called to create the index.php file read by Joomla
 	 *
@@ -291,7 +295,6 @@ class Wright
 		{
 			$session = JFactory::getSession();
 			$hideWarning = $session->get('hideWarning', 0, 'WrightTemplate_' . $this->document->template);
-			$showWarning = false;
 
 			if (!$hideWarning)
 			{
@@ -299,29 +302,31 @@ class Wright
 				$browserName = $browser->getBrowser();
 				$browserVersion = $browser->getVersion();
 
-				$browserCompatibility = json_decode($this->document->params->get('browsercompatibility', ''));
+				$this->_browserCompatibility = json_decode($this->document->params->get('browsercompatibility', ''));
 
-				if ($browserCompatibility == '')
+				if ($this->_browserCompatibility == '')
 				{
-					$browserCompatibility = $this->setupDefaultBrowserCompatibility();
+					$this->_browserCompatibility = $this->setupDefaultBrowserCompatibility();
 				}
 
-				if (array_key_exists($browserName, $browserCompatibility))
+				if (property_exists($this->_browserCompatibility, $browserName))
 				{
-					if (version_compare($browserVersion, $browserCompatibility[$browserName]->minimumVersion, 'lt'))
+					if (version_compare($browserVersion, $this->_browserCompatibility->$browserName->minimumVersion, 'lt'))
 					{
-						$showWarning = true;
+						$this->_showBrowserWarning = true;
 					}
 				}
 				else
 				{
-					$showWarning = true;
+					$this->_showBrowserWarning = true;
 				}
 			}
 
-			if ($showWarning)
+			if ($this->_showBrowserWarning)
 			{
-				JFactory::getApplication()->enqueueMessage('Warning');
+				$this->addJSScriptDeclaration('jQuery("#wrightBCW").modal();');
+				$session->set('hideWarning', 1, 'WrightTemplate_' . $this->document->template);
+				JFactory::getApplication()->enqueueMessage($hideWarning);
 			}
 		}
 	}
@@ -710,7 +715,7 @@ class Wright
 		else
 		{
 			$document = JFactory::getDocument();
-			$document->addScriptDeclaration($script);
+			$document->addScriptDeclaration('jQuery( document ).ready(function( $ ) {' . $script . '});');
 		}
 	}
 
@@ -737,14 +742,14 @@ class Wright
 
 			if ($this->_jsDeclarations)
 			{
-				$script .= "<script type='text/javascript'>\n";
+				$script .= "<script type='text/javascript'>jQuery( document ).ready(function( $ ) {\n";
 
 				foreach ($this->_jsDeclarations as $js)
 				{
 					$script .= "$js\n";
 				}
 
-				$script .= "</script>\n";
+				$script .= "});</script>\n";
 			}
 
 			return $script;
@@ -760,7 +765,7 @@ class Wright
 	 */
 	public function setupDefaultBrowserCompatibility()
 	{
-		$defaultInput = array();
+		$defaultInput = new stdClass;
 
 		$chromeObject = new stdClass;
 		$firefoxObject = new stdClass;
@@ -771,27 +776,46 @@ class Wright
 
 		$chromeObject->minimumVersion = '35';
 		$chromeObject->recommended = true;
+		$chromeObject->desktop = true;
+		$chromeObject->mobile = true;
 		$firefoxObject->minimumVersion = '28';
 		$firefoxObject->recommended = false;
+		$firefoxObject->desktop = true;
+		$firefoxObject->mobile = false;
 		$ieObject->minimumVersion = '8';
 		$ieObject->recommended = false;
+		$ieObject->desktop = true;
+		$ieObject->mobile = false;
 		$safariObject->minimumVersion = '7';
 		$safariObject->recommended = false;
+		$safariObject->desktop = true;
+		$safariObject->mobile = false;
 		$operaObject->minimumVersion = '24';
 		$operaObject->recommended = false;
+		$operaObject->desktop = true;
+		$operaObject->mobile = false;
 		$iOSObject->minimumVersion = '6';
 		$iOSObject->recommended = false;
+		$iOSObject->desktop = false;
+		$iOSObject->mobile = true;
 
-		$defaultInput = array(
-			Browser::BROWSER_CHROME => $chromeObject,
-			Browser::BROWSER_FIREFOX => $firefoxObject,
-			Browser::BROWSER_IE => $ieObject,
-			Browser::BROWSER_SAFARI => $safariObject,
-			Browser::BROWSER_OPERA => $operaObject,
-			Browser::BROWSER_IPAD => $iOSObject,
-			Browser::BROWSER_IPHONE => $iOSObject,
-			Browser::BROWSER_IPOD => $iOSObject
-		);
+		$chromeName = Browser::BROWSER_CHROME;
+		$firefoxName = Browser::BROWSER_FIREFOX;
+		$ieName = Browser::BROWSER_IE;
+		$safariName = Browser::BROWSER_SAFARI;
+		$operaName = Browser::BROWSER_OPERA;
+		$iPadName = Browser::BROWSER_IPAD;
+		$iPhoneName = Browser::BROWSER_IPHONE;
+		$iPodName = Browser::BROWSER_IPOD;
+
+		$defaultInput->$chromeName = $chromeObject;
+		$defaultInput->$firefoxName = $firefoxObject;
+		$defaultInput->$ieName = $ieObject;
+		$defaultInput->$safariName = $safariObject;
+		$defaultInput->$operaName = $operaObject;
+		$defaultInput->$iPadName = $iOSObject;
+		$defaultInput->$iPhoneName = $iOSObject;
+		$defaultInput->$iPodName = $iOSObject;
 
 		return $defaultInput;
 	}
