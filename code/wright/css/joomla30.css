@@ -1380,26 +1380,6 @@ select:focus:invalid:focus {
 .form-actions:after {
   clear: both;
 }
-.input-append,
-.input-prepend {
-  display: inline-block;
-  margin-bottom: 10px;
-  vertical-align: middle;
-  font-size: 0;
-  white-space: nowrap;
-}
-.input-append input,
-.input-prepend input,
-.input-append select,
-.input-prepend select,
-.input-append .uneditable-input,
-.input-prepend .uneditable-input,
-.input-append .dropdown-menu,
-.input-prepend .dropdown-menu,
-.input-append .popover,
-.input-prepend .popover {
-  font-size: 14px;
-}
 .input-append select,
 .input-prepend select,
 .input-append .uneditable-input,
@@ -1421,48 +1401,6 @@ select:focus:invalid:focus {
   z-index: 2;
 }
 
-input.search-query {
-  padding-right: 14px;
-  padding-right: 4px \9;
-  padding-left: 14px;
-  padding-left: 4px \9;
-  /* IE7-8 doesn't have border-radius, so don't indent the padding */
-
-  margin-bottom: 0;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-}
-
-.form-search input,
-.form-inline input,
-.form-horizontal input,
-.form-search textarea,
-.form-inline textarea,
-.form-horizontal textarea,
-.form-search select,
-.form-inline select,
-.form-horizontal select,
-.form-search .help-inline,
-.form-inline .help-inline,
-.form-horizontal .help-inline,
-.form-search .uneditable-input,
-.form-inline .uneditable-input,
-.form-horizontal .uneditable-input,
-.form-search .input-prepend,
-.form-inline .input-prepend,
-.form-horizontal .input-prepend,
-.form-search .input-append,
-.form-inline .input-append,
-.form-horizontal .input-append {
-  display: inline-block;
-  *display: inline;
-  /* IE7 inline-block hack */
-
-  *zoom: 1;
-  margin-bottom: 0;
-  vertical-align: middle;
-}
 .form-search .hide,
 .form-inline .hide,
 .form-horizontal .hide {
@@ -1474,7 +1412,6 @@ input.search-query {
 .form-inline .btn-group {
   display: inline-block;
 }
-
 .control-group {
   margin-bottom: 10px;
 }
