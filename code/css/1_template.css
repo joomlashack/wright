@@ -24,12 +24,12 @@ body{
 line-height:1.5em;
 font-size:14px;
 }
-h1, 
+h1,
 .componentheading {
 font-size:1.7em;
 line-height:1.7em;
 }
-h2, 
+h2,
 .contentheading{
 font-size:1.5em;
 line-height:1.5em;
@@ -57,7 +57,7 @@ padding:10px 0;
 .clr {
 clear:both;
 }
-ul, 
+ul,
 ol{
 margin-top:20px;
 margin-bottom:20px;
@@ -109,8 +109,8 @@ margin:0 auto;
 #menu-inner{
 padding:0;
 }
-#menu ul, 
-#menu ul li, 
+#menu ul,
+#menu ul li,
 #menu ul ul{
 list-style: none;
 margin: 0;
@@ -135,7 +135,7 @@ text-decoration:none;
 position:relative;
 font-weight:bold;
 }
-#menu ul li.hover, 
+#menu ul li.hover,
 #menu ul li:hover{
 position: relative;
 z-index: 599;
@@ -237,9 +237,7 @@ margin:10px 0 !important;
 /* JOOMLA SPECIFIC CSS CODE */
 /* ***************************************************************************************************** */
 /* FRONTEND EDITOR */
-#adminForm label{
-display:block;
-}
+
 #adminForm input,
 #adminForm select{
 font-family:Arial, Helvetica, sans-serif;
@@ -327,12 +325,12 @@ padding:10px 0;
 margin:0;
 font-size:11px;
 }
-li.parent-category-name, 
-li.category-name, 
-li.create, 
-li.modified, 
-li.published, 
-li.createdby, 
+li.parent-category-name,
+li.category-name,
+li.create,
+li.modified,
+li.published,
+li.createdby,
 li.hits {
 font-family:inherit;
 }
@@ -804,7 +802,7 @@ padding:5px;
 }
 /* ***************************************************************************************************** */
 /* ARTICLE CATEGORIES */
-div.categories-list ul, 
+div.categories-list ul,
 div.categories-list li{
 margin:0;
 padding:0;
@@ -1872,8 +1870,8 @@ margin:0 20px 20px 0;
 blockquote.right{
 margin:0 0 20px 20px;
 }
-blockquote, 
-blockquote.left, 
+blockquote,
+blockquote.left,
 blockquote.right {
 padding:20px;
 font-size:18px;
@@ -1930,12 +1928,12 @@ background: #EEF7DD url(../images/status-download.png) 10px 50% no-repeat;
 }
 /* ***************************************************************************************************** */
 /* LIST STYLES */
-ul.bullet1, 
-ul.bullet2, 
-ul.bullet3, 
-ul.bullet4, 
-ul.bullet5, 
-ul.bullet6, 
+ul.bullet1,
+ul.bullet2,
+ul.bullet3,
+ul.bullet4,
+ul.bullet5,
+ul.bullet6,
 ul.bullet7,
 ul.bullet8,
 ul.bullet9,
@@ -1954,12 +1952,12 @@ padding-left: 0;
 margin-left: 0;
 list-style: none;
 }
-ul.bullet1 li, 
-ul.bullet2 li, 
-ul.bullet3 li, 
-ul.bullet4 li, 
-ul.bullet5 li, 
-ul.bullet6 li, 
+ul.bullet1 li,
+ul.bullet2 li,
+ul.bullet3 li,
+ul.bullet4 li,
+ul.bullet5 li,
+ul.bullet6 li,
 ul.bullet7 li,
 ul.bullet8 li,
 ul.bullet9 li,
@@ -2040,7 +2038,7 @@ background: url(../images/weather_sun.png) 4px 4px no-repeat;
 }
 /* ***************************************************************************************************** */
 /* BUTTON STYLES */
-.blueButton, 
+.blueButton,
 .greenButton,
 .orangeButton,
 .yellowButton,
@@ -2058,7 +2056,7 @@ display:inline-block;
 text-decoration:none;
 color:#FFF;
 }
-.blueButton:hover, 
+.blueButton:hover,
 .greenButton:hover,
 .orangeButton:hover,
 .yellowButton:hover,
