@@ -119,8 +119,6 @@ p.readmore {
 	margin: 0;
 	padding: 0;
 }
-.item-page {
-}
 
 /* @group Categories/Archives */
 
@@ -307,9 +305,7 @@ body.dark div.panel {
 }
 /* @end */
 
-
 /* @group Misc. Joomla! Styles */
-
 
 .jicons-icons {
 	float: left;
@@ -478,7 +474,6 @@ div.pagination ul li a:hover {
 	box-shadow: 0 0 5px #999;
 }
 
-
 /* Slider */
 
 .panel{
@@ -526,7 +521,6 @@ a [class^="icon-"], a [class*=" icon-"] {
 	background-image: none;
 	text-decoration: none;
 }
-
 
 ul.dropdown-menu {
 	list-style: none;

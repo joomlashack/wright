@@ -13,7 +13,6 @@ Ctrl/Cmd + F to find the @groups named below
 
 */
 
-
 /* @group Article Column Structure */
 
 .contentpaneopen, .blog {
@@ -142,9 +141,6 @@ p.readmore {
 }
 /* @end */
 
-
-
-
 /* @group Categories/Archives */
 
 div.categories-list ul, div.categories-list li, div.cat-children ul, div.cat-children li {
@@ -196,11 +192,7 @@ ul.categories-module p {
 }
 /* @end */
 
-
-
-
 /* @group Article Info */
-
 
 .article-info-box {
 	border-bottom: 1px solid #eee;
@@ -279,12 +271,7 @@ ul.actions li {
 }
 /* @end */
 
-
-
-
 /* @group Pagination */
-
-
 
 /* Category Pagination */
 
@@ -335,9 +322,7 @@ body.dark div.panel {
 }
 /* @end */
 
-
 /* @group Misc. Joomla! Styles */
-
 
 .jicons-icons {
 	float: left;
@@ -405,26 +390,6 @@ span.star {
 }
 .formelm select {
 	margin-left: 0px;
-}
-.button2-left a {
-	font-weight: bold;
-	text-decoration: none;
-	font: bold 12px/28px Helvetica, Arial, sans-serif;
-	margin: 5px 10px 0px 0px;
-	padding: 0px 10px;
-	float: left;
-	background-color: #eee;
-	background: -moz-linear-gradient(top center, #fff 0%, #eee 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #eee));
-	border: 1px solid #d6d6d6;
-	border-radius:4px;
-	-webkit-border-radius:4px;
-	-moz-border-radius:4px;
-	-moz-box-shadow: 1px 1px 0 #fff inset, -1px -1px 0 #fff inset;
-	-webkit-box-shadow: 1px 1px 0 #fff inset, -1px -1px 0 #fff inset;
-}
-.button2-left a:hover {
-	background-color: #f6f6f6;
 }
 #system-message li {
 	padding: 0;
