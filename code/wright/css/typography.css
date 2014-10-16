@@ -8,7 +8,7 @@ Ctrl/Cmd + F to find the @groups named below
 # All font sizes, margins, and line heights
 
 @group Font Stacks
-# Named font stacks in template params	
+# Named font stacks in template params
 
 @group Bonus Styles
 # Extra icon-based typography styles
@@ -20,8 +20,8 @@ Ctrl/Cmd + F to find the @groups named below
 body {
 	line-height: 145%;
 }
-/* Headings */
 
+/* Headings */
 
 h1 {
 	font-size:2.75em;
