@@ -11,8 +11,6 @@
 defined('_JEXEC') or die;
 ?>
 
-
-<div class="items-more">
 <h3><?php echo JText::_('COM_CONTENT_MORE_ARTICLES'); ?></h3><?php // Wright v.3: added "more articles" text ?>
 <ol class="nav nav-tabs nav-stacked">
 <?php
@@ -24,4 +22,3 @@ defined('_JEXEC') or die;
 	</li>
 <?php endforeach; ?>
 </ol>
-</div>
