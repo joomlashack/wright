@@ -407,7 +407,9 @@ span.star {
 
 /* Images and links */
 
-
+img{
+	max-width: 100%;
+}
 .img-intro-left,
 .img-fulltext-left,
 .pull-left.item-image {
