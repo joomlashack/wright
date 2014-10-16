@@ -34,12 +34,12 @@ Ctrl/Cmd + F to find the @groups named below
 }
 dl.article-info {
 	clear:both;
-	float:none;
 	display:block;
-	width:100%;
-	min-height:20px;
-	margin:20px 0;
+	float:none;
 	font-size:0.8em;
+	margin:20px 0;
+	min-height:20px;
+	width:100%;
 }
 dl.article-info dt {
 	display:none;
