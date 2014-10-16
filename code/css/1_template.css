@@ -321,10 +321,6 @@ margin:0 0 0 5px;
 margin:0 0 20px 0;
 padding:10px 0;
 }
-.article-info{
-margin:0;
-font-size:11px;
-}
 li.parent-category-name,
 li.category-name,
 li.create,
@@ -556,12 +552,9 @@ padding:5px 10px;
 }
 .items-more ol,
 .items-more li{
-margin:0;
-padding:0;
 	list-style:none;
 }
 .items-more li{
-padding:5px 10px 5px 25px;
 	font-size:12px;
 }
 .items-more li a{
