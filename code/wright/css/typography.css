@@ -848,12 +848,16 @@ blockquote.left {
 }
 
 /* @end */
-
+.finder *,
 .content_vote * {
 	margin-left: 5px;
 }
+.finder *:first-child,
 .content_vote *:first-child {
 	margin-left: 0;
+}
+.finder *{
+	margin-bottom: 5px;
 }
 
 .accordion-inner{
