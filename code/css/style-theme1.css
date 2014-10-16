@@ -404,10 +404,8 @@ border-right:1px solid #CCC;
 .cat-list-row0:hover{
 background:#EEE;
 }
-.cat-list-row0 .list-title,
 .cat-list-row0 .list-date,
-.cat-list-row0 .list-author,
-.cat-list-row0 .list-hits{
+.cat-list-row0 .list-author{
 border:1px solid #CCC;
 }
 .cat-list-row1{
@@ -418,11 +416,13 @@ border-right:1px solid #CCC;
 .cat-list-row1:hover{
 background:#EEE;
 }
-.cat-list-row1 .list-title,
 .cat-list-row1 .list-date,
-.cat-list-row1 .list-author,
-.cat-list-row1 .list-hits{
+.cat-list-row1 .list-author{
 border:1px solid #CCC;
+}
+
+.list.pull-left {
+	float: none;
 }
 /* ***************************************************************************************************** */
 /* POLLS COMPONENT */
