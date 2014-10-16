@@ -167,29 +167,6 @@ background:#0099CC;
 }
 /* ***************************************************************************************************** */
 /* FRONTPAGE COMPONENT */
-.items-more{
-background:#FFF;
-}
-.items-more h3{
-color:#FFF;
-border:1px solid #00799F;
-background:#0099CC;
-}
-.items-more ol{
-border-left:1px solid #CCC;
-border-right:1px solid #CCC;
-}
-.items-more li{
-	border-bottom:1px solid #CCC;
-	background:url(../images/arrow.png) no-repeat 0 9px;
-}
-.items-more li:hover{
-	background:#EEE url(../images/arrow.png) no-repeat 0 9px;
-}
-.items-more .nav-tabs li a:hover{
-	background-color: transparent;
-}
-
 .pagination a{
 	color:#FFF;
 	background:#0099CC;
