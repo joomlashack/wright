@@ -1,4 +1,3 @@
-@charset "utf-8";
 /* CSS Document Copyright © */
 /* ***************************************************************************************************** */
 /* TEMPLATE SPECIFIC CSS CODE */
@@ -24,12 +23,12 @@ body{
 line-height:1.5em;
 font-size:14px;
 }
-h1, 
+h1,
 .componentheading {
 font-size:1.7em;
 line-height:1.7em;
 }
-h2, 
+h2,
 .contentheading{
 font-size:1.5em;
 line-height:1.5em;
@@ -57,7 +56,7 @@ padding:10px 0;
 .clr {
 clear:both;
 }
-ul, 
+ul,
 ol{
 margin-top:20px;
 margin-bottom:20px;
@@ -109,8 +108,8 @@ margin:0 auto;
 #menu-inner{
 padding:0;
 }
-#menu ul, 
-#menu ul li, 
+#menu ul,
+#menu ul li,
 #menu ul ul{
 list-style: none;
 margin: 0;
@@ -135,7 +134,7 @@ text-decoration:none;
 position:relative;
 font-weight:bold;
 }
-#menu ul li.hover, 
+#menu ul li.hover,
 #menu ul li:hover{
 position: relative;
 z-index: 599;
@@ -237,9 +236,7 @@ margin:10px 0 !important;
 /* JOOMLA SPECIFIC CSS CODE */
 /* ***************************************************************************************************** */
 /* FRONTEND EDITOR */
-#adminForm label{
-display:block;
-}
+
 #adminForm input,
 #adminForm select{
 font-family:Arial, Helvetica, sans-serif;
@@ -323,16 +320,12 @@ margin:0 0 0 5px;
 margin:0 0 20px 0;
 padding:10px 0;
 }
-.article-info{
-margin:0;
-font-size:11px;
-}
-li.parent-category-name, 
-li.category-name, 
-li.create, 
-li.modified, 
-li.published, 
-li.createdby, 
+li.parent-category-name,
+li.category-name,
+li.create,
+li.modified,
+li.published,
+li.createdby,
 li.hits {
 font-family:inherit;
 }
@@ -384,15 +377,32 @@ border-radius:0;
 -moz-border-radius:0;
 -webkit-border-radius:0;
 }
+ul.pagenav {
+  *zoom: 1;
+   text-align: center;
+}
+ul.pagenav:after,
+ul.pagenav:before{
+    display: table;
+    content: "";
+}
+ul.pagenav:after:after {
+    clear: both;
+}
+
 ul.pagenav,
 ul.pagenav li{
-margin:0;
-padding:0;
-list-style:none;
+	margin:0;
+	list-style: none outside none;
 }
-ul.pagenav li{
-display:inline;
+ul.pagenav li.next{
+	float: right;
 }
+ul.pagenav li.previous{
+	float: left;
+}
+
+
 /* ***************************************************************************************************** */
 /* FRONTPAGE COMPONENT */
 .blog{
@@ -558,13 +568,10 @@ padding:5px 10px;
 }
 .items-more ol,
 .items-more li{
-margin:0;
-padding:0;
-list-style:none;
+	list-style:none;
 }
 .items-more li{
-padding:5px 10px 5px 25px;
-font-size:12px;
+	font-size:12px;
 }
 .items-more li a{
 text-decoration:none;
@@ -804,7 +811,7 @@ padding:5px;
 }
 /* ***************************************************************************************************** */
 /* ARTICLE CATEGORIES */
-div.categories-list ul, 
+div.categories-list ul,
 div.categories-list li{
 margin:0;
 padding:0;
@@ -1336,15 +1343,6 @@ margin-bottom:0;
 padding:0;
 }
 /* ***************************************************************************************************** */
-/* SEARCH MODULE */
-.search{}
-.search .button{
-margin:0 10px;
-}
-.search .inputbox{
-margin:0 10px;
-}
-/* ***************************************************************************************************** */
 /* NEWSFLASH MODULE */
 #banner .moduletable{
 margin:0;
@@ -1416,8 +1414,6 @@ padding:3px 3px 3px 20px;
 }
 /* ***************************************************************************************************** */
 /* FEED DISPLAY MODULE */
-.feed{}
-.feed h4{}
 .feed ul.newsfeed{
 	margin:0;
 	padding:0;
@@ -1605,263 +1601,8 @@ padding:3px 3px 3px 40px;
 .module_menu ul ul ul ul li a{
 padding:3px 3px 3px 60px;
 }
-/* ***************************************************************************************************** */
-/* CUSTOM MODULE STYLES */
-.moduletable-blue,
-.moduletable-green,
-.moduletable-yellow,
-.moduletable-orange,
-.moduletable-red,
-.moduletable-brown,
-.moduletable-cyan,
-.moduletable-purple,
-.moduletable-pink,
-.moduletable-olive{
-margin-bottom:40px;
-font-size:12px;
-padding:10px;
-}
-.moduletable-blue h3,
-.moduletable-green h3,
-.moduletable-yellow h3,
-.moduletable-orange h3,
-.moduletable-red h3,
-.moduletable-brown h3,
-.moduletable-cyan h3,
-.moduletable-purple h3,
-.moduletable-pink h3,
-.moduletable-olive h3{
-padding:10px;
-margin:-10px -10px 10px -10px;
-}
-.module-blue,
-.module-green,
-.module-yellow,
-.module-orange,
-.module-red,
-.module-brown,
-.module-cyan,
-.module-purple,
-.module-pink,
-.module-olive{
-font-size:12px;
-margin-bottom:40px;
-}
-.module-blue .pad,
-.module-green .pad,
-.module-yellow .pad,
-.module-orange .pad,
-.module-red .pad,
-.module-brown .pad,
-.module-cyan .pad,
-.module-purple .pad,
-.module-pink .pad,
-.module-olive .pad{
-padding:10px;
-}
-.module-blue h3,
-.module-green h3,
-.module-yellow h3,
-.module-orange h3,
-.module-red h3,
-.module-brown h3,
-.module-cyan h3,
-.module-purple h3,
-.module-pink h3,
-.module-olive h3{
-padding:10px;
-margin:-10px -10px 10px -10px;
-}
-.moduletable-blue,
-.module-blue{
-background:#FFF;
-border:1px solid #CCC;
-box-shadow:inset 0 0 5px #CCC;
--moz-box-shadow:inset 0 0 5px #CCC;
--webkit-box-shadow:inset 0 0 5px #CCC;
--khtml-box-shadow:inset 0 0 5px #CCC;
-}
-.moduletable-blue h3,
-.module-blue h3{
-background:#0099CC;
-border:1px solid #00799F;
-color:#FFF;
-box-shadow:inset 0 5px 5px #00799F;
--moz-box-shadow:inset 0 5px 5px #00799F;
--webkit-box-shadow:inset 0 5px 5px #00799F;
--khtml-box-shadow:inset 0 5px 5px #00799F;
-}
-.moduletable-green,
-.module-green{
-background:#FFF;
-border:1px solid #CCC;
-box-shadow:inset 0 0 5px #CCC;
--moz-box-shadow:inset 0 0 5px #CCC;
--webkit-box-shadow:inset 0 0 5px #CCC;
--khtml-box-shadow:inset 0 0 5px #CCC;
-}
-.moduletable-green h3,
-.module-green h3{
-background:#66A326;
-border:1px solid #396D04;
-color:#FFF;
-box-shadow:inset 0 5px 5px #396D04;
--moz-box-shadow:inset 0 5px 5px #396D04;
--webkit-box-shadow:inset 0 5px 5px #396D04;
--khtml-box-shadow:inset 0 5px 5px #396D04;
-}
-.moduletable-yellow,
-.module-yellow{
-background:#FFF;
-border:1px solid #CCC;
-box-shadow:inset 0 0 5px #CCC;
--moz-box-shadow:inset 0 0 5px #CCC;
--webkit-box-shadow:inset 0 0 5px #CCC;
--khtml-box-shadow:inset 0 0 5px #CCC;
-}
-.moduletable-yellow h3,
-.module-yellow h3{
-background:#D2BE02;
-border:1px solid #9C8E01;
-color:#FFF;
-box-shadow:inset 0 5px 5px #9C8E01;
--moz-box-shadow:inset 0 5px 5px #9C8E01;
--webkit-box-shadow:inset 0 5px 5px #9C8E01;
--khtml-box-shadow:inset 0 5px 5px #9C8E01;
-}
-.moduletable-orange,
-.module-orange{
-background:#FFF;
-border:1px solid #CCC;
-box-shadow:inset 0 0 5px #CCC;
--moz-box-shadow:inset 0 0 5px #CCC;
--webkit-box-shadow:inset 0 0 5px #CCC;
--khtml-box-shadow:inset 0 0 5px #CCC;
-}
-.moduletable-orange h3,
-.module-orange h3{
-background:#D8811A;
-border:1px solid #B96F17;
-color:#FFF;
-box-shadow:inset 0 5px 5px #B96F17;
--moz-box-shadow:inset 0 5px 5px #B96F17;
--webkit-box-shadow:inset 0 5px 5px #B96F17;
--khtml-box-shadow:inset 0 5px 5px #B96F17;
-}
-.moduletable-red,
-.module-red{
-background:#FFF;
-border:1px solid #CCC;
-box-shadow:inset 0 0 5px #CCC;
--moz-box-shadow:inset 0 0 5px #CCC;
--webkit-box-shadow:inset 0 0 5px #CCC;
--khtml-box-shadow:inset 0 0 5px #CCC;
-}
-.moduletable-red h3,
-.module-red h3{
-background:#CF4D37;
-border:1px solid #A13727;
-color:#FFF;
-box-shadow:inset 0 5px 5px #A13727;
--moz-box-shadow:inset 0 5px 5px #A13727;
--webkit-box-shadow:inset 0 5px 5px #A13727;
--khtml-box-shadow:inset 0 5px 5px #A13727;
-}
-.moduletable-brown,
-.module-brown{
-background:#FFF;
-border:1px solid #CCC;
-box-shadow:inset 0 0 5px #CCC;
--moz-box-shadow:inset 0 0 5px #CCC;
--webkit-box-shadow:inset 0 0 5px #CCC;
--khtml-box-shadow:inset 0 0 5px #CCC;
-}
-.moduletable-brown h3,
-.module-brown h3{
-background:#D08A45;
-border:1px solid #9F6227;
-color:#FFF;
-box-shadow:inset 0 5px 5px #9F6227;
--moz-box-shadow:inset 0 5px 5px #9F6227;
--webkit-box-shadow:inset 0 5px 5px #9F6227;
--khtml-box-shadow:inset 0 5px 5px #9F6227;
-}
-.moduletable-cyan,
-.module-cyan{
-background:#FFF;
-border:1px solid #CCC;
-box-shadow:inset 0 0 5px #CCC;
--moz-box-shadow:inset 0 0 5px #CCC;
--webkit-box-shadow:inset 0 0 5px #CCC;
--khtml-box-shadow:inset 0 0 5px #CCC;
-}
-.moduletable-cyan h3,
-.module-cyan h3{
-background:#45CFB8;
-border:1px solid #20AF95;
-color:#FFF;
-box-shadow:inset 0 5px 5px #20AF95;
--moz-box-shadow:inset 0 5px 5px #20AF95;
--webkit-box-shadow:inset 0 5px 5px #20AF95;
--khtml-box-shadow:inset 0 5px 5px #20AF95;
-}
-.moduletable-purple,
-.module-purple{
-background:#FFF;
-border:1px solid #CCC;
-box-shadow:inset 0 0 5px #CCC;
--moz-box-shadow:inset 0 0 5px #CCC;
--webkit-box-shadow:inset 0 0 5px #CCC;
--khtml-box-shadow:inset 0 0 5px #CCC;
-}
-.moduletable-purple h3,
-.module-purple h3{
-background:#8960CF;
-border:1px solid #603B9F;
-color:#FFF;
-box-shadow:inset 0 5px 5px #603B9F;
--moz-box-shadow:inset 0 5px 5px #603B9F;
--webkit-box-shadow:inset 0 5px 5px #603B9F;
--khtml-box-shadow:inset 0 5px 5px #603B9F;
-}
-.moduletable-pink,
-.module-pink{
-background:#FFF;
-border:1px solid #CCC;
-box-shadow:inset 0 0 5px #CCC;
--moz-box-shadow:inset 0 0 5px #CCC;
--webkit-box-shadow:inset 0 0 5px #CCC;
--khtml-box-shadow:inset 0 0 5px #CCC;
-}
-.moduletable-pink h3,
-.module-pink h3{
-background:#DA23BB;
-border:1px solid #BF0BA2;
-color:#FFF;
-box-shadow:inset 0 5px 5px #BF0BA2;
--moz-box-shadow:inset 0 5px 5px #BF0BA2;
--webkit-box-shadow:inset 0 5px 5px #BF0BA2;
--khtml-box-shadow:inset 0 5px 5px #BF0BA2;
-}
-.moduletable-olive,
-.module-olive{
-background:#FFF;
-border:1px solid #CCC;
-box-shadow:inset 0 0 5px #CCC;
--moz-box-shadow:inset 0 0 5px #CCC;
--webkit-box-shadow:inset 0 0 5px #CCC;
--khtml-box-shadow:inset 0 0 5px #CCC;
-}
-.moduletable-olive h3,
-.module-olive h3{
-background:#AAC041;
-border:1px solid #7E8F2C;
-color:#FFF;
-box-shadow:inset 0 5px 5px #7E8F2C;
--moz-box-shadow:inset 0 5px 5px #7E8F2C;
--webkit-box-shadow:inset 0 5px 5px #7E8F2C;
--khtml-box-shadow:inset 0 5px 5px #7E8F2C;
-}
+
+
 /* ***************************************************************************************************** */
 /* CUSTOM TYPOGRAPHY */
 /* ***************************************************************************************************** */
@@ -1872,8 +1613,8 @@ margin:0 20px 20px 0;
 blockquote.right{
 margin:0 0 20px 20px;
 }
-blockquote, 
-blockquote.left, 
+blockquote,
+blockquote.left,
 blockquote.right {
 padding:20px;
 font-size:18px;
@@ -1930,12 +1671,12 @@ background: #EEF7DD url(../images/status-download.png) 10px 50% no-repeat;
 }
 /* ***************************************************************************************************** */
 /* LIST STYLES */
-ul.bullet1, 
-ul.bullet2, 
-ul.bullet3, 
-ul.bullet4, 
-ul.bullet5, 
-ul.bullet6, 
+ul.bullet1,
+ul.bullet2,
+ul.bullet3,
+ul.bullet4,
+ul.bullet5,
+ul.bullet6,
 ul.bullet7,
 ul.bullet8,
 ul.bullet9,
@@ -1954,12 +1695,12 @@ padding-left: 0;
 margin-left: 0;
 list-style: none;
 }
-ul.bullet1 li, 
-ul.bullet2 li, 
-ul.bullet3 li, 
-ul.bullet4 li, 
-ul.bullet5 li, 
-ul.bullet6 li, 
+ul.bullet1 li,
+ul.bullet2 li,
+ul.bullet3 li,
+ul.bullet4 li,
+ul.bullet5 li,
+ul.bullet6 li,
 ul.bullet7 li,
 ul.bullet8 li,
 ul.bullet9 li,
@@ -2037,217 +1778,4 @@ background: url(../images/attach.png) 4px 4px no-repeat;
 }
 ul.bullet20 li {
 background: url(../images/weather_sun.png) 4px 4px no-repeat;
-}
-/* ***************************************************************************************************** */
-/* BUTTON STYLES */
-.blueButton, 
-.greenButton,
-.orangeButton,
-.yellowButton,
-.redButton,
-.brownButton,
-.cyanButton,
-.purpleButton,
-.pinkButton,
-.oliveButton{
-white-space:nowrap;
-font-family:Arial, Helvetica, sans-serif;
-padding:3px 10px;
-cursor:pointer;
-display:inline-block;
-text-decoration:none;
-color:#FFF;
-}
-.blueButton:hover, 
-.greenButton:hover,
-.orangeButton:hover,
-.yellowButton:hover,
-.redButton:hover,
-.brownButton:hover,
-.cyanButton:hover,
-.purpleButton:hover,
-.pinkButton:hover,
-.oliveButton:hover{
-text-decoration:none;
-color:#FFF;
-}
-.blueButton{
-color:#FFF;
-background:#0099CC;
-border:1px solid #00799F;
-box-shadow:inset 0 5px 5px #00799F;
--moz-box-shadow:inset 0 5px 5px #00799F;
--webkit-box-shadow:inset 0 5px 5px #00799F;
--khtml-box-shadow:inset 0 5px 5px #00799F;
-}
-.blueButton:hover{
-color:#FFF;
-background:#0099CC;
-border:1px solid #00799F;
-box-shadow:inset 0 -5px 5px #00799F;
--moz-box-shadow:inset 0 -5px 5px #00799F;
--webkit-box-shadow:inset 0 -5px 5px #00799F;
--khtml-box-shadow:inset 0 -5px 5px #00799F;
-}
-.greenButton{
-color:#FFF;
-background:#66A326;
-border:1px solid #396D04;
-box-shadow:inset 0 5px 5px #396D04;
--moz-box-shadow:inset 0 5px 5px #396D04;
--webkit-box-shadow:inset 0 5px 5px #396D04;
--khtml-box-shadow:inset 0 5px 5px #396D04;
-}
-.greenButton:hover{
-color:#FFF;
-background:#66A326;
-border:1px solid #396D04;
-box-shadow:inset 0 -5px 5px #396D04;
--moz-box-shadow:inset 0 -5px 5px #396D04;
--webkit-box-shadow:inset 0 -5px 5px #396D04;
--khtml-box-shadow:inset 0 -5px 5px #396D04;
-}
-.yellowButton{
-color:#FFF;
-background:#D2BE02;
-border:1px solid #9C8E01;
-box-shadow:inset 0 5px 5px #9C8E01;
--moz-box-shadow:inset 0 5px 5px #9C8E01;
--webkit-box-shadow:inset 0 5px 5px #9C8E01;
--khtml-box-shadow:inset 0 5px 5px #9C8E01;
-}
-.yellowButton:hover{
-color:#FFF;
-background:#D2BE02;
-border:1px solid #9C8E01;
-box-shadow:inset 0 -5px 5px #9C8E01;
--moz-box-shadow:inset 0 -5px 5px #9C8E01;
--webkit-box-shadow:inset 0 -5px 5px #9C8E01;
--khtml-box-shadow:inset 0 -5px 5px #9C8E01;
-}
-.orangeButton{
-color:#FFF;
-background:#D8811A;
-border:1px solid #B96F17;
-box-shadow:inset 0 5px 5px #B96F17;
--moz-box-shadow:inset 0 5px 5px #B96F17;
--webkit-box-shadow:inset 0 5px 5px #B96F17;
--khtml-box-shadow:inset 0 5px 5px #B96F17;
-}
-.orangeButton:hover{
-color:#FFF;
-background:#D8811A;
-border:1px solid #B96F17;
-box-shadow:inset 0 -5px 5px #B96F17;
--moz-box-shadow:inset 0 -5px 5px #B96F17;
--webkit-box-shadow:inset 0 -5px 5px #B96F17;
--khtml-box-shadow:inset 0 -5px 5px #B96F17;
-}
-.redButton{
-color:#FFF;
-background:#CF4D37;
-border:1px solid #A13727;
-box-shadow:inset 0 5px 5px #A13727;
--moz-box-shadow:inset 0 5px 5px #A13727;
--webkit-box-shadow:inset 0 5px 5px #A13727;
--khtml-box-shadow:inset 0 5px 5px #A13727;
-}
-.redButton:hover{
-color:#FFF;
-background:#CF4D37;
-border:1px solid #A13727;
-box-shadow:inset 0 -5px 5px #A13727;
--moz-box-shadow:inset 0 -5px 5px #A13727;
--webkit-box-shadow:inset 0 -5px 5px #A13727;
--khtml-box-shadow:inset 0 -5px 5px #A13727;
-}
-.brownButton{
-color:#FFF;
-background:#D08A45;
-border:1px solid #9F6227;
-box-shadow:inset 0 5px 5px #9F6227;
--moz-box-shadow:inset 0 5px 5px #9F6227;
--webkit-box-shadow:inset 0 5px 5px #9F6227;
--khtml-box-shadow:inset 0 5px 5px #9F6227;
-}
-.brownButton:hover{
-color:#FFF;
-background:#D08A45;
-border:1px solid #9F6227;
-box-shadow:inset 0 -5px 5px #9F6227;
--moz-box-shadow:inset 0 -5px 5px #9F6227;
--webkit-box-shadow:inset 0 -5px 5px #9F6227;
--khtml-box-shadow:inset 0 -5px 5px #9F6227;
-}
-.cyanButton{
-color:#FFF;
-background:#45CFB8;
-border:1px solid #20AF95;
-box-shadow:inset 0 5px 5px #20AF95;
--moz-box-shadow:inset 0 5px 5px #20AF95;
--webkit-box-shadow:inset 0 5px 5px #20AF95;
--khtml-box-shadow:inset 0 5px 5px #20AF95;
-}
-.cyanButton:hover{
-color:#FFF;
-background:#45CFB8;
-border:1px solid #20AF95;
-box-shadow:inset 0 -5px 5px #20AF95;
--moz-box-shadow:inset 0 -5px 5px #20AF95;
--webkit-box-shadow:inset 0 -5px 5px #20AF95;
--khtml-box-shadow:inset 0 -5px 5px #20AF95;
-}
-.purpleButton{
-color:#FFF;
-background:#8960CF;
-border:1px solid #603B9F;
-box-shadow:inset 0 5px 5px #603B9F;
--moz-box-shadow:inset 0 5px 5px #603B9F;
--webkit-box-shadow:inset 0 5px 5px #603B9F;
--khtml-box-shadow:inset 0 5px 5px #603B9F;
-}
-.purpleButton:hover{
-color:#FFF;
-background:#8960CF;
-border:1px solid #603B9F;
-box-shadow:inset 0 -5px 5px #603B9F;
--moz-box-shadow:inset 0 -5px 5px #603B9F;
--webkit-box-shadow:inset 0 -5px 5px #603B9F;
--khtml-box-shadow:inset 0 -5px 5px #603B9F;
-}
-.pinkButton{
-color:#FFF;
-background:#DA23BB;
-border:1px solid #BF0BA2;
-box-shadow:inset 0 5px 5px #BF0BA2;
--moz-box-shadow:inset 0 5px 5px #BF0BA2;
--webkit-box-shadow:inset 0 5px 5px #BF0BA2;
--khtml-box-shadow:inset 0 5px 5px #BF0BA2;
-}
-.pinkButton:hover{
-color:#FFF;
-background:#DA23BB;
-border:1px solid #BF0BA2;
-box-shadow:inset 0 -5px 5px #BF0BA2;
--moz-box-shadow:inset 0 -5px 5px #BF0BA2;
--webkit-box-shadow:inset 0 -5px 5px #BF0BA2;
--khtml-box-shadow:inset 0 -5px 5px #BF0BA2;
-}
-.oliveButton{
-color:#FFF;
-background:#AAC041;
-border:1px solid #7E8F2C;
-box-shadow:inset 0 5px 5px #7E8F2C;
--moz-box-shadow:inset 0 5px 5px #7E8F2C;
--webkit-box-shadow:inset 0 5px 5px #7E8F2C;
--khtml-box-shadow:inset 0 5px 5px #7E8F2C;
-}
-.oliveButton:hover{
-color:#FFF;
-background:#AAC041;
-border:1px solid #7E8F2C;
-box-shadow:inset 0 -5px 5px #7E8F2C;
--moz-box-shadow:inset 0 -5px 5px #7E8F2C;
--webkit-box-shadow:inset 0 -5px 5px #7E8F2C;
--khtml-box-shadow:inset 0 -5px 5px #7E8F2C;
 }

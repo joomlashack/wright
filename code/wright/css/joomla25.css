@@ -13,7 +13,6 @@ Ctrl/Cmd + F to find the @groups named below
 
 */
 
-
 /* @group Article Column Structure */
 
 .contentpaneopen, .blog {
@@ -34,12 +33,12 @@ Ctrl/Cmd + F to find the @groups named below
 }
 dl.article-info {
 	clear:both;
-	float:none;
 	display:block;
-	width:100%;
-	min-height:20px;
-	margin:20px 0;
+	float:none;
 	font-size:0.8em;
+	margin:20px 0;
+	min-height:20px;
+	width:100%;
 }
 dl.article-info dt {
 	display:none;
@@ -142,9 +141,6 @@ p.readmore {
 }
 /* @end */
 
-
-
-
 /* @group Categories/Archives */
 
 div.categories-list ul, div.categories-list li, div.cat-children ul, div.cat-children li {
@@ -196,11 +192,7 @@ ul.categories-module p {
 }
 /* @end */
 
-
-
-
 /* @group Article Info */
-
 
 .article-info-box {
 	border-bottom: 1px solid #eee;
@@ -279,12 +271,7 @@ ul.actions li {
 }
 /* @end */
 
-
-
-
 /* @group Pagination */
-
-
 
 /* Category Pagination */
 
@@ -335,9 +322,7 @@ body.dark div.panel {
 }
 /* @end */
 
-
 /* @group Misc. Joomla! Styles */
-
 
 .jicons-icons {
 	float: left;
@@ -346,6 +331,9 @@ body.dark div.panel {
 .hidelabeltxt {
 	display: none;
 	visibility: hidden;
+}
+.filters {
+	padding: 0;
 }
 .filter-search {
 	float: left;
@@ -406,26 +394,6 @@ span.star {
 .formelm select {
 	margin-left: 0px;
 }
-.button2-left a {
-	font-weight: bold;
-	text-decoration: none;
-	font: bold 12px/28px Helvetica, Arial, sans-serif;
-	margin: 5px 10px 0px 0px;
-	padding: 0px 10px;
-	float: left;
-	background-color: #eee;
-	background: -moz-linear-gradient(top center, #fff 0%, #eee 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #eee));
-	border: 1px solid #d6d6d6;
-	border-radius:4px;
-	-webkit-border-radius:4px;
-	-moz-border-radius:4px;
-	-moz-box-shadow: 1px 1px 0 #fff inset, -1px -1px 0 #fff inset;
-	-webkit-box-shadow: 1px 1px 0 #fff inset, -1px -1px 0 #fff inset;
-}
-.button2-left a:hover {
-	background-color: #f6f6f6;
-}
 #system-message li {
 	padding: 0;
 }
@@ -439,7 +407,9 @@ span.star {
 
 /* Images and links */
 
-
+img{
+	max-width: 100%;
+}
 .img-intro-left,
 .img-fulltext-left,
 .pull-left.item-image {
@@ -640,8 +610,35 @@ ul.menu ul{
 	width: 100%;
 	height: auto;
 }
+.items-more{
+	padding:0;
+	margin: 0;
+}
 .items-more ul{
 	margin:0;
+}
+.items-more h3{
+	color:#FFF;
+	border:1px solid #00799F;
+	background:#0099CC;
+}
+.items-more ol{
+	border-left:1px solid #CCC;
+	border-right:1px solid #CCC;
+}
+.items-more li{
+	border-bottom:1px solid #CCC;
+	background:url(../../images/arrow.png) no-repeat 0 5px;
+}
+.items-more li:hover{
+	background:#EEE url(../../images/arrow.png) no-repeat 0 5px;
+}
+.items-more ol{
+	border: 1px solid #ccc;
+}
+.items-more li{
+	margin:0;
+	padding:5px 10px 5px 25px;
 }
 .newsflash-title_ms1,
 .newsflash-title_ms2,
@@ -668,4 +665,18 @@ ul.menu ul{
 
 .open > .dropdown-menu {
 	display: block;
+}
+
+.search *,
+.search .inputbox{
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+}
+.search .inputbox,
+.search *:first-child{
+	margin-left: 0;
+}
+.finder input[type="text"]:first-child{
+	margin-bottom: 5px;
 }
