@@ -493,17 +493,8 @@ div.pagenavcounter {
 }
 /* Article Pagination */
 
-ul.pagenav, div.pagination ul {
-
-    list-style: none outside none;
-    margin: 10px auto;
-    padding: 1px 5px;
-    text-align: center;
-}
 ul.pagenav li,
 div.pagination ul li {
-	display:inline;
-	background-color:#eee;
 	padding: 2px 5px;
 	color: #4F4F4F;
 }
@@ -550,11 +541,6 @@ div.pagination ul li a:hover {
     margin: 0 0 -5px;
  	padding-bottom:5px;
 }
-.panel h3 a{
-
-
-}
-
 .pull-right {
 	float: right;
 }
@@ -1093,7 +1079,6 @@ input,
 button,
 select,
 textarea {
-  font-size: 14px;
   font-weight: normal;
   line-height: 20px;
 }
@@ -1426,4 +1411,34 @@ legend + .control-group {
 .edit .modal-button {
 	display: inline-block;
 	padding: 5px;
+}
+
+.form-search input,
+.form-inline input,
+.form-horizontal input,
+.form-search textarea,
+.form-inline textarea,
+.form-horizontal textarea,
+.form-search select,
+.form-inline select,
+.form-horizontal select,
+.form-search .help-inline,
+.form-inline .help-inline,
+.form-horizontal .help-inline,
+.form-search .uneditable-input,
+.form-inline .uneditable-input,
+.form-horizontal .uneditable-input,
+.form-search .input-prepend,
+.form-inline .input-prepend,
+.form-horizontal .input-prepend,
+.form-search .input-append,
+.form-inline .input-append,
+.form-horizontal .input-append {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  margin-bottom: 0;
+  vertical-align: middle;
 }
