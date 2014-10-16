@@ -847,5 +847,15 @@ blockquote.left {
 	margin: 5px 10px 10px 0;
 }
 
-
 /* @end */
+
+.content_vote * {
+	margin-left: 5px;
+}
+.content_vote *:first-child {
+	margin-left: 0;
+}
+
+.accordion-inner{
+	padding: 5px 15px;
+}
