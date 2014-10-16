@@ -130,12 +130,12 @@ border-bottom:1px solid #CCC;
 .article-info{
 background:#FFF;
 }
-li.parent-category-name, 
-li.category-name, 
-li.create, 
-li.modified, 
-li.published, 
-li.createdby, 
+li.parent-category-name,
+li.category-name,
+li.create,
+li.modified,
+li.published,
+li.createdby,
 li.hits {
 color:#999;
 }
@@ -185,19 +185,20 @@ border-left:1px solid #CCC;
 border-right:1px solid #CCC;
 }
 .items-more li{
-border-bottom:1px solid #CCC;
-background:url(../images/arrow.png) no-repeat 3px 5px;
+	border-bottom:1px solid #CCC;
+	background:url(../images/arrow.png) no-repeat 0 9px;
 }
 .items-more li:hover{
-background:#EEE url(../images/arrow.png) no-repeat 3px 5px;
+	background:#EEE url(../images/arrow.png) no-repeat 0 9px;
 }
-.items-more li a:hover{
-color:#333;
+.items-more .nav-tabs li a:hover{
+	background-color: transparent;
 }
+
 .pagination a{
-color:#FFF;
-border:1px solid #00799F;
-background:#0099CC;
+	color:#FFF;
+	background:#0099CC;
+	border:1px solid #00799F;
 }
 /* ***************************************************************************************************** */
 /* SEARCH COMPONENT */
