@@ -32,7 +32,7 @@ class WrightAdapterJoomlaFooter
 
 		if ($doc->document->params->get('rebrand', 'no') !== 'yes')
 		{
-			return '<a target="_blank" class="joomlashack" href="http://www.joomlashack.com"><img src="./templates/' . JFactory::getApplication()->getTemplate() . '/wright/images/jscright.png" alt ="Joomlashack" /> </a>' . $js;
+			return '<a target="_blank" class="joomlashack" href="http://www.joomlashack.com"><img src="./templates/' . JFactory::getApplication()->getTemplate() . '/wright/images/jscright.png" alt ="Joomlashack" /> </a>';
 		}
 	}
 }
