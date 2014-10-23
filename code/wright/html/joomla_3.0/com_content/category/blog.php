@@ -311,6 +311,7 @@ JHtml::_('behavior.caption');
 					$this->MoreItemsGridOrientation['moreitemsLayout'] = 12;
 					$this->MoreItemsGridOrientation['subcategoriesLayout'] = 12;
 				}
+			}
 
 			?>
 
