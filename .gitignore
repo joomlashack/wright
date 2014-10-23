@@ -32,7 +32,6 @@ sftp-config.json
 *~
  
 # Phing build script
-build.properties
 autobuild.properties
  
 # Packages #

@@ -19,9 +19,9 @@ jimport('joomla.form.formfield');
  * @subpackage  Parameters
  * @since       2.0
  */
-class JFormFieldColorpicker extends JFormField
+class JFormFieldColorPicker extends JFormField
 {
-	protected $type = 'Colorpicker';
+	protected $type = 'ColorPicker';
 
 	/**
 	 * Creates color picker

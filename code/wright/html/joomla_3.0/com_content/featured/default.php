@@ -42,6 +42,39 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightExtraDivH1)) $this->wrightExtraDivH1 = false;
 /* End Wright v.3: Extra classes (general) */
 
+/* Wright v.3: Extra container and row */
+if (!isset($this->wrightNonContentContainer)) $this->wrightNonContentContainer = "";
+if (!isset($this->wrightNonContentRowMode)) $this->wrightNonContentRowMode = "";
+if (!isset($this->wrightContentExtraContainer)) $this->wrightContentExtraContainer = "";
+if (!isset($this->wrightImagesRow)) $this->wrightImagesRow = false;
+
+function addExtraNonContentContainers($wrightNonContentContainer, $wrightNonContentRowMode)
+{
+	if ($wrightNonContentContainer != '')
+	{
+		echo('<div class="' . $wrightNonContentContainer . '">');
+	}
+
+	if ($wrightNonContentRowMode != '')
+	{
+		echo('<div class="' . $wrightNonContentRowMode . '">');
+	}
+}
+
+function addExtraNonContentContainersClose($wrightNonContentContainer, $wrightNonContentRowMode)
+{
+	if ($wrightNonContentRowMode != '')
+	{
+		echo('</div>');
+	}
+
+	if ($wrightNonContentContainer != '')
+	{
+		echo('</div>');
+	}
+}
+/* End Wright v.3: Extra container and row */
+
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 JHtml::_('behavior.caption');
@@ -51,12 +84,20 @@ JHtml::_('behavior.caption');
 ?>
 <div class="blog-featured<?php echo $this->pageclass_sfx;?>">
 <?php if ($this->params->get('show_page_heading') != 0) : ?>
+<?php
+	// Wright v.3: Extra container and row
+	addExtraNonContentContainers($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
+?>
 <div class="page-header">
 	<h1>
 	<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h1>
 	<?php if ($this->wrightExtraDivH1) : ?> <div class="title_in"></div> <?php endif;  // Wright v.3: Added optional extra div ?>
 </div>
+<?php
+	// Wright v.3: Extra container and row
+	addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
+?>
 <?php endif; ?>
 
 <?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '<div class="' . $this->wrightLeadingIntroItemsClass . '">'; // Wright v.3: Extra Leading and Intro Items Div and Class ?>
@@ -94,8 +135,38 @@ JHtml::_('behavior.caption');
 
 		if ($rowcount == 1) : ?>
 
+		<?php
+			/* Wright v.3: Row buffer storage and image print in separate row */
+			$wrightImagesRowExist = false;
+
+			if ($this->wrightImagesRow)
+			{
+				ob_start();
+				$wrightPreRowContent = '<div class="container-fluid container-images"><div class="row-fluid">';
+			}
+			/* End Wright v.3: Row buffer storage and image print in separate row */
+
+			/* Wright v.3: Row extra container */
+			if ($this->wrightContentExtraContainer != '')
+			{
+				echo('<div class="' . $this->wrightContentExtraContainer . '">');
+			}
+			/* End Wright v.3: Row extra container */
+		?>
+
 		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> row-fluid<?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
 		<?php endif; ?>
+			<?php
+				/* Wright v.3: Parse and detect article images */
+				$articleImages = json_decode($item->images);
+
+				if ($articleImages && $articleImages->image_intro != '')
+				{
+					$wrightImagesRowExist = true;
+				}
+				/* End Wright v.3: Parse and detect article images */
+			?>
+
 			<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?> span<?php echo round((12 / $this->columns));?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.3: Item elements extra elements
 			 ?>">
 			<?php
@@ -105,11 +176,59 @@ JHtml::_('behavior.caption');
 					echo $this->loadTemplate('item');
 			?>
 			</div>
+			<?php
+				/* Wright v.3: Row buffer storage and image print in separate row */
+				if ($this->wrightImagesRow)
+				{
+					$wrightPreRowContent .= '<div class="span' . round((12 / $this->columns)) . '">';
+
+					if (isset($articleImages->image_intro) && !empty($articleImages->image_intro))
+					{
+						$imageLink = '';
+						if ($item->params->get('link_titles') && $item->params->get('access-view'))
+						{
+							$wrightPreRowContent .= '<a href="' . JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid)) . '">';
+						}
+						$imageClass = $this->wrightBootstrapImages;
+						$wrightPreRowContent .= '<img src="' . $articleImages->image_intro . '" alt="' . htmlspecialchars($articleImages->image_intro_alt) . '" class="' . $imageClass . '"' . ($articleImages->image_intro_caption ? ' title="' . $articleImages->image_intro_caption . '"' : '') . ' />';
+						if ($item->params->get('link_titles') && $item->params->get('access-view'))
+						{
+							$wrightPreRowContent .= '</a>';
+						}
+					}
+					$wrightPreRowContent .= '</div>';
+				}
+				/* End Wright v.3: Row buffer storage and image print in separate row */
+			?>
 			<?php $counter++; ?>
 
 			<?php if (($rowcount == $this->columns) or ($counter == $introcount)) : ?>
 
 		</div>
+
+			<?php
+				// Wright v.3: Row extra container
+				if ($this->wrightContentExtraContainer != '')
+				{
+					echo('</div>');
+				}
+
+				/* Wright v.3: Row buffer storage and image print in separate row */
+				if ($this->wrightImagesRow)
+				{
+					$wrightRowContent = ob_get_clean();
+					$wrightPreRowContent .= '</div></div>';
+
+					if ($wrightImagesRowExist)
+					{
+						echo $wrightPreRowContent;
+					}
+
+					echo $wrightRowContent;
+				}
+				/* End Wright v.3: Row buffer storage and image print in separate row */
+			?>
+
 		<?php endif; ?>
 
 	<?php endforeach; ?>
