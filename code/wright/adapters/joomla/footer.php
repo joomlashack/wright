@@ -29,6 +29,9 @@ class WrightAdapterJoomlaFooter
 	public function render($args)
 	{
 		$doc = Wright::getInstance();
+		$js = '';
+
+		$js = (method_exists($doc, 'generateJS')) ? $doc->generateJS() : '' ;
 
 		if ($doc->document->params->get('rebrand', 'no') !== 'yes')
 		{
