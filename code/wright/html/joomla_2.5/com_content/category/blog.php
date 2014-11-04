@@ -44,7 +44,15 @@ defined('_JEXEC') or die;
 
 	if (!isset($this->wrightExtraDivH1)) $this->wrightExtraDivH1 = false;
 
-	if (!isset($this->MoreItemsGridOrientation)) $this->MoreItemsGridOrientation = Array('activeLayout' => '');
+	if (!isset($this->MoreItemsGridOrientation))
+	{
+		$this->MoreItemsGridOrientation = Array(
+			'activeLayout' => '',
+			'containerLayout' => '',
+			'moreitemsLayout' => '',
+			'subcategoriesLayout' => ''
+		);
+	}
  /* End Wright v.3: Extra classes (general) */
 
 	/* Wright v.3: Extra container and row */
