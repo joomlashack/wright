@@ -25,8 +25,6 @@
 		li {
 			&.dropdown {
 				.dropdown-menu {
-					display: block;
-					position: relative;
 					li {
 						> a {
 							.caret {
@@ -55,11 +53,9 @@
 							}
 						}
 						.sub-menu {
-							display: block;
 							left: auto;
 							position: relative;
 							top: auto;
-							visibility: visible;
 							&:before,
 							&:after {
 								display: none;
@@ -102,6 +98,23 @@
 				&.active {
 					> a {
 						color: @navbarInverseLinkColorActive;
+					}
+				}
+			}
+		}
+	}
+
+	.nav-collapse {
+		.nav {
+			li.dropdown {
+				.dropdown-menu {
+					display: block;
+					position: relative;
+
+					li {
+						.sub-menu {
+							visibility: visible;
+						}
 					}
 				}
 			}
