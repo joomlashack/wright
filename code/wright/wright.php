@@ -85,7 +85,7 @@ class Wright
 	 *
 	 * @return  void
 	 */
-	function Wright()
+	public function Wright()
 	{
 		// Initialize properties
 		$document = JFactory::getDocument();
@@ -162,11 +162,21 @@ class Wright
 	}
 
 	/**
+	 * Return the selected style
+	 *
+	 * @return  object  Wright class
+	 */
+	public function getSelectedStyle()
+	{
+		return $this->_selectedStyle;
+	}
+
+	/**
 	 * Method to get an instance of this class
 	 *
 	 * @return  object  Wright class
 	 */
-	static function getInstance()
+	public static function getInstance()
 	{
 		static $instance = null;
 
@@ -193,6 +203,14 @@ class Wright
 
 		// Parse by doctype
 		$this->doctype();
+
+		// Compiles less files if required - and if files were updated
+		if ($this->document->params->get('lesscompile', '0'))
+		{
+			require_once dirname(__FILE__) . '/build/build.php';
+			$build = new WrightLessCompiler;
+			$build->start();
+		}
 
 		print trim($this->template);
 
