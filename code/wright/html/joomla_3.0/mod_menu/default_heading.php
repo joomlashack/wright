@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.2.2 (Replaced for default_separator.php as it's a more complete structure)
+// Wright v.3 Override: Joomla 3.2.2 (Replaced for default_heading.php as it's a more complete structure)
 /**
  * @package     Joomla.Site
  * @subpackage  mod_menu
@@ -23,14 +23,16 @@ else
 	$linktype = $item->title;
 }
 
-?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" class="separator"<?php echo $item->licollapse // Wright v.3: Added collapsible option ?>><?php echo $title; ?>
+$class = ($item->deeper) ? 'class="heading dropdown-toggle" ' : 'class="heading" ' ;
+
+?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.3: Added collapsible option ?>><?php echo $title; ?>
 	<?php echo $linktype; ?><?php
 	// Wright v.3: Closing pseudo-link for sub-menus
 	if ($menuType == 'vertical') {
 		echo '<b class="caret"></b>';
 	}
 	else{
-		if($item->level == 1) 
+		if($item->level == 1)
 			echo '<b class="caret"></b>'; // Wright v.3: Added caret
 	}
 	?>
