@@ -9,47 +9,82 @@
 
 defined('_JEXEC') or die('You are not allowed to directly access this file');
 
-if (version_compare(JVERSION, '3.0', 'lt')) {
-	// check for PHP 5.2.4 if Joomla < 3.0
-	if (version_compare(PHP_VERSION, '5.2.4', 'lt')) {
+if (version_compare(JVERSION, '3.0', 'lt'))
+{
+	// Check for PHP 5.2.4 if Joomla < 3.0
+	if (version_compare(PHP_VERSION, '5.2.4', 'lt'))
+	{
 		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 2.5 requires PHP 5.2.4 or greater. Please contact your host to use PHP 5.2.4 or greater (Joomla 5.3+ recommended).
 			<br />Please check Joomla requirements in <a href="http://www.joomla.org/technical-requirements.html">http://www.joomla.org/technical-requirements.html</a>';
 		die();
 	}
 }
-else {
-	// check for PHP 5.3.1 if Joomla >= 3.0
-	if (version_compare(PHP_VERSION, '5.3.1', 'lt')) {
-		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 3.x requires PHP 5.3.1 or greater. Please contact your host to use PHP 5.3.1 or greater.
+else
+{
+	// Check for PHP 5.3.1 if Joomla >= 3.0
+	if (version_compare(PHP_VERSION, '5.3.10', 'lt'))
+	{
+		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 3.x requires PHP 5.3.10 or greater. Please contact your host to use PHP 5.3.10 or greater.
 			<br />Please check Joomla requirements in <a href="http://www.joomla.org/technical-requirements.html">http://www.joomla.org/technical-requirements.html</a>';
 		die();
 	}
+	else
+	{
+	}
 }
 
-// includes WrightTemplateBase class for customizations to the template
-require_once(dirname(__FILE__) . '/template/wrighttemplatebase.php');
+// Includes WrightTemplateBase class for customizations to the template
+require_once dirname(__FILE__) . '/template/wrighttemplatebase.php';
 
+/**
+ * Main Wright class
+ *
+ * @package     Wright
+ * @subpackage  Main Package
+ * @since       1.0
+ */
 class Wright
 {
 	public $template;
+
 	public $document;
+
 	public $adapter;
+
 	public $params;
+
 	public $baseurl;
+
 	public $author;
 
 	public $revision = "{version}";
-	
+
 	private $loadBootstrap = false;
-	
+
 	public $_jsScripts = Array();
+
 	public $_jsDeclarations = Array();
 
 	// Urls
 	private $_urlTemplate = null;
+
 	private $_urlWright = null;
+
 	private $_urlJS = null;
-	
+
+	private $_selectedStyle = '';
+
+	private $_baseVersion = '';
+
+	public $_showBrowserWarning = false;
+
+	public $_browserCompatibility = null;
+
+	/**
+	 * Main Wright function called to create the index.php file read by Joomla
+	 *
+	 * @return  void
+	 */
 	function Wright()
 	{
 		// Initialize properties
@@ -59,57 +94,95 @@ class Wright
 		$this->params = $document->params;
 		$this->baseurl = $document->baseurl;
 
+		if ($app->isAdmin())
+		{
+			// If Wright is instanciated in backend, it stops loading
+			return;
+		}
+
 		// Urls
 		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
 		$this->_urlWright = $this->_urlTemplate . '/wright';
 		$this->_urlJS = $this->_urlWright . '/js';
-		
-		// versions under 3.0 must load bootstrap
-		if (version_compare(JVERSION, '3.0', 'lt')) {
+
+		// Joomla versions under 3.0 must load bootstrap
+		if (version_compare(JVERSION, '3.0', 'lt'))
+		{
 			$this->loadBootstrap = true;
 		}
-		else {
+		else
+		{
 			// Add JavaScript CSS and Framework
 			JHtml::_('bootstrap.framework');
 			JHtml::_('bootstrap.loadCss', true, $this->document->direction);
 		}
 
+		// Browser library
+		include_once JPATH_SITE . '/templates/' . $this->document->template . '/wright/includes/browser.php';
+
 		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
 
-		require_once(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'wrighttemplate.php');
+		// Body classes
+		$wrightBodyClass = '';
+		$wrightBodyClass .= ($this->params->get('responsive', '1') == 1 ? ' responsive' : ' no-responsive');
+
+		// Get the bootstrap row mode ( row )
+		$wrightGridMode = $this->params->get('bs_rowmode', 'row');
+		$wrightContainerClass = 'container';
+
+		if ($wrightGridMode == 'row-fluid')
+		{
+			$wrightContainerClass = 'container-fluid';
+		}
+
+		require_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'wrighttemplate.php';
+
 		if (is_file(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php'))
-			include_once(JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php');
+		{
+			include_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'functions.php';
+		}
 
 		// Get our template for further parsing, if custom file is found
 		// it will use it instead of the default file
-		$path = JPATH_THEMES . '/' . $document->template . '/' . 'template.php';
+		$path = JPATH_SITE . '/templates/' . $document->template . '/' . 'template.php';
 		$menu = $app->getMenu();
 
 		// If homepage, load up home.php if found, or load custom.php if found
-        $lang = JFactory::getLanguage();
-        if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . '/' . $document->template . '/home.php'))
-            $path = JPATH_THEMES . '/' . $document->template . '/home.php';
-        elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
-            $path = JPATH_THEMES . '/' . $document->template . '/custom.php';
+		$lang = JFactory::getLanguage();
+		if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_SITE . '/templates/' . $document->template . '/home.php'))
+			$path = JPATH_SITE . '/templates/' . $document->template . '/home.php';
+		elseif (is_file(JPATH_SITE . '/templates/' . $document->template . '/custom.php'))
+			$path = JPATH_SITE . '/templates/' . $document->template . '/custom.php';
 
 		// Include our file and capture buffer
 		ob_start();
-		include($path);
+		include $path;
 		$this->template = ob_get_contents();
 		ob_end_clean();
 	}
 
+	/**
+	 * Method to get an instance of this class
+	 *
+	 * @return  object  Wright class
+	 */
 	static function getInstance()
 	{
 		static $instance = null;
+
 		if ($instance === null)
 		{
-			$instance = new Wright();
+			$instance = new Wright;
 		}
 
 		return $instance;
 	}
 
+	/**
+	 * Method to display the whole template index.php generated by the functions in this class
+	 *
+	 * @return  boolean
+	 */
 	public function display()
 	{
 		// Setup the header
@@ -126,69 +199,173 @@ class Wright
 		return true;
 	}
 
+	/**
+	 * Method to generate the header
+	 *
+	 * @return  void
+	 */
 	public function header()
 	{
+		$user = JFactory::getUser();
+		$input = JFactory::getApplication()->input;
+
 		JHtml::_('behavior.framework', true);
 
-		if ($this->document->params->get('modal', '1') == '1') {
+		if ($this->document->params->get('modal', '1') == '1')
+		{
 			JHtml::_('behavior.modal');
 		}
 
-		// load jQuery ?
+		// Load jQuery
 		if ($this->loadBootstrap && $loadJquery = $this->document->params->get('jquery', 0))
 		{
-            switch ($loadJquery) {
-                // load jQuery locally
-                case 1:
-                    $jquery = $this->_urlJS . '/jquery.min.js';
-                    break;
-                // load jQuery from Google
-                default:
-                    $jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js';
-                    break;
-            }
-            
-            $this->document->addScript($jquery);
-            // ensure that jQuery loads in noConflict mode to avoid mootools conflicts
-            $this->document->addScriptDeclaration('jQuery.noConflict();');
+			switch ($loadJquery)
+			{
+				// Load jQuery locally
+				case 1:
+					$jquery = $this->_urlJS . '/jquery.min.js';
+					break;
+
+				// Load jQuery from Google
+				default:
+					$jquery = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js';
+					break;
+			}
+
+			$this->document->addScript($jquery);
+
+			// Ensure that jQuery loads in noConflict mode to avoid mootools conflicts
+			$this->document->addScriptDeclaration('jQuery.noConflict();');
 		}
 
 		if ($this->loadBootstrap)
-			// load bootstrap JS
+		{
+			// Load bootstrap JS
 			$this->addJSScript($this->_urlJS . '/bootstrap.min.js');
-		
+		}
+
 		$this->addJSScript($this->_urlJS . '/utils.js');
-		if ($this->document->params->get('stickyFooter', 1)) {
+
+		if ($this->document->params->get('stickyFooter', 1))
+		{
 			$this->addJSScript($this->_urlJS . '/stickyfooter.js');
 		}
 
 		// Add header script if set
 		if (trim($this->document->params->get('headerscript', '')) !== '')
 		{
-            $this->addJSScriptDeclaration($this->document->params->get('headerscript'));
+			$this->addJSScriptDeclaration($this->document->params->get('headerscript'));
 		}
 
-		// set custom template theme for user
-		$user = JFactory::getUser();
-		if (!is_null(JRequest::getVar('templateTheme', NULL)))
+		if ($this->document->params->get('documentationMode', '0') == '1')
 		{
-			$user->setParam('theme', JRequest::getVar('templateTheme'));
-			$user->save(true);
-		}
-		if ($user->getParam('theme'))
-		{
-			$this->document->params->set('style', $user->getParam('theme'));
-		}
-
-		if ($this->document->params->get('documentationMode','0') == '1') {
 			$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
 			$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
 		}
+
+		// Set custom template theme for user
+		if (!is_null($input->getVar('templateTheme', null)))
+		{
+			$user->setParam('theme', $input->getVar('templateTheme'));
+			$user->save(true);
+		}
+
+		$this->_selectedStyle = $input->getVar('templateTheme', $user->getParam('theme', $this->document->params->get('style', 'generic')));
+
+		if (!$this->checkStyleFiles())
+		{
+			$this->_selectedStyle = $this->document->params->get('style', 'generic');
+			$this->checkStyleFiles();
+		}
+
+		$this->browserCompatibilityCheck();
 
 		// Build css
 		$this->css();
 	}
 
+	/**
+	 * Adds browser compatibility check if it's selected in the backed
+	 *
+	 * @return  void
+	 */
+	private function browserCompatibilityCheck()
+	{
+		if ($this->document->params->get('browsercompatibilityswitch', '0') == '1')
+		{
+			$session = JFactory::getSession();
+			$hideWarning = $session->get('hideWarning', 0, 'WrightTemplate_' . $this->document->template);
+
+			if (!$hideWarning)
+			{
+				$browser = new Browser;
+				$browserName = $browser->getBrowser();
+				$browserVersion = $browser->getVersion();
+
+				$this->_browserCompatibility = json_decode($this->document->params->get('browsercompatibility', ''));
+
+				if ($this->_browserCompatibility == '')
+				{
+					$this->_browserCompatibility = $this->setupDefaultBrowserCompatibility();
+				}
+
+				if (property_exists($this->_browserCompatibility, $browserName))
+				{
+					if (version_compare($browserVersion, $this->_browserCompatibility->$browserName->minimumVersion, 'lt'))
+					{
+						$this->_showBrowserWarning = true;
+					}
+				}
+				else
+				{
+					$this->_showBrowserWarning = true;
+				}
+			}
+
+			if ($this->_showBrowserWarning)
+			{
+				$this->addJSScriptDeclaration('jQuery("#wrightBCW").modal();');
+				$session->set('hideWarning', 1, 'WrightTemplate_' . $this->document->template);
+			}
+		}
+	}
+
+	/**
+	 * Method to check if the style files are available un any version of Joomla (using the $this->_selectedStyle variable)
+	 *
+	 * @return  boolean
+	 */
+	private function checkStyleFiles()
+	{
+		$version = explode('.', JVERSION);
+		$mainversion = $version[0];
+		$subversion = $version[1];
+
+		$fileFound = false;
+
+		while (!$fileFound && $subversion >= 0)
+		{
+			$this->_baseVersion = $mainversion . $subversion;
+
+			if (file_exists(JPATH_SITE . '/templates/' . $this->document->template . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css'))
+			{
+				$fileext = $this->_urlTemplate . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
+				$fileFound = true;
+			}
+			else
+			{
+				$subversion--;
+			}
+		}
+
+		return $fileFound;
+	}
+
+	/**
+	 * Method to display the CSS files to the header
+	 *
+	 * @return  void
+	 */
 	private function css()
 	{
 		$styles = $this->loadCSSList();
@@ -196,6 +373,13 @@ class Wright
 		$this->addCSSToHead($styles);
 	}
 
+	/**
+	 * Method to add the required css files into the document
+	 *
+	 * @param   array  $styles  Array of styles
+	 *
+	 * @return  void
+	 */
 	private function addCSSToHead($styles)
 	{
 		foreach ($styles as $folder => $files)
@@ -204,19 +388,26 @@ class Wright
 			{
 				foreach ($files as $style)
 				{
-					switch ($folder) {
+					switch ($folder)
+					{
 						case 'wrighttemplatecss':
 							$sheet = $this->_urlWright . '/css/' . $style;
 							break;
 						default:
-							$sheet = JURI::root().'templates/' . $this->document->template . '/css/' . $style;
+							$sheet = JURI::root() . 'templates/' . $this->document->template . '/css/' . $style;
 					}
+
 					$this->document->addStyleSheet($sheet);
 				}
 			}
 		}
 	}
 
+	/**
+	 * Method to load the list of CSS files
+	 *
+	 * @return  void
+	 */
 	private function loadCSSList()
 	{
 		jimport('joomla.filesystem.file');
@@ -224,62 +415,72 @@ class Wright
 		jimport('joomla.environment.browser');
 
 		$browser = JBrowser::getInstance();
+		$doc = JFactory::getDocument();
 
-        $version = explode('.', JVERSION);
+		$styles = Array();
 
-        $subversion = (int)$version[1];
+		$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
+		$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
 
-        $cssFound = false;
+		if ($this->document->params->get('responsive', '1') == '1')
+		{
+			$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
+		}
 
-        $styles = Array();
+		$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
 
-        if (version_compare(JVERSION, '3.0', 'lt')) {
-        	$styles['wrighttemplatecss'][] = 'template.css.php';
-        	if ($this->document->params->get('responsive','1') == '1')
-        		$styles['wrighttemplatecss'][] = 'template-responsive.css.php';
-        }
+		if (version_compare(JVERSION, '3.0', 'ge'))
+		{
+			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
+			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
+			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
+		}
 
-        if ($this->document->params->get('documentationMode','0') == '1') {
-        	$styles['template'][] = 'docs.css';
-        }
+		if ($this->document->params->get('documentationMode', '0') == '1')
+		{
+			$styles['template'][] = 'docs.css';
+		}
 
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
 		{
 			// Switch to allow specific versions of IE to have additional sheets
 			$major = $browser->getMajor();
-			
-			if ((int)$major <= 9) {
-				$this->document->addScript(JURI::root().'templates/' . $this->document->template . '/wright/js/html5shiv.js');
+
+			if ((int) $major <= 9)
+			{
+				$this->document->addScript(JURI::root() . 'templates/' . $this->document->template . '/wright/js/html5shiv.min.js');
 			}
 
-			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie.css'))
+			if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/ie.css'))
 			{
 				$styles['ie'][] = 'ie.css';
 			}
 
-			switch ($major)
-			{
-					// does not break for leaving defaults
-				default :
-					if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie' . $major . '.css'))
-						$styles['ie'][] = 'ie' . $major . '.css';
-			}
+			if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/ie' . $major . '.css'))
+				$styles['ie'][] = 'ie' . $major . '.css';
 		}
 
-		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/rtl.css'))
+		if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl.css'))
 			$styles['template'][] = 'rtl.css';
 
-		//Check to see if custom.css file is present, and if so add it after all other css files
-		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/custom.css'))
+		// Check to see if custom.css file is present, and if so add it after all other css files
+		if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/custom.css'))
+		{
 			$styles['template'][] = 'custom.css';
+		}
 
 		return $styles;
 	}
 
+	/**
+	 * Method to generate the document according to the doctype
+	 *
+	 * @return  void
+	 */
 	private function doctype()
 	{
-		require(dirname(__FILE__) . '/doctypes/' . $this->document->params->get('doctype', 'html5') . '.php');
+		require dirname(__FILE__) . '/doctypes/' . $this->document->params->get('doctype', 'html5') . '.php';
 		$adapter_name = 'HtmlAdapter' . $this->document->params->get('doctype', 'html5');
 		$adapter = new $adapter_name($this->document->params);
 
@@ -289,12 +490,14 @@ class Wright
 			$this->template = preg_replace_callback($regex, array($adapter, $action), $this->template);
 		}
 
-		// reorder columns based on the order
-        $this->reorderContent();
+		// Reorder columns based on the order
+		$this->reorderContent();
 
-        if (trim($this->document->params->get('footerscript')) != '') {
-            $this->template = str_replace('</body>', '<script type="text/javascript">'.$this->document->params->get('footerscript').'</script></body>', $this->template);
-        }
+		if (trim($this->document->params->get('footerscript')) != '')
+		{
+			$this->template = str_replace('</body>', '<script type="text/javascript">' . $this->document->params->get('footerscript') . '</script></body>', $this->template);
+		}
+
 		$this->template = str_replace('__cols__', $adapter->cols, $this->template);
 	}
 
@@ -302,22 +505,30 @@ class Wright
 	 * Searches for platform specific tags, and has a callback function to
 	 * handle the processing of each match
 	 *
-	 * @access private
+	 * @return  boolean
 	 */
 	private function platform()
 	{
 		// Get Joomla's version to get proper platform
 		jimport('joomla.version');
-		$version = new JVersion();
+		$version = new JVersion;
 		$file = ucfirst(str_replace('.', '', $version->RELEASE));
 
 		// Load up the proper adapter
-		require_once(dirname(__FILE__) . '/adapters/joomla.php');
+		require_once dirname(__FILE__) . '/adapters/joomla.php';
 		$this->adapter = new WrightAdapterJoomla($file);
 		$this->template = preg_replace_callback("/<w:(.*)\/>/i", array(get_class($this), 'platformTags'), $this->template);
+
 		return true;
 	}
 
+	/**
+	 * Processes each part of the template according to the matching arrays in the tags
+	 *
+	 * @param   array  $matches  Matching arrays in tags
+	 *
+	 * @return  boolean
+	 */
 	private function platformTags($matches)
 	{
 		// Grab first match since there should only be one
@@ -340,25 +551,34 @@ class Wright
 					$attributes[$name] = $value;
 				}
 			}
+
 			$config = array(trim($tag) => $attributes);
 		}
 		else
 		{
 			$config = array(trim($match) => array());
 		}
+
 		return $this->adapter->get($config);
 	}
 
-	// Borrowed from JDocumentHtml for compatibility
+	/**
+	 * Borrowed from JDocumentHtml for compatibility (to count modules)
+	 *
+	 * @param   string  $condition  Module position to search
+	 *
+	 * @return  int
+	 */
 	function countModules($condition)
 	{
 		jimport('joomla.application.module.helper');
 
 		$result = '';
 		$words = explode(' ', $condition);
-		for ($i = 0; $i < count($words); $i+=2)
+
+		for ($i = 0; $i < count($words); $i += 2)
 		{
-			// odd parts (modules)
+			// Odd parts (modules)
 			$name = strtolower($words[$i]);
 			$words[$i] = ((isset($this->_buffer['modules'][$name])) && ($this->_buffer['modules'][$name] === false)) ? 0 : count(JModuleHelper::getModules($name));
 		}
@@ -368,112 +588,234 @@ class Wright
 		return eval($str);
 	}
 
-    /**
-     * Reorder main content / sidebars in the order selected by the user
-     */
-	private function reorderContent() {
+	/**
+	 * Reorder main content / sidebars in the order selected by the user
+	 *
+	 * @return  string
+	 */
+	private function reorderContent()
+	{
+		// Regular patterns to identify every column.  Added id to avoid the annoying bug that avoids the user to use HTML5 tags
+		$patterns = array(  'sidebar1' => '/<aside(.*)id="sidebar1">(.*)<\/aside>/isU',
+							'sidebar2' => '/<aside(.*)id="sidebar2">(.*)<\/aside>/isU',
+							'main' => '/<section(.*)id="main"(.*)>(.*)<\/section>/isU'
+		);
 
-	    /**
-	     * regular patterns to identify every column
-	     * Added id to avoid the annoying bug that avoids the user to use HTML5 tags
-	     */
-	    $patterns = array(  'sidebar1' => '/<aside(.*)id="sidebar1">(.*)<\/aside>/isU',
-	                        'sidebar2' => '/<aside(.*)id="sidebar2">(.*)<\/aside>/isU',
-	                        'main' => '/<section(.*)id="main"(.*)>(.*)<\/section>/isU'
-	    );
+		// Only this columns
+		$allowedColNames = array_keys($patterns);
+		$reorderedCols = array();
+		$reorderedContent = '';
 
-	    // only this columns
-	    $allowedColNames = array_keys($patterns);
-	    $reorderedCols = array();
-	    $reorderedContent = '';
+		// Get column configuration
+		$columnCfg = $this->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3');
+		$colStrings = explode(';', $columnCfg);
 
-	    // get column configuration
-	    $columnCfg = $this->document->params->get('columns', 'sidebar1:3;main:6;sidebar2:3');
-	    $colStrings = explode(';', $columnCfg);
-	    if ($colStrings) {
-	        foreach ($colStrings as $colString) {
-	            list ($colName, $colWidth) = explode(':', $colString);
-	            if(in_array($colName, $allowedColNames)) {
-	                $reorderedCols[] = $colName;
-	            }
-	        }
-	    }
+		if ($colStrings)
+		{
+			foreach ($colStrings as $colString)
+			{
+				list ($colName, $colWidth) = explode(':', $colString);
 
-	    // get column contents with regular expressions
-	    $patternFound = false;
-	    foreach ($patterns as $column => $pattern) {
+				if (in_array($colName, $allowedColNames))
+				{
+					$reorderedCols[] = $colName;
+				}
+			}
+		}
+		else
+		{
+		}
 
-	        // save the content into a variable
-	        $$column = null;
-	        if (preg_match($pattern, $this->template, $matches)) {
-	            $$column = $matches[0];
+		// Get column contents with regular expressions
+		$patternFound = false;
 
-	            $replacement = '';
-	            // replace first column found with string '##wricolumns##' to reorder content later
-	            if (!$patternFound) {
-	                $replacement = '##wricolumns##';
-	                $patternFound = true;
-	            }
-	            $this->template = preg_replace($pattern, $replacement, $this->template);
-	        }
-	    }
+		foreach ($patterns as $column => $pattern)
+		{
+			// Save the content into a variable
+			$$column = null;
 
-	    // if columns reordered and column content found replace contents
-	    if ($reorderedCols && $patternFound) {
-	        foreach ($reorderedCols as $colName) {
-	            if (!is_null($$colName)) {
-	                $reorderedContent .= $$colName;
-	            }
-	        }
-	    }
+			if (preg_match($pattern, $this->template, $matches))
+			{
+				$$column = $matches[0];
 
-	    $this->template = preg_replace('/##wricolumns##/isU', $reorderedContent, $this->template);
+				$replacement = '';
 
-	    return $reorderedContent;
+				// Replace first column found with string '##wricolumns##' to reorder content later
+				if (!$patternFound)
+				{
+					$replacement = '##wricolumns##';
+					$patternFound = true;
+				}
 
+				$this->template = preg_replace($pattern, $replacement, $this->template);
+			}
+			else
+			{
+			}
+		}
+
+		// If columns reordered and column content found replace contents
+		if ($reorderedCols && $patternFound)
+		{
+			foreach ($reorderedCols as $colName)
+			{
+				if (!is_null($$colName))
+				{
+					$reorderedContent .= $$colName;
+				}
+			}
+		}
+		else
+		{
+		}
+
+		$this->template = preg_replace('/##wricolumns##/isU', $reorderedContent, $this->template);
+
+		return $reorderedContent;
 	}
-	
-	private function addJSScript($url) {
+
+	/**
+	 * Add javascript file to the document
+	 *
+	 * @param   sting  $url  URL of the javascript to add
+	 *
+	 * @return  void
+	 */
+	private function addJSScript($url)
+	{
 		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
 
-		if ($javascriptBottom) {
+		if ($javascriptBottom)
+		{
 			$this->_jsScripts[] = $url;
 		}
-		else {
+		else
+		{
 			$document = JFactory::getDocument();
 			$document->addScript($url);
 		}
 	}
-	
-	private function addJSScriptDeclaration($script) {
+
+	/**
+	 * Add javascript declarations to the document
+	 *
+	 * @param   sting  $script  Script to add
+	 *
+	 * @return  void
+	 */
+	private function addJSScriptDeclaration($script)
+	{
 		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
 
-		if ($javascriptBottom) {
+		if ($javascriptBottom)
+		{
 			$this->_jsDeclarations[] = $script;
 		}
-		else {
+		else
+		{
 			$document = JFactory::getDocument();
-			$document->addScriptDeclaration($script);
+			$document->addScriptDeclaration('jQuery( document ).ready(function( $ ) {' . $script . '});');
 		}
 	}
-	
-	public function generateJS() {
+
+	/**
+	 * Generate javascript when set at the bottom of the document
+	 *
+	 * @return  string
+	 */
+	public function generateJS()
+	{
 		$javascriptBottom = ($this->document->params->get('javascriptBottom', 1) == 1 ? true : false);
-		if ($javascriptBottom) {
+
+		if ($javascriptBottom)
+		{
 			$script = "\n";
+
 			if ($this->_jsScripts)
-				foreach ($this->_jsScripts as $js) {
+			{
+				foreach ($this->_jsScripts as $js)
+				{
 					$script .= "<script src='$js' type='text/javascript'></script>\n";
 				}
-			if ($this->_jsDeclarations) {
-				$script .= "<script type='text/javascript'>\n";
-				foreach ($this->_jsDeclarations as $js) {
+			}
+
+			if ($this->_jsDeclarations)
+			{
+				$script .= "<script type='text/javascript'>jQuery( document ).ready(function( $ ) {\n";
+
+				foreach ($this->_jsDeclarations as $js)
+				{
 					$script .= "$js\n";
 				}
-				$script .= "</script>\n";
+
+				$script .= "});</script>\n";
 			}
+
 			return $script;
 		}
+
 		return "";
+	}
+
+	/**
+	 * Setup test values
+	 *
+	 * @return  array
+	 */
+	public function setupDefaultBrowserCompatibility()
+	{
+		$defaultInput = new stdClass;
+
+		$chromeObject = new stdClass;
+		$firefoxObject = new stdClass;
+		$ieObject = new stdClass;
+		$safariObject = new stdClass;
+		$operaObject = new stdClass;
+		$iOSObject = new stdClass;
+
+		$chromeObject->minimumVersion = '35';
+		$chromeObject->recommended = true;
+		$chromeObject->desktop = true;
+		$chromeObject->mobile = true;
+		$firefoxObject->minimumVersion = '28';
+		$firefoxObject->recommended = false;
+		$firefoxObject->desktop = true;
+		$firefoxObject->mobile = false;
+		$ieObject->minimumVersion = '8';
+		$ieObject->recommended = false;
+		$ieObject->desktop = true;
+		$ieObject->mobile = false;
+		$safariObject->minimumVersion = '7';
+		$safariObject->recommended = false;
+		$safariObject->desktop = true;
+		$safariObject->mobile = false;
+		$operaObject->minimumVersion = '24';
+		$operaObject->recommended = false;
+		$operaObject->desktop = true;
+		$operaObject->mobile = false;
+		$iOSObject->minimumVersion = '6';
+		$iOSObject->recommended = false;
+		$iOSObject->desktop = false;
+		$iOSObject->mobile = true;
+
+		$chromeName = Browser::BROWSER_CHROME;
+		$firefoxName = Browser::BROWSER_FIREFOX;
+		$ieName = Browser::BROWSER_IE;
+		$safariName = Browser::BROWSER_SAFARI;
+		$operaName = Browser::BROWSER_OPERA;
+		$iPadName = Browser::BROWSER_IPAD;
+		$iPhoneName = Browser::BROWSER_IPHONE;
+		$iPodName = Browser::BROWSER_IPOD;
+
+		$defaultInput->$chromeName = $chromeObject;
+		$defaultInput->$firefoxName = $firefoxObject;
+		$defaultInput->$ieName = $ieObject;
+		$defaultInput->$safariName = $safariObject;
+		$defaultInput->$operaName = $operaObject;
+		$defaultInput->$iPadName = $iOSObject;
+		$defaultInput->$iPhoneName = $iOSObject;
+		$defaultInput->$iPodName = $iOSObject;
+
+		return $defaultInput;
 	}
 }

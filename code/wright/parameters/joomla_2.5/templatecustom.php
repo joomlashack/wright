@@ -7,24 +7,14 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-jimport('joomla.form.formfield');
+// Restrict Access to within Joomla
+defined('_JEXEC') or die('Restricted access');
 
-defined('_JEXEC') or die('You are not allowed to directly access this file');
-
-if (file_exists(realpath(dirname(__FILE__).'/../../../parameters/templatecustom.php')))
-	require_once(realpath(dirname(__FILE__).'/../../../parameters/templatecustom.php'));
-else {
-	
-	class JFormFieldTemplateCustom extends JFormField
-	{
-		protected $type = 'templatecustom';
-
-		protected function getInput()
-		{
-			$html = '';
-			$html .= '<input type="text" name="'.$this->name.'" id="'.$this->name.'" value="'.$this->value.'" />';
-			return $html;
-		}
-	}
-
+if (file_exists(realpath(dirname(__FILE__) . '/../../../parameters/templatecustom.php')))
+{
+	require_once realpath(dirname(__FILE__) . '/../../../parameters/templatecustom.php');
+}
+else
+{
+	require_once realpath(dirname(__FILE__)) . '/templatecustomclass.php';
 }

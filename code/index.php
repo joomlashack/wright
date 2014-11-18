@@ -13,11 +13,12 @@
  * See usage and customization information at
  * http://wright.joomlashack.com
  */
-// no direct access
+
+// No direct access
 defined('_JEXEC') or die('Restricted access');
 
 // Include the framework
-require(dirname(__FILE__).'/'.'wright'.'/'.'wright.php');
+require dirname(__FILE__) . '/wright/wright.php';
 
 // Initialize the framework and
 $tpl = Wright::getInstance();
