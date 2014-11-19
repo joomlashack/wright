@@ -112,12 +112,14 @@ foreach ($list as $i => &$item) :
 	$uladd = '';
 	if ($item->type == "separator" || $item->type == "heading")
 		$item->flink = '#';
+	if ($menuType == "vertical" && !$wrightCollapseMenus)
+		$uladd .= 'submenu unstyled';
 	if ($item->deeper && $wrightCollapseMenus) {
 		$ulid = 'wul_' . uniqid();
 		$item->licollapse = ' data-toggle="collapse"';
 		$item->flink = '#' . $ulid;
 		$idul = ' id="' . $ulid . '"';
-		$uladd = ' collapse' . ($active ? ' in' : '');
+		$uladd .= 'submenu collapse' . ($active ? ' in' : '');
 	}
 	/* End Wright v.3: Unique tagging for collapsible submenus */
 
