@@ -29,7 +29,7 @@ if (preg_match_all('/hidden-text/', $item->anchor_css, $matches))
 
 // Note. It is important to remove spaces between elements.
 $class = $item->anchor_css ? 'class="'.$item->anchor_css.'" ' : '';
-$class = ($item->deeper) ? $class . ' dropdown-toggle' : $class ;
+$class = ($item->deeper) ? 'class="'.$item->anchor_css.' dropdown-toggle"' : $class ;
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
 
 if ($menuType == 'vertical') {

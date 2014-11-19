@@ -16,20 +16,18 @@ defined('_JEXEC') or die;
 $wrightCollapseMenus = true;
 $menuType = 'vertical';
 
+if (preg_match('/nav\-pills/', $class_sfx) || preg_match('/nav\-tabs/', $class_sfx)){
+	$menuType = 'horizontal';
+}
+if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class_sfx)){
+	$menuType = 'vertical';
+}
+if (preg_match('/tabbable/', $params->get('moduleclass_sfx'))) {
+	$menuType = 'vertical';
+}
+
 if (preg_match('/no\-collapse/', $class_sfx)) {
 	$wrightCollapseMenus = false;
-
-	if (preg_match('/nav\-pills/', $class_sfx) || preg_match('/nav\-tabs/', $class_sfx)){
-		$menuType = 'horizontal';
-	}
-
-	if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class_sfx)){
-		$menuType = 'vertical';
-	}
-	if (preg_match('/tabbable/', $params->get('moduleclass_sfx'))) {
-		$menuType = 'vertical';
-	}
-
 }
 else {
 	$wrightTemplate = WrightTemplate::getInstance();
@@ -78,6 +76,7 @@ foreach ($list as $i => &$item) :
 	elseif ($item->type == 'alias') {
 		$aliasToId = $item->params->get('aliasoptions');
 		if (count($path) > 0 && $aliasToId == $path[count($path)-1]) {
+			$active = true;  // Wright v.3: Active toggle for collapsible menus
 			$class .= ' active';
 		}
 		elseif (in_array($aliasToId, $path)) {
