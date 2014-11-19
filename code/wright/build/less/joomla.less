@@ -193,67 +193,12 @@ dl.label.label-info dt{
 }
 
 
-// Inverse navbar position menu
-
-// Fixing caret in navbar inverse 
-
-.navbar-inverse {
-	.nav {
-		li{
-			&.dropdown{ 
-				> a {
-					.caret {
-						border-top-color: @navbarInverseLinkColor;
-					}
-				}
-			}
-			&.dropup{ 
-				> a {
-					.caret {
-						border-bottom-color: @navbarInverseLinkColor;
-					}
-				}
-			}
-			&.active{
-				&.dropdown{ 
-					> a {
-						.caret {
-							border-top-color: @navbarInverseLinkColorActive;
-						}
-					}
-				}
-				&.dropup{ 
-					> a {
-						.caret {
-							border-bottom-color: @navbarInverseLinkColorActive;
-						}
-					}
-				}
-				// Fixing dropdown-menu item active (only inverse)
-				.dropdown-menu > .active >a{
-					color: @dropdownLinkColorActive;
-					&:hover,
-					&:focus{
-						color: @dropdownLinkColorActive;
-					}
-				}
-			}
-		}
-	}
-}
-
 // Menus in non-nav modules
 
 .nav-active(@color){
 	> a{
 		color: @color;
 		> .caret{
-			border-top-color: @color;
-		}
-
-		&:hover,
-		&:focus{
-			color: @color;
 			> .caret{
 				border-top-color: @color;
 			}
@@ -264,9 +209,9 @@ dl.label.label-info dt{
 .nav{
 	li {
 		[class^="icon-"], [class*=" icon-"]{
-			margin-right: 3px;
+			margin-right: 4px;
 		}
-		ul.collapse{
+		ul.submenu{
 			margin-left: 13px;
 			margin-right: 13px;
 			li a{
@@ -276,7 +221,7 @@ dl.label.label-info dt{
 		}
 	}
 	> li {
-		> ul.collapse{
+		> ul.submenu{
 			margin-left: 20px;
 			margin-right: 20px;
 		}
@@ -294,21 +239,7 @@ dl.label.label-info dt{
 		}
 	}
 }
-.nav-tabs,
-.nav-list,
-.nav-pills{
-	.parent > a{
-		> .caret{
-			border-top-color: @linkColor;
-		}
-		&:hover,
-		&:focus{
-			> .caret{
-				border-top-color: @linkColorHover;
-			}
-		}
-	}
-}
+
 .nav-tabs {
 	.tabs {
 		float: left;
@@ -337,17 +268,8 @@ dl.label.label-info dt{
 			}
 		}
 	}
-	> .active{
-		.nav-active(lighten(@textColor, 8%));
-	}
 }
-.nav-list,
 .nav-pills{
-	> .active{
-		.nav-active(@white);
-	}
-}
-.nav-pills{ 
 	> li > a{
 		> .caret{
 			margin-top: 6px;
@@ -356,11 +278,11 @@ dl.label.label-info dt{
 }
 .nav-list{
 	> li {
-		> ul.collapse{
+		> ul.submenu{
 			margin-left: 7px;
 			margin-right: 7px;
 		}
-	}	
+	}
 }
 
 .module {
@@ -390,10 +312,6 @@ dl.label.label-info dt{
 	      	}
     	}
   	}
-}
-
-aside .nav.menu.nav-tabs{
-	float:none;
 }
 
 a.hidden-text {
@@ -742,6 +660,10 @@ h1, h2, h3, h4, h5, h6 {
 		.controls {
 			margin-left: 5px;
 		}
+	}
+	.tabs-left > .nav-tabs,
+	.tabs-right > .nav-tabs {
+		float: none;
 	}
 }
 
