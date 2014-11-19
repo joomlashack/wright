@@ -8,6 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
+// No direct access.
 defined('_JEXEC') or die;
 
 // Note. It is important to remove spaces between elements.
@@ -16,21 +17,21 @@ defined('_JEXEC') or die;
 $wrightCollapseMenus = true;
 $menuType = 'vertical';
 
-if (preg_match('/no\-collapse/', $class_sfx))
-{
+if (preg_match('/nav\-pills/', $class_sfx) || preg_match('/nav\-tabs/', $class_sfx)){
+	$menuType = 'horizontal';
+}
+if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class_sfx)){
+	$menuType = 'vertical';
+}
+if (preg_match('/tabbable/', $params->get('moduleclass_sfx'))) {
+	$menuType = 'vertical';
+}
+if (preg_match('/navbar/', $params->get('moduleclass_sfx'))) {
+	$menuType = 'horizontal';
+}
+
+if (preg_match('/no\-collapse/', $class_sfx)) {
 	$wrightCollapseMenus = false;
-
-	if (preg_match('/nav\-pills/', $class_sfx) || preg_match('/nav\-tabs/', $class_sfx)){
-		$menuType = 'horizontal';
-	}
-
-	if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class_sfx)){
-		$menuType = 'vertical';
-	}
-	if (preg_match('/tabbable/', $params->get('moduleclass_sfx'))) {
-		$menuType = 'vertical';
-	}
-
 }
 else {
 	$wrightTemplate = WrightTemplate::getInstance();
@@ -88,6 +89,7 @@ foreach ($list as $i => &$item)
 
 		if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
 		{
+			$active = true;  // Wright v.3: Active toggle for collapsible menus
 			$class .= ' active';
 		}
 		elseif (in_array($aliasToId, $path))
@@ -162,7 +164,7 @@ foreach ($list as $i => &$item)
 	if ($item->deeper) {
 
 		// Wright v.3 adds sub-menu for level 2 and beyond
-		
+
 		$dropdownmenu = $menuType == 'vertical' ? '' : 'dropdown-menu';  // Wright v.3 adds sub-menu for level 2 and beyond
 		echo '<ul' . $idul . ' class="' . $dropdownmenu . $uladd . '">';  // Wright v.3: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
 	}
