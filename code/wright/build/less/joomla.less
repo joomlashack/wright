@@ -224,6 +224,18 @@ dl.label.label-info dt{
 		> ul.submenu{
 			margin-left: 20px;
 			margin-right: 20px;
+			li {
+				> a {
+					&:hover, &:focus {
+						text-decoration: none;
+					}
+				}
+			}
+			.active {
+				> a {
+					color: @linkColorHover;
+				}
+			}
 		}
 	}
 }
