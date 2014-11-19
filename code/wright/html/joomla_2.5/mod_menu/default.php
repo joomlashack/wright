@@ -25,6 +25,9 @@ if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class
 if (preg_match('/tabbable/', $params->get('moduleclass_sfx'))) {
 	$menuType = 'vertical';
 }
+if (preg_match('/navbar/', $params->get('moduleclass_sfx'))) {
+	$menuType = 'horizontal';
+}
 
 if (preg_match('/no\-collapse/', $class_sfx)) {
 	$wrightCollapseMenus = false;
