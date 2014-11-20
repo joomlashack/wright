@@ -27,8 +27,17 @@ if (preg_match_all('/hidden-text/', $item->anchor_css, $matches)) {
 
 // Note. It is important to remove spaces between elements.
 $class = $item->anchor_css ? 'class="'.$item->anchor_css.'" ' : '';
+$class = ($item->deeper) ? 'class="'.$item->anchor_css.' dropdown-toggle"' : $class ;
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
-$caret = $item->deeper ? '<b class="caret"></b>' : '';  // Wright v.3: Added caret
+
+if ($menuType == 'vertical') {
+	$caret = $item->deeper ? '<b class="caret"></b>' : '';  // Wright v.3: Added caret
+}
+else{
+	$caret = '';
+	if($item->level == 1)
+		$caret = $item->deeper ? '<b class="caret"></b>' : '';  // Wright v.3: Added caret
+}
 
 if ($item->menu_image) {
 		$item->params->get('menu_text', 1 ) ?
