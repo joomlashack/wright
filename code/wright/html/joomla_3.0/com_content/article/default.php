@@ -21,7 +21,7 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightLegendTop)) $this->wrightLegendTop= "";
 	if (!isset($this->wrightLegendBottom)) $this->wrightLegendBottom= "";
 	
-	if (empty($this->wrightElementsStructure)) $this->wrightElementsStructure = Array("title","icons","article-info","image","legendtop","content","legendbottom");
+	if (empty($this->wrightElementsStructure)) $this->wrightElementsStructure = Array("title","icons","article-info","image","legendtop","content","pagination","legendbottom");
 	
 	$wrightBeforeIcon = '<span class="hidden-phone">';
 	$wrightAfterIcon = '</span>';
@@ -391,6 +391,21 @@ article_info_bottom:
 		</div>
 	<?php endif; ?>
 
+
+<?php
+/* Wright v.3: Item elements structure */
+		endif; // access-view
+		goto content_bottom;
+				break;
+			case "pagination":
+		if ($params->get('access-view')):   // access-view
+/* End Wright v.3: Item elements structure */
+?>
+	<?php
+	if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && !$this->item->paginationrelative):
+		echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper)
+	?>
+	<?php endif; ?>	
 <?php
 /* Wright v.3: Item elements structure */
 		endif; // access-view
@@ -400,11 +415,6 @@ content_bottom:
 /* End Wright v.3: Item elements structure */
 ?>
 
-	<?php
-if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && !$this->item->paginationrelative):
-	echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper)
-?>
-	<?php endif; ?>
 	<?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '1')) || ($params->get('urls_position') == '1'))) : ?>
 	<?php echo $this->loadTemplate('links'); ?>
 	<?php endif; ?>
