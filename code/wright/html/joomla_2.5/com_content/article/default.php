@@ -300,6 +300,20 @@ if (!empty($this->item->pagination) AND $this->item->pagination AND !$this->item
 				if ($this->wrightLegendBottom != '') :
 ?>
 	<div class="wrightlegend-bottom"><?php echo $this->wrightLegendBottom ?></div>
+
+<?php
+			endif;
+			break;
+			case "pagination":
+		if ($params->get('access-view')):   // access-view
+/* End Wright v.3: Item elements structure */
+?>
+
+<?php
+if (!empty($this->item->pagination) AND $this->item->pagination AND $this->item->paginationposition AND!$this->item->paginationrelative):
+	 echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper) ?>
+<?php endif; ?>
+
 <?php
 				endif;
 				break;
@@ -310,11 +324,7 @@ if (!empty($this->item->pagination) AND $this->item->pagination AND !$this->item
 
 
 <?php echo wrightTransformArticleContent($this->item->text);  // Wright v.3: Transform article content's plugins (using helper)
- ?>
-<?php
-if (!empty($this->item->pagination) AND $this->item->pagination AND $this->item->paginationposition AND!$this->item->paginationrelative):
-	 echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper) ?>
-<?php endif; ?>
+?>
 
 <?php if (isset($urls) AND ((!empty($urls->urls_position)  AND ($urls->urls_position=='1')) OR ( $params->get('urls_position')=='1') )): ?>
 <?php echo $this->loadTemplate('links'); ?>
