@@ -85,13 +85,45 @@
 
 // Hover/Focus state
 // -----------
+
+// Choose Add/Remove gradient in Hover/Focus
+.dropdownLinkGradient() when (@dropdownLinkGradient = true){
+  .dropdown-menu > li > a:hover,
+  .dropdown-menu > li > a:focus,
+  .dropdown-submenu:hover > a,
+  .dropdown-submenu:focus > a {
+    #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
+  }
+
+  .dropdown-menu > .active > a,
+  .dropdown-menu > .active > a:hover,
+  .dropdown-menu > .active > a:focus {
+    #gradient > .vertical(@dropdownLinkBackgroundActive, darken(@dropdownLinkBackgroundActive, 5%));
+  }
+}
+
+.dropdownLinkGradient() when (@dropdownLinkGradient = false){
+  .dropdown-menu > li > a:hover,
+  .dropdown-menu > li > a:focus,
+  .dropdown-submenu:hover > a,
+  .dropdown-submenu:focus > a {
+    background-color: @dropdownLinkBackgroundHover;
+  }
+
+  .dropdown-menu > .active > a,
+  .dropdown-menu > .active > a:hover,
+  .dropdown-menu > .active > a:focus {
+    background-color : @dropdownLinkBackgroundActive;
+  }
+}
+
+
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus,
 .dropdown-submenu:hover > a,
 .dropdown-submenu:focus > a {
   text-decoration: none;
   color: @dropdownLinkColorHover;
-  #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
 }
 
 // Active state
@@ -102,8 +134,9 @@
   color: @dropdownLinkColorActive;
   text-decoration: none;
   outline: 0;
-  #gradient > .vertical(@dropdownLinkBackgroundActive, darken(@dropdownLinkBackgroundActive, 5%));
 }
+
+.dropdownLinkGradient();
 
 // Disabled state
 // --------------
@@ -264,6 +297,43 @@
   .border-radius(@baseBorderRadius);
 }
 
+// Dropdown in navbar-inverse
+// ---------
+
+.navbarInverseDropdownLinkGradient() when (@navbarInverseDropdownLinkGradient = true){
+  .navbar-inverse {
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus,
+    .dropdown-submenu:hover > a,
+    .dropdown-submenu:focus > a {
+      #gradient > .vertical(@navbarInverseDropdownLinkBackgroundHover, darken(@navbarInverseDropdownLinkBackgroundHover, 5%));
+    }
+
+    .dropdown-menu > .active > a,
+    .dropdown-menu > .active > a:hover,
+    .dropdown-menu > .active > a:focus {
+      #gradient > .vertical(@navbarInverseDropdownLinkBackgroundActive, darken(@navbarInverseDropdownLinkBackgroundActive, 5%));
+    }
+  }
+}
+
+.navbarInverseDropdownLinkGradient() when (@navbarInverseDropdownLinkGradient = false){
+  .navbar-inverse {
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus,
+    .dropdown-submenu:hover > a,
+    .dropdown-submenu:focus > a {
+      background-color: @navbarInverseDropdownLinkBackgroundHover;
+    }
+
+    .dropdown-menu > .active > a,
+    .dropdown-menu > .active > a:hover,
+    .dropdown-menu > .active > a:focus {
+      background-color : @navbarInverseDropdownLinkBackgroundActive;
+    }
+  }
+}
+
 .navbar-inverse {
   .dropdown-menu {
     background-color: @navbarInverseDropdownBackground;
@@ -283,7 +353,6 @@
   .dropdown-submenu:hover > a,
   .dropdown-submenu:focus > a {
     color: @navbarInverseDropdownLinkColorHover;
-    #gradient > .vertical(@navbarInverseDropdownLinkBackgroundHover, darken(@navbarInverseDropdownLinkBackgroundHover, 5%));
   }
 
   // Active state
@@ -292,7 +361,6 @@
   .dropdown-menu > .active > a:hover,
   .dropdown-menu > .active > a:focus {
     color: @navbarInverseDropdownLinkColorActive;
-    #gradient > .vertical(@navbarInverseDropdownLinkBackgroundActive, darken(@navbarInverseDropdownLinkBackgroundActive, 5%));
   }
 
   // Caret to indicate there is a submenu
@@ -326,3 +394,5 @@
 
   .navbarInverseDropdownSubmenuLinkArrowActive();
 }
+
+.navbarInverseDropdownLinkGradient();
