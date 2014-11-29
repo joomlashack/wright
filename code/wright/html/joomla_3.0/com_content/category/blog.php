@@ -335,7 +335,6 @@ JHtml::_('behavior.caption');
 			<?php echo $this->loadTemplate('links'); ?>
 			</div>
 			<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
-			<?php endif; ?>
 			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
 				<?php echo '</div>' // Wright v.3: Bootstrap grid layout ?>
 			<?php endif; ?>
@@ -343,6 +342,8 @@ JHtml::_('behavior.caption');
 				// Wright v.3: Extra container and row
 				addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
+			<?php endif; ?>
+			
 			<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
 			<?php
 				// Wright v.3: Extra container and row
@@ -366,9 +367,11 @@ JHtml::_('behavior.caption');
 				addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
 			<?php endif; ?>
+
 			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?> 
 				<?php echo '</div></div>' ?>
 			<?php endif; // Wright v.3: Bootstrap grid layout ?>
+			
 			<?php if (($this->params->def('show_pagination', 1) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->get('pages.total') > 1)) : ?>
 			<?php
 				// Wright v.3: Extra container and row
