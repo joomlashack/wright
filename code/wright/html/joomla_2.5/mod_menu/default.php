@@ -3,6 +3,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	mod_menu
+ *
  * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -17,15 +18,19 @@ $wrightCollapseMenus = true;
 $menuType = 'vertical';
 
 if (preg_match('/nav\-pills/', $class_sfx) || preg_match('/nav\-tabs/', $class_sfx)){
+	$wrightCollapseMenus = false;
 	$menuType = 'horizontal';
 }
 if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class_sfx)){
+	$wrightCollapseMenus = true;
 	$menuType = 'vertical';
 }
 if (preg_match('/tabbable/', $params->get('moduleclass_sfx'))) {
+	$wrightCollapseMenus = true;
 	$menuType = 'vertical';
 }
 if (preg_match('/navbar/', $params->get('moduleclass_sfx'))) {
+	$wrightCollapseMenus = false;
 	$menuType = 'horizontal';
 }
 
@@ -39,12 +44,8 @@ else {
 		$wrightCollapseMenus = false;
 		$menuType = 'horizontal';
 	}
-
-	if (preg_match('/navbar/', $params->get('moduleclass_sfx'))){
-		$wrightCollapseMenus = false;
-		$menuType = 'horizontal';
-	}
 }
+
 /* End Wright v.3: Distinguish collapsible and non-collapsible menus */
 
 $navlist = '';
