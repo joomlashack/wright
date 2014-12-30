@@ -1406,3 +1406,21 @@ legend + .control-group {
   margin-bottom: 0;
   vertical-align: middle;
 }
+
+/*Class in weblinks component*/
+
+.element-invisible {
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    border: 0px none;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.filter-search-lbl {
+	margin-right: 3px;
+}
+
+/*End Class in weblinks component*/
