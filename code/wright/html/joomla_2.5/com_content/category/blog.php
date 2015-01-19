@@ -3,7 +3,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -48,7 +48,6 @@ defined('_JEXEC') or die;
 	{
 		$this->MoreItemsGridOrientation = Array(
 			'activeLayout' => '',
-			'containerLayout' => '',
 			'moreitemsLayout' => '',
 			'subcategoriesLayout' => ''
 		);
@@ -337,7 +336,6 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 ?>
 
 <?php if ($this->MoreItemsGridOrientation['activeLayout'] != '') : // Wright v.3: Bootstrap grid layout ?>
-	<?php echo '<div class="' . $this->MoreItemsGridOrientation['containerLayout'] . '">' ?>
 	<?php echo '<div class="' . $this->wrightIntroRowMode . '">' ?>
 <?php endif; // Wright v.3: Bootstrap grid layout ?>
 
@@ -404,7 +402,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 <?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?> 
 
-	<?php echo '</div></div>' ?>
+	<?php echo '</div>' ?>
 <?php endif; // Wright v.3: Bootstrap grid layout ?>
 
 <?php if (($this->params->def('show_pagination', 1) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->get('pages.total') > 1)) : ?>

@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Adapters
  *
- * @copyright   Copyright (C) 2005 - 2014 Joomlashack. Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  *
  */
@@ -271,13 +271,15 @@ class WrightAdapterJoomlaLogo
 					$logotone = $doc->document->params->get('Tone', '');
 				}
 
-				if (is_file(JPATH_ROOT . '/templates/' . $doc->document->template . '/images/' . $doc->document->params->get('style') . '/' . 'logo' . $logotone . $wrightLogoAlt . '.png'))
+				$templateStyle = Wright::getInstance()->getTemplateStyle();
+
+				if (is_file(JPATH_ROOT . '/templates/' . $doc->document->template . '/images/' . $templateStyle . '/logo' . $logotone . $wrightLogoAlt . '.png'))
 				{
-					$logo = JURI::root() . 'templates/' . $doc->document->template . '/images/' . $doc->document->params->get('style') . '/logo' . $logotone . $wrightLogoAlt . '.png';
+					$logo = JURI::root() . 'templates/' . $doc->document->template . '/images/' . $templateStyle . '/logo' . $logotone . $wrightLogoAlt . '.png';
 				}
-				elseif (is_file(JPATH_ROOT . '/templates/' . $doc->document->template . '/images/' . $doc->document->params->get('style') . '/logo' . $wrightLogoAlt . '.png'))
+				elseif (is_file(JPATH_ROOT . '/templates/' . $doc->document->template . '/images/' . $templateStyle . '/logo' . $wrightLogoAlt . '.png'))
 				{
-					$logo = JURI::root() . 'templates/' . $doc->document->template . '/images/' . $doc->document->params->get('style') . '/logo' . $wrightLogoAlt . '.png';
+					$logo = JURI::root() . 'templates/' . $doc->document->template . '/images/' . $templateStyle . '/logo' . $wrightLogoAlt . '.png';
 				}
 				elseif (is_file(JPATH_ROOT . '/' . 'templates/' . $doc->document->template . '/images/logo' . $logotone . $wrightLogoAlt . '.png'))
 				{

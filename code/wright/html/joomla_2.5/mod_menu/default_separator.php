@@ -3,7 +3,7 @@
 /**
  * @package		Joomla.Site
  * @subpackage	mod_menu
- * @copyright	Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -20,10 +20,19 @@ if ($item->menu_image) {
 else { $linktype = $item->title;
 }
 
-?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" class="separator"<?php echo $item->licollapse  // Wright v.3: Added collapsible option ?>><?php echo $title; ?><?php echo $linktype; ?><?php
+$class = ($item->deeper) ? 'class="separator dropdown-toggle" ' : 'class="separator" ' ;
+
+?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse  // Wright v.3: Added collapsible option ?>><?php echo $title; ?><?php echo $linktype; ?><?php
 // Wright v.3: Closing pseudo-link for sub-menus
 if ($item->deeper) {
 	// Opens a caret-right for levels 2 and above
-	echo '<b class="caret"></b>';
+
+	if ($menuType == 'vertical') {
+		echo '<b class="caret"></b>';
+	}
+	else{
+		if($item->level == 1)
+			echo '<b class="caret"></b>'; // Wright v.3: Added caret
+	}
 }
 ?></a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure ?>
