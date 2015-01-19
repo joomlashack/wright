@@ -125,9 +125,11 @@ endif; ?>
 	// Wright v.3: Changing image intro on hover if exist file -hover
 	$fileExtention=explode(".",$images->image_intro);
 	preg_match('/[^\.]+/',$images->image_intro, $imgt);
-	$fileHover=$imgt[0].'-hover.'.$fileExtention[1];
+	if(isset($imgt[0])) {
+		$fileHover=$imgt[0].'-hover.'.$fileExtention[1];
+	}	
 
-	if (file_exists($fileHover)) {
+	if (isset($fileHover)) {
 		    echo '<script type="text/javascript">
 	jQuery(document).ready(function($) {
 		var srcHover = jQuery("#'.$item->id.'").attr("src").match(/[^\.]+/) + "-hover.'.$fileExtention[1].'";
