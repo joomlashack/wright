@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Main package
  *
- * @copyright   Copyright (C) 2005 - 2014 Joomlashack. Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -76,6 +76,10 @@ class Wright
 
 	private $_baseVersion = '';
 
+	public $_showBrowserWarning = false;
+
+	public $_browserCompatibility = null;
+
 	/**
 	 * Main Wright function called to create the index.php file read by Joomla
 	 *
@@ -89,6 +93,12 @@ class Wright
 		$this->document = $document;
 		$this->params = $document->params;
 		$this->baseurl = $document->baseurl;
+
+		if ($app->isAdmin())
+		{
+			// If Wright is instanciated in backend, it stops loading
+			return;
+		}
 
 		// Urls
 		$this->_urlTemplate = JURI::root(true) . '/templates/' . $this->document->template;
@@ -106,6 +116,9 @@ class Wright
 			JHtml::_('bootstrap.framework');
 			JHtml::_('bootstrap.loadCss', true, $this->document->direction);
 		}
+
+		// Browser library
+		include_once JPATH_SITE . '/templates/' . $this->document->template . '/wright/includes/browser.php';
 
 		$this->author = simplexml_load_file(JPATH_BASE . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->document->template . DIRECTORY_SEPARATOR . 'templateDetails.xml')->author;
 
@@ -131,15 +144,15 @@ class Wright
 
 		// Get our template for further parsing, if custom file is found
 		// it will use it instead of the default file
-		$path = JPATH_THEMES . '/' . $document->template . '/' . 'template.php';
+		$path = JPATH_SITE . '/templates/' . $document->template . '/' . 'template.php';
 		$menu = $app->getMenu();
 
 		// If homepage, load up home.php if found, or load custom.php if found
 		$lang = JFactory::getLanguage();
-		if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_THEMES . '/' . $document->template . '/home.php'))
-			$path = JPATH_THEMES . '/' . $document->template . '/home.php';
-		elseif (is_file(JPATH_THEMES . '/' . $document->template . '/custom.php'))
-			$path = JPATH_THEMES . '/' . $document->template . '/custom.php';
+		if ($menu->getActive() == $menu->getDefault($lang->getTag()) && is_file(JPATH_SITE . '/templates/' . $document->template . '/home.php'))
+			$path = JPATH_SITE . '/templates/' . $document->template . '/home.php';
+		elseif (is_file(JPATH_SITE . '/templates/' . $document->template . '/custom.php'))
+			$path = JPATH_SITE . '/templates/' . $document->template . '/custom.php';
 
 		// Include our file and capture buffer
 		ob_start();
@@ -163,6 +176,16 @@ class Wright
 		}
 
 		return $instance;
+	}
+
+	/**
+	 * Get template style
+	 *
+	 * @return  array
+	 */
+	public function getTemplateStyle()
+	{
+		return $this->_selectedStyle;
 	}
 
 	/**
@@ -265,8 +288,56 @@ class Wright
 			$this->checkStyleFiles();
 		}
 
+		$this->browserCompatibilityCheck();
+
 		// Build css
 		$this->css();
+	}
+
+	/**
+	 * Adds browser compatibility check if it's selected in the backed
+	 *
+	 * @return  void
+	 */
+	private function browserCompatibilityCheck()
+	{
+		if ($this->document->params->get('browsercompatibilityswitch', '0') == '1')
+		{
+			$session = JFactory::getSession();
+			$hideWarning = $session->get('hideWarning', 0, 'WrightTemplate_' . $this->document->template);
+
+			if (!$hideWarning)
+			{
+				$browser = new Browser;
+				$browserName = $browser->getBrowser();
+				$browserVersion = $browser->getVersion();
+
+				$this->_browserCompatibility = json_decode($this->document->params->get('browsercompatibility', ''));
+
+				if ($this->_browserCompatibility == '')
+				{
+					$this->_browserCompatibility = $this->setupDefaultBrowserCompatibility();
+				}
+
+				if (property_exists($this->_browserCompatibility, $browserName))
+				{
+					if (version_compare($browserVersion, $this->_browserCompatibility->$browserName->minimumVersion, 'lt'))
+					{
+						$this->_showBrowserWarning = true;
+					}
+				}
+				else
+				{
+					$this->_showBrowserWarning = true;
+				}
+			}
+
+			if ($this->_showBrowserWarning)
+			{
+				$this->addJSScriptDeclaration('jQuery("#wrightBCW").modal();');
+				$session->set('hideWarning', 1, 'WrightTemplate_' . $this->document->template);
+			}
+		}
 	}
 
 	/**
@@ -286,7 +357,7 @@ class Wright
 		{
 			$this->_baseVersion = $mainversion . $subversion;
 
-			if (file_exists(JPATH_THEMES . '/' . $this->document->template . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css'))
+			if (file_exists(JPATH_SITE . '/templates/' . $this->document->template . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css'))
 			{
 				$fileext = $this->_urlTemplate . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
 				$fileFound = true;
@@ -391,20 +462,20 @@ class Wright
 				$this->document->addScript(JURI::root() . 'templates/' . $this->document->template . '/wright/js/html5shiv.min.js');
 			}
 
-			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie.css'))
+			if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/ie.css'))
 			{
 				$styles['ie'][] = 'ie.css';
 			}
 
-			if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/ie' . $major . '.css'))
+			if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/ie' . $major . '.css'))
 				$styles['ie'][] = 'ie' . $major . '.css';
 		}
 
-		if ($this->document->direction == 'rtl' && is_file(JPATH_THEMES . '/' . $this->document->template . '/css/rtl.css'))
+		if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl.css'))
 			$styles['template'][] = 'rtl.css';
 
 		// Check to see if custom.css file is present, and if so add it after all other css files
-		if (is_file(JPATH_THEMES . '/' . $this->document->template . '/css/custom.css'))
+		if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/custom.css'))
 		{
 			$styles['template'][] = 'custom.css';
 		}
@@ -653,7 +724,7 @@ class Wright
 		else
 		{
 			$document = JFactory::getDocument();
-			$document->addScriptDeclaration($script);
+			$document->addScriptDeclaration('jQuery( document ).ready(function( $ ) {' . $script . '});');
 		}
 	}
 
@@ -680,19 +751,81 @@ class Wright
 
 			if ($this->_jsDeclarations)
 			{
-				$script .= "<script type='text/javascript'>\n";
+				$script .= "<script type='text/javascript'>jQuery( document ).ready(function( $ ) {\n";
 
 				foreach ($this->_jsDeclarations as $js)
 				{
 					$script .= "$js\n";
 				}
 
-				$script .= "</script>\n";
+				$script .= "});</script>\n";
 			}
 
 			return $script;
 		}
 
 		return "";
+	}
+
+	/**
+	 * Setup test values
+	 *
+	 * @return  array
+	 */
+	public function setupDefaultBrowserCompatibility()
+	{
+		$defaultInput = new stdClass;
+
+		$chromeObject = new stdClass;
+		$firefoxObject = new stdClass;
+		$ieObject = new stdClass;
+		$safariObject = new stdClass;
+		$operaObject = new stdClass;
+		$iOSObject = new stdClass;
+
+		$chromeObject->minimumVersion = '35';
+		$chromeObject->recommended = true;
+		$chromeObject->desktop = true;
+		$chromeObject->mobile = true;
+		$firefoxObject->minimumVersion = '28';
+		$firefoxObject->recommended = false;
+		$firefoxObject->desktop = true;
+		$firefoxObject->mobile = false;
+		$ieObject->minimumVersion = '8';
+		$ieObject->recommended = false;
+		$ieObject->desktop = true;
+		$ieObject->mobile = false;
+		$safariObject->minimumVersion = '7';
+		$safariObject->recommended = false;
+		$safariObject->desktop = true;
+		$safariObject->mobile = false;
+		$operaObject->minimumVersion = '24';
+		$operaObject->recommended = false;
+		$operaObject->desktop = true;
+		$operaObject->mobile = false;
+		$iOSObject->minimumVersion = '6';
+		$iOSObject->recommended = false;
+		$iOSObject->desktop = false;
+		$iOSObject->mobile = true;
+
+		$chromeName = Browser::BROWSER_CHROME;
+		$firefoxName = Browser::BROWSER_FIREFOX;
+		$ieName = Browser::BROWSER_IE;
+		$safariName = Browser::BROWSER_SAFARI;
+		$operaName = Browser::BROWSER_OPERA;
+		$iPadName = Browser::BROWSER_IPAD;
+		$iPhoneName = Browser::BROWSER_IPHONE;
+		$iPodName = Browser::BROWSER_IPOD;
+
+		$defaultInput->$chromeName = $chromeObject;
+		$defaultInput->$firefoxName = $firefoxObject;
+		$defaultInput->$ieName = $ieObject;
+		$defaultInput->$safariName = $safariObject;
+		$defaultInput->$operaName = $operaObject;
+		$defaultInput->$iPadName = $iOSObject;
+		$defaultInput->$iPhoneName = $iOSObject;
+		$defaultInput->$iPodName = $iOSObject;
+
+		return $defaultInput;
 	}
 }

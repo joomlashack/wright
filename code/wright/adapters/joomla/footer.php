@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Parameters
  *
- * @copyright   Copyright (C) 2005 - 2014 Joomlashack. Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -29,15 +29,10 @@ class WrightAdapterJoomlaFooter
 	public function render($args)
 	{
 		$doc = Wright::getInstance();
-		$js = $doc->generateJS();
 
 		if ($doc->document->params->get('rebrand', 'no') !== 'yes')
 		{
-			return '<a target="_blank" class="joomlashack" href="http://www.joomlashack.com"><img src="./templates/' . JFactory::getApplication()->getTemplate() . '/wright/images/jscright.png" alt ="Joomlashack" /> </a>' . $js;
-		}
-		else
-		{
-			return $js;
+			return '<a target="_blank" class="joomlashack" href="http://www.joomlashack.com"><img src="./templates/' . JFactory::getApplication()->getTemplate() . '/wright/images/jscright.png" alt ="Joomlashack" /> </a>';
 		}
 	}
 }

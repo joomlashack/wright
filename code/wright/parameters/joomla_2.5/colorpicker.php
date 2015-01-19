@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Parameters
  *
- * @copyright   Copyright (C) 2005 - 2014 Joomlashack. Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -19,9 +19,9 @@ jimport('joomla.form.formfield');
  * @subpackage  Parameters
  * @since       2.0
  */
-class JFormFieldColorpicker extends JFormField
+class JFormFieldColorPicker extends JFormField
 {
-	protected $type = 'Colorpicker';
+	protected $type = 'ColorPicker';
 
 	/**
 	 * Creates color picker

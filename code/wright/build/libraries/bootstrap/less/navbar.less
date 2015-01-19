@@ -339,26 +339,26 @@
 }
 
 // Caret should match text color on hover/focus
-.navbar .nav li.dropdown > a:hover .caret,
-.navbar .nav li.dropdown > a:focus .caret {
+.navbar .nav > li.dropdown > a:hover .caret,
+.navbar .nav > li.dropdown > a:focus .caret {
   border-top-color: @navbarLinkColorHover;
   border-bottom-color: @navbarLinkColorHover;
 }
 
 // Remove background color from open dropdown
-.navbar .nav li.dropdown.open > .dropdown-toggle,
-.navbar .nav li.dropdown.active > .dropdown-toggle,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+.navbar .nav > li.dropdown.open > .dropdown-toggle,
+.navbar .nav > li.dropdown.active > .dropdown-toggle,
+.navbar .nav > li.dropdown.open.active > .dropdown-toggle {
   background-color: @navbarLinkBackgroundActive;
   color: @navbarLinkColorActive;
 }
-.navbar .nav li.dropdown > .dropdown-toggle .caret {
+.navbar .nav > li.dropdown > .dropdown-toggle .caret {
   border-top-color: @navbarLinkColor;
   border-bottom-color: @navbarLinkColor;
 }
-.navbar .nav li.dropdown.open > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.active > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
+.navbar .nav > li.dropdown.open > .dropdown-toggle .caret,
+.navbar .nav > li.dropdown.active > .dropdown-toggle .caret,
+.navbar .nav > li.dropdown.open.active > .dropdown-toggle .caret {
   border-top-color: @navbarLinkColorActive;
   border-bottom-color: @navbarLinkColorActive;
 }
@@ -420,9 +420,9 @@
     color: @navbarInverseLinkColorHover;
   }
 
-  .nav .active > a,
-  .nav .active > a:hover,
-  .nav .active > a:focus {
+  .nav > .active > a,
+  .nav > .active > a:hover,
+  .nav > .active > a:focus {
     color: @navbarInverseLinkColorActive;
     background-color: @navbarInverseLinkBackgroundActive;
   }
@@ -443,24 +443,24 @@
   }
 
   // Dropdowns
-  .nav li.dropdown.open > .dropdown-toggle,
-  .nav li.dropdown.active > .dropdown-toggle,
-  .nav li.dropdown.open.active > .dropdown-toggle {
+  .nav > li.dropdown.open > .dropdown-toggle,
+  .nav > li.dropdown.active > .dropdown-toggle,
+  .nav > li.dropdown.open.active > .dropdown-toggle {
     background-color: @navbarInverseLinkBackgroundActive;
     color: @navbarInverseLinkColorActive;
   }
-  .nav li.dropdown > a:hover .caret,
-  .nav li.dropdown > a:focus .caret {
-    border-top-color: @navbarInverseLinkColorActive;
-    border-bottom-color: @navbarInverseLinkColorActive;
+  .nav > li.dropdown > a:hover .caret,
+  .nav > li.dropdown > a:focus .caret {
+    border-top-color: @navbarInverseLinkColorHover;
+    border-bottom-color: @navbarInverseLinkColorHover;
   }
-  .nav li.dropdown > .dropdown-toggle .caret {
+  .nav > li.dropdown > .dropdown-toggle .caret {
     border-top-color: @navbarInverseLinkColor;
     border-bottom-color: @navbarInverseLinkColor;
   }
-  .nav li.dropdown.open > .dropdown-toggle .caret,
-  .nav li.dropdown.active > .dropdown-toggle .caret,
-  .nav li.dropdown.open.active > .dropdown-toggle .caret {
+  .nav > li.dropdown.open > .dropdown-toggle .caret,
+  .nav > li.dropdown.active > .dropdown-toggle .caret,
+  .nav > li.dropdown.open.active > .dropdown-toggle .caret {
     border-top-color: @navbarInverseLinkColorActive;
     border-bottom-color: @navbarInverseLinkColorActive;
   }

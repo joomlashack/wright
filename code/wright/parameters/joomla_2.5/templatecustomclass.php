@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Parameters
  *
- * @copyright   Copyright (C) 2005 - 2014 Joomlashack. Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -21,5 +21,18 @@ jimport('joomla.form.formfield');
  */
 class JFormFieldTemplateCustom extends JFormField
 {
-	protected $type = 'templatecustom';
+	protected $type = 'TemplateCustom';
+
+	/**
+	 * Creates a field (fallback)
+	 *
+	 * @return  JFormField  Formatted input
+	 */
+	protected function getInput()
+	{
+		$html = '';
+		$html .= '<input type="hidden" name="' . $this->name . '" id="' . $this->name . '" value="' . $value . '" /> ';
+
+		return $html;
+	}
 }
