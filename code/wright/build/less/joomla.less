@@ -720,6 +720,10 @@ div.categories-list {
 	}
 }
 
+.category-desc{
+	.clearfix();
+}
+
 
 /* @ Blog   ***************************************/
 .contentpaneopen, .blog {
@@ -737,9 +741,17 @@ div.categories-list {
 .items-leading {
 	display: inline-block;
 	width: 100%;
+
+	[class*="leading-"]{
+		.clearfix();
+	}
 }
 .items-row {
 	overflow:hidden
+
+	.item{
+		.clearfix();
+	}
 }
 
 .leading {
