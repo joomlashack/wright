@@ -62,7 +62,7 @@ defined('_JEXEC') or die;
 
 	/* Wright v.3: Special featured items grid */
 
-	if (!isset($this->SpecialItroItemsLayout)) 	$this->specialItroItemsLayout = Array('activeLayout' => false, 'layoutitemscolums' => 0);;
+	if (!isset($this->SpecialItroItemsLayout)) $this->specialItroItemsLayout = Array('activeLayout' => false, 'layoutitemscolums' =>);
 	if (!isset($this->layoutSpanorder)) $this->layoutSpanorder = Array();
 
 	/* End Wright v.3: Special featured items grid */
