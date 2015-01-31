@@ -15,6 +15,12 @@ $wrightTitlePosition = (isset($wrightTitlePosition) ? $wrightTitlePosition : 'ab
 
 $wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : false);  // Wright v.3: Enable Link in content parameter
 
+$wrightUsePageHeader = (isset($wrightUsePageHeader) ? $wrightUsePageHeader : true);  // Wright v.3: Use a page header
+
+$wrightDisplayAuthor = (isset($wrightDisplayAuthor) ? $wrightDisplayAuthor : false);  // Wright v.3: Display the author
+
+$wrightDisplayPublishedDate = (isset($wrightDisplayPublishedDate) ? $wrightDisplayPublishedDate : false);  // Wright v.3: Display the published date
+
 // no direct access
 defined('_JEXEC') or die;
 $item_heading = $params->get('item_heading', 'h4');
@@ -41,17 +47,25 @@ $item_heading = $params->get('item_heading', 'h4');
 	<?php if ($params->get('item_title')) : ?>
 		<<?php echo $item_heading; ?> class="newsflash-title<?php echo $params->get('moduleclass_sfx'); ?>">
 			<?php if ($params->get('link_titles') && $item->link != '') : ?>
-				<div class="page-header"> <?php // Wright v.3: Added link onclick en all content ?>
+				<?php if ($wrightUsePageHeader) : // Wright v.3 Added page header ?>
+				<div class="page-header">
+				<?php endif;  // End Wright v.3 Added page header ?>
 					<a href="<?php echo $item->link;?>">
 						<?php if ($wrightNewsEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 						<?php echo $item->title;?>
 					</a>
-				</div>  <?php // Wright v.3: Added page-header style ?>
+				<?php if ($wrightUsePageHeader) : // Wright v.3 Added page header ?>
+				</div>
+				<?php endif;  // End Wright v.3 Added page header ?>
 			<?php else : ?>
-				<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
+				<?php if ($wrightUsePageHeader) : // Wright v.3 Added page header ?>
+				<div class="page-header">
+				<?php endif;  // End Wright v.3 Added page header ?>
 					<?php if ($wrightNewsEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 					<?php echo $item->title; ?>
-				</div>  <?php // Wright v.3: Added page-header style ?>
+				<?php if ($wrightUsePageHeader) : // Wright v.3 Added page header ?>
+				</div>
+				<?php endif;  // End Wright v.3 Added page header ?>
 			<?php endif; ?>
 		</<?php echo $item_heading; ?>>
 
@@ -92,23 +106,63 @@ endif; ?>
 	/* End Wright v.3: Added intro text */
 ?>
 
+<?php
+	// publish_up
+	// Wright v.3: Display author and published date
+	if ($wrightDisplayAuthor && $item->author != '')
+		:
+		if (empty($item->contactid))
+		{
+			$author = $item->author;
+		}
+		else
+		{
+			$author = JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id=' . $item->contactid), $item->author);
+		}
+?>
+	<span class="wright-newsflash-author">
+		<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author) ?>.
+	</span>
+<?php
+	endif;
+
+	if ($wrightDisplayPublishedDate && $item->publish_up != '')
+		:
+?>
+	<span class="wright-newsflash-publish-up">
+		<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $item->publish_up, JText::_('DATE_FORMAT_LC2'))) ?>.
+	</span>
+<?php
+	endif;
+	// End Wright v.3: Display author and published date
+?>
+
+
 <?php if ($wrightTitlePosition == 'below') : ?> <?php /* Wright v.3: Added title below */ ?>
 
 	<?php if ($params->get('item_title')) : ?>
 
 		<<?php echo $item_heading; ?> class="newsflash-title<?php echo $params->get('moduleclass_sfx'); ?>">
 			<?php if ($params->get('link_titles') && $item->link != '') : ?>
-				<div class="page-header"> <?php // Wright v.3: Added link onclick en all content ?>
+				<?php if ($wrightUsePageHeader) : // Wright v.3 Added page header ?>
+				<div class="page-header">
+				<?php endif;  // End Wright v.3 Added page header ?>
 					<a href="<?php echo $item->link;?>">
 						<?php if ($wrightNewsEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 						<?php echo $item->title;?>
 					</a>
-				</div>  <?php // Wright v.3: Added page-header style ?>
+				<?php if ($wrightUsePageHeader) : // Wright v.3 Added page header ?>
+				</div>
+				<?php endif;  // End Wright v.3 Added page header ?>
 			<?php else : ?>
-				<div class="page-header">  <?php // Wright v.3: Added page-header style ?>
+				<?php if ($wrightUsePageHeader) : // Wright v.3 Added page header ?>
+				<div class="page-header">
+				<?php endif;  // End Wright v.3 Added page header ?>
 					<?php if ($wrightNewsEnableIcons) : ?> <i class="icon-file"></i>  <?php endif; // Wright v.3: Added icon ?>
 					<?php echo $item->title; ?>
-				</div>  <?php // Wright v.3: Added page-header style ?>
+				<?php if ($wrightUsePageHeader) : // Wright v.3 Added page header ?>
+				</div>
+				<?php endif;  // End Wright v.3 Added page header ?>
 			<?php endif; ?>
 		</<?php echo $item_heading; ?>>
 
