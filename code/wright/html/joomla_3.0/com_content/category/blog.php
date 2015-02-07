@@ -247,11 +247,14 @@ JHtml::_('behavior.caption');
 				<?php 
 					
 					if ($this->columns == $this->specialItroItemsLayout['layoutitemscolums']) {
-							for ($i=0 ; $i <= count($this->layoutSpanorder); $i++ ) { 
-								if ($i == $rowcount) {
-									$wrightspan = $this->layoutSpanorder[$i - 1];
+						for ($i=0 ; $i <= count($this->layoutSpanorder); $i++ ) { 
+							if ($i == $rowcount) {
+								$wrightspan = $this->layoutSpanorder[$i - 1];
+								if ($i > 1) {
+									echo '<div class="items-divider"><div class="divider-vertical"></div></div>';
 								}
-							}		
+							}
+						}		
 					}			
 
 				?>

@@ -264,17 +264,20 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	?>
 
 	<?php /* Wright v.3: Special featured items grid */ if ($this->specialItroItemsLayout['activeLayout']): ?>
-	<?php 
-		
-		if ($this->columns == $this->specialItroItemsLayout['layoutitemscolums']) {
-				for ($i=0 ; $i <= count($this->layoutSpanorder); $i++ ) { 
-					if ($i == $rowcount) {
-						$wrightspan = $this->layoutSpanorder[$i - 1];
+		<?php 
+			
+			if ($this->columns == $this->specialItroItemsLayout['layoutitemscolums']) {
+					for ($i=0 ; $i <= count($this->layoutSpanorder); $i++ ) { 
+						if ($i == $rowcount) {
+							$wrightspan = $this->layoutSpanorder[$i - 1];
+							if ($i > 1) {
+								echo '<div class="items-divider"><div class="divider-vertical"></div></div>';
+							}
 					}
 				}		
-		}			
+			}			
 
-	?>
+		?>
 	<?php endif; /* End Wright v.3: Special featured items grid */ ?>
 
 	<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo " span$wrightspan"; // Wright v.3: Blog columns ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { echo ((isset($articleImages->image_intro) && !empty($articleImages->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.3: Item elements extra elements
