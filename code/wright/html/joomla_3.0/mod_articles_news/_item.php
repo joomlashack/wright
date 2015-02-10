@@ -14,7 +14,7 @@ $wrightEnableIntroText = (isset($wrightEnableIntroText) ? $wrightEnableIntroText
 
 $wrightTitlePosition = (isset($wrightTitlePosition) ? $wrightTitlePosition : 'above');  // Wright v.3: Title Position (above/below) parameter
 
-$wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : true);  // Wright v.3: Enable Link in content parameter
+$wrightImageFirst = (isset($wrightImageFirst) ? $wrightImageFirst : false);  // Wright v.3: Enable Link in content parameter
 
 $wrightUsePageHeader = (isset($wrightUsePageHeader) ? $wrightUsePageHeader : true);  // Wright v.3: Use a page header
 
