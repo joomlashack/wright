@@ -85,6 +85,13 @@ function addExtraNonContentContainersClose($wrightNonContentContainer, $wrightNo
 }
 /* End Wright v.3: Extra container and row */
 
+/* Wright v.3: Special featured items grid */
+
+	if (!isset($this->specialItroItemsLayout)) $this->specialItroItemsLayout = Array('activeLayout' => false, 'layoutitemscolums' => 0);
+	if (!isset($this->layoutSpanorder)) $this->layoutSpanorder = Array();
+
+/* End Wright v.3: Special featured items grid */
+
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 JHtml::_('behavior.caption');
@@ -233,7 +240,27 @@ JHtml::_('behavior.caption');
 				}
 				/* End Wright v.3: Parse and detect article images */
 			?>
-			<div class="span<?php echo round((12 / $this->columns));?>">
+
+			<?php $wrightspan = round((12 / $this->columns)); ?>
+
+			<?php /* Wright v.3: Special featured items grid */ if ($this->specialItroItemsLayout['activeLayout']): ?>
+				<?php 
+					
+					if ($this->columns == $this->specialItroItemsLayout['layoutitemscolums']) {
+						for ($i=0 ; $i <= count($this->layoutSpanorder); $i++ ) { 
+							if ($i == $rowcount) {
+								$wrightspan = $this->layoutSpanorder[$i - 1];
+								if ($i > 1) {
+									echo '<div class="items-divider"><div class="divider-vertical"></div></div>';
+								}
+							}
+						}		
+					}			
+
+				?>
+			<?php endif; /* End Wright v.3: Special featured items grid */ ?>
+
+			<div class="span<?php echo $wrightspan;?>">
 				<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.3: Item elements extra elements
 				 ?>">
 					<?php

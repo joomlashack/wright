@@ -39,4 +39,32 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 		if (!disableToolbarResize)
 			wToolbar();
 	});
+
+	// Hover change images
+	$('img.wrightHover').mouseenter(function() {
+		if ($(this).data('wrighthover') != '') {
+			$(this).attr('src', $(this).data('wrighthover'));
+		}
+	}).mouseleave(function() {
+		if ($(this).data('wrighthover') != '') {
+			$(this).attr('src', $(this).data('wrighthoverorig'));
+		}
+	});
+
+	// Hover change images
+	$('img.wrightHoverNewsflash').closest('div').parent().mouseenter(function() {
+		var img = $(this).find('img.wrightHoverNewsflash');
+		if (img) {
+			if (img.data('wrighthover') != '') {
+				img.attr('src', img.data('wrighthover'));
+			}
+		}
+	}).mouseleave(function() {
+		var img = $(this).find('img.wrightHoverNewsflash');
+		if (img) {
+			if (img.data('wrighthover') != '') {
+				img.attr('src', img.data('wrighthoverorig'));
+			}
+		}
+	});
 })(jQuery);
