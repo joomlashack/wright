@@ -1040,3 +1040,27 @@ iframe{
 		background-position: 0 -72px;
 	}
 }
+
+/* Newsflash */
+aside a.readmore{
+	margin-bottom: 10px;
+}
+
+[class*="newsflash"] {
+	p.readmore {
+		margin-bottom: 20px;
+	}
+}
+
+[class*="newsflash-vert"] {
+	list-style: none;
+	margin: 0;
+}
+
+.newsflash-item {
+	.clearfix();
+}
+
+* ~ [class*="newsflash-title"] {
+	clear: both;
+}
