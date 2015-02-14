@@ -22,6 +22,8 @@ $wrightDisplayAuthor = (isset($wrightDisplayAuthor) ? $wrightDisplayAuthor : fal
 
 $wrightDisplayPublishedDate = (isset($wrightDisplayPublishedDate) ? $wrightDisplayPublishedDate : false);  // Wright v.3: Display the published date
 
+$wrightItemContainer = (isset($wrightItemContainer) ? $wrightItemContainer : false); // Wright v.3: Item wrapper
+
 // no direct access
 defined('_JEXEC') or die;
 $item_heading = $params->get('item_heading', 'h4');
@@ -44,6 +46,11 @@ if ($images->image_intro != '')
 // End Wright v.3: Changing image intro on hover if file -hover exists
 
 ?>
+
+<?php if($wrightItemContainer):	// Wright v.3: Item wrapper ?>
+	<div class="item-container">
+<?php endif; ?>
+
 <?php
 	// Wright v.3: Added imge if show firts image is true
 	if($wrightImageFirst):
@@ -181,4 +188,7 @@ endif; ?>
 <?php if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
 	// Wright v.3:  Added p.readmore
 	echo '<p class="readmore"><a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a></p>';
-endif;
+endif; ?>
+<?php if($wrightItemContainer):	// Wright v.3: Item wrapper ?>
+	</div>
+<?php endif; ?>
