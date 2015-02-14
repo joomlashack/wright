@@ -30,6 +30,7 @@ $images = json_decode($item->images);
 $introFiles = explode(".", $images->image_intro);
 $hoverImage = '';
 
+
 if ($images->image_intro != '')
 {
 	$ext = pathinfo($images->image_intro, PATHINFO_EXTENSION);
@@ -43,6 +44,9 @@ if ($images->image_intro != '')
 // End Wright v.3: Changing image intro on hover if file -hover exists
 
 ?>
+
+<div class="item-container">
+
 <?php
 	// Wright v.3: Added imge if show firts image is true
 	if($wrightImageFirst):
@@ -189,4 +193,5 @@ endif; ?>
 <?php if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
 	// Wright v.3:  Added p.readmore
 	echo '<p class="readmore"><a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a></p>';
-endif;
+endif; ?>
+</div>
