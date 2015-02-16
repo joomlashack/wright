@@ -86,15 +86,10 @@ JHtml::_('behavior.framework');
 /* End Wright v.3: Item elements structure */
 ?>
 
-<?php if (!$params->get('show_title')) : ?>
+<?php if (!$params->get('show_intro')) : ?>
 	<?php echo $this->item->event->afterDisplayTitle; ?>
 <?php endif; ?>
-<?php echo $this->item->event->beforeDisplayContent; ?>
-<?php
-	if ($params->get('show_intro')) : // Wright v3. Added conditional to display intro text
-		echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper)
-	endif;
-?>
+<?php echo $this->item->event->beforeDisplayContent; ?> <?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper) ?>
 
 <?php if ($useDefList) : ?>
 	<?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below')); ?>

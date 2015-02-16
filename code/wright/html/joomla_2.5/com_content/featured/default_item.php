@@ -94,7 +94,7 @@ $canEdit	= $this->item->params->get('access-edit');
 	?>
 <?php endif; ?>
 
-<?php if (!$params->get('show_title')) : // Wright v.3: Used show_title instead of show_intro (right check) ?>
+<?php if (!$params->get('show_intro')) : ?>
 	<?php echo $this->item->event->afterDisplayTitle; ?>
 <?php endif; ?>
 
@@ -241,11 +241,7 @@ $canEdit	= $this->item->params->get('access-edit');
 /* End Wright v.3: Item elements structure */
 ?>
 
-<?php
-	if ($params->get('show_intro')) : // Wright v3. Added conditional to display intro text
-		echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper)
- 	endif; // Wright v3. Added conditional to display intro text
-?>
+<?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper) ?>
 
 <?php if ($params->get('show_readmore') && $this->item->readmore) :
 	if ($params->get('access-view')) :
