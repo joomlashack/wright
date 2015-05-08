@@ -61,9 +61,6 @@ a:hover {
 a:focus {
 	outline: none;
 }
-ol {
-	list-style: decimal;
-}
 li {
 	margin-left: 30px;
 }
