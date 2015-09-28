@@ -57,27 +57,12 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $spanWidth = getPositionAutospanWidth($attribs['name']);
     $robModules = JModuleHelper::getModules($attribs['name']);
 
-    $extradivs = explode(',',$attribs['extradivs']);
+	$extradivs = explode(',',$attribs['extradivs']);
     $extraclass = ($attribs['extraclass'] != '' ? ' ' . $attribs['extraclass'] : '');
 
-    $class = $params->get('moduleclass_sfx');
+	$class = $params->get('moduleclass_sfx');
     static $modulenumber = 1;
     $matches = Array();
-    if( $modulenumbera[$attribs['name']] == 1 ) {
-        $class .= ' first';
-        // for 5 modules with span2 first and last modules will have 3 columns width
-        if (count($robModules) == 5 && $spanWidth == 2) {
-        	$spanWidth = 3;
-        }
-    }
-    if ( $modulenumbera[$attribs['name']] == $document->countModules( $attribs['name'] ) ) {
-        $class .= ' last';
-        $modulenumbera[$attribs['name']] = 0;
-        // for 5 modules with span2 first and last modules will have 3 columns width
-        if (count($robModules) == 5 && $spanWidth == 2) {
-        	$spanWidth = 3;
-        }
-    }
     if (preg_match('/span([0-9]{1,2})/', $class, $matches)) {
         // user assigned span width in module parameters
         $params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
@@ -123,6 +108,21 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 
     $class .= ' mod_'.$modulenumbera[$attribs['name']];
     $modulenumber++;
+    if( $modulenumbera[$attribs['name']] == 1 ) {
+        $class .= ' first';
+        // for 5 modules with span2 first and last modules will have 3 columns width
+        if (count($robModules) == 5 && $spanWidth == 2) {
+        	$spanWidth = 3;
+        }
+    }
+    if ( $modulenumbera[$attribs['name']] == $document->countModules( $attribs['name'] ) ) {
+        $class .= ' last';
+        $modulenumbera[$attribs['name']] = 0;
+        // for 5 modules with span2 first and last modules will have 3 columns width
+        if (count($robModules) == 5 && $spanWidth == 2) {
+        	$spanWidth = 3;
+        }
+    }
     $modulenumbera[$attribs['name']]++;
     ?>
 <div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> span<?php echo $spanWidth . $extraclass ?>">
