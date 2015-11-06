@@ -2,7 +2,7 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
 <extension version="2.5" type="template" method="upgrade" client="site">
 	<name>js_wright</name>
-	<creationDate>February 2015</creationDate>
+	<creationDate>November 2015</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>http://www.joomlashack.com</authorUrl>
@@ -27,18 +27,17 @@
 		<filename>component.php</filename>
 		<filename>favicon.ico</filename>
 		<filename>functions.php</filename>
-		<filename>wrighttemplate.php</filename>
 		<filename>index.php</filename>
 		<filename>template.php</filename>
 		<filename>templateDetails.xml</filename>
 		<filename>template_thumbnail.png</filename>
-		<folder>less</folder>
+		<filename>wrighttemplate.php</filename>
 		<folder>css</folder>
 		<folder>html</folder>
 		<folder>images</folder>
 		<folder>js</folder>
-		<folder>wright</folder>
 		<folder>less</folder>
+		<folder>wright</folder>
 	</files>
 
 	<positions>
