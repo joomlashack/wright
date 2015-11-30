@@ -10,6 +10,7 @@
 
 defined('_JEXEC') or die;
 
+$wrightEnableIcons = (isset($wrightEnableIcons) ? $wrightEnableIcons : true);  // Wright v.3: Enable icons parameter
 $wrightMaxColumns = (isset($wrightMaxColumns) ? $wrightMaxColumns : 3);  // Wright v.3: Max columns to be used
 $wrightHorizontal = (isset($wrightHorizontal) ? $wrightHorizontal : false);  // Wright v.3: Horizontal view
 $wrightHorizontalLinkedDescriptions = (isset($wrightHorizontalLinkedDescriptions) ? $wrightHorizontalLinkedDescriptions : false);  // Wright v.3: Link categories on horizontal view
@@ -92,7 +93,7 @@ foreach ($list as $item) :
 	<li <?php if ($_SERVER['PHP_SELF'] == JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) echo ' class="active"';?>> <?php $levelup = $item->level - $startLevel - 1; ?>
   <h<?php echo $params->get('item_heading') + $levelup; ?>>
 		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>">
-		<i class="icon-folder-open"></i>  <?php // Wright v.3: Added icon ?>
+			<?php if ($wrightEnableIcons) : ?> <i class="icon-folder-open"></i>  <?php endif; // Wright v.3: Added icon ?>
 		<?php echo $item->title;?><?php if($params->get('numitems')): ?>
 			(<?php echo $item->numitems; ?>)
 		<?php endif; ?></a>
