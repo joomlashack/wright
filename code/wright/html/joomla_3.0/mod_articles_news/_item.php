@@ -44,8 +44,9 @@ if ($images->image_intro != '')
 	{
 		$hoverImage = '';
 	}
-
-	$hoverImage = JURI::root(true) . '/' . $hoverImage;
+	else {
+		$hoverImage = JURI::root(true) . '/' . $hoverImage;
+	}
 }
 // End Wright v.3: Changing image intro on hover if file -hover exists
 
