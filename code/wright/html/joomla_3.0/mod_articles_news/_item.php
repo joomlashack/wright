@@ -32,6 +32,8 @@ $item_heading = $params->get('item_heading', 'h4');
 $images = json_decode($item->images);
 $introFiles = explode(".", $images->image_intro);
 $hoverImage = '';
+$hoverImageOrg = JURI::root(true) . '/' . $images->image_intro;
+
 
 if ($images->image_intro != '')
 {
@@ -41,6 +43,9 @@ if ($images->image_intro != '')
 	if (!file_exists($hoverImage))
 	{
 		$hoverImage = '';
+	}
+	else {
+		$hoverImage = JURI::root(true) . '/' . $hoverImage;
 	}
 }
 // End Wright v.3: Changing image intro on hover if file -hover exists
@@ -59,7 +64,7 @@ if ($images->image_intro != '')
 ?>
 				<div class="img-intro-left">
 					<a href="<?php echo $item->link;?>">
-						<img src="<?php echo $images->image_intro; ?>" alt="<?php echo $images->image_intro_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $images->image_intro; ?>"<?php endif; ?> />
+						<img src="<?php echo $images->image_intro; ?>" alt="<?php echo $images->image_intro_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $hoverImageOrg; ?>"<?php endif; ?> />
 					</a>
 				</div>
 <?php
@@ -106,7 +111,7 @@ if ($images->image_intro != '')
 ?>
 				<div class="img-intro-left">
 					<a href="<?php echo $item->link;?>">
-						<img src="<?php echo $images->image_intro; ?>" alt="<?php echo $images->image_intro_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $images->image_intro; ?>"<?php endif; ?> />
+						<img src="<?php echo $images->image_intro; ?>" alt="<?php echo $images->image_intro_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $hoverImageOrg; ?>"<?php endif; ?> />
 					</a>
 				</div>
 <?php
