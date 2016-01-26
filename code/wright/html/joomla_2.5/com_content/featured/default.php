@@ -188,7 +188,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 			/* End Wright v.3: Row extra container */
 		?>
 
-	<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row ; ?><?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
+	<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row ; ?><?php echo " row-fluid"; // Wright v.3: Blog columns ?><?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
 		<?php endif; ?>
 
 		<?php
