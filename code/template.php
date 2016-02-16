@@ -26,7 +26,7 @@ defined('_JEXEC') or die('Restricted access');
 		if ($this->countModules('toolbar'))
 			:
 	?>
-	<!-- menu -->
+	<!-- toolbar -->
 	<w:nav containerClass="<?php echo $wrightContainerClass ?>" rowClass="<?php echo $wrightGridMode ?>" wrapClass="navbar-fixed-top navbar-inverse" type="toolbar" name="toolbar" />
 	<?php
 		endif;
