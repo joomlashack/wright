@@ -21,9 +21,11 @@ function getPositionAutospanWidth($position) {
     $maxColumns = 12;
     $availableColumns = $maxColumns;
     $autospanModules = count($robModules);
+
     if ($robModules) {
         foreach ( $robModules as $robModule ) {
             $modParams = new JRegistry($robModule->params);
+            $bootstrapSize = (int) $modParams->get('bootstrap_size', 0);
             // module width has been fixed?
 
             $matches = Array();
@@ -38,6 +40,11 @@ function getPositionAutospanWidth($position) {
     // calculate the span width ( columns / modules)
     if ($autospanModules <= 0 ) $autospanModules = 1;
     $spanWidth = $availableColumns / $autospanModules;
+
+    if ($bootstrapSize != 0) {
+        $spanWidth =  $bootstrapSize;
+    }
+
     return (int)$spanWidth;
 }
 
@@ -78,14 +85,6 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
         	$spanWidth = 3;
         }
     }
-    if (preg_match('/span([0-9]{1,2})/', $class, $matches)) {
-        // user assigned span width in module parameters
-        $params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
-        $class = $params->get('moduleclass_sfx');
-        $spanWidth = (int)$matches[1];
-        $module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
-    }
-
 
     $featured = false;
     $featuredLinkImg = (preg_match("/featured-link-img/", $class)) ? true : false ;
