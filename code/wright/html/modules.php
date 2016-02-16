@@ -25,7 +25,6 @@ function getPositionAutospanWidth($position) {
     if ($robModules) {
         foreach ( $robModules as $robModule ) {
             $modParams = new JRegistry($robModule->params);
-            $bootstrapSize = (int) $modParams->get('bootstrap_size', 0);
             // module width has been fixed?
 
             $matches = Array();
@@ -40,10 +39,6 @@ function getPositionAutospanWidth($position) {
     // calculate the span width ( columns / modules)
     if ($autospanModules <= 0 ) $autospanModules = 1;
     $spanWidth = $availableColumns / $autospanModules;
-
-    if ($bootstrapSize != 0) {
-        $spanWidth =  $bootstrapSize;
-    }
 
     return (int)$spanWidth;
 }
@@ -62,6 +57,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
         $modulenumbera[$attribs['name']] = 1;
 
     $spanWidth = getPositionAutospanWidth($attribs['name']);
+    $bootstrapSize = (int) $params->get('bootstrap_size', 0);
     $robModules = JModuleHelper::getModules($attribs['name']);
 
     $extradivs = explode(',',$attribs['extradivs']);
@@ -123,6 +119,10 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $class .= ' mod_'.$modulenumbera[$attribs['name']];
     $modulenumber++;
     $modulenumbera[$attribs['name']]++;
+
+    if ($bootstrapSize != 0) {
+        $spanWidth = $bootstrapSize;
+    }
     ?>
 <div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> span<?php echo $spanWidth . $extraclass ?>">
 <?php if (in_array('module',$extradivs)) : ?>
