@@ -25,14 +25,22 @@ function getPositionAutospanWidth($position) {
     if ($robModules) {
         foreach ( $robModules as $robModule ) {
             $modParams = new JRegistry($robModule->params);
+			$bootstrapSize = (int) $modParams->get('bootstrap_size', 0);
+
             // module width has been fixed?
 
             $matches = Array();
-            if (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)) {
-                $modColumns = (int)$matches[1];
-                $availableColumns -= $modColumns;
-                $autospanModules--;
+
+			if (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches) && $bootstrapSize != 0) {
+				$modColumns = $bootstrapSize;
+				$availableColumns -= $modColumns;
+				$autospanModules--;
             }
+			elseif (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)){
+				$modColumns = (int)$matches[1];
+				$availableColumns -= $modColumns;
+				$autospanModules--;
+			}
         }
     }
 
@@ -82,6 +90,22 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
         }
     }
 
+	if (preg_match('/span([0-9]{1,2})/', $class, $matches)) {
+		// user assigned span width in module parameters
+		$params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
+		$class = $params->get('moduleclass_sfx');
+		$spanWidth = (int)$matches[1];
+		$module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
+	}
+
+	if ($bootstrapSize != 0)
+	{
+		$params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
+		$class = $params->get('moduleclass_sfx');
+		$spanWidth = $bootstrapSize;
+		$module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
+	}
+
     $featured = false;
     $featuredLinkImg = (preg_match("/featured-link-img/", $class)) ? true : false ;
     $featuredImg = '';
@@ -120,9 +144,6 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $modulenumber++;
     $modulenumbera[$attribs['name']]++;
 
-    if ($bootstrapSize != 0) {
-        $spanWidth = $bootstrapSize;
-    }
     ?>
 <div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> span<?php echo $spanWidth . $extraclass ?>">
 <?php if (in_array('module',$extradivs)) : ?>
