@@ -81,11 +81,11 @@ class Wright
 	public $_browserCompatibility = null;
 
 	/**
-	 * Main Wright function called to create the index.php file read by Joomla
+	 * Main Wright_template function called to create the index.php file read by Joomla
 	 *
 	 * @return  void
 	 */
-	public function Wright()
+	public function Wright_template()
 	{
 		// Initialize properties
 		$document = JFactory::getDocument();
