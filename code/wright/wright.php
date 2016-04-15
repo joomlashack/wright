@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Main package
  *
- * @copyright   Copyright (C) 2005 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Joomlashack. Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -81,11 +81,11 @@ class Wright
 	public $_browserCompatibility = null;
 
 	/**
-	 * Main Wright function called to create the index.php file read by Joomla
+	 * Main Wright_template function called to create the index.php file read by Joomla
 	 *
 	 * @return  void
 	 */
-	public function Wright()
+	public function Wright_template()
 	{
 		// Initialize properties
 		$document = JFactory::getDocument();
