@@ -60,8 +60,6 @@ $blockPosition = $displayData['params']->get('info_block_position', 0);
 		<?php endif; ?>
 	</dl>
 
-
-
 	<?php
 
 		/* Wright v.3: Added tags */
