@@ -193,15 +193,10 @@ $info    = $this->item->params->get('info_block_position', 0);
 
 		<?php endif; ?>
 	</dl>
-	
-	<?php
-		/* Wright v.3: Added tags */
-	 if ($this->params->get('show_tags', 1)) : ?>
-		<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-		<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
-	<?php endif;
-		/* End Wright v.3: Added tags */
-	?>
+
+	<?php if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
+		<?php echo JLayoutHelper::render('joomla.content.tags', $this->item->tags->itemTags); ?>
+	<?php endif; ?>
 
 <?php endif; ?>
 
@@ -337,9 +332,8 @@ $info    = $this->item->params->get('info_block_position', 0);
 		<?php endif; ?>
 	</dl>
 
-	<?php if ($this->params->get('show_tags', 1)) : ?>
-		<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-		<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+	<?php if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
+		<?php echo JLayoutHelper::render('joomla.content.tags', $this->item->tags->itemTags); ?>
 	<?php endif; ?>
 
 <?php endif; ?>
