@@ -28,7 +28,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 	<div class="system-unpublished">
 <?php endif; ?>
 
-<?php 
+<?php
 /* Wright v.3: Item elements structure */
 	if (empty($this->item->wrightElementsStructure)) $this->item->wrightElementsStructure = Array("title","icons","article-info","image","legendtop","content","legendbottom");
 	if (!isset($this->item->wrightLegendTop)) $this->item->wrightLegendTop = '';
@@ -45,7 +45,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 	// moved useDefList to the top, to set it throught the switch
 	$useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
 	|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author') );
-	
+
 	foreach ($this->item->wrightElementsStructure as $wrightElement) :
 		switch ($wrightElement) :
 			case "title":
@@ -194,9 +194,14 @@ $info    = $this->item->params->get('info_block_position', 0);
 		<?php endif; ?>
 	</dl>
 
-	<?php if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
+	<?php
+		/* Wright v.3: Added tags */
+		if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
 		<?php echo JLayoutHelper::render('joomla.content.tags', $this->item->tags->itemTags); ?>
-	<?php endif; ?>
+	<?php
+		endif;
+		/* End Wright v.3: Added tags */
+	?>
 
 <?php endif; ?>
 
@@ -377,7 +382,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 
 <?php endif; ?>
 
-<?php 
+<?php
 /* Wright v.3: Item elements structure */
 				break;
 			case "legendtop":
@@ -404,7 +409,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 						)
 						. '>';
 				}
-				
+
 		endswitch;
 	endforeach;
 /* End Wright v.3: Item elements structure */
