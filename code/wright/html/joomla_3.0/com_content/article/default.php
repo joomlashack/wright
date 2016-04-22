@@ -237,12 +237,11 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 			<?php endif; ?>
 			</dl>
 		</div>
-	<?php endif; ?>
 
-	<?php if ($params->get('show_tags', 1) && !empty($this->item->tags)) : ?>
-		<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-
-		<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+		<?php if ($params->get('show_tags', 1) && !empty($this->item->tags)) : ?>
+			<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
+			<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php if (!$params->get('show_intro')) : echo $this->item->event->afterDisplayTitle; endif; ?>
@@ -389,6 +388,11 @@ article_info_bottom:
 			<?php endif; ?>
 			</dl>
 		</div>
+
+		<?php if ($params->get('show_tags', 1) && !empty($this->item->tags)) : ?>
+			<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
+			<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+		<?php endif; ?>
 	<?php endif; ?>
 
 <?php
