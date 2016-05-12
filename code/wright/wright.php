@@ -85,7 +85,7 @@ class Wright
 	 *
 	 * @return  void
 	 */
-	public function Wright()
+	public function __construct()
 	{
 		// Initialize properties
 		$document = JFactory::getDocument();
