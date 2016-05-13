@@ -65,7 +65,6 @@
 			<fieldset name="basic">
                 <!-- Start of default Wright params -->
 				<field name="wright" type="wright"/>
-				<field name="helper" type="help" label="TPL_JS_WRIGHT_FIELD_NEED_HELP_LABEL" description="TPL_JS_WRIGHT_FIELD_NEED_HELP_DESC"/>
 				<field name="rebrand" type="radio" class="btn-group btn-group-yesno" default="0" label="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_LABEL" description="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_DESC">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
