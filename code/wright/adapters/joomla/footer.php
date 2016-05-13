@@ -30,7 +30,7 @@ class WrightAdapterJoomlaFooter
 	{
 		$doc = Wright::getInstance();
 
-		if ($doc->document->params->get('rebrand', 'no') !== 'yes')
+		if ($doc->document->params->get('rebrand', '0') !== '1')
 		{
 			return '<a target="_blank" class="joomlashack" href="http://www.joomlashack.com"><img src="./templates/' . JFactory::getApplication()->getTemplate() . '/wright/images/jscright.png" alt ="Joomlashack" /> </a>';
 		}
