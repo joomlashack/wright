@@ -16,7 +16,7 @@ $this->wrightLeadingIntroItemsClass = ''; //  Class added to the leading and int
 $this->wrightLeadingItemsClass = '';  // Class added to the leading items container (all the leading articles)
 $this->wrightLeadingExtraClass = ''; // Class added to each leading article
 $this->wrightIntroItemsClass = '';  // Class added to the intro articles (adds an extra wrapper)
-$this->wrightIntroRowsClass = ''; // Class added to each row of intro articles
+$this->wrightIntroRowsClass = 'row-fluid'; // Class added to each row of intro articles
 $this->wrightIntroExtraClass = '';  // Class added to each intro article
 
 $this->wrightComplementOuterClass = ''; // Class added to the complements (links, subcategories and pagination) - adds an extra wrapper for all of them
