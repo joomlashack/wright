@@ -96,17 +96,16 @@
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-
 				<field name="bootstrapspacer" label="TPL_JS_WRIGHT_BOOTSTRAP_TITLE_LABEL" description="TPL_JS_WRIGHT_BOOTSTRAP_TITLE_DESC" type="spacer" />
 				<field name="bs_rowmode" type="list" default="row" label="TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_LABEL" description="TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_DESC">
 					<option value="row-fluid">TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_FLUID</option>
 					<option value="row">TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_DEFAULT</option>
 				</field>
-				<field name="responsive" type="list" default="1" label="TPL_JS_WRIGHT_FIELD_ENABLE_RESPONSIVE" description="TPL_JS_WRIGHT_FIELD_ENABLE_RESPONSIVE_DESC">
+				<field name="responsive" type="radio" class="btn-group btn-group-yesno" default="1" label="TPL_JS_WRIGHT_FIELD_ENABLE_RESPONSIVE" description="TPL_JS_WRIGHT_FIELD_ENABLE_RESPONSIVE_DESC">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
-				<field name="stickyFooter" type="list" default="1" label="TPL_JS_WRIGHT_FIELD_STICKY_FOOTER" description="TPL_JS_WRIGHT_FIELD_STICKY_FOOTER_DESC">
+				<field name="stickyFooter" type="radio" class="btn-group btn-group-yesno" default="1" label="TPL_JS_WRIGHT_FIELD_STICKY_FOOTER" description="TPL_JS_WRIGHT_FIELD_STICKY_FOOTER_DESC">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
