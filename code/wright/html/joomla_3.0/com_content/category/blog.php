@@ -33,7 +33,7 @@ defined('_JEXEC') or die;
 
 /* Wright v.3: Extra classes (general) */
 	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
-	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "";
+	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "row-fluid";
 	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
 
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
@@ -228,7 +228,7 @@ JHtml::_('behavior.caption');
 				/* End Wright v.3: Row extra container */
 			?>
 
-		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> clearfix<?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
+		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> <?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
 		<?php endif; ?>
 			<?php
 				/* Wright v.3: Parse and detect article images */
