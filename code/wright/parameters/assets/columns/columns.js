@@ -68,7 +68,6 @@ function swapColumns(col, dir) {
 	if (dir == 'right')
 	{
 		cols.each(function() {
-			console.log(this);
 			if (jQuery(this).attr('id') == selected)
 			{
 				swapindex = index + 1;
