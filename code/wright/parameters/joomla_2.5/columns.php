@@ -65,14 +65,16 @@ class JFormFieldColumns extends JFormField
 			$options[] = JHtml::_('select.option', $val, JText::_($text));
 		}
 
-		$html = '<div class="columns row-fluid" style="max-width:550px;">';
+		$html = '<p id="column_info">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_USING') . ' <span id="columns_used"></span> ' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_OF') . ' 12 <span id="columns_warning">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_WARNING') . '</span></p>';
+
+		$html .= '<div class="columns row-fluid">';
 
 		$html .= '<input type="hidden" name="' . $this->name . '" id="' . $this->name . '" value="' . $this->value . '" />';
 
 		foreach ($columns as $column)
 		{
-			$html .= '<div id="column_' . $column[0] . '" class="col span' . $column[1] . '" style="text-align:center;"><div style="padding:15px;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\'' . $column[0] . '\', \'left\')"><i class="icon-arrow-left"></i></a><a onclick="swapColumns(\'' . $column[0] . '\', \'right\')"><i class="icon-arrow-right"></i></a></span><span style="display: block; text-align:center;">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMN_' . strtoupper($column[0])) . '</span> ' .
-				JHtml::_('select.genericlist',  $options, 'ignore[' . $column[0] . ']', $class . ' onchange="changeColumns();"', 'value', 'text', $column[1], 'columns_' . $column[0]) . '</div></div>';
+			$html .= '<div id="column_' . $column[0] . '" class="col span' . $column[1] . '" style="text-align:center;"><span style="display: block; text-align:center;"><a onclick="swapColumns(\'' . $column[0] . '\', \'left\')"><i class="icon-arrow-left"></i></a><a onclick="swapColumns(\'' . $column[0] . '\', \'right\')"><i class="icon-arrow-right"></i></a></span><span style="display: block; text-align:center;">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMN_' . strtoupper($column[0])) . '</span> ' .
+				JHtml::_('select.genericlist',  $options, 'ignore[' . $column[0] . ']', $class . ' onchange="changeColumns();"', 'value', 'text', $column[1], 'columns_' . $column[0]) . '</div>';
 		}
 
 		$html .= '<div style="display: none; clear: both;"></div></div>';
