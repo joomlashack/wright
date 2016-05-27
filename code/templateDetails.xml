@@ -57,7 +57,8 @@
 		<position>grid-bottom</position>
 		<position>grid-bottom2</position>
 		<position>bottom-menu</position>
-		<position>footer</position>
+        <position>footer</position>
+        <position>debug</position>
 	</positions>
 
 	<config>
