@@ -19,7 +19,6 @@ function setColumnParam() {
 	});
 
 	document.getElementById('jform[params][columns]').value = widths.join(';');
-	console.log(widths.join(';'));
 }
 
 function checkColumns() {
