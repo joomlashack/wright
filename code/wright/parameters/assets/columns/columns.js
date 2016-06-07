@@ -15,10 +15,11 @@ function setColumnParam() {
 	var widthsString = '';
 
 	jQuery('div.col').each(function() {
-		widths.push(jQuery(this).attr('id').substring(7)+':'+jQuery(this).children('select').attr('value'));
+		widths.push(jQuery(this).attr('id').substring(7)+':'+jQuery(this).children('div').children('select').attr('value'));
 	});
 
 	document.getElementById('jform[params][columns]').value = widths.join(';');
+	console.log(widths.join(';'));
 }
 
 function checkColumns() {
