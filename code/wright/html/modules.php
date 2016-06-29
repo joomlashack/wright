@@ -162,7 +162,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 <?php endif; ?>
 <?php
    
-    $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2"$4>', $module->content);
+    $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2$3"$4>', $module->content);
     echo $module->content;
     if ($featured)
         echo '</div>';
@@ -241,11 +241,11 @@ function modChrome_xhtmlwright($module, &$params, &$attribs)
     $headerClass    = $params->get('header_class');
     $headerClass    = ($headerClass) ? ' class="' . htmlspecialchars($headerClass) . '"' : '';
 
-    $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2"$4>', $module->content);
+    $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2$3"$4>', $module->content);
     $content = trim($module->content);
 
     if (!empty ($content)) : ?>
-        <<?php echo $moduleTag; ?> class="module<?php echo htmlspecialchars($params->get('moduleclass_sfx')) . $moduleClass; ?>">
+        <<?php echo $moduleTag; ?> class="moduletable<?php echo htmlspecialchars($params->get('moduleclass_sfx')) . $moduleClass; ?>">
             <?php if ($module->showtitle != 0) : ?>
                 <<?php echo $headerTag . $headerClass . '>' . $module->title; ?></<?php echo $headerTag; ?>>
             <?php endif; ?>
