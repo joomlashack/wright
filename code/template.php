@@ -171,19 +171,19 @@ defined('_JEXEC') or die('Restricted access');
 					endif;
 				?>
 
-		   	 <div class="<?php echo $wrightContainerClass; ?> footer-content">
-		   		<?php
-					if ($this->countModules('footer'))
-					:
-				?>
+		   	<div class="<?php echo $wrightContainerClass; ?> footer-content">
+			   	<?php
+						if ($this->countModules('footer'))
+						:
+					?>
 					<w:module type="<?php echo $wrightGridMode; ?>" name="footer" chrome="wrightflexgrid" />
-			 	<?php
-					endif;
-				?>
+				 	<?php
+						endif;
+					?>
 					<w:footer />
 				</div>
 		   </footer>
 		</div>
-        <w:module type="none" name="debug" chrome="none" />
+    <w:module type="none" name="debug" chrome="none" />
 	</body>
 </html>
