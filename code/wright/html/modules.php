@@ -230,7 +230,7 @@ function modChrome_wrightfeatured($module, &$params, &$attribs) {
 <?php
 }
 
-function modChrome_xhtmlwright($module, &$params, &$attribs)
+function modChrome_wrightxhtml($module, &$params, &$attribs)
 {
     $moduleTag      = $params->get('module_tag', 'div');
     $headerTag      = htmlspecialchars($params->get('header_tag', 'h3'));
