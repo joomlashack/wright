@@ -11,7 +11,7 @@ class WrightAdapterJoomlaModule
 		// Set wrapper class value if not given
 		if (!isset($args['wrapper'])) $args['wrapper'] = 'module';
 		// Set style value if not given
-		if (!isset($args['chrome'])) $args['chrome'] = 'xhtml';
+		if (!isset($args['chrome'])) $args['chrome'] = 'wrightxhtml';
 		// Set extradivs value if not given
 		if (!isset($args['extradivs'])) $args['extradivs'] = '';
 		// Set extraclass value if not given
