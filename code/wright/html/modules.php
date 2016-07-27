@@ -244,13 +244,26 @@ function modChrome_wrightxhtml($module, &$params, &$attribs)
     $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2$3"$4>', $module->content);
     $content = trim($module->content);
 
-    if (!empty ($content)) : ?>
-        <<?php echo $moduleTag; ?> class="moduletable<?php echo htmlspecialchars($params->get('moduleclass_sfx')) . $moduleClass; ?>">
-            <?php if ($module->showtitle != 0) : ?>
-                <<?php echo $headerTag . $headerClass . '>' . $module->title; ?></<?php echo $headerTag; ?>>
-            <?php endif; ?>
+    $extradivs = explode(',',$attribs['extradivs']);
+    $extraclass = ($attribs['extraclass'] != '' ? ' ' . $attribs['extraclass'] : '');
 
-            <?php echo $content; ?>
+    if (!empty ($content)) { 
+    ?>
+        <<?php echo $moduleTag; ?> class="moduletable<?php echo htmlspecialchars($params->get('moduleclass_sfx')) . $moduleClass; ?>">
+              <?php if (in_array('module', $extradivs)) : ?>
+              <div class="module-inner">
+              <?php endif; ?>
+
+              <?php if ($module->showtitle != 0) : ?>
+                  <<?php echo $headerTag . $headerClass . '>' . $module->title; ?></<?php echo $headerTag; ?>>
+              <?php endif; ?>
+
+              <?php echo $content; ?>
+
+              <?php if (in_array('module', $extradivs)) : ?>
+              </div>
+              <?php endif; ?> 
         </<?php echo $moduleTag; ?>>
-    <?php endif;
+    <?php 
+    }  
 }
