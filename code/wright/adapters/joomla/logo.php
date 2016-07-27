@@ -130,7 +130,7 @@ class WrightAdapterJoomlaLogo
 
 		if (!isset($args['style']))
 		{
-			$args['style'] = 'xhtml';
+			$args['style'] = 'wrightxhtml';
 		}
 
 		if (!isset($args['addid']))
