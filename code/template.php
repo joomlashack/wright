@@ -125,7 +125,7 @@ defined('_JEXEC') or die('Restricted access');
 				</section>
 				<!-- sidebar2 -->
 				<aside id="sidebar2">
-					<w:module type="grid" name="sidebar2" />
+					<w:module name="sidebar2" />
 				</aside>
 			</div>
 			<?php
