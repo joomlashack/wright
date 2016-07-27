@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Modules
  *
- * @copyright   Copyright (C) 2005 - 2015 Joomlashack.  Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Joomlashack.  Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -21,23 +21,33 @@ function getPositionAutospanWidth($position) {
     $maxColumns = 12;
     $availableColumns = $maxColumns;
     $autospanModules = count($robModules);
+
     if ($robModules) {
         foreach ( $robModules as $robModule ) {
             $modParams = new JRegistry($robModule->params);
+			$bootstrapSize = (int) $modParams->get('bootstrap_size', 0);
+
             // module width has been fixed?
 
             $matches = Array();
-            if (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)) {
-                $modColumns = (int)$matches[1];
-                $availableColumns -= $modColumns;
-                $autospanModules--;
+
+			if (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches) && $bootstrapSize != 0) {
+				$modColumns = $bootstrapSize;
+				$availableColumns -= $modColumns;
+				$autospanModules--;
             }
+			elseif (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)){
+				$modColumns = (int)$matches[1];
+				$availableColumns -= $modColumns;
+				$autospanModules--;
+			}
         }
     }
 
     // calculate the span width ( columns / modules)
     if ($autospanModules <= 0 ) $autospanModules = 1;
     $spanWidth = $availableColumns / $autospanModules;
+
     return (int)$spanWidth;
 }
 
@@ -55,22 +65,46 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
         $modulenumbera[$attribs['name']] = 1;
 
     $spanWidth = getPositionAutospanWidth($attribs['name']);
+    $bootstrapSize = (int) $params->get('bootstrap_size', 0);
     $robModules = JModuleHelper::getModules($attribs['name']);
 
-	$extradivs = explode(',',$attribs['extradivs']);
+    $extradivs = explode(',',$attribs['extradivs']);
     $extraclass = ($attribs['extraclass'] != '' ? ' ' . $attribs['extraclass'] : '');
 
-	$class = $params->get('moduleclass_sfx');
+    $class = $params->get('moduleclass_sfx');
     static $modulenumber = 1;
     $matches = Array();
-    if (preg_match('/span([0-9]{1,2})/', $class, $matches)) {
-        // user assigned span width in module parameters
-        $params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
-        $class = $params->get('moduleclass_sfx');
-        $spanWidth = (int)$matches[1];
-        $module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
+    if( $modulenumbera[$attribs['name']] == 1 ) {
+        $class .= ' first';
+        // for 5 modules with span2 first and last modules will have 3 columns width
+        if (count($robModules) == 5 && $spanWidth == 2) {
+        	$spanWidth = 3;
+        }
+    }
+    if ( $modulenumbera[$attribs['name']] == $document->countModules( $attribs['name'] ) ) {
+        $class .= ' last';
+        $modulenumbera[$attribs['name']] = 0;
+        // for 5 modules with span2 first and last modules will have 3 columns width
+        if (count($robModules) == 5 && $spanWidth == 2) {
+        	$spanWidth = 3;
+        }
     }
 
+	if (preg_match('/span([0-9]{1,2})/', $class, $matches)) {
+		// user assigned span width in module parameters
+		$params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
+		$class = $params->get('moduleclass_sfx');
+		$spanWidth = (int)$matches[1];
+		$module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
+	}
+
+	if ($bootstrapSize != 0)
+	{
+		$params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
+		$class = $params->get('moduleclass_sfx');
+		$spanWidth = $bootstrapSize;
+		$module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
+	}
 
     $featured = false;
     $featuredLinkImg = (preg_match("/featured-link-img/", $class)) ? true : false ;
@@ -108,22 +142,8 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 
     $class .= ' mod_'.$modulenumbera[$attribs['name']];
     $modulenumber++;
-    if( $modulenumbera[$attribs['name']] == 1 ) {
-        $class .= ' first';
-        // for 5 modules with span2 first and last modules will have 3 columns width
-        if (count($robModules) == 5 && $spanWidth == 2) {
-        	$spanWidth = 3;
-        }
-    }
-    if ( $modulenumbera[$attribs['name']] == $document->countModules( $attribs['name'] ) ) {
-        $class .= ' last';
-        $modulenumbera[$attribs['name']] = 0;
-        // for 5 modules with span2 first and last modules will have 3 columns width
-        if (count($robModules) == 5 && $spanWidth == 2) {
-        	$spanWidth = 3;
-        }
-    }
     $modulenumbera[$attribs['name']]++;
+
     ?>
 <div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> span<?php echo $spanWidth . $extraclass ?>">
 <?php if (in_array('module',$extradivs)) : ?>
@@ -141,6 +161,8 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 	<?php if (in_array('title',$extradivs)) : ?>	</div> <?php endif; ?>
 <?php endif; ?>
 <?php
+   
+    $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2$3"$4>', $module->content);
     echo $module->content;
     if ($featured)
         echo '</div>';
@@ -206,4 +228,42 @@ function modChrome_wrightfeatured($module, &$params, &$attribs) {
 ?>
 </div>
 <?php
+}
+
+function modChrome_wrightxhtml($module, &$params, &$attribs)
+{
+    $moduleTag      = $params->get('module_tag', 'div');
+    $headerTag      = htmlspecialchars($params->get('header_tag', 'h3'));
+    $bootstrapSize  = (int) $params->get('bootstrap_size', 0);
+    $moduleClass    = $bootstrapSize != 0 ? ' span' . $bootstrapSize : '';
+
+    // Temporarily store header class in variable
+    $headerClass    = $params->get('header_class');
+    $headerClass    = ($headerClass) ? ' class="' . htmlspecialchars($headerClass) . '"' : '';
+
+    $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2$3"$4>', $module->content);
+    $content = trim($module->content);
+
+    $extradivs = explode(',',$attribs['extradivs']);
+    $extraclass = ($attribs['extraclass'] != '' ? ' ' . $attribs['extraclass'] : '');
+
+    if (!empty ($content)) { 
+    ?>
+        <<?php echo $moduleTag; ?> class="moduletable<?php echo htmlspecialchars($params->get('moduleclass_sfx')) . $moduleClass; ?>">
+              <?php if (in_array('module', $extradivs)) : ?>
+              <div class="module-inner">
+              <?php endif; ?>
+
+              <?php if ($module->showtitle != 0) : ?>
+                  <<?php echo $headerTag . $headerClass . '>' . $module->title; ?></<?php echo $headerTag; ?>>
+              <?php endif; ?>
+
+              <?php echo $content; ?>
+
+              <?php if (in_array('module', $extradivs)) : ?>
+              </div>
+              <?php endif; ?> 
+        </<?php echo $moduleTag; ?>>
+    <?php 
+    }  
 }

@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Includes
  *
- * @copyright   Copyright (C) 2005 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Joomlashack. Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -14,7 +14,7 @@ $browser = new Browser;
 $isMobile = $browser->isMobile();
 
 ?>
- 
+
 <!-- Modal -->
 <div id="wrightBCW" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="wrightBCWLabel" aria-hidden="true" data-controls-modal="wrightBCW" data-backdrop="static" data-keyboard="false">
 	<div class="modal-header">
@@ -68,7 +68,7 @@ $isMobile = $browser->isMobile();
 		</p>
 	</div>
 	<div class="modal-footer">
-		<p>	
+		<p>
 		    <?php
 				echo JText::_('TPL_JS_WRIGHT_BROWSER_WARNING_CONCLUSION')
 			?>

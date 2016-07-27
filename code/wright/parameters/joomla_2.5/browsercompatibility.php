@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Parameters
  *
- * @copyright   Copyright (C) 2005 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Joomlashack. Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -88,7 +88,7 @@ class JFormFieldBrowserCompatibility extends JFormField
 
 		$browserCompatibility = json_decode($this->value);
 
-		$html .= '<table class="wright-browser-table"><tr><th>' . JText::_('TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_BROWSER') . '</th><th>' . JText::_('TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_MINIMUM_VERSION') . '</th><th>' . JText::_('TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_DESKTOP') . '</th><th>' . JText::_('TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_RECOMMENDED') . '</th><th>' . JText::_('TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_MOBILE') . '</th></tr>';
+		$html .= '<table class="wright-browser-table table table-striped table-hover"><tr><th>' . JText::_('TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_BROWSER') . '</th><th>' . JText::_('TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_MINIMUM_VERSION') . '</th><th>' . JText::_('TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_DESKTOP') . '</th><th>' . JText::_('TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_RECOMMENDED') . '</th><th>' . JText::_('TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_MOBILE') . '</th></tr>';
 
 		foreach ($this->_browserCollection as $browserId => $browserName)
 		{

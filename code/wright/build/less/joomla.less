@@ -164,19 +164,23 @@ dl.label.label-info dt{
 }
 
 
-
 /* Menu - Bootstrap Dropdown Navbar - Addition for multi-level ***********************************************************************************/
 
 // Navbar position menu
 
-.navbar .nav{
-	li {
-		&:hover,
-		&:focus {
-			> .dropdown-menu {
-				display: block
+.navbar {
+	.nav{
+		li {
+			&:hover {
+				> .dropdown-menu {
+					display: block
+				}
 			}
 		}
+	}
+
+	.btn {
+		margin-bottom: (@navbarHeight - 30) / 2;
 	}
 }
 
@@ -332,7 +336,6 @@ a.hidden-text {
 		display: none;
 	}
 }
-
 
 .elements {
 	border-bottom: 1px solid @hrBorder - #111;
@@ -1070,3 +1073,14 @@ aside a.readmore{
 * ~ [class*="newsflash-title"] {
 	clear: both;
 }
+
+// Image No Responsive
+
+.img-no-responsive-wrapper {
+	overflow: hidden;
+}
+
+.img-no-responsive-wrapper img {
+	max-width: none;
+}
+

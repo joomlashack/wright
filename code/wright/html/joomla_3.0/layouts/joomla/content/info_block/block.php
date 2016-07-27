@@ -59,21 +59,3 @@ $blockPosition = $displayData['params']->get('info_block_position', 0);
 			<?php endif; ?>
 		<?php endif; ?>
 	</dl>
-
-
-
-	<?php
-
-		/* Wright v.3: Added tags */
-		if ($displayData['position'] == 'above' && ($blockPosition == 0 || $blockPosition == 2)
-						|| $displayData['position'] == 'below' && ($blockPosition == 1)
-						) :
-
-			 if ($displayData['params']->get('show_tags', 1)) : ?>
-				<?php $displayData['item']->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-				<?php echo $displayData['item']->tagLayout->render($displayData['item']->tags->itemTags); ?>
-			<?php endif;
-
-		endif;
-		/* End Wright v.3: Added tags */
-	?>

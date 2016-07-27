@@ -1,6 +1,6 @@
-# [Joomlashack Wright v.3.2.0](http://wright.joomlashack.com)
+# [Joomlashack Wright v.3.1.7.0](http://wright.joomlashack.com)
 
-Latest version: **v.3.2.0**
+Latest version: **v.3.1.7.0**
 
 The Wright Framework is used to create Joomla Templates.  The name is in honor of the famous architect, Frank Lloyd Wright, because the framework is like a blueprint.   It provides a solid foundation to build from, and helps to keep the entire template together while merging some unique features and tools.  This is the end result, which is a great tool integrated with the templates, providing many benefits.
 
@@ -11,9 +11,9 @@ The Wright Framework is used to create Joomla Templates.  The name is in honor o
 Wright helps building light, non-bloated, and simple to install Joomla Templates to make your life easier.  We call them "strictly Joomla" because in most cases the templates do no require any extra extensions to function, only the Joomla CMS and it's built-in features.  This is different from many other template frameworks because they require you to install extra plugins and/or components for the template to work.
 
 
-### Bootstrapped and Joomla 2.5/3.x ready
+### Bootstrapped and Joomla 3.x ready
 
-Since v.3, Wright is is based on [Twitter Bootstrap](http://twitter.github.com/bootstrap/) which means the template is responsive and ready for Joomla 2.5.x and Joomla 3.x.x.
+Since v.3, Wright is is based on [Twitter Bootstrap](http://twitter.github.com/bootstrap/) which means the template is responsive and ready for Joomla Joomla 3.x.x.
 
 
 ## Quick start
@@ -92,7 +92,7 @@ Wright v.2 is still supported in **v.2** and **develop-v.2** branches.  They are
 
 ## Copyright and license
 
-Copyright 2005 - 2015 Joomlashack
+Copyright 2005 - 2016 Joomlashack
 
 Licensed under the GNU/GPL v3 (the "License");
 This framework is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.  

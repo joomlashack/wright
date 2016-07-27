@@ -33,7 +33,7 @@ defined('_JEXEC') or die;
 
 /* Wright v.3: Extra classes (general) */
 	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
-	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "";
+	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "row-fluid";
 	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
 
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
@@ -228,7 +228,7 @@ JHtml::_('behavior.caption');
 				/* End Wright v.3: Row extra container */
 			?>
 
-		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> row-fluid clearfix<?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
+		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> <?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
 		<?php endif; ?>
 			<?php
 				/* Wright v.3: Parse and detect article images */
@@ -244,18 +244,18 @@ JHtml::_('behavior.caption');
 			<?php $wrightspan = round((12 / $this->columns)); ?>
 
 			<?php /* Wright v.3: Special featured items grid */ if ($this->specialItroItemsLayout['activeLayout']): ?>
-				<?php 
-					
+				<?php
+
 					if ($this->columns == $this->specialItroItemsLayout['layoutitemscolums']) {
-						for ($i=0 ; $i <= count($this->layoutSpanorder); $i++ ) { 
+						for ($i=0 ; $i <= count($this->layoutSpanorder); $i++ ) {
 							if ($i == $rowcount) {
 								$wrightspan = $this->layoutSpanorder[$i - 1];
 								if ($i > 1) {
 									echo '<div class="items-divider"><div class="divider-vertical"></div></div>';
 								}
 							}
-						}		
-					}			
+						}
+					}
 
 				?>
 			<?php endif; /* End Wright v.3: Special featured items grid */ ?>
@@ -330,10 +330,10 @@ JHtml::_('behavior.caption');
 
 	<?php if ($this->wrightComplementOuterClass != "") echo '<div class="' . $this->wrightComplementOuterClass . '">' // Wright v.3: Outer complements class  ?>
 
-			<?php if ($this->MoreItemsGridOrientation['activeLayout'] != '') { // Wright v.3: Bootstrap grid layout 
-		
+			<?php if ($this->MoreItemsGridOrientation['activeLayout'] != '') { // Wright v.3: Bootstrap grid layout
+
 				if ( (empty($this->children[$this->category->id]) && $this->maxLevel == 0) || empty($this->link_items)) {
-						
+
 					$this->MoreItemsGridOrientation['moreitemsLayout'] = 12;
 					$this->MoreItemsGridOrientation['subcategoriesLayout'] = 12;
 				}
@@ -368,7 +368,7 @@ JHtml::_('behavior.caption');
 				addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
 			<?php endif; ?>
-			
+
 			<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
 			<?php
 				// Wright v.3: Extra container and row
@@ -376,7 +376,7 @@ JHtml::_('behavior.caption');
 			?>
 			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : ?>
 				<?php echo '<div class="span' . $this->MoreItemsGridOrientation['subcategoriesLayout'] . '">' ?>
-			<?php endif; ?>	
+			<?php endif; ?>
 			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 			<div class="cat-children<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 			<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
@@ -393,10 +393,10 @@ JHtml::_('behavior.caption');
 			?>
 			<?php endif; ?>
 
-			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?> 
+			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
 				<?php echo '</div>' ?>
 			<?php endif; // Wright v.3: Bootstrap grid layout ?>
-			
+
 			<?php if (($this->params->def('show_pagination', 1) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->get('pages.total') > 1)) : ?>
 			<?php
 				// Wright v.3: Extra container and row

@@ -23,6 +23,38 @@ $wrightEnableIcons = (isset($wrightEnableIcons) ? $wrightEnableIcons : true);  /
 		<ul class="<?php echo $wrightTypeList; ?>">  <?php // Wright v.3: Added list-striped class ?>
 			<?php foreach ($group as $item) : ?>
 			    <li class="clearfix">  <?php // Wright v.3: Added clearfix class ?>
+
+					<?php
+					// Wright v.3: Include image
+					if ($wrightIncludeImages)
+					{
+						$images = json_decode($item->images);
+						$introFiles = explode(".", $images->image_intro);
+						$hoverImage = '';
+
+						if ($images->image_intro != '')
+						{
+							$ext = pathinfo($images->image_intro, PATHINFO_EXTENSION);
+							$hoverImage = substr($images->image_intro, 0, strlen($images->image_intro) - strlen($ext) - 1) . '-hover.' . $ext;
+
+							if (!file_exists($hoverImage))
+							{
+								$hoverImage = '';
+							}
+						}
+					?>
+
+					<div class="img-intro-left">
+						<a href="<?php echo $item->link;?>">
+							<img src="<?php echo $images->image_intro; ?>" alt="<?php echo $images->image_intro_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $images->image_intro; ?>"<?php endif; ?> />
+						</a>
+					</div>
+
+					<?php
+					}
+					// End Wright v.3: Include image
+					?>
+
 					<h<?php echo $item_heading+1; ?>>
 					   	<?php if ($params->get('link_titles') == 1) : ?>
 						<a class="mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">
@@ -98,6 +130,38 @@ $wrightEnableIcons = (isset($wrightEnableIcons) ? $wrightEnableIcons : true);  /
 <?php else : ?>
 	<?php foreach ($list as $item) : ?>
 	    <li class="clearfix">  <?php // Wright v.3: Added clearfix class ?>
+
+			<?php
+			// Wright v.3: Include image
+			if ($wrightIncludeImages)
+			{
+				$images = json_decode($item->images);
+				$introFiles = explode(".", $images->image_intro);
+				$hoverImage = '';
+
+				if ($images->image_intro != '')
+				{
+					$ext = pathinfo($images->image_intro, PATHINFO_EXTENSION);
+					$hoverImage = substr($images->image_intro, 0, strlen($images->image_intro) - strlen($ext) - 1) . '-hover.' . $ext;
+
+					if (!file_exists($hoverImage))
+					{
+						$hoverImage = '';
+					}
+				}
+			?>
+
+			<div class="img-intro-left">
+				<a href="<?php echo $item->link;?>">
+					<img src="<?php echo $images->image_intro; ?>" alt="<?php echo $images->image_intro_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $images->image_intro; ?>"<?php endif; ?> />
+				</a>
+			</div>
+
+			<?php
+			}
+			// End Wright v.3: Include image
+			?>
+
 	   	<h<?php echo $item_heading; ?>>
 	   	<?php if ($params->get('link_titles') == 1) : ?>
 		<a class="mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">

@@ -138,7 +138,7 @@ ol.inline {
 
 // Description Lists
 dl {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseLineHeight + 10;
 }
 dt,
 dd {
@@ -146,9 +146,11 @@ dd {
 }
 dt {
   font-weight: bold;
+  margin-bottom: (@baseLineHeight / 2) - 5;
 }
 dd {
   margin-left: @baseLineHeight / 2;
+  margin-bottom: @baseLineHeight - 2;
 }
 // Horizontal layout (like forms)
 .dl-horizontal {

@@ -11,7 +11,6 @@
 defined('_JEXEC') or die;
 
 ?>
-<div class="categories-list<?php echo $displayData->pageclass_sfx;?>">
 <?php if ($displayData->params->get('show_page_heading')) : ?>
 <div class="page-header">  <?php // Wright v.3: Added page header ?>
 	<h1>

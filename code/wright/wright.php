@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Main package
  *
- * @copyright   Copyright (C) 2005 - 2015 Joomlashack. Meritage Assets.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Joomlashack. Meritage Assets.  All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -85,7 +85,7 @@ class Wright
 	 *
 	 * @return  void
 	 */
-	public function Wright()
+	public function __construct()
 	{
 		// Initialize properties
 		$document = JFactory::getDocument();
