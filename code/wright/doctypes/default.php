@@ -209,6 +209,8 @@ abstract class HtmlAdapterAbstract
 			}
 		}
 
+		$app = JFactory::getApplication();
+		
 		// Prevents XSS vulnerability, making sure to get only integers
 		$itemId = (int)$app->input->getInt('Itemid');
 		if (!empty($itemId))
@@ -216,7 +218,6 @@ abstract class HtmlAdapterAbstract
 			$class .= ' id_' . $itemId;
 		}
 
-		$app = JFactory::getApplication();
 		$menu = $app->getMenu();
 
 		if ($menu->getActive() == $menu->getDefault())
