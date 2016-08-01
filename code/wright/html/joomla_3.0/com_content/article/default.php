@@ -150,7 +150,7 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 /* End Wright v.3: Item elements structure */
 ?>
 
-    <?php if ($params->get('show_tags', 1) && !empty($this->item->tags)) : ?>
+    <?php if ($params->get('show_tags', 1) && !empty($this->item->tags) && ($info == 0 || $info == 2)) : ?>
         <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
         <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
     <?php endif; ?>
@@ -304,7 +304,7 @@ article_info_bottom:
 		if ($params->get('access-view')):   // access-view
 /* End Wright v.3: Item elements structure */
 ?>
-    <?php if ($params->get('show_tags', 1) && !empty($this->item->tags)) : ?>
+    <?php if ($params->get('show_tags', 1) && !empty($this->item->tags) && ($info == 1 || $info == 2)) : ?>
         <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
         <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
     <?php endif; ?>
