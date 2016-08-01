@@ -151,6 +151,12 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 ?>
 
 	<?php if ($useDefList && ($info == 0 || $info == 2)) : ?>
+
+        <?php if ($params->get('show_tags', 1) && !empty($this->item->tags)) : ?>
+            <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
+            <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+        <?php endif; ?>
+
 		<div class="article-info muted">
 			<dl class="article-info">
 			<dt class="article-info-term"><?php echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?></dt>
@@ -238,10 +244,6 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 			</dl>
 		</div>
 
-		<?php if ($params->get('show_tags', 1) && !empty($this->item->tags)) : ?>
-			<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-			<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
-		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php if (!$params->get('show_intro')) : echo $this->item->event->afterDisplayTitle; endif; ?>
@@ -304,6 +306,12 @@ article_info_bottom:
 /* End Wright v.3: Item elements structure */
 ?>
 	<?php if ($useDefList && ($info == 1 || $info == 2)) : ?>
+
+        <?php if ($params->get('show_tags', 1) && !empty($this->item->tags)) : ?>
+            <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
+            <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+        <?php endif; ?>
+
 		<div class="article-info muted">
 			<dl class="article-info">
 			<dt class="article-info-term"><?php echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?></dt>
@@ -389,10 +397,6 @@ article_info_bottom:
 			</dl>
 		</div>
 
-		<?php if ($params->get('show_tags', 1) && !empty($this->item->tags)) : ?>
-			<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-			<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
-		<?php endif; ?>
 	<?php endif; ?>
 
 <?php
