@@ -22,7 +22,6 @@
   min-height: @navbarHeight;
   padding-left:  20px;
   padding-right: 20px;
-  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   border: 1px solid @navbarBorder;
   .border-radius(@baseBorderRadius);
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
@@ -30,6 +29,21 @@
   // Prevent floats from breaking the navbar
   .clearfix();
 }
+
+// Choose Add/Remove gradient
+.navbarInnerGradient() when (@navbarInnerGradient = true){
+  .navbar-inner {
+    #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+  }
+}
+
+.navbarInnerGradient() when (@navbarInnerGradient = false){
+  .navbar-inner {
+    background-color: @navbarBackground;
+  }
+}
+
+.navbarInnerGradient();
 
 // Set width to auto for default container
 // We then reset it for fixed navbars in the #gridSystem mixin
@@ -392,9 +406,22 @@
 .navbar-inverse {
 
   .navbar-inner {
-    #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
     border-color: @navbarInverseBorder;
   }
+
+  .navbarInverseInnerGradient() when (@navbarInverseInnerGradient = true){
+    .navbar-inner {
+      #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
+    }
+  }
+
+  .navbarInverseInnerGradient() when (@navbarInverseInnerGradient = false){
+    .navbar-inner {
+      background-color: @navbarInverseBackground;
+    }
+  }
+
+  .navbarInverseInnerGradient();
 
   .brand,
   .nav > li > a {
