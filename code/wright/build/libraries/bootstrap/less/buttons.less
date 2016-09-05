@@ -17,7 +17,6 @@
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
   border: 1px solid @btnBorder;
   *border: 0; // Remove the border to prevent IE7's black border on input:focus
   border-bottom-color: darken(@btnBorder, 10%);
@@ -28,7 +27,6 @@
   // Hover/focus state
   &:hover,
   &:focus {
-    color: @grayDark;
     text-decoration: none;
     background-position: 0 -15px;
 
@@ -58,7 +56,6 @@
     .opacity(65);
     .box-shadow(none);
   }
-
 }
 
 
@@ -142,30 +139,67 @@ input[type="button"] {
 
 // Set the backgrounds
 // -------------------------
-.btn-primary {
-  .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
-}
-// Warning appears are orange
-.btn-warning {
-  .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
-}
-// Danger and error appear as red
-.btn-danger {
-  .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
-}
-// Success appears as green
-.btn-success {
-  .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
-}
-// Info appears as a neutral blue
-.btn-info {
-  .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
-}
-// Inverse appears as dark gray
-.btn-inverse {
-  .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+.buttonGradient() when (@buttonGradient = true) {
+  .btn {
+    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+  }
+
+  .btn-primary {
+    .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+  }
+  // Warning appears are orange
+  .btn-warning {
+    .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
+  }
+  // Danger and error appear as red
+  .btn-danger {
+    .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+  }
+  // Success appears as green
+  .btn-success {
+    .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+  }
+  // Info appears as a neutral blue
+  .btn-info {
+    .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
+  }
+  // Inverse appears as dark gray
+  .btn-inverse {
+    .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+  }
 }
 
+.buttonGradient() when (@buttonGradient = false) {
+  .btn {
+    .buttonBackgroundNotGradient(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+  }
+
+  .btn-primary {
+    .buttonBackgroundNotGradient(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+  }
+  // Warning appears are orange
+  .btn-warning {
+    .buttonBackgroundNotGradient(@btnWarningBackground, @btnWarningBackgroundHighlight);
+  }
+  // Danger and error appear as red
+  .btn-danger {
+    .buttonBackgroundNotGradient(@btnDangerBackground, @btnDangerBackgroundHighlight);
+  }
+  // Success appears as green
+  .btn-success {
+    .buttonBackgroundNotGradient(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+  }
+  // Info appears as a neutral blue
+  .btn-info {
+    .buttonBackgroundNotGradient(@btnInfoBackground, @btnInfoBackgroundHighlight);
+  }
+  // Inverse appears as dark gray
+  .btn-inverse {
+    .buttonBackgroundNotGradient(@btnInverseBackground, @btnInverseBackgroundHighlight);
+  }
+}
+
+.buttonGradient();
 
 // Cross-browser Jank
 // --------------------------------------------------
