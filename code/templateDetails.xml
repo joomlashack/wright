@@ -2,13 +2,13 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
 <extension version="2.5" type="template" method="upgrade" client="site">
 	<name>js_wright</name>
-	<creationDate>July 2016</creationDate>
+	<creationDate>September 2016</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
-	<authorUrl>http://www.joomlashack.com</authorUrl>
-	<copyright>Copyright Joomlashack 2010 - 2016. All rights reserved</copyright>
+	<authorUrl>https://www.joomlashack.com</authorUrl>
+	<copyright>Copyright Joomlashack 2005 - 2016. All rights reserved</copyright>
 	<license>GNU GPLv2</license>
-	<version>3.1.7.0</version>
+	<version>3.1.9.0</version>
     <description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
 
 	<languages folder="language">
@@ -64,7 +64,7 @@
 	<config>
 		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_2.5">
 			<fieldset name="basic">
-                <!-- Start of default Wright params -->
+        <!-- Start of default Wright params -->
 				<field name="wright" type="wright"/>
 				<field name="rebrand" type="radio" class="btn-group btn-group-yesno" default="0" label="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_LABEL" description="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_DESC">
 				    <option value="1">JYES</option>
@@ -123,7 +123,7 @@
 					<option value="0">JNO</option>
 				</field>
 				<field name="browsercompatibility" label="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY" description="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_DESC" type="browsercompatibility" />
-                <!-- End of default Wright params -->
+        <!-- End of default Wright params -->
 			</fieldset>
 		</fields>
 	</config>

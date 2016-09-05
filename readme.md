@@ -1,6 +1,6 @@
-# [Joomlashack Wright v.3.1.8.0](http://wright.joomlashack.com)
+# [Joomlashack Wright v.3.1.9.0](http://wright.joomlashack.com)
 
-Latest version: **v.3.1.8.0**
+Latest version: **v.3.1.9.0**
 
 The Wright Framework is used to create Joomla Templates.  The name is in honor of the famous architect, Frank Lloyd Wright, because the framework is like a blueprint.   It provides a solid foundation to build from, and helps to keep the entire template together while merging some unique features and tools.  This is the end result, which is a great tool integrated with the templates, providing many benefits.
 
@@ -77,7 +77,7 @@ The templateDetails.xml file contains the basic configuration of a Joomla templa
 
 Since migrated to GIT, Wright has been using [Vincent Driessen’s GIT model](http://nvie.com/posts/a-successful-git-branching-model/). According to that, please submit all pull requests done to either **develop**, **feature** or **hotfix** branches.
 
-If you’re using a hotfix or feature branch, clearly specify the purpose of it.  The name of any feature version is free.  Hotfixes must all start with hotfix-*. 
+If you’re using a hotfix or feature branch, clearly specify the purpose of it.  The name of any feature version is free.  Hotfixes must all start with hotfix-*.
 
 
 ### Wright v.2
@@ -95,7 +95,7 @@ Wright v.2 is still supported in **v.2** and **develop-v.2** branches.  They are
 Copyright 2005 - 2016 Joomlashack
 
 Licensed under the GNU/GPL v3 (the "License");
-This framework is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.  
+This framework is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 http://www.gnu.org/licenses/gpl.html
 
