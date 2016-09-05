@@ -530,6 +530,23 @@
   }
 }
 
+// Button backgrounds without gradient
+// ------------------
+.buttonBackgroundNotGradient(@startColor, @endColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
+  background-color: @startColor;
+  *background-color: @startColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  color: @textColor;
+  text-shadow: @textShadow;
+  border-color: @endColor @endColor darken(@endColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+
+  // in these cases the gradient won't cover the background, so we override
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+    background-color: darken(@endColor, 10%);
+    color: @textColor;
+  }
+}
+
 // Navbar vertical align
 // -------------------------
 // Vertically center elements in the navbar.
@@ -681,7 +698,7 @@
     .spanX (0) {}
 
     .span(@columns) {
-      width: ((@gridColumnWidth) * @columns) + (@gridGutterWidth * (@columns - 1)) - 14 !important; 
+      width: ((@gridColumnWidth) * @columns) + (@gridGutterWidth * (@columns - 1)) - 14 !important;
     }
 
     input,
