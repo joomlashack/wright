@@ -42,16 +42,16 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 							{
 								$hoverImage = '';
 							}
-						}
 					?>
 
-					<div class="img-intro-left">
+					<div class="item-image">
 						<a href="<?php echo $item->link;?>">
 							<img src="<?php echo $images->image_intro; ?>" alt="<?php echo $images->image_intro_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $images->image_intro; ?>"<?php endif; ?> />
 						</a>
 					</div>
 
 					<?php
+						}
 					}
 					// End Wright v.3: Include image
 					?>
@@ -146,16 +146,16 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 					{
 						$hoverImage = '';
 					}
-				}
 			?>
 
-			<div class="img-intro-left">
+			<div class="item-image">
 				<a href="<?php echo $item->link;?>">
 					<img src="<?php echo $images->image_intro; ?>" alt="<?php echo $images->image_intro_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $images->image_intro; ?>"<?php endif; ?> />
 				</a>
 			</div>
 
 			<?php
+				}
 			}
 			// End Wright v.3: Include image
 			?>
