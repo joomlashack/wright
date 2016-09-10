@@ -20,6 +20,7 @@ defined('_JEXEC') or die;
 $params = $this->item->params;
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 $canEdit = $this->item->params->get('access-edit');
+$info    = $params->get('info_block_position', 0);
 JHtml::_('behavior.framework');
 ?>
 <?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())
@@ -27,7 +28,7 @@ JHtml::_('behavior.framework');
 	<div class="system-unpublished">
 <?php endif; ?>
 
-<?php 
+<?php
 /* Wright v.3: Item elements structure */
 	if (empty($this->item->wrightElementsStructure)) $this->item->wrightElementsStructure = Array("title","icons","article-info","image","legendtop","content","legendbottom");
 	$this->item->wrightBootstrapImages = $this->wrightBootstrapImages;
@@ -66,7 +67,7 @@ JHtml::_('behavior.framework');
 <?php // Todo Not that elegant would be nice to group the params ?>
 <?php // Wright v.3: Moved useDefList set to before the switch ?>
 
-<?php if ($useDefList) : ?>
+<?php if ($useDefList && ($info == 0 || $info == 2)) : ?>
 	<?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'above')); ?>
 <?php endif; ?>
 
@@ -91,7 +92,7 @@ JHtml::_('behavior.framework');
 <?php endif; ?>
 <?php echo $this->item->event->beforeDisplayContent; ?> <?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper) ?>
 
-<?php if ($useDefList) : ?>
+<?php if ($useDefList && ($info == 1 || $info == 2)) : ?>
 	<?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below')); ?>
 <?php  endif; ?>
 
@@ -128,7 +129,7 @@ JHtml::_('behavior.framework');
 
 <?php endif; ?>
 
-<?php 
+<?php
 /* Wright v.3: Item elements structure */
 				break;
 			case "legendtop":
@@ -146,7 +147,7 @@ JHtml::_('behavior.framework');
 				endif;
 				break;
 			default:
-				
+
 				if (preg_match("/^([\/]?)([a-z0-9-_]+?)([\#]?)([a-z0-9-_]*?)([\.]?)([a-z0-9-]*)$/iU", $wrightElement, $wrightDiv)) {
 					echo '<' . $wrightDiv[1] . $wrightDiv[2] .
 						($wrightDiv[1] != '' ? '' :
@@ -155,7 +156,7 @@ JHtml::_('behavior.framework');
 						)
 						. '>';
 				}
-				
+
 		endswitch;
 	endforeach;
 /* End Wright v.3: Item elements structure */
