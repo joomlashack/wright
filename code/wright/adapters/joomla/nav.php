@@ -14,8 +14,10 @@ class WrightAdapterJoomlaNav
 		// Set module name
 		if (!isset($args['wrapClass'])) $args['wrapClass'] = '';
 		if (!isset($args['wrapper'])) $args['wrapper'] = 'wrapper-' . $args['name'];
-		
+
 		if (!isset($args['type'])) $args['type'] = 'menu';
+
+		$doc = Wright::getInstance();
 
 		if ($args['type'] == 'toolbar') {
 			$nav =
@@ -36,7 +38,27 @@ class WrightAdapterJoomlaNav
 						</div>
 					</div>
 				</nav>
-			</div>';		
+			</div>';
+
+			if ($doc->document->params->get('mobile_menu_text', '') != "") {
+					$nav =
+				'<div class="'.$args['wrapper'].'">
+					<nav id="'.$args['name'].'">
+						<div class="navbar ' . $args['wrapClass'] . '">
+							<div class="navbar-inner">
+								<div class="' . $args['containerClass'] . '">
+						            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
+													' . $doc->document->params->get('mobile_menu_text') . '
+						            </a>
+						            <div class="nav-collapse" id="nav-'.$args['name'].'">
+										 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>';
+			}
 		}
 		else {
 			$nav =
@@ -57,7 +79,27 @@ class WrightAdapterJoomlaNav
 						</div>
 					</nav>
 				</div>
-			</div>';			
+			</div>';
+
+			if ($doc->document->params->get('mobile_menu_text', '') != "") {
+				$nav =
+				'<div class="'.$args['wrapper'].'">
+					<div class="' . $args['containerClass'] . '">
+						<nav id="'.$args['name'].'">
+							<div class="navbar ' . $args['wrapClass'] . '">
+								<div class="navbar-inner">
+						            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
+													' . $doc->document->params->get('mobile_menu_text') . '
+						            </a>
+						            <div class="nav-collapse" id="nav-'.$args['name'].'">
+										 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+									</div>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>';
+			}
 		}
 
 		return $nav;
