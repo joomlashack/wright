@@ -2,14 +2,14 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
 <extension version="2.5" type="template" method="upgrade" client="site">
 	<name>js_wright</name>
-	<creationDate>July 2016</creationDate>
+	<creationDate>January 2017</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
-	<authorUrl>http://www.joomlashack.com</authorUrl>
-	<copyright>Copyright Joomlashack 2010 - 2016. All rights reserved</copyright>
+	<authorUrl>https://www.joomlashack.com</authorUrl>
+	<copyright>Copyright Joomlashack 2005 - 2016. All rights reserved</copyright>
 	<license>GNU GPLv2</license>
-	<version>3.1.8.0</version>
-    <description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
+	<version>3.1.10.0</version>
+  <description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
 
 	<languages folder="language">
 		<!-- en-GB -->
@@ -64,7 +64,7 @@
 	<config>
 		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_2.5">
 			<fieldset name="basic">
-                <!-- Start of default Wright params -->
+        <!-- Start of default Wright params -->
 				<field name="wright" type="wright"/>
 				<field name="rebrand" type="radio" class="btn-group btn-group-yesno" default="0" label="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_LABEL" description="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_DESC">
 				    <option value="1">JYES</option>
@@ -116,14 +116,15 @@
 					<option value="img-circle">TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_CIRCLE</option>
 					<option value="img-polaroid">TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_POLAROID</option>
 				</field>
-
+				<field name="mobilemenuspacer" label="TPL_JS_WRIGHT_MOBILE_MENU_TITLE_label" description="TPL_JS_WRIGHT_MOBILE_MENU_TITLE_DESC" type="spacer" />
+			  <field name="mobile_menu_text" type="text" default="" label="TPL_JS_WRIGHT_MOBILE_MENU_TEXT" description="TPL_JS_WRIGHT_MOBILE_MENU_TEXT_DESC" />
 				<field name="browserspacer" label="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_TITLE" description="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_TITLE_DESC" type="spacer" />
 				<field name="browsercompatibilityswitch" type="radio" class="btn-group btn-group-yesno" default="0" label="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_SWITCH" description="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_SWITCH_DESC">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
 				<field name="browsercompatibility" label="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY" description="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_DESC" type="browsercompatibility" />
-                <!-- End of default Wright params -->
+        <!-- End of default Wright params -->
 			</fieldset>
 		</fields>
 	</config>

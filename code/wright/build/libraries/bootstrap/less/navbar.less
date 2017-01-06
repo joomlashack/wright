@@ -22,7 +22,6 @@
   min-height: @navbarHeight;
   padding-left:  20px;
   padding-right: 20px;
-  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   border: 1px solid @navbarBorder;
   .border-radius(@baseBorderRadius);
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
@@ -30,6 +29,21 @@
   // Prevent floats from breaking the navbar
   .clearfix();
 }
+
+// Choose Add/Remove gradient
+.navbarInnerGradient() when (@navbarInnerGradient = true){
+  .navbar-inner {
+    #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+  }
+}
+
+.navbarInnerGradient() when (@navbarInnerGradient = false){
+  .navbar-inner {
+    background-color: @navbarBackground;
+  }
+}
+
+.navbarInnerGradient();
 
 // Set width to auto for default container
 // We then reset it for fixed navbars in the #gridSystem mixin
@@ -278,7 +292,12 @@
   margin-left: 5px;
   margin-right: 5px;
   .buttonBackground(darken(@navbarBackgroundHighlight, 5%), darken(@navbarBackground, 5%));
+  color: @navbarLinkColor;
   .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)");
+
+  &:hover, &:focus, &:active {
+    color: @navbarLinkColorHover;
+  }
 }
 .navbar .btn-navbar .icon-bar {
   display: block;
@@ -392,9 +411,22 @@
 .navbar-inverse {
 
   .navbar-inner {
-    #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
     border-color: @navbarInverseBorder;
   }
+
+  .navbarInverseInnerGradient() when (@navbarInverseInnerGradient = true){
+    .navbar-inner {
+      #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
+    }
+  }
+
+  .navbarInverseInnerGradient() when (@navbarInverseInnerGradient = false){
+    .navbar-inner {
+      background-color: @navbarInverseBackground;
+    }
+  }
+
+  .navbarInverseInnerGradient();
 
   .brand,
   .nav > li > a {
@@ -492,6 +524,11 @@
   // Navbar collapse button
   .btn-navbar {
     .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
+    color: @navbarInverseLinkColor;
+
+    &:hover, &:focus, &:active {
+      color: @navbarInverseLinkColorHover;
+    }
   }
 
 }

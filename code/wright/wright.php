@@ -130,6 +130,9 @@ class Wright
 		$wrightGridMode = $this->params->get('bs_rowmode', 'row');
 		$wrightContainerClass = 'container';
 
+		// Mobile Menu Icon/Text
+		$wrightMobileMenuText = $this->params->get('mobile_menu_text', '');
+
 		if ($wrightGridMode == 'row-fluid')
 		{
 			$wrightContainerClass = 'container-fluid';

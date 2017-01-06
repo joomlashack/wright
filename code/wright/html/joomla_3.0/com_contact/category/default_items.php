@@ -20,7 +20,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 <?php else : ?>
 
 	<form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">  <?php // Wright v.3: Added form-inline class ?>
-	<?php if ($this->params->get('filter_field') != 'hide' || $this->params->get('show_pagination_limit')) :?>
+	<?php if ($this->params->get('filter_field') || $this->params->get('show_pagination_limit')) :?>
 	<fieldset class="filters btn-toolbar well well-small">  <?php // Wright v.3: Added well well-small classes ?>
 		<?php if ($this->params->get('filter_field') != 'hide') :?>
 			<div class="btn-group">
