@@ -164,7 +164,7 @@ abstract class HtmlAdapterAbstract
 		}
 
 		// If user has custom typography selected, we need to add the classes to trigger it
-		if ($this->params->get('body_font', 'default') !== 'default')
+		if ($this->params->get('body_font', 'jdefault') !== 'jdefault')
 		{
 			if ($this->params->get('body_font') == 'googlefonts')
 			{
@@ -188,7 +188,7 @@ abstract class HtmlAdapterAbstract
 		{
 		}
 
-		if ($this->params->get('header_font', 'default') !== 'default')
+		if ($this->params->get('header_font', 'jdefault') !== 'jdefault')
 		{
 			if ($this->params->get('header_font') == 'googlefonts')
 			{
