@@ -60,12 +60,26 @@ class JFormFieldTypography extends JFormFieldList
 							'Tahoma' => 'sans-serif',
 							'Times' => 'serif',
 							'Trebuchet MS' => 'sans-serif',
-							'Verdana' => 'sans-serif'
+							'Verdana' => 'sans-serif',
+                            'google:Roboto:400,400i,700' => 'sans-serif'
 				);
 
 		foreach ($stacks as $stack => $style)
 		{
-			$val	= strtolower(str_replace(' ', '', $stack));
+			// Check if is a google font
+            if (strstr($stack, 'google'))
+            {
+                $val    = $stack;
+
+                // Extract font name. For example: "Roboto" from "google:Roboto:400,400i,700"
+                $stack  = explode(':', $stack);
+                $stack  = $stack[1];
+            }
+            else
+            {
+                $val    = strtolower(str_replace(' ', '', $stack));
+            }
+
 			$text	= JText::_($stack) . ' - ' . JText::_($style);
 			$options[] = JHTML::_('select.option', $val, ucfirst($text));
 		}

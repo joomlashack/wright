@@ -84,6 +84,10 @@
 	font-family: Verdana,Geneva,Tahoma,sans-serif;
 }
 
+.roboto_font() {
+	font-family: 'Roboto', sans-serif;
+}
+
 // Apply fonts
 
 body {
@@ -463,6 +467,24 @@ body {
 		h5,
 		h6 {
 			.verdana_font();
+		}
+	}
+
+	// roboto
+
+	&.b_roboto {
+		.roboto_font();
+	}
+
+	&.h_roboto {
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			.roboto_font();
 		}
 	}
 }

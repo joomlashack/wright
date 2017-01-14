@@ -164,44 +164,40 @@ abstract class HtmlAdapterAbstract
 		}
 
 		// If user has custom typography selected, we need to add the classes to trigger it
-		if ($this->params->get('body_font', 'default') !== 'default')
+		if ($this->params->get('body_font', 'jdefault') !== 'jdefault')
 		{
-			if ($this->params->get('body_font') == 'googlefonts')
-			{
-				if (strpos($this->params->get('body_googlefont'), ','))
-				{
-					$gfont = substr($this->params->get('body_googlefont', 'Cuprum'), 0, strpos($this->params->get('body_googlefont', 'Cuprum'), ','));
-				}
-				else
-				{
-					$gfont = $this->params->get('body_googlefont', 'Cuprum');
-				}
+            if (strstr($this->params->get('body_font'), 'google'))
+            {
+                // Split the string using : as separator. For example: google:Roboto:400,400i,700
+                $b_font = explode(':', $this->params->get('body_font'));
 
-				$class .= ' b_' . strtolower(str_replace('+', '', $gfont));
-			}
-			else
-			{
-				$class .= ' b_' . $this->params->get('body_font', 'verdana');
-			}
+                // Load the google font files
+                $doc = JFactory::getDocument();
+                $doc->addStyleSheet('https://fonts.googleapis.com/css?family=' . (string)$b_font[1] . ':' . (string)$b_font[2]);
+
+                $class .= ' b_' . strtolower($b_font[1]);
+            }
+            else
+            {
+                $class .= ' b_' . $this->params->get('body_font', 'verdana');
+            }
 		}
 		else
 		{
 		}
 
-		if ($this->params->get('header_font', 'default') !== 'default')
+		if ($this->params->get('header_font', 'jdefault') !== 'jdefault')
 		{
-			if ($this->params->get('header_font') == 'googlefonts')
+			if (strstr($this->params->get('header_font'), 'google'))
 			{
-				if (strpos($this->params->get('header_googlefont'), ','))
-				{
-					$gfont = substr($this->params->get('header_googlefont', 'Cuprum'), 0, strpos($this->params->get('header_googlefont', 'Cuprum'), ','));
-				}
-				else
-				{
-					$gfont = $this->params->get('header_googlefont', 'Cuprum');
-				}
+                // Split the string using : as separator. For example: google:Roboto:400,400i,700
+                $h_font = explode(':', $this->params->get('header_font'));
 
-				$class .= ' h_' . strtolower(str_replace('+', '', $gfont));
+                // Load the google font files
+                $doc = JFactory::getDocument();
+                $doc->addStyleSheet('https://fonts.googleapis.com/css?family=' . (string)$h_font[1] . ':' . (string)$h_font[2]);
+
+				$class .= ' h_' . strtolower($h_font[1]);
 			}
 			else
 			{
