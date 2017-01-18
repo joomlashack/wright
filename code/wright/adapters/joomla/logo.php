@@ -178,11 +178,11 @@ class WrightAdapterJoomlaLogo
 		$logowidth = $doc->document->params->get('logowidth', '6');
 
 		$modules = 0;
-		$modulename = (isset($args['name']) ? $args['name'] : "");
-		$modulename2 = (isset($args['name']) ? $args['name'] . 2 : "");
+		$modulename = (isset($args['name']) ? $args['name'] : 'j-there-is-no-module-position');
+		$modulename2 = (isset($args['name']) ? $args['name'] . 2 : 'j-there-is-no-module-position');
 
-		$module2name = (isset($args['name2']) ? $args['name2'] : "");
-		$module2name2 = (isset($args['name2']) ? $args['name2'] . 2 : "");
+		$module2name = (isset($args['name2']) ? $args['name2'] : 'j-there-is-no-module-position');
+		$module2name2 = (isset($args['name2']) ? $args['name2'] . 2 : 'j-there-is-no-module-position');
 
 		if ($logowidth !== '12' && ($doc->countModules($modulename) || $doc->countModules($module2name)))
 		{
