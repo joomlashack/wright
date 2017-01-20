@@ -170,7 +170,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                         echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'above'));
                     endif;
 
-                    if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                    if ($params->get('access-view') && $info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
                         $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
                         echo $this->item->tagLayout->render($this->item->tags->itemTags);
                     endif;
@@ -184,7 +184,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                         echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
                     endif;
 
-                    if ($info == 1 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                    if ($params->get('access-view') && $info == 1 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
                         $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
                         echo $this->item->tagLayout->render($this->item->tags->itemTags);
                     endif;
@@ -194,7 +194,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 case "article-info-split":
 
                     // Info and Tags below (split)
-                    if ($info == 2 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                    if ($params->get('access-view') && $info == 2 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
                         $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
                         echo $this->item->tagLayout->render($this->item->tags->itemTags);
                         echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
