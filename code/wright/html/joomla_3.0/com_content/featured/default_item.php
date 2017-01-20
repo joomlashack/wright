@@ -37,18 +37,12 @@ if (empty($this->item->wrightElementsStructure))    $this->item->wrightElementsS
     "image",
     "legendtop",
     "content",
-    "legendbottom"
+    "legendbottom",
+    "article-info-below",
+    "article-info-split"
 );
 if (!isset($this->item->wrightLegendTop))           $this->item->wrightLegendTop            = '';
 if (!isset($this->item->wrightLegendBottom))        $this->item->wrightLegendBottom         = '';
-
-$infoAbove = ($info == 0 || $info == 2);
-$infoBelow = ($info == 1);
-
-$wrightBeforeIcon = '<span class="hidden-phone">';
-$wrightAfterIcon = '</span>';
-$wrightBeforeIconM = '<span class="visible-phone">';
-$wrightAfterIconM = '</span>';
 
 // moved useDefList to the top, to set it throught the switch
 $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
@@ -81,8 +75,14 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
                 <span class="label label-warning"><?php echo JText::_('JEXPIRED'); ?></span>
             <?php endif; ?>
 
+            <?php if (!$params->get('show_intro')) : ?>
+                <?php echo $this->item->event->afterDisplayTitle; ?>
+            <?php endif; ?>
+
             <?php
             break;
+
+        /* End title */
 
         case "icons":
         ?>
@@ -106,115 +106,59 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
             <?php
             break;
 
+        /* End icons */
+
         case "article-info":
-            if ($infoAbove) :
-            ?>
+        case "article-info-below":
+        case "article-info-split":
 
-                <?php // Todo Not that elegant would be nice to group the params ?>
-                <?php // Wright v.3: Moved useDefList set to before the switch ?>
+        switch($wrightElement) :
 
-                <?php if ($useDefList && ($info == 0 ||  $info == 2)) : ?>
-                    <dl class="article-info  muted">
-                        <dt class="article-info-term">
-                        <?php echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?>
-                        </dt>
+            default:
+            case "article-info":
 
-                        <?php if ($params->get('show_author') && !empty($this->item->author )) : ?>
-                            <dd class="createdby">
-                            <i class="icon-user"></i> <?php // Wright v.3: Author icon ?>
-                                <?php $author = $this->item->author; ?>
-                                <?php $author = ($this->item->created_by_alias ? $this->item->created_by_alias : $author); ?>
-                                <?php if (!empty($this->item->contact_link) && $params->get('link_author') == true) : ?>
-                                    <?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY', JHtml::_('link', $this->item->contact_link, $author)) . $wrightAfterIcon; ?>
-                                    <?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('link', $this->item->contact_link, $author)) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
-                                <?php else :?>
-                                    <?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_WRITTEN_BY', $author) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
-                                    <?php echo $wrightBeforeIconM . JText::sprintf($author) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
-                                <?php endif; ?>
-                            </dd>
-                        <?php endif; ?>
+                // Info and Tags above
+                if ($useDefList && ($info == 0 || $info == 2)) :
+                    echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'above'));
+                endif;
 
-                        <?php if ($params->get('show_parent_category') && !empty($this->item->parent_slug)) : ?>
-                            <dd class="parent-category-name">
-                                <i class="icon-circle-arrow-up"></i> <?php // Wright v.3: Icon ?>
-                                <?php $title = $this->escape($this->item->parent_title);
-                                $url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->parent_slug)).'">'.$title.'</a>';?>
-                                <?php if ($params->get('link_parent_category') && !empty($this->item->parent_slug)) : ?>
-                                    <?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_PARENT', $url) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
-                                    <?php echo $wrightBeforeIconM . JText::sprintf($url) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
-                                <?php else : ?>
-                                    <?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_PARENT', $title) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
-                                    <?php echo $wrightBeforeIconM . JText::sprintf($title) . $wrightAfterIconM; // Wright v.3: Icon for mobile  ?>
-                                <?php endif; ?>
-                            </dd>
-                        <?php endif; ?>
+                if ($params->get('access-view') && $info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                    $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
+                    echo $this->item->tagLayout->render($this->item->tags->itemTags);
+                endif;
 
-                        <?php if ($params->get('show_category')) : ?>
-                            <dd class="category-name">
-                                <i class="icon-folder-close"></i> <?php // Wright v.3: Category icon ?>
-                                <?php $title = $this->escape($this->item->category_title);
-                                $url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->catslug)).'">'.$title.'</a>';?>
-                                <?php if ($params->get('link_category') && $this->item->catslug) : ?>
-                                    <?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_CATEGORY', $url) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
-                                    <?php echo $wrightBeforeIconM . JText::sprintf($url) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
-                                <?php else : ?>
-                                    <?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_CATEGORY', $title) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
-                                    <?php echo $wrightBeforeIconM . JText::sprintf($title) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
-                                <?php endif; ?>
-                            </dd>
-                        <?php endif; ?>
+                break;
 
-                        <?php if ($params->get('show_publish_date')) : ?>
-                            <dd class="published">
-                                <span class="icon-calendar"></span>
-                                    <?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
-                                    <?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
-                            </dd>
-                        <?php endif; ?>
+            case "article-info-below":
 
-                        <?php if ($info == 0) : ?>
-                            <?php if ($params->get('show_modify_date')) : ?>
-                                <dd class="modified">
-                                <span class="icon-edit"></span> <?php // Wright v.3: Icon changed ?>
-                                    <?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
-                                    <?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
-                                </dd>
-                            <?php endif; ?>
+                // Info and Tags below
+                if ($useDefList && $info == 1) :
+                    echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
+                endif;
 
-                            <?php if ($params->get('show_create_date')) : ?>
-                                <dd class="create">
-                                    <span class="icon-pencil"></span> <?php // Wright v.3: Icon changed ?>
-                                    <?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
-                                    <?php echo $wrightBeforeIconM . JText::sprintf(JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
-                                </dd>
-                            <?php endif; ?>
+                if ($params->get('access-view') && $info == 1 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                    $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
+                    echo $this->item->tagLayout->render($this->item->tags->itemTags);
+                endif;
 
-                            <?php if ($params->get('show_hits')) : ?>
-                                <dd class="hits">
-                                    <span class="icon-eye-open"></span>
-                                    <?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
-                                    <?php echo $wrightBeforeIconM . JText::sprintf($this->item->hits) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
-                                </dd>
-                            <?php endif; ?>
+                break;
 
-                        <?php endif; ?>
-                    </dl>
+            case "article-info-split":
 
-                    <?php
-                        /* Wright v.3: Added tags */
-                        if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
-                        <?php echo JLayoutHelper::render('joomla.content.tags', $this->item->tags->itemTags); ?>
-                    <?php
-                        endif;
-                        /* End Wright v.3: Added tags */
-                    ?>
+                // Info and Tags below (split)
+                if ($params->get('access-view') && $info == 2 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                    $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
+                    echo $this->item->tagLayout->render($this->item->tags->itemTags);
+                    echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
+                endif;
 
-                <?php endif; ?>
+                break;
 
-            <?php
-            endif;
+        endswitch;
 
             break;
+
+        /* End article-info */
 
         case "image":
         ?>
@@ -255,96 +199,13 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
             <?php
             break;
 
+        /* End image */
+
         case "content":
         ?>
 
-            <?php if (!$params->get('show_intro')) : ?>
-                <?php echo $this->item->event->afterDisplayTitle; ?>
-            <?php endif; ?>
             <?php echo $this->item->event->beforeDisplayContent; ?>
             <?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper) ?>
-
-            <?php if ($infoBelow) : ?>
-
-                <?php if ($useDefList && ($info == 1 ||  $info == 2)) : ?>
-                    <dl class="article-info muted">
-                        <dt class="article-info-term">
-                            <?php echo JText::_('COM_CONTENT_ARTICLE_INFO'); ?>
-                        </dt>
-                        <?php if ($info == 1) : ?>
-                            <?php if ($params->get('show_author') && !empty($this->item->author )) : ?>
-                                <dd class="createdby">
-                                    <?php $author = $this->item->author; ?>
-                                    <?php $author = ($this->item->created_by_alias ? $this->item->created_by_alias : $author); ?>
-                                    <?php if (!empty($this->item->contactid ) && $params->get('link_author') == true) : ?>
-                                        <?php
-                                        echo JText::sprintf('COM_CONTENT_WRITTEN_BY',
-                                            JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid), $author)
-                                        ); ?>
-                                    <?php else : ?>
-                                        <?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
-                                    <?php endif; ?>
-                                </dd>
-                            <?php endif; ?>
-
-                            <?php if ($params->get('show_parent_category') && !empty($this->item->parent_slug)) : ?>
-                                <dd class="parent-category-name">
-                                    <?php	$title = $this->escape($this->item->parent_title);
-                                    $url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->parent_slug)).'">'.$title.'</a>';?>
-                                    <?php if ($params->get('link_parent_category') && $this->item->parent_slug) : ?>
-                                        <?php echo JText::sprintf('COM_CONTENT_PARENT', $url); ?>
-                                    <?php else : ?>
-                                        <?php echo JText::sprintf('COM_CONTENT_PARENT', $title); ?>
-                                    <?php endif; ?>
-                                </dd>
-                            <?php endif; ?>
-
-                            <?php if ($params->get('show_category')) : ?>
-                                <dd class="category-name">
-                                    <?php $title = $this->escape($this->item->category_title);
-                                    $url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->catslug)).'">'.$title.'</a>';?>
-                                    <?php if ($params->get('link_category') && $this->item->catslug) : ?>
-                                        <?php echo JText::sprintf('COM_CONTENT_CATEGORY', $url); ?>
-                                    <?php else : ?>
-                                        <?php echo JText::sprintf('COM_CONTENT_CATEGORY', $title); ?>
-                                    <?php endif; ?>
-                                </dd>
-                            <?php endif; ?>
-
-                            <?php if ($params->get('show_publish_date')) : ?>
-                                <dd class="published">
-                                    <span class="icon-calendar"></span> <?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC3'))); ?>
-                                </dd>
-                            <?php endif; ?>
-                        <?php endif; ?>
-
-                        <?php if ($params->get('show_create_date')) : ?>
-                            <dd class="create">
-                                <span class="icon-calendar"></span> <?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))); ?>
-                            </dd>
-                        <?php endif; ?>
-
-                        <?php if ($params->get('show_modify_date')) : ?>
-                            <dd class="modified">
-                                <span class="icon-calendar"></span>
-                                <?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))); ?>
-                            </dd>
-                        <?php endif; ?>
-
-                        <?php if ($params->get('show_hits')) : ?>
-                            <dd class="hits">
-                                <span class="icon-eye-open"></span> <?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?>
-                            </dd>
-                        <?php endif; ?>
-                    </dl>
-
-                    <?php if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
-                        <?php echo JLayoutHelper::render('joomla.content.tags', $this->item->tags->itemTags); ?>
-                    <?php endif; ?>
-
-                <?php endif; ?>
-
-            <?php endif; ?>
 
             <?php if ($params->get('show_readmore') && $this->item->readmore) :
                 if ($params->get('access-view')) :
@@ -382,6 +243,8 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
             <?php
             break;
 
+        /* End content */
+
         case "legendtop":
 
             if ($this->item->wrightLegendTop != '') :
@@ -392,6 +255,8 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
 
             break;
 
+        /* End legendtop */
+
         case "legendbottom":
 
             if ($this->item->wrightLegendBottom != '') :
@@ -401,6 +266,8 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
             endif;
 
             break;
+
+        /* End legendbottom */
 
         default:
 
@@ -415,6 +282,8 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
             }
 
             break;
+
+        /* End default */
 
     endswitch;
 endforeach;
