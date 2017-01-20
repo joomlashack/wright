@@ -147,9 +147,9 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
 
                 // Info and Tags below (split)
                 if ($params->get('access-view') && $info == 2 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                    echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
                     $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
                     echo $this->item->tagLayout->render($this->item->tags->itemTags);
-                    echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
                 endif;
 
                 break;
