@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.2.2
+// Wright v.3 Override: Joomla 3.6.5
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -11,45 +11,54 @@
 defined('_JEXEC') or die;
 
 /* Wright v.3: Helper */
-	include_once(dirname(__FILE__) . '/../com_content.helper.php');
-/* End Wright v.3: Helper */
+include_once(dirname(__FILE__) . '/../com_content.helper.php');
 
 /* Wright v.3: Item elements structure and extra elements */
-	if (!isset($this->wrightElementsStructure)) $this->wrightElementsStructure = Array();
-	if (!isset($this->wrightHasImageClass)) $this->wrightHasImageClass = "";
-	if (!isset($this->wrightExtraClass)) $this->wrightExtraClass = "";
-	if (!isset($this->wrightLegendTop)) $this->wrightLegendTop= "";
-	if (!isset($this->wrightLegendBottom)) $this->wrightLegendBottom= "";
-	
-	if (empty($this->wrightElementsStructure)) $this->wrightElementsStructure = Array("title","icons","article-info","image","legendtop","content","legendbottom");
-	
-	$wrightBeforeIcon = '<span class="hidden-phone">';
-	$wrightAfterIcon = '</span>';
-	$wrightBeforeIconM = '<span class="visible-phone">';
-	$wrightAfterIconM = '</span>';
+if (!isset($this->wrightElementsStructure)) $this->wrightElementsStructure  = Array();
+if (!isset($this->wrightHasImageClass))     $this->wrightHasImageClass      = "";
+if (!isset($this->wrightExtraClass))        $this->wrightExtraClass         = "";
+if (!isset($this->wrightLegendTop))         $this->wrightLegendTop          = "";
+if (!isset($this->wrightLegendBottom))      $this->wrightLegendBottom       = "";
 
-/* End Wright v.3: Item elements structure and extra elements */
+if (empty($this->wrightElementsStructure)) :
+    $this->wrightElementsStructure = Array(
+        "title",
+        "icons",
+        "article-info",
+        "image",
+        "legendtop",
+        "content",
+        "legendbottom"
+    );
+endif;
+
+$wrightBeforeIcon   = '<span class="hidden-phone">';
+$wrightAfterIcon    = '</span>';
+$wrightBeforeIconM  = '<span class="visible-phone">';
+$wrightAfterIconM   = '</span>';
 
 /* Wright v.3: Bootstrapped images */
-	$app = JFactory::getApplication();
-	$template = $app->getTemplate(true);
-	$this->wrightBootstrapImages = $template->params->get('wright_bootstrap_images','');
-/* End Wright v.3: Bootstrapped images */
+$app                            = JFactory::getApplication();
+$template                       = $app->getTemplate(true);
+$this->wrightBootstrapImages    = $template->params->get('wright_bootstrap_images','');
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
-// Create shortcuts to some parameters.
-$params  = $this->item->params;
-$images  = json_decode($this->item->images);
-$urls    = json_decode($this->item->urls);
-$canEdit = $params->get('access-edit');
-$user    = JFactory::getUser();
-$info    = $params->get('info_block_position', 0);
+// Caption support
 JHtml::_('behavior.caption');
+
+// Create shortcuts to some parameters.
+$params     = $this->item->params;
+$images     = json_decode($this->item->images);
+$urls       = json_decode($this->item->urls);
+$canEdit    = $params->get('access-edit');
+$user       = JFactory::getUser();
+$info       = $params->get('info_block_position', 0);
 $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
 	|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author'));
 
 ?>
+
 <div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.3: Item elements extra elements
  ?>">
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
