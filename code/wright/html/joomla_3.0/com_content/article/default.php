@@ -164,7 +164,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
                 case "article-info":
 
-                    // Info and Tags above
+                    // Info and Tags above (when Position of Article Info is set as "above", or "split")
                     if ($useDefList && ($info == 0 || $info == 2)) :
                         echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'above'));
                     endif;
@@ -178,7 +178,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
                 case "article-info-below":
 
-                    // Info and Tags below
+                    // Info and Tags below (when Position of Article Info is set as "below")
                     if ($useDefList && $info == 1) :
                         echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
                     endif;
@@ -192,7 +192,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
                 case "article-info-split":
 
-                    // Info and Tags below (split)
+                    // Info and Tags below (when Position of Article Info is set as "split")
                     if ($useDefList && $info == 2) :
                         echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
                     endif;
