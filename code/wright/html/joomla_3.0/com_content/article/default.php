@@ -162,7 +162,6 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
             switch($wrightElement) :
 
-                default:
                 case "article-info":
 
                     // Info and Tags above
@@ -194,8 +193,11 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 case "article-info-split":
 
                     // Info and Tags below (split)
-                    if ($params->get('access-view') && $info == 2 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                    if ($useDefList && $info == 2) :
                         echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
+                    endif;
+
+                    if ($params->get('access-view') && $info == 2 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
                         $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
                         echo $this->item->tagLayout->render($this->item->tags->itemTags);
                     endif;
