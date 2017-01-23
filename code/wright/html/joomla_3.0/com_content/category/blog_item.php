@@ -98,28 +98,32 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 
                     case "article-info-below":
 
-                        // Info and Tags below (when Position of Article Info is set as "below")
-                        if ($useDefList && $info == 1) :
-                            echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
-                        endif;
+                        // Info and Tags below (when Position of Article Info is set as "below", and there is no "Read more" button)
+                        if (!$this->item->readmore) :
+                            if ($useDefList && $info == 1) :
+                                echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
+                            endif;
 
-                        if ($params->get('access-view') && $info == 1 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
-                            $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
-                            echo $this->item->tagLayout->render($this->item->tags->itemTags);
+                            if ($params->get('access-view') && $info == 1 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                                $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
+                                echo $this->item->tagLayout->render($this->item->tags->itemTags);
+                            endif;
                         endif;
 
                         break;
 
                     case "article-info-split":
 
-                        // Info and Tags below (when Position of Article Info is set as "split")
-                        if ($useDefList && $info == 2) :
-                            echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
-                        endif;
+                        // Info and Tags below (when Position of Article Info is set as "split", and there is no "Read more" button)
+                        if (!$this->item->readmore) :
+                            if ($useDefList && $info == 2) :
+                                echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
+                            endif;
 
-                        if ($params->get('access-view') && $info == 2 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
-                            $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
-                            echo $this->item->tagLayout->render($this->item->tags->itemTags);
+                            if ($params->get('access-view') && $info == 2 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                                $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
+                                echo $this->item->tagLayout->render($this->item->tags->itemTags);
+                            endif;
                         endif;
 
                         break;
@@ -144,6 +148,17 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
                 <?php echo $this->item->event->beforeDisplayContent; ?> <?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper) ?>
 
                 <?php if ($params->get('show_readmore') && $this->item->readmore) :
+
+                    // Info and Tags below (when Position of Article Info is set as "below" or "split", and there is a "Read more" button)
+                    if ($useDefList && ($info == 1 || $info == 2)) :
+                        echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
+                    endif;
+
+                    if ($params->get('access-view') && ($info == 1 || $info == 2) && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) :
+                        $this->item->tagLayout = new JLayoutFile('joomla.content.tags');
+                        echo $this->item->tagLayout->render($this->item->tags->itemTags);
+                    endif;
+
                     if ($params->get('access-view')) :
                         $link = JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid));
                     else :
