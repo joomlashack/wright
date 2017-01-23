@@ -8,7 +8,7 @@
 	<authorUrl>https://www.joomlashack.com</authorUrl>
 	<copyright>Copyright Joomlashack 2005 - 2017. All rights reserved</copyright>
 	<license>GNU GPLv2</license>
-	<version>3.1.10.1</version>
+	<version>3.1.11</version>
     <description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
 
 	<languages folder="language">
@@ -62,7 +62,7 @@
 	</positions>
 
 	<config>
-		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_2.5">
+		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_3.0">
 			<fieldset name="basic">
         <!-- Start of default Wright params -->
 				<field name="wright" type="wright"/>
