@@ -2,13 +2,13 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
 <extension version="3.0" type="template" method="upgrade" client="site">
 	<name>js_wright</name>
-	<creationDate>January 2017</creationDate>
+	<creationDate>March 2017</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>https://www.joomlashack.com</authorUrl>
 	<copyright>Copyright Joomlashack 2005 - 2017. All rights reserved</copyright>
 	<license>GNU GPLv2</license>
-	<version>3.1.11</version>
+	<version>3.1.12</version>
     <description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
 
 	<languages folder="language">
