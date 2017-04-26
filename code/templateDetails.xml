@@ -128,4 +128,9 @@
 			</fieldset>
 		</fields>
 	</config>
+
+    <updateservers>
+        <server type="extension" priority="1" name="TPL_JS_WRIGHT"><![CDATA[https://wright.joomlashack.com/updates.xml]]></server>
+    </updateservers>
+
 </extension>
