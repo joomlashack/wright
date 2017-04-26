@@ -5,7 +5,7 @@
         <description>Joomlashack Wright Update</description>
         <element>js_wright</element>
         <type>template</type>
-        <client>site</client>
+        <client>0</client>
         <version>3.1.13</version>
         <infourl title="Joomlashack Wright Update">https://wright.joomlashack.com/</infourl>
         <downloads>
