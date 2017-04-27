@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updates>
+    <update>
+        <name>Joomlashack Wright</name>
+        <description>Joomlashack Wright Update</description>
+        <element>js_wright</element>
+        <type>template</type>
+        <client>site</client>
+        <version>3.2</version>
+        <infourl title="Joomlashack Wright Update">https://wright.joomlashack.com/</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/joomlashack/wright/releases/download/v3.2/js_wright-3.2.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <targetplatform name="joomla" version=".*"/>
+    </update>
+</updates>
