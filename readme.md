@@ -1,7 +1,3 @@
-# [Joomlashack Wright v.3.1.9.0](http://wright.joomlashack.com)
-
-Latest version: **v.3.1.9.0**
-
 The Wright Framework is used to create Joomla Templates.  The name is in honor of the famous architect, Frank Lloyd Wright, because the framework is like a blueprint.   It provides a solid foundation to build from, and helps to keep the entire template together while merging some unique features and tools.  This is the end result, which is a great tool integrated with the templates, providing many benefits.
 
 ## Wright General View
