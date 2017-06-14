@@ -6,10 +6,10 @@
         <element>js_wright</element>
         <type>template</type>
         <client>site</client>
-        <version>3.2.0</version>
+        <version>3.3.0</version>
         <infourl title="Joomlashack Wright Update">https://wright.joomlashack.com/</infourl>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/joomlashack/wright/releases/download/v3.2.0/js_wright-3.2.0.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/joomlashack/wright/releases/download/v3.3.0/js_wright-3.3.0.zip</downloadurl>
         </downloads>
         <tags>
             <tag>stable</tag>
