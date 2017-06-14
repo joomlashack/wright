@@ -61,10 +61,6 @@ html {
 			}
 		}
 
-		.pull-right {
-			float: left;
-		}
-
 		.form-horizontal {
 
 			.control-label {
@@ -76,27 +72,140 @@ html {
 			}
 		}
 
-		[class*="span"] {
-			float: left;
-			margin-right: 0;
-			margin-left: 30px;
-
-			@media (max-width: 1199px) {
-				margin-left: 20px;
-			}
-
-			@media (max-width: 767px) {
-				float: none;
-				margin-left: 0;
-			}
-		}
-
 		dd {
 
 			&.tabs {
 				margin-left: 0;
 				margin-right: 0;
 			}
+		}
+
+		.pull-left.item-image {
+			margin-right: 0 !important;
+			margin-left: 1em !important;
+		}
+
+		.pull-right.item-image {
+			margin-right: 1em !important;
+			margin-left: 0 !important;
+		}
+
+		.btn-group > .btn:first-child,
+		.radio.btn-group > label:first-of-type {
+			margin-left: 0;
+			-webkit-border-bottom-left-radius: @baseBorderRadius;
+			border-bottom-left-radius: @baseBorderRadius;
+			-webkit-border-top-left-radius: @baseBorderRadius;
+			border-top-left-radius: @baseBorderRadius;
+			-moz-border-radius-bottomleft: @baseBorderRadius;
+			-moz-border-radius-topleft: @baseBorderRadius;
+			-webkit-border-bottom-right-radius: @baseBorderRadius;
+			border-bottom-right-radius: @baseBorderRadius;
+			-webkit-border-top-right-radius: @baseBorderRadius;
+			border-top-right-radius: @baseBorderRadius;
+			-moz-border-radius-bottomright: @baseBorderRadius;
+			-moz-border-radius-topright: @baseBorderRadius;
+		}
+
+		.btn-group > .btn:last-child,
+		.btn-group > .dropdown-toggle {
+			-webkit-border-top-right-radius: 0px;
+			border-top-right-radius: 0px;
+			-webkit-border-bottom-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+			-moz-border-radius-topright: 0px;
+			-moz-border-radius-bottomright: 0px;
+			-webkit-border-top-left-radius: @baseBorderRadius;
+			border-top-left-radius: @baseBorderRadius;
+			-webkit-border-bottom-left-radius: @baseBorderRadius;
+			border-bottom-left-radius: @baseBorderRadius;
+			-moz-border-radius-topleft: @baseBorderRadius;
+			-moz-border-radius-bottomleft: @baseBorderRadius;
+		}
+
+		.btn-group > .btn.large:first-child {
+			-webkit-border-bottom-left-radius: 0px;
+			border-bottom-left-radius: 0px;
+			-webkit-border-top-left-radius: 0px;
+			border-top-left-radius: 0px;
+			-moz-border-radius-bottomleft: 0px;
+			-moz-border-radius-topleft: 0px;
+			margin-right: 0;
+			-webkit-border-bottom-right-radius: @borderRadiusLarge;
+			border-bottom-right-radius: @borderRadiusLarge;
+			-webkit-border-top-right-radius: @borderRadiusLarge;
+			border-top-right-radius: @borderRadiusLarge;
+			-moz-border-radius-bottomright: @borderRadiusLarge;
+			-moz-border-radius-topright: @borderRadiusLarge;
+		}
+
+		.btn-group > .btn.large:last-child,
+		.btn-group > .large.dropdown-toggle {
+			-webkit-border-top-right-radius: 0px;
+			border-top-right-radius: 0px;
+			-webkit-border-bottom-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+			-moz-border-radius-topright: 0px;
+			-moz-border-radius-bottomright: 0px;
+			-webkit-border-top-left-radius: @borderRadiusLarge;
+			border-top-left-radius: @borderRadiusLarge;
+			-webkit-border-bottom-left-radius: @borderRadiusLarge;
+			border-bottom-left-radius: @borderRadiusLarge;
+			-moz-border-radius-topleft: @borderRadiusLarge;
+			-moz-border-radius-bottomleft: @borderRadiusLarge;
+		}
+
+		.btn-group > .btn:first-child:last-child {
+			-webkit-border-top-left-radius: @baseBorderRadius;
+			border-top-left-radius: @baseBorderRadius;
+			-webkit-border-bottom-left-radius: @baseBorderRadius;
+			border-bottom-left-radius: @baseBorderRadius;
+			-moz-border-radius-topleft: @baseBorderRadius;
+			-moz-border-radius-bottomleft: @baseBorderRadius;
+			-webkit-border-bottom-right-radius: @baseBorderRadius;
+			border-bottom-right-radius: @baseBorderRadius;
+			-webkit-border-top-right-radius: @baseBorderRadius;
+			border-top-right-radius: @baseBorderRadius;
+			-moz-border-radius-bottomright: @baseBorderRadius;
+			-moz-border-radius-topright: @baseBorderRadius;
+		}
+
+		.input-prepend .add-on:first-child,
+		.input-prepend .btn:first-child {
+			.border-radius(0 @borderRadiusSmall @borderRadiusSmall 0);
+		}
+
+		.input-append input,
+		.input-append select,
+		.input-append .uneditable-input {
+			.border-radius(0 @borderRadiusSmall @borderRadiusSmall 0);
+		}
+
+		.input-append .add-on:last-child,
+		.input-append .btn:last-child {
+			.border-radius(@borderRadiusSmall 0 0 @borderRadiusSmall);
+		}
+
+		.input-prepend.input-append input,
+		.input-prepend.input-append select,
+		.input-prepend.input-append .uneditable-input {
+			.border-radius(0);
+		}
+
+		.input-prepend.input-append .add-on:first-child,
+		.input-prepend.input-append .btn:first-child {
+			.border-radius(0 @borderRadiusSmall @borderRadiusSmall 0);
+		}
+
+		.input-prepend.input-append .add-on:last-child,
+		.input-prepend.input-append .btn:last-child {
+			.border-radius(@borderRadiusSmall 0 0 @borderRadiusSmall);
+		}
+
+		.input-prepend input,
+		.input-prepend select,
+		.input-prepend .uneditable-input {
+			.border-radius(@borderRadiusSmall 0 0 @borderRadiusSmall);
 		}
 	}
 }

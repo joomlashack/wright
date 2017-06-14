@@ -421,11 +421,11 @@ class Wright
 				{
 					switch ($folder)
 					{
-						case 'wrighttemplatecss':
-							$sheet = $this->_urlWright . '/css/' . $style;
-							break;
+                        case 'wrighttemplatecss':
+                            $sheet = $this->_urlWright . '/css/' . $style;
+                            break;
 						default:
-							$sheet = JURI::root() . 'templates/' . $this->document->template . '/css/' . $style;
+							$sheet = $this->_urlTemplate . '/css/' . $style;
 					}
 
 					$this->document->addStyleSheet($sheet);
@@ -465,6 +465,7 @@ class Wright
 			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
 			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
 			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
+            unset($doc->_styleSheets[JURI::root(true) . '/media/jui/css/bootstrap-rtl.css']);
 		}
 
 		if ($this->document->params->get('documentationMode', '0') == '1')
@@ -492,8 +493,9 @@ class Wright
 				$styles['ie'][] = 'ie' . $major . '.css';
 		}
 
-		if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl.css'))
-			$styles['template'][] = 'rtl.css';
+		if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl.css')) {
+            $styles['template'][] = 'rtl.css';
+        }
 
 		// Check to see if custom.css file is present, and if so add it after all other css files
 		if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/custom.css'))
