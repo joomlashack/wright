@@ -26,10 +26,6 @@
     margin-right: -20px;
     margin-left: 0;
 }
-.navbar .nav,
-.navbar .nav > li {
-    float: left;
-}
 .navbar .nav.pull-right {
     margin-right: 10px;
     margin-left: 0px;
@@ -190,9 +186,6 @@ body {
 .btn-toolbar {
     margin-top: 14px;
     margin-bottom: 3px;
-}
-.navbar .nav > li {
-    float: right;
 }
 .navigation .nav li li .nav-child {
     left: auto;
