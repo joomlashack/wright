@@ -19,8 +19,15 @@ class Overrider
 	{
 		if (!isset(self::$version)) {
 			jimport('joomla.version');
-			$version = new JVersion();
-			self::$version = explode('.', $version->RELEASE);
+			if (defined('JVersion::RELEASE'))
+			{
+				self::$version = explode('.', JVersion::RELEASE);
+			}
+			else
+			{
+				$version = new JVersion();
+				self::$version = explode('.', $version->RELEASE);
+			}
 		}
 
 		return self::$version;
