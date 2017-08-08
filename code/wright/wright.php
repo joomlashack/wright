@@ -545,7 +545,7 @@ class Wright
 		// Get Joomla's version to get proper platform
 		jimport('joomla.version');
 		$version = new JVersion;
-		$file = ucfirst(str_replace('.', '', $version->RELEASE));
+		$file = ucfirst(str_replace('.', '', JVERSION));
 
 		// Load up the proper adapter
 		require_once dirname(__FILE__) . '/adapters/joomla.php';
