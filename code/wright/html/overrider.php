@@ -67,7 +67,13 @@ class Overrider
 				}
 				if (!$fileFound) {
 					if ($strictOverride) return false;
-					$file = JPATH_SITE.'/components/'.$folder.'/views/'.$view.'/tmpl/'.$layout.'.php';
+					// In Joomla 4 there's a optional restructure of the template override location
+					if (is_file(JPATH_SITE . '/components/' . $folder . '/views/' . $view . '/tmpl/' . $layout . '.php'))
+					{
+						$file = JPATH_SITE . '/components/' . $folder . '/views/' . $view . '/tmpl/' . $layout . '.php';
+					} else {
+						$file = JPATH_SITE . '/components/' . $folder . '/tmpl/' . $view . '/' . $layout . '.php';
+					}
 				}
 				break;
 
