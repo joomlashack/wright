@@ -2,7 +2,7 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
 <extension version="3.0" type="template" method="upgrade" client="site">
 	<name>js_wright</name>
-	<creationDate>August 8 2017</creationDate>
+	<creationDate>August 16 2017</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>https://www.joomlashack.com</authorUrl>
@@ -64,7 +64,7 @@
 	<config>
 		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_3.0">
 			<fieldset name="basic">
-        <!-- Start of default Wright params -->
+				<!-- Start of default Wright params -->
 				<field name="wright" type="wright"/>
 				<field name="rebrand" type="radio" class="btn-group btn-group-yesno" default="0" label="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_LABEL" description="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_DESC">
 				    <option value="1">JYES</option>
@@ -117,14 +117,8 @@
 					<option value="img-polaroid">TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_POLAROID</option>
 				</field>
 				<field name="mobilemenuspacer" label="TPL_JS_WRIGHT_MOBILE_MENU_TITLE_label" description="TPL_JS_WRIGHT_MOBILE_MENU_TITLE_DESC" type="spacer" />
-			  <field name="mobile_menu_text" type="text" default="" label="TPL_JS_WRIGHT_MOBILE_MENU_TEXT" description="TPL_JS_WRIGHT_MOBILE_MENU_TEXT_DESC" />
-				<field name="browserspacer" label="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_TITLE" description="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_TITLE_DESC" type="spacer" />
-				<field name="browsercompatibilityswitch" type="radio" class="btn-group btn-group-yesno" default="0" label="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_SWITCH" description="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_SWITCH_DESC">
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-				</field>
-				<field name="browsercompatibility" label="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY" description="TPL_JS_WRIGHT_BROWSER_COMPATIBILITY_DESC" type="browsercompatibility" />
-        <!-- End of default Wright params -->
+				<field name="mobile_menu_text" type="text" default="" label="TPL_JS_WRIGHT_MOBILE_MENU_TEXT" description="TPL_JS_WRIGHT_MOBILE_MENU_TEXT_DESC" />
+				<!-- End of default Wright params -->
 			</fieldset>
 		</fields>
 	</config>
