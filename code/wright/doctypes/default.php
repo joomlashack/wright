@@ -350,7 +350,7 @@ abstract class HtmlAdapterAbstract
 			$editmode = false;
 
 			// Check editing mode
-			if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form' || JRequest::getVar('layout') == 'edit')
+			if (JFactory::getApplication()->input->get('task') == 'edit' || JFactory::getApplication()->input->get('layout') == 'form' || JFactory::getApplication()->input->get('layout') == 'edit')
 			{
 				$editmode = true;
 			}
@@ -554,9 +554,9 @@ abstract class HtmlAdapterAbstract
 		$editmode = false;
 
 		// Check editing mode
-		if (JRequest::getVar('task') == 'edit'
-			|| JRequest::getVar('layout') == 'form'
-			|| JRequest::getVar('layout') == 'edit')
+		if (JFactory::getApplication()->input->get('task') == 'edit'
+			|| JFactory::getApplication()->input->get('layout') == 'form'
+			|| JFactory::getApplication()->input->get('layout') == 'edit')
 		{
 			$editmode = true;
 		}
@@ -627,7 +627,7 @@ abstract class HtmlAdapterAbstract
 		}
 
 		// Auto set to full width if editing
-		if (JRequest::getVar('task') == 'edit' || JRequest::getVar('layout') == 'form')
+		if (JFactory::getApplication()->input->get('task') == 'edit' || JFactory::getApplication()->input->get('layout') == 'form')
 		{
 			$layout = Array();
 			$layout[] = 'main';
