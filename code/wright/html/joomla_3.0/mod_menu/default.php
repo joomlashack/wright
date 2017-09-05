@@ -11,6 +11,8 @@
 // No direct access.
 defined('_JEXEC') or die;
 
+require_once(JPATH_THEMES.'/'.$app->getTemplate().'/wrighttemplate.php');
+
 // Note. It is important to remove spaces between elements.
 
 /* Wright v.3: Distinguish collapsible and non-collapsible menus.  If the position is an official menu position in the template, or if it has the suffixe "no-collapse", it won't do the collapse */

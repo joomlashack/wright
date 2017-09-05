@@ -64,7 +64,7 @@ class WrightLessCompiler
 	 * Get the actual less files that will get processed depending on the selected style
 	 *
 	 * @param   string   $style          Selected style being processed
-	 * @param   straing  $joomlaVersion  Joomla version in two digits (major, minor)
+	 * @param   string  $joomlaVersion  Joomla version in two digits (major, minor)
 	 * @param   bool     $responsive     Whether it's for the responsive or the main css file (responsive = false)
 	 *
 	 * @return  array
