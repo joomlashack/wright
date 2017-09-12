@@ -9,6 +9,14 @@ node {
         stage('Travertine') {
             build 'JoomlaShack-Templates/Travertine-Wright'
         }
+        
+        stage('Clementine') {
+            build 'JoomlaShack-Templates/Clementine-Wright'
+        }
+        
+        stage('Community') {
+            build 'JoomlaShack-Templates/Community-Wright'
+        }               
 
         slackSend channel: '#joomlashacktemplates', color: 'good', message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Finished"
     } catch (e) {
