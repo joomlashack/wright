@@ -53,6 +53,10 @@ node {
         stage('Mondrian') {
             build 'JoomlaShack-Templates/Mondrian-Wright'
         }
+        
+        stage('Optimus') {
+            build 'JoomlaShack-Templates/Optimus-Wright'
+        }
 
         slackSend channel: '#joomlashacktemplates', color: 'good', message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Finished"
     } catch (e) {
