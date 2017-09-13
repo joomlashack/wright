@@ -16,7 +16,15 @@ node {
         
         stage('Community') {
             build 'JoomlaShack-Templates/Community-Wright'
-        }               
+        }
+        
+        stage('Alasse') {
+            build 'JoomlaShack-Templates/Alasse-Wright'
+        }
+        
+        stage('Flow') {
+            build 'JoomlaShack-Templates/Flow-Wright'
+        }
 
         slackSend channel: '#joomlashacktemplates', color: 'good', message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Finished"
     } catch (e) {
