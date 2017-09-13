@@ -42,6 +42,17 @@ node {
             build 'JoomlaShack-Templates/Novitas-Wright'
         }
        
+        stage('ABC') {
+            build 'JoomlaShack-Templates/ABC-Wright'
+        }
+        
+        stage('Elan') {
+            build 'JoomlaShack-Templates/Elan-Wright'
+        }
+        
+        stage('Mondrian') {
+            build 'JoomlaShack-Templates/Mondrian-Wright'
+        }
 
         slackSend channel: '#joomlashacktemplates', color: 'good', message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Finished"
     } catch (e) {
