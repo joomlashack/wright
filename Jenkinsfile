@@ -57,6 +57,30 @@ node {
         stage('Optimus') {
             build 'JoomlaShack-Templates/Optimus-Wright'
         }
+        
+        stage('Breezy') {
+            build 'JoomlaShack-Templates/Breezy-Wright'
+        }
+        
+        stage('Impacto') {
+            build 'JoomlaShack-Templates/Impacto-Wright'
+        }
+        
+        stage('Keelny') {
+            build 'JoomlaShack-Templates/Keenly-Wright'
+        }
+        
+        stage('Onyx') {
+            build 'JoomlaShack-Templates/Onyx-Wright'
+        }
+        
+        stage('Techie') {
+            build 'JoomlaShack-Templates/Techie-Wright'
+        }
+        
+        stage('Vintage') {
+            build 'JoomlaShack-Templates/Vintage-Wright'
+        }
 
         slackSend channel: '#joomlashacktemplates', color: 'good', message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Finished"
     } catch (e) {
