@@ -25,6 +25,18 @@ node {
         stage('Flow') {
             build 'JoomlaShack-Templates/Flow-Wright'
         }
+        
+        stage('Wylia2') {
+            build 'JoomlaShack-Templates/Wylia2-Wright'
+        }
+        
+        stage('Unlimited') {
+            build 'JoomlaShack-Templates/Unlimited-Wright'
+        }
+        
+        stage('Tripod') {
+            build 'JoomlaShack-Templates/Tripod-Wright'
+        }
 
         slackSend channel: '#joomlashacktemplates', color: 'good', message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Finished"
     } catch (e) {
