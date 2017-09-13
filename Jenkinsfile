@@ -37,6 +37,11 @@ node {
         stage('Tripod') {
             build 'JoomlaShack-Templates/Tripod-Wright'
         }
+        
+        stage('Novitas') {
+            build 'JoomlaShack-Templates/Novitas-Wright'
+        }
+       
 
         slackSend channel: '#joomlashacktemplates', color: 'good', message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Finished"
     } catch (e) {
