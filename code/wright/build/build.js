@@ -67,6 +67,8 @@ function parseLessFiles() {
 	var df = filesToParse[parsedFiles][0];
 	var dfcss = filesToParse[parsedFiles][1];
 
+	console.log('Starting compiling ' + dfcss);
+
 	var data = fs.readFileSync(df,'utf8');
 
 	parser.parse(data, function (err, tree) {
@@ -78,6 +80,7 @@ function parseLessFiles() {
 				compress: true,
 				yuicompress: true
 			});
+			
 			console.log('Compiled file ' + dfcss);
 			fs.writeFileSync('../../css/' + dfcss, css);
 

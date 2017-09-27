@@ -1,3 +1,4 @@
+#!groovy​
 node {
     try {
         slackSend channel: '#joomlashacktemplates', message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Triggering update on a set of templates..."
