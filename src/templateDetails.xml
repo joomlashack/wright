@@ -38,6 +38,9 @@
 		<folder>js</folder>
 		<folder>less</folder>
 		<folder>wright</folder>
+		<folder>library</folder>
+		<folder>views</folder>
+		<folder>form</folder>
 	</files>
 
 	<positions>
@@ -119,12 +122,50 @@
 				<field name="mobilemenuspacer" label="TPL_JS_WRIGHT_MOBILE_MENU_TITLE_label" description="TPL_JS_WRIGHT_MOBILE_MENU_TITLE_DESC" type="spacer" />
 				<field name="mobile_menu_text" type="text" default="" label="TPL_JS_WRIGHT_MOBILE_MENU_TEXT" description="TPL_JS_WRIGHT_MOBILE_MENU_TEXT_DESC" />
 				<!-- End of default Wright params -->
+
+				<field
+                    type="customfooter"
+                    name="customfooter"
+                    media="tpl_js_wright" />
 			</fieldset>
 		</fields>
 	</config>
 
+	<media destination="tpl_js_wright" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+        <folder>images</folder>
+    </media>
+
+    <scriptfile>script.installer.php</scriptfile>
+
     <updateservers>
-        <server type="extension" priority="1" name="TPL_JS_WRIGHT"><![CDATA[https://wright.joomlashack.com/updates.xml]]></server>
+        <server type="extension" priority="1" name="Wright"><![CDATA[https://deploy.ostraining.com/client/update/free/stable/tpl_js_wright]]></server>
     </updateservers>
+
+    <variant>FREE</variant>
+
+    <alledia>
+        <element>tpl_js_wright</element>
+        <namespace>JS_Wright</namespace>
+        <name>JS Wright</name>
+        <license>free</license>
+        <targetplatform>3.*</targetplatform>
+
+        <relatedExtensions>
+            <extension
+                type="library"
+                element="allediaframework">AllediaFramework</extension>
+
+            <extension
+                type="plugin"
+                group="system"
+                element="ossystem"
+                publish="true"
+                ordering="first">OSSystem</extension>
+        </relatedExtensions>
+
+        <include>AllediaFreeDefaultFiles</include>
+    </alledia>
 
 </extension>
