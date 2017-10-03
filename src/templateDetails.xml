@@ -122,12 +122,13 @@
 				<field name="mobilemenuspacer" label="TPL_JS_WRIGHT_MOBILE_MENU_TITLE_label" description="TPL_JS_WRIGHT_MOBILE_MENU_TITLE_DESC" type="spacer" />
 				<field name="mobile_menu_text" type="text" default="" label="TPL_JS_WRIGHT_MOBILE_MENU_TEXT" description="TPL_JS_WRIGHT_MOBILE_MENU_TEXT_DESC" />
 				<!-- End of default Wright params -->
-
-				<field
+			</fieldset>
+			<fieldset name="footer" addfieldpath="/templates/js_wright/form/fields">     
+                <field
                     type="customfooter"
                     name="customfooter"
                     media="tpl_js_wright" />
-			</fieldset>
+            </fieldset>
 		</fields>
 	</config>
 
