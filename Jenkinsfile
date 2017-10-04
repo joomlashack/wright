@@ -74,17 +74,17 @@ node {
             build 'JoomlaShack-Templates/Tripod-Wright'
         }
         
-        stage('Unlimited') {
-            build 'JoomlaShack-Templates/Unlimited-Wright'
-        }
+        // stage('Unlimited') {
+        //     build 'JoomlaShack-Templates/Unlimited-Wright'
+        // }
 
         stage('Vintage') {
             build 'JoomlaShack-Templates/Vintage-Wright'
         }
 
-        stage('Wylia2') {
-            build 'JoomlaShack-Templates/Wylia2-Wright'
-        }
+        // stage('Wylia2') {
+        //     build 'JoomlaShack-Templates/Wylia2-Wright'
+        // }
         
         slackSend channel: slackChannel, color: 'good', message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Finished"
     } catch (e) {
