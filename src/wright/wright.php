@@ -247,28 +247,6 @@ class Wright
 			JHtml::_('behavior.modal');
 		}
 
-		// Load jQuery
-		if ($this->loadBootstrap && $loadJquery = $this->document->params->get('jquery', 0))
-		{
-			switch ($loadJquery)
-			{
-				// Load jQuery locally
-				case 1:
-					$jquery = $this->_urlJS . '/jquery.min.js';
-					break;
-
-				// Load jQuery from Google
-				default:
-					$jquery = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js';
-					break;
-			}
-
-			$this->document->addScript($jquery);
-
-			// Ensure that jQuery loads in noConflict mode to avoid mootools conflicts
-			$this->document->addScriptDeclaration('jQuery.noConflict();');
-		}
-
 		if ($this->loadBootstrap)
 		{
 			// Load bootstrap JS
