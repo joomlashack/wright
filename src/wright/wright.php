@@ -217,14 +217,6 @@ class Wright
 		// Parse by doctype
 		$this->doctype();
 
-		// Compiles less files if required - and if files were updated
-		if ($this->document->params->get('lesscompile', '0'))
-		{
-			require_once dirname(__FILE__) . '/build/build.php';
-			$build = new WrightLessCompiler;
-			$build->start();
-		}
-
 		print trim($this->template);
 
 		return true;
@@ -245,28 +237,6 @@ class Wright
 		if ($this->document->params->get('modal', '1') == '1')
 		{
 			JHtml::_('behavior.modal');
-		}
-
-		// Load jQuery
-		if ($this->loadBootstrap && $loadJquery = $this->document->params->get('jquery', 0))
-		{
-			switch ($loadJquery)
-			{
-				// Load jQuery locally
-				case 1:
-					$jquery = $this->_urlJS . '/jquery.min.js';
-					break;
-
-				// Load jQuery from Google
-				default:
-					$jquery = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js';
-					break;
-			}
-
-			$this->document->addScript($jquery);
-
-			// Ensure that jQuery loads in noConflict mode to avoid mootools conflicts
-			$this->document->addScriptDeclaration('jQuery.noConflict();');
 		}
 
 		if ($this->loadBootstrap)

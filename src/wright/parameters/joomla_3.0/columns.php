@@ -65,7 +65,7 @@ class JFormFieldColumns extends JFormField
 			$options[] = JHtml::_('select.option', $val, JText::_($text));
 		}
 
-		$html = '<p id="column_info">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_USING') . ' <span id="columns_used"></span> ' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_OF') . ' 12 <span id="columns_warning">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_WARNING') . '</span></p>';
+		$html = '<p id="column_info"><span id="columns_warning">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_WARNING') . '</span></p>';
 
 		$html .= '<div class="columns row-fluid" style="max-width:693px;">';
 
