@@ -217,14 +217,6 @@ class Wright
 		// Parse by doctype
 		$this->doctype();
 
-		// Compiles less files if required - and if files were updated
-		if ($this->document->params->get('lesscompile', '0'))
-		{
-			require_once dirname(__FILE__) . '/build/build.php';
-			$build = new WrightLessCompiler;
-			$build->start();
-		}
-
 		print trim($this->template);
 
 		return true;
