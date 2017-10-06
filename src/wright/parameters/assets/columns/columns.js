@@ -28,17 +28,13 @@ function checkColumns() {
 		widths += parseInt(jQuery(this).attr('value'));
 	});
 
-	jQuery('#columns_used').attr('text', widths);
-
 	if (widths !== 12)
 	{
-		jQuery('#column_info').css('color', 'red');
-		jQuery('#columns_warning').css('display', 'inline');
+		jQuery('#column_info').css('display', 'inline-block');
 	}
 	else
 	{
-		jQuery('#column_info').css('color', 'inherit');
-		jQuery('#columns_warning').css('display', 'none');
+        jQuery('#column_info').css('display', 'none');
 	}
 
 	jQuery('div.col').each(function(){
