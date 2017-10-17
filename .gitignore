@@ -32,6 +32,7 @@ sftp-config.json
 *~
  
 # Phing build script
+build.properties
 autobuild.properties
  
 # Packages #
@@ -52,3 +53,9 @@ codecept.phar
 !.gitignore
 !index.html
 !index.php
+
+
+packages/*
+!packages/.gitkeep
+
+build.properties
