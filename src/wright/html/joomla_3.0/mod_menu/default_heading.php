@@ -25,7 +25,7 @@ else
 
 $class = ($item->deeper) ? 'class="heading dropdown-toggle" ' : 'class="heading" ' ;
 
-?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.3: Added collapsible option ?>><?php echo $title; ?>
+?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.3: Added collapsible option ?><?php echo $title; ?>>
 	<?php echo $linktype; ?><?php
 	// Wright v.3: Closing pseudo-link for sub-menus
 	if ($menuType == 'vertical') {
