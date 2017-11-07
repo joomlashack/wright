@@ -41,6 +41,7 @@
 		<folder>library</folder>
 		<folder>views</folder>
 		<folder>form</folder>
+        <folder>overrides</folder>
 	</files>
 
 	<positions>
