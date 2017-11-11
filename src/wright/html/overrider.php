@@ -92,7 +92,7 @@ class Overrider
 				$subversion = $version[1];
 				while (!$fileFound && $subversion >= 0) {
 	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php')) {
-	                	$fileFound = true;
+						$fileFound = true;
 						$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php';
 	                }
 	                $subversion--;
