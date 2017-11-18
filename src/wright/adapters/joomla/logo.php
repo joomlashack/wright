@@ -63,16 +63,16 @@ class WrightAdapterJoomlaLogo
 			return '';
 		}
 
-        // Check if 'Mobile Menu text' is not empty
-        if ($doc->document->params->get('mobile_menu_text', '') != "") {
-            $mobile_label = $doc->document->params->get('mobile_menu_text');
-        }
-        else
-        {
-            $mobile_label = '<span class="icon-bar"></span>
-                             <span class="icon-bar"></span>
-                             <span class="icon-bar"></span>';
-        }
+		// Check if 'Mobile Menu text' is not empty
+		if ($doc->document->params->get('mobile_menu_text', '') != "") {
+			$mobile_label = $doc->document->params->get('mobile_menu_text');
+		}
+		else
+		{
+			$mobile_label = '<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>';
+		}
 
 		switch ($name)
 		{
