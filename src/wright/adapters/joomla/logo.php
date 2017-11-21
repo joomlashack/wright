@@ -63,6 +63,17 @@ class WrightAdapterJoomlaLogo
 			return '';
 		}
 
+		// Check if 'Mobile Menu text' is not empty
+		if ($doc->document->params->get('mobile_menu_text', '') != "") {
+			$mobile_label = $doc->document->params->get('mobile_menu_text');
+		}
+		else
+		{
+			$mobile_label = '<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>';
+		}
+
 		switch ($name)
 		{
 			case 'menu':
@@ -73,9 +84,7 @@ class WrightAdapterJoomlaLogo
 							<div class="navbar ' . $args['menuWrapClass'] . '">
 								<div class="navbar-inner">
 						            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-' . $name . '">
-							            <span class="icon-bar"></span>
-							            <span class="icon-bar"></span>
-							            <span class="icon-bar"></span>
+						                ' . $mobile_label . '
 						            </a>
 						            <div class="nav-collapse" id="nav-' . $name . '">
 										 <jdoc:include type="modules" name="' . $name . '" style="raw" />
@@ -91,9 +100,7 @@ class WrightAdapterJoomlaLogo
 				return '
 					<nav id="' . $name . ($alt ? '_alt' : '_primary') . '" class="clearfix">
 			            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-' . $name . '">
-				            <span class="icon-bar"></span>
-				            <span class="icon-bar"></span>
-				            <span class="icon-bar"></span>
+						    ' . $mobile_label . '
 			            </a>
 			            <div class="nav-collapse" id="nav-' . $name . '">
 							 <jdoc:include type="modules" name="' . $name . '" style="raw" />
