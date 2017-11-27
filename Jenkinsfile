@@ -78,10 +78,6 @@ node {
             build 'JoomlaShack-Templates/Unlimited-Wright'
         }
 
-        stage('Uyuni') {
-            build 'JoomlaShack-Templates/Uyuni-Wright'
-        }
-
         stage('Vintage') {
             build 'JoomlaShack-Templates/Vintage-Wright'
         }
