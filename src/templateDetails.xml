@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
+<extension version="3.0" type="template" method="upgrade" client="site">
+	<name>js_wright</name>
+<<<<<<< HEAD:code/templateDetails.xml
+	<creationDate>August 16 2017</creationDate>
+=======
+	<creationDate>March 30 2018</creationDate>
+>>>>>>> develop:src/templateDetails.xml
+	<author>Joomlashack</author>
+	<authorEmail>support@joomlashack.com</authorEmail>
+	<authorUrl>https://www.joomlashack.com</authorUrl>
+	<copyright>Copyright Joomlashack 2005 - 2018. All rights reserved</copyright>
+	<license>GNU GPLv2</license>
+<<<<<<< HEAD:code/templateDetails.xml
+	<version>4.0.0a</version>
+=======
+	<version>3.6.1a</version>
+>>>>>>> develop:src/templateDetails.xml
+	<description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
+
+	<languages folder="language">
+		<!-- en-GB -->
+		<language tag="en-GB">en-GB/en-GB.tpl_js_wright.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_js_wright.sys.ini</language>
+		<!-- es-ES -->
+		<language tag="es-ES">es-ES/es-ES.tpl_js_wright.ini</language>
+		<language tag="es-ES">es-ES/es-ES.tpl_js_wright.sys.ini</language>
+		<!-- de-DE -->
+		<language tag="de-DE">de-DE/de-DE.tpl_js_wright.ini</language>
+		<language tag="de-DE">de-DE/de-DE.tpl_js_wright.sys.ini</language>
+	</languages>
+
+	<files>
+		<filename>component.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>functions.php</filename>
+		<filename>index.php</filename>
+		<filename>template.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>wrighttemplate.php</filename>
+		<folder>css</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>less</folder>
+		<folder>wright</folder>
+		<folder>library</folder>
+		<folder>views</folder>
+		<folder>form</folder>
+        <folder>overrides</folder>
+	</files>
+
+	<positions>
+		<position>toolbar</position>
+		<position>logo</position>
+		<position>top</position>
+		<position>top2</position>
+		<position>menu</position>
+		<position>featured</position>
+		<position>grid-top</position>
+		<position>grid-top2</position>
+		<position>above-content</position>
+		<position>breadcrumbs</position>
+		<position>sidebar1</position>
+		<position>sidebar2</position>
+		<position>below-content</position>
+		<position>grid-bottom</position>
+		<position>grid-bottom2</position>
+		<position>bottom-menu</position>
+		<position>footer</position>
+		<position>debug</position>
+	</positions>
+
+	<config>
+		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_3.0">
+			<fieldset name="basic">
+				<!-- Start of default Wright params -->
+				<field name="wright" type="wright"/>
+				<field name="rebrand" type="radio" class="btn-group btn-group-yesno" default="0" label="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_LABEL" description="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_DESC">
+				    <option value="1">JYES</option>
+				    <option value="0">JNO</option>
+ 				</field>
+				<field name="style" type="styles" default="generic" label="TPL_JS_WRIGHT_FIELD_STYLE_LABEL" description="TPL_JS_WRIGHT_FIELD_STYLE_DESC" />
+				<field name="modal" type="radio" class="btn-group btn-group-yesno" default="1" label="TPL_JS_WRIGHT_FIELD_ENABLE_MODAL_LABEL" description="TPL_JS_WRIGHT_FIELD_ENABLE_MODAL_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="javascriptBottom" type="radio" class="btn-group btn-group-yesno" default="1" label="TPL_JS_WRIGHT_FIELD_JAVASCRIPT_BOTTOM" description="TPL_JS_WRIGHT_FIELD_JAVASCRIPT_BOTTOM_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="logo" type="logo" default="template" label="TPL_JS_WRIGHT_FIELD_LOGO_IMAGE_LABEL" description="TPL_JS_WRIGHT_FIELD_LOGO_IMAGE_DESC" />
+				<field name="logowidth" type="grid" default="4" label="TPL_JS_WRIGHT_FIELD_LOGO_WIDTH_LABEL" description="TPL_JS_WRIGHT_FIELD_LOGO_WIDTH_DESC" />
+				<field name="body_font" type="typography" default="default" label="TPL_JS_WRIGHT_FIELD_BODY_FONT_LABEL" description="TPL_JS_WRIGHT_FIELD_BODY_FONT_DESC" />
+				<field name="header_font" type="typography" default="default" label="TPL_JS_WRIGHT_FIELD_HEADING_FONT_LABEL" description="TPL_JS_WRIGHT_FIELD_HEADING_FONT_DESC" />
+				<field name="columns" type="columns" default="sidebar1:3;main:6;sidebar2:3" sidebars="2" label="TPL_JS_WRIGHT_FIELD_COLUMNS_LABEL" description="TPL_JS_WRIGHT_FIELD_COLUMNS_DESC" />
+				<field name="documentationMode" type="radio" class="btn-group btn-group-yesno" default="0" label="TPL_JS_WRIGHT_DOCUMENTATION_MODE" description="TPL_JS_WRIGHT_DOCUMENTATION_MODE_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="bootstrapspacer" label="TPL_JS_WRIGHT_BOOTSTRAP_TITLE_LABEL" description="TPL_JS_WRIGHT_BOOTSTRAP_TITLE_DESC" type="spacer" />
+				<field name="bs_rowmode" type="radio" class="btn-group btn-group-yesno" default="row" label="TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_LABEL" description="TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_DESC">
+					<option value="row-fluid">TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_FLUID</option>
+					<option value="row">TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_DEFAULT</option>
+				</field>
+				<field name="responsive" type="radio" class="btn-group btn-group-yesno" default="1" label="TPL_JS_WRIGHT_FIELD_ENABLE_RESPONSIVE" description="TPL_JS_WRIGHT_FIELD_ENABLE_RESPONSIVE_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="stickyFooter" type="radio" class="btn-group btn-group-yesno" default="1" label="TPL_JS_WRIGHT_FIELD_STICKY_FOOTER" description="TPL_JS_WRIGHT_FIELD_STICKY_FOOTER_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="wright_bootstrap_images" type="radio" class="btn-group btn-group-yesno" default="" label="TPL_JS_WRIGHT_BOOTSTRAP_IMAGES" description="TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_DESC">
+					<option value="">TPL_JS_WRIGHT_NONE</option>
+					<option value="img-rounded">TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_ROUNDED</option>
+					<option value="img-circle">TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_CIRCLE</option>
+					<option value="img-polaroid">TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_POLAROID</option>
+				</field>
+				<field name="mobilemenuspacer" label="TPL_JS_WRIGHT_MOBILE_MENU_TITLE_label" description="TPL_JS_WRIGHT_MOBILE_MENU_TITLE_DESC" type="spacer" />
+				<field name="mobile_menu_text" type="text" default="" label="TPL_JS_WRIGHT_MOBILE_MENU_TEXT" description="TPL_JS_WRIGHT_MOBILE_MENU_TEXT_DESC" />
+				<!-- End of default Wright params -->
+			</fieldset>
+			<fieldset name="footer" addfieldpath="/templates/js_wright/form/fields">     
+                <field
+                    type="customfooter"
+                    name="customfooter"
+                    media="tpl_js_wright" />
+            </fieldset>
+		</fields>
+	</config>
+
+	<media destination="tpl_js_wright" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+        <folder>images</folder>
+    </media>
+
+    <scriptfile>script.installer.php</scriptfile>
+
+    <updateservers>
+        <server type="extension" priority="1" name="Wright"><![CDATA[https://deploy.ostraining.com/client/update/free/stable/tpl_js_wright]]></server>
+    </updateservers>
+
+    <variant>FREE</variant>
+
+    <alledia>
+        <element>tpl_js_wright</element>
+        <namespace>JS_Wright</namespace>
+        <name>JS Wright</name>
+        <license>free</license>
+        <targetplatform>3.*</targetplatform>
+
+        <relatedExtensions>
+            <extension
+                type="library"
+                element="allediaframework">AllediaFramework</extension>
+
+            <extension
+                type="plugin"
+                group="system"
+                element="ossystem"
+                publish="true"
+                ordering="first">OSSystem</extension>
+        </relatedExtensions>
+
+        <include>AllediaFreeDefaultFiles</include>
+    </alledia>
+
+</extension>

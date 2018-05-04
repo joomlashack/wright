@@ -1,0 +1,268 @@
+/* RTL support */
+
+html {
+
+	&[dir="rtl"] {
+
+		.nav-tabs .tabs,
+		.navbar .nav,
+		.nav-tabs:not(.nav-stacked) > li,
+		.nav-pills > li,
+		.radio input[type="radio"],
+		.checkbox input[type="checkbox"] {
+			float: right;
+		}
+
+		.dropdown .caret {
+			margin-left: 0;
+			margin-right: 2px;
+		}
+
+		.list-striped,
+		.row-striped,
+		.table th,
+		.table td,
+		.popover {
+			text-align: right;
+		}
+
+		.radio input[type="radio"],
+		.checkbox input[type="checkbox"] {
+			margin-left: 10px;
+		}
+
+		.contact-category {
+
+			.list-title {
+				margin-top: 30px;
+			}
+		}
+
+		ul {
+
+			&.category,
+			&.nav {
+				margin-right: 0;
+			}
+		}
+
+		.dl-horizontal {
+
+			dd {
+				margin-right: 40px;
+			}
+
+			dt {
+				float: right;
+				text-align: left;
+				clear: right;
+				margin-right: 0;
+				margin-top: 0;
+			}
+		}
+
+		.form-horizontal {
+
+			.control-label {
+				float: right;
+				width: auto;
+				padding-left: 5px;
+				padding-right: 0;
+				text-align: right;
+			}
+		}
+
+		dd {
+
+			&.tabs {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+
+		.pull-left.item-image {
+			margin-right: 0 !important;
+			margin-left: 1em !important;
+		}
+
+		.pull-right.item-image {
+			margin-right: 1em !important;
+			margin-left: 0 !important;
+		}
+
+		.btn-group > .btn:first-child,
+		.radio.btn-group > label:first-of-type {
+			-webkit-border-bottom-left-radius: 0;
+			border-bottom-left-radius: 0;
+			-webkit-border-top-left-radius: 0;
+			border-top-left-radius: 0;
+			-moz-border-radius-bottomleft: 0;
+			-moz-border-radius-topleft: 0;
+			-webkit-border-bottom-right-radius: @baseBorderRadius;
+			border-bottom-right-radius: @baseBorderRadius;
+			-webkit-border-top-right-radius: @baseBorderRadius;
+			border-top-right-radius: @baseBorderRadius;
+			-moz-border-radius-bottomright: @baseBorderRadius;
+			-moz-border-radius-topright: @baseBorderRadius;
+		}
+
+		.btn-group > .btn:last-child,
+		.btn-group > .dropdown-toggle {
+			-webkit-border-top-right-radius: 0px;
+			border-top-right-radius: 0px;
+			-webkit-border-bottom-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+			-moz-border-radius-topright: 0px;
+			-moz-border-radius-bottomright: 0px;
+			-webkit-border-top-left-radius: @baseBorderRadius;
+			border-top-left-radius: @baseBorderRadius;
+			-webkit-border-bottom-left-radius: @baseBorderRadius;
+			border-bottom-left-radius: @baseBorderRadius;
+			-moz-border-radius-topleft: @baseBorderRadius;
+			-moz-border-radius-bottomleft: @baseBorderRadius;
+		}
+
+		.btn-group > .btn.large:first-child {
+			-webkit-border-bottom-left-radius: 0px;
+			border-bottom-left-radius: 0px;
+			-webkit-border-top-left-radius: 0px;
+			border-top-left-radius: 0px;
+			-moz-border-radius-bottomleft: 0px;
+			-moz-border-radius-topleft: 0px;
+			margin-right: 0;
+			-webkit-border-bottom-right-radius: @borderRadiusLarge;
+			border-bottom-right-radius: @borderRadiusLarge;
+			-webkit-border-top-right-radius: @borderRadiusLarge;
+			border-top-right-radius: @borderRadiusLarge;
+			-moz-border-radius-bottomright: @borderRadiusLarge;
+			-moz-border-radius-topright: @borderRadiusLarge;
+		}
+
+		.btn-group > .btn.large:last-child,
+		.btn-group > .large.dropdown-toggle {
+			-webkit-border-top-right-radius: 0px;
+			border-top-right-radius: 0px;
+			-webkit-border-bottom-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+			-moz-border-radius-topright: 0px;
+			-moz-border-radius-bottomright: 0px;
+			-webkit-border-top-left-radius: @borderRadiusLarge;
+			border-top-left-radius: @borderRadiusLarge;
+			-webkit-border-bottom-left-radius: @borderRadiusLarge;
+			border-bottom-left-radius: @borderRadiusLarge;
+			-moz-border-radius-topleft: @borderRadiusLarge;
+			-moz-border-radius-bottomleft: @borderRadiusLarge;
+		}
+
+		.btn-group > .btn:first-child:last-child {
+			-webkit-border-top-left-radius: @baseBorderRadius;
+			border-top-left-radius: @baseBorderRadius;
+			-webkit-border-bottom-left-radius: @baseBorderRadius;
+			border-bottom-left-radius: @baseBorderRadius;
+			-moz-border-radius-topleft: @baseBorderRadius;
+			-moz-border-radius-bottomleft: @baseBorderRadius;
+			-webkit-border-bottom-right-radius: @baseBorderRadius;
+			border-bottom-right-radius: @baseBorderRadius;
+			-webkit-border-top-right-radius: @baseBorderRadius;
+			border-top-right-radius: @baseBorderRadius;
+			-moz-border-radius-bottomright: @baseBorderRadius;
+			-moz-border-radius-topright: @baseBorderRadius;
+		}
+
+		.input-prepend .add-on:first-child,
+		.input-prepend .btn:first-child {
+			.border-radius(0 @borderRadiusSmall @borderRadiusSmall 0);
+		}
+
+		.input-append input,
+		.input-append select,
+		.input-append .uneditable-input {
+			.border-radius(0 @borderRadiusSmall @borderRadiusSmall 0);
+		}
+
+		.input-append .add-on:last-child,
+		.input-append .btn:last-child {
+			.border-radius(@borderRadiusSmall 0 0 @borderRadiusSmall);
+		}
+
+		.input-prepend.input-append input,
+		.input-prepend.input-append select,
+		.input-prepend.input-append .uneditable-input {
+			.border-radius(0);
+		}
+
+		.input-prepend.input-append .add-on:first-child,
+		.input-prepend.input-append .btn:first-child {
+			.border-radius(0 @borderRadiusSmall @borderRadiusSmall 0);
+		}
+
+		.input-prepend.input-append .add-on:last-child,
+		.input-prepend.input-append .btn:last-child {
+			.border-radius(@borderRadiusSmall 0 0 @borderRadiusSmall);
+		}
+
+		.input-prepend input,
+		.input-prepend select,
+		.input-prepend .uneditable-input {
+			.border-radius(@borderRadiusSmall 0 0 @borderRadiusSmall);
+		}
+	}
+}
+
+#mod-search-searchword + .button {
+	margin-bottom: 5px;
+}
+
+dl.article-info {
+	dd,
+	dd > div {
+		padding:0 5px;
+	}
+}
+
+.footer1, .footer2 {
+	text-align: center;
+}
+
+#footer .footer-content {
+	a:hover {
+		color: @gray;
+	}
+}
+
+#footer {
+	color: @white;
+	overflow: hidden;
+	background-color: #1b1b1b;
+	background-repeat: repeat-x;
+	border-color: #252525;
+
+	.moduletable, .module {
+		.m-0;
+	}
+}
+
+.contact {
+
+	.thumbnail {
+		background: @white;
+	}
+
+	.dl-horizontal {
+
+		&.contact-position dd {
+			margin-left: 0;
+			font-size: 1.5em;
+		}
+
+		dt {
+			text-align: center;
+			width: 31px;
+		}
+
+		dd {
+			margin-left: 40px;
+			margin-bottom: 5px;
+		}
+	}
+}
