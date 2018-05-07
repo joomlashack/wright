@@ -1,5 +1,5 @@
-div.columns { width: 100%; }
-div.columns select.columns { float: none; }
+div.js-columns { width: 100%; }
+div.js-columns select.columns { float: none; }
 #column_sidebar1 { background-color: #eee; }
 #column_sidebar2 { background-color: #ccc; }
 #column_sidebar3 { background-color: #ccc; }
@@ -7,8 +7,8 @@ div.columns select.columns { float: none; }
 #column_main { background-color: #ddd; }
 .column a { cursor: pointer; }
 
-div.col select {
-	width: 90%;
+div.js-col select {
+    width: 50px;
 }
 
 p#column_info #columns_warning {

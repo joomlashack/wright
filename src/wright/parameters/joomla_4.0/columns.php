@@ -40,7 +40,7 @@ class JFormFieldColumns extends JFormField
 		}
 		else
 		{
-			$doc->addStyleDeclaration('.columns.row [class*="col-"] { margin-left: 0 }');
+			$doc->addStyleDeclaration('.columns.row [class*="col-md-"] { margin-left: 0 }');
 		}
 
 		$values = explode(';', $this->value);
@@ -67,13 +67,13 @@ class JFormFieldColumns extends JFormField
 
 		$html = '<p id="column_info"><span id="columns_warning">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMNS_WARNING') . '</span></p>';
 
-		$html .= '<div class="columns row" style="max-width:693px;">';
+		$html .= '<div class="js-columns row" style="max-width:693px;">';
 
 		$html .= '<input type="hidden" name="' . $this->name . '" id="' . $this->name . '" value="' . $this->value . '" />';
 
 		foreach ($columns as $column)
 		{
-			$html .= '<div id="column_' . $column[0] . '" class="col col-' . $column[1] . '" style="text-align:center; min-width: 65px; padding: 10px;"><span style="display: block;"><a onclick="swapColumns(\'' . $column[0] . '\', \'left\')"><i class="icon-arrow-left"></i></a><a onclick="swapColumns(\'' . $column[0] . '\', \'right\')"><i class="icon-arrow-right"></i></a></span><span style="display: block;">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMN_' . strtoupper($column[0])) . '</span> ' .
+			$html .= '<div id="column_' . $column[0] . '" class="js-col col-md-' . $column[1] . '" style="text-align:center; min-width: 65px; padding: 10px;"><span style="display: block;"><a onclick="swapColumns(\'' . $column[0] . '\', \'left\')"><i class="icon-arrow-left"></i></a><a onclick="swapColumns(\'' . $column[0] . '\', \'right\')"><i class="icon-arrow-right"></i></a></span><span style="display: block;">' . JText::_('TPL_JS_WRIGHT_FIELD_COLUMN_' . strtoupper($column[0])) . '</span> ' .
 				JHtml::_('select.genericlist',  $options, 'ignore[' . $column[0] . ']', $class . ' onchange="changeColumns();"', 'value', 'text', $column[1], 'columns_' . $column[0]) . '</div>';
 		}
 
