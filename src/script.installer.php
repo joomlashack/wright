@@ -32,7 +32,7 @@ if (!class_exists('JS_WrightInstallerScript')) {
             if (!parent::preFlight($type, $parent)) {
                 return false;
             }
-            
+
             return true;
         }
     }
