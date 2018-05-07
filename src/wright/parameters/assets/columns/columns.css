@@ -8,7 +8,7 @@ div.js-columns select.columns { float: none; }
 .column a { cursor: pointer; }
 
 div.js-col select {
-    width: 50px;
+    max-width: 50px;
 }
 
 p#column_info #columns_warning {
