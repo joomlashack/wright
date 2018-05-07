@@ -1,4 +1,4 @@
-jQuery(window).load(function () {
+jQuery(window).ready(function () {
 	checkColumns();
 	jQuery('select.columns').change(function() {
 		changeColumns();
@@ -38,27 +38,27 @@ function checkColumns() {
 	}
 
 	jQuery('div.col').each(function(){
-		jQuery(this).removeClass('span1');
-		jQuery(this).removeClass('span2');
-		jQuery(this).removeClass('span3');
-		jQuery(this).removeClass('span4');
-		jQuery(this).removeClass('span5');
-		jQuery(this).removeClass('span6');
-		jQuery(this).removeClass('span7');
-		jQuery(this).removeClass('span8');
-		jQuery(this).removeClass('span9');
-		jQuery(this).removeClass('span10');
-		jQuery(this).removeClass('span11');
-		jQuery(this).removeClass('span12');
-		jQuery(this).addClass('span' + jQuery(this).children('select').attr('value'));
+		jQuery(this).removeClass('col-1');
+		jQuery(this).removeClass('col-2');
+		jQuery(this).removeClass('col-3');
+		jQuery(this).removeClass('col-4');
+		jQuery(this).removeClass('col-5');
+		jQuery(this).removeClass('col-6');
+		jQuery(this).removeClass('col-7');
+		jQuery(this).removeClass('col-8');
+		jQuery(this).removeClass('col-9');
+		jQuery(this).removeClass('col-10');
+		jQuery(this).removeClass('col-11');
+		jQuery(this).removeClass('col-12');
+		jQuery(this).addClass('col-' + jQuery(this).children('select').attr('value'));
 	});
 }
 
 function swapColumns(col, dir) {
-	var cols = jQuery('.columns.row-fluid > div.col');
+	var cols = jQuery('.columns.row > div.col');
 	var index = 0;
 	var selected = 'column_'+col;
-	var selectedId = '.columns.row-fluid > #' + selected;
+	var selectedId = '.columns.row > #' + selected;
 	var colsSwapId = '';
 
 	if (dir == 'right')
@@ -72,7 +72,7 @@ function swapColumns(col, dir) {
 			index++;
 		});
 
-		colsSwapId = '.columns.row-fluid > #' + cols[swapindex].id;
+		colsSwapId = '.columns.row > #' + cols[swapindex].id;
 		jQuery(selectedId).before(jQuery(colsSwapId));
 	}
 	else
@@ -86,7 +86,7 @@ function swapColumns(col, dir) {
 			index++;
 		});
 
-		colsSwapId = '.columns.row-fluid > #' + cols[swapindex].id;
+		colsSwapId = '.columns.row > #' + cols[swapindex].id;
 		jQuery(selectedId).after(jQuery(colsSwapId));
 	}
 	checkColumns();
