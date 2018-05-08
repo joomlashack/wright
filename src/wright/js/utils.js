@@ -31,7 +31,7 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 	wToolbar();
 	fixImagesIE();
 
-	$(window).load(function () {
+	$(window).on('load', function () {
 		if (!disableToolbarResize)
 			wToolbar();
 	});

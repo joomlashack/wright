@@ -5,7 +5,7 @@ jQuery(document).ready(function() {
 			jQuery('.wrapper-footer').height(h);
 		}
 	}
-	jQuery(window).load(function () {
+	jQuery(window).on('load', function () {
 		jQuery('#footer.sticky').css('bottom','0')
 			.css('position','absolute')
 			.css('z-index','1000');
