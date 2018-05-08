@@ -422,17 +422,24 @@ class Wright
 
 		$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
 
-        // @todo check if these files are indeed loaded at some point before (not sure why the need to unload them)
-        //unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
-        //unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
-        //unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
+        // If is Joomla version 3.0 ...
+        if (version_compare(JVERSION, '4.0', 'lt'))
+        {
+            // @todo check if these files are indeed loaded at some point before (not sure why the need to unload them)
+            unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
+            unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
+            unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
+            unset($doc->_styleSheets[JURI::root(true) . '/media/jui/css/bootstrap-rtl.css']);
+        }
+        else
+        {
+            // Unload core bootstrap CSS files
+            unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.css']);
+            unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.min.css']);
 
-        // @todo check if there is an existing RTL file, and unload it
-        //unset($doc->_styleSheets[JURI::root(true) . '/media/jui/css/bootstrap-rtl.css']);
-
-        // Unload core bootstrap CSS files
-        unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.css']);
-        unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.min.css']);
+            // @todo check if there is an existing core RTL file in Joomla 4, and unload it
+            //unset($doc->_styleSheets[JURI::root(true) . '/media/jui/css/bootstrap-rtl.css']);
+        }
 
 		if ($this->document->params->get('documentationMode', '0') == '1')
 		{
