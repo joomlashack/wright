@@ -105,17 +105,9 @@ class Wright
 		$this->_urlWright = $this->_urlTemplate . '/wright';
 		$this->_urlJS = $this->_urlWright . '/js';
 
-		// Joomla versions under 3.0 must load bootstrap
-		if (version_compare(JVERSION, '3.0', 'lt'))
-		{
-			$this->loadBootstrap = true;
-		}
-		else
-		{
-			// Add JavaScript CSS and Framework
-			JHtml::_('bootstrap.framework');
-			JHtml::_('bootstrap.loadCss', true, $this->document->direction);
-		}
+		// Add JavaScript CSS and Framework
+        JHtml::_('bootstrap.framework');
+        JHtml::_('bootstrap.loadCss', true, $this->document->direction);
 
 		// Browser library
 		include_once JPATH_SITE . '/templates/' . $this->document->template . '/wright/includes/browser.php';
@@ -430,13 +422,17 @@ class Wright
 
 		$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
 
-		if (version_compare(JVERSION, '3.0', 'ge'))
-		{
-			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
-			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
-			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
-            unset($doc->_styleSheets[JURI::root(true) . '/media/jui/css/bootstrap-rtl.css']);
-		}
+        // @todo check if these files are indeed loaded at some point before (not sure why the need to unload them)
+        //unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
+        //unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
+        //unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
+        
+        // @todo check if there is an existing RTL file, and unload it
+        //unset($doc->_styleSheets[JURI::root(true) . '/media/jui/css/bootstrap-rtl.css']);
+
+        // Unload core bootstrap CSS files
+        unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.css']);
+        unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.min.css']);
 
 		if ($this->document->params->get('documentationMode', '0') == '1')
 		{
