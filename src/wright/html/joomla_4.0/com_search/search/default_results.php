@@ -24,7 +24,7 @@ defined('_JEXEC') or die;
 		<?php endif; ?>
 	</dt>
 	<?php if ($result->section) : ?>
-		<dd class="result-category label label-info">  <?php // Wright v.3: Added label label-info classes ?>
+		<dd class="result-category label badge-info">  <?php // Wright v.3: Added badge badge-info classes ?>
 			<i class="icon-folder-open"></i>  <?php // Wright v.3: Added icon ?>
 			<span class="small<?php echo $this->pageclass_sfx; ?>">
 				(<?php echo $this->escape($result->section); ?>)

@@ -29,7 +29,7 @@ jimport('joomla.html.html.bootstrap');
 		<?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
 			<h2>
 				<?php if ($this->item->published == 0) : ?>
-					<span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
+					<span class="badge badge-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
 				<?php endif; ?>
 				<span class="contact-name"><?php echo $this->contact->name; ?></span>
 			</h2>

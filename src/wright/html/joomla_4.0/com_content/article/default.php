@@ -102,13 +102,13 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 </h2>
 
                 <?php if ($this->item->state == 0) : ?>
-                    <span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
+                    <span class="badge badge-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
                 <?php endif; ?>
                 <?php if (strtotime($this->item->publish_up) > strtotime(JFactory::getDate())) : ?>
-                    <span class="label label-warning"><?php echo JText::_('JNOTPUBLISHEDYET'); ?></span>
+                    <span class="badge badge-warning"><?php echo JText::_('JNOTPUBLISHEDYET'); ?></span>
                 <?php endif; ?>
                 <?php if ((strtotime($this->item->publish_down) < strtotime(JFactory::getDate())) && $this->item->publish_down != '0000-00-00 00:00:00') : ?>
-                    <span class="label label-warning"><?php echo JText::_('JEXPIRED'); ?></span>
+                    <span class="badge badge-warning"><?php echo JText::_('JEXPIRED'); ?></span>
                 <?php endif; ?>
 
                 <?php /* Wright v.3: Adds page header if h1 is missing */

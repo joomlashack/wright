@@ -105,7 +105,7 @@ $params = &$this->item->params;
 
 					<td class="item-title">
 						<?php if ($this->items[$i]->published == 0) : ?>
-							<span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
+							<span class="badge badge-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
 						<?php endif; ?>
 						<a href="<?php echo JRoute::_(ContactHelperRoute::getContactRoute($item->slug, $item->catid)); ?>">
 							<?php echo $item->name; ?></a>

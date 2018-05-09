@@ -135,17 +135,17 @@ if (!empty($this->items))
 							</a>
 						<?php endif; ?>
 						<?php if ($article->state == 0) : ?>
-							<span class="list-published label label-warning">
+							<span class="list-published badge badge-warning">
 								<?php echo JText::_('JUNPUBLISHED'); ?>
 							</span>
 						<?php endif; ?>
 						<?php if (strtotime($article->publish_up) > strtotime(JFactory::getDate())) : ?>
-							<span class="list-published label label-warning">
+							<span class="list-published badge badge-warning">
 								<?php echo JText::_('JNOTPUBLISHEDYET'); ?>
 							</span>
 						<?php endif; ?>
 						<?php if ((strtotime($article->publish_down) < strtotime(JFactory::getDate())) && $article->publish_down != '0000-00-00 00:00:00') : ?>
-							<span class="list-published label label-warning">
+							<span class="list-published badge badge-warning">
 								<?php echo JText::_('JEXPIRED'); ?>
 							</span>
 						<?php endif; ?>

@@ -32,13 +32,13 @@ JHtml::_('behavior.framework');
 			<?php endif; ?>
 
 			<?php if ($displayData->state == 0) : ?>
-				<span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
+				<span class="badge badge-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
 			<?php endif; ?>
 			<?php if (strtotime($displayData->publish_up) > strtotime(JFactory::getDate())) : ?>
-				<span class="label label-warning"><?php echo JText::_('JNOTPUBLISHEDYET'); ?></span>
+				<span class="badge badge-warning"><?php echo JText::_('JNOTPUBLISHEDYET'); ?></span>
 			<?php endif; ?>
 			<?php if ((strtotime($displayData->publish_down) < strtotime(JFactory::getDate())) && $displayData->publish_down != '0000-00-00 00:00:00') : ?>
-				<span class="label label-warning"><?php echo JText::_('JEXPIRED'); ?></span>
+				<span class="badge badge-warning"><?php echo JText::_('JEXPIRED'); ?></span>
 		<?php endif; ?>
 		<?php // </div> Wright v.3: Removed page-header ?>
 	<?php endif; ?>

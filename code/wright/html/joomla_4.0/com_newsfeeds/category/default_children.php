@@ -39,7 +39,7 @@ if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) :
             <?php endif; ?>
 
             <?php if ($this->params->get('show_cat_items') == 1) :?>
-			<dl class="newsfeed-count label label-info"><dt>
+			<dl class="newsfeed-count badge badge-info"><dt>
 				<?php echo JText::_('COM_NEWSFEEDS_CAT_NUM'); ?></dt>
 				<dd><?php echo $child->numitems; ?></dd>
 			</dl>

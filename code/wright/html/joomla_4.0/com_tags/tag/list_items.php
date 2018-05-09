@@ -86,7 +86,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 								<?php echo $this->escape($item->core_title); ?>
 							</a>
 							<?php if ($item->core_state == 0) : ?>
-								<span class="list-published label label-warning">
+								<span class="list-published badge badge-warning">
 									<?php echo JText::_('JUNPUBLISHED'); ?>
 								</span>
 							<?php endif; ?>
