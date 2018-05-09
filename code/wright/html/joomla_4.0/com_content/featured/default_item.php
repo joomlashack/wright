@@ -238,7 +238,7 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
                     $link->setVar('return', base64_encode($returnURL));
                 endif; ?>
 
-                <p class="readmore"><a class="btn" href="<?php echo $link; ?>"> <span class="icon-chevron-right"></span>
+                <p class="readmore"><a class="btn btn-secondary" href="<?php echo $link; ?>"> <span class="icon-chevron-right"></span>
 
                 <?php if (!$params->get('access-view')) :
                     echo JText::_('COM_CONTENT_REGISTER_TO_READ_MORE');

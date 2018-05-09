@@ -88,7 +88,7 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
         ?>
 
             <?php if ($params->get('show_print_icon') || $params->get('show_email_icon') || $canEdit) : ?>
-                <div class="btn-group pull-right icons-actions"> <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" role="button"> <span class="icon-cog"></span> <span class="caret"></span> </a>
+                <div class="btn-group pull-right icons-actions"> <a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" href="#" role="button"> <span class="icon-cog"></span> <span class="caret"></span> </a>
                     <ul class="dropdown-menu">
                     <?php if ($params->get('show_print_icon')) : ?>
                         <li class="print-icon"> <?php echo JHtml::_('icon.print_popup', $this->item, $params); ?> </li>
@@ -238,7 +238,7 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
                     $link->setVar('return', base64_encode($returnURL));
                 endif; ?>
 
-                <p class="readmore"><a class="btn" href="<?php echo $link; ?>"> <span class="icon-chevron-right"></span>
+                <p class="readmore"><a class="btn btn-secondary" href="<?php echo $link; ?>"> <span class="icon-chevron-right"></span>
 
                 <?php if (!$params->get('access-view')) :
                     echo JText::_('COM_CONTENT_REGISTER_TO_READ_MORE');
