@@ -32,7 +32,7 @@ defined('_JEXEC') or die;
 
 /* Wright v.3: Extra classes (general) */
 	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
-	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "row-fluid";
+	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "row";
 	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
 
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
@@ -148,7 +148,7 @@ JHtml::_('behavior.caption');
 			if ($this->wrightImagesRow)
 			{
 				ob_start();
-				$wrightPreRowContent = '<div class="container-fluid container-images"><div class="row-fluid">';
+				$wrightPreRowContent = '<div class="container-fluid container-images"><div class="row">';
 			}
 			/* End Wright v.3: Row buffer storage and image print in separate row */
 
@@ -192,7 +192,7 @@ JHtml::_('behavior.caption');
 				?>
 			<?php endif; /* End Wright v.3: Special featured items grid */ ?>
 
-			<div class="span<?php echo $wrightspan;?>">
+			<div class="col-md-<?php echo $wrightspan;?>">
 				<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.3: Item elements extra elements
 				 ?>">
 				<?php
@@ -206,7 +206,7 @@ JHtml::_('behavior.caption');
 					/* Wright v.3: Row buffer storage and image print in separate row */
 					if ($this->wrightImagesRow)
 					{
-						$wrightPreRowContent .= '<div class="span' . round((12 / $this->columns)) . '">';
+						$wrightPreRowContent .= '<div class="col-md-' . round((12 / $this->columns)) . '">';
 
 						if (isset($articleImages->image_intro) && !empty($articleImages->image_intro))
 						{

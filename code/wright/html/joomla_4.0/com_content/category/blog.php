@@ -33,14 +33,14 @@ defined('_JEXEC') or die;
 
 /* Wright v.3: Extra classes (general) */
 	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
-	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "row-fluid";
+	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "row";
 	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
 
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
 	if (!isset($this->wrightComplementExtraClass)) $this->wrightComplementExtraClass = "";
 	if (!isset($this->wrightComplementInnerClass)) $this->wrightComplementInnerClass = "";
 
-	if (!isset($this->wrightIntroRowMode)) $this->wrightIntroRowMode = 'row-fluid';
+	if (!isset($this->wrightIntroRowMode)) $this->wrightIntroRowMode = 'row';
 
 	if (!isset($this->wrightExtraDivH1)) $this->wrightExtraDivH1 = false;
 /* End Wright v.3: Extra classes (general) */
