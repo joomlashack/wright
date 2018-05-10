@@ -60,7 +60,7 @@ if ($menuType == 'vertical'){
 
 ?>
 
-<ul class="menu<?php echo $class_sfx . $navlist;?> nav"<?php  // Wright v.3: Added nav class
+<ul class="menu<?php echo $class_sfx . $navlist;?> navbar-nav"<?php  // Wright v.3: Added nav class
 	$tag = '';
 
 	if ($params->get('tag_id') != null)
