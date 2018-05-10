@@ -17,7 +17,7 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 			wrightWrapperToolbar = '.wrapper-toolbar';
 			
 		$(wrightWrapperToolbar).each(function() {
-			$(this).css('min-height',$(this).find('.navbar:first').height() + 'px');
+			$(this).css('min-height',$(this).find('.navbar-expand-lg').height() + 'px');
 		});
 	}
 	

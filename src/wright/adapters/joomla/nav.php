@@ -20,86 +20,66 @@ class WrightAdapterJoomlaNav
 		$doc = Wright::getInstance();
 
 		if ($args['type'] == 'toolbar') {
-			$nav =
-			'<div class="'.$args['wrapper'].'">
-				<nav id="'.$args['name'].'">
-					<div class="navbar ' . $args['wrapClass'] . '">
-						<div class="navbar-inner">
-							<div class="' . $args['containerClass'] . '">
-					            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
-						            <span class="icon-bar"></span>
-						            <span class="icon-bar"></span>
-						            <span class="icon-bar"></span>
-					            </a>
-					            <div class="nav-collapse" id="nav-'.$args['name'].'">
-									 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
-								</div>
-							</div>
-						</div>
-					</div>
-				</nav>
-			</div>';
 
-			if ($doc->document->params->get('mobile_menu_text', '') != "") {
-					$nav =
-				'<div class="'.$args['wrapper'].'">
-					<nav id="'.$args['name'].'">
-						<div class="navbar ' . $args['wrapClass'] . '">
-							<div class="navbar-inner">
-								<div class="' . $args['containerClass'] . '">
-						            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
-													' . $doc->document->params->get('mobile_menu_text') . '
-						            </a>
-						            <div class="nav-collapse" id="nav-'.$args['name'].'">
-										 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
-									</div>
-								</div>
-							</div>
-						</div>
-					</nav>
-				</div>';
-			}
+            $nav =
+            '<div class="bg-light '.$args['wrapper'].'">
+				<nav id="'.$args['name'].'">
+					<div class="navbar">
+					    <div class="' . $args['containerClass'] . '">
+                            <nav class="navbar navbar-expand-lg navbar-light ' . $args['wrapClass'] . '">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-'.$args['name'].'" aria-controls="nav-'.$args['name'].'" aria-expanded="false" aria-label="Toggle navigation">';
+
+                                    if ($doc->document->params->get('mobile_menu_text', '') != "")
+                                    {
+                                        $nav .= $doc->document->params->get('mobile_menu_text');
+                                    }
+                                    else
+                                    {
+                                        $nav .= '<span class="navbar-toggler-icon"></span>';
+                                    }
+
+                                    $nav .= '</button>
+                                <div class="collapse navbar-collapse" id="nav-'.$args['name'].'">
+                                    <div class="navbar-nav">
+                                      <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+                                    </div>
+                              </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+
 		}
 		else {
-			$nav =
-			'<div class="'.$args['wrapper'].'">
-				<div class="' . $args['containerClass'] . '">
-					<nav id="'.$args['name'].'">
-						<div class="navbar ' . $args['wrapClass'] . '">
-							<div class="navbar-inner">
-					            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
-						            <span class="icon-bar"></span>
-						            <span class="icon-bar"></span>
-						            <span class="icon-bar"></span>
-					            </a>
-					            <div class="nav-collapse" id="nav-'.$args['name'].'">
-									 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
-								</div>
-							</div>
-						</div>
-					</nav>
-				</div>
-			</div>';
 
-			if ($doc->document->params->get('mobile_menu_text', '') != "") {
-				$nav =
-				'<div class="'.$args['wrapper'].'">
-					<div class="' . $args['containerClass'] . '">
-						<nav id="'.$args['name'].'">
-							<div class="navbar ' . $args['wrapClass'] . '">
-								<div class="navbar-inner">
-						            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
-													' . $doc->document->params->get('mobile_menu_text') . '
-						            </a>
-						            <div class="nav-collapse" id="nav-'.$args['name'].'">
-										 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
-									</div>
-								</div>
-							</div>
-						</nav>
-					</div>
-				</div>';
-			}
+            $nav =
+            '<div class="'.$args['wrapper'].'">
+				<div class="' . $args['containerClass'] . '">
+					<div id="'.$args['name'].'">
+					    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-'.$args['name'].'" aria-controls="nav-'.$args['name'].'" aria-expanded="false" aria-label="Toggle navigation">';
+
+                                if ($doc->document->params->get('mobile_menu_text', '') != "")
+                                {
+                                    $nav .= $doc->document->params->get('mobile_menu_text');
+                                }
+                                else
+                                {
+                                    $nav .= '<span class="navbar-toggler-icon"></span>';
+                                }
+
+                            $nav .= '</button>
+                            <div class="collapse navbar-collapse" id="nav-'.$args['name'].'">
+                                <div class="navbar-nav">
+                                  <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+                                </div>
+                          </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>';
+
 		}
 
 		return $nav;

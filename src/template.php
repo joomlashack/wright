@@ -26,7 +26,7 @@ defined('_JEXEC') or die('Restricted access');
 				:
 		?>
 		<!-- toolbar -->
-		<w:nav containerClass="<?php echo $wrightContainerClass ?>" rowClass="<?php echo $wrightGridMode ?>" wrapClass="navbar-fixed-top navbar-inverse" type="toolbar" name="toolbar" />
+		<w:nav containerClass="<?php echo $wrightContainerClass ?>" rowClass="<?php echo $wrightGridMode ?>" wrapClass="" type="toolbar" name="toolbar" />
 		<?php
 			endif;
 		?>
