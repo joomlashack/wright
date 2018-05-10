@@ -32,7 +32,6 @@ $class  = ' heading';
 $class .= $item->anchor_css;
 $class .= ($item->deeper) ? ' dropdown-toggle' : '';
 $class .= ($item->level == 1) ? ' nav-link' : ' dropdown-item';
-$class .= ($item->deeper) ? ' dropdown-toggle' : '';
 $class  = 'class="' . $class . '" ';
 
 // The anchor title

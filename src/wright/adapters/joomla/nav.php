@@ -37,10 +37,9 @@ class WrightAdapterJoomlaNav
                                     $nav .= '<span class="navbar-toggler-icon"></span>';
                                 }
 
-                                $nav .= '</button>
+                            $nav .= '</button>
                             <div class="collapse navbar-collapse" id="nav-'.$args['name'].'">
-                                <div class="navbar-nav">
-                                  <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+                                <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
                             </div>
                         </div>
                     </nav>
@@ -66,12 +65,11 @@ class WrightAdapterJoomlaNav
                                     $nav .= '<span class="navbar-toggler-icon"></span>';
                                 }
 
-                            $nav .= '</button>
+                            $nav .=
+                            '</button>
                             <div class="collapse navbar-collapse" id="nav-'.$args['name'].'">
-                                <div class="navbar-nav">
-                                  <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
-                                </div>
-                          </div>
+                                <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+                            </div>
                         </nav>
                     </div>
                 </div>
