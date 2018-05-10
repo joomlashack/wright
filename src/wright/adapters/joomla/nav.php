@@ -22,31 +22,28 @@ class WrightAdapterJoomlaNav
 		if ($args['type'] == 'toolbar') {
 
             $nav =
-            '<div class="bg-light '.$args['wrapper'].'">
-				<nav id="'.$args['name'].'">
-					<div class="navbar">
-					    <div class="' . $args['containerClass'] . '">
-                            <nav class="navbar navbar-expand-lg navbar-light ' . $args['wrapClass'] . '">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-'.$args['name'].'" aria-controls="nav-'.$args['name'].'" aria-expanded="false" aria-label="Toggle navigation">';
+            '<div class="'.$args['wrapper'].'">
+				<div id="'.$args['name'].'">
+                    <nav class="navbar navbar-expand navbar-dark bg-dark ' . $args['wrapClass'] . '">
+                        <div class="' . $args['containerClass'] . '">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-'.$args['name'].'" aria-controls="nav-'.$args['name'].'" aria-expanded="false" aria-label="Toggle navigation">';
 
-                                    if ($doc->document->params->get('mobile_menu_text', '') != "")
-                                    {
-                                        $nav .= $doc->document->params->get('mobile_menu_text');
-                                    }
-                                    else
-                                    {
-                                        $nav .= '<span class="navbar-toggler-icon"></span>';
-                                    }
+                                if ($doc->document->params->get('mobile_menu_text', '') != "")
+                                {
+                                    $nav .= $doc->document->params->get('mobile_menu_text');
+                                }
+                                else
+                                {
+                                    $nav .= '<span class="navbar-toggler-icon"></span>';
+                                }
 
-                                    $nav .= '</button>
-                                <div class="collapse navbar-collapse" id="nav-'.$args['name'].'">
-                                    <div class="navbar-nav">
-                                      <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
-                                    </div>
-                              </div>
-                            </nav>
+                                $nav .= '</button>
+                            <div class="collapse navbar-collapse" id="nav-'.$args['name'].'">
+                                <div class="navbar-nav">
+                                  <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+                            </div>
                         </div>
-                    </div>
+                    </nav>
                 </div>
             </div>';
 
