@@ -24,11 +24,11 @@ else
 }
 
 // Add the classes
-$class  = 'heading ';
+$class  = ' heading';
 $class .= $item->anchor_css;
-$class .= ($item->deeper) ? 'dropdown-toggle ' : '';
-$class .= ($item->level == 1) ? 'nav-link ' : 'dropdown-item ';
-$class .= ($item->deeper) ? 'dropdown-toggle ' : '';
+$class .= ($item->deeper) ? ' dropdown-toggle' : '';
+$class .= ($item->level == 1) ? ' nav-link ' : ' dropdown-item';
+$class .= ($item->deeper) ? ' dropdown-toggle' : '';
 $class  = 'class="' . $class . '" ';
 
 ?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.3: Added collapsible option ?><?php echo $title; ?>>

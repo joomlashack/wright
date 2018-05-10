@@ -28,11 +28,11 @@ if (preg_match_all('/hidden-text/', $item->anchor_css, $matches))
 // End Wright v.3: Created additional structure for icons
 
 // Add the classes
-$class  = 'heading ';
+$class  = ' heading';
 $class .= $item->anchor_css;
-$class .= ($item->deeper) ? 'dropdown-toggle ' : '';
-$class .= ($item->level == 1) ? 'nav-link ' : 'dropdown-item ';
-$class .= ($item->deeper) ? 'dropdown-toggle ' : '';
+$class .= ($item->deeper) ? ' dropdown-toggle' : '';
+$class .= ($item->level == 1) ? ' nav-link' : ' dropdown-item';
+$class .= ($item->deeper) ? ' dropdown-toggle' : '';
 $class  = 'class="' . $class . '" ';
 
 // The anchor title
