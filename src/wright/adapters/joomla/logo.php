@@ -49,7 +49,7 @@ class WrightAdapterJoomlaLogo
 	 *
 	 * @param   string  $name   Name of the module
 	 * @param   array   $args   Arguments to display the module
-	 * @param   int     $width  Width (spans) to display the module
+	 * @param   int     $width  Width (col-md-) to display the module
 	 * @param   bool    $alt    Show the alternate companion
 	 *
 	 * @return  void
@@ -209,7 +209,7 @@ class WrightAdapterJoomlaLogo
 
 			if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename) || $doc->countModules($module2name)))
 			{
-				$html .= '<div id="' . $modulename . '" class="span' . $modulewidth . '">';
+				$html .= '<div id="' . $modulename . '" class="col-md-' . $modulewidth . '">';
 				$html .= $this->renderCompanion($modulename, $args, $modulewidth);
 				$html .= $this->renderCompanion($module2name, $args, $modulewidth, true);
 				$html .= '</div>';
@@ -236,11 +236,11 @@ class WrightAdapterJoomlaLogo
 		{
 			// If user wants a module, load it instead of image
 			case 'module':
-				$html .= '<div id="logo' . $args['addid'] . '" class="span' . $doc->document->params->get('logowidth', '6') . '"><jdoc:include type="modules" name="logo" /></div>';
+				$html .= '<div id="logo' . $args['addid'] . '" class="col-md-' . $doc->document->params->get('logowidth', '6') . '"><jdoc:include type="modules" name="logo" /></div>';
 
 				if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2)))
 				{
-					$html .= '<div id="' . $modulename2 . '" class="span' . $modulewidth2 . '">';
+					$html .= '<div id="' . $modulename2 . '" class="col-md-' . $modulewidth2 . '">';
 					$html .= $this->renderCompanion($modulename2, $args, $modulewidth2);
 					$html .= $this->renderCompanion($module2name2, $args, $modulewidth2, true);
 					$html .= '</div>';
@@ -253,11 +253,11 @@ class WrightAdapterJoomlaLogo
 			// If user wants just a title, print it out
 			case 'title':
 
-				$html .= '<div id="logo' . $args['addid'] . '" class="span' . $doc->document->params->get('logowidth', '6') . '"><a href="' . JURI::root() . '" class="title">' . $title . '</a></div>';
+				$html .= '<div id="logo' . $args['addid'] . '" class="col-md-' . $doc->document->params->get('logowidth', '6') . '"><a href="' . JURI::root() . '" class="title">' . $title . '</a></div>';
 
 				if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2)))
 				{
-					$html .= '<div id="' . $modulename2 . '" class="span' . $modulewidth2 . '">';
+					$html .= '<div id="' . $modulename2 . '" class="col-md-' . $modulewidth2 . '">';
 					$html .= $this->renderCompanion($modulename2, $args, $modulewidth2);
 					$html .= $this->renderCompanion($module2name2, $args, $modulewidth2, true);
 					$html .= '</div>';
@@ -306,11 +306,11 @@ class WrightAdapterJoomlaLogo
 				$logo = JURI::root() . 'images/' . $doc->document->params->get('logo', 'logo' . $wrightLogoAlt . '.png');
 		}
 
-		$html .= '<div id="logo' . $args['addid'] . '" class="span' . $logowidth . '"><a href="' . JURI::root() . '" class="image">' . $title . '<img src="' . $logo . '" alt="" title="" /></a></div>';
+		$html .= '<div id="logo' . $args['addid'] . '" class="col-md-' . $logowidth . '"><a href="' . JURI::root() . '" class="image">' . $title . '<img src="' . $logo . '" alt="" title="" /></a></div>';
 
 		if ($doc->document->params->get('logowidth') !== '12' && ($doc->countModules($modulename2) || $doc->countModules($module2name2)))
 		{
-			$html .= '<div id="' . $modulename2 . '" class="span' . $modulewidth2 . '">';
+			$html .= '<div id="' . $modulename2 . '" class="col-md-' . $modulewidth2 . '">';
 			$html .= $this->renderCompanion($modulename2, $args, $modulewidth2);
 			$html .= $this->renderCompanion($module2name2, $args, $modulewidth2, true);
 			$html .= '</div>';
