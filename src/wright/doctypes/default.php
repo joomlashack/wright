@@ -294,7 +294,7 @@ abstract class HtmlAdapterAbstract
 		// Use main Spans only if allowed by template internal configuration
 		if ($useMainSpans)
 		{
-			$class .= 'span' . $this->columns['main']->size;
+			$class .= 'col-md-' . $this->columns['main']->size;
 		}
 
 		if (preg_match('/class="(.*)"/u', $matches[1], $classes))
@@ -381,7 +381,7 @@ abstract class HtmlAdapterAbstract
 		// Use main Spans only if allowed by template internal configuration
 		if ($useMainSpans)
 		{
-			$class = 'span' . $this->columns[$id]->size;
+			$class = 'col-md-' . $this->columns[$id]->size;
 		}
 
 		if (preg_match('/class="(.*)"/u', $matches[1], $classes))
