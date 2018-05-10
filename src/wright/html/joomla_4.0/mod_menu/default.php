@@ -73,7 +73,7 @@ if ($menuType == 'vertical'){
 foreach ($list as $i => &$item)
 {
 	$active = false;  // Wright v.3: Active toggle for collapsible menus
-	$class = 'item-' . $item->id;
+	$class = 'nav-item item-' . $item->id;
 
 	if ($item->id == $active_id)
 	{

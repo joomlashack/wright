@@ -29,9 +29,14 @@ if (preg_match_all('/hidden-text/', $item->anchor_css, $matches))
 }
 // End Wright v.3: Created additional structure for icons
 
-// Note. It is important to remove spaces between elements.
-$class = $item->anchor_css ? 'class="'.$item->anchor_css.'" ' : '';
-$class = ($item->deeper) ? 'class="'.$item->anchor_css.' dropdown-toggle"' : $class ;
+// Add the classes
+$class  = $item->anchor_css;
+$class .= ($item->deeper) ? 'dropdown-toggle ' : '';
+$class .= ($item->level == 1) ? 'nav-link ' : 'dropdown-item ';
+$class .= ($item->deeper) ? 'dropdown-toggle ' : '';
+$class  = 'class="' . $class . '" ';
+
+// The anchor title
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
 
 if ($menuType == 'vertical') {
