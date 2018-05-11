@@ -35,7 +35,7 @@ defined('_JEXEC') or die;
 		<?php echo $result->text; ?>
 	</dd>
 	<?php if ($this->params->get('show_date')) : ?>
-		<dd class="result-created<?php echo $this->pageclass_sfx; ?> muted">  <?php // Wright v.3: Added muted class ?>
+		<dd class="result-created<?php echo $this->pageclass_sfx; ?> text-muted">  <?php // Wright v.3: Added text-muted class ?>
 			<i class="icon-pencil"></i>  <?php // Wright v.3: Added icon ?>
 			<?php echo JText::sprintf('JGLOBAL_CREATED_DATE_ON', $result->created); ?>
 		</dd>
