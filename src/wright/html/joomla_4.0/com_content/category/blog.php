@@ -185,12 +185,14 @@ JHtml::_('behavior.caption');
 		<?php foreach ($this->lead_items as &$item) : ?>
 		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.3: Item elements extra elements
 		 ?>">
-			<?php
+			<div itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+                <?php
 				$this->item = &$item;
 				$this->item->wrightElementsStructure = $this->wrightLeadingItemElementsStructure;  // Wright v.3: Item elements order
 				$this->item->wrightType = 'leading';  // Wright v.3: Adding item type to identify in the proper override
 				echo $this->loadTemplate('item');
-			?>
+			    ?>
+            </div>
 		</div>
 		<?php
 			$leadingcount++;
@@ -263,12 +265,14 @@ JHtml::_('behavior.caption');
 			<div class="col-md-<?php echo $wrightspan;?>">
 				<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.3: Item elements extra elements
 				 ?>">
-					<?php
-					$this->item = &$item;
-					$this->item->wrightElementsStructure = $this->wrightIntroItemElementsStructure;  // Wright v.3: Item elements structure
-					$this->item->wrightType = 'intro';  // Wright v.3: Adding item type to identify in the proper override
-					echo $this->loadTemplate('item');
-				?>
+                    <div itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+                        <?php
+                        $this->item = &$item;
+                        $this->item->wrightElementsStructure = $this->wrightIntroItemElementsStructure;  // Wright v.3: Item elements structure
+                        $this->item->wrightType = 'intro';  // Wright v.3: Adding item type to identify in the proper override
+                        echo $this->loadTemplate('item');
+                        ?>
+                    </div>
 				</div><!-- end item -->
 
 				<?php
