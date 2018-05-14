@@ -87,21 +87,7 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
         case "icons":
         ?>
 
-            <?php if ($params->get('show_print_icon') || $params->get('show_email_icon') || $canEdit) : ?>
-                <div class="btn-group pull-right icons-actions"> <a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" href="#" role="button"> <span class="icon-cog"></span> <span class="caret"></span> </a>
-                    <ul class="dropdown-menu">
-                    <?php if ($params->get('show_print_icon')) : ?>
-                        <li class="print-icon"> <?php echo JHtml::_('icon.print_popup', $this->item, $params); ?> </li>
-                    <?php endif; ?>
-                    <?php if ($params->get('show_email_icon')) : ?>
-                        <li class="email-icon"> <?php echo JHtml::_('icon.email', $this->item, $params); ?> </li>
-                    <?php endif; ?>
-                    <?php if ($canEdit) : ?>
-                        <li class="edit-icon"> <?php echo JHtml::_('icon.edit', $this->item, $params); ?> </li>
-                    <?php endif; ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
+            <?php echo JLayoutHelper::render('joomla.content.icons', array('params' => $params, 'item' => $this->item, 'print' => false)); ?>
 
             <?php
             break;
