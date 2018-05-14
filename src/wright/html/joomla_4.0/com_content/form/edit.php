@@ -149,21 +149,17 @@ JFactory::getDocument()->addScriptDeclaration("
             <?php echo JHtml::_('form.token'); ?>
         </fieldset>
         <div class="btn-toolbar">
-            <div class="btn-group">
+            <div class="btn-group" role="group">
                 <button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('article.save')">
-                    <span class="icon-ok"></span><?php echo JText::_('JSAVE') ?>
+                    <span class="icon-save"></span> <?php echo JText::_('JSAVE') ?>
                 </button>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn" onclick="Joomla.submitbutton('article.cancel')">
-                    <span class="icon-cancel"></span><?php echo JText::_('JCANCEL') ?>
+                <button type="button" class="btn btn-danger" onclick="Joomla.submitbutton('article.cancel')">
+                    <span class="icon-times"></span> <?php echo JText::_('JCANCEL') ?>
                 </button>
-            </div>
-            <?php if ($params->get('save_history', 0) && $this->item->id) : ?>
-                <div class="btn-group">
+                <?php if ($params->get('save_history', 0) && $this->item->id) : ?>
                     <?php echo $this->form->getInput('contenthistory'); ?>
-                </div>
-            <?php endif; ?>
+                <?php endif; ?>
+            </div>
         </div>
     </form>
 </div>
