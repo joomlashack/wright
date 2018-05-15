@@ -10,6 +10,9 @@
 
 defined('JPATH_BASE') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+
 ?>
 <dd class="create">
     <span class="icon-calendar"></span> <?php // Wright v.4: Changed icon ?>
