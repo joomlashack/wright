@@ -43,7 +43,7 @@ defined('_JEXEC') or die('Restricted access');
 					:
 			?>
 			<!-- menu -->
-	   		<w:nav name="menu" />
+	   		<w:nav name="menu" containerClass="m-b-1" />
 			<?php
 				endif;
 			?>
