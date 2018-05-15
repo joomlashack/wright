@@ -20,6 +20,25 @@ body {
 	}
 }
 
+// Fix edit article in frontend
+.edit {
+
+	&.item-page {
+
+		.tab-content {
+			overflow: inherit;
+		}
+
+		.control-label {
+
+			.hasPopover,
+			.hasTooltip {
+				display: inline-block;
+			}
+		}
+	}
+}
+
 // Adding font-awesome missing focus states
 .dropdown-menu>li>a:focus>[class^="icon-"],
 .dropdown-menu>li>a:focus>[class*=" icon-"],
@@ -966,4 +985,3 @@ aside a.readmore{
 .img-no-responsive-wrapper img {
 	max-width: none;
 }
-
