@@ -10,5 +10,4 @@
 
 defined('_JEXEC') or die;
 
-$this->subtemplatename = 'items';
-echo JLayoutHelper::render('joomla.content.category_default', $this);
+require(JPATH_BASE . '/components/com_contact/tmpl/category/default.php');

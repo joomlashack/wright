@@ -10,17 +10,4 @@
 
 defined('_JEXEC') or die;
 
-JLoader::register('ContentHelperRoute', JPATH_SITE . '/components/com_content/helpers/route.php');
-
-?>
-<?php if ($this->params->get('show_articles')) : ?>
-<div class="contact-articles">
-	<ul class="nav nav-tabs nav-stacked">
-		<?php foreach ($this->item->articles as $article) : ?>
-			<li>
-				<?php echo JHtml::_('link', JRoute::_(ContentHelperRoute::getArticleRoute($article->slug, $article->catid, $article->language)), htmlspecialchars($article->title, ENT_COMPAT, 'UTF-8')); ?>
-			</li>
-		<?php endforeach; ?>
-	</ul>
-</div>
-<?php endif; ?>
+require(JPATH_BASE . '/components/com_contact/tmpl/contact/default_articles.php');
