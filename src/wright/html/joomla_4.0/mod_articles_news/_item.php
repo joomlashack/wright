@@ -1,5 +1,4 @@
 <?php
-// Wright v.3 Override: Joomla 3.2.2
 /**
  * @package     Joomla.Site
  * @subpackage  mod_articles_news

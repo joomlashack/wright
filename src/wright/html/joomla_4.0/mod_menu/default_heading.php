@@ -1,5 +1,4 @@
 <?php
-// Wright v.3 Override: Joomla 3.2.2 (Replaced for default_heading.php as it's a more complete structure)
 /**
  * @package     Joomla.Site
  * @subpackage  mod_menu

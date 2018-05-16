@@ -1,5 +1,4 @@
 <?php
-// Wright v.4 Override: Joomla 4.0
 /**
  * @package     Joomla.Site
  * @subpackage  mod_menu
