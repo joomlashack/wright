@@ -1,5 +1,4 @@
 <?php
-// Wright v.3 Override: Joomla 3.2.2
 /**
  * @package     Joomla.Site
  * @subpackage  com_tags
@@ -10,4 +9,4 @@
 
 defined('_JEXEC') or die;
 
-require(JPATH_BASE . '/components/com_tags/tmpl/tag/default.php');
+require(JPATH_BASE . '/components/com_users/tmpl/profile/default_custom.php');
