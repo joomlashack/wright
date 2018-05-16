@@ -1694,11 +1694,15 @@ img {
 
 @media only screen and (max-width: 991px) {
 
-  .wr-hover-menu .show > .dropdown-toggle::after{
+  .wr-hover-menu .show > .dropdown-toggle::after {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
     transform: rotate(-90deg);
   }
+
 }
-@media only screen and (min-width: 991px) {
+
+@media only screen and (min-width: 992px) {
 
   .wr-hover-menu .collapse ul li {
     position: relative;

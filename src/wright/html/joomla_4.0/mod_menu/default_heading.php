@@ -30,7 +30,14 @@ $class .= ($item->deeper) ? ' dropdown-toggle' : '';
 $class .= ($item->level == 1) ? ' nav-link ' : ' dropdown-item';
 $class  = 'class="' . $class . '" ';
 
-?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.3: Added collapsible option ?><?php echo $title; ?>>
+// Add the toggler
+if($item->deeper) {
+    $toggle = 'data-toggle="dropdown" aria-expanded="false"';
+} else {
+    $toggle = '';
+}
+
+?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.3: Added collapsible option ?><?php echo $title; ?> <?php echo $toggle; ?>>
 	<?php echo $linktype; ?><?php
 	// Wright v.3: Closing pseudo-link for sub-menus
 	if ($menuType == 'vertical') {
