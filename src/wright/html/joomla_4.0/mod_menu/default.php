@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.2.2
+// Wright v.4 Override: Joomla 4.0
 /**
  * @package     Joomla.Site
  * @subpackage  mod_menu
@@ -60,7 +60,7 @@ if ($menuType == 'vertical'){
 
 ?>
 
-<ul class="menu<?php echo $class_sfx . $navlist;?> nav"<?php  // Wright v.3: Added nav class
+<ul class="menu<?php echo $class_sfx . $navlist;?> navbar-nav"<?php  // Wright v.4: Added navbar-nav class
 	$tag = '';
 
 	if ($params->get('tag_id') != null)
