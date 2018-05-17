@@ -81,7 +81,7 @@ class Overrider
 				}
 				if (!$fileFound) {
 					if ($strictOverride) return false;
-					$file = JPATH_SITE.'/components/'.$folder.'/views/'.$view.'/tmpl/'.$layout.'.php';
+					$file = JPATH_SITE.'/components/'.$folder.'/tmpl/'.$view.'/'.$layout.'.php';
 				}
 				break;
 
