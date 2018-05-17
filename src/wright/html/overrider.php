@@ -62,6 +62,7 @@ class Overrider
 				break;
 
 			case 'com' :
+				// overriding components: 'com_xx.yy','zz' => (components/com_xx/tmpl/yy/zz.php)
 				$fileFound = false;
 				$subversion = $version[1];
 				list($folder, $view) = explode('.', $extension);
