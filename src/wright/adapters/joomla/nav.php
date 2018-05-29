@@ -19,25 +19,113 @@ class WrightAdapterJoomlaNav
 
 		$doc = Wright::getInstance();
 
-		if ($args['type'] == 'toolbar') {
+		// Menu for Joomla 3
+		if (version_compare(JVERSION, '4', 'lt')) {
 
-            $nav =
-            '<div class="'.$args['wrapper'].'">
+			if ($args['type'] == 'toolbar') {
+				$nav =
+					'<div class="'.$args['wrapper'].'">
+				<nav id="'.$args['name'].'">
+					<div class="navbar ' . $args['wrapClass'] . '">
+						<div class="navbar-inner">
+							<div class="' . $args['containerClass'] . '">
+					            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
+						            <span class="icon-bar"></span>
+						            <span class="icon-bar"></span>
+						            <span class="icon-bar"></span>
+					            </a>
+					            <div class="nav-collapse" id="nav-'.$args['name'].'">
+									 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>';
+				if ($doc->document->params->get('mobile_menu_text', '') != "") {
+					$nav =
+						'<div class="'.$args['wrapper'].'">
+					<nav id="'.$args['name'].'">
+						<div class="navbar ' . $args['wrapClass'] . '">
+							<div class="navbar-inner">
+								<div class="' . $args['containerClass'] . '">
+						            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
+													' . $doc->document->params->get('mobile_menu_text') . '
+						            </a>
+						            <div class="nav-collapse" id="nav-'.$args['name'].'">
+										 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>';
+				}
+			}
+			else {
+				$nav =
+					'<div class="'.$args['wrapper'].'">
+				<div class="' . $args['containerClass'] . '">
+					<nav id="'.$args['name'].'">
+						<div class="navbar ' . $args['wrapClass'] . '">
+							<div class="navbar-inner">
+					            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
+						            <span class="icon-bar"></span>
+						            <span class="icon-bar"></span>
+						            <span class="icon-bar"></span>
+					            </a>
+					            <div class="nav-collapse" id="nav-'.$args['name'].'">
+									 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>';
+				if ($doc->document->params->get('mobile_menu_text', '') != "") {
+					$nav =
+						'<div class="'.$args['wrapper'].'">
+					<div class="' . $args['containerClass'] . '">
+						<nav id="'.$args['name'].'">
+							<div class="navbar ' . $args['wrapClass'] . '">
+								<div class="navbar-inner">
+						            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target="#nav-'.$args['name'].'">
+													' . $doc->document->params->get('mobile_menu_text') . '
+						            </a>
+						            <div class="nav-collapse" id="nav-'.$args['name'].'">
+										 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
+									</div>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>';
+				}
+			}
+
+		}
+		// Menu for Joomla 4
+		else {
+
+			if ($args['type'] == 'toolbar') {
+
+				$nav =
+					'<div class="'.$args['wrapper'].'">
 				<div id="'.$args['name'].'">
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark wr-hover-menu ' . $args['wrapClass'] . '">
                         <div class="' . $args['containerClass'] . '">
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-'.$args['name'].'" aria-controls="nav-'.$args['name'].'" aria-expanded="false" aria-label="Toggle navigation">';
 
-                                if ($doc->document->params->get('mobile_menu_text', '') != "")
-                                {
-                                    $nav .= $doc->document->params->get('mobile_menu_text');
-                                }
-                                else
-                                {
-                                    $nav .= '<span class="navbar-toggler-icon"></span>';
-                                }
+				if ($doc->document->params->get('mobile_menu_text', '') != "")
+				{
+					$nav .= $doc->document->params->get('mobile_menu_text');
+				}
+				else
+				{
+					$nav .= '<span class="navbar-toggler-icon"></span>';
+				}
 
-                            $nav .= '</button>
+				$nav .= '</button>
                             <div class="collapse navbar-collapse" id="nav-'.$args['name'].'">
                                 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
                             </div>
@@ -46,27 +134,27 @@ class WrightAdapterJoomlaNav
                 </div>
             </div>';
 
-		}
-		else {
+			}
+			else {
 
-            $nav =
-            '<div class="'.$args['wrapper'].'">
+				$nav =
+					'<div class="'.$args['wrapper'].'">
 				<div class="' . $args['containerClass'] . '">
 					<div id="'.$args['name'].'">
 					    <nav class="navbar navbar-expand-lg navbar-light bg-light wr-hover-menu">
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-'.$args['name'].'" aria-controls="nav-'.$args['name'].'" aria-expanded="false" aria-label="Toggle navigation">';
 
-                                if ($doc->document->params->get('mobile_menu_text', '') != "")
-                                {
-                                    $nav .= $doc->document->params->get('mobile_menu_text');
-                                }
-                                else
-                                {
-                                    $nav .= '<span class="navbar-toggler-icon"></span>';
-                                }
+				if ($doc->document->params->get('mobile_menu_text', '') != "")
+				{
+					$nav .= $doc->document->params->get('mobile_menu_text');
+				}
+				else
+				{
+					$nav .= '<span class="navbar-toggler-icon"></span>';
+				}
 
-                            $nav .=
-                            '</button>
+				$nav .=
+					'</button>
                             <div class="collapse navbar-collapse" id="nav-'.$args['name'].'">
                                 <jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['style'].'" />
                             </div>
@@ -74,6 +162,8 @@ class WrightAdapterJoomlaNav
                     </div>
                 </div>
             </div>';
+
+			}
 
 		}
 
