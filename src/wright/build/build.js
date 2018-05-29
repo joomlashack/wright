@@ -80,7 +80,7 @@ function parseLessFiles() {
 				compress: true,
 				yuicompress: true
 			});
-			
+
 			console.log('Compiled file ' + dfcss);
 			fs.writeFileSync('../../css/' + dfcss, css);
 
@@ -115,7 +115,7 @@ if (list) {
 			var s = '';
 
 			// Bootstrap base files
-			s += '@import url("../../less/variables-' + st + '.less"); ';  
+			s += '@import url("../../less/variables-' + st + '.less"); ';
 			s += '@import url("less/bootstrap.less"); ';
 			fs.writeFileSync(df, s);
 
@@ -145,8 +145,8 @@ if (list) {
 
 						// Bootstrap extended files (Joomla specifics)
 						s = '';
-						s += '@import url("../../less/variables-' + st + '.less"); ';  
-						s += '@import url("libraries/bootstrap/less/mixins.less"); ';  
+						s += '@import url("../../less/variables-' + st + '.less"); ';
+						s += '@import url("libraries/bootstrap/less/mixins.less"); ';
 						s += '@import url("less/typography.less"); ';
 						s += '@import url("less/joomla.less"); ';
 						s += '@import url("less/joomla' + jv + '.less"); ';
