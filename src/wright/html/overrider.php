@@ -82,7 +82,15 @@ class Overrider
 				}
 				if (!$fileFound) {
 					if ($strictOverride) return false;
-					$file = JPATH_SITE.'/components/'.$folder.'/tmpl/'.$view.'/'.$layout.'.php';
+
+					// Default path for components tmpl in Joomla 3
+					if (version_compare(JVERSION, '4', 'lt')) {
+						$file = JPATH_SITE.'/components/'.$folder.'/views/'.$view.'/tmpl/'.$layout.'.php';
+					}
+					// Default path for components tmpl in Joomla 4
+					else {
+						$file = JPATH_SITE.'/components/'.$folder.'/tmpl/'.$view.'/'.$layout.'.php';
+					}
 				}
 				break;
 
