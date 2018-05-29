@@ -164,7 +164,7 @@ class WrightLessCompiler
 	 *
 	 * @param   array   $lessFiles  Array of less files to include in compilation
 	 * @param   string  $cssFile    Compiled css file
-	 * 
+	 *
 	 * @return  void
 	 */
 	protected function compileWrightFile($lessFiles, $cssFile)

@@ -237,7 +237,14 @@ class Wright
 			$this->addJSScript($this->_urlJS . '/bootstrap.min.js');
 		}
 
-		$this->addJSScript($this->_urlJS . '/utils.js');
+		// Javascript for Joomla 3
+		if (version_compare(JVERSION, '4', 'lt')) {
+			$this->addJSScript($this->_urlJS . '/utils-30.js');
+		}
+		// Javascript for Joomla 4
+		else {
+			$this->addJSScript($this->_urlJS . '/utils-40.js');
+		}
 
 		if ($this->document->params->get('stickyFooter', 1))
 		{
