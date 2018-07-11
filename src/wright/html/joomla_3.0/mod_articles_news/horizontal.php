@@ -24,7 +24,7 @@ $wrightDivideRows = isset($wrightDivideRows) ? $wrightDivideRows : false;
 $wrightProcessSecondRow = false;
 $wrightTempShowImage = $params->get('image', 0);
 $wrightTempShowTitle = $params->get('item_title', 0);
-$wrightTempEnableIntroText = $params->get('show_introtext', '1');
+$wrightTempEnableIntroText = isset($wrightEnableIntroText) ? $wrightEnableIntroText : 0;
 $wrightTempReadMore = $params->get('readmore', 0);
 
 $wrightGeneralClass = isset($wrightGeneralClass) ? $wrightGeneralClass : '';
