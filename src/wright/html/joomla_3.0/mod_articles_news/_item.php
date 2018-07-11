@@ -10,7 +10,7 @@
 
 $wrightNewsEnableIcons = (isset($wrightNewsEnableIcons) ? $wrightNewsEnableIcons : true);  // Wright v.3: Enable icons parameter
 
-$wrightEnableIntroText = (isset($wrightEnableIntroText) ? $wrightEnableIntroText : true);  // Wright v.3: Enable intro text parameter
+$wrightEnableIntroText = (isset($wrightEnableIntroText) ? $wrightEnableIntroText : $params->get('show_introtext', '1'));  // Wright v.3: Enable intro text parameter
 
 $wrightTitlePosition = (isset($wrightTitlePosition) ? $wrightTitlePosition : 'above');  // Wright v.3: Title Position (above/below) parameter
 
