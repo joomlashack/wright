@@ -33,7 +33,8 @@
 }
 
 .icon-brand {
-    font-family: "FontAwesomeBrands"
+    font-family: "FontAwesomeBrands";
+    font-weight: normal;
 }
 
 .icon-lg {
