@@ -41,6 +41,7 @@
 		<folder>views</folder>
 		<folder>form</folder>
         <folder>overrides</folder>
+        <folder>scss</folder>
 	</files>
 
 	<positions>
