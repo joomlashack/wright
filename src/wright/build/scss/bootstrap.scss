@@ -1,0 +1,42 @@
+/*!
+ * Bootstrap v4.1.2 (https://getbootstrap.com/)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+@import "../libraries/bootstrap4/scss/functions";
+//@import "../libraries/bootstrap4/scss/variables"; // Modify this for custom colors, font-sizes, etc - We'll load: scss/variables-generic.scss or variables-something.scss
+@import "../libraries/bootstrap4/scss/mixins";
+@import "../libraries/bootstrap4/scss/root";
+@import "../libraries/bootstrap4/scss/reboot";
+@import "../libraries/bootstrap4/scss/type";
+@import "../libraries/bootstrap4/scss/images";
+@import "../libraries/bootstrap4/scss/code";
+@import "../libraries/bootstrap4/scss/grid";
+@import "../libraries/bootstrap4/scss/tables";
+@import "../libraries/bootstrap4/scss/forms";
+@import "../libraries/bootstrap4/scss/buttons";
+@import "../libraries/bootstrap4/scss/transitions";
+@import "../libraries/bootstrap4/scss/dropdown";
+@import "../libraries/bootstrap4/scss/button-group";
+@import "../libraries/bootstrap4/scss/input-group";
+@import "../libraries/bootstrap4/scss/custom-forms";
+@import "../libraries/bootstrap4/scss/nav";
+@import "../libraries/bootstrap4/scss/navbar";
+@import "../libraries/bootstrap4/scss/card";
+@import "../libraries/bootstrap4/scss/breadcrumb";
+@import "../libraries/bootstrap4/scss/pagination";
+@import "../libraries/bootstrap4/scss/badge";
+@import "../libraries/bootstrap4/scss/jumbotron";
+@import "../libraries/bootstrap4/scss/alert";
+@import "../libraries/bootstrap4/scss/progress";
+@import "../libraries/bootstrap4/scss/media";
+@import "../libraries/bootstrap4/scss/list-group";
+@import "../libraries/bootstrap4/scss/close";
+@import "../libraries/bootstrap4/scss/modal";
+@import "../libraries/bootstrap4/scss/tooltip";
+@import "../libraries/bootstrap4/scss/popover";
+@import "../libraries/bootstrap4/scss/carousel";
+@import "../libraries/bootstrap4/scss/utilities";
+@import "../libraries/bootstrap4/scss/print";
