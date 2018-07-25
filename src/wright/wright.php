@@ -419,31 +419,44 @@ class Wright
 
 		$styles = Array();
 
-		$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
-		$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
+		// CSS for Joomla 3
+		if (version_compare(JVERSION, '4', 'lt')) {
+			$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
+			$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
 
-		if ($this->document->params->get('responsive', '1') == '1')
-		{
-			$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
+			if ($this->document->params->get('responsive', '1') == '1')
+			{
+				$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
+			}
+
+			$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
+
+			// @todo check if these files are indeed loaded at some point before (not sure why the need to unload them)
+			//unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
+			//unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
+			//unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
+
+			// @todo check if there is an existing RTL file, and unload it
+			//unset($doc->_styleSheets[JURI::root(true) . '/media/jui/css/bootstrap-rtl.css']);
+
+			// Unload core bootstrap CSS files
+			unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.css']);
+			unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.min.css']);
+
+			if ($this->document->params->get('documentationMode', '0') == '1')
+			{
+				$styles['template'][] = 'docs.css';
+			}
+
+			if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl.css')) {
+				$styles['template'][] = 'rtl.css';
+			}
 		}
-
-		$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
-
-        // @todo check if these files are indeed loaded at some point before (not sure why the need to unload them)
-        //unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
-        //unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
-        //unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
-
-        // @todo check if there is an existing RTL file, and unload it
-        //unset($doc->_styleSheets[JURI::root(true) . '/media/jui/css/bootstrap-rtl.css']);
-
-        // Unload core bootstrap CSS files
-        unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.css']);
-        unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.min.css']);
-
-		if ($this->document->params->get('documentationMode', '0') == '1')
-		{
-			$styles['template'][] = 'docs.css';
+		// CSS for Joomla 4
+		else {
+			$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '.css';
+			// @todo Add RTL for Bootstrap 4
+			// @todo Add docs.css for Bootstrap 4
 		}
 
 		// Add some stuff for lovely IE if needed
@@ -465,10 +478,6 @@ class Wright
 			if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/ie' . $major . '.css'))
 				$styles['ie'][] = 'ie' . $major . '.css';
 		}
-
-		if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl.css')) {
-            $styles['template'][] = 'rtl.css';
-        }
 
 		// Check to see if custom.css file is present, and if so add it after all other css files
 		if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/custom.css'))
