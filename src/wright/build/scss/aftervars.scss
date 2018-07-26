@@ -1,3 +1,4 @@
+// Load core Bootstrap 4 files, except variables, that one is being loaded per style through joomla-generic.scss or joomla-something.scss
 //@import "../libraries/bootstrap4/scss/variables"; // Modify this for custom colors, font-sizes, etc - We'll load: scss/variables-generic.scss or variables-something.scss
 @import "../libraries/bootstrap4/scss/mixins";
 @import "../libraries/bootstrap4/scss/root";
@@ -32,3 +33,9 @@
 @import "../libraries/bootstrap4/scss/carousel";
 @import "../libraries/bootstrap4/scss/utilities";
 @import "../libraries/bootstrap4/scss/print";
+
+// Core Wright CSS
+@import "typography";
+@import "joomla";
+
+
