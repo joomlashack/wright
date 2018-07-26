@@ -1,3 +1,9 @@
+/* General */
+
+img {
+    max-width: 100%;
+}
+
 /* Logos */
 
 #logo {
@@ -7,6 +13,10 @@
         h2 {
             display: none;
         }
+    }
+
+    img {
+        width: 100%;
     }
 }
 
@@ -73,16 +83,17 @@ p {
 
 .item-image {
     @extend .mb-3;
+    max-width: 100%;
 }
 
-.pull-right {
+.float-right {
 
     &.item-image {
         @extend .ml-3;
     }
 }
 
-.pull-left {
+.float-left {
 
     &.item-image {
         @extend .mr-3;
