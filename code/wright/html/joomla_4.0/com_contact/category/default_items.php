@@ -96,9 +96,9 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		</ul>
 
 		<?php if ($this->params->get('show_pagination')) : ?>
-		<div class="pagination">
+		<div class="container-pagination">
 			<?php if ($this->params->def('show_pagination_results', 1)) : ?>
-			<p class="counter">
+			<p class="counter float-right">
 				<?php echo $this->pagination->getPagesCounter(); ?>
 			</p>
 			<?php endif; ?>
