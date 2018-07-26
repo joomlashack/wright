@@ -419,6 +419,9 @@ class Wright
 
 		$styles = Array();
 
+		// Load Font Awesome
+		$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
+
 		// CSS for Joomla 3
 		if (version_compare(JVERSION, '4', 'lt')) {
 			$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
@@ -428,8 +431,6 @@ class Wright
 			{
 				$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
 			}
-
-			$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
 
 			// @todo check if these files are indeed loaded at some point before (not sure why the need to unload them)
 			//unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
