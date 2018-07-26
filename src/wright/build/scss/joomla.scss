@@ -100,6 +100,32 @@ p {
     }
 }
 
+/* Pagination */
+
+.container-pagination {
+
+    .counter {
+        line-height: 35px;
+        margin: 0 !important;
+    }
+
+    .pagination {
+
+        li {
+
+            &.page-item {
+
+                &:not(.pagination-start):not(.pagination-prev):not(.pagination-next):not(.pagination-end) {
+
+                    @media (max-width: 767px) {
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
 /* Caption fixes */
 
 .img_caption {
