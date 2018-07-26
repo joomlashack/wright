@@ -408,7 +408,7 @@ JHtml::_('behavior.caption');
 			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 			<div class="pagination<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
 				<?php  if ($this->params->def('show_pagination_results', 1)) : ?>
-				<p class="counter pull-right"> <?php echo $this->pagination->getPagesCounter(); ?> </p>
+				<p class="counter float-right"> <?php echo $this->pagination->getPagesCounter(); ?> </p>
 				<?php endif; ?>
 				<?php echo $this->pagination->getPagesLinks(); ?> </div>
 				<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>

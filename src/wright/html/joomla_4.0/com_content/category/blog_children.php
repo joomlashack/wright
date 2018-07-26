@@ -37,7 +37,7 @@ if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) : ?
 				<?php echo "<i class='icon-folder-open'></i>"; // Wright v.3: Children categories icon ?>
 
 				<?php if (count($child->getChildren()) > 0) : ?>
-					<a href="#category-<?php echo $child->id;?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini pull-right"><span class="icon-plus"></span></a>
+					<a href="#category-<?php echo $child->id;?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini float-right"><span class="icon-plus"></span></a>
 				<?php endif;?>
 			</h3>
 			<?php else : ?>
@@ -51,7 +51,7 @@ if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) : ?
 				<?php endif; ?>
 
 				<?php if (count($child->getChildren()) > 0) : ?>
-					<a href="#category-<?php echo $child->id;?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini pull-right"><span class="icon-plus"></span></a>
+					<a href="#category-<?php echo $child->id;?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini float-right"><span class="icon-plus"></span></a>
 				<?php endif;?>
 			<?php endif;?>
 			</h3>

@@ -40,6 +40,7 @@ class JFormFieldStyles extends JFormFieldList
 
 		$filesFound = false;
 
+		// @todo check existing styles by looking files with filename in format: joomla-something.css
 		$styles = JFolder::files(JPATH_ROOT . '/templates' . '/' . $this->form->getValue('template') . '/css', 'style-([^\.]*)\.css');
 
 		if (!count($styles))

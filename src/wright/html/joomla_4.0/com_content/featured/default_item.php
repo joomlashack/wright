@@ -158,7 +158,7 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
 
             <?php if (isset($images->image_intro) && !empty($images->image_intro)) : ?>
             <?php $imgfloat = (empty($images->float_intro)) ? $params->get('float_intro') : $images->float_intro; ?>
-            <div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image">
+            <div class="float-<?php echo htmlspecialchars($imgfloat); ?> item-image">
                 <?php
                 /* Wright v.3: Added link to the image from the article */
                 if ($params->get('access-view')) :

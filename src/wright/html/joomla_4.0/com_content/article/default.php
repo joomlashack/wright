@@ -129,7 +129,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
             <?php if (!$this->print) : ?>
                 <?php if ($canEdit || $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
-                <div class="btn-group pull-right icons-actions">   <?php // Wright v.3: Added icons-actions class ?>
+                <div class="btn-group float-right icons-actions">   <?php // Wright v.3: Added icons-actions class ?>
                     <a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" href="#"> <span class="icon-cog"></span> <span class="caret"></span> </a>
                     <?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
                     <ul class="dropdown-menu actions">
@@ -222,7 +222,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
             <?php if ($params->get('access-view')):?>
                 <?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
                 <?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
-                <div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image"> <img
+                <div class="float-<?php echo htmlspecialchars($imgfloat); ?> item-image"> <img
                 <?php if ($images->image_fulltext_caption):
                     echo 'class="caption ' . $this->wrightBootstrapImages . '"'.' title="' .htmlspecialchars($images->image_fulltext_caption) . '"';  // Wright .v.3: Added image class
                     /* Wright v.3: Image class when no caption present */
