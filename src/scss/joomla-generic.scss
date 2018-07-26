@@ -1,0 +1,9 @@
+/* ==== Generic style ====
+ *
+ * The order of these files matter!
+*/
+
+@import "../wright/build/scss/beforevars";
+@import "variables-generic";
+@import "template-generic";
+@import "../wright/build/scss/aftervars";

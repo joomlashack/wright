@@ -159,6 +159,9 @@
         </relatedExtensions>
 
         <include>AllediaFreeDefaultFiles</include>
+        <scss destination="css">
+            <file>scss/joomla-generic.scss</file>
+        </scss>
     </alledia>
 
 </extension>
