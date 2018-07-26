@@ -59,3 +59,6 @@ packages/*
 !packages/.gitkeep
 
 build.properties
+
+# Ignore compiled CSS files
+/src/css/joomla-*.css
