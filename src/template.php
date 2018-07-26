@@ -32,7 +32,7 @@ defined('_JEXEC') or die('Restricted access');
 		?>
 		<div class="<?php echo $wrightContainerClass; ?>">
 			<!-- header -->
-			<header id="header" class="pb-5 pt-5">
+			<header id="header" class="m-b-1 p-t-1">
 				<div class="<?php echo $wrightGridMode; ?> clearfix">
 					<w:logo name="top" />
 					<div class="clear"></div>
@@ -43,7 +43,7 @@ defined('_JEXEC') or die('Restricted access');
 					:
 			?>
 			<!-- menu -->
-	   		<w:nav name="menu" containerClass="mb-3" />
+	   		<w:nav name="menu" containerClass="m-b-1" />
 			<?php
 				endif;
 			?>
@@ -52,7 +52,7 @@ defined('_JEXEC') or die('Restricted access');
 				if ($this->countModules('featured'))
 					:
 			?>
-			<div id="featured" class="mb-3">
+			<div id="featured" class="m-b-1">
 				<w:module type="none" name="featured" />
 			</div>
 			<?php
@@ -63,7 +63,7 @@ defined('_JEXEC') or die('Restricted access');
 				if ($this->countModules('grid-top'))
 					:
 			?>
-			<div id="grid-top" class="mb-3">
+			<div id="grid-top" class="m-b-1">
 				<w:module type="<?php echo $wrightGridMode; ?>" name="grid-top" chrome="wrightflexgrid" />
 			</div>
 			<?php
@@ -116,7 +116,7 @@ defined('_JEXEC') or die('Restricted access');
 							:
 					?>
 					<!-- below-content -->
-					<div id="below-content" class="mt-3">
+					<div id="below-content" class="m-t-1">
 						<w:module type="none" name="below-content" />
 					</div>
 					<?php
@@ -133,7 +133,7 @@ defined('_JEXEC') or die('Restricted access');
 					:
 			?>
 			<!-- grid-bottom -->
-			<div id="grid-bottom" class="mb-3">
+			<div id="grid-bottom" class="m-b-1">
 				<w:module type="<?php echo $wrightGridMode; ?>" name="grid-bottom" chrome="wrightflexgrid" />
 			</div>
 			<?php
@@ -171,7 +171,7 @@ defined('_JEXEC') or die('Restricted access');
 					endif;
 				?>
 
-		   	<div class="<?php echo $wrightContainerClass; ?> footer-content pt-3 pb-3">
+		   	<div class="<?php echo $wrightContainerClass; ?> footer-content p-t-1">
 			   	<?php
 						if ($this->countModules('footer'))
 						:

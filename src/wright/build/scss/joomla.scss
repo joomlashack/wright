@@ -82,21 +82,21 @@ p {
 }
 
 .item-image {
-    @extend .mb-3;
+    @extend .m-b-1;
     max-width: 100%;
 }
 
 .float-right {
 
     &.item-image {
-        @extend .ml-3;
+        @extend .m-l-1;
     }
 }
 
 .float-left {
 
     &.item-image {
-        @extend .mr-3;
+        @extend .m-r-1;
     }
 }
 
