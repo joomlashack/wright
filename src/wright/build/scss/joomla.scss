@@ -1,1 +1,124 @@
-// I'll put some code inherited from wright/build/less/joomla.less
+/* Logos */
+
+#logo {
+
+    a.image {
+
+        h2 {
+            display: none;
+        }
+    }
+}
+
+a,
+div {
+
+    &.joomlashack {
+        display: block;
+        margin: 10px auto;
+        text-align: center;
+        width: 75px;
+    }
+}
+
+/* Hidden text */
+
+a {
+
+    &.hidden-text {
+
+        span {
+
+            &.hidden-text {
+                display: none;
+            }
+        }
+    }
+}
+
+/* Footer */
+
+#footer {
+
+    &.sticky {
+        width: 100%;
+    }
+}
+
+/* Module */
+
+[class*="module"] {
+    margin-bottom: 20px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Single Item */
+
+p {
+
+    &.img_caption {
+        background: none repeat scroll 0 0 $gray-200;
+        font-size: 0.75em;
+        font-style: italic;
+        text-align: left;
+    }
+}
+
+.item-image {
+    @extend .m-b-1;
+}
+
+.pull-right {
+
+    &.item-image {
+        @extend .m-l-1;
+    }
+}
+
+.pull-left {
+
+    &.item-image {
+        @extend .m-r-1;
+    }
+}
+
+/* Caption fixes */
+
+.img_caption {
+    text-align: center !important;
+
+    .left {
+        float: left;
+        margin-right: 1em;
+    }
+
+    .right {
+        float: right;
+        margin-left: 1em;
+    }
+
+    .left {
+
+        p {
+            clear: left;
+            text-align: center;
+        }
+    }
+
+    .right {
+
+        p {
+            clear: right;
+            text-align: center;
+        }
+    }
+
+    &.none {
+        margin-left:auto;
+        margin-right:auto;
+        max-width: 100%;
+    }
+}
