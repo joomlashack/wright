@@ -72,20 +72,20 @@ p {
 }
 
 .item-image {
-    @extend .m-b-1;
+    @extend .mb-3;
 }
 
 .pull-right {
 
     &.item-image {
-        @extend .m-l-1;
+        @extend .ml-3;
     }
 }
 
 .pull-left {
 
     &.item-image {
-        @extend .m-r-1;
+        @extend .mr-3;
     }
 }
 
