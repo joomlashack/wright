@@ -17,7 +17,7 @@ $canEdit = $displayData['params']->get('access-edit');
 	<?php if (empty($displayData['print'])) : ?>
 
 		<?php if ($canEdit || $displayData['params']->get('show_print_icon') || $displayData['params']->get('show_email_icon')) : ?>
-			<div class="btn-group pull-right icons-actions">   <?php // Wright v.3: Added icons-actions class ?>
+			<div class="btn-group float-right icons-actions">   <?php // Wright v.3: Added icons-actions class ?>
 				<a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" href="#"> <span class="icon-cog"></span> <span class="caret"></span> </a>
 				<?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
 				<ul class="dropdown-menu">
@@ -36,7 +36,7 @@ $canEdit = $displayData['params']->get('access-edit');
 
 	<?php else : ?>
 
-		<div class="pull-right">
+		<div class="float-right">
 			<?php echo JHtml::_('icon.print_screen', $displayData['item'], $displayData['params']); ?>
 		</div>
 
