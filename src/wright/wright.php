@@ -419,9 +419,6 @@ class Wright
 
 		$styles = Array();
 
-		// Load Font Awesome
-		$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
-
 		// CSS for Joomla 3
 		if (version_compare(JVERSION, '4', 'lt')) {
 			$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
@@ -460,6 +457,9 @@ class Wright
 			// @todo Add docs.css for Bootstrap 4
 			unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.min.css']);
 		}
+
+		// Load Font Awesome
+		$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
 
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
