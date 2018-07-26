@@ -19,6 +19,7 @@ defined('_JEXEC') or die;
 	$this->wrightBootstrapImages = $template->params->get('wright_bootstrap_images','');
 /* End Wright v.3: Bootstrapped images */
 
+$doc = Wright::getInstance();
 
 /* Wright v.3: Item elements structure and extra elements */
 	if (!isset($this->wrightLeadingItemElementsStructure)) $this->wrightLeadingItemElementsStructure = Array();
@@ -261,7 +262,7 @@ JHtml::_('behavior.caption');
 				?>
 			<?php endif; /* End Wright v.3: Special featured items grid */ ?>
 
-			<div class="col-md-<?php echo $wrightspan;?>">
+			<div class="<?php echo $doc->setColumnPrefix() . $wrightspan;?>">
 				<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.3: Item elements extra elements
 				 ?>">
                     <div itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
@@ -278,7 +279,7 @@ JHtml::_('behavior.caption');
 					/* Wright v.3: Row buffer storage and image print in separate row */
 					if ($this->wrightImagesRow)
 					{
-						$wrightPreRowContent .= '<div class="col-md-' . round((12 / $this->columns)) . '">';
+						$wrightPreRowContent .= '<div class="' . $doc->setColumnPrefix() . round((12 / $this->columns)) . '">';
 
 						if (isset($articleImages->image_intro) && !empty($articleImages->image_intro))
 						{
@@ -355,7 +356,7 @@ JHtml::_('behavior.caption');
 			?>
 
 			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
-				<?php echo '<div class="col-md-' . $this->MoreItemsGridOrientation['moreitemsLayout'] . '">' ?>
+				<?php echo '<div class="' . $doc->setColumnPrefix() . $this->MoreItemsGridOrientation['moreitemsLayout'] . '">' ?>
 			<?php endif; ?>
 
 			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
@@ -378,7 +379,7 @@ JHtml::_('behavior.caption');
 				addExtraNonContentContainers($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
 			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : ?>
-				<?php echo '<div class="col-md-' . $this->MoreItemsGridOrientation['subcategoriesLayout'] . '">' ?>
+				<?php echo '<div class="' . $doc->setColumnPrefix() . $this->MoreItemsGridOrientation['subcategoriesLayout'] . '">' ?>
 			<?php endif; ?>
 			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
 			<div class="cat-children<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">

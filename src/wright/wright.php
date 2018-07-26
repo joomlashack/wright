@@ -835,4 +835,23 @@ class Wright
 
 		return $defaultInput;
 	}
+
+	/**
+	 * Return the Bootstrap column prefix
+	 *
+	 * @return  string
+	 */
+	public function setColumnPrefix()
+	{
+		// Joomla 3
+		if (version_compare(JVERSION, '4', 'lt')) {
+			$bsprefix_ = 'span';
+		}
+		// Joomla 4
+		else {
+			$bsprefix_ = 'col-md-';
+		}
+
+		return $bsprefix_;
+	}
 }

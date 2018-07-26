@@ -103,26 +103,6 @@ abstract class HtmlAdapterAbstract
 	}
 
 	/**
-	 *  Gets Bootstrap column class suffix
-	 *
-	 *
-	 * @return  string
-	 */
-	public function getColumnClassSuffix() {
-
-		// Column class sufix for Joomla 3
-		if (version_compare(JVERSION, '4', 'lt')) {
-			$columnClassSuffix = 'span';
-		}
-		// Column class suffix for Joomla 4
-		else {
-			$columnClassSuffix = 'col-md-';
-		}
-
-		return $columnClassSuffix;
-	}
-
-	/**
 	 *  Gets and modifies the body tag
 	 *
 	 * @param   array  $matches  Matches of the regular expression in $tags
@@ -294,6 +274,8 @@ abstract class HtmlAdapterAbstract
 	 */
 	public function getSections($matches)
 	{
+		$doc = Wright::getInstance();
+
 		$useMainSpans = true;
 
 		if (class_exists("WrightTemplate"))
@@ -314,7 +296,7 @@ abstract class HtmlAdapterAbstract
 		// Use main Spans only if allowed by template internal configuration
 		if ($useMainSpans)
 		{
-			$class .= $this->getColumnClassSuffix() . $this->columns['main']->size;
+			$class .= $doc->setColumnPrefix() . $this->columns['main']->size;
 		}
 
 		if (preg_match('/class="(.*)"/u', $matches[1], $classes))
@@ -401,7 +383,7 @@ abstract class HtmlAdapterAbstract
 		// Use main Spans only if allowed by template internal configuration
 		if ($useMainSpans)
 		{
-			$class = $this->getColumnClassSuffix() . $this->columns[$id]->size;
+			$class = $doc->setColumnPrefix() . $this->columns[$id]->size;
 		}
 
 		if (preg_match('/class="(.*)"/u', $matches[1], $classes))

@@ -19,6 +19,8 @@ defined('_JEXEC') or die;
 	$this->wrightBootstrapImages = $template->params->get('wright_bootstrap_images','');
 /* End Wright v.3: Bootstrapped images */
 
+$doc = Wright::getInstance();
+
 /* Wright v.3: Item elements structure and extra elements */
 	if (!isset($this->wrightLeadingItemElementsStructure)) $this->wrightLeadingItemElementsStructure = Array();
 	if (!isset($this->wrightLeadingHasImageClass)) $this->wrightLeadingHasImageClass = "";
@@ -191,7 +193,7 @@ JHtml::_('behavior.caption');
 				?>
 			<?php endif; /* End Wright v.3: Special featured items grid */ ?>
 
-			<div class="col-md-<?php echo $wrightspan;?>">
+			<div class="<?php echo $doc->setColumnPrefix() . $wrightspan;?>">
 				<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.3: Item elements extra elements
 				 ?>">
 				<?php
@@ -205,7 +207,7 @@ JHtml::_('behavior.caption');
 					/* Wright v.3: Row buffer storage and image print in separate row */
 					if ($this->wrightImagesRow)
 					{
-						$wrightPreRowContent .= '<div class="col-md-' . round((12 / $this->columns)) . '">';
+						$wrightPreRowContent .= '<div class="' . $doc->setColumnPrefix() . round((12 / $this->columns)) . '">';
 
 						if (isset($articleImages->image_intro) && !empty($articleImages->image_intro))
 						{
