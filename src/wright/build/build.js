@@ -39,7 +39,7 @@ function cleanDir(mydir) {
 }
 
 // Removes old generated CSS files
-var cssRegEx = /joomla([0-9]+)-([a-z0-9]+)(.*).css/i;
+var cssRegEx = /joomla(3[0-9]+)-([a-z0-9]+)(.*).css/i;
 list = fs.readdirSync('../../css/');
 if (list) {
     list.forEach(function(f) {
