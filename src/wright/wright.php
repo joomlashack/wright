@@ -438,6 +438,9 @@ class Wright
 				$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
 			}
 
+			// Load Font Awesome 4
+			$styles['wrighttemplatecss'][] = 'font-awesome4.min.css';
+
 			// @todo check if these files are indeed loaded at some point before (not sure why the need to unload them)
 			//unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
 			//unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
@@ -462,13 +465,14 @@ class Wright
 		// CSS for Joomla 4
 		else {
 			$styles['template'][] = 'joomla-' . $this->_selectedStyle . '.css';
+
+			// Load Font Awesome 5
+			$styles['wrighttemplatecss'][] = 'font-awesome5.min.css';
+
 			// @todo Add RTL for Bootstrap 4
 			// @todo Add docs.css for Bootstrap 4
 			unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.min.css']);
 		}
-
-		// Load Font Awesome
-		$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
 
 		// Add some stuff for lovely IE if needed
 		if ($browser->getBrowser() == 'msie')
