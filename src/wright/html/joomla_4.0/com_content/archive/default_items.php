@@ -143,7 +143,7 @@ $params = $this->params;
 					<?php if ($params->get('show_hits')) : ?>
 						<dd>
 							<div class="hits">
-								<span class="icon-eye-open"></span>
+								<span class="icon-eye"></span>
 								<?php echo $wrightBeforeIcon . JText::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits) . $wrightAfterIcon; // Wright v.3: Icon for non-mobile version ?>
 								<?php echo $wrightBeforeIconM . JText::sprintf($item->hits) . $wrightAfterIconM; // Wright v.3: Icon for mobile version ?>
 							</div>
@@ -216,7 +216,7 @@ $params = $this->params;
 				<?php if ($params->get('show_hits')) : ?>
 					<dd>
 						<div class="hits">
-							<span class="icon-eye-open"></span> <?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); ?>
+							<span class="icon-eye"></span> <?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); ?>
 						</div>
 					</dd>
 				<?php endif; ?>

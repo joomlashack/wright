@@ -11,8 +11,6 @@ defined('JPATH_BASE') or die;
 
 ?>
 			<dd class="hits">
-					<span class="icon-eye-open"></span>
-					<?php echo '<span class="hidden-phone"> ' . JText::sprintf('COM_CONTENT_ARTICLE_HITS', $displayData['item']->hits) . '</span>';  // Wright v.3: Non-mobile version
-					echo '<span class="visible-phone"> ' . JText::sprintf($displayData['item']->hits) . '</span>';  // Wright v.3: Mobile version
-					?>
+					<span class="icon-eye"></span>
+					<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $displayData['item']->hits);  // Wright v.3: Non-mobile version ?>
 			</dd>

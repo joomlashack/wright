@@ -67,7 +67,7 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 
 					<?php if ($item->displayHits) : ?>
 						<span class="mod-articles-category-hits">
-						<i class="icon-eye-open"></i>  <?php // Wright v.3: Added icon and removed parenthesis ?>
+						<i class="icon-eye"></i>  <?php // Wright v.3: Added icon and removed parenthesis ?>
 						<?php echo $item->displayHits; ?>
 						</span>
 					<?php endif; ?>
@@ -171,7 +171,7 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 
 			<?php if ($item->displayHits) :?>
 				<span class="mod-articles-category-hits">
-				<i class="icon-eye-open"></i>  <?php // Wright v.3: Added icon and removed parenthesis ?>
+				<i class="icon-eye"></i>  <?php // Wright v.3: Added icon and removed parenthesis ?>
 				<?php echo $item->displayHits; ?>  </span>
 			<?php endif; ?>
 
