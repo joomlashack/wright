@@ -128,6 +128,15 @@ class Wright
 		if ($wrightGridMode == 'row-fluid')
 		{
 			$wrightContainerClass = 'container-fluid';
+
+			// Joomla 3
+			if (version_compare(JVERSION, '4', 'lt')) {
+				// Nothing to do here
+			}
+			// Joomla 4 - row-fluid doesn't exist in Bootstrap 4
+			else {
+				$wrightGridMode = 'row';
+			}
 		}
 
 		require_once JPATH_THEMES . DIRECTORY_SEPARATOR . $document->template . DIRECTORY_SEPARATOR . 'wrighttemplate.php';
