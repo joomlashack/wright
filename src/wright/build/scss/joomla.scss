@@ -69,7 +69,7 @@ a {
     }
 }
 
-/* Single Item */
+/* Articles */
 
 p {
 
@@ -97,6 +97,20 @@ p {
 
     &.item-image {
         @extend .m-r-1;
+    }
+}
+
+dl.article-info {
+    font-size: 0.8em;
+
+    .article-info-term {
+        margin-bottom: .5rem;
+    }
+
+    > dt,
+    > dd {
+        display: inline-block;
+        margin-right: 10px;
     }
 }
 
