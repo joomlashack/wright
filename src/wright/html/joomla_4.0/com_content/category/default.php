@@ -10,5 +10,5 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-require('components/com_content/views/category/tmpl/default.php');
+require('components/com_content/tmpl/category/default.php');
 
