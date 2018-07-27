@@ -114,6 +114,17 @@ dl.article-info {
     }
 }
 
+.page-header {
+    padding-bottom: 0.5rem;
+    margin: 1rem 0 2rem;
+    border-bottom: 1px solid $gray-300;
+
+    h1,
+    h2 {
+        margin: 1rem 0;
+    }
+}
+
 /* Pagination */
 
 .container-pagination {
