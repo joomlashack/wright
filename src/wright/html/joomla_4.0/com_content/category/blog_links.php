@@ -13,14 +13,13 @@ defined('_JEXEC') or die;
 
 <div class="items-more">
 <h3><?php echo JText::_('COM_CONTENT_MORE_ARTICLES'); ?></h3><?php // Wright v.3: added "more articles" text ?>
-<ol class="nav nav-tabs nav-stacked">
-<?php
-	foreach ($this->link_items as &$item) :
-?>
-	<li>
-		<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid)); ?>">
-			<?php echo $item->title; ?></a>
-	</li>
-<?php endforeach; ?>
-</ol>
+	<div class="list-group">
+	<?php
+		foreach ($this->link_items as &$item) :
+	?>
+		<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid)); ?>" class="list-group-item list-group-item-action">
+			<?php echo $item->title; ?>
+		</a>
+	<?php endforeach; ?>
+	</div>
 </div>
