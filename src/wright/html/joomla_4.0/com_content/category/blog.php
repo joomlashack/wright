@@ -93,7 +93,7 @@ function addExtraNonContentContainersClose($wrightNonContentContainer, $wrightNo
 
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
-JHtml::_('behavior.caption');
+// JHtml::_('behavior.caption');
 ?>
 <div class="blog<?php echo $this->pageclass_sfx;?>">
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>

@@ -44,7 +44,7 @@ $this->wrightBootstrapImages    = $template->params->get('wright_bootstrap_image
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 // Caption support
-JHtml::_('behavior.caption');
+// JHtml::_('behavior.caption');
 
 // Create shortcuts to some parameters.
 $params     = $this->item->params;
