@@ -39,6 +39,12 @@ div {
 
 a {
 
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+    }
+
     &.hidden-text {
 
         span {
