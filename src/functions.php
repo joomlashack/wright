@@ -9,3 +9,12 @@
 
 // Restrict Access to within Joomla
 defined('_JEXEC') or die('Restricted access');
+
+// Joomla 3
+if (version_compare(JVERSION, '4', 'lt')) {
+	$toolbarMenuClasses = 'navbar-fixed-top navbar-inverse';
+}
+// Joomla 4
+else {
+	$toolbarMenuClasses = 'fixed-top';
+}

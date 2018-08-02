@@ -14,11 +14,9 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 (function($) {
 	function wToolbar() {
 		if (typeof wrightWrapperToolbar === 'undefined')
-			wrightWrapperToolbar = '.wrapper-toolbar';
+			wrightWrapperToolbar = '#toolbar .navbar';
 			
-		$(wrightWrapperToolbar).each(function() {
-			$(this).css('min-height',$(this).find('.navbar-expand-lg').height() + 'px');
-		});
+		$('.wrapper-toolbar').css('min-height', $(wrightWrapperToolbar).outerHeight() + 'px');
 	}
 	
 	function fixImagesIE() {
