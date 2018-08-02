@@ -51,7 +51,9 @@ a {
 }
 
 /* Footer */
-
+.wrapper-footer {
+    position: relative;
+}
 #footer {
 
     &.sticky {
@@ -121,6 +123,10 @@ dl.article-info {
     h2 {
         margin: 1rem 0;
     }
+}
+
+.item-title {
+    margin: 1rem 0;
 }
 
 /* Pagination */
