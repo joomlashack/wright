@@ -1,5 +1,10 @@
 /* General */
 
+body {
+    min-height: 100%;
+    position: relative;
+}
+
 img {
     max-width: 100%;
 }
@@ -57,9 +62,11 @@ a {
 }
 
 /* Footer */
+
 .wrapper-footer {
     position: relative;
 }
+
 #footer {
 
     &.sticky {
