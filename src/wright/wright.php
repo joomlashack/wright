@@ -249,15 +249,20 @@ class Wright
 		// Javascript for Joomla 3
 		if (version_compare(JVERSION, '4', 'lt')) {
 			$this->addJSScript($this->_urlJS . '/utils-30.js');
+
+			if ($this->document->params->get('stickyFooter', 1))
+			{
+				$this->addJSScript($this->_urlJS . '/stickyfooter-30.js');
+			}
 		}
 		// Javascript for Joomla 4
 		else {
 			$this->addJSScript($this->_urlJS . '/utils-40.js');
-		}
 
-		if ($this->document->params->get('stickyFooter', 1))
-		{
-			$this->addJSScript($this->_urlJS . '/stickyfooter.js');
+			if ($this->document->params->get('stickyFooter', 1))
+			{
+				$this->addJSScript($this->_urlJS . '/stickyfooter-40.js');
+			}
 		}
 
 		// Add header script if set

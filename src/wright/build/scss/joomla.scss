@@ -1,6 +1,6 @@
 /* General */
 
-body {
+html {
     min-height: 100%;
     position: relative;
 }
@@ -64,7 +64,7 @@ a {
 /* Footer */
 
 .wrapper-footer {
-    position: relative;
+    width: 100%;
 }
 
 #footer {
