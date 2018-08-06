@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 4.0
+// Wright v.4 Override: Joomla 4.0
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -10,10 +10,10 @@
 
 defined('_JEXEC') or die;
 
-/* Wright v.3: Helper */
+/* Wright v.4: Helper */
 include_once(dirname(__FILE__) . '/../com_content.helper.php');
 
-/* Wright v.3: Item elements structure and extra elements */
+/* Wright v.4: Item elements structure and extra elements */
 if (!isset($this->wrightElementsStructure)) $this->wrightElementsStructure  = Array();
 if (!isset($this->wrightHasImageClass))     $this->wrightHasImageClass      = "";
 if (!isset($this->wrightExtraClass))        $this->wrightExtraClass         = "";
@@ -36,7 +36,7 @@ if (empty($this->wrightElementsStructure)) :
     );
 endif;
 
-/* Wright v.3: Bootstrapped images */
+/* Wright v.4: Bootstrapped images */
 $app                            = JFactory::getApplication();
 $template                       = $app->getTemplate(true);
 $this->wrightBootstrapImages    = $template->params->get('wright_bootstrap_images','');
@@ -58,7 +58,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 
 ?>
 
-<div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.3: Item elements extra elements
+<div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.4: Item elements extra elements
  ?>" itemscope itemtype="https://schema.org/Article">
     <meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>">
     <?php if ($this->params->get('show_page_heading', 1)) : ?>
@@ -68,7 +68,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 	<?php endif;
 if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative)
 {
- echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper)
+ echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
 }
 ?>
 
@@ -80,17 +80,17 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 	<?php endif; ?>
 
 <?php 
-/* Wright v.3: Item elements structure */
+/* Wright v.4: Item elements structure */
 foreach ($this->wrightElementsStructure as $wrightElement) :
     switch ($wrightElement) :
         case "title":
         ?>
 
             <?php if ($params->get('show_title') || $params->get('show_author')) : ?>
-                <?php /* Wright v.3: Adds page header if h1 is missing */
+                <?php /* Wright v.4: Adds page header if h1 is missing */
                 if (!$params->get('show_page_heading')) : ?>
                 <div class="page-header">
-                <?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
+                <?php endif; /* End Wright v.4: Adds page header if h1 is missing */ ?>
                 <h2 itemprop="headline">
                     <?php if ($params->get('show_title')) : ?>
                         <?php if ($params->get('link_titles') && !empty($this->item->readmore_link)) : ?>
@@ -111,10 +111,10 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                     <span class="badge badge-warning"><?php echo JText::_('JEXPIRED'); ?></span>
                 <?php endif; ?>
 
-                <?php /* Wright v.3: Adds page header if h1 is missing */
+                <?php /* Wright v.4: Adds page header if h1 is missing */
                 if (!$params->get('show_page_heading')) : ?>
                 </div>
-                <?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
+                <?php endif; /* End Wright v.4: Adds page header if h1 is missing */ ?>
 
                 <?php if (!$params->get('show_intro')) : echo $this->item->event->afterDisplayTitle; endif; ?>
 
@@ -129,7 +129,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
             <?php if (!$this->print) : ?>
                 <?php if ($canEdit || $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
-                <div class="btn-group float-right icons-actions">   <?php // Wright v.3: Added icons-actions class ?>
+                <div class="btn-group float-right icons-actions">   <?php // Wright v.4: Added icons-actions class ?>
                     <a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" href="#"> <span class="icon-cog"></span> <span class="caret"></span> </a>
                     <?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
                     <ul class="dropdown-menu actions">
@@ -225,10 +225,10 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 <div class="float-<?php echo htmlspecialchars($imgfloat); ?> item-image"> <img
                 <?php if ($images->image_fulltext_caption):
                     echo 'class="caption ' . $this->wrightBootstrapImages . '"'.' title="' .htmlspecialchars($images->image_fulltext_caption) . '"';  // Wright .v.3: Added image class
-                    /* Wright v.3: Image class when no caption present */
+                    /* Wright v.4: Image class when no caption present */
                     else:
                         echo 'class="' . $this->wrightBootstrapImages . '"';
-                    /* End Wright v.3: Image class when no caption present */
+                    /* End Wright v.4: Image class when no caption present */
                 endif; ?>
                 src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" />
                 </div>
@@ -247,14 +247,14 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 echo $this->item->event->beforeDisplayContent;
 
                 if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && !$this->item->paginationrelative):
-                    echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper)
+                    echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
                 endif;
                 ?>
                 <?php if (isset ($this->item->toc)) :
-                    echo wrightTransformArticleTOC($this->item->toc);  // Wright v.3: TOC transformation (using helper)
+                    echo wrightTransformArticleTOC($this->item->toc);  // Wright v.4: TOC transformation (using helper)
                 endif; ?>
                     <div itemprop="articleBody">
-                        <?php echo wrightTransformArticleContent($this->item->text);  // Wright v.3: Transform article content's plugins (using helper) ?>
+                        <?php echo wrightTransformArticleContent($this->item->text);  // Wright v.4: Transform article content's plugins (using helper) ?>
                     </div>
             <?php
             endif; // access-view
@@ -270,7 +270,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
                 <?php
                 if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && !$this->item->paginationrelative):
-                    echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper)
+                    echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
                 ?>
                     <?php endif; ?>
                     <?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '1')) || ($params->get('urls_position') == '1'))) : ?>
@@ -306,7 +306,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                     <?php endif; ?>
                     <?php
                 if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && $this->item->paginationrelative) :
-                 echo wrightTransformArticlePager($this->item->pagination);  // Wright v.3: Pager styles (using helper)
+                 echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
                 ?>
             <?php endif;
 
@@ -353,7 +353,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
     endswitch;
 endforeach;
-/* End Wright v.3: Item elements structure */
+/* End Wright v.4: Item elements structure */
 ?>
 
 	<?php echo $this->item->event->afterDisplayContent; ?>

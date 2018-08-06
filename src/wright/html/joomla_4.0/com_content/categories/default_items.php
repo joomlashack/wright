@@ -25,7 +25,7 @@ if (count($this->items[$this->parent->id]) > 0 && $this->maxLevelcat != 0) :
 		?>
 		<div <?php echo $class; ?> >
 		<?php $class = ''; ?>
-			<h3 class="item-title">  <?php // Wright v.3: Removed page-header class ?>
+			<h3 class="item-title">  <?php // Wright v.4: Removed page-header class ?>
 				<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id));?>">
 				<?php echo $this->escape($item->title); ?></a>
 				<?php if ($this->params->get('show_cat_num_articles_cat') == 1) :?>

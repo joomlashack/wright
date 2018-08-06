@@ -13,12 +13,12 @@ defined('_JEXEC') or die;
 <?php JLoader::register('TagsHelperRoute', JPATH_BASE . '/components/com_tags/helpers/route.php'); ?>
 <div class="tagssimilar<?php echo $moduleclass_sfx; ?>">
 <?php if ($list) : ?>
-	<ul class="nav nav-list" > <?php // Wright v.3: Nav List ?>
+	<ul class="nav nav-list" > <?php // Wright v.4: Nav List ?>
 	<?php foreach ($list as $i => $item) : ?>
 		<li>
 			<?php $item->route = new JHelperRoute; ?>
 			<a href="<?php echo JRoute::_(TagsHelperRoute::getItemRoute($item->content_item_id, $item->core_alias, $item->core_catid, $item->core_language, $item->type_alias, $item->router)); ?>">
-				<i class="icon-file icons-left"></i>  <?php // Wright v.3: Added icon ?>
+				<i class="icon-file icons-left"></i>  <?php // Wright v.4: Added icon ?>
 				<?php if (!empty($item->core_title)) :
 					echo htmlspecialchars($item->core_title);
 				endif; ?>

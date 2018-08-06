@@ -10,11 +10,11 @@
 defined('_JEXEC') or die;
 ?>
 <?php if (!empty($list)) :?>
-	<ul class="archive-module<?php echo $moduleclass_sfx; ?> nav nav-list">  <?php // Wright v.3: Added nav nav-list classes ?>
+	<ul class="archive-module<?php echo $moduleclass_sfx; ?> nav nav-list">  <?php // Wright v.4: Added nav nav-list classes ?>
 	<?php foreach ($list as $item) : ?>
 	<li>
 		<a href="<?php echo $item->link; ?>">
-			<i class="icon-calendar"></i>  <?php // Wright v.3: Added Icon ?>
+			<i class="icon-calendar"></i>  <?php // Wright v.4: Added Icon ?>
 			<?php echo $item->text; ?>
 		</a>
 	</li>

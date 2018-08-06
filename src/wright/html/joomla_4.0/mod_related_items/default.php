@@ -9,12 +9,12 @@
 
 defined('_JEXEC') or die;
 ?>
-<ul class="relateditems<?php echo $moduleclass_sfx; ?> nav nav-list">  <?php // Wright v.3: Added nav nav-list classes ?>
+<ul class="relateditems<?php echo $moduleclass_sfx; ?> nav nav-list">  <?php // Wright v.4: Added nav nav-list classes ?>
 <?php foreach ($list as $item) :	?>
 <li>
 	<a href="<?php echo $item->route; ?>">
 		<?php if ($showDate) echo JHTML::_('date', $item->created, JText::_('DATE_FORMAT_LC4')). " - "; ?>
-		<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
+		<i class="icon-file"></i>  <?php // Wright v.4: Added icon ?>
 		<?php echo $item->title; ?></a>
 </li>
 <?php endforeach; ?>

@@ -9,18 +9,18 @@
 
 defined('_JEXEC') or die;
 
-/* Wright v.3: Helper */
+/* Wright v.4: Helper */
 	include_once(dirname(__FILE__) . '/../com_content.helper.php');
-/* End Wright v.3: Helper */
+/* End Wright v.4: Helper */
 
-/* Wright v.3: Bootstrapped images */
+/* Wright v.4: Bootstrapped images */
 	$app = JFactory::getApplication();
 	$template = $app->getTemplate(true);
 	$this->wrightBootstrapImages = $template->params->get('wright_bootstrap_images','');
-/* End Wright v.3: Bootstrapped images */
+/* End Wright v.4: Bootstrapped images */
 
 
-/* Wright v.3: Item elements structure and extra elements */
+/* Wright v.4: Item elements structure and extra elements */
 	if (!isset($this->wrightLeadingItemElementsStructure)) $this->wrightLeadingItemElementsStructure = Array();
 	if (!isset($this->wrightLeadingHasImageClass)) $this->wrightLeadingHasImageClass = "";
 	if (!isset($this->wrightLeadingExtraClass)) $this->wrightLeadingExtraClass = "";
@@ -28,9 +28,9 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightIntroItemElementsStructure)) $this->wrightIntroItemElementsStructure = Array();
 	if (!isset($this->wrightIntroHasImageClass)) $this->wrightIntroHasImageClass = "";
 	if (!isset($this->wrightIntroExtraClass)) $this->wrightIntroExtraClass = "";
-/* End Wright v.3: Item elements structure and extra elements */
+/* End Wright v.4: Item elements structure and extra elements */
 
-/* Wright v.3: Extra classes (general) */
+/* Wright v.4: Extra classes (general) */
 	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
 	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "row";
 	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
@@ -42,9 +42,9 @@ defined('_JEXEC') or die;
 	if (!isset($this->wrightIntroRowMode)) $this->wrightIntroRowMode = 'row';
 
 	if (!isset($this->wrightExtraDivH1)) $this->wrightExtraDivH1 = false;
-/* End Wright v.3: Extra classes (general) */
+/* End Wright v.4: Extra classes (general) */
 
-/* Wright v.3: Extra container and row */
+/* Wright v.4: Extra container and row */
 if (!isset($this->wrightNonContentContainer)) $this->wrightNonContentContainer = "";
 if (!isset($this->wrightNonContentRowMode)) $this->wrightNonContentRowMode = "";
 if (!isset($this->wrightContentExtraContainer)) $this->wrightContentExtraContainer = "";
@@ -82,14 +82,14 @@ function addExtraNonContentContainersClose($wrightNonContentContainer, $wrightNo
 		echo('</div>');
 	}
 }
-/* End Wright v.3: Extra container and row */
+/* End Wright v.4: Extra container and row */
 
-/* Wright v.3: Special featured items grid */
+/* Wright v.4: Special featured items grid */
 
 	if (!isset($this->specialItroItemsLayout)) $this->specialItroItemsLayout = Array('activeLayout' => false, 'layoutitemscolums' => 0);
 	if (!isset($this->layoutSpanorder)) $this->layoutSpanorder = Array();
 
-/* End Wright v.3: Special featured items grid */
+/* End Wright v.4: Special featured items grid */
 
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
@@ -98,28 +98,28 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 <div class="blog<?php echo $this->pageclass_sfx;?>">
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<?php
-		// Wright v.3: Extra container and row
+		// Wright v.4: Extra container and row
 		addExtraNonContentContainers($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 	?>
 	<div class="page-header">
 		<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
-		<?php if ($this->wrightExtraDivH1) : ?> <div class="title_in"></div> <?php endif;  // Wright v.3: Added optional extra div ?>
+		<?php if ($this->wrightExtraDivH1) : ?> <div class="title_in"></div> <?php endif;  // Wright v.4: Added optional extra div ?>
 	</div>
 	<?php
-		// Wright v.3: Extra container and row
+		// Wright v.4: Extra container and row
 		addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 	?>
 	<?php endif; ?>
 	<?php if ($this->params->get('show_category_title', 1) or $this->params->get('page_subheading')) : ?>
 
 	<?php
-		// Wright v.3: Extra container and row
+		// Wright v.4: Extra container and row
 		addExtraNonContentContainers($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 	?>
-	<?php /* Wright v.3: Adds page header if h1 is missing */
+	<?php /* Wright v.4: Adds page header if h1 is missing */
 	if (!$this->params->get('show_page_heading')) : ?>
 	<div class="page-header">
-	<?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
+	<?php endif; /* End Wright v.4: Adds page header if h1 is missing */ ?>
 
 	<h2> <?php echo $this->escape($this->params->get('page_subheading')); ?>
 		<?php if ($this->params->get('show_category_title')) : ?>
@@ -127,33 +127,33 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 		<?php endif; ?>
 	</h2>
 	<?php
-		// Wright v.3: Extra container and row
+		// Wright v.4: Extra container and row
 		addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 	?>
 
-	<?php /* Wright v.3: Adds page header if h1 is missing */
+	<?php /* Wright v.4: Adds page header if h1 is missing */
 	if (!$this->params->get('show_page_heading')) : ?>
 	</div>
-	<?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
+	<?php endif; /* End Wright v.4: Adds page header if h1 is missing */ ?>
 
 	<?php endif; ?>
 
 	<?php if ($this->params->get('show_tags', 1) && !empty($this->category->tags->itemTags)) : ?>
 		<?php
-			// Wright v.3: Extra container and row
+			// Wright v.4: Extra container and row
 			addExtraNonContentContainers($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 		?>
 		<?php $this->category->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
 		<?php echo $this->category->tagLayout->render($this->category->tags->itemTags); ?>
 		<?php
-			// Wright v.3: Extra container and row
+			// Wright v.4: Extra container and row
 			addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 		?>
 	<?php endif; ?>
 
 	<?php if ($this->params->get('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
 	<?php
-		// Wright v.3: Extra container and row
+		// Wright v.4: Extra container and row
 		addExtraNonContentContainers($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 	?>
 	<div class="category-desc clearfix">
@@ -165,7 +165,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 		<?php endif; ?>
 	</div>
 	<?php
-		// Wright v.3: Extra container and row
+		// Wright v.4: Extra container and row
 		addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 	?>
 	<?php endif; ?>
@@ -176,19 +176,19 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 		<?php endif; ?>
 	<?php endif; ?>
 
-	<?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '<div class="' . $this->wrightLeadingIntroItemsClass . '">'; // Wright v.3: Extra Leading and Intro Items Div and Class ?>
+	<?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '<div class="' . $this->wrightLeadingIntroItemsClass . '">'; // Wright v.4: Extra Leading and Intro Items Div and Class ?>
 
 	<?php $leadingcount = 0; ?>
 	<?php if (!empty($this->lead_items)) : ?>
-	<div class="items-leading clearfix<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.3: Leading Items extra Class ?>">
+	<div class="items-leading clearfix<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.4: Leading Items extra Class ?>">
 		<?php foreach ($this->lead_items as &$item) : ?>
-		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.3: Item elements extra elements
+		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.4: Item elements extra elements
 		 ?>">
 			<div itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
                 <?php
 				$this->item = &$item;
-				$this->item->wrightElementsStructure = $this->wrightLeadingItemElementsStructure;  // Wright v.3: Item elements order
-				$this->item->wrightType = 'leading';  // Wright v.3: Adding item type to identify in the proper override
+				$this->item->wrightElementsStructure = $this->wrightLeadingItemElementsStructure;  // Wright v.4: Item elements order
+				$this->item->wrightType = 'leading';  // Wright v.4: Adding item type to identify in the proper override
 				echo $this->loadTemplate('item');
 			    ?>
             </div>
@@ -204,14 +204,14 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	$counter = 0;
 ?>
 	<?php if (!empty($this->intro_items)) : ?>
-	<?php if ($this->wrightIntroItemsClass != "") echo '<div class="' . $this->wrightIntroItemsClass . '">'; // Wright v.3: Extra Intro Items Div and Class ?>
+	<?php if ($this->wrightIntroItemsClass != "") echo '<div class="' . $this->wrightIntroItemsClass . '">'; // Wright v.4: Extra Intro Items Div and Class ?>
 	<?php foreach ($this->intro_items as $key => &$item) : ?>
 		<?php $rowcount = ((int) $key % (int) $this->columns) + 1; ?>
 		<?php if ($rowcount == 1) : ?>
 			<?php $row = $counter / $this->columns; ?>
 
 			<?php
-				/* Wright v.3: Row buffer storage and image print in separate row */
+				/* Wright v.4: Row buffer storage and image print in separate row */
 				$wrightImagesRowExist = false;
 
 				if ($this->wrightImagesRow)
@@ -219,32 +219,32 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 					ob_start();
 					$wrightPreRowContent = '<div class="container-fluid container-images"><div class="row">';
 				}
-				/* End Wright v.3: Row buffer storage and image print in separate row */
+				/* End Wright v.4: Row buffer storage and image print in separate row */
 
-				/* Wright v.3: Row extra container */
+				/* Wright v.4: Row extra container */
 				if ($this->wrightContentExtraContainer != '')
 				{
 					echo('<div class="' . $this->wrightContentExtraContainer . '">');
 				}
-				/* End Wright v.3: Row extra container */
+				/* End Wright v.4: Row extra container */
 			?>
 
-		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> mb-5 <?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.3: Intro Rows Class ?>">
+		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> mb-5 <?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.4: Intro Rows Class ?>">
 		<?php endif; ?>
 			<?php
-				/* Wright v.3: Parse and detect article images */
+				/* Wright v.4: Parse and detect article images */
 				$articleImages = json_decode($item->images);
 
 				if ($articleImages && $articleImages->image_intro != '')
 				{
 					$wrightImagesRowExist = true;
 				}
-				/* End Wright v.3: Parse and detect article images */
+				/* End Wright v.4: Parse and detect article images */
 			?>
 
 			<?php $wrightspan = round((12 / $this->columns)); ?>
 
-			<?php /* Wright v.3: Special featured items grid */ if ($this->specialItroItemsLayout['activeLayout']): ?>
+			<?php /* Wright v.4: Special featured items grid */ if ($this->specialItroItemsLayout['activeLayout']): ?>
 				<?php
 
 					if ($this->columns == $this->specialItroItemsLayout['layoutitemscolums']) {
@@ -259,23 +259,23 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 					}
 
 				?>
-			<?php endif; /* End Wright v.3: Special featured items grid */ ?>
+			<?php endif; /* End Wright v.4: Special featured items grid */ ?>
 
 			<div class="col-md-<?php echo $wrightspan;?>">
-				<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.3: Item elements extra elements
+				<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.4: Item elements extra elements
 				 ?>">
                     <div itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
                         <?php
                         $this->item = &$item;
-                        $this->item->wrightElementsStructure = $this->wrightIntroItemElementsStructure;  // Wright v.3: Item elements structure
-                        $this->item->wrightType = 'intro';  // Wright v.3: Adding item type to identify in the proper override
+                        $this->item->wrightElementsStructure = $this->wrightIntroItemElementsStructure;  // Wright v.4: Item elements structure
+                        $this->item->wrightType = 'intro';  // Wright v.4: Adding item type to identify in the proper override
                         echo $this->loadTemplate('item');
                         ?>
                     </div>
 				</div><!-- end item -->
 
 				<?php
-					/* Wright v.3: Row buffer storage and image print in separate row */
+					/* Wright v.4: Row buffer storage and image print in separate row */
 					if ($this->wrightImagesRow)
 					{
 						$wrightPreRowContent .= '<div class="col-md-' . round((12 / $this->columns)) . '">';
@@ -296,7 +296,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 						}
 						$wrightPreRowContent .= '</div>';
 					}
-					/* End Wright v.3: Row buffer storage and image print in separate row */
+					/* End Wright v.4: Row buffer storage and image print in separate row */
 				?>
 
 				<?php $counter++; ?>
@@ -305,13 +305,13 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 		</div><!-- end row -->
 
 				<?php
-					// Wright v.3: Row extra container
+					// Wright v.4: Row extra container
 					if ($this->wrightContentExtraContainer != '')
 					{
 						echo('</div>');
 					}
 
-					/* Wright v.3: Row buffer storage and image print in separate row */
+					/* Wright v.4: Row buffer storage and image print in separate row */
 					if ($this->wrightImagesRow)
 					{
 						$wrightRowContent = ob_get_clean();
@@ -324,16 +324,16 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 						echo $wrightRowContent;
 					}
-					/* End Wright v.3: Row buffer storage and image print in separate row */
+					/* End Wright v.4: Row buffer storage and image print in separate row */
 				?>
 			<?php endif; ?>
 	<?php endforeach; ?>
-	<?php if ($this->wrightIntroItemsClass != "") echo ('</div>'); // Wright v.3: Extra Intro Items Div and Class ?>
+	<?php if ($this->wrightIntroItemsClass != "") echo ('</div>'); // Wright v.4: Extra Intro Items Div and Class ?>
 	<?php endif; ?>
 
-	<?php if ($this->wrightComplementOuterClass != "") echo '<div class="' . $this->wrightComplementOuterClass . '">' // Wright v.3: Outer complements class  ?>
+	<?php if ($this->wrightComplementOuterClass != "") echo '<div class="' . $this->wrightComplementOuterClass . '">' // Wright v.4: Outer complements class  ?>
 
-			<?php if ($this->MoreItemsGridOrientation['activeLayout'] != '') { // Wright v.3: Bootstrap grid layout
+			<?php if ($this->MoreItemsGridOrientation['activeLayout'] != '') { // Wright v.4: Bootstrap grid layout
 
 				if ( (empty($this->children[$this->category->id]) && $this->maxLevel == 0) || empty($this->link_items)) {
 
@@ -344,80 +344,80 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 			?>
 
-			<?php if ($this->MoreItemsGridOrientation['activeLayout'] != '') : // Wright v.3: Bootstrap grid layout ?>
+			<?php if ($this->MoreItemsGridOrientation['activeLayout'] != '') : // Wright v.4: Bootstrap grid layout ?>
 				<?php echo '<div class="' . $this->wrightIntroRowMode . '">' ?>
-			<?php endif; // Wright v.3: Bootstrap grid layout ?>
+			<?php endif; // Wright v.4: Bootstrap grid layout ?>
 
 			<?php if (!empty($this->link_items)) : ?>
 			<?php
-				// Wright v.3: Extra container and row
+				// Wright v.4: Extra container and row
 				addExtraNonContentContainers($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
 
-			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
+			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.4: Bootstrap grid layout ?>
 				<?php echo '<div class="col-md-' . $this->MoreItemsGridOrientation['moreitemsLayout'] . '">' ?>
 			<?php endif; ?>
 
-			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
-			<div class="items-more<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
+			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.4: Extra complements class  ?>
+			<div class="items-more<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.4: Inner complements class  ?>">
 			<?php echo $this->loadTemplate('links'); ?>
 			</div>
-			<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
-			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
-				<?php echo '</div>' // Wright v.3: Bootstrap grid layout ?>
+			<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.4: Extra complements class  ?>
+			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.4: Bootstrap grid layout ?>
+				<?php echo '</div>' // Wright v.4: Bootstrap grid layout ?>
 			<?php endif; ?>
 			<?php
-				// Wright v.3: Extra container and row
+				// Wright v.4: Extra container and row
 				addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
 			<?php endif; ?>
 
 			<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
 			<?php
-				// Wright v.3: Extra container and row
+				// Wright v.4: Extra container and row
 				addExtraNonContentContainers($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
 			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : ?>
 				<?php echo '<div class="col-md-' . $this->MoreItemsGridOrientation['subcategoriesLayout'] . '">' ?>
 			<?php endif; ?>
-			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
-			<div class="cat-children<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
+			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.4: Extra complements class  ?>
+			<div class="cat-children<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.4: Inner complements class  ?>">
 			<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
 				<h3> <?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?> </h3>
 			<?php endif; ?>
 				<?php echo $this->loadTemplate('children'); ?> </div>
-			<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
-			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
+			<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.4: Extra complements class  ?>
+			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.4: Bootstrap grid layout ?>
 				<?php echo '</div>' ?>
-			<?php endif; // Wright v.3: Bootstrap grid layout ?>
+			<?php endif; // Wright v.4: Bootstrap grid layout ?>
 			<?php
-				// Wright v.3: Extra container and row
+				// Wright v.4: Extra container and row
 				addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
 			<?php endif; ?>
 
-			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.3: Bootstrap grid layout ?>
+			<?php if ($this->MoreItemsGridOrientation['activeLayout']) : // Wright v.4: Bootstrap grid layout ?>
 				<?php echo '</div>' ?>
-			<?php endif; // Wright v.3: Bootstrap grid layout ?>
+			<?php endif; // Wright v.4: Bootstrap grid layout ?>
 
 			<?php if (($this->params->def('show_pagination', 1) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->pagesTotal > 1)) : ?>
 			<?php
-				// Wright v.3: Extra container and row
+				// Wright v.4: Extra container and row
 				addExtraNonContentContainers($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
-			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.3: Extra complements class  ?>
-			<div class="container-pagination<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.3: Inner complements class  ?>">
+			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.4: Extra complements class  ?>
+			<div class="container-pagination<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.4: Inner complements class  ?>">
 				<?php  if ($this->params->def('show_pagination_results', 1)) : ?>
 				<p class="counter float-right"> <?php echo $this->pagination->getPagesCounter(); ?> </p>
 				<?php endif; ?>
 				<?php echo $this->pagination->getPagesLinks(); ?> </div>
-				<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.3: Extra complements class  ?>
+				<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.4: Extra complements class  ?>
 			<?php
-				// Wright v.3: Extra container and row
+				// Wright v.4: Extra container and row
 				addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
 			<?php  endif; ?>
 
-	<?php if ($this->wrightComplementOuterClass != "") echo '</div>' // Wright v.3: Outer complements class  ?>
+	<?php if ($this->wrightComplementOuterClass != "") echo '</div>' // Wright v.4: Outer complements class  ?>
 
 </div>

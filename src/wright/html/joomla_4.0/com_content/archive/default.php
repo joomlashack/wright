@@ -33,7 +33,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 		<?php echo $this->form->yearField; ?>
 		<?php echo $this->form->limitField; ?>
 
-	<button type="submit" class="btn btn-primary"><?php echo JText::_('JGLOBAL_FILTER_BUTTON'); ?></button>  <?php // Wright v.3: Moved button inside ?>
+	<button type="submit" class="btn btn-primary"><?php echo JText::_('JGLOBAL_FILTER_BUTTON'); ?></button>  <?php // Wright v.4: Moved button inside ?>
 	</div>
 	<input type="hidden" name="view" value="archive" />
 	<input type="hidden" name="option" value="com_content" />

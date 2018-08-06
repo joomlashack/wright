@@ -84,7 +84,7 @@ else
 	<!-- Show items -->
 	<?php if (!empty($feed))
 	{ ?>
-		<ul class="newsfeed<?php echo $params->get('moduleclass_sfx'); ?> list-striped"><?php // Wright v.3: Added list-striped class and moved inside the feed validation ?>
+		<ul class="newsfeed<?php echo $params->get('moduleclass_sfx'); ?> list-striped"><?php // Wright v.4: Added list-striped class and moved inside the feed validation ?>
 		<?php for ($i = 0; $i < $params->get('rssitems', 5); $i++)
 		{
 			if (!$feed->offsetExists($i))

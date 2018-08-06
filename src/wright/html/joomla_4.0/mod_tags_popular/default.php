@@ -15,11 +15,11 @@ defined('_JEXEC') or die;
 <?php if (!count($list)) : ?>
 	<div class="alert alert-no-items"><?php echo JText::_('MOD_TAGS_POPULAR_NO_ITEMS_FOUND'); ?></div>
 <?php else : ?>
-<ul class="nav nav-list" > <?php // Wright v.3: nav-list ?>
+<ul class="nav nav-list" > <?php // Wright v.4: nav-list ?>
 	<?php foreach ($list as $item) : ?>
 	<li><?php $route = new TagsHelperRoute; ?>
 		<a href="<?php echo JRoute::_(TagsHelperRoute::getTagRoute($item->tag_id . '-' . $item->alias)); ?>">
-		<i class="icon-tag icons-left"></i>  <?php // Wright v.3: Added icon ?>
+		<i class="icon-tag icons-left"></i>  <?php // Wright v.4: Added icon ?>
 			<?php echo htmlspecialchars($item->title); ?></a>
 		<?php if ($display_count) : ?>
 			<span class="tag-count badge badge-info"><?php echo $item->count; ?></span>

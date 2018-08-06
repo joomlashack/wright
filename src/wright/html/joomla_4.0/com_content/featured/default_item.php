@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.6.5
+// Wright v.4 Override: Joomla 3.6.5
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -10,9 +10,9 @@
 
 defined('_JEXEC') or die;
 
-/* Wright v.3: Helper */
+/* Wright v.4: Helper */
 	include_once(dirname(__FILE__) . '/../com_content.helper.php');
-/* End Wright v.3: Helper */
+/* End Wright v.4: Helper */
 
 
 // Create a shortcut for params.
@@ -29,7 +29,7 @@ $info    = $this->item->params->get('info_block_position', 0);
 <?php endif; ?>
 
 <?php
-/* Wright v.3: Item elements structure */
+/* Wright v.4: Item elements structure */
 if (empty($this->item->wrightElementsStructure))    $this->item->wrightElementsStructure    = Array(
     "title",
     "icons",
@@ -160,31 +160,31 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
             <?php $imgfloat = (empty($images->float_intro)) ? $params->get('float_intro') : $images->float_intro; ?>
             <div class="float-<?php echo htmlspecialchars($imgfloat); ?> item-image">
                 <?php
-                /* Wright v.3: Added link to the image from the article */
+                /* Wright v.4: Added link to the image from the article */
                 if ($params->get('access-view')) :
                 ?>
                 <a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid)); ?>">
                     <?php
                     endif;
-                    /* End Wright v.3: Added link to the image from the article */
+                    /* End Wright v.4: Added link to the image from the article */
                     ?>
                     <img
                         <?php if ($images->image_intro_caption):
                             echo 'class="caption ' . $this->wrightBootstrapImages . '"'.' title="' .htmlspecialchars($images->image_intro_caption) .'"';  // Wright .v.3: Added image class
-                        /* Wright v.3: Image class when no caption present */
+                        /* Wright v.4: Image class when no caption present */
                         else:
                             echo 'class="' . $this->wrightBootstrapImages . '"';
-                            /* End Wright v.3: Image class when no caption present */
+                            /* End Wright v.4: Image class when no caption present */
                         endif; ?>
                         src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>">
                     <?php
-                    /* Wright v.3: Added link to the image from the article */
+                    /* Wright v.4: Added link to the image from the article */
                     if ($params->get('access-view')) :
                     ?>
                 </a>
             <?php
             endif;
-            /* End Wright v.3: Added link to the image from the article */
+            /* End Wright v.4: Added link to the image from the article */
             ?>
             </div>
         <?php endif; ?>
@@ -198,7 +198,7 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
         ?>
 
             <?php echo $this->item->event->beforeDisplayContent; ?>
-            <?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper) ?>
+            <?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.4: Transform article content's plugins (using helper) ?>
 
             <?php if ($params->get('show_readmore') && $this->item->readmore) :
 
@@ -291,7 +291,7 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
 
     endswitch;
 endforeach;
-/* End Wright v.3: Item elements structure */
+/* End Wright v.4: Item elements structure */
 ?>
 
 <?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())

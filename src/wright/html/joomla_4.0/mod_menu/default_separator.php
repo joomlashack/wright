@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die;
 
-// Wright v.3: Created additional structure for icons
+// Wright v.4: Created additional structure for icons
 $structIcons    = '';
 $span1          = '';
 $span2          = '';
@@ -28,7 +28,7 @@ if (preg_match_all('/hidden-text/', $item->anchor_css, $matches))
     $span2  = '</span>';
     $hidden = 'hidden-text ';
 }
-// End Wright v.3: Created additional structure for icons
+// End Wright v.4: Created additional structure for icons
 
 // Note. It is important to remove spaces between elements.
 $title = $item->anchor_title ? ' title="' . $item->anchor_title . '" ' : '';
@@ -57,10 +57,10 @@ if($item->deeper) {
     $toggle = '';
 }
 
-?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.3: Added collapsible option ?> <?php echo $toggle; ?>><?php echo $title; ?>
+?><a href="<?php echo $item->flink; // Wright v.4: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.4: Added collapsible option ?> <?php echo $toggle; ?>><?php echo $title; ?>
 	<?php echo $structIcons . $linktype; ?><?php
 	
-// Wright v.3: Closing pseudo-link for sub-menus
+// Wright v.4: Closing pseudo-link for sub-menus
 if ($item->deeper) {
 	// Opens a caret-right for levels 2 and above
 	if ($menuType == 'vertical') {
@@ -68,7 +68,7 @@ if ($item->deeper) {
 	}
 	else{
 		if($item->level == 1)
-			echo '<b class="caret"></b>'; // Wright v.3: Added caret
+			echo '<b class="caret"></b>'; // Wright v.4: Added caret
 	}
 }
-?></a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure ?>
+?></a> <?php // Wright v.4 changed <span> for <a> for Bootstrap structure ?>

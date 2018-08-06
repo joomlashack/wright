@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.2
+// Wright v.4 Override: Joomla 3.2
 /**
  * @package		Joomla.Site
  * @subpackage	mod_articles_news
@@ -9,8 +9,8 @@
 
 defined('_JEXEC') or die;
 
-/* Wright v.3: Read parameters like columns or others */
-$wrightMaxColumns = (isset($wrightMaxColumns) ? $wrightMaxColumns : 4);  // Wright v.3: Max columns to be used
+/* Wright v.4: Read parameters like columns or others */
+$wrightMaxColumns = (isset($wrightMaxColumns) ? $wrightMaxColumns : 4);  // Wright v.4: Max columns to be used
 if ($wrightMaxColumns > 6) {
 	$wrightMaxColumns = 6;
 }
@@ -32,20 +32,20 @@ $wrightGeneralClass = isset($wrightGeneralClass) ? $wrightGeneralClass : '';
 $wrightDivideRowsContainer1 = isset($wrightDivideRowsContainer1) ? $wrightDivideRowsContainer1 : '';
 $wrightDivideRowsContainer2 = isset($wrightDivideRowsContainer2) ? $wrightDivideRowsContainer2 : '';
 
-/* Wright v.3: Read parameters like columns or others */
+/* Wright v.4: Read parameters like columns or others */
 
-$wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : false);  // Wright v.3: Enable Link in content parameter
+$wrightEnableLinkContent = (isset($wrightEnableLinkContent) ? $wrightEnableLinkContent : false);  // Wright v.4: Enable Link in content parameter
 
-$c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrightMaxColumns)
+$c = 0; // Wright v.4: Counter variable to get horizontal columns (set by $wrightMaxColumns)
 ?>
 
-<div class="newsflash-horiz<?php echo $params->get('moduleclass_sfx'); // Wright v.3: Changed ul for div element ?><?php if ($wrightGeneralClass != '') : ?> <?php echo $wrightGeneralClass; endif; // Wright v.3: Added optional general class ?>">
+<div class="newsflash-horiz<?php echo $params->get('moduleclass_sfx'); // Wright v.4: Changed ul for div element ?><?php if ($wrightGeneralClass != '') : ?> <?php echo $wrightGeneralClass; endif; // Wright v.4: Added optional general class ?>">
 	<?php for ($i = 0, $n = count($list); $i < $n; $i ++) :
 		$item = $list[$i]; ?>
 
-		<?php // Wright v.3: Added row-fluid for each horizontal set of columns ?>
+		<?php // Wright v.4: Added row-fluid for each horizontal set of columns ?>
 			<?php if ($c % $wrightMaxColumns ==  0):
-					$rowcounter = 1;  // Wright v.3: Row counter
+					$rowcounter = 1;  // Wright v.4: Row counter
 					if ($wrightDivideRows) : ?>
 					<?php if (!$wrightProcessSecondRow) : ?>
 					<?php if ($wrightDivideRowsContainer1 != '') : ?>
@@ -72,17 +72,17 @@ $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrigh
 				?>
 				<div class="row-fluid">
 			<?php endif; ?>
-		<?php // End Wright v.3: Added row-fluid for each horizontal set of columns ?>
+		<?php // End Wright v.4: Added row-fluid for each horizontal set of columns ?>
 
-			<div class="span<?php echo $span ?>" <?php echo $wrightEnableLinkContent ? 'style="cursor:pointer" onclick="location.href=\'' . $item->link . '\'"' : '' ?>> <?php // Wright v.3: Added span class for each column ?>
+			<div class="span<?php echo $span ?>" <?php echo $wrightEnableLinkContent ? 'style="cursor:pointer" onclick="location.href=\'' . $item->link . '\'"' : '' ?>> <?php // Wright v.4: Added span class for each column ?>
 				<?php require JModuleHelper::getLayoutPath('mod_articles_news', '_item');
 
 				if ($n > 1 && (($i < $n - 1) || $params->get('showLastSeparator'))) : ?>
 					<span class="article-separator">&#160;</span>
 				<?php endif; ?>
 
-			</div> <?php // Wright v.3: Added span3 class for each column ?>
-		<?php /* Wright v.3: Close row-fluid */ ?>
+			</div> <?php // Wright v.4: Added span3 class for each column ?>
+		<?php /* Wright v.4: Close row-fluid */ ?>
 
 			<?php if ($c % $wrightMaxColumns ==  ($wrightMaxColumns-1) || $c == $n - 1): ?>
 				</div>
@@ -113,9 +113,9 @@ $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrigh
 
 			<?php
 				$c = $c + 1;
-				$rowcounter++; // Wright v.3: Row counter
+				$rowcounter++; // Wright v.4: Row counter
 			?>
-		<?php /* End Wright v.3: Close row-fluid */ ?>
+		<?php /* End Wright v.4: Close row-fluid */ ?>
 
 	<?php endfor; ?>
-</div> <?php // Wright v.3: Changed ul for div element ?>
+</div> <?php // Wright v.4: Changed ul for div element ?>

@@ -14,7 +14,7 @@ require_once(JPATH_THEMES.'/'.$app->getTemplate().'/wrighttemplate.php');
 
 // Note. It is important to remove spaces between elements.
 
-/* Wright v.3: Distinguish collapsible and non-collapsible menus.  If the position is an official menu position in the template, or if it has the suffixe "no-collapse", it won't do the collapse */
+/* Wright v.4: Distinguish collapsible and non-collapsible menus.  If the position is an official menu position in the template, or if it has the suffixe "no-collapse", it won't do the collapse */
 $wrightCollapseMenus = true;
 $menuType = 'vertical';
 
@@ -47,7 +47,7 @@ else {
 	}
 }
 
-/* End Wright v.3: Distinguish collapsible and non-collapsible menus */
+/* End Wright v.4: Distinguish collapsible and non-collapsible menus */
 
 $navlist = '';
 if ($menuType == 'vertical'){
@@ -71,7 +71,7 @@ if ($menuType == 'vertical'){
 <?php
 foreach ($list as $i => &$item)
 {
-	$active = false;  // Wright v.3: Active toggle for collapsible menus
+	$active = false;  // Wright v.4: Active toggle for collapsible menus
 	$class = 'nav-item item-' . $item->id;
 
 	if ($item->id == $active_id)
@@ -81,7 +81,7 @@ foreach ($list as $i => &$item)
 
 	if (in_array($item->id, $path))
 	{
-		$active = true;  // Wright v.3: Active toggle for collapsible menus
+		$active = true;  // Wright v.4: Active toggle for collapsible menus
 		$class .= ' active';
 	}
 	elseif ($item->type == 'alias')
@@ -90,7 +90,7 @@ foreach ($list as $i => &$item)
 
 		if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
 		{
-			$active = true;  // Wright v.3: Active toggle for collapsible menus
+			$active = true;  // Wright v.4: Active toggle for collapsible menus
 			$class .= ' active';
 		}
 		elseif (in_array($aliasToId, $path))
@@ -101,18 +101,18 @@ foreach ($list as $i => &$item)
 
 	if ($item->type == 'separator')
 	{
-		$class .= ''; // Wright v.3: Removed divider class from separators
+		$class .= ''; // Wright v.4: Removed divider class from separators
 	}
 
 	if ($item->deeper)
 	{
-		$class .= ' deeper dropdown';  // Wright v.3: Added dropdown class to parent items
+		$class .= ' deeper dropdown';  // Wright v.4: Added dropdown class to parent items
 	}
 
 	if ($item->parent) {
 		if($item->level > 1 && $menuType == 'horizontal')
 		{
-			$class .= ' parent dropdown-submenu'; // Wright v.3: Add dropdown-submenu class
+			$class .= ' parent dropdown-submenu'; // Wright v.4: Add dropdown-submenu class
 		}
 		else{
 			$class .= ' parent ';
@@ -124,7 +124,7 @@ foreach ($list as $i => &$item)
 		$class = ' class="' . trim($class) . '"';
 	}
 
-	/* Wright v.3: Unique tagging for collapsible submenus */
+	/* Wright v.4: Unique tagging for collapsible submenus */
 	$ulid = '';
 	$item->licollapse = '';
 	$idul = '';
@@ -142,9 +142,9 @@ foreach ($list as $i => &$item)
 		$idul = ' id="' . $ulid . '"';
 		$uladd = 'submenu collapse' . ($active ? ' in' : '');
 	}
-	/* End Wright v.3: Unique tagging for collapsible submenus */
+	/* End Wright v.4: Unique tagging for collapsible submenus */
 
-	echo '<li' . $class . '>';  // Wright v.3: Added collapsible option
+	echo '<li' . $class . '>';  // Wright v.4: Added collapsible option
 
 	// Render the menu item.
 	switch ($item->type) :
@@ -163,10 +163,10 @@ foreach ($list as $i => &$item)
 	// The next item is deeper.
 	if ($item->deeper) {
 
-		// Wright v.3 adds sub-menu for level 2 and beyond
+		// Wright v.4 adds sub-menu for level 2 and beyond
 
-		$dropdownmenu = $menuType == 'vertical' ? '' : 'dropdown-menu';  // Wright v.3 adds sub-menu for level 2 and beyond
-		echo '<ul' . $idul . ' class="' . $dropdownmenu . $uladd . '">';  // Wright v.3: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
+		$dropdownmenu = $menuType == 'vertical' ? '' : 'dropdown-menu';  // Wright v.4 adds sub-menu for level 2 and beyond
+		echo '<ul' . $idul . ' class="' . $dropdownmenu . $uladd . '">';  // Wright v.4: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)

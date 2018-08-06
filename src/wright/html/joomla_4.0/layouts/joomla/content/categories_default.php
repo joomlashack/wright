@@ -11,11 +11,11 @@ defined('_JEXEC') or die;
 
 ?>
 <?php if ($displayData->params->get('show_page_heading')) : ?>
-<div class="page-header">  <?php // Wright v.3: Added page header ?>
+<div class="page-header">  <?php // Wright v.4: Added page header ?>
 	<h1>
 		<?php echo $displayData->escape($displayData->params->get('page_heading')); ?>
 	</h1>
-</div>  <?php // Wright v.3: Added page header ?>
+</div>  <?php // Wright v.4: Added page header ?>
 <?php endif; ?>
 
 <?php if ($displayData->params->get('show_base_description')) : ?>

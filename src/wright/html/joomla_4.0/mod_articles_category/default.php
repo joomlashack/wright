@@ -9,23 +9,23 @@
 
 defined('_JEXEC') or die;
 
-$wrightTypeList = (isset($wrightTypeList) ? $wrightTypeList : ' list-striped'); // Wright v.3: Optional list-striped class
+$wrightTypeList = (isset($wrightTypeList) ? $wrightTypeList : ' list-striped'); // Wright v.4: Optional list-striped class
 
-$wrightEnableIcons = (isset($wrightEnableIcons) ? $wrightEnableIcons : true);  // Wright v.3: Enable icons parameter
+$wrightEnableIcons = (isset($wrightEnableIcons) ? $wrightEnableIcons : true);  // Wright v.4: Enable icons parameter
 
-$wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : true);  // Wright v.3: Include images
+$wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : true);  // Wright v.4: Include images
 
 ?>
-<ul class="category-module<?php echo $moduleclass_sfx; ?><?php echo $wrightTypeList; // Wright v.3: Optional list-striped class ?>">
+<ul class="category-module<?php echo $moduleclass_sfx; ?><?php echo $wrightTypeList; // Wright v.4: Optional list-striped class ?>">
 <?php if ($grouped) : ?>
 	<?php foreach ($list as $group_name => $group) : ?>
 	<li>
-		<ul class="<?php echo $wrightTypeList; ?>">  <?php // Wright v.3: Added list-striped class ?>
+		<ul class="<?php echo $wrightTypeList; ?>">  <?php // Wright v.4: Added list-striped class ?>
 			<?php foreach ($group as $item) : ?>
-			    <li class="clearfix">  <?php // Wright v.3: Added clearfix class ?>
+			    <li class="clearfix">  <?php // Wright v.4: Added clearfix class ?>
 
 					<?php
-					// Wright v.3: Include image
+					// Wright v.4: Include image
 					if ($wrightIncludeImages)
 					{
 						$images = json_decode($item->images);
@@ -52,43 +52,43 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 					<?php
 						}
 					}
-					// End Wright v.3: Include image
+					// End Wright v.4: Include image
 					?>
 
 					<?php if ($params->get('link_titles') == 1) : ?>
 						<a class="mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">
-						<i class="icon-file"></i> <?php // Wright v.3: Added icon ?>
+						<i class="icon-file"></i> <?php // Wright v.4: Added icon ?>
 						<?php echo $item->title; ?>
 						</a>
 					<?php else : ?>
-						<i class="icon-file"></i>  <?php // Wright v.3: Added icon ?>
+						<i class="icon-file"></i>  <?php // Wright v.4: Added icon ?>
 						<?php echo $item->title; ?>
 					<?php endif; ?>
 
 					<?php if ($item->displayHits) : ?>
 						<span class="mod-articles-category-hits">
-						<i class="icon-eye"></i>  <?php // Wright v.3: Added icon and removed parenthesis ?>
+						<i class="icon-eye"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
 						<?php echo $item->displayHits; ?>
 						</span>
 					<?php endif; ?>
 
 					<?php if ($params->get('show_author')) :?>
 						<span class="mod-articles-category-writtenby">
-						<i class="icon-user"></i>  <?php // Wright v.3: Added icon ?>
+						<i class="icon-user"></i>  <?php // Wright v.4: Added icon ?>
 						<?php echo $item->displayAuthorName; ?>
 						</span>
 					<?php endif;?>
 
 					<?php if ($item->displayCategoryTitle) :?>
 						<span class="mod-articles-category-category">
-						<i class="icon-folder-open"></i>  <?php // Wright v.3: Added icon and removed parenthesis ?>
+						<i class="icon-folder-open"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
 						<?php echo $item->displayCategoryTitle; ?>
 						</span>
 					<?php endif; ?>
 
 					<?php if ($item->displayDate) : ?>
 						<span class="mod-articles-category-date">
-						<i class="icon-calendar"></i>  <?php // Wright v.3: Added icon ?>
+						<i class="icon-calendar"></i>  <?php // Wright v.4: Added icon ?>
 						<?php echo $item->displayDate; ?></span>
 					<?php endif; ?>
 
@@ -99,8 +99,8 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 					<?php endif; ?>
 
 					<?php if ($params->get('show_readmore')) :?>
-						<p class="readmore mod-articles-category-readmore">  <?php // Wright v.3: Added readmore class ?>
-						<a class="mod-articles-category-title <?php echo $item->active; ?> btn" href="<?php echo $item->link; ?>">  <?php // Wright v.3: Added btn class ?>
+						<p class="readmore mod-articles-category-readmore">  <?php // Wright v.4: Added readmore class ?>
+						<a class="mod-articles-category-title <?php echo $item->active; ?> btn" href="<?php echo $item->link; ?>">  <?php // Wright v.4: Added btn class ?>
 						<?php if ($item->params->get('access-view') == false) :
 							echo JText::_('MOD_ARTICLES_CATEGORY_REGISTER_TO_READ_MORE');
 						elseif ($readmore = $item->alternative_readmore) :
@@ -115,7 +115,7 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 							echo JText::_('MOD_ARTICLES_CATEGORY_READ_MORE');
 							echo JHtml::_('string.truncate', ($item->title), $params->get('readmore_limit'));
 						endif; ?>
-						<i class="icon-chevron-right"></i>  <?php // Wright v.3: Added icon ?>
+						<i class="icon-chevron-right"></i>  <?php // Wright v.4: Added icon ?>
 						</a>
 						</p>
 					<?php endif; ?>
@@ -126,10 +126,10 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 	<?php endforeach; ?>
 <?php else : ?>
 	<?php foreach ($list as $item) : ?>
-	    <li class="clearfix">  <?php // Wright v.3: Added clearfix class ?>
+	    <li class="clearfix">  <?php // Wright v.4: Added clearfix class ?>
 
 			<?php
-			// Wright v.3: Include image
+			// Wright v.4: Include image
 			if ($wrightIncludeImages)
 			{
 				$images = json_decode($item->images);
@@ -156,42 +156,42 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 			<?php
 				}
 			}
-			// End Wright v.3: Include image
+			// End Wright v.4: Include image
 			?>
 
 			<?php if ($params->get('link_titles') == 1) : ?>
 				<a class="mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">
-				<?php if($wrightEnableIcons): ?><i class="icon-file"></i> <?php endif; ?> <?php // Wright v.3: Added icon ?>
+				<?php if($wrightEnableIcons): ?><i class="icon-file"></i> <?php endif; ?> <?php // Wright v.4: Added icon ?>
 				<?php echo $item->title; ?>
 				</a>
 			<?php else : ?>
-				<?php if($wrightEnableIcons): ?><i class="icon-file"></i> <?php endif; ?> <?php // Wright v.3: Added icon ?>
+				<?php if($wrightEnableIcons): ?><i class="icon-file"></i> <?php endif; ?> <?php // Wright v.4: Added icon ?>
 				<?php echo $item->title; ?>
 			<?php endif; ?>
 
 			<?php if ($item->displayHits) :?>
 				<span class="mod-articles-category-hits">
-				<i class="icon-eye"></i>  <?php // Wright v.3: Added icon and removed parenthesis ?>
+				<i class="icon-eye"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
 				<?php echo $item->displayHits; ?>  </span>
 			<?php endif; ?>
 
 			<?php if ($params->get('show_author')) :?>
 				<span class="mod-articles-category-writtenby">
-					<i class="icon-user"></i>  <?php // Wright v.3: Added icon ?>
+					<i class="icon-user"></i>  <?php // Wright v.4: Added icon ?>
 					<?php echo $item->displayAuthorName; ?>
 				</span>
 			<?php endif;?>
 
 			<?php if ($item->displayCategoryTitle) :?>
 				<span class="mod-articles-category-category">
-				<i class="icon-folder-open"></i>  <?php // Wright v.3: Added icon and removed parenthesis ?>
+				<i class="icon-folder-open"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
 				<?php echo $item->displayCategoryTitle; ?>
 				</span>
 			<?php endif; ?>
 
 			<?php if ($item->displayDate) : ?>
 				<span class="mod-articles-category-date">
-				<i class="icon-calendar"></i>  <?php // Wright v.3: Added icon ?>
+				<i class="icon-calendar"></i>  <?php // Wright v.4: Added icon ?>
 				<?php echo $item->displayDate; ?></span>
 			<?php endif; ?>
 
@@ -202,8 +202,8 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 			<?php endif; ?>
 
 			<?php if ($params->get('show_readmore')) :?>
-				<p class="readmore mod-articles-category-readmore">  <?php // Wright v.3: Added readmore class ?>
-				<a class="btn mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">  <?php // Wright v.3: Added btn class ?>
+				<p class="readmore mod-articles-category-readmore">  <?php // Wright v.4: Added readmore class ?>
+				<a class="btn mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">  <?php // Wright v.4: Added btn class ?>
 					<?php if ($item->params->get('access-view') == false) :
 						echo JText::_('MOD_ARTICLES_CATEGORY_REGISTER_TO_READ_MORE');
 					elseif ($readmore = $item->alternative_readmore) :
@@ -215,7 +215,7 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 						echo JText::_('MOD_ARTICLES_CATEGORY_READ_MORE');
 						echo JHtml::_('string.truncate', $item->title, $params->get('readmore_limit'));
 					endif; ?>
-					<i class="icon-chevron-right"></i>  <?php // Wright v.3: Added icon ?>
+					<i class="icon-chevron-right"></i>  <?php // Wright v.4: Added icon ?>
 				</a>
 				</p>
 			<?php endif; ?>

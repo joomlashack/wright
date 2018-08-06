@@ -16,31 +16,31 @@ $params  = $displayData->params;
 	<?php $imgfloat = (empty($images->float_intro)) ? $params->get('float_intro') : $images->float_intro; ?>
 	<div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image">
 	<?php
-	/* Wright v.3: Added link to the image from the article */
+	/* Wright v.4: Added link to the image from the article */
 		if ($params->get('access-view')) :
 	?>
 		<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($displayData->slug, $displayData->catid)); ?>">
 	<?php
 		endif;
-	/* End Wright v.3: Added link to the image from the article */
+	/* End Wright v.4: Added link to the image from the article */
 	?>
 	<img
 	<?php if ($images->image_intro_caption):
 		echo 'class="caption ' . $displayData->wrightBootstrapImages . '"'.' title="' .htmlspecialchars($images->image_intro_caption) .'"';  // Wright .v.3: Added image class
-	/* Wright v.3: Image class when no caption present */
+	/* Wright v.4: Image class when no caption present */
 	else:
 		echo 'class="' . $displayData->wrightBootstrapImages . '"';
-	/* End Wright v.3: Image class when no caption present */
+	/* End Wright v.4: Image class when no caption present */
 	endif; ?>
 	src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>"/>
 	<?php
-	/* Wright v.3: Added link to the image from the article */
+	/* Wright v.4: Added link to the image from the article */
 		if ($params->get('access-view')) :
 	?>
 		</a>
 	<?php
 		endif;
-	/* End Wright v.3: Added link to the image from the article */
+	/* End Wright v.4: Added link to the image from the article */
 	?>
 	 </div>
 <?php endif; ?>

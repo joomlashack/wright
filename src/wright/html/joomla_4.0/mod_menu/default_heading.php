@@ -36,15 +36,15 @@ if($item->deeper) {
     $toggle = '';
 }
 
-?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.3: Added collapsible option ?><?php echo $title; ?> <?php echo $toggle; ?>>
+?><a href="<?php echo $item->flink; // Wright v.4: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.4: Added collapsible option ?><?php echo $title; ?> <?php echo $toggle; ?>>
 	<?php echo $linktype; ?><?php
-	// Wright v.3: Closing pseudo-link for sub-menus
+	// Wright v.4: Closing pseudo-link for sub-menus
 	if ($menuType == 'vertical') {
 		echo '<b class="caret"></b>';
 	}
 	else{
 		if($item->level == 1)
-			echo '<b class="caret"></b>'; // Wright v.3: Added caret
+			echo '<b class="caret"></b>'; // Wright v.4: Added caret
 	}
 	?>
-</a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure ?>
+</a> <?php // Wright v.4 changed <span> for <a> for Bootstrap structure ?>

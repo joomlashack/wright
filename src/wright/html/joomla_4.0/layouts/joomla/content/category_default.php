@@ -26,24 +26,24 @@ $tagsData  = $displayData->get('category')->tags->itemTags;
 <div>
 	<div class="<?php echo $className .'-category' . $displayData->pageclass_sfx;?>">
 		<?php if ($params->get('show_page_heading')) : ?>
-			<div class="page-header">  <?php // Wright v.3: Added page header ?>
+			<div class="page-header">  <?php // Wright v.4: Added page header ?>
 				<h1>
 					<?php echo $displayData->escape($params->get('page_heading')); ?>
-				</h1>  <?php // Wright v.3: Added page header ?>
+				</h1>  <?php // Wright v.4: Added page header ?>
 			</div>
 		<?php endif; ?>
 		<?php if($params->get('show_category_title', 1)) : ?>
-			<?php /* Wright v.3: Adds page header if h1 is missing */
+			<?php /* Wright v.4: Adds page header if h1 is missing */
 			if (!$params->get('show_page_heading')) : ?>
 			<div class="page-header">
-			<?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
+			<?php endif; /* End Wright v.4: Adds page header if h1 is missing */ ?>
 			<h2>
 				<?php echo JHtml::_('content.prepare', $displayData->get('category')->title, '', $extension.'.category'); ?>
 			</h2>
-			<?php /* Wright v.3: Adds page header if h1 is missing */
+			<?php /* Wright v.4: Adds page header if h1 is missing */
 			if (!$params->get('show_page_heading')) : ?>
 			</div>
-			<?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
+			<?php endif; /* End Wright v.4: Adds page header if h1 is missing */ ?>
 		<?php endif; ?>
 		<?php if ($displayData->get('show_tags', 1)) : ?>
 			<?php echo JLayoutHelper::render('joomla.content.tags', $tagsData); ?>

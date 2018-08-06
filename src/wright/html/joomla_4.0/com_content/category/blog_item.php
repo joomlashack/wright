@@ -1,5 +1,5 @@
 <?php
-// Wright v.3 Override: Joomla 3.6.5
+// Wright v.4 Override: Joomla 3.6.5
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -10,9 +10,9 @@
 
 defined('_JEXEC') or die;
 
-/* Wright v.3: Helper */
+/* Wright v.4: Helper */
 	include_once(dirname(__FILE__) . '/../com_content.helper.php');
-/* End Wright v.3: Helper */
+/* End Wright v.4: Helper */
 
 ?>
 <?php
@@ -29,7 +29,7 @@ JHtml::_('behavior.framework');
 <?php endif; ?>
 
 <?php
-/* Wright v.3: Item elements structure */
+/* Wright v.4: Item elements structure */
 if (empty($this->item->wrightElementsStructure)) $this->item->wrightElementsStructure = Array(
     "title",
     "icons",
@@ -145,7 +145,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 			case "content":
             ?>
 
-                <?php echo $this->item->event->beforeDisplayContent; ?> <?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.3: Transform article content's plugins (using helper) ?>
+                <?php echo $this->item->event->beforeDisplayContent; ?> <?php echo wrightTransformArticleContent($this->item->introtext);  // Wright v.4: Transform article content's plugins (using helper) ?>
 
                 <?php if ($params->get('show_readmore') && $this->item->readmore) :
 
@@ -237,7 +237,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 
 		endswitch;
 	endforeach;
-/* End Wright v.3: Item elements structure */
+/* End Wright v.4: Item elements structure */
 ?>
 
 <?php if ($this->item->state == 0 || strtotime($this->item->publish_up) > strtotime(JFactory::getDate())

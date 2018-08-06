@@ -17,7 +17,7 @@ JHtml::_('behavior.framework');
 ?>
 
 	<?php if ($params->get('show_title') || $displayData->state == 0 || ($params->get('show_author') && !empty($displayData->author ))) : ?>
-		<?php // <div class="page-header"> Wright v.3: Removed page-header ?>
+		<?php // <div class="page-header"> Wright v.4: Removed page-header ?>
 
 			<?php if ($params->get('show_title')) : ?>
 				<h2>
@@ -39,5 +39,5 @@ JHtml::_('behavior.framework');
 			<?php if ((strtotime($displayData->publish_down) < strtotime(JFactory::getDate())) && $displayData->publish_down != '0000-00-00 00:00:00') : ?>
 				<span class="badge badge-warning"><?php echo JText::_('JEXPIRED'); ?></span>
 		<?php endif; ?>
-		<?php // </div> Wright v.3: Removed page-header ?>
+		<?php // </div> Wright v.4: Removed page-header ?>
 	<?php endif; ?>

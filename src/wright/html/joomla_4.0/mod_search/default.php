@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die;
 
-/* Wright v.3: Custom Image for style */
+/* Wright v.4: Custom Image for style */
 	if ($button && $imagebutton) {
 		$app = JFactory::getApplication();
 		$objTemplate = $app->getTemplate(true);
@@ -20,7 +20,7 @@ defined('_JEXEC') or die;
 		}
 	}
 
-/* End Wright v.3: Custom Image for style */
+/* End Wright v.4: Custom Image for style */
 
 ?>
 <div class="search<?php echo $moduleclass_sfx ?>">
@@ -33,7 +33,7 @@ defined('_JEXEC') or die;
 				if ($imagebutton) :
 					$btn_output = ' <input type="image" value="' . $button_text . '" class="button" src="' . $img . '" onclick="this.form.searchword.focus();"/>';
 				else :
-					$btn_output = ' <button class="button btn" onclick="this.form.searchword.focus();">' . $button_text . '</button>';  // Wright v.3: Removed btn-primary class
+					$btn_output = ' <button class="button btn" onclick="this.form.searchword.focus();">' . $button_text . '</button>';  // Wright v.4: Removed btn-primary class
 				endif;
 
 				switch ($button_pos) :
