@@ -39,7 +39,6 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 	<input type="hidden" name="option" value="com_content" />
 	<input type="hidden" name="limitstart" value="0" />
 	</fieldset>
-
-	<?php echo $this->loadTemplate('items'); ?>
 </form>
+<?php echo $this->loadTemplate('items'); ?>
 </div>
