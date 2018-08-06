@@ -21,9 +21,9 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 </h1>
 </div>
 <?php endif; ?>
-<form id="adminForm" action="<?php echo JRoute::_('index.php')?>" method="post" class="form-inline">
-	<fieldset class="filters">
-	<div class="filter-search well well-small">  <?php // Wright v.3: Changed alert for well ?>
+<form id="adminForm" action="<?php echo JRoute::_('index.php')?>" method="post" class="form-inline mb-5">
+	<fieldset class="filters card-body bg-light">
+	<div class="filter-search card-body">
 		<?php if ($this->params->get('filter_field') != 'hide') : ?>
 		<label class="filter-search-lbl" for="filter-search"><?php echo JText::_('COM_CONTENT_'.$this->params->get('filter_field').'_FILTER_LABEL').'&#160;'; ?></label>
 		<input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->filter); ?>" class="inputbox span2" onchange="document.getElementById('adminForm').submit();" />
