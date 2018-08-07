@@ -265,7 +265,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 <?php if (isset ($this->item->toc)) :
                     echo wrightTransformArticleTOC($this->item->toc);  // Wright v.4: TOC transformation (using helper)
                 endif; ?>
-                    <div itemprop="articleBody">
+                    <div itemprop="articleBody" class="mb-5">
                         <?php echo wrightTransformArticleContent($this->item->text);  // Wright v.4: Transform article content's plugins (using helper) ?>
                     </div>
             <?php
