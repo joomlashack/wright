@@ -9,6 +9,8 @@
 
 defined('_JEXEC') or die('You are not allowed to directly access this file');
 
+use Joomla\CMS\HTML\HTMLHelper;
+
 if (version_compare(JVERSION, '3.0', 'lt'))
 {
 	// Check for PHP 5.2.4 if Joomla < 3.0
@@ -276,6 +278,18 @@ class Wright
 			$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
 			$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
 		}
+
+		// Alerts progressive enhancement
+		HTMLHelper::_(
+			'webcomponent',
+			'vendor/joomla-custom-elements/joomla-alert.min.js',
+			[
+				'relative' => true,
+				'version' => 'auto',
+				'detectBrowser' => false,
+				'detectDebug' => false
+			]
+		);
 
 		// Set custom template theme for user
 		if (!is_null($input->getVar('templateTheme', null)))
