@@ -110,7 +110,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 <?php if (!empty($this->lead_items)) : ?>
 <div class="items-leading clearfix<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.4: Leading Items extra Class ?>">
 	<?php foreach ($this->lead_items as &$item) : ?>
-		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?> clearfix<?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.4: Item elements extra elements
+		<div class="mb-5 leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?> clearfix<?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.4: Item elements extra elements
 		 ?>">
 			<?php
 				$this->item = &$item;
@@ -159,7 +159,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 			/* End Wright v.4: Row extra container */
 		?>
 
-		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> <?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.4: Intro Rows Class ?>">
+		<div class="items-row mb-5 cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> <?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.4: Intro Rows Class ?>">
 		<?php endif; ?>
 			<?php
 				/* Wright v.4: Parse and detect article images */

@@ -182,7 +182,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	<?php if (!empty($this->lead_items)) : ?>
 	<div class="items-leading clearfix<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.4: Leading Items extra Class ?>">
 		<?php foreach ($this->lead_items as &$item) : ?>
-		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.4: Item elements extra elements
+		<div class="mb-5 leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.4: Item elements extra elements
 		 ?>">
 			<div itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
                 <?php
