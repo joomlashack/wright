@@ -68,7 +68,13 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 	<?php endif;
 if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative)
 {
- echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
+    ?>
+	 <div class="mb-5 mt-5">
+		<?php
+		echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
+		?>
+	 </div>
+	<?php
 }
 ?>
 
@@ -247,7 +253,13 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 echo $this->item->event->beforeDisplayContent;
 
                 if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && !$this->item->paginationrelative):
-                    echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
+	                ?>
+	                <div class="mb-5 mt-5">
+		                <?php
+		                echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
+		                ?>
+	                </div>
+                    <?php
                 endif;
                 ?>
                 <?php if (isset ($this->item->toc)) :
@@ -270,8 +282,12 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
                 <?php
                 if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && !$this->item->paginationrelative):
-                    echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
-                ?>
+	                ?>
+	                <div class="mb-5 mt-5">
+		                <?php
+		                echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
+		                ?>
+	                </div>
                     <?php endif; ?>
                     <?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '1')) || ($params->get('urls_position') == '1'))) : ?>
                     <?php echo $this->loadTemplate('links'); ?>
@@ -306,8 +322,12 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                     <?php endif; ?>
                     <?php
                 if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && $this->item->paginationrelative) :
-                 echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
-                ?>
+	                ?>
+	                <div class="mb-5 mt-5">
+		                <?php
+		                echo wrightTransformArticlePager($this->item->pagination);  // Wright v.4: Pager styles (using helper)
+		                ?>
+	                </div>
             <?php endif;
 
             break;
