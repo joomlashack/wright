@@ -47,9 +47,9 @@ if (!empty($this->items))
 		<fieldset class="filters card-body bg-light">
 			<?php if ($this->params->get('filter_field') !== 'hide') : ?>
 				<?php if ($this->params->get('filter_field') !== 'tag') : ?>
-					<input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="inputbox" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTENT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTENT_' . $this->params->get('filter_field') . '_FILTER_LABEL'); ?>">
+					<input type="text" name="filter-search" class="wf-xs-mb-3" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="inputbox" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTENT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTENT_' . $this->params->get('filter_field') . '_FILTER_LABEL'); ?>">
 				<?php else : ?>
-					<select name="filter_tag" id="filter_tag" onchange="document.adminForm.submit();" >
+					<select name="filter_tag" id="filter_tag" class="wf-xs-mb-3" onchange="document.adminForm.submit();" >
 						<option value=""><?php echo JText::_('JOPTION_SELECT_TAG'); ?></option>
 						<?php echo HTMLHelper::_('select.options', HTMLHelper::_('tag.options', true, true), 'value', 'text', $this->state->get('filter.tag')); ?>
 					</select>
@@ -58,7 +58,7 @@ if (!empty($this->items))
 			<?php if ($this->params->get('show_pagination_limit')) : ?>
 				<?php echo $this->pagination->getLimitBox(); ?>
 			<?php endif; ?>
-			<button type="submit" name="filter_submit" class="btn btn-primary"><?php echo JText::_('COM_CONTENT_FORM_FILTER_SUBMIT'); ?></button>
+			<button type="submit" name="filter_submit" class="btn btn-primary wf-xs-mt-3"><?php echo JText::_('COM_CONTENT_FORM_FILTER_SUBMIT'); ?></button>
 			<input type="hidden" name="filter_order" value="">
 			<input type="hidden" name="filter_order_Dir" value="">
 			<input type="hidden" name="limitstart" value="">

@@ -216,3 +216,47 @@ dl.article-info {
     }
 }
 
+.filter-search {
+
+    #month,
+    #year,
+    #limit {
+
+        @media (max-width: 575px) {
+            margin-bottom: $spacer;
+        }
+    }
+}
+
+/* Responsive utilities */
+
+@media (max-width: 575px) {
+
+    /* Margin bottom */
+
+    .wf-xs-mb-1 {
+        margin-bottom: $spacer * .25;
+    }
+
+    .wf-xs-mb-2 {
+        margin-bottom: $spacer * .5;
+    }
+
+    .wf-xs-mb-3 {
+        margin-bottom: $spacer;
+    }
+
+    /* Margin top */
+
+    .wf-xs-mt-1 {
+        margin-top: $spacer * .25;
+    }
+
+    .wf-xs-mt-2 {
+        margin-top: $spacer * .5;
+    }
+
+    .wf-xs-mt-3 {
+        margin-top: $spacer;
+    }
+}
