@@ -61,6 +61,22 @@ a {
     }
 }
 
+/* Menus */
+
+.navbar-nav {
+
+    li {
+
+        a {
+
+            [class*="icon-"],
+            img {
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
 /* Footer */
 
 .wrapper-footer {
