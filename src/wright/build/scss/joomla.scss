@@ -257,12 +257,6 @@ joomla-alert {
 
 /* Users */
 
-.com-users-registration__form,
-.com-users-login__form,
-.com-users-login__options {
-    @extend .mb-5;
-}
-
 form:not(.form-no-margin) {
 
     .control-group {
@@ -300,6 +294,15 @@ form:not(.form-no-margin) {
 
     }
 
+}
+
+/* Spacing */
+
+.com-contact-featured__items,
+.com-users-registration__form,
+.com-users-login__form,
+.com-users-login__options {
+    @extend .mb-5;
 }
 
 /* Responsive utilities */
