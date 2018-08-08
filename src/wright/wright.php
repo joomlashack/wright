@@ -877,12 +877,15 @@ class Wright
 	 */
 	public function setColumnPrefix()
 	{
-		// Joomla 3
+
 		if (version_compare(JVERSION, '4', 'lt')) {
+
+			// Joomla 3
 			$bsprefix_ = 'span';
 		}
-		// Joomla 4
 		else {
+
+			// Joomla 4
 			$bsprefix_ = 'col-md-';
 		}
 
