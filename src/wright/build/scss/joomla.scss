@@ -228,6 +228,73 @@ dl.article-info {
     }
 }
 
+/* Form */
+
+.invalid {
+    color: $red;
+}
+
+label {
+
+    &.invalid {
+        font-weight: $font-weight-bold;
+    }
+}
+
+.form-control-feedback {
+    display: block;
+    font-weight: $font-weight-light;
+
+    @media (min-width: 576px) {
+        position: absolute;
+    }
+}
+
+/* User login */
+
+.com-users-login__form,
+.com-users-login__options {
+    @extend .mb-5;
+}
+
+form:not(.form-no-margin) {
+
+    .control-group {
+        margin-bottom: 18px;
+
+        .control-label {
+            width: auto;
+            padding-top: 5px;
+            padding-right: 5px;
+            text-align: left;
+
+            @media (min-width: 576px) {
+                float: left;
+            }
+        }
+
+        .controls {
+
+            @media (min-width: 576px) {
+                margin-left: 220px;
+            }
+        }
+
+        &.com-users-login__remember {
+
+            .control-label {
+                float: left;
+            }
+
+            .controls {
+                margin-left: 220px;
+            }
+        }
+
+    }
+
+}
+
 /* Responsive utilities */
 
 @media (max-width: 575px) {
