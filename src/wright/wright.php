@@ -248,8 +248,9 @@ class Wright
 			$this->addJSScript($this->_urlJS . '/bootstrap.min.js');
 		}
 
-		// Javascript for Joomla 3
 		if (version_compare(JVERSION, '4', 'lt')) {
+
+			// Javascript for Joomla 3
 			$this->addJSScript($this->_urlJS . '/utils-30.js');
 
 			if ($this->document->params->get('stickyFooter', 1))
@@ -257,14 +258,27 @@ class Wright
 				$this->addJSScript($this->_urlJS . '/stickyfooter-30.js');
 			}
 		}
-		// Javascript for Joomla 4
 		else {
+
+			// Javascript for Joomla 4
 			$this->addJSScript($this->_urlJS . '/utils-40.js');
 
 			if ($this->document->params->get('stickyFooter', 1))
 			{
 				$this->addJSScript($this->_urlJS . '/stickyfooter-40.js');
 			}
+
+			// Alerts progressive enhancement
+			HTMLHelper::_(
+				'webcomponent',
+				'vendor/joomla-custom-elements/joomla-alert.min.js',
+				[
+					'relative' => true,
+					'version' => 'auto',
+					'detectBrowser' => false,
+					'detectDebug' => false
+				]
+			);
 		}
 
 		// Add header script if set
@@ -278,18 +292,6 @@ class Wright
 			$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
 			$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
 		}
-
-		// Alerts progressive enhancement
-		HTMLHelper::_(
-			'webcomponent',
-			'vendor/joomla-custom-elements/joomla-alert.min.js',
-			[
-				'relative' => true,
-				'version' => 'auto',
-				'detectBrowser' => false,
-				'detectDebug' => false
-			]
-		);
 
 		// Set custom template theme for user
 		if (!is_null($input->getVar('templateTheme', null)))
