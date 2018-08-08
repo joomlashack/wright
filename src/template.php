@@ -87,41 +87,43 @@ defined('_JEXEC') or die('Restricted access');
 				</aside>
 				<!-- main -->
 				<section id="main">
-					<?php
+					<div class="mb-5">
+						<?php
 						if ($this->countModules('above-content'))
 							:
-					?>
-					<!-- above-content -->
-					<div id="above-content">
-						<w:module type="none" name="above-content" />
-					</div>
-					<?php
+							?>
+							<!-- above-content -->
+							<div id="above-content">
+								<w:module type="none" name="above-content" />
+							</div>
+						<?php
 						endif;
-					?>
-					<?php
+						?>
+						<?php
 						if ($this->countModules('breadcrumbs'))
 							:
-					?>
-					<!-- breadcrumbs -->
-					<div id="breadcrumbs">
-						<w:module name="breadcrumbs" chrome="none" />
-					</div>
-					<?php
+							?>
+							<!-- breadcrumbs -->
+							<div id="breadcrumbs">
+								<w:module name="breadcrumbs" chrome="none" />
+							</div>
+						<?php
 						endif;
-					?>
-					<!-- component -->
-					<w:content />
-					<?php
+						?>
+						<!-- component -->
+						<w:content />
+						<?php
 						if ($this->countModules('below-content'))
 							:
-					?>
-					<!-- below-content -->
-					<div id="below-content" class="m-t-1">
-						<w:module type="none" name="below-content" />
-					</div>
-					<?php
+							?>
+							<!-- below-content -->
+							<div id="below-content" class="m-t-1">
+								<w:module type="none" name="below-content" />
+							</div>
+						<?php
 						endif;
-					?>
+						?>
+					</div>
 				</section>
 				<!-- sidebar2 -->
 				<aside id="sidebar2">
