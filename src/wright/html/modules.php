@@ -17,6 +17,8 @@ jimport('joomla.application.module.helper');
  * @return number - column width for the generated spans
  */
 function getPositionAutospanWidth($position) {
+
+	$doc = Wright::getInstance();
     $robModules = JModuleHelper::getModules($position);
     $maxColumns = 12;
     $availableColumns = $maxColumns;
@@ -31,12 +33,12 @@ function getPositionAutospanWidth($position) {
 
             $matches = Array();
 
-			if (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches) && $bootstrapSize != 0) {
+			if (preg_match('/' . $doc->setColumnPrefix() . '([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches) && $bootstrapSize != 0) {
 				$modColumns = $bootstrapSize;
 				$availableColumns -= $modColumns;
 				$autospanModules--;
             }
-			elseif (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)){
+			elseif (preg_match('/' . $doc->setColumnPrefix() . '([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)){
 				$modColumns = (int)$matches[1];
 				$availableColumns -= $modColumns;
 				$autospanModules--;
@@ -56,7 +58,10 @@ function getPositionAutospanWidth($position) {
  * (i.e. <w:module type="{row/row-fluid}" name="position" chrome="wrightflexgrid" extradivs="{optional}" extraclass="{optional}" />
  */
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
-    $headerTag = htmlspecialchars($params->get('header_tag', 'h3'));
+
+	$doc = Wright::getInstance();
+
+	$headerTag = htmlspecialchars($params->get('header_tag', 'h3'));
 
     $app = JFactory::getApplication();
     $templatename = $app->getTemplate();
@@ -94,18 +99,18 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 
 	if (preg_match('/span([0-9]{1,2})/', $class, $matches)) {
 		// user assigned span width in module parameters
-		$params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
+		$params->set('moduleclass_sfx',preg_replace('/' . $doc->setColumnPrefix() . '([0-9]{1,2})/', '', $class));
 		$class = $params->get('moduleclass_sfx');
 		$spanWidth = (int)$matches[1];
-		$module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
+		$module->content = preg_replace('/<([^>]+)class="([^""]*)' . $doc->setColumnPrefix() . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
 	}
 
 	if ($bootstrapSize != 0)
 	{
-		$params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
+		$params->set('moduleclass_sfx',preg_replace('/' . $doc->setColumnPrefix() . '([0-9]{1,2})/', '', $class));
 		$class = $params->get('moduleclass_sfx');
 		$spanWidth = $bootstrapSize;
-		$module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
+		$module->content = preg_replace('/<([^>]+)class="([^""]*)' . $doc->setColumnPrefix() . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
 	}
 
     $featured = false;
@@ -147,7 +152,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $modulenumbera[$attribs['name']]++;
 
     ?>
-<div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> span<?php echo $spanWidth . $extraclass ?>">
+<div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> <?php echo $doc->setColumnPrefix() . $spanWidth . $extraclass ?>">
 <?php if (in_array('module',$extradivs)) : ?>
     <div class="module-inner">
 <?php
@@ -237,7 +242,7 @@ function modChrome_wrightxhtml($module, &$params, &$attribs)
     $moduleTag      = $params->get('module_tag', 'div');
     $headerTag      = htmlspecialchars($params->get('header_tag', 'h3'));
     $bootstrapSize  = (int) $params->get('bootstrap_size', 0);
-    $moduleClass    = $bootstrapSize != 0 ? ' span' . $bootstrapSize : '';
+    $moduleClass    = $bootstrapSize != 0 ? ' ' . $doc->setColumnPrefix() . $bootstrapSize : '';
 
     // Temporarily store header class in variable
     $headerClass    = $params->get('header_class');
