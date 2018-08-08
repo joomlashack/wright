@@ -244,14 +244,20 @@ label {
 .form-control-feedback {
     display: block;
     font-weight: $font-weight-light;
+    font-size: 0.8em;
 
     @media (min-width: 576px) {
         position: absolute;
     }
 }
 
-/* User login */
+joomla-alert {
+    padding: 1.5rem 1.5rem;
+}
 
+/* Users */
+
+.com-users-registration__form,
 .com-users-login__form,
 .com-users-login__options {
     @extend .mb-5;
@@ -261,6 +267,7 @@ form:not(.form-no-margin) {
 
     .control-group {
         margin-bottom: 18px;
+        min-height: 38px;
 
         .control-label {
             width: auto;
