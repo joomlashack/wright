@@ -52,9 +52,9 @@ else {
 $navlist = '';
 if ($menuType == 'vertical'){
 	if($class_sfx == '')
-		$navlist = ' nav-list';
+		$navlist = '  nav-list';
 	elseif($class_sfx == ' no-collapse')
-		$navlist = ' nav-list';
+		$navlist = '  nav-list';
 }
 
 ?>
@@ -72,7 +72,7 @@ if ($menuType == 'vertical'){
 foreach ($list as $i => &$item)
 {
 	$active = false;  // Wright v.4: Active toggle for collapsible menus
-	$class = 'nav-item item-' . $item->id;
+	$class = 'item-' . $item->id . ' ';
 
 	if ($item->id == $active_id)
 	{
@@ -119,6 +119,8 @@ foreach ($list as $i => &$item)
 		}
 	}
 
+	$class .= ' nav-item';
+
 	if (!empty($class))
 	{
 		$class = ' class="' . trim($class) . '"';
@@ -140,7 +142,7 @@ foreach ($list as $i => &$item)
 		$item->licollapse = ' data-toggle="collapse"';
 		$item->flink = '#' . $ulid;
 		$idul = ' id="' . $ulid . '"';
-		$uladd = 'submenu collapse' . ($active ? ' in' : '');
+		$uladd = 'submenu  collapse' . ($active ? ' in' : '');
 	}
 	/* End Wright v.4: Unique tagging for collapsible submenus */
 
