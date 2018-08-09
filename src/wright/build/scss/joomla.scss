@@ -116,10 +116,21 @@ a {
 /* Module */
 
 [class*="module"] {
-    margin-bottom: 20px;
+    margin-bottom: $spacer * 1.5;
 
     &:last-child {
         margin-bottom: 0;
+    }
+}
+
+#sidebar1,
+#sidebar2 {
+
+    [class*="module"] {
+
+        &:last-child {
+            @extend .mb-5;
+        }
     }
 }
 
