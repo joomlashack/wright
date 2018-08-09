@@ -52,9 +52,9 @@ else {
 $navlist = '';
 if ($menuType == 'vertical'){
 	if($class_sfx == '')
-		$navlist = '  nav-list';
+		$navlist = '  flex-column';
 	elseif($class_sfx == ' no-collapse')
-		$navlist = '  nav-list';
+		$navlist = '  flex-column';
 }
 
 ?>
