@@ -79,9 +79,24 @@ a {
 
 .menu {
 
+    > li {
+
+        > .submenu {
+            margin-left: 0;
+
+            > li > .submenu {
+                margin-left: 20px;
+
+                > li > .submenu {
+                    margin-left: 40px;
+                }
+            }
+        }
+    }
+
     .submenu {
-        padding: 0;
         list-style: none;
+        padding: 0;
     }
 }
 
