@@ -85,11 +85,27 @@ a {
         > .submenu {
             margin-left: 0;
 
-            > li > .submenu {
-                margin-left: 20px;
+            > li > .submenu > li {
 
-                > li > .submenu {
-                    margin-left: 40px;
+                // Three menu level
+                > a {
+                    padding-left: $dropdown-item-padding-x * 2;
+                }
+
+                > .submenu > li {
+
+                    // Fourth menu level
+                    > a {
+                        padding-left: $dropdown-item-padding-x * 3;
+                    }
+
+                    > .submenu > li {
+
+                        // Fifth menu level
+                        > a {
+                            padding-left: $dropdown-item-padding-x * 4;
+                        }
+                    }
                 }
             }
         }
@@ -98,6 +114,28 @@ a {
     .submenu {
         list-style: none;
         padding: 0;
+    }
+}
+
+.nav:not(.nav-pills):not(.nav-tabs) {
+
+    .active {
+
+        > a {
+            color: $link-hover-color;
+            background: $light;
+        }
+    }
+
+    a {
+        color: $link-color;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $link-hover-color;
+            background: $light;
+        }
     }
 }
 
