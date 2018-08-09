@@ -9,7 +9,7 @@ jQuery(document).ready(function() {
 	jQuery(window).on('load', function () {
 		jQuery('.wrapper-footer.sticky').css('bottom','0')
 			.css('position','absolute')
-			.css('z-index','1000');
+			.css('z-index','100');
 		stickyFooter();
 	});
 	stickyFooter();
