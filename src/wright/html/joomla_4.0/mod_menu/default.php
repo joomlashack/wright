@@ -49,6 +49,14 @@ else {
 
 /* End Wright v.4: Distinguish collapsible and non-collapsible menus */
 
+// Set base menu class depending if the menu module is in native menu positions (menu, toolbar, bottom-menu)
+if (in_array($module->position, $wrightTemplate->menuPositions)){
+	$basemenu_class = 'navbar-nav';
+}
+else {
+	$basemenu_class = 'nav';
+}
+
 $navlist = '';
 if ($menuType == 'vertical'){
 	if($class_sfx == '')
@@ -59,7 +67,7 @@ if ($menuType == 'vertical'){
 
 ?>
 
-<ul class="menu<?php echo $class_sfx . $navlist;?> navbar-nav"<?php  // Wright v.4: Added navbar-nav class
+<ul class="menu<?php echo $class_sfx . $navlist . ' ' . $basemenu_class;?> "<?php  // Wright v.4: Added $basemenu_class class
 	$tag = '';
 
 	if ($params->get('tag_id') != null)
