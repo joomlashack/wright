@@ -212,7 +212,7 @@ a {
     }
 }
 
-/* Categories module */
+/* Articles categories module */
 
 .categories-module {
 
@@ -278,6 +278,15 @@ a {
     }
 }
 
+/* Articles category module */
+
+.category-module {
+
+    dl.article-info {
+        margin-top: 0.5rem;
+    }
+}
+
 /* Articles */
 
 p {
@@ -292,7 +301,7 @@ p {
 
 .item-image {
     margin-top: 7px;
-    @extend .m-b-1;
+    margin-bottom: 1rem;
     max-width: 100%;
 }
 
