@@ -9,10 +9,10 @@
 
 defined('_JEXEC') or die;
 ?>
-<ul class="mostread<?php echo $moduleclass_sfx; ?> nav nav-list">  <?php // Wright v.4: Added nav nav-list classes ?>
+<ul class="mostread<?php echo $moduleclass_sfx; ?> nav flex-column">  <?php // Wright v.4: Added nav flex-column classes ?>
 <?php foreach ($list as $item) : ?>
-	<li>
-		<a href="<?php echo $item->link; ?>">
+	<li class="nav-item">
+		<a href="<?php echo $item->link; ?>" class="nav-link">
 			<i class="icon-file"></i>  <?php // Wright v.4: Added icon ?>
 			<?php echo $item->title; ?></a>
 	</li>
