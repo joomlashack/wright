@@ -188,9 +188,9 @@ a {
 [class*="module"] {
     margin-bottom: $spacer * 1.5;
 
-    &:last-child {
+    /*&:last-child {
         margin-bottom: 0;
-    }
+    }*/
 }
 
 #sidebar1,
