@@ -43,7 +43,7 @@ $c = 0; // Wright v.4: Counter variable to get horizontal columns (set by $wrigh
 	<?php for ($i = 0, $n = count($list); $i < $n; $i ++) :
 		$item = $list[$i]; ?>
 
-		<?php // Wright v.4: Added row-fluid for each horizontal set of columns ?>
+		<?php // Wright v.4: Added row for each horizontal set of columns ?>
 			<?php if ($c % $wrightMaxColumns ==  0):
 					$rowcounter = 1;  // Wright v.4: Row counter
 					if ($wrightDivideRows) : ?>
@@ -70,19 +70,19 @@ $c = 0; // Wright v.4: Counter variable to get horizontal columns (set by $wrigh
 						endif;
 					endif;
 				?>
-				<div class="row-fluid">
+				<div class="row">
 			<?php endif; ?>
-		<?php // End Wright v.4: Added row-fluid for each horizontal set of columns ?>
+		<?php // End Wright v.4: Added row for each horizontal set of columns ?>
 
-			<div class="span<?php echo $span ?>" <?php echo $wrightEnableLinkContent ? 'style="cursor:pointer" onclick="location.href=\'' . $item->link . '\'"' : '' ?>> <?php // Wright v.4: Added span class for each column ?>
+			<div class="col-md-<?php echo $span ?>" <?php echo $wrightEnableLinkContent ? 'style="cursor:pointer" onclick="location.href=\'' . $item->link . '\'"' : '' ?>> <?php // Wright v.4: Added col-md- class for each column ?>
 				<?php require JModuleHelper::getLayoutPath('mod_articles_news', '_item');
 
 				if ($n > 1 && (($i < $n - 1) || $params->get('showLastSeparator'))) : ?>
 					<span class="article-separator">&#160;</span>
 				<?php endif; ?>
 
-			</div> <?php // Wright v.4: Added span3 class for each column ?>
-		<?php /* Wright v.4: Close row-fluid */ ?>
+			</div> <?php // Wright v.4: Added col-md-3 class for each column ?>
+		<?php /* Wright v.4: Close row */ ?>
 
 			<?php if ($c % $wrightMaxColumns ==  ($wrightMaxColumns-1) || $c == $n - 1): ?>
 				</div>
@@ -115,7 +115,7 @@ $c = 0; // Wright v.4: Counter variable to get horizontal columns (set by $wrigh
 				$c = $c + 1;
 				$rowcounter++; // Wright v.4: Row counter
 			?>
-		<?php /* End Wright v.4: Close row-fluid */ ?>
+		<?php /* End Wright v.4: Close row */ ?>
 
 	<?php endfor; ?>
 </div> <?php // Wright v.4: Changed ul for div element ?>
