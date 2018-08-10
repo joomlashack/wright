@@ -14,6 +14,10 @@ require_once(JPATH_THEMES.'/'.$app->getTemplate().'/wrighttemplate.php');
 
 // Note. It is important to remove spaces between elements.
 
+/* @todo Find out what is removing empty spaces in module and menu classes.
+ * Currently we use double empty space due one space is removed.
+ * /
+
 /* Wright v.4: Distinguish collapsible and non-collapsible menus.  If the position is an official menu position in the template, or if it has the suffixe "no-collapse", it won't do the collapse */
 $wrightCollapseMenus = true;
 $menuType = 'vertical';
@@ -22,7 +26,7 @@ if (preg_match('/nav\-pills/', $class_sfx) || preg_match('/nav\-tabs/', $class_s
 	$wrightCollapseMenus = false;
 	$menuType = 'horizontal';
 }
-if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class_sfx)){
+/*if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class_sfx)){
 	$wrightCollapseMenus = true;
 	$menuType = 'vertical';
 }
@@ -33,7 +37,7 @@ if (preg_match('/tabbable/', $params->get('moduleclass_sfx'))) {
 if (preg_match('/navbar/', $params->get('moduleclass_sfx'))) {
 	$wrightCollapseMenus = false;
 	$menuType = 'horizontal';
-}
+}*/
 
 if (preg_match('/no\-collapse/', $class_sfx)) {
 	$wrightCollapseMenus = false;
@@ -67,7 +71,7 @@ if ($menuType == 'vertical'){
 
 ?>
 
-<ul class="menu<?php echo $class_sfx . $navlist . ' ' . $basemenu_class;?> "<?php  // Wright v.4: Added $basemenu_class class
+<ul class="menu <?php echo $class_sfx . $navlist . ' ' . $basemenu_class;?> "<?php  // Wright v.4: Added $basemenu_class class
 	$tag = '';
 
 	if ($params->get('tag_id') != null)
@@ -143,7 +147,7 @@ foreach ($list as $i => &$item)
 	if ($item->type == "separator" || $item->type == "heading")
 		$item->flink = '#';
 	if ($menuType == "vertical" && !$wrightCollapseMenus)
-		$uladd .= 'submenu unstyled';
+		$uladd .= 'submenu  unstyled';
 	if ($item->deeper && $wrightCollapseMenus)
 	{
 		$ulid = 'wul_' . uniqid();
