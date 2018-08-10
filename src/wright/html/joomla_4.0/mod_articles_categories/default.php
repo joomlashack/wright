@@ -13,7 +13,7 @@ $wrightHorizontal = (isset($wrightHorizontal) ? $wrightHorizontal : false);  // 
 
 ?>
 <?php if (!$wrightHorizontal) : // Wright v.4: Removed ul when used horizontal layout ?>
-<ul class="categories-module<?php echo $moduleclass_sfx . ' unstyled'; ?>">  <?php // Wright v.4: Added nav nav-list classes ?>
+<ul class="categories-module<?php echo $moduleclass_sfx . ' unstyled'; ?> nav flex-column">  <?php // Wright v.4: Added nav flex-column classes ?>
 <?php endif; // Wright v.4: Removed ul when used horizontal layout ?>
 <?php
 require JModuleHelper::getLayoutPath('mod_articles_categories', $params->get('layout', 'default').'_items');

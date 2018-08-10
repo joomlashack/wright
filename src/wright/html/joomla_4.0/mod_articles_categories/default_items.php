@@ -89,9 +89,9 @@ foreach ($list as $item) :
  	{
 	/* End Wright v.4: If horizontal display is enabled, displays categories showing category image (when available) and in horizontal / column layout */
 ?>
-	<li <?php if ($_SERVER['PHP_SELF'] == JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) echo ' class="active"';?>> <?php $levelup = $item->level - $startLevel - 1; ?>
+	<li class="nav-item"> <?php $levelup = $item->level - $startLevel - 1; ?>
   <h<?php echo $params->get('item_heading') + $levelup; ?>>
-		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>">
+		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>" class="nav-link<?php if ($_SERVER['PHP_SELF'] == JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) echo ' active';?>">
 			<?php if ($wrightEnableIcons) : ?> <i class="icon-folder-open"></i>  <?php endif; // Wright v.4: Added icon ?>
 		<?php echo $item->title;?><?php if($params->get('numitems')): ?>
 			(<?php echo $item->numitems; ?>)
@@ -106,7 +106,7 @@ foreach ($list as $item) :
 		if ($params->get('show_children', 0) && (($params->get('maxlevel', 0) == 0) || ($params->get('maxlevel') >= ($item->level - $startLevel))) && count($item->getChildren()))
 		{
 
-			echo '<ul class="nav nav-list">';  // Wright v.4: Added nav nav-list classes
+			echo '<ul class="submenu">';  // Wright v.4: Added nav nav-list classes
 			$temp = $list;
 			$list = $item->getChildren();
 			require JModuleHelper::getLayoutPath('mod_articles_categories', $params->get('layout', 'default').'_items');

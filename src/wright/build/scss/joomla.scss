@@ -212,6 +212,72 @@ a {
     }
 }
 
+/* Categories module */
+
+.categories-module {
+
+    .nav-item {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 0;
+        }
+
+        // Second level
+        .submenu {
+
+            > li {
+
+                a {
+                    padding-left: $spacer * 2;
+                }
+
+                // Third level
+                .submenu {
+
+                    > li {
+
+                        a {
+                            padding-left: $spacer * 3;
+                        }
+
+                        // Fourth level
+                        .submenu {
+
+                            > li {
+
+                                a {
+                                    padding-left: $spacer * 4;
+                                }
+
+                                // Fifth level
+                                .submenu {
+
+                                    > li {
+
+                                        a {
+                                            padding-left: $spacer * 5;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .submenu {
+        list-style: none;
+        padding: 0;
+    }
+}
+
 /* Articles */
 
 p {
