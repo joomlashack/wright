@@ -121,13 +121,13 @@ a {
 
     .active {
 
-        > a {
+        > a:not(.btn) {
             color: $link-hover-color;
             background: $light;
         }
     }
 
-    a {
+    a:not(.btn) {
         color: $link-color;
 
         &:hover,
@@ -283,7 +283,20 @@ a {
 .category-module {
 
     dl.article-info {
-        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+
+    .nav-item {
+
+        .nav-link {
+
+            &:last-child {
+
+                &:not(:first-child) {
+                    margin-bottom: $spacer * 2;
+                }
+            }
+        }
     }
 }
 
