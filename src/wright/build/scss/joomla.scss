@@ -183,7 +183,7 @@ a {
     }
 }
 
-/* Module */
+/* Modules */
 
 [class*="module"] {
     margin-bottom: $spacer * 1.5;
@@ -204,6 +204,7 @@ a {
     }
 }
 
+.card-body,
 .alert {
 
     p:last-child {
