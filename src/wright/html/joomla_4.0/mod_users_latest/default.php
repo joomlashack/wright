@@ -10,11 +10,13 @@
 defined('_JEXEC') or die;
 ?>
 <?php if (!empty($names)) : ?>
-	<ul class="latestusers<?php echo $moduleclass_sfx ?> nav nav-list">  <?php // Wright v.4: Added nav nav-list classes ?>
+	<ul class="latestusers<?php echo $moduleclass_sfx ?> nav flex-column">  <?php // Wright v.4: Added nav flex-column classes ?>
 	<?php foreach ($names as $name) : ?>
-		<li>
-			<i class="icon-user"></i>  <?php // Wright v.4: Added icon ?>
-			<?php echo $name->username; ?>
+		<li class="nav-item">
+			<span class="nav-link">
+				<i class="icon-user"></i>  <?php // Wright v.4: Added icon ?>
+				<?php echo $name->username; ?>
+			</span>
 		</li>
 	<?php endforeach;  ?>
 	</ul>
