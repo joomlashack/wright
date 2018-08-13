@@ -84,7 +84,7 @@ else
 	<!-- Show items -->
 	<?php if (!empty($feed))
 	{ ?>
-		<ul class="newsfeed<?php echo $params->get('moduleclass_sfx'); ?> nav flex-column"><?php // Wright v.4: Added nav flex-column classes and moved inside the feed validation ?>
+		<ul class="mod-newsfeed<?php echo $params->get('moduleclass_sfx'); ?> nav flex-column"><?php // Wright v.4: Added nav flex-column classes and moved inside the feed validation ?>
 		<?php for ($i = 0; $i < $params->get('rssitems', 5); $i++)
 		{
 			if (!$feed->offsetExists($i))
