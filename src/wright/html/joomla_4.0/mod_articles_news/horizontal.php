@@ -74,9 +74,13 @@ $c = 0; // Wright v.4: Counter variable to get horizontal columns (set by $wrigh
 		<?php // End Wright v.4: Added row for each horizontal set of columns ?>
 
 			<div class="col-md-<?php echo $span ?>" <?php echo $wrightEnableLinkContent ? 'style="cursor:pointer" onclick="location.href=\'' . $item->link . '\'"' : '' ?>> <?php // Wright v.4: Added col-md- class for each column ?>
-				<?php require JModuleHelper::getLayoutPath('mod_articles_news', '_item');
+				<ul class="mod-articlesnews newsflash nav flex-column">
+					<li class="nav-item">
+						<?php require JModuleHelper::getLayoutPath('mod_articles_news', '_item'); ?>
+					</li>
+				<ul>
 
-				if ($n > 1 && (($i < $n - 1) || $params->get('showLastSeparator'))) : ?>
+				<?php if ($n > 1 && (($i < $n - 1) || $params->get('showLastSeparator'))) : ?>
 					<span class="article-separator">&#160;</span>
 				<?php endif; ?>
 

@@ -11,10 +11,10 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\ModuleHelper;
 ?>
-<ul class="mod-articlesnews-vertical newsflash-vert">
+<ul class="mod-articlesnews newsflash-vert nav flex-column">
 	<?php for ($i = 0, $n = count($list); $i < $n; $i ++) : ?>
 		<?php $item = $list[$i]; ?>
-		<li class="newsflash-item">
+		<li class="nav-item">
 			<?php require ModuleHelper::getLayoutPath('mod_articles_news', '_item'); ?>
 
 			<?php if ($n > 1 && (($i < $n - 1) || $params->get('showLastSeparator'))) : ?>
