@@ -517,6 +517,13 @@ joomla-alert {
     padding: 1.5rem 1.5rem;
 }
 
+[class*="icon-"] {
+
+    &.input-group-text {
+        line-height: $line-height-base;
+    }
+}
+
 /* Users */
 
 .com-users-login__form {
