@@ -212,6 +212,39 @@ a {
     }
 }
 
+/* Articles newsflash */
+
+.mod-articlesnews {
+
+    .nav-item {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            margin-bottom: 0;
+        }
+
+        .nav-link {
+
+            &:last-child {
+
+                &:not(:first-child) {
+                    margin-bottom: $spacer * 2;
+                }
+            }
+        }
+
+        p {
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
 /* Articles categories module */
 
 .categories-module {
