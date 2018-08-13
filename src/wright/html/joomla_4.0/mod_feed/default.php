@@ -61,10 +61,10 @@ else
 		if (!is_null($feed->title) && $params->get('rsstitle', 1))
 		{
 			?>
-					<h2 class="<?php echo $direction; ?>">
+					<h3 class="<?php echo $direction; ?>">
 						<a href="<?php echo str_replace('&', '&amp;', $rssurl); ?>" target="_blank">
 						<?php echo $feed->title; ?></a>
-					</h2>
+					</h3>
 			<?php
 		}
 		// feed description
@@ -84,7 +84,7 @@ else
 	<!-- Show items -->
 	<?php if (!empty($feed))
 	{ ?>
-		<ul class="newsfeed<?php echo $params->get('moduleclass_sfx'); ?> list-striped"><?php // Wright v.4: Added list-striped class and moved inside the feed validation ?>
+		<ul class="newsfeed<?php echo $params->get('moduleclass_sfx'); ?> nav flex-column"><?php // Wright v.4: Added nav flex-column classes and moved inside the feed validation ?>
 		<?php for ($i = 0; $i < $params->get('rssitems', 5); $i++)
 		{
 			if (!$feed->offsetExists($i))
@@ -97,17 +97,20 @@ else
 				$uri = substr($uri, 0, 4) != 'http' ? $params->get('rsslink') : $uri;
 				$text = !empty($feed[$i]->content) ||  !is_null($feed[$i]->content) ? $feed[$i]->content : $feed[$i]->description;
 			?>
-				<li>
+				<li class="nav-item">
 					<?php if (!empty($uri)) : ?>
 						<h5 class="feed-link">
-						<a href="<?php echo $uri; ?>" target="_blank">
-						<?php  echo $feed[$i]->title; ?></a></h5>
+							<a href="<?php echo $uri; ?>" target="_blank" class="nav-link">
+							<?php  echo $feed[$i]->title; ?></a>
+						</h5>
 					<?php else : ?>
-						<h5 class="feed-link"><?php  echo $feed[$i]->title; ?></h5>
+						<h5 class="feed-link nav-link">
+							<?php  echo $feed[$i]->title; ?>
+						</h5>
 					<?php  endif; ?>
 
 					<?php if ($params->get('rssitemdesc') && !empty($text)) : ?>
-						<div class="feed-item-description">
+						<div class="feed-item-description nav-link">
 						<?php
 							// Strip the images.
 							$text = JFilterOutput::stripImages($text);
