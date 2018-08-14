@@ -7,25 +7,28 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-defined('_JEXEC') or die;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
 
+JLoader::register('TagsHelperRoute', JPATH_BASE . '/components/com_tags/helpers/route.php');
 ?>
-<?php JLoader::register('TagsHelperRoute', JPATH_BASE . '/components/com_tags/helpers/route.php'); ?>
-<div class="tagspopular<?php echo $moduleclass_sfx; ?>">
-<?php if (!count($list)) : ?>
-	<div class="alert alert-no-items"><?php echo JText::_('MOD_TAGS_POPULAR_NO_ITEMS_FOUND'); ?></div>
-<?php else : ?>
-<ul class="nav nav-list" > <?php // Wright v.4: nav-list ?>
-	<?php foreach ($list as $item) : ?>
-	<li><?php $route = new TagsHelperRoute; ?>
-		<a href="<?php echo JRoute::_(TagsHelperRoute::getTagRoute($item->tag_id . '-' . $item->alias)); ?>">
-		<i class="icon-tag icons-left"></i>  <?php // Wright v.4: Added icon ?>
-			<?php echo htmlspecialchars($item->title); ?></a>
-		<?php if ($display_count) : ?>
-			<span class="tag-count badge badge-info"><?php echo $item->count; ?></span>
-		<?php endif; ?>
-	</li>
-	<?php endforeach; ?>
-	</ul>
-<?php endif; ?>
+
+<div class="mod-tagspopular tagspopular">
+	<?php if (!count($list)) : ?>
+		<joomla-alert type="info"><?php echo Text::_('MOD_TAGS_POPULAR_NO_ITEMS_FOUND'); ?></joomla-alert>
+	<?php else : ?>
+		<ul class="nav flex-column">
+			<?php foreach ($list as $item) : ?>
+				<li class="nav-item">
+					<a href="<?php echo Route::_(TagsHelperRoute::getTagRoute($item->tag_id . ':' . $item->alias)); ?>"
+						class="nav-link">
+						<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?>
+						<?php if ($display_count) : ?>
+							<span class="tag-count badge badge-info"><?php echo $item->count; ?></span>
+						<?php endif; ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	<?php endif; ?>
 </div>
