@@ -43,13 +43,12 @@ JLoader::register('TagsHelperRoute', JPATH_BASE . '/components/com_tags/helpers/
 				$fontsize = $minsize + (($maxsize - $minsize) / $countdiff) * ($item->count - $mincount);
 			endif;
 			?>
-			<span class="tag">
-			<a class="tag-name" style="font-size: <?php echo $fontsize . 'em'; ?>" href="<?php echo Route::_(TagsHelperRoute::getTagRoute($item->tag_id . ':' . $item->alias)); ?>">
-				<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?></a>
+			<a class="tag-name badge badge-info" style="font-size: <?php echo $fontsize . 'em'; ?>" href="<?php echo Route::_(TagsHelperRoute::getTagRoute($item->tag_id . ':' . $item->alias)); ?>">
+				<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?>
 				<?php if ($display_count) : ?>
-					<span class="tag-count badge badge-info"><?php echo $item->count; ?></span>
+					(<?php echo $item->count; ?>)
 				<?php endif; ?>
-		</span>
+			</a>
 		<?php endforeach; ?>
 	<?php endif; ?>
 </div>
