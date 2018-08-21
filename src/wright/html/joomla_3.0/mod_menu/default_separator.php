@@ -56,7 +56,7 @@ if ($item->deeper) {
 		echo '<b class="caret"></b>';
 	}
 	else{
-		if($item->level == 1)
+		if($item->level == $params->get('startLevel', 1))
 			echo '<b class="caret"></b>'; // Wright v.3: Added caret
 	}
 }
