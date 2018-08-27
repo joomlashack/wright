@@ -349,13 +349,6 @@ p {
     }
 }
 
-.readmore {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    @include border-radius($border-radius);
-}
-
 .item-image {
     margin-top: 7px;
     margin-bottom: 1rem;
