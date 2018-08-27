@@ -1,11 +1,7 @@
 #!groovy​
 
 node {
-    def slackChannel = '#joomlashacktemplates'
-
     try {
-        slackSend channel: slackChannel, message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Triggering update on a set of templates..."
-
         stage('ABC') {
             build 'JoomlaShack-Templates/ABC-Wright'
         }
@@ -17,7 +13,7 @@ node {
         stage('Breezy') {
             build 'JoomlaShack-Templates/Breezy-Wright'
         }
-        
+
         stage('Civic') {
             build 'JoomlaShack-Templates/Civic-Wright'
         }
@@ -41,7 +37,7 @@ node {
         stage('Impacto') {
             build 'JoomlaShack-Templates/Impacto-Wright'
         }
-        
+
         stage('Keelny') {
             build 'JoomlaShack-Templates/Keenly-Wright'
         }
@@ -49,7 +45,7 @@ node {
         stage('Mondrian') {
             build 'JoomlaShack-Templates/Mondrian-Wright'
         }
-        
+
         stage('Novitas') {
             build 'JoomlaShack-Templates/Novitas-Wright'
         }
@@ -57,7 +53,7 @@ node {
         stage('Onyx') {
             build 'JoomlaShack-Templates/Onyx-Wright'
         }
-        
+
         stage('Optimus') {
             build 'JoomlaShack-Templates/Optimus-Wright'
         }
@@ -69,11 +65,11 @@ node {
         stage('Travertine') {
             build 'JoomlaShack-Templates/Travertine-Wright'
         }
-        
+
         stage('Tripod') {
             build 'JoomlaShack-Templates/Tripod-Wright'
         }
-        
+
         stage('Unlimited') {
             build 'JoomlaShack-Templates/Unlimited-Wright'
         }
@@ -85,11 +81,9 @@ node {
         stage('Wylia2') {
             build 'JoomlaShack-Templates/Wylia2-Wright'
         }
-        
-        slackSend channel: slackChannel, color: 'good', message: "${env.JOB_NAME} #${env.BUILD_NUMBER}. Finished"
+
     } catch (e) {
-        slackSend channel: slackChannel, color: 'danger', message: "${env.JOB_NAME} #${env.BUILD_NUMBER} FAILED"
         // Force a failure
-        sh "exit 1" 
+        sh "exit 1"
     }
 }
