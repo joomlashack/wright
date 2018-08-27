@@ -18,9 +18,7 @@
         }
 
         .wf-col {
-            //background: $gray-400;
-            margin-bottom: 20px;
-            min-height: 200px;
+            @extend .mb-5;
         }
     }
 }

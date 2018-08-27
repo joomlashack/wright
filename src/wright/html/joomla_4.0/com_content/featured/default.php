@@ -129,11 +129,11 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 <?php if (!empty($this->intro_items)) : ?>
 	<?php if ($this->wrightIntroItemsClass != "") echo '<div class="' . $this->wrightIntroItemsClass . '">'; // Wright v.4: Extra Intro Items Div and Class ?>
 
-	<div class="items-row mb-5 wf-cols-<?php echo (int) $this->columns;?>">
+	<div class="items-row wf-cols-<?php echo (int) $this->columns;?>">
 
 	<?php foreach ($this->intro_items as $key => &$item) : ?>
 
-			<div class="wf-col">
+			<div class="wf-col wf-overflow">
 				<div class="item<?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.4: Item elements extra elements
 				 ?>">
 					<?php
