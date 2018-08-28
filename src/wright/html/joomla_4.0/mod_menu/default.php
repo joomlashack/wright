@@ -122,7 +122,7 @@ foreach ($list as $i => &$item)
 	}
 
 	if ($item->parent) {
-		if($item->level > 1 && $menuType == 'horizontal')
+		if($item->level > $params->get('startLevel', 1) && $menuType == 'horizontal')
 		{
 			$class .= ' parent dropdown-submenu'; // Wright v.4: Add dropdown-submenu class
 		}
