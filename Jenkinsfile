@@ -38,7 +38,7 @@ node {
             build 'JoomlaShack-Templates/Impacto-Wright'
         }
 
-        stage('Keelny') {
+        stage('Keenly') {
             build 'JoomlaShack-Templates/Keenly-Wright'
         }
 
