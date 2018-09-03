@@ -200,7 +200,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	</div><!-- end items-leading -->
 	<?php endif; ?>
 
-	<div class="items-row wf-cols-<?php echo (int) $this->columns;?>">
+	<div class="wf-row wf-cols-<?php echo (int) $this->columns;?>">
 
 		<?php foreach ($this->intro_items as $key => &$item) : ?>
 
