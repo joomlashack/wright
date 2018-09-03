@@ -4,7 +4,7 @@
         display: grid;
         grid-template-columns: 100%;
         //grid-template-rows: inherit;
-        grid-column-gap: 20px;
+        grid-column-gap: $grid-gutter-width;
 
         @for $i from 2 through 12 {
 
