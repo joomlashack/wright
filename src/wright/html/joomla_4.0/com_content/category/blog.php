@@ -32,8 +32,8 @@ defined('_JEXEC') or die;
 
 /* Wright v.4: Extra classes (general) */
 	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
-	if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "row";
-	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
+	//if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "row"; // Not needed! Replaced with CSS Grid
+	//if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = ""; // Removed!
 
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
 	if (!isset($this->wrightComplementExtraClass)) $this->wrightComplementExtraClass = "";
@@ -48,7 +48,7 @@ defined('_JEXEC') or die;
 if (!isset($this->wrightNonContentContainer)) $this->wrightNonContentContainer = "";
 if (!isset($this->wrightNonContentRowMode)) $this->wrightNonContentRowMode = "";
 if (!isset($this->wrightContentExtraContainer)) $this->wrightContentExtraContainer = "";
-if (!isset($this->wrightImagesRow)) $this->wrightImagesRow = false;
+//if (!isset($this->wrightImagesRow)) $this->wrightImagesRow = false; // Removed!
 
 if (!isset($this->MoreItemsGridOrientation))
 	{
@@ -86,7 +86,7 @@ function addExtraNonContentContainersClose($wrightNonContentContainer, $wrightNo
 
 /* Wright v.4: Special featured items grid */
 
-	if (!isset($this->specialItroItemsLayout)) $this->specialItroItemsLayout = Array('activeLayout' => false, 'layoutitemscolums' => 0);
+	//if (!isset($this->specialItroItemsLayout)) $this->specialItroItemsLayout = Array('activeLayout' => false, 'layoutitemscolums' => 0); // Removed!
 	if (!isset($this->layoutSpanorder)) $this->layoutSpanorder = Array();
 
 /* End Wright v.4: Special featured items grid */
@@ -199,137 +199,27 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 		<?php endforeach; ?>
 	</div><!-- end items-leading -->
 	<?php endif; ?>
-	<?php
-	$introcount = (count($this->intro_items));
-	$counter = 0;
-?>
-	<?php if (!empty($this->intro_items)) : ?>
-	<?php if ($this->wrightIntroItemsClass != "") echo '<div class="' . $this->wrightIntroItemsClass . '">'; // Wright v.4: Extra Intro Items Div and Class ?>
-	<?php foreach ($this->intro_items as $key => &$item) : ?>
-		<?php $rowcount = ((int) $key % (int) $this->columns) + 1; ?>
-		<?php if ($rowcount == 1) : ?>
-			<?php $row = $counter / $this->columns; ?>
 
-			<?php
-				/* Wright v.4: Row buffer storage and image print in separate row */
-				$wrightImagesRowExist = false;
+	<div class="items-row wf-cols-<?php echo (int) $this->columns;?>">
 
-				if ($this->wrightImagesRow)
-				{
-					ob_start();
-					$wrightPreRowContent = '<div class="container-fluid container-images"><div class="row">';
-				}
-				/* End Wright v.4: Row buffer storage and image print in separate row */
+		<?php foreach ($this->intro_items as $key => &$item) : ?>
 
-				/* Wright v.4: Row extra container */
-				if ($this->wrightContentExtraContainer != '')
-				{
-					echo('<div class="' . $this->wrightContentExtraContainer . '">');
-				}
-				/* End Wright v.4: Row extra container */
-			?>
-
-		<div class="items-row cols-<?php echo (int) $this->columns;?> <?php echo 'row-'.$row; ?> mb-5 <?php echo ($this->wrightIntroRowsClass != '' ? ' ' . $this->wrightIntroRowsClass : ''); // Wright v.4: Intro Rows Class ?>">
-		<?php endif; ?>
-			<?php
-				/* Wright v.4: Parse and detect article images */
-				$articleImages = json_decode($item->images);
-
-				if ($articleImages && $articleImages->image_intro != '')
-				{
-					$wrightImagesRowExist = true;
-				}
-				/* End Wright v.4: Parse and detect article images */
-			?>
-
-			<?php $wrightspan = round((12 / $this->columns)); ?>
-
-			<?php /* Wright v.4: Special featured items grid */ if ($this->specialItroItemsLayout['activeLayout']): ?>
-				<?php
-
-					if ($this->columns == $this->specialItroItemsLayout['layoutitemscolums']) {
-						for ($i=0 ; $i <= count($this->layoutSpanorder); $i++ ) {
-							if ($i == $rowcount) {
-								$wrightspan = $this->layoutSpanorder[$i - 1];
-								if ($i > 1) {
-									echo '<div class="items-divider"><div class="divider-vertical"></div></div>';
-								}
-							}
-						}
-					}
-
-				?>
-			<?php endif; /* End Wright v.4: Special featured items grid */ ?>
-
-			<div class="col-md-<?php echo $wrightspan;?>">
-				<div class="item column-<?php echo $rowcount;?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.4: Item elements extra elements
+			<div class="wf-col">
+				<div  itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting"
+				      class="item <?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.4: Item elements extra elements
 				 ?>">
-                    <div itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-                        <?php
-                        $this->item = &$item;
-                        $this->item->wrightElementsStructure = $this->wrightIntroItemElementsStructure;  // Wright v.4: Item elements structure
-                        $this->item->wrightType = 'intro';  // Wright v.4: Adding item type to identify in the proper override
-                        echo $this->loadTemplate('item');
-                        ?>
-                    </div>
-				</div><!-- end item -->
+                    <?php
+                    $this->item = &$item;
+                    $this->item->wrightElementsStructure = $this->wrightIntroItemElementsStructure;  // Wright v.4: Item elements structure
+                    $this->item->wrightType = 'intro';  // Wright v.4: Adding item type to identify in the proper override
+                    echo $this->loadTemplate('item');
+                    ?>
+				</div>
+			</div>
 
-				<?php
-					/* Wright v.4: Row buffer storage and image print in separate row */
-					if ($this->wrightImagesRow)
-					{
-						$wrightPreRowContent .= '<div class="col-md-' . round((12 / $this->columns)) . '">';
+		<?php endforeach; ?>
 
-						if (isset($articleImages->image_intro) && !empty($articleImages->image_intro))
-						{
-							$imageLink = '';
-							if ($item->params->get('access-view'))
-							{
-								$wrightPreRowContent .= '<a href="' . JRoute::_(ContentHelperRoute::getArticleRoute($item->slug, $item->catid)) . '">';
-							}
-							$imageClass = $this->wrightBootstrapImages;
-							$wrightPreRowContent .= '<img src="' . $articleImages->image_intro . '" alt="' . htmlspecialchars($articleImages->image_intro_alt) . '" class="' . $imageClass . '"' . ($articleImages->image_intro_caption ? ' title="' . $articleImages->image_intro_caption . '"' : '') . ' />';
-							if ($item->params->get('access-view'))
-							{
-								$wrightPreRowContent .= '</a>';
-							}
-						}
-						$wrightPreRowContent .= '</div>';
-					}
-					/* End Wright v.4: Row buffer storage and image print in separate row */
-				?>
-
-				<?php $counter++; ?>
-			</div><!-- end col-md- -->
-			<?php if (($rowcount == $this->columns) or ($counter == $introcount)) : ?>
-		</div><!-- end row -->
-
-				<?php
-					// Wright v.4: Row extra container
-					if ($this->wrightContentExtraContainer != '')
-					{
-						echo('</div>');
-					}
-
-					/* Wright v.4: Row buffer storage and image print in separate row */
-					if ($this->wrightImagesRow)
-					{
-						$wrightRowContent = ob_get_clean();
-						$wrightPreRowContent .= '</div></div>';
-
-						if ($wrightImagesRowExist)
-						{
-							echo $wrightPreRowContent;
-						}
-
-						echo $wrightRowContent;
-					}
-					/* End Wright v.4: Row buffer storage and image print in separate row */
-				?>
-			<?php endif; ?>
-	<?php endforeach; ?>
-	<?php if ($this->wrightIntroItemsClass != "") echo ('</div>'); // Wright v.4: Extra Intro Items Div and Class ?>
-	<?php endif; ?>
+	</div>
 
 	<?php if ($this->wrightComplementOuterClass != "") echo '<div class="' . $this->wrightComplementOuterClass . '">' // Wright v.4: Outer complements class  ?>
 

@@ -32,7 +32,7 @@ defined('_JEXEC') or die;
 /* Wright v.4: Extra classes (general) */
 	if (!isset($this->wrightLeadingItemsClass)) $this->wrightLeadingItemsClass = "";
 	//if (!isset($this->wrightIntroRowsClass)) $this->wrightIntroRowsClass = "row"; // Not needed! Replaced with CSS Grid
-	if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = "";
+	//if (!isset($this->wrightIntroItemsClass)) $this->wrightIntroItemsClass = ""; // Removed!
 
 	if (!isset($this->wrightComplementOuterClass)) $this->wrightComplementOuterClass = "";
 	if (!isset($this->wrightComplementExtraClass)) $this->wrightComplementExtraClass = "";
@@ -127,14 +127,13 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 <?php endif; ?>
 
 <?php if (!empty($this->intro_items)) : ?>
-	<?php if ($this->wrightIntroItemsClass != "") echo '<div class="' . $this->wrightIntroItemsClass . '">'; // Wright v.4: Extra Intro Items Div and Class ?>
 
 	<div class="items-row wf-cols-<?php echo (int) $this->columns;?>">
 
-	<?php foreach ($this->intro_items as $key => &$item) : ?>
+		<?php foreach ($this->intro_items as $key => &$item) : ?>
 
 			<div class="wf-col">
-				<div class="item<?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.4: Item elements extra elements
+				<div class="item <?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.4: Item elements extra elements
 				 ?>">
 					<?php
 					$this->item = &$item;
@@ -145,11 +144,10 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 				</div>
 			</div>
 
-	<?php endforeach; ?>
+		<?php endforeach; ?>
 
 	</div>
 
-	<?php if ($this->wrightIntroItemsClass != "") echo ('</div>'); // Wright v.4: Extra Intro Items Div and Class ?>
 <?php endif; ?>
 
 <?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '</div>'; // Wright v.4: Extra Leading and Intro Items Div and Class ?>
