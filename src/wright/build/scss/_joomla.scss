@@ -170,6 +170,15 @@ a {
     }
 }
 
+.wrapper-bottom-menu {
+    background: rgba(0, 0, 0, 0.5);
+
+    .navbar {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
 /* Footer */
 
 .wrapper-footer {
@@ -210,6 +219,11 @@ a {
     p:last-child {
         margin-bottom: 0;
     }
+}
+
+.jumbotron {
+    font-weight: 300;
+    @include border-radius(0);
 }
 
 /* Articles newsflash */
