@@ -152,7 +152,8 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $modulenumbera[$attribs['name']]++;
 
     ?>
-<div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> <?php echo $doc->setColumnPrefix() . $spanWidth . $extraclass ?>">
+<div class="<?php echo $doc->setColumnPrefix() . $spanWidth . $extraclass ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?>">
+<div class="module<?php echo $class; ?>">
 <?php if (in_array('module',$extradivs)) : ?>
     <div class="module-inner">
 <?php
@@ -168,7 +169,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 	<?php if (in_array('title',$extradivs)) : ?>	</div> <?php endif; ?>
 <?php endif; ?>
 <?php
-   
+
     $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2$3"$4>', $module->content);
     echo $module->content;
     if ($featured)
@@ -179,6 +180,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 <?php
     endif;
 ?>
+</div>
 </div>
 <?php
 }
