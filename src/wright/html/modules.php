@@ -153,34 +153,34 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
 
     ?>
 <div class="<?php echo $doc->setColumnPrefix() . $spanWidth . $extraclass ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?>">
-<div class="module<?php echo $class; ?>">
-<?php if (in_array('module',$extradivs)) : ?>
-    <div class="module-inner">
-<?php
-    endif;
+	<div class="module<?php echo $class; ?>">
+	<?php if (in_array('module',$extradivs)) : ?>
+	    <div class="module-inner">
+	<?php
+	    endif;
 
-    if ($featured)
-        echo $featuredImg . '<div class="wrightmodule-content">' . $featuredSubtitle;
+	    if ($featured)
+	        echo $featuredImg . '<div class="wrightmodule-content">' . $featuredSubtitle;
 
-    if ($module->showtitle) : ?>
-	<?php if (in_array('title',$extradivs)) : ?>	<div class="module_title"> <?php endif; ?>
-    <?php echo $moduleTitle; ?>
-    <?php if (in_array('in-title',$extradivs)) : ?> <div class="module_title_in"></div> <?php endif; ?>
-	<?php if (in_array('title',$extradivs)) : ?>	</div> <?php endif; ?>
-<?php endif; ?>
-<?php
+	    if ($module->showtitle) : ?>
+		<?php if (in_array('title',$extradivs)) : ?>	<div class="module_title"> <?php endif; ?>
+	    <?php echo $moduleTitle; ?>
+	    <?php if (in_array('in-title',$extradivs)) : ?> <div class="module_title_in"></div> <?php endif; ?>
+		<?php if (in_array('title',$extradivs)) : ?>	</div> <?php endif; ?>
+	<?php endif; ?>
+	<?php
 
-    $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2$3"$4>', $module->content);
-    echo $module->content;
-    if ($featured)
-        echo '</div>';
-?>
-<?php if (in_array('module',$extradivs)) : ?>
-    </div>
-<?php
-    endif;
-?>
-</div>
+	    $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2$3"$4>', $module->content);
+	    echo $module->content;
+	    if ($featured)
+	        echo '</div>';
+	?>
+	<?php if (in_array('module',$extradivs)) : ?>
+	    </div>
+	<?php
+	    endif;
+	?>
+	</div>
 </div>
 <?php
 }
