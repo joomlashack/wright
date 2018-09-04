@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.7" type="template" method="upgrade" client="site">
 	<name>js_wright</name>
-	<creationDate>Jul 11 2018</creationDate>
+	<creationDate>August 28 2018</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>https://www.joomlashack.com</authorUrl>
 	<copyright>Copyright Joomlashack 2005 - 2018. All rights reserved</copyright>
 	<license>GNU GPLv2</license>
+<<<<<<< HEAD
 	<version>4.0.0-dev</version>
+=======
+	<version>3.6.7</version>
+>>>>>>> develop
 	<description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
 
 	<languages folder="language">

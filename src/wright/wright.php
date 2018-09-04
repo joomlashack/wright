@@ -521,6 +521,12 @@ class Wright
 			$styles['template'][] = 'custom.css';
 		}
 
+		// Check to see if custom.js file is present
+		if (is_file(JPATH_SITE . '/templates/' . $this->document->template . '/js/custom.js'))
+		{
+			$this->addJSScript($this->_urlTemplate . '/js/custom.js');
+		}
+
 		return $styles;
 	}
 
