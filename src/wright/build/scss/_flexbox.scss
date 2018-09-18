@@ -1,0 +1,14 @@
+.wf-row {
+
+
+    @for $i from 2 through 12 {
+
+        &.wf-cols-#{$i} {
+
+            @media (min-width: 979px) {
+
+                //$i;
+            }
+        }
+    }
+}
