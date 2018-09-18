@@ -454,10 +454,8 @@ class Wright
 			$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
 			$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
 
-			if ($this->document->params->get('responsive', '1') == '1')
-			{
-				$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
-			}
+			// Load responsive CSS always
+			$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
 
 			// Load Font Awesome 4
 			$styles['wrighttemplatecss'][] = 'font-awesome4.min.css';
