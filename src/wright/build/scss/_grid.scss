@@ -10,7 +10,7 @@
 
             &.wf-cols-#{$i} {
 
-                @media (min-width: 979px) {
+                @media (min-width: map-get($grid-breakpoints, "md")) {
 
                     grid-template-columns: repeat($i, 1fr);
 

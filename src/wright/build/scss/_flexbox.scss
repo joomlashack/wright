@@ -11,7 +11,7 @@
 
             .wf-col {
 
-                @media (min-width: 979px) {
+                @media (min-width: map-get($grid-breakpoints, "md")) {
 
                     -ms-flex: 0 0 100%/$i;
                     flex: 0 0 100%/$i;
