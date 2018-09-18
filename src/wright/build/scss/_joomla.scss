@@ -9,6 +9,15 @@ img {
     max-width: 100%;
 }
 
+/* Grid */
+
+.wf-row {
+
+    .wf-col {
+        @extend .mb-5;
+    }
+}
+
 /* Logos */
 
 #logo {
