@@ -1,13 +1,26 @@
 .wf-row {
-
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    margin: 0 -($grid-gutter-width/2);
 
     @for $i from 2 through 12 {
 
         &.wf-cols-#{$i} {
 
-            @media (min-width: 979px) {
+            .wf-col {
 
-                //$i;
+                @media (min-width: 979px) {
+
+                    -ms-flex: 0 0 100%/$i;
+                    flex: 0 0 100%/$i;
+                    max-width: 100%/$i;
+
+                    .item {
+                        margin: 0 ($grid-gutter-width/2);
+                    }
+                }
             }
         }
     }
