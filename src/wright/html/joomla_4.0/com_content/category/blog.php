@@ -206,7 +206,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
 			<div class="wf-col">
 				<div  itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting"
-				      class="item <?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.4: Item elements extra elements
+				      class="wf-item <?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightIntroExtraClass != '' ? ' ' . $this->wrightIntroExtraClass : ''); if ($this->wrightIntroHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightIntroHasImageClass : ''); } // Wright v.4: Item elements extra elements
 				 ?>">
                     <?php
                     $this->item = &$item;
