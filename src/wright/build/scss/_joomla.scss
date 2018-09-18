@@ -9,15 +9,6 @@ img {
     max-width: 100%;
 }
 
-/* Grid */
-
-.wf-row {
-
-    .wf-col {
-        @extend .mb-5;
-    }
-}
-
 /* Logos */
 
 #logo {
@@ -361,6 +352,17 @@ a {
 }
 
 /* Articles */
+
+.blog,
+.blog-featured {
+
+    .wf-row {
+
+        .wf-col {
+            @extend .mb-5;
+        }
+    }
+}
 
 p {
 
