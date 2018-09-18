@@ -460,13 +460,12 @@ class Wright
 			// Load Font Awesome 4
 			$styles['wrighttemplatecss'][] = 'font-awesome4.min.css';
 
-			// @todo check if these files are indeed loaded at some point before (not sure why the need to unload them)
-			//unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
-			//unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
-			//unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
+			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap.min.css']);
+			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-responsive.min.css']);
+			unset($doc->_styleSheets[$this->_urlTemplate . '/css/jui/bootstrap-extended.css']);
 
-			// @todo check if there is an existing RTL file, and unload it
-			//unset($doc->_styleSheets[JURI::root(true) . '/media/jui/css/bootstrap-rtl.css']);
+			// @todo check in J!4 if there is an existing RTL file
+			unset($doc->_styleSheets[JURI::root(true) . '/media/jui/css/bootstrap-rtl.css']);
 
 			// Unload core bootstrap CSS files
 			unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.css']);
