@@ -1,3 +1,4 @@
+// @todo optimize all the code on this file
 var disableToolbarResize = false;
 
 if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
