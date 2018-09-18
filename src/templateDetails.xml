@@ -97,10 +97,6 @@
 					<option value="row-fluid">TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_FLUID</option>
 					<option value="row">TPL_JS_WRIGHT_FIELD_BOOTSTRAP_ROW_MODE_DEFAULT</option>
 				</field>
-				<field name="stickyFooter" type="radio" class="switcher" default="1" label="TPL_JS_WRIGHT_FIELD_STICKY_FOOTER" description="TPL_JS_WRIGHT_FIELD_STICKY_FOOTER_DESC">
-					<option value="0">JNO</option>
-                    <option value="1">JYES</option>
-				</field>
 				<field name="wright_bootstrap_images" type="list" class="" default="" label="TPL_JS_WRIGHT_BOOTSTRAP_IMAGES" description="TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_DESC">
 					<option value="">TPL_JS_WRIGHT_NONE</option>
 					<option value="img-rounded">TPL_JS_WRIGHT_BOOTSTRAP_IMAGES_ROUNDED</option>

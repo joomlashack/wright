@@ -252,21 +252,11 @@ class Wright
 
 			// Javascript for Joomla 3
 			$this->addJSScript($this->_urlJS . '/utils-30.js');
-
-			if ($this->document->params->get('stickyFooter', 1))
-			{
-				$this->addJSScript($this->_urlJS . '/stickyfooter-30.js');
-			}
 		}
 		else {
 
 			// Javascript for Joomla 4
 			$this->addJSScript($this->_urlJS . '/utils-40.js');
-
-			if ($this->document->params->get('stickyFooter', 1))
-			{
-				$this->addJSScript($this->_urlJS . '/stickyfooter-40.js');
-			}
 
 			// Alerts progressive enhancement
 			HTMLHelper::_(
