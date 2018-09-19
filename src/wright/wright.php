@@ -252,6 +252,12 @@ class Wright
 
 			// Javascript for Joomla 3
 			$this->addJSScript($this->_urlJS . '/utils-30.js');
+
+			if ($this->document->params->get('documentationMode', '0') == '1')
+			{
+				$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
+				$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
+			}
 		}
 		else {
 
@@ -275,12 +281,6 @@ class Wright
 		if (trim($this->document->params->get('headerscript', '')) !== '')
 		{
 			$this->addJSScriptDeclaration($this->document->params->get('headerscript'));
-		}
-
-		if ($this->document->params->get('documentationMode', '0') == '1')
-		{
-			$this->addJSScript($this->_urlTemplate . '/js/prettify.js');
-			$this->addJSScriptDeclaration('$window = jQuery(window); $window.prettyPrint && prettyPrint();');
 		}
 
 		// Set custom template theme for user
