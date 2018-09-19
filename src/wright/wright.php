@@ -237,11 +237,6 @@ class Wright
 
 		JHtml::_('behavior.framework', true);
 
-		if ($this->document->params->get('modal', '1') == '1')
-		{
-			JHtml::_('behavior.modal');
-		}
-
 		if ($this->loadBootstrap)
 		{
 			// Load bootstrap JS
@@ -251,6 +246,11 @@ class Wright
 		if (version_compare(JVERSION, '4', 'lt')) {
 
 			// Javascript for Joomla 3
+			if ($this->document->params->get('modal', '1') == '1')
+			{
+				JHtml::_('behavior.modal');
+			}
+			
 			$this->addJSScript($this->_urlJS . '/utils-30.js');
 
 			if ($this->document->params->get('documentationMode', '0') == '1')
