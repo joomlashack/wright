@@ -250,7 +250,7 @@ class Wright
 			{
 				JHtml::_('behavior.modal');
 			}
-			
+
 			$this->addJSScript($this->_urlJS . '/utils-30.js');
 
 			if ($this->document->params->get('documentationMode', '0') == '1')
