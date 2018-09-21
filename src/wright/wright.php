@@ -475,8 +475,7 @@ class Wright
 			$styles['template'][] = 'joomla-' . $this->_selectedStyle . '.css';
 
 			// Load Font Awesome 5
-			//$styles['wrighttemplatecss'][] = 'font-awesome5.min.css';
-			$styles['wrighttemplatecss'][] = 'font-awesome5-test.css';
+			$styles['wrighttemplatecss'][] = 'font-awesome5.min.css';
 
 			// @todo Add RTL for Bootstrap 4
 			// @todo Add docs.css for Bootstrap 4

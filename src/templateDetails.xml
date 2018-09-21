@@ -156,8 +156,8 @@
         <!--scss destination="css" style="nested">
             <file>scss/joomla-generic.scss</file>
         </scss-->
-        <scss destination="wright/css" style="nested">
-            <file>wright/font/fa5/font-awesome5-test.scss</file>
+        <scss destination="wright/css">
+            <file>wright/font/fa5/font-awesome5.min.scss</file>
         </scss>
     </alledia>
 
