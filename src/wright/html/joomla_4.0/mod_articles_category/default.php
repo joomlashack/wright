@@ -90,7 +90,7 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 							echo JText::_('MOD_ARTICLES_CATEGORY_READ_MORE');
 							echo JHtml::_('string.truncate', ($item->title), $params->get('readmore_limit'));
 						endif; ?>
-						<i class="far fa-chevron-right"></i>  <?php // Wright v.4: Added icon ?>
+						<i class="fas fa-chevron-right"></i>  <?php // Wright v.4: Added icon ?>
 						</a>
 						</div>
 					<?php endif; ?>
@@ -166,7 +166,7 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 						echo JText::_('MOD_ARTICLES_CATEGORY_READ_MORE');
 						echo JHtml::_('string.truncate', $item->title, $params->get('readmore_limit'));
 					endif; ?>
-					<i class="far fa-chevron-right"></i>  <?php // Wright v.4: Added icon ?>
+					<i class="fas fa-chevron-right"></i>  <?php // Wright v.4: Added icon ?>
 				</a>
 				</div>
 			<?php endif; ?>
