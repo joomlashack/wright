@@ -9,42 +9,6 @@
 
 defined('_JEXEC') or die;
 
-// Wright v.4: Created additional structure for icons
-$structIcons = '';
-$span1 = '';
-$span2 = '';
-
-// Regular Font Awesome Icons. e.g. far fa-user
-if (preg_match_all('/far fa-([\S]+)/', $item->anchor_css, $matches))
-{
-	$item->anchor_css = preg_replace('/far fa-([\S]+)/', '', $item->anchor_css);
-	$icons = 'far fa-' . implode(' far fa-', $matches[1]);
-	$structIcons = '<i class="' . $icons . '"></i>';
-}
-
-// Solid Font Awesome Icons. e.g. fas fa-user
-if (preg_match_all('/fas fa-([\S]+)/', $item->anchor_css, $matches))
-{
-	$item->anchor_css = preg_replace('/fas fa-([\S]+)/', '', $item->anchor_css);
-	$icons = 'fas fa-' . implode(' fas fa-', $matches[1]);
-	$structIcons = '<i class="' . $icons . '"></i>';
-}
-
-// Brands Font Awesome Icons. e.g. fab fab-facebook
-if (preg_match_all('/fab fa-([\S]+)/', $item->anchor_css, $matches))
-{
-	$item->anchor_css = preg_replace('/fab fa-([\S]+)/', '', $item->anchor_css);
-	$icons = 'fab fa-' . implode(' fab fa-', $matches[1]);
-	$structIcons = '<i class="' . $icons . '"></i>';
-}
-
-if (preg_match_all('/hidden-text/', $item->anchor_css, $matches))
-{
-	$span1 = '<span class="hidden-text">';
-	$span2 = '</span>';
-}
-// End Wright v.4: Created additional structure for icons
-
 // Add the classes
 $class  = $item->anchor_css;
 $class .= ($item->deeper) ? ' dropdown-toggle' : '';
