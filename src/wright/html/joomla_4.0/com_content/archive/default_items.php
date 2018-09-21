@@ -50,7 +50,7 @@ $params = $this->params;
 				<?php if ($params->get('show_parent_category') && !empty($item->parent_slug)) : ?>
 					<dd>
 						<div class="parent-category-name">
-							<i class="icon-circle-arrow-up"></i> <?php // Wright v.4: Icon ?>
+							<i class="far fa-circle-arrow-up"></i> <?php // Wright v.4: Icon ?>
 							<?php	$title = $this->escape($item->parent_title);
 							$url = '<a href="' . JRoute::_(ContentHelperRoute::getCategoryRoute($item->parent_slug)).'">' . $title . '</a>'; ?>
 							<?php if ($params->get('link_parent_category') && !empty($item->parent_slug)) : ?>
@@ -64,7 +64,7 @@ $params = $this->params;
 				<?php if ($params->get('show_category')) : ?>
 					<dd>
 						<div class="category-name">
-							<i class="icon-folder-open"></i> <?php // Wright v.4: Icon ?>
+							<i class="far fa-folder-open"></i> <?php // Wright v.4: Icon ?>
 							<?php $title = $this->escape($item->category_title);
 							$url = '<a href="' . JRoute::_(ContentHelperRoute::getCategoryRoute($item->catslug)).'">' . $title . '</a>'; ?>
 							<?php if ($params->get('link_category') && $item->catslug) : ?>
@@ -79,7 +79,7 @@ $params = $this->params;
 				<?php if ($params->get('show_publish_date')) : ?>
 					<dd>
 						<div class="published">
-							<span class="icon-calendar"></span>
+							<span class="far fa-calendar"></span>
 								<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $item->publish_up, JText::_('DATE_FORMAT_LC3'))); // Wright v.4: Icon ?>
 						</div>
 					</dd>
@@ -89,7 +89,7 @@ $params = $this->params;
 					<?php if ($params->get('show_modify_date')) : ?>
 						<dd>
 							<div class="modified">
-								<span class="icon-edit"></span> <?php // Wright v.4: Changed icon ?>
+								<span class="far fa-edit"></span> <?php // Wright v.4: Changed icon ?>
 								<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $item->modified, JText::_('DATE_FORMAT_LC3'))); // Wright v.4: Icon ?>
 							</div>
 						</dd>
@@ -97,7 +97,7 @@ $params = $this->params;
 					<?php if ($params->get('show_create_date')) : ?>
 						<dd>
 							<div class="create">
-								<span class="icon-pencil"></span> <?php // Wright v.4: Changed icon ?>
+								<span class="far fa-pencil"></span> <?php // Wright v.4: Changed icon ?>
 								<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $item->created, JText::_('DATE_FORMAT_LC3'))); // Wright v.4: Icon ?>
 							</div>
 						</dd>
@@ -109,7 +109,7 @@ $params = $this->params;
 						<div class="createdby">
 						<?php $author = $item->author; ?>
 						<?php $author = ($item->created_by_alias ? $item->created_by_alias : $author); ?>
-							<i class="icon-user"></i>
+							<i class="far fa-user"></i>
 							<?php if (!empty($item->contactid ) && $params->get('link_author') == true) : ?>
 								<?php echo JText::sprintf(
 								'COM_CONTENT_WRITTEN_BY',
@@ -126,7 +126,7 @@ $params = $this->params;
 					<?php if ($params->get('show_hits')) : ?>
 						<dd>
 							<div class="hits">
-								<span class="icon-eye"></span>
+								<span class="far fa-eye"></span>
 								<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); // Wright v.4: Icon ?>
 							</div>
 						</dd>
@@ -175,7 +175,7 @@ $params = $this->params;
 					<?php if ($params->get('show_publish_date')) : ?>
 						<dd>
 							<div class="published">
-								<span class="icon-calendar"></span> <?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $item->publish_up, JText::_('DATE_FORMAT_LC3'))); ?>
+								<span class="far fa-calendar"></span> <?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $item->publish_up, JText::_('DATE_FORMAT_LC3'))); ?>
 							</div>
 						</dd>
 					<?php endif; ?>
@@ -183,14 +183,14 @@ $params = $this->params;
 
 				<?php if ($params->get('show_create_date')) : ?>
 					<dd>
-						<div class="create"><span class="icon-calendar">
+						<div class="create"><span class="far fa-calendar">
 							</span> <?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $item->modified, JText::_('DATE_FORMAT_LC3'))); ?>
 						</div>
 					</dd>
 				<?php endif; ?>
 				<?php if ($params->get('show_modify_date')) : ?>
 					<dd>
-						<div class="modified"><span class="icon-calendar">
+						<div class="modified"><span class="far fa-calendar">
 							</span> <?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $item->modified, JText::_('DATE_FORMAT_LC3'))); ?>
 						</div>
 					</dd>
@@ -198,7 +198,7 @@ $params = $this->params;
 				<?php if ($params->get('show_hits')) : ?>
 					<dd>
 						<div class="hits">
-							<span class="icon-eye"></span> <?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); ?>
+							<span class="far fa-eye"></span> <?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); ?>
 						</div>
 					</dd>
 				<?php endif; ?>

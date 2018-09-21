@@ -15,10 +15,10 @@ $span1          = '';
 $span2          = '';
 $hidden         = '';
 
-if (preg_match_all('/icon-([\S]+)/', $item->anchor_css, $matches))
+if (preg_match_all('/far fa-([\S]+)/', $item->anchor_css, $matches))
 {
-    $item->anchor_css = preg_replace('/icon-([\S]+)/', '', $item->anchor_css);
-    $icons = 'icon-' . implode(' icon-', $matches[1]);
+    $item->anchor_css = preg_replace('/far fa-([\S]+)/', '', $item->anchor_css);
+    $icons = 'far fa-' . implode(' far fa-', $matches[1]);
     $structIcons = '<i class="' . $icons . '"></i>';
 }
 

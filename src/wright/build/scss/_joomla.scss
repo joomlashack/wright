@@ -70,7 +70,9 @@ a {
 
         a {
 
-            [class*="icon-"],
+            .fas,
+            .far,
+            .fab,
             img {
                 margin-right: 4px;
             }
@@ -553,7 +555,9 @@ joomla-alert {
     padding: 1.5rem 1.5rem;
 }
 
-[class*="icon-"] {
+.fas,
+.far,
+.fab {
 
     &.input-group-text {
         line-height: $line-height-base;

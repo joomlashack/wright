@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 	<?php foreach ($names as $name) : ?>
 		<li class="nav-item">
 			<span class="nav-link">
-				<i class="icon-user"></i>  <?php // Wright v.4: Added icon ?>
+				<i class="far fa-user"></i>  <?php // Wright v.4: Added icon ?>
 				<?php echo $name->username; ?>
 			</span>
 		</li>

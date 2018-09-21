@@ -11,7 +11,7 @@ defined('JPATH_BASE') or die;
 
 ?>
 			<dd class="category-name">
-				<span class="icon-folder"></span> <?php // Wright v.4: Added icon ?>
+				<span class="far fa-folder"></span> <?php // Wright v.4: Added icon ?>
 				<?php $title = $this->escape($displayData['item']->category_title);
 				$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->catslug)).'">'.$title.'</a>';?>
 				<?php if ($displayData['params']->get('link_category') && $displayData['item']->catslug) : ?>

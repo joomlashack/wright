@@ -14,7 +14,7 @@ use Joomla\CMS\Language\Text;
 
 ?>
 <dd class="create">
-    <span class="icon-calendar"></span> <?php // Wright v.4: Changed icon ?>
+    <span class="far fa-calendar"></span> <?php // Wright v.4: Changed icon ?>
     <time datetime="<?php echo HTMLHelper::_('date', $displayData['item']->created, 'c'); ?>" itemprop="dateCreated">
         <?php echo Text::sprintf('COM_CONTENT_CREATED_DATE_ON', HTMLHelper::_('date', $displayData['item']->created, Text::_('DATE_FORMAT_LC3'))); ?>
     </time>

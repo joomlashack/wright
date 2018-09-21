@@ -153,12 +153,12 @@
         </relatedExtensions>
 
         <include>AllediaFreeDefaultFiles</include>
-        <!--scss destination="css" style="nested">
+        <scss destination="css">
             <file>scss/joomla-generic.scss</file>
-        </scss-->
-        <scss destination="wright/css">
-            <file>wright/font/fa5/font-awesome5.min.scss</file>
         </scss>
+        <!--scss destination="wright/css">
+            <file>wright/font/fa5/font-awesome5.min.scss</file>
+        </scss-->
     </alledia>
 
 </extension>

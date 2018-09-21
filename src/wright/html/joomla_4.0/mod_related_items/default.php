@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 		<li class="nav-item">
 			<a href="<?php echo $item->route; ?>" class="nav-link">
 				<?php if ($showDate) echo JHTML::_('date', $item->created, JText::_('DATE_FORMAT_LC4')). " - "; ?>
-				<i class="icon-file"></i>  <?php // Wright v.4: Added icon ?>
+				<i class="far fa-file"></i>  <?php // Wright v.4: Added icon ?>
 				<?php echo $item->title; ?></a>
 		</li>
 	<?php endforeach; ?>

@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 <?php foreach ($list as $item) : ?>
 	<li class="nav-item">
 		<a href="<?php echo $item->link; ?>" class="nav-link">
-			<i class="icon-file"></i>  <?php // Wright v.4: Added icon ?>
+			<i class="far fa-file"></i>  <?php // Wright v.4: Added icon ?>
 			<?php echo $item->title; ?></a>
 	</li>
 <?php endforeach; ?>

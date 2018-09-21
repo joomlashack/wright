@@ -92,7 +92,7 @@ foreach ($list as $item) :
 	<li class="nav-item"> <?php $levelup = $item->level - $startLevel - 1; ?>
   <h<?php echo $params->get('item_heading') + $levelup; ?>>
 		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>" class="nav-link<?php if ($_SERVER['PHP_SELF'] == JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) echo ' active';?>">
-			<?php if ($wrightEnableIcons) : ?> <i class="icon-folder-open"></i>  <?php endif; // Wright v.4: Added icon ?>
+			<?php if ($wrightEnableIcons) : ?> <i class="far fa-folder-open"></i>  <?php endif; // Wright v.4: Added icon ?>
 		<?php echo $item->title;?><?php if($params->get('numitems')): ?>
 			(<?php echo $item->numitems; ?>)
 		<?php endif; ?></a>

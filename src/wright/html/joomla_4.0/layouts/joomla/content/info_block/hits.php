@@ -11,6 +11,6 @@ defined('JPATH_BASE') or die;
 
 ?>
 			<dd class="hits">
-					<span class="icon-eye"></span>
+					<span class="far fa-eye"></span>
 					<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $displayData['item']->hits);  // Wright v.4: Non-mobile version ?>
 			</dd>
