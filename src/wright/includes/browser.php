@@ -57,6 +57,7 @@ class Browser
     const BROWSER_OPERA_MINI = 'Opera Mini'; // http://www.opera.com/mini/
     const BROWSER_WEBTV = 'WebTV'; // http://www.webtv.net/pc/
     const BROWSER_IE = 'Internet Explorer'; // http://www.microsoft.com/ie/
+    const BROWSER_EDGE = 'Edge'; // https://www.microsoft.com/en-us/windows/microsoft-edge
     const BROWSER_POCKET_IE = 'Pocket Internet Explorer'; // http://en.wikipedia.org/wiki/Internet_Explorer_Mobile
     const BROWSER_KONQUEROR = 'Konqueror'; // http://www.konqueror.org/
     const BROWSER_ICAB = 'iCab'; // http://www.icab.de/
@@ -385,6 +386,7 @@ class Browser
             //     before FireFox are necessary
             $this->checkBrowserWebTv() ||
             $this->checkBrowserInternetExplorer() ||
+            $this->checkBrowserEdge() ||
             $this->checkBrowserOpera() ||
             $this->checkBrowserGaleon() ||
             $this->checkBrowserNetscapeNavigator9Plus() ||
@@ -645,6 +647,25 @@ class Browser
                 }
                 return true;
             }
+        }
+        return false;
+    }
+
+    /**
+     * Determine if the browser is Edge or not
+     * @return boolean True if the browser is Opera otherwise false
+     * This implementation is based on the original work from
+     * https://github.com/sinergi/php-browser-detector
+     */
+    protected function checkBrowserEdge()
+    {
+        if (stripos($this->_agent, 'Edge') !== false) {
+            $version = explode('Edge/', $this->_agent);
+            if (isset($version[1])) {
+                $this->setVersion((float)$version[1]);
+            }
+            $this->setBrowser(self::BROWSER_EDGE);
+            return true;
         }
         return false;
     }
