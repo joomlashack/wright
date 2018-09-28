@@ -737,6 +737,8 @@ class Browser
 
 	/**
 	 * Determine if the browser is Yandex or not
+	 * This implementation is based on the original work from
+	 * https://github.com/sinergi/php-browser-detector
 	 * @return boolean True if the browser is Yandex otherwise false
 	 */
 	protected function checkBrowserYandex()
@@ -754,7 +756,7 @@ class Browser
 
 		return false;
 	}
-	
+
     /**
      * Determine if the browser is WebTv or not (last updated 1.7)
      * @return boolean True if the browser is WebTv otherwise false
