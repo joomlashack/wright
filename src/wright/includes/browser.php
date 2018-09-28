@@ -84,6 +84,7 @@ class Browser
     const BROWSER_MSN = 'MSN Browser'; // http://explorer.msn.com/
     const BROWSER_MSNBOT = 'MSN Bot'; // http://search.msn.com/msnbot.htm
     const BROWSER_BINGBOT = 'Bing Bot'; // http://en.wikipedia.org/wiki/Bingbot
+    const BROWSER_YANDEX = 'Yandex'; // https://browser.yandex.com/
 
     const BROWSER_NETSCAPE_NAVIGATOR = 'Netscape Navigator'; // http://browser.netscape.com/ (DEPRECATED)
     const BROWSER_GALEON = 'Galeon'; // http://galeon.sourceforge.net/ (DEPRECATED)
@@ -388,6 +389,7 @@ class Browser
             $this->checkBrowserGaleon() ||
             $this->checkBrowserNetscapeNavigator9Plus() ||
             $this->checkBrowserFirefox() ||
+            $this->checkBrowserYandex() ||
             $this->checkBrowserChrome() ||
             $this->checkBrowserOmniWeb() ||
 
@@ -733,7 +735,26 @@ class Browser
         return false;
     }
 
+	/**
+	 * Determine if the browser is Yandex or not
+	 * @return boolean True if the browser is Yandex otherwise false
+	 */
+	protected function checkBrowserYandex()
+	{
+		if (stripos($this->_agent, 'YaBrowser') !== false) {
+			$aresult = explode('/', stristr($this->_agent, 'YaBrowser'));
+			if (isset($aresult[1])) {
+				$aversion = explode(' ', $aresult[1]);
+				$this->setVersion($aversion[0]);
+			}
+			$this->setBrowser(self::BROWSER_YANDEX);
 
+			return true;
+		}
+
+		return false;
+	}
+	
     /**
      * Determine if the browser is WebTv or not (last updated 1.7)
      * @return boolean True if the browser is WebTv otherwise false
