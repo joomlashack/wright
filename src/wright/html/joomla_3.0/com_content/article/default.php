@@ -59,10 +59,14 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 ?>
 
 <div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.3: Item elements extra elements
- ?>">
+ ?>" itemscope itemtype="http://schema.org/Article">
+
+	<?php // Microdata ?>
+	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
+
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<div class="page-header">
-		<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
+		<h1<?php echo ($params->get('show_page_heading')) ? ' itemprop="name"' : ''; ?>> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
 	</div>
 	<?php endif;
 if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative)
@@ -90,7 +94,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 if (!$params->get('show_page_heading')) : ?>
                 <div class="page-header">
                 <?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
-                <h2>
+                <h2<?php echo (!$params->get('show_page_heading')) ? ' itemprop="name"' : ''; ?>>
                     <?php if ($params->get('show_title')) : ?>
                         <?php if ($params->get('link_titles') && !empty($this->item->readmore_link)) : ?>
                             <a href="<?php echo $this->item->readmore_link; ?>"> <?php echo $this->escape($this->item->title); ?></a>
@@ -252,7 +256,12 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 <?php if (isset ($this->item->toc)) :
                     echo wrightTransformArticleTOC($this->item->toc);  // Wright v.3: TOC transformation (using helper)
                 endif; ?>
-                <?php echo wrightTransformArticleContent($this->item->text);  // Wright v.3: Transform article content's plugins (using helper)
+	            
+	            <div itemprop="articleBody">
+                    <?php echo wrightTransformArticleContent($this->item->text);  // Wright v.3: Transform article content's plugins (using helper) ?>
+	            </div>
+
+            <?php
             endif; // access-view
 
             break;
