@@ -60,8 +60,6 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 
 <div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.3: Item elements extra elements
  ?>" itemscope itemtype="http://schema.org/Article">
-
-	<?php // Microdata ?>
 	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
 
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
@@ -224,7 +222,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
             <?php if ($params->get('access-view')):?>
                 <?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
-                <?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
+		        <?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
                 <div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image" itemprop="image" itemscope itemtype="http://schema.org/ImageObject"><img
                 <?php if ($images->image_fulltext_caption):
                     echo 'class="caption ' . $this->wrightBootstrapImages . '"'.' title="' .htmlspecialchars($images->image_fulltext_caption) . '"';  // Wright .v.3: Added image class
@@ -233,7 +231,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                         echo 'class="' . $this->wrightBootstrapImages . '"';
                     /* End Wright v.3: Image class when no caption present */
                 endif; ?>
-                src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" itemprop="url" />
+                src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" itemprop="url" content="<?php echo JURI::base() . htmlspecialchars($images->image_fulltext); ?>" />
                 </div>
                 <?php endif; ?>
             <?php
