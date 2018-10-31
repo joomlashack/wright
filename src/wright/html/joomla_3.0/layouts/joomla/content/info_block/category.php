@@ -11,17 +11,17 @@
 defined('JPATH_BASE') or die;
 
 ?>
-<dd class="category-name" itemprop="genre">
+<dd class="category-name">
 	<span class="icon-folder-close"></span> <?php // Wright v.3: Added icon ?>
 	<?php $title = $this->escape($displayData['item']->category_title);
 	$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->catslug)).'">'.$title.'</a>';?>
 	<?php if ($displayData['params']->get('link_category') && $displayData['item']->catslug) : ?>
 		<?php echo '<span class="hidden-phone"> ' . JText::sprintf('COM_CONTENT_CATEGORY', $url) . '</span>';  // Wright v.3: Non-mobile version
-			echo '<span class="visible-phone"> ' . JText::sprintf($url) . '</span>';  // Wright v.3: Mobile version
+			echo '<span class="visible-phone" itemprop="genre"> ' . JText::sprintf($url) . '</span>';  // Wright v.3: Mobile version
 	?>
 	<?php else : ?>
 		<?php echo '<span class="hidden-phone"> ' . JText::sprintf('COM_CONTENT_CATEGORY', $title) . '</span>';  // Wright v.3: Non-mobile version
-			echo '<span class="visible-phone"> ' . JText::sprintf($title) . '</span>';  // Wright v.3: Mobile version
+			echo '<span class="visible-phone" itemprop="genre"> ' . JText::sprintf($title) . '</span>';  // Wright v.3: Mobile version
 		?>
 	<?php endif; ?>
 </dd>
