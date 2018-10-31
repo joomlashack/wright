@@ -18,10 +18,10 @@ defined('JPATH_BASE') or die;
 				<?php if (!empty($displayData['item']->contact_link ) && $displayData['params']->get('link_author') == true) : ?>
 					<?php
 					echo '<span class="hidden-phone"> ' . JText::sprintf('COM_CONTENT_WRITTEN_BY', JHtml::_('link', $displayData['item']->contact_link, $author)) . '</span>';  // Wright v.3: Non-mobile version
-					echo '<span class="visible-phone"> ' . JText::sprintf(JHtml::_('link', $displayData['item']->contact_link, $author)) . '</span>';  // Wright v.3: Mobile version
+					echo '<span class="visible-phone" itemprop="name"> ' . JText::sprintf(JHtml::_('link', $displayData['item']->contact_link, $author)) . '</span>';  // Wright v.3: Mobile version
 				 ?>
 				<?php else :?>
 					<?php echo '<span class="hidden-phone"> ' .  JText::sprintf('COM_CONTENT_WRITTEN_BY', $author) . '</span>';  // Wright v.3: Non-mobile version
-						echo '<span class="visible-phone"> ' . JText::sprintf($author) . '</span>';  // Wright v.3: Mobile version ?>
+						echo '<span class="visible-phone" itemprop="name"> ' . JText::sprintf($author) . '</span>';  // Wright v.3: Mobile version ?>
 				<?php endif; ?>
 			</dd>
