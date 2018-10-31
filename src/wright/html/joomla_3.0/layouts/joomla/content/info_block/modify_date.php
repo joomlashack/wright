@@ -11,7 +11,7 @@
 defined('JPATH_BASE') or die;
 
 ?>
-			<dd class="modified">
+			<dd class="modified" datetime="<?php echo JHtml::_('date', $displayData['item']->modified, 'c'); ?>" itemprop="dateModified">
 				<span class="icon-edit"></span> <?php // Wright v.3: Changed icon ?>
 				<?php
 					echo '<span class="hidden-phone"> ' . JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $displayData['item']->modified, JText::_('DATE_FORMAT_LC3'))) . '</span>';  // Wright v.3: Non-mobile version

@@ -11,7 +11,7 @@
 defined('JPATH_BASE') or die;
 
 ?>
-			<dd class="createdby">
+			<dd class="createdby" itemprop="author" itemscope itemtype="https://schema.org/Person">
 				<span class="icon-user"></span> <?php // Wright v.3: Added author icon ?>
 				<?php $author = $displayData['item']->author; ?>
 				<?php $author = ($displayData['item']->created_by_alias ? $displayData['item']->created_by_alias : $author); ?>

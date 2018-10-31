@@ -11,7 +11,7 @@
 defined('JPATH_BASE') or die;
 
 ?>
-			<dd class="parent-category-name">
+			<dd class="parent-category-name" itemprop="genre">
 				<span class="icon-circle-arrow-up"></span> <?php // Wright v.3: Changed icon ?>
 				<?php $title = $this->escape($displayData['item']->parent_title);
 				$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->parent_slug)).'">'.$title.'</a>';?>
