@@ -61,6 +61,9 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 <div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.3: Item elements extra elements
  ?>" itemscope itemtype="http://schema.org/Article">
 	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
+	<?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
+		<meta itemprop="image" content="<?php echo  JURI::base() . htmlspecialchars($images->image_fulltext); ?>">
+	<?php endif; ?>
 
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<div class="page-header">
