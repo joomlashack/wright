@@ -66,7 +66,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<div class="page-header">
-		<h1<?php echo ($params->get('show_page_heading')) ? ' itemprop="name"' : ''; ?>> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
+		<h1 itemprop="name"> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
 	</div>
 	<?php endif;
 if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative)
@@ -94,7 +94,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 if (!$params->get('show_page_heading')) : ?>
                 <div class="page-header">
                 <?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
-                <h2<?php echo (!$params->get('show_page_heading')) ? ' itemprop="name"' : ''; ?>>
+                <h2 itemprop="headline">
                     <?php if ($params->get('show_title')) : ?>
                         <?php if ($params->get('link_titles') && !empty($this->item->readmore_link)) : ?>
                             <a href="<?php echo $this->item->readmore_link; ?>"> <?php echo $this->escape($this->item->title); ?></a>
@@ -256,7 +256,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 <?php if (isset ($this->item->toc)) :
                     echo wrightTransformArticleTOC($this->item->toc);  // Wright v.3: TOC transformation (using helper)
                 endif; ?>
-	            
+
 	            <div itemprop="articleBody">
                     <?php echo wrightTransformArticleContent($this->item->text);  // Wright v.3: Transform article content's plugins (using helper) ?>
 	            </div>
