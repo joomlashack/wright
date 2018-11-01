@@ -64,6 +64,15 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 	<?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
 		<meta itemprop="image" content="<?php echo  JURI::base() . htmlspecialchars($images->image_fulltext); ?>">
 	<?php endif; ?>
+	<?php if ($params->get('show_create_date')) : ?>
+		<meta itemprop="dateCreated" content="<?php echo JHtml::_('date', $this->item->created, 'c'); ?>">
+	<?php endif; ?>
+	<?php if ($params->get('show_modify_date')) : ?>
+		<meta itemprop="dateModified" content="<?php echo JHtml::_('date', $this->item->modified, 'c'); ?>">
+	<?php endif; ?>
+	<?php if ($params->get('show_publish_date')) : ?>
+		<meta itemprop="datePublished" content="<?php echo JHtml::_('date', $this->item->published, 'c'); ?>">
+	<?php endif; ?>
 
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<div class="page-header">
