@@ -17,11 +17,11 @@ defined('JPATH_BASE') or die;
 	$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->parent_slug)).'">'.$title.'</a>';?>
 	<?php if ($displayData['params']->get('link_parent_category') && !empty($displayData['item']->parent_slug)) : ?>
 		<?php echo '<span class="hidden-phone"> ' . JText::sprintf('COM_CONTENT_PARENT', $url) . '</span>';  // Wright v.3: Non-mobile version
-			echo '<span class="visible-phone" itemprop="genre"> ' . JText::sprintf($url) . '</span>';  // Wright v.3: Mobile version
+			echo '<span class="visible-phone"> ' . JText::sprintf($url) . '</span>';  // Wright v.3: Mobile version
 		?>
 	<?php else : ?>
 		<?php echo '<span class="hidden-phone"> ' . JText::sprintf('COM_CONTENT_PARENT', $title) . '</span>';  // Wright v.3: Non-mobile version
-			echo '<span class="visible-phone" itemprop="genre"> ' . JText::sprintf($title) . '</span>';  // Wright v.3: Mobile version
+			echo '<span class="visible-phone"> ' . JText::sprintf($title) . '</span>';  // Wright v.3: Mobile version
 		?>
 	<?php endif; ?>
 </dd>

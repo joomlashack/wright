@@ -60,17 +60,25 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 
 <div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.3: Item elements extra elements
  ?>" itemscope itemtype="http://schema.org/Article">
+
+	<!-- Schema.org markup -->
+	<meta itemprop="name" content="<?php echo $this->escape($this->params->get('page_heading')); ?>" />
+	<meta itemprop="headline" content="<?php echo $this->escape($this->item->title); ?>" />
 	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
-	<?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
-		<meta itemprop="image" content="<?php echo  JURI::base() . htmlspecialchars($images->image_fulltext); ?>">
+	<meta itemprop="genre" content="<?php echo $this->escape($this->item->category_title); ?>" />
+	<?php if (!empty($this->item->parent_slug)) : // Parent category ?>
+		<meta itemprop="genre" content="<?php echo $this->escape($this->item->parent_title); ?>" />
 	<?php endif; ?>
-	<meta itemprop="dateCreated" content="<?php echo JHtml::_('date', $this->item->created, 'c'); ?>">
-	<meta itemprop="dateModified" content="<?php echo JHtml::_('date', $this->item->modified, 'c'); ?>">
-	<meta itemprop="datePublished" content="<?php echo JHtml::_('date', $this->item->published, 'c'); ?>">
+	<?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
+		<meta itemprop="image" content="<?php echo JURI::base() . htmlspecialchars($images->image_fulltext); ?>">
+	<?php endif; ?>
+	<meta itemprop="dateCreated" content="<?php echo JHtml::_('date', $this->item->created, 'c'); ?>" />
+	<meta itemprop="dateModified" content="<?php echo JHtml::_('date', $this->item->modified, 'c'); ?>" />
+	<meta itemprop="datePublished" content="<?php echo JHtml::_('date', $this->item->published, 'c'); ?>" />
 
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<div class="page-header">
-		<h1 itemprop="name"> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
+		<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
 	</div>
 	<?php endif;
 if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative)
@@ -98,7 +106,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 if (!$params->get('show_page_heading')) : ?>
                 <div class="page-header">
                 <?php endif; /* End Wright v.3: Adds page header if h1 is missing */ ?>
-                <h2 itemprop="headline">
+                <h2>
                     <?php if ($params->get('show_title')) : ?>
                         <?php if ($params->get('link_titles') && !empty($this->item->readmore_link)) : ?>
                             <a href="<?php echo $this->item->readmore_link; ?>"> <?php echo $this->escape($this->item->title); ?></a>
