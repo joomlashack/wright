@@ -75,6 +75,9 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 	<meta itemprop="dateCreated" content="<?php echo JHtml::_('date', $this->item->created, 'c'); ?>" />
 	<meta itemprop="dateModified" content="<?php echo JHtml::_('date', $this->item->modified, 'c'); ?>" />
 	<meta itemprop="datePublished" content="<?php echo JHtml::_('date', $this->item->published, 'c'); ?>" />
+	<div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+		<meta itemprop="name" content="<?php echo $this->escape($app->getCfg('sitename')); ?>" />
+	</div>
 
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<div class="page-header">
