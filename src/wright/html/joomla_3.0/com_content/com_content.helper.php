@@ -10,7 +10,7 @@
  
  // no direct access
  defined('_JEXEC') or die;
- 
+
 function wrightTransformArticleContent($content) {
 	// Page Break Plugin
 	$content = preg_replace("/dl([^>]*)class=\"tabs\"/Uis", 'dl$1class="tabs nav nav-tabs"', $content);  // Add tabs
@@ -53,6 +53,13 @@ function getBlogItemLink($item) {
 function getIntroImageFloat($item) {
 	$images = json_decode($item->images);
 	return (empty($images->float_intro)) ? $item->params->get('float_intro') : $images->float_intro;
+}
+
+function scrapeSiteLogo() {
+	$html = file_get_contents(JURI::base());
+	preg_match_all( '|<img.*?src=[\'"](.*?)[\'"].*?>|i',$html, $matches );
+
+	return $matches[ 1 ][ 0 ];
 }
 
 ?>
