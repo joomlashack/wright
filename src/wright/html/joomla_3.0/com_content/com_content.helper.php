@@ -56,10 +56,14 @@ function getIntroImageFloat($item) {
 }
 
 function scrapeSiteLogo() {
-	$html = file_get_contents(JURI::base());
-	preg_match_all( '|<img.*?src=[\'"](.*?)[\'"].*?>|i',$html, $matches );
 
-	return $matches[ 1 ][ 0 ];
+	preg_match_all(
+		'|<div id="logo".*?<img.*?src=[\'"](.*?)[\'"].*?>|i',
+		file_get_contents(JURI::base()),
+		$matches
+	);
+
+	return $matches[1][0];
 }
 
 ?>
