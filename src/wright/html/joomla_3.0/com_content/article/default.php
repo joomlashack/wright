@@ -59,7 +59,34 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 ?>
 
 <div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.3: Item elements extra elements
- ?>">
+ ?>" itemscope itemtype="http://schema.org/Article">
+
+	<!-- Schema.org markup -->
+	<meta itemprop="name" content="<?php echo $this->escape($this->params->get('page_heading')); ?>" />
+	<meta itemprop="headline" content="<?php echo $this->escape($this->item->title); ?>" />
+	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
+	<meta itemprop="genre" content="<?php echo $this->escape($this->item->category_title); ?>" />
+	<?php if (!empty($this->item->parent_slug)) : // Parent category ?>
+		<meta itemprop="genre" content="<?php echo $this->escape($this->item->parent_title); ?>" />
+	<?php endif; ?>
+	<?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
+		<meta itemprop="image" content="<?php echo JURI::base() . htmlspecialchars($images->image_fulltext); ?>">
+	<?php endif; ?>
+	<meta itemprop="dateCreated" content="<?php echo JHtml::_('date', $this->item->created, 'c'); ?>" />
+	<meta itemprop="dateModified" content="<?php echo JHtml::_('date', $this->item->modified, 'c'); ?>" />
+	<meta itemprop="datePublished" content="<?php echo JHtml::_('date', $this->item->published, 'c'); ?>" />
+	<?php if (scrapeSiteLogo() != '') : ?>
+		<div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+			<meta itemprop="name" content="<?php echo $this->escape($app->getCfg('sitename')); ?>" />
+			<div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+				<meta itemprop="url" content="<?php echo scrapeSiteLogo(); ?>">
+			</div>
+		</div>
+	<?php endif; ?>
+	<div itemprop="author" itemscope itemtype="https://schema.org/Person">
+		<meta itemprop="name" content="<?php echo $this->item->author; ?>" />
+	</div>
+
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<div class="page-header">
 		<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
@@ -252,7 +279,12 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                 <?php if (isset ($this->item->toc)) :
                     echo wrightTransformArticleTOC($this->item->toc);  // Wright v.3: TOC transformation (using helper)
                 endif; ?>
-                <?php echo wrightTransformArticleContent($this->item->text);  // Wright v.3: Transform article content's plugins (using helper)
+
+	            <div itemprop="articleBody">
+                    <?php echo wrightTransformArticleContent($this->item->text);  // Wright v.3: Transform article content's plugins (using helper) ?>
+	            </div>
+
+            <?php
             endif; // access-view
 
             break;
