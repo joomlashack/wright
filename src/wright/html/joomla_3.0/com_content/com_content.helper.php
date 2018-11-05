@@ -55,7 +55,7 @@ function getIntroImageFloat($item) {
 	return (empty($images->float_intro)) ? $item->params->get('float_intro') : $images->float_intro;
 }
 
-function scrapeSiteLogo() {
+function getSiteLogo() {
 
 	$app        = JFactory::getApplication();
 	$template   = $app->getTemplate(true);
