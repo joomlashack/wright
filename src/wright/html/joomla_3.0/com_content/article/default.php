@@ -248,7 +248,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
             <?php if ($params->get('access-view')):?>
                 <?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
                 <?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
-                <div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image"><img
+                <div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image"> <img
                 <?php if ($images->image_fulltext_caption):
                     echo 'class="caption ' . $this->wrightBootstrapImages . '"'.' title="' .htmlspecialchars($images->image_fulltext_caption) . '"';  // Wright .v.3: Added image class
                     /* Wright v.3: Image class when no caption present */
