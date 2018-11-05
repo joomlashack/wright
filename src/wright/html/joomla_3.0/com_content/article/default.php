@@ -83,6 +83,9 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 			</div>
 		</div>
 	<?php endif; ?>
+	<div itemprop="author" itemscope itemtype="https://schema.org/Person">
+		<meta itemprop="name" content="<?php echo $this->item->author; ?>" />
+	</div>
 
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
 	<div class="page-header">
