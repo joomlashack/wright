@@ -118,7 +118,10 @@ function getSiteLogo() {
 				$matches
 			);
 
-			$site_logo = JURI::base() . str_replace(JURI::base(), '', $matches[1][0]);
+			$site_logo = filter_var(
+				JURI::base() . str_replace(JURI::base(), '', $matches[1][0]),
+				FILTER_SANITIZE_STRING
+			);
 			break;
 
 		// No logo image! Just text
