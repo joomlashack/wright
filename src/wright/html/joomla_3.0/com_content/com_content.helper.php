@@ -63,8 +63,6 @@ function scrapeSiteLogo() {
 		$matches
 	);
 
-	;
-
 	return filter_var(
 		JURI::base() . str_replace(JURI::base(), '', $matches[1][0]),
 		FILTER_SANITIZE_STRING
