@@ -57,16 +57,25 @@ function getIntroImageFloat($item) {
 
 function scrapeSiteLogo() {
 
-	preg_match_all(
-		'|<div id=[\'"]logo[\'"].*?<img.*?src=[\'"](.*?)[\'"].*?>|ism',
-		file_get_contents(JURI::base()),
-		$matches
-	);
+	if (function_exists('file_get_contents')) {
 
-	return filter_var(
-		JURI::base() . str_replace(JURI::base(), '', $matches[1][0]),
-		FILTER_SANITIZE_STRING
-	);
+		preg_match_all(
+			'|<div id=[\'"]logo[\'"].*?<img.*?src=[\'"](.*?)[\'"].*?>|ism',
+			file_get_contents(JURI::base()),
+			$matches
+		);
+
+		$site_logo = filter_var(
+			JURI::base() . str_replace(JURI::base(), '', $matches[1][0]),
+			FILTER_SANITIZE_STRING
+		);
+	}
+	else
+	{
+		$site_logo = '';
+	}
+
+	return $site_logo;
 }
 
 ?>
