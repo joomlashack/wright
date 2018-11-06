@@ -162,9 +162,10 @@ foreach ($list as $i => &$item)
 
 
 	// Wright v.4: Created additional structure for icons
-	$structIcons = '';
-	$span1 = '';
-	$span2 = '';
+	$structIcons    = '';
+	$span1          = '';
+	$span2          = '';
+	$hidden         = '';
 
 	// Regular Font Awesome Icons. e.g. far fa-user
 	if (preg_match_all('/far fa-([\S]+)/', $item->anchor_css, $matches))
