@@ -9,12 +9,6 @@
 
 defined('_JEXEC') or die;
 
-// Wright v.3: Created additional structure for icons
-$structIcons    = '';
-$span1          = '';
-$span2          = '';
-$hidden         = '';
-
 // Note. It is important to remove spaces between elements.
 $title = $item->anchor_title ? ' title="' . $item->anchor_title . '" ' : '';
 
