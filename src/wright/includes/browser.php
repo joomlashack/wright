@@ -57,6 +57,7 @@ class Browser
     const BROWSER_OPERA_MINI = 'Opera Mini'; // http://www.opera.com/mini/
     const BROWSER_WEBTV = 'WebTV'; // http://www.webtv.net/pc/
     const BROWSER_IE = 'Internet Explorer'; // http://www.microsoft.com/ie/
+    const BROWSER_EDGE = 'Edge'; // https://www.microsoft.com/en-us/windows/microsoft-edge
     const BROWSER_POCKET_IE = 'Pocket Internet Explorer'; // http://en.wikipedia.org/wiki/Internet_Explorer_Mobile
     const BROWSER_KONQUEROR = 'Konqueror'; // http://www.konqueror.org/
     const BROWSER_ICAB = 'iCab'; // http://www.icab.de/
@@ -84,6 +85,7 @@ class Browser
     const BROWSER_MSN = 'MSN Browser'; // http://explorer.msn.com/
     const BROWSER_MSNBOT = 'MSN Bot'; // http://search.msn.com/msnbot.htm
     const BROWSER_BINGBOT = 'Bing Bot'; // http://en.wikipedia.org/wiki/Bingbot
+    const BROWSER_YANDEX = 'Yandex'; // https://browser.yandex.com/
 
     const BROWSER_NETSCAPE_NAVIGATOR = 'Netscape Navigator'; // http://browser.netscape.com/ (DEPRECATED)
     const BROWSER_GALEON = 'Galeon'; // http://galeon.sourceforge.net/ (DEPRECATED)
@@ -384,10 +386,12 @@ class Browser
             //     before FireFox are necessary
             $this->checkBrowserWebTv() ||
             $this->checkBrowserInternetExplorer() ||
+            $this->checkBrowserEdge() ||
             $this->checkBrowserOpera() ||
             $this->checkBrowserGaleon() ||
             $this->checkBrowserNetscapeNavigator9Plus() ||
             $this->checkBrowserFirefox() ||
+            $this->checkBrowserYandex() ||
             $this->checkBrowserChrome() ||
             $this->checkBrowserOmniWeb() ||
 
@@ -648,6 +652,25 @@ class Browser
     }
 
     /**
+     * Determine if the browser is Edge or not
+     * @return boolean True if the browser is Opera otherwise false
+     * This implementation is based on the original work from
+     * https://github.com/sinergi/php-browser-detector
+     */
+    protected function checkBrowserEdge()
+    {
+        if (stripos($this->_agent, 'Edge') !== false) {
+            $version = explode('Edge/', $this->_agent);
+            if (isset($version[1])) {
+                $this->setVersion((float)$version[1]);
+            }
+            $this->setBrowser(self::BROWSER_EDGE);
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Determine if the browser is Opera or not (last updated 1.7)
      * @return boolean True if the browser is Opera otherwise false
      */
@@ -733,6 +756,27 @@ class Browser
         return false;
     }
 
+	/**
+	 * Determine if the browser is Yandex or not
+	 * @return boolean True if the browser is Yandex otherwise false
+	 * This implementation is based on the original work from
+	 * https://github.com/sinergi/php-browser-detector
+	 */
+	protected function checkBrowserYandex()
+	{
+		if (stripos($this->_agent, 'YaBrowser') !== false) {
+			$aresult = explode('/', stristr($this->_agent, 'YaBrowser'));
+			if (isset($aresult[1])) {
+				$aversion = explode(' ', $aresult[1]);
+				$this->setVersion($aversion[0]);
+			}
+			$this->setBrowser(self::BROWSER_YANDEX);
+
+			return true;
+		}
+
+		return false;
+	}
 
     /**
      * Determine if the browser is WebTv or not (last updated 1.7)
