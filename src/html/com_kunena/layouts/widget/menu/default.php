@@ -10,6 +10,7 @@
  **/
 defined('_JEXEC') or die;
 
+// @TODO Support for this override with Wright override system
 // Basic logic has been taken from Joomla! 2.5 (mod_menu)
 // Note. It is important to remove spaces between elements.
 ?>
