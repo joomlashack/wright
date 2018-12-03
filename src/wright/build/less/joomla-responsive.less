@@ -1,3 +1,19 @@
+/* Desktop */
+@media (min-width: 980px) {
+
+	.navbar {
+		.nav {
+			li {
+				&:hover {
+					> .dropdown-menu {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+
 /* Phone and tablets */
 @media (max-width: 979px) {
 
@@ -104,7 +120,7 @@
 		}
 	}
 
-	.nav-collapse {
+	.nav-collapse:not(#nav-menu):not(#nav-toolbar):not(#nav-bottom-menu) {
 		.nav {
 			li.dropdown {
 				.dropdown-menu {

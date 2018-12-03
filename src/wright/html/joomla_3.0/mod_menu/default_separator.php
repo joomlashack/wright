@@ -46,6 +46,11 @@ else
 
 $class = ($item->deeper) ? 'class="' . $hidden . 'separator dropdown-toggle" ' : 'class="' . $hidden . 'separator" ' ;
 
+// Add extra attributes for modules in positions: menu, toolbar and bottom-menu
+if($wMenuAria) {
+    $class .= ' data-toggle="dropdown" data-target="#" id="' . $wMenuAriaId . '"';
+}
+
 ?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.3: Added collapsible option ?>><?php echo $title; ?>
 	<?php echo $structIcons . $linktype; ?><?php
 	

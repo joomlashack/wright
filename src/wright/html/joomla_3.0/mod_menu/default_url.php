@@ -30,6 +30,12 @@ if (preg_match_all('/hidden-text/', $item->anchor_css, $matches))
 // Note. It is important to remove spaces between elements.
 $class = $item->anchor_css ? 'class="'.$item->anchor_css.'" ' : '';
 $class = ($item->deeper) ? 'class="'.$item->anchor_css.' dropdown-toggle"' : $class ;
+
+// Add extra attributes for modules in positions: menu, toolbar and bottom-menu
+if($wMenuAria) {
+    $class .= ' data-toggle="dropdown" data-target="#" id="' . $wMenuAriaId . '"';
+}
+
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
 
 if ($menuType == 'vertical') {
