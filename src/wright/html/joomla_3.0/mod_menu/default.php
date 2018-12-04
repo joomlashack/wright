@@ -167,7 +167,7 @@ foreach ($list as $i => &$item)
 		// Wright v.3 adds sub-menu for level 2 and beyond
 
 		$dropdownmenu = $menuType == 'vertical' ? '' : 'dropdown-menu';  // Wright v.3 adds sub-menu for level 2 and beyond
-		echo '<ul' . $idul . ' class="' . $dropdownmenu . $uladd . '"' . $wMenuAriaLabel . '>';  // Wright v.3: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
+		echo '<ul' . $idul . ' class="' . $dropdownmenu . $uladd . '">';  // Wright v.3: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)
