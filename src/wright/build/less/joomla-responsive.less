@@ -10,6 +10,17 @@
 					}
 				}
 			}
+			> li {
+				&.dropdown {
+					li {
+						&.dropdown {
+							.caret {
+								display: none;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -120,17 +131,73 @@
 		}
 	}
 
-	.nav-collapse:not(#nav-menu):not(#nav-toolbar):not(#nav-bottom-menu) {
-		.nav {
-			li.dropdown {
-				.dropdown-menu {
-					display: block;
-					position: relative;
+	.nav-collapse {
 
-					li {
-						.sub-menu {
-							visibility: visible;
+		&:not(#nav-menu):not(#nav-toolbar):not(#nav-bottom-menu) {
+			.nav {
+				li.dropdown {
+					.dropdown-menu {
+						display: block;
+						position: relative;
+
+						li {
+							.sub-menu {
+								visibility: visible;
+							}
 						}
+					}
+				}
+			}
+		}
+
+		&#nav-menu,
+		&#nav-toolbar,
+		&#nav-bottom-menu {
+			.nav {
+				> li{
+					&.dropdown {
+						.dropdown-toggle {
+							.caret {
+								border: none;
+								margin-top: 0;
+								margin-left: 6px;
+
+								&:after {
+									display: inline-block;
+									font-family: 'FontAwesome';
+									font-weight: normal;
+									font-style: normal;
+									font-size: 30px;
+								}
+
+								&.wPlus-icon {
+
+									&:after {
+										content: "\f055";
+									}
+								}
+
+								&.wMinus-icon {
+
+									&:after {
+										content: "\f056";
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.dropdown-submenu {
+				> a {
+					&:after {
+						display: none;
+					}
+				}
+				&:hover {
+					> .dropdown-menu {
+						display: inherit;
 					}
 				}
 			}

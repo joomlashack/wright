@@ -57,7 +57,7 @@ if ($item->deeper) {
 	}
 	else{
 		if($item->level == $params->get('startLevel', 1))
-			echo '<b class="caret"></b>'; // Wright v.3: Added caret
+			echo '<b class="caret wPlus-icon"></b>'; // Wright v.3: Added caret
 	}
 }
 ?></a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure ?>
