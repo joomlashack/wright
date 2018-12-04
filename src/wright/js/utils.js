@@ -27,15 +27,34 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 				$(this).width($(this).attr('width'));
 		});
 	}
-	
+
+    // Mobile menu dropdown
+    function mobileMenu() {
+        if ($(window).width() < 980) {
+             var $wMenus = $('#menu');
+             if($($wMenus).find('.dropdown-menu').length > 0) {
+                 $($wMenus).find('.dropdown-menu').css('display', 'none');
+
+                 $($wMenus).find('.dropdown-toggle').click(function(e){
+                     e.preventDefault();
+
+                     // Toggle in action
+                     $(this).siblings().slideToggle();
+                 });
+             }
+        }
+    }
+
 	wToolbar();
 	fixImagesIE();
 
 	$(window).load(function () {
+        mobileMenu();
 		if (!disableToolbarResize)
 			wToolbar();
 	});
 	$(window).resize(function() {
+        mobileMenu();
 		if (!disableToolbarResize)
 			wToolbar();
 	});
