@@ -147,14 +147,6 @@ foreach ($list as $i => &$item)
 
 	echo '<li' . $class . '>';  // Wright v.3: Added collapsible option
 
-    // Add extra attributes and id to menu items when modules are in positions: menu, toolbar and bottom-menu
-    if(in_array($module->position, $wrightTemplate->menuPositions)) {
-        $wMenuAria      = true;
-        $wMenuAriaId    = 'w_' . $module->position . '_' . $item->id;
-    } else {
-        $wMenuAria      = false;
-    }
-
 	// Render the menu item.
 	switch ($item->type) :
 		case 'separator':
@@ -173,13 +165,6 @@ foreach ($list as $i => &$item)
 	if ($item->deeper) {
 
 		// Wright v.3 adds sub-menu for level 2 and beyond
-
-        // Add extra attributes and id to menu items when modules are in positions: menu, toolbar and bottom-menu
-        if($wMenuAria) {
-            $wMenuAriaLabel = ' aria-labelledby="' . $wMenuAriaId . '"';
-        } else {
-            $wMenuAriaLabel = '';
-        }
 
 		$dropdownmenu = $menuType == 'vertical' ? '' : 'dropdown-menu';  // Wright v.3 adds sub-menu for level 2 and beyond
 		echo '<ul' . $idul . ' class="' . $dropdownmenu . $uladd . '"' . $wMenuAriaLabel . '>';  // Wright v.3: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
