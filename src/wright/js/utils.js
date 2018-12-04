@@ -40,6 +40,7 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 
                      // Toggle in action
                      $(this).siblings().slideToggle();
+                     e.stopPropagation()
                  });
              }
         }
