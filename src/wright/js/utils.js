@@ -43,13 +43,6 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
                          complete: function () {
 
                              var wCurrentToggle = $(this).siblings('.dropdown-toggle').find('.caret');
-                             
-                             // Switch open/close icon
-                             if ($(wCurrentToggle).hasClass('wPlus-icon')) {
-                                 $(wCurrentToggle).removeClass('wPlus-icon').addClass('wMinus-icon');
-                             } else {
-                                 $(wCurrentToggle).removeClass('wMinus-icon').addClass('wPlus-icon');
-                             }
 
                              // Resize container
                              wMenuContainer = $(this).closest('.nav-collapse');
