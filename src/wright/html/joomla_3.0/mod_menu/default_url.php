@@ -38,7 +38,7 @@ if ($menuType == 'vertical') {
 }
 else{
     $caret = '';
-    if($item->level == $params->get('startLevel', 1))
+    if($item->level >= $params->get('startLevel', 1))
         $caret = $item->deeper ? '<b class="caret wPlus-icon"></b>' : '';  // Wright v.3: Added caret
 }
 
