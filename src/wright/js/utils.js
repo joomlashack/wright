@@ -41,9 +41,6 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
                      // Toggle in action
                      $(this).parent().siblings().toggle({
                          complete: function () {
-
-                             var wCurrentToggle = $(this).siblings('.dropdown-toggle').find('.caret');
-
                              // Resize container
                              wMenuContainer = $(this).closest('.nav-collapse');
                              $(wMenuContainer).css('height', $(wMenuContainer).find('> ul.nav').height());
