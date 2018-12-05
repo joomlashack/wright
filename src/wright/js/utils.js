@@ -31,24 +31,31 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
     // Mobile menu dropdown
     function mobileMenu() {
         if ($(window).width() < 980) {
-             var $wMenus = $('#menu, #toolbar, #bottom-menu');
-             if($($wMenus).find('.dropdown-menu').length > 0) {
-                 $($wMenus).find('.dropdown-menu').css('display', 'none');
+             var wMenus = $('#menu, #toolbar, #bottom-menu');
+             if($(wMenus).find('.dropdown-menu').length > 0) {
+                 $(wMenus).find('.dropdown-menu').css('display', 'none');
 
-                 $($wMenus).find('.dropdown-toggle .caret').click(function(e){
+                 $(wMenus).find('.dropdown-toggle .caret').click(function(e){
                      e.preventDefault();
 
                      // Toggle in action
-                     $(this).parent().siblings().toggle();
-                     if ($(this).hasClass('wPlus-icon')) {
-                         $(this).removeClass('wPlus-icon').addClass('wMinus-icon');
-                     } else {
-                         $(this).removeClass('wMinus-icon').addClass('wPlus-icon');
-                     }
+                     $(this).parent().siblings().toggle({
+                         complete: function () {
 
-                     // Resize container
-                     wMenuContainer = $(this).closest('.nav-collapse');
-                     $(wMenuContainer).css('height', $(wMenuContainer).find('> ul.nav').height());
+                             var wCurrentToggle = $(this).siblings('.dropdown-toggle').find('.caret');
+                             
+                             // Switch open/close icon
+                             if ($(wCurrentToggle).hasClass('wPlus-icon')) {
+                                 $(wCurrentToggle).removeClass('wPlus-icon').addClass('wMinus-icon');
+                             } else {
+                                 $(wCurrentToggle).removeClass('wMinus-icon').addClass('wPlus-icon');
+                             }
+
+                             // Resize container
+                             wMenuContainer = $(this).closest('.nav-collapse');
+                             $(wMenuContainer).css('height', $(wMenuContainer).find('> ul.nav').height());
+                         }
+                     });
 
                      e.stopImmediatePropagation();
                  });
