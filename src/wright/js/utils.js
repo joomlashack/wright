@@ -33,19 +33,18 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
         if (window.outerWidth < 980) {
              $wMenus = $('#menu, #toolbar, #bottom-menu');
              if($($wMenus).find('.dropdown-menu').length > 0) {
-                 $($wMenus).find('.dropdown-menu').addClass('wDropdown-close');
-
-                 $($wMenus).find('.dropdown-toggle .caret').click(function(e){
+                 
+                 $($wMenus).find('.dropdown-toggle .caret').on('click touchstart', function(e){
                      e.preventDefault();
 
                      $wDropdown         = $(this).parent().siblings('.dropdown-menu');
                      $wMenuContainer    = $(this).closest('.nav-collapse');
 
                      // Show/hide submenu
-                     if ($($wDropdown).is('.wDropdown-close')) {
-                         $($wDropdown).removeClass('wDropdown-close').addClass('wDropdown-open');
-                     } else {
-                         $($wDropdown).removeClass('wDropdown-open').addClass('wDropdown-close');
+                     if ($($wDropdown).is('.wDropdown-open')) {
+                         $($wDropdown).removeClass('wDropdown-open');
+                     }else{
+                         $($wDropdown).addClass('wDropdown-open');
                      }
 
                      // Resize container
