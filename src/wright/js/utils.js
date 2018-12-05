@@ -33,12 +33,20 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
         if (window.outerWidth < 980) {
              $wMenus = $('#menu, #toolbar, #bottom-menu');
              if($($wMenus).find('.dropdown-menu').length > 0) {
-                 
-                 $($wMenus).find('.dropdown-toggle .caret').on('click touchstart', function(e){
+
+                 $($wMenus).find('.dropdown-toggle .caret').on('click', function(e){
                      e.preventDefault();
 
+                     $wToggleIcon       = $(this);
                      $wDropdown         = $(this).parent().siblings('.dropdown-menu');
                      $wMenuContainer    = $(this).closest('.nav-collapse');
+
+                     // Switch icon
+                     if ($($wToggleIcon).is('.wMinus-icon')) {
+                         $($wToggleIcon).removeClass('wMinus-icon');
+                     }else{
+                         $($wToggleIcon).addClass('wMinus-icon');
+                     }
 
                      // Show/hide submenu
                      if ($($wDropdown).is('.wDropdown-open')) {
