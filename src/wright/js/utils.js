@@ -30,8 +30,7 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 
     // Mobile menu dropdown
     function mobileMenu() {
-        if ($(window).width() < 980) {
-            console.log($(window).width());
+        if (window.outerWidth < 980) {
              $wMenus = $('#menu, #toolbar, #bottom-menu');
              if($($wMenus).find('.dropdown-menu').length > 0) {
                  $($wMenus).find('.dropdown-menu').addClass('wDropdown-close');
