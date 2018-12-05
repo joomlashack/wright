@@ -158,6 +158,11 @@
                 ordering="first">OSSystem</extension>
         </relatedExtensions>
 
+        <minify>
+            <script>wright/js/utils.js</script>
+            <script>wright/js/stickyfooter.js</script>
+        </minify>
+
         <include>AllediaFreeDefaultFiles</include>
     </alledia>
 
