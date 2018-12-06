@@ -68,12 +68,12 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 	fixImagesIE();
 
 	$(window).load(function () {
-        mobileMenu();
+		mobileMenu();
 		if (!disableToolbarResize)
 			wToolbar();
 	});
 	$(window).resize(function() {
-        mobileMenu();
+		mobileMenu();
 		if (!disableToolbarResize)
 			wToolbar();
 	});
