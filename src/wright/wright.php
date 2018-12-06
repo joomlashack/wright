@@ -245,11 +245,11 @@ class Wright
 			$this->addJSScript($this->_urlJS . '/bootstrap.min.js');
 		}
 
-		$this->addJSScript($this->_urlJS . '/utils.js');
+		$this->addJSScript($this->_urlJS . '/utils.min.js');
 
 		if ($this->document->params->get('stickyFooter', 1))
 		{
-			$this->addJSScript($this->_urlJS . '/stickyfooter.js');
+			$this->addJSScript($this->_urlJS . '/stickyfooter.min.js');
 		}
 
 		// Add header script if set
