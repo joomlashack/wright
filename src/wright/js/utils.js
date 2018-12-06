@@ -56,7 +56,12 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
                      }
 
                      // Resize container
-                     $($wMenuContainer).css('height', $($wMenuContainer).find('> ul.nav').height());
+                     $wTotalHeight = 0;
+                     $($wMenuContainer).children().each(function(){
+                         $wTotalHeight = $wTotalHeight + $(this).outerHeight(true);
+                     });
+
+                     $($wMenuContainer).css('height', $wTotalHeight);
 
                      e.stopImmediatePropagation();
                  });
