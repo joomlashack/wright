@@ -1,3 +1,30 @@
+/* Desktop */
+@media (min-width: 980px) {
+
+	.navbar {
+		.nav {
+			li {
+				&:hover {
+					> .dropdown-menu {
+						display: block;
+					}
+				}
+			}
+			> li {
+				&.dropdown {
+					li {
+						&.dropdown {
+							.caret {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 /* Phone and tablets */
 @media (max-width: 979px) {
 
@@ -105,16 +132,75 @@
 	}
 
 	.nav-collapse {
-		.nav {
-			li.dropdown {
-				.dropdown-menu {
-					display: block;
-					position: relative;
 
-					li {
-						.sub-menu {
-							visibility: visible;
+		&:not(#nav-menu):not(#nav-toolbar):not(#nav-bottom-menu) {
+			.nav {
+				li.dropdown {
+					.dropdown-menu {
+						display: block;
+						position: relative;
+
+						li {
+							.sub-menu {
+								visibility: visible;
+							}
 						}
+					}
+				}
+			}
+		}
+
+		&#nav-menu,
+		&#nav-toolbar,
+		&#nav-bottom-menu {
+			.nav {
+				> li{
+					&.dropdown {
+
+						.dropdown-menu {
+							display: none !important;
+
+							&.wDropdown-open {
+								display: block !important;
+							}
+						}
+
+						.dropdown-toggle {
+							.caret {
+								border: none;
+								margin-top: 0;
+								margin-left: 6px;
+
+								&:after {
+									display: inline-block;
+									font-family: 'FontAwesome';
+									font-weight: normal;
+									font-style: normal;
+									font-size: 30px;
+									content: "\f055";
+								}
+
+								&.wMinus-icon {
+
+									&:after {
+										content: "\f056";
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.dropdown-submenu {
+				> a {
+					&:after {
+						display: none;
+					}
+				}
+				&:hover {
+					> .dropdown-menu {
+						display: inherit;
 					}
 				}
 			}

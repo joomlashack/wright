@@ -251,7 +251,7 @@ class Wright
 				JHtml::_('behavior.modal');
 			}
 
-			$this->addJSScript($this->_urlJS . '/utils-30.js');
+			$this->addJSScript($this->_urlJS . '/utils-30.min.js');
 
 			if ($this->document->params->get('documentationMode', '0') == '1')
 			{
@@ -262,7 +262,7 @@ class Wright
 		else {
 
 			// Javascript for Joomla 4
-			$this->addJSScript($this->_urlJS . '/utils-40.js');
+			$this->addJSScript($this->_urlJS . '/utils-40.min.js');
 
 			// Alerts progressive enhancement
 			HTMLHelper::_(

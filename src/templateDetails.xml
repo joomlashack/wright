@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.7" type="template" method="upgrade" client="site">
+<extension version="3.9" type="template" method="upgrade" client="site">
 	<name>js_wright</name>
-	<creationDate>August 28 2018</creationDate>
+	<creationDate>January 02 2019</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>https://www.joomlashack.com</authorUrl>
-	<copyright>Copyright Joomlashack 2005 - 2018. All rights reserved</copyright>
+	<copyright>Copyright Joomlashack 2005 - 2019. All rights reserved</copyright>
 	<license>GNU GPLv2</license>
 	<version>4.0.0-dev</version>
 	<description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
@@ -151,6 +151,11 @@
                 publish="true"
                 ordering="first">OSSystem</extension>
         </relatedExtensions>
+
+        <minify>
+            <script>wright/js/utils-30.js</script>
+            <script>wright/js/utils-40.js</script>
+        </minify>
 
         <include>AllediaFreeDefaultFiles</include>
         <scss destination="css">
