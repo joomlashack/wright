@@ -178,44 +178,44 @@ class WrightLessCompiler
 			unlink($df);
 		}
 
-        // Variable files only. Always loads as first
-        if ($lessVarsFile)
-        {
-            if (file_exists($lessVarsFile))
-            {
-                $ds .= '@import "' . $lessVarsFile . '";' . "\n";
-            }
-        }
+		// Variable files only. Always loads as first
+		if ($lessVarsFile)
+		{
+		    if (file_exists($lessVarsFile))
+		    {
+		        $ds .= '@import "' . $lessVarsFile . '";' . "\n";
+		    }
+		}
 
-        // Override variables from $lessVarsFiles
-        if ($lessVarsOverrides)
-        {
-            foreach ($lessVarsOverrides as $key => $value)
-            {
-                $ds .= $key . ': ' . $value . ';' . "\n";
-            }
-        }
+		// Override variables from $lessVarsFiles
+		if ($lessVarsOverrides)
+		{
+		    foreach ($lessVarsOverrides as $key => $value)
+		    {
+		        $ds .= $key . ': ' . $value . ';' . "\n";
+		    }
+		}
 
-        // The rest of the files
-        if ($lessFiles)
-        {
-            foreach ($lessFiles as $file)
-            {
-                if (file_exists($file))
-                {
-                    $ds .= '@import "' . $file . '";' . "\n";
-                }
-            }
-        }
+		// The rest of the files
+		if ($lessFiles)
+		{
+		    foreach ($lessFiles as $file)
+		    {
+		        if (file_exists($file))
+		        {
+		            $ds .= '@import "' . $file . '";' . "\n";
+		        }
+		    }
+		}
 
 		file_put_contents($df, $ds);
 		$styleCompiler = new lessc;
 
-        // Less vars coming from a PHP file to override variables from the variable less file
-        if ($lessVarsOverrides)
-        {
-            $styleCompiler->setVariables($lessVarsOverrides);
-        }
+		// Less vars coming from a PHP file to override variables from the variable less file
+		if ($lessVarsOverrides)
+		{
+		    $styleCompiler->setVariables($lessVarsOverrides);
+		}
 
 		$styleCompiler->setFormatter("compressed");
 		$styleCompiler->compileFile($df, $cssFile);
@@ -237,18 +237,18 @@ class WrightLessCompiler
 		$joomlaVersion = $version[0] . '0';
 
 		$lessPath           = JPATH_THEMES . '/' . $document->template . '/less';
-        $lessCustomization  = $lessPath . '/customization.php';
+		$lessCustomization  = $lessPath . '/customization.php';
 		$cssPath            = JPATH_THEMES . '/' . $document->template . '/css';
 		$wrightBuildPath    = JPATH_THEMES . '/' . $document->template . '/wright/build';
 
-        if(file_exists($lessCustomization))
-        {
-            require_once $lessCustomization;
+		if(file_exists($lessCustomization))
+		{
+		    require_once $lessCustomization;
 		}
-        else
-        {
-            return false;
-        }
+		else
+		{
+		    return false;
+		}
 
 		$lessFiles = $this->getLessFiles($style, $joomlaVersion);
 		$cssFiles = $this->getCSSFiles($style, $joomlaVersion);
@@ -260,9 +260,9 @@ class WrightLessCompiler
 				array(
 					$wrightBuildPath . '/less/bootstrap.less'
 				),
-                $cssPath . '/style-custom.css',
-                $lessPath . '/variables-' . $style . '.less',
-                $lessCustomizationVars
+				$cssPath . '/style-custom.css',
+				$lessPath . '/variables-' . $style . '.less',
+				$lessCustomizationVars
 			);
 
 			$this->compileWrightFile(
@@ -294,9 +294,9 @@ class WrightLessCompiler
 					$lessPath . '/template-responsive.less',
 					$lessPath . '/style-' . $style . '-responsive.less'
 				),
-                $cssPath . '/joomla' . $joomlaVersion . '-custom-responsive.css',
-                $lessPath . '/variables-' . $style . '.less',
-                $lessCustomizationVars
+				$cssPath . '/joomla' . $joomlaVersion . '-custom-responsive.css',
+				$lessPath . '/variables-' . $style . '.less',
+				$lessCustomizationVars
 			);
 		}
 	}
