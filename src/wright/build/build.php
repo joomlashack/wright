@@ -208,7 +208,7 @@ class WrightLessCompiler
 		$document = JFactory::getDocument();
 
 		$version = explode('.', JVERSION);
-		$joomlaVersion = $version[0] . $version[1];
+		$joomlaVersion = $version[0] . '0';
 
 		$wright = Wright::getInstance();
 		$style = $wright->getSelectedStyle();
@@ -217,7 +217,13 @@ class WrightLessCompiler
 		$cssPath = JPATH_THEMES . '/' . $document->template . '/css';
 		$wrightBuildPath = JPATH_THEMES . '/' . $document->template . '/wright/build';
 
+		if(!file_exists($lessPath . '/custom.less'))
+        {
+		    return false;
+		}
+
 		$lessFiles = $this->getLessFiles($style, $joomlaVersion);
+		$lessFiles[] = $lessPath . '/custom.less';
 		$cssFiles = $this->getCSSFiles($style, $joomlaVersion);
 
 		if ($this->getMaxFileTime($lessFiles) > $this->getMaxFileTime($cssFiles))
@@ -235,7 +241,8 @@ class WrightLessCompiler
 
 			$this->compileWrightFile(
 				array(
-					$lessPath . '/variables-' . $style . '.less',
+                    $lessPath . '/variables-' . $style . '.less',
+					$lessPath . '/custom.less',
 					$wrightBuildPath . '/less/bootstrap.less'
 				), $cssPath . '/style-' . $style . '.css'
 			);
@@ -243,6 +250,7 @@ class WrightLessCompiler
 			$this->compileWrightFile(
 				array(
 					$lessPath . '/variables-' . $style . '.less',
+					$lessPath . '/custom.less',
 					$wrightBuildPath . '/libraries/bootstrap/less/mixins.less',
 					$wrightBuildPath . '/less/typography.less',
 					$wrightBuildPath . '/less/joomla.less',
@@ -254,6 +262,7 @@ class WrightLessCompiler
 		}
 
 		$lessFiles = $this->getLessFiles($style, $joomlaVersion, true);
+		$lessFiles[] = $lessPath . '/custom.less';
 		$cssFiles = $this->getCSSFiles($style, $joomlaVersion, true);
 
 		if ($this->getMaxFileTime($lessFiles) > $this->getMaxFileTime($cssFiles))
@@ -272,6 +281,7 @@ class WrightLessCompiler
 			$this->compileWrightFile(
 				array(
 					$lessPath . '/variables-' . $style . '.less',
+					$lessPath . '/custom.less',
 					$wrightBuildPath . '/less/responsive.less',
 					$wrightBuildPath . '/less/joomla-responsive.less',
 					$wrightBuildPath . '/less/joomla' . $joomlaVersion . '-responsive.less',
@@ -280,5 +290,6 @@ class WrightLessCompiler
 				), $cssPath . '/joomla' . $joomlaVersion . '-' . $style . '-responsive.css'
 			);
 		}
+        echo '<code>start()</code>';
 	}
 }
