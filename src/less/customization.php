@@ -16,7 +16,7 @@ defined('_JEXEC') or die('Restricted access');
 // Set your variables overrides for LESS with only CSS valid values - As example: HEX colors, width/height
 // If the variable is '@variableName', remove @ - As example: '@color_one' becomes 'color_one'
 $lessCustomizationVars = array (
-    'linkColor' => '#336699'
+    '@linkColor' => '#336699'
 );
 
 // Set the default template style. It will be used to compile the CSS using the variables above

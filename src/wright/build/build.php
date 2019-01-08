@@ -167,7 +167,7 @@ class WrightLessCompiler
 	 * 
 	 * @return  void
 	 */
-	protected function compileWrightFile($lessFiles, $cssFile, $lessVarsOverrides = false)
+	protected function compileWrightFile($lessFiles, $cssFile, $lessVarsFile = false, $lessVarsOverrides = false)
 	{
 		$document = JFactory::getDocument();
 		$df = JPATH_THEMES . '/' . $document->template . '/less/build.less';
@@ -178,17 +178,23 @@ class WrightLessCompiler
 			unlink($df);
 		}
 
-        /*/ Variable files only. Always loads as first
+        // Variable files only. Always loads as first
         if ($lessVarsFile)
         {
-            foreach ($lessVarsFile as $file)
+            if (file_exists($lessVarsFile))
             {
-                if (file_exists($file))
-                {
-                    $ds .= '@import "' . $file . '";' . "\n";
-                }
+                $ds .= '@import "' . $lessVarsFile . '";' . "\n";
             }
-        }*/
+        }
+
+        // Override variables from $lessVarsFiles
+        if ($lessVarsOverrides)
+        {
+            foreach ($lessVarsOverrides as $key => $value)
+            {
+                $ds .= $key . ': ' . $value . ';' . "\n";
+            }
+        }
 
         // The rest of the files
         if ($lessFiles)
@@ -201,6 +207,8 @@ class WrightLessCompiler
                 }
             }
         }
+
+        echo '<pre>' . $ds . '</pre>';
 
 		file_put_contents($df, $ds);
 		$styleCompiler = new lessc;
@@ -252,16 +260,15 @@ class WrightLessCompiler
 
 			$this->compileWrightFile(
 				array(
-                    $lessPath . '/variables-' . $style . '.less',
 					$wrightBuildPath . '/less/bootstrap.less'
 				),
                 $cssPath . '/style-custom.css',
+                $lessPath . '/variables-' . $style . '.less',
                 $lessCustomizationVars
 			);
 
 			$this->compileWrightFile(
 				array(
-					$lessPath . '/variables-' . $style . '.less',
 					$wrightBuildPath . '/libraries/bootstrap/less/mixins.less',
 					$wrightBuildPath . '/less/typography.less',
 					$wrightBuildPath . '/less/joomla.less',
@@ -270,6 +277,7 @@ class WrightLessCompiler
 					$lessPath . '/style-' . $style . '.less'
 				),
                 $cssPath . '/joomla' . $joomlaVersion . '-custom-extended.css',
+                $lessPath . '/variables-' . $style . '.less',
                 $lessCustomizationVars
 			);
 		}
@@ -282,7 +290,6 @@ class WrightLessCompiler
 
 			$this->compileWrightFile(
 				array(
-					$lessPath . '/variables-' . $style . '.less',
 					$wrightBuildPath . '/less/responsive.less',
 					$wrightBuildPath . '/less/joomla-responsive.less',
 					$wrightBuildPath . '/less/joomla' . $joomlaVersion . '-responsive.less',
@@ -290,6 +297,7 @@ class WrightLessCompiler
 					$lessPath . '/style-' . $style . '-responsive.less'
 				),
                 $cssPath . '/joomla' . $joomlaVersion . '-custom-responsive.css',
+                $lessPath . '/variables-' . $style . '.less',
                 $lessCustomizationVars
 			);
 		}
