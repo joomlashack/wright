@@ -217,7 +217,7 @@ class Wright
 		// Parse by doctype
 		$this->doctype();
 
-        // Compiles less files if required - and if files were updated
+        // Compile less files when using 'custom' style
         if ($this->document->params->get('style', 'custom'))
         {
             require_once dirname(__FILE__) . '/build/build.php';
