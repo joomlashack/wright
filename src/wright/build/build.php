@@ -167,7 +167,7 @@ class WrightLessCompiler
 	 * 
 	 * @return  void
 	 */
-	protected function compileWrightFile($lessFiles, $cssFile)
+	protected function compileWrightFile($lessFiles, $cssFile, $lessVarsOverrides = false)
 	{
 		$document = JFactory::getDocument();
 		$df = JPATH_THEMES . '/' . $document->template . '/less/build.less';
@@ -178,19 +178,39 @@ class WrightLessCompiler
 			unlink($df);
 		}
 
-		if ($lessFiles)
-		{
-			foreach ($lessFiles as $file)
-			{
-				if (file_exists($file))
-				{
-					$ds .= '@import "' . $file . '";' . "\n";
-				}
-			}
-		}
+        /*/ Variable files only. Always loads as first
+        if ($lessVarsFile)
+        {
+            foreach ($lessVarsFile as $file)
+            {
+                if (file_exists($file))
+                {
+                    $ds .= '@import "' . $file . '";' . "\n";
+                }
+            }
+        }*/
+
+        // The rest of the files
+        if ($lessFiles)
+        {
+            foreach ($lessFiles as $file)
+            {
+                if (file_exists($file))
+                {
+                    $ds .= '@import "' . $file . '";' . "\n";
+                }
+            }
+        }
 
 		file_put_contents($df, $ds);
 		$styleCompiler = new lessc;
+
+        // Less vars coming from a PHP file to override variables from the variable less file
+        if ($lessVarsOverrides)
+        {
+            $styleCompiler->setVariables($lessVarsOverrides);
+        }
+
 		$styleCompiler->setFormatter("compressed");
 		$styleCompiler->compileFile($df, $cssFile);
 		unlink($df);
@@ -210,86 +230,68 @@ class WrightLessCompiler
 		$version = explode('.', JVERSION);
 		$joomlaVersion = $version[0] . '0';
 
-		$wright = Wright::getInstance();
-		$style = $wright->getSelectedStyle();
+		$lessPath           = JPATH_THEMES . '/' . $document->template . '/less';
+        $lessCustomization  = JPATH_THEMES . '/' . $document->template . '/less/customization.php';
+		$cssPath            = JPATH_THEMES . '/' . $document->template . '/css';
+		$wrightBuildPath    = JPATH_THEMES . '/' . $document->template . '/wright/build';
 
-		$lessPath = JPATH_THEMES . '/' . $document->template . '/less';
-		$cssPath = JPATH_THEMES . '/' . $document->template . '/css';
-		$wrightBuildPath = JPATH_THEMES . '/' . $document->template . '/wright/build';
-
-		if(!file_exists($lessPath . '/custom.less'))
+        if(file_exists($lessCustomization))
         {
-		    return false;
+            require_once $lessCustomization;
 		}
+        else
+        {
+            return false;
+        }
 
 		$lessFiles = $this->getLessFiles($style, $joomlaVersion);
-		$lessFiles[] = $lessPath . '/custom.less';
 		$cssFiles = $this->getCSSFiles($style, $joomlaVersion);
 
-		if ($this->getMaxFileTime($lessFiles) > $this->getMaxFileTime($cssFiles))
+		if ($cssFiles && $lessFiles)
 		{
-			if ($cssFiles)
-			{
-				foreach ($cssFiles as $file)
-				{
-					if (file_exists($file))
-					{
-						unlink($file);
-					}
-				}
-			}
 
 			$this->compileWrightFile(
 				array(
                     $lessPath . '/variables-' . $style . '.less',
-					$lessPath . '/custom.less',
 					$wrightBuildPath . '/less/bootstrap.less'
-				), $cssPath . '/style-' . $style . '.css'
+				),
+                $cssPath . '/style-custom.css',
+                $lessCustomizationVars
 			);
 
 			$this->compileWrightFile(
 				array(
 					$lessPath . '/variables-' . $style . '.less',
-					$lessPath . '/custom.less',
 					$wrightBuildPath . '/libraries/bootstrap/less/mixins.less',
 					$wrightBuildPath . '/less/typography.less',
 					$wrightBuildPath . '/less/joomla.less',
 					$wrightBuildPath . '/less/joomla' . $joomlaVersion . '.less',
 					$lessPath . '/template.less',
 					$lessPath . '/style-' . $style . '.less'
-				), $cssPath . '/joomla' . $joomlaVersion . '-' . $style . '-extended.css'
+				),
+                $cssPath . '/joomla' . $joomlaVersion . '-custom-extended.css',
+                $lessCustomizationVars
 			);
 		}
 
-		$lessFiles = $this->getLessFiles($style, $joomlaVersion, true);
-		$lessFiles[] = $lessPath . '/custom.less';
+		$lessFiles = $this->getLessFiles($style, $joomlaVersion, true);;
 		$cssFiles = $this->getCSSFiles($style, $joomlaVersion, true);
 
-		if ($this->getMaxFileTime($lessFiles) > $this->getMaxFileTime($cssFiles))
+		if ($cssFiles && $lessFiles)
 		{
-			if ($cssFiles)
-			{
-				foreach ($cssFiles as $file)
-				{
-					if (file_exists($file))
-					{
-						unlink($file);
-					}
-				}
-			}
 
 			$this->compileWrightFile(
 				array(
 					$lessPath . '/variables-' . $style . '.less',
-					$lessPath . '/custom.less',
 					$wrightBuildPath . '/less/responsive.less',
 					$wrightBuildPath . '/less/joomla-responsive.less',
 					$wrightBuildPath . '/less/joomla' . $joomlaVersion . '-responsive.less',
 					$lessPath . '/template-responsive.less',
 					$lessPath . '/style-' . $style . '-responsive.less'
-				), $cssPath . '/joomla' . $joomlaVersion . '-' . $style . '-responsive.css'
+				),
+                $cssPath . '/joomla' . $joomlaVersion . '-custom-responsive.css',
+                $lessCustomizationVars
 			);
 		}
-        echo '<code>start()</code>';
 	}
 }
