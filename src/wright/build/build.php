@@ -231,7 +231,7 @@ class WrightLessCompiler
 		$joomlaVersion = $version[0] . '0';
 
 		$lessPath           = JPATH_THEMES . '/' . $document->template . '/less';
-        $lessCustomization  = JPATH_THEMES . '/' . $document->template . '/less/customization.php';
+        $lessCustomization  = $lessPath . '/customization.php';
 		$cssPath            = JPATH_THEMES . '/' . $document->template . '/css';
 		$wrightBuildPath    = JPATH_THEMES . '/' . $document->template . '/wright/build';
 
