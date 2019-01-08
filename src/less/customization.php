@@ -11,13 +11,14 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access');
 
-//$linkColor = $document->params->get('style', 'linkColor');
+// Access template parameters
+$document = JFactory::getDocument();
 
-// Set your variables overrides for LESS with only CSS valid values - As example: HEX colors, width/height
-// If the variable is '@variableName', remove @ - As example: '@color_one' becomes 'color_one'
+// Set your variables overrides for variables-something.less.
+// These variables overrides are defined on templateDetails.xml below 'style' field
 $lessCustomizationVars = array (
-    '@linkColor' => '#336699'
+    '@linkColor' => $document->params->get('linkColor', '#08c')
 );
 
-// Set the default template style. It will be used to compile the CSS using the variables above
+// Set the default template style. This is defined on templateDetails.xml as default value for 'style' field
 $style = 'generic';

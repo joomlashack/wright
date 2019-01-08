@@ -208,8 +208,6 @@ class WrightLessCompiler
             }
         }
 
-        echo '<pre>' . $ds . '</pre>';
-
 		file_put_contents($df, $ds);
 		$styleCompiler = new lessc;
 
