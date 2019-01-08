@@ -57,6 +57,8 @@ class JFormFieldStyles extends JFormFieldList
 				$options[] = JHTML::_('select.option', $val, JText::_($text));
 			}
 		}
+        // Custom style with support for custom colors
+        $options[] = JHTML::_('select.option', 'custom', JText::_('Custom'));
 
 		return $options;
 	}
