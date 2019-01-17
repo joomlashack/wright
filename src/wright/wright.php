@@ -217,13 +217,13 @@ class Wright
 		// Parse by doctype
 		$this->doctype();
 
-        /*/ Compile less files when using 'custom' style
+        // Compile less files when using 'custom' style
         if ($this->document->params->get('style', 'custom'))
         {
             require_once dirname(__FILE__) . '/build/less/compiler.php';
             $build = new WrightLessCompiler;
             $build->start();
-        }*/
+        }
 
 		print trim($this->template);
 

@@ -239,7 +239,7 @@ class WrightLessCompiler
 		$cssPath            = JPATH_THEMES . '/' . $document->template . '/css';
 		$wrightBuildPath    = JPATH_THEMES . '/' . $document->template . '/wright/build';
 
-        /*echo $this->getMaxFileTime(array(
+        echo $this->getMaxFileTime(array(
             $cssPath . '/joomla' . $joomlaVersion . '-custom-extended.css',
             $cssPath . '/joomla' . $joomlaVersion . '-custom-responsive.css',
             $cssPath . '/style-custom.css'
@@ -255,7 +255,7 @@ class WrightLessCompiler
             )) > strtotime($document->params->get('lastsave', 'NOW'))
         ) {
             return false;
-        }*/
+        }
 
 		if(file_exists($lessCustomization))
 		{
