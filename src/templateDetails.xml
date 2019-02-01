@@ -27,6 +27,7 @@
 		<filename>favicon.ico</filename>
 		<filename>functions.php</filename>
 		<filename>index.php</filename>
+		<filename>render.php</filename>
 		<filename>template.php</filename>
 		<filename>templateDetails.xml</filename>
 		<filename>template_thumbnail.png</filename>
