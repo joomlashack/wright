@@ -2,8 +2,7 @@ jQuery(function ($) {
     $('#wCompileCssBtn').on('click', function (event) {
         event.preventDefault();
 
-        $.ajax({
-            url: $(this).data('compiler'),
+        $.ajax(this.href, {
             success: function(data) {
                 console.log('success');
                 $('#wCompileCssStatus').html('<div class="alert alert-info">' + data + ' - Success!</div>');
