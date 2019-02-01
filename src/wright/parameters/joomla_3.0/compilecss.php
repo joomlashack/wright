@@ -32,7 +32,7 @@ class JFormFieldCompilecss extends JFormField
         $template   = $this->form->getValue('template');
         $doc->addScript(str_replace('/administrator/', '/', JURI::base()) . 'templates/' . $template . '/wright/parameters/assets/compilecss.js');
 
-        $html  = '<a class="btn btn-primary" id="wCompileCssBtn" href="' . str_replace('/administrator/', '/', JURI::base()) . 'templates/' . $template . '/wright/build/build.php">' . JText::_('Compile') . '</a>';
+        $html  = '<a class="btn btn-primary" id="wCompileCssBtn" href="" data-compiler="' . str_replace('/administrator/', '/', JURI::base()) . 'templates/' . $template . '/wright/build/build.php?template=' . $template . '">' . JText::_('Compile') . '</a>';
         $html .= '<div id="wCompileCssStatus"></div>';
 
         return $html;
