@@ -10,14 +10,6 @@ jQuery(function ($) {
             error: function(data) {
                 console.log('error');
                 $('#wCompileCssStatus').html('<div class="alert alert-warning">' + data + ' - Error!</div>');
-            },
-            statusCode: {
-                404: function(data) {
-                    console.log(data + ' - 404');
-                },
-                200: function(data) {
-                    console.log(data + ' - 200');
-                }
             }
         });
     });

@@ -76,7 +76,6 @@
 				<field name="style" type="styles" default="generic" label="TPL_JS_WRIGHT_FIELD_STYLE_LABEL" description="TPL_JS_WRIGHT_FIELD_STYLE_DESC" />
 				<field name="linkColor" type="color" default="#08c" label="TPL_JS_WRIGHT_FIELD_STYLE_LINK_COLOR_LABEL" description="TPL_JS_WRIGHT_FIELD_STYLE_LINK_COLOR_DESC" showon="style:custom" />
 				<field name="compileCss" type="compilecss" showon="style:custom"/>
-				<!--field name="lastSave" type="lastsave" showon="style:custom"/-->
                 <field name="modal" type="radio" class="btn-group btn-group-yesno" default="1" label="TPL_JS_WRIGHT_FIELD_ENABLE_MODAL_LABEL" description="TPL_JS_WRIGHT_FIELD_ENABLE_MODAL_DESC">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
