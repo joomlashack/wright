@@ -30,7 +30,29 @@ class JFormFieldCompilecss extends JFormField
 	{
         $doc        = JFactory::getDocument();
         $template   = $this->form->getValue('template');
-        $doc->addScript(str_replace('/administrator/', '/', JURI::base()) . 'templates/' . $template . '/wright/parameters/assets/compilecss.js');
+
+        $doc->addScriptDeclaration('
+            jQuery(function ($) {
+                $(\'#wCompileCssBtn\').on(\'click\', function (event) {
+                    event.preventDefault();
+
+                    // Save template style
+                    //Joomla.submitbutton(\'style.apply\');
+
+                    // Call LESS compilation page
+                    $.ajax(this.href, {
+                        success: function(data) {
+                            console.log(\'success\');
+                            $(\'#wCompileCssStatus\').html(\'<div class="alert alert-success">\' + data + \' - Success!</div>\');
+                        },
+                        error: function(data) {
+                            console.log(\'error\');
+                            $(\'#wCompileCssStatus\').html(\'<div class="alert alert-warning">\' + data + \' - Error!</div>\');
+                        }
+                    });
+                });
+            });
+        ');
 
         $html  = '<a class="btn btn-primary" id="wCompileCssBtn" href="' . str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render">' . JText::_('Compile') . '</a>';
         $html .= '<div id="wCompileCssStatus"></div>';
