@@ -40,12 +40,14 @@ class JFormFieldCompilecss extends JFormField
                     // Call LESS compilation page
                     $.ajax(this.href, {
                         success: function(data) {
-                            console.log(\'success\');
-                            $(\'#wCompileCssStatus\').html(\'<div class="alert alert-success">\' + data + \' - Success!</div>\');
+                            $(\'#wCompileCssStatus\').html(
+                                \'<div class="wStatusSuccess">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_SUCCESS') . '</div>\'
+                            );
                         },
                         error: function(data) {
-                            console.log(\'error\');
-                            $(\'#wCompileCssStatus\').html(\'<div class="alert alert-warning">\' + data + \' - Error!</div>\');
+                            $(\'#wCompileCssStatus\').html(
+                                \'<div class="wStatusError">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_ERROR') . '</div>\'
+                            );
                         }
                     });
                 });
@@ -53,17 +55,29 @@ class JFormFieldCompilecss extends JFormField
         ');
         $doc->addStyleDeclaration('
             #wCompileCssStatus {
-                margin-top: 20px;
+                display: inline-block;
+                margin-left: 10px;
             }
-            #wCompileCssStatus .alert {
-                margin-bottom: 0;
+            #wCompileCssStatus > div {
+                display: inline-block;
+            }
+            #wCompileCssStatus .wStatusSuccess {
+                color: #3c763d;
+            }
+            #wCompileCssStatus .wStatusError {
+                color: #8a6d3b;
             }
         ');
 
         $link = str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render&c=1';
 
-        $html  = JHtml::_('link', $link, JText::_('TPL_JS_WRIGHT_COMPILE_LESS'), 'class="btn btn-primary" id="wCompileCssBtn"');
-        $html .= '<div id="wCompileCssStatus"></div>';
+        $html  = JHtml::_(
+                    'link',
+                    $link,
+                    '<span class="icon-loop" aria-hidden="true"></span> ' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS'),
+                    'class="btn btn-primary" id="wCompileCssBtn"'
+                );
+        $html .= '<div id="wCompileCssStatus"></div><br><br>';
 
         return $html;
 	}
