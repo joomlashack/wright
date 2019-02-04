@@ -225,7 +225,7 @@ class WrightLessCompiler
 	 *
 	 * @return  void
 	 */
-	public function start()
+	public function start($style, $lessCustomizationVars)
 	{
 		jimport('joomla.filesystem.file');
 		jimport('joomla.filesystem.folder');
@@ -238,15 +238,6 @@ class WrightLessCompiler
 		$lessCustomization  = $lessPath . '/customization.php';
 		$cssPath            = JPATH_THEMES . '/' . $document->template . '/css';
 		$wrightBuildPath    = JPATH_THEMES . '/' . $document->template . '/wright/build';
-
-		if(file_exists($lessCustomization))
-		{
-		    require_once $lessCustomization;
-		}
-		else
-		{
-		    return false;
-		}
 
 		$lessFiles = $this->getLessFiles($style, $joomlaVersion);
 		$cssFiles = $this->getCSSFiles($style, $joomlaVersion);
