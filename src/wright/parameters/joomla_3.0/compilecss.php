@@ -29,8 +29,6 @@ class JFormFieldCompilecss extends JFormField
 	protected function getInput()
 	{
         $doc        = JFactory::getDocument();
-        $template   = $this->form->getValue('template');
-
         $doc->addScriptDeclaration('
             jQuery(function ($) {
                 $(\'#wCompileCssBtn\').on(\'click\', function (event) {
@@ -54,7 +52,7 @@ class JFormFieldCompilecss extends JFormField
             });
         ');
 
-        $html  = '<a class="btn btn-primary" id="wCompileCssBtn" href="' . str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render">' . JText::_('Compile') . '</a>';
+        $html  = '<a class="btn btn-primary" id="wCompileCssBtn" href="' . str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render">' . JText::_('Save and Compile LESS') . '</a>';
         $html .= '<div id="wCompileCssStatus"></div>';
 
         return $html;
