@@ -51,8 +51,18 @@ class JFormFieldCompilecss extends JFormField
                 });
             });
         ');
+        $doc->addStyleDeclaration('
+            #wCompileCssStatus {
+                margin-top: 20px;
+            }
+            #wCompileCssStatus .alert {
+                margin-bottom: 0;
+            }
+        ');
 
-        $html  = '<a class="btn btn-primary" id="wCompileCssBtn" href="' . str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render">' . JText::_('Save and Compile LESS') . '</a>';
+        $link = str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render';
+
+        $html  = JHtml::_('link', $link, JText::_('Save and Compile LESS'), 'class="btn btn-primary" id="wCompileCssBtn"');
         $html .= '<div id="wCompileCssStatus"></div>';
 
         return $html;
