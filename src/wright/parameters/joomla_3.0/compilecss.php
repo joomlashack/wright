@@ -60,7 +60,7 @@ class JFormFieldCompilecss extends JFormField
             }
         ');
 
-        $link = str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render';
+        $link = str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render&c=1';
 
         $html  = JHtml::_('link', $link, JText::_('Save and Compile LESS'), 'class="btn btn-primary" id="wCompileCssBtn"');
         $html .= '<div id="wCompileCssStatus"></div>';

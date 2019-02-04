@@ -11,9 +11,21 @@
 defined('_JEXEC') or die('Restricted access');
 
 
-// Include the framework
-require_once dirname(__FILE__) . '/wright/wright.php';
+if(JFactory::getApplication()->input->get('c') == 1) {
 
-// Initialize the framework and include header
-$tpl = Wright::getInstance();
-$tpl->renderCustomStyle();
+    // Include the framework
+    require_once dirname(__FILE__) . '/wright/wright.php';
+
+    // Initialize the framework and include header
+    $tpl = Wright::getInstance();
+    $tpl->renderCustomStyle();
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex,nofollow">
+</head>
+<body>
+</body>
+</html>
