@@ -19,9 +19,6 @@
         }
     ],
     "require"          : {
-        "php"       : ">= 5.4"
-    },
-    "require-dev"      : {
-        "phing/phing": "*"
+        "php": ">= 5.6"
     }
 }
