@@ -51,6 +51,10 @@ class JFormFieldCompilecss extends JFormField
                         }
                     });
                 });
+
+                $(\'.minicolors-input\').on(\'change\', function () {
+                    Joomla.submitbutton(\'style.apply\');
+                });
             });
         ');
         $doc->addStyleDeclaration('
