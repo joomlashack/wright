@@ -66,15 +66,16 @@ class JFormFieldCompilecss extends JFormField
             }
         ');
 
-        $link = str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render&c=1';
+        $template   = $this->form->getValue('template');
+        $link       = str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render&template=' . $template . '&c=1';
 
-        $html  = JHtml::_(
-                    'link',
-                    $link,
-                    '<span class="icon-loop" aria-hidden="true"></span> ' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS'),
-                    'class="btn btn-primary hasPopover" id="wCompileCssBtn" data-toggle="tooltip" title="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_IMPORTANT') . '" data-content="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_INSTRUCTIONS') . '"'
-                );
-        $html .= '<div id="wCompileCssStatus"></div><br><br>';
+        $html       = JHtml::_(
+                        'link',
+                        $link,
+                        '<span class="icon-loop" aria-hidden="true"></span> ' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS'),
+                        'class="btn btn-primary hasPopover" id="wCompileCssBtn" data-toggle="tooltip" title="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_IMPORTANT') . '" data-content="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_INSTRUCTIONS') . '"'
+                    );
+        $html      .= '<div id="wCompileCssStatus"></div><br><br>';
 
         return $html;
 	}
