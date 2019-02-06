@@ -28,14 +28,11 @@ class JFormFieldCompilecss extends JFormField
 	 */
 	protected function getInput()
 	{
-        $doc        = JFactory::getDocument();
+        $doc = JFactory::getDocument();
         $doc->addScriptDeclaration('
             jQuery(function ($) {
                 $(\'#wCompileCssBtn\').on(\'click\', function (event) {
                     event.preventDefault();
-
-                    // Save template style
-                    //Joomla.submitbutton(\'style.apply\');
 
                     // Call LESS compilation page
                     $.ajax(this.href, {
@@ -50,10 +47,6 @@ class JFormFieldCompilecss extends JFormField
                             );
                         }
                     });
-                });
-
-                $(\'.minicolors-input\').on(\'change\', function () {
-                    Joomla.submitbutton(\'style.apply\');
                 });
             });
         ');
@@ -79,7 +72,7 @@ class JFormFieldCompilecss extends JFormField
                     'link',
                     $link,
                     '<span class="icon-loop" aria-hidden="true"></span> ' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS'),
-                    'class="btn btn-primary" id="wCompileCssBtn"'
+                    'class="btn btn-primary hasPopover" id="wCompileCssBtn" data-toggle="tooltip" title="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_IMPORTANT') . '" data-content="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_INSTRUCTIONS') . '"'
                 );
         $html .= '<div id="wCompileCssStatus"></div><br><br>';
 
