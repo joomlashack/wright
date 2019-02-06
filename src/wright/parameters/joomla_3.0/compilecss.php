@@ -35,7 +35,8 @@ class JFormFieldCompilecss extends JFormField
                     event.preventDefault();
 
                     // Call LESS compilation page
-                    $.ajax(this.href, {
+                    $.ajax({
+                        url: $(this).data(\'compiler\'),
                         success: function(data) {
                             $(\'#wCompileCssStatus\').html(
                                 \'<div class="wStatusSuccess">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_SUCCESS') . '</div>\'
@@ -69,12 +70,14 @@ class JFormFieldCompilecss extends JFormField
         $template   = $this->form->getValue('template');
         $link       = str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render&template=' . $template . '&c=1';
 
-        $html       = JHtml::_(
-                        'link',
-                        $link,
-                        '<span class="icon-loop" aria-hidden="true"></span> ' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS'),
-                        'class="btn btn-primary hasPopover" id="wCompileCssBtn" data-toggle="tooltip" title="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_IMPORTANT') . '" data-content="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_INSTRUCTIONS') . '"'
-                    );
+        $html       = '<button class="btn btn-primary hasPopover"';
+        $html      .= ' id="wCompileCssBtn"';
+        $html      .= ' data-toggle="tooltip"';
+        $html      .= ' title="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_IMPORTANT') . '"';
+        $html      .= ' data-content="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_INSTRUCTIONS') . '"';
+        $html      .= ' data-compiler="' . $link . '">';
+        $html      .= ' <span class="icon-loop" aria-hidden="true"></span> ' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS');
+        $html      .= ' </button>';
         $html      .= '<div id="wCompileCssStatus"></div><br><br>';
 
         return $html;
