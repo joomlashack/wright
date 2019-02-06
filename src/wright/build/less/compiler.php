@@ -223,6 +223,9 @@ class WrightLessCompiler
 	/**
 	 * Run the whole compilation process
 	 *
+     * @param   string  $style                  The template style to use its LESS files as base
+     * @param   array   $lessCustomizationVars  LESS vars to override
+     *
 	 * @return  void
 	 */
 	public function start($style, $lessCustomizationVars)

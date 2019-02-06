@@ -23,7 +23,7 @@ $lessCustomizationVars = array (
 // Set the default template style. This is defined on templateDetails.xml as default value for 'style' field
 $style = 'generic';
 
-// Don't touch the code below
+// Run the compiler
 require_once dirname(__FILE__) . '/../wright/build/less/compiler.php';
 $build = new WrightLessCompiler;
 $build->start($style, $lessCustomizationVars);
