@@ -10,8 +10,10 @@
 
 defined('_JEXEC') or die;
 
+$app = JFactory::getApplication();
+
 /* Wright v.3: Helper */
-include_once(dirname(__FILE__) . '/../com_content.helper.php');
+include_once(JPATH_BASE . '/templates/' . $app->getTemplate() . '/wright/html/joomla_3.0/com_content/com_content.helper.php');
 
 /* Wright v.3: Item elements structure and extra elements */
 if (!isset($this->wrightElementsStructure)) $this->wrightElementsStructure  = Array();
@@ -37,7 +39,6 @@ if (empty($this->wrightElementsStructure)) :
 endif;
 
 /* Wright v.3: Bootstrapped images */
-$app                            = JFactory::getApplication();
 $template                       = $app->getTemplate(true);
 $this->wrightBootstrapImages    = $template->params->get('wright_bootstrap_images','');
 
