@@ -38,11 +38,10 @@ class JFormFieldCompilecss extends JFormField
                     $.ajax({
                         url: $(this).data(\'compiler\'),
                         success: function(data) {
-                            $(\'#wCompileCssStatus\').html(
-                                \'<div class="wStatusSuccess">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_SUCCESS') . '</div>\'
-                            );
+                            $(\'#wCompileCssStatus\').html(data);
                         },
                         error: function(data) {
+                            console.log(data);
                             $(\'#wCompileCssStatus\').html(
                                 \'<div class="wStatusError">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_ERROR') . '</div>\'
                             );

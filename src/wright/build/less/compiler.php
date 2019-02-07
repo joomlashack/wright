@@ -271,8 +271,13 @@ class WrightLessCompiler
                 $lessCustomizationVars
 			);
 		}
+        else
+        {
+            echo '<div class="wStatusError">Error: CSS or LESS files are missing! (1)</div>';
+            return false;
+        }
 
-		$lessFiles = $this->getLessFiles($style, $joomlaVersion, true);;
+		$lessFiles = $this->getLessFiles($style, $joomlaVersion, true);
 		$cssFiles = $this->getCSSFiles($style, $joomlaVersion, true);
 
 		if ($cssFiles && $lessFiles)
@@ -291,5 +296,12 @@ class WrightLessCompiler
 				$lessCustomizationVars
 			);
 		}
+        else
+        {
+            echo '<div class="wStatusError">Error: CSS or LESS files are missing! (2)</div>';
+            return false;
+        }
+
+        echo '<div class="wStatusSuccess">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_SUCCESS') . '</div>';
 	}
 }

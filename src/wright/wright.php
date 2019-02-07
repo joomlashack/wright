@@ -239,7 +239,7 @@ class Wright
         }
         else
         {
-            echo 'templates/' . $document->template . '/less/customization.php file doesn\'t exists!';
+            echo '<div class="wStatusError">Error: templates/' . $document->template . '/less/customization.php file doesn\'t exists!</div>';
             return false;
         }
 
