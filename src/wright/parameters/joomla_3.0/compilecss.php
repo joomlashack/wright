@@ -28,7 +28,8 @@ class JFormFieldCompilecss extends JFormField
 	 */
 	protected function getInput()
 	{
-        $doc = JFactory::getDocument();
+        $doc        = JFactory::getDocument();
+        $template   = $this->form->getValue('template');
         $doc->addScriptDeclaration('
             jQuery(function ($) {
                 $(\'#wCompileCssBtn\').on(\'click\', function (event) {
@@ -36,6 +37,12 @@ class JFormFieldCompilecss extends JFormField
 
                     // Call LESS compilation page
                     $.ajax({
+                        type: \'POST\',
+                        data: {
+                            tmpl: \'render\',
+                            template: \''. $template . '\',
+                            c: \'1\'
+                        },
                         url: $(this).data(\'compiler\'),
                         success: function(data) {
                             $(\'#wCompileCssStatus\').html(data);
@@ -66,9 +73,7 @@ class JFormFieldCompilecss extends JFormField
             }
         ');
 
-        $template   = $this->form->getValue('template');
-        $link       = str_replace('/administrator/', '/', JURI::base()) . '?tmpl=render&template=' . $template . '&c=1';
-
+        $link       = '../';
         $html       = '<button class="btn btn-primary hasPopover"';
         $html      .= ' id="wCompileCssBtn"';
         $html      .= ' data-toggle="tooltip"';
