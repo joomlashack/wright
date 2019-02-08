@@ -20,10 +20,7 @@ $lessCustomizationVars = array (
     '@linkColor' => $document->params->get('linkColor', '#08c')
 );
 
-// Set the default template style. This is defined on templateDetails.xml as default value for 'style' field
-$style = 'generic';
-
 // Run the compiler
 require_once dirname(__FILE__) . '/../wright/build/less/compiler.php';
 $build = new WrightLessCompiler;
-$build->start($style, $lessCustomizationVars);
+$build->start('custom', $lessCustomizationVars);

@@ -55,15 +55,9 @@ class JFormFieldStyles extends JFormFieldList
 				$val	= $item;
 				$text	= ucfirst($item);
 
-				// Output all the styles, except 'custom' style
-				if($val != 'custom') {
-				    $options[] = JHTML::_('select.option', $val, JText::_($text));
-				}
+				$options[] = JHTML::_('select.option', $val, JText::_($text));
 			}
 		}
-
-        // Custom style with support for custom colors
-        $options[] = JHTML::_('select.option', 'custom', JText::_('TPL_JS_WRIGHT_CUSTOM_STYLE'));
 
 		return $options;
 	}
