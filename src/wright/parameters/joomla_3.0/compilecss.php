@@ -46,6 +46,13 @@ class JFormFieldCompilecss extends JFormField
 
                 });
 
+                // A message while the compiling process is happening
+                $(\'#wCompileCssBtn\').bind(\'ajaxStart\', function(){
+                    $(\'#wCompileCssStatus\').html(
+                        \'<div class="wStatusInfo">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_COMPILING') . '</div>\'
+                    );
+                });
+
                 // Run compiler
                 $(\'#wCompileCssBtn\').on(\'click\', function (event) {
                     event.preventDefault();
