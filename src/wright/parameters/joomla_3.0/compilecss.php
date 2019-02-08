@@ -32,10 +32,24 @@ class JFormFieldCompilecss extends JFormField
         $template   = $this->form->getValue('template');
         $doc->addScriptDeclaration('
             jQuery(function ($) {
+
+                // Show instructions to compile
+                $(\'.wCustomColor\').on(\'change\', function () {
+                    try {
+                        $(\'#wCompileCssBtn\').attr(\'disabled\', \'disabled\');
+                        $(\'#wCompileCssStatus\').html(
+                            \'<div class="wStatusInfo">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_INSTRUCTIONS') . '</div>\'
+                        );
+                    } catch(err) {
+                          console.log(err.message);
+                    }
+
+                });
+
+                // Run compiler
                 $(\'#wCompileCssBtn\').on(\'click\', function (event) {
                     event.preventDefault();
 
-                    // Call LESS compilation page
                     $.ajax({
                         type: \'POST\',
                         data: {
@@ -68,6 +82,9 @@ class JFormFieldCompilecss extends JFormField
             #wCompileCssStatus .wStatusSuccess {
                 color: #3c763d;
             }
+            #wCompileCssStatus .wStatusInfo {
+                color: #555;
+            }
             #wCompileCssStatus .wStatusError {
                 color: #8a6d3b;
             }
@@ -76,9 +93,6 @@ class JFormFieldCompilecss extends JFormField
         $link       = '../';
         $html       = '<button class="btn btn-primary hasPopover"';
         $html      .= ' id="wCompileCssBtn"';
-        $html      .= ' data-toggle="tooltip"';
-        $html      .= ' title="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_IMPORTANT') . '"';
-        $html      .= ' data-content="' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_INSTRUCTIONS') . '"';
         $html      .= ' data-compiler="' . $link . '">';
         $html      .= ' <span class="icon-loop" aria-hidden="true"></span> ' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS');
         $html      .= ' </button>';
