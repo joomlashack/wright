@@ -11,6 +11,9 @@
 defined('_JEXEC') or die('Restricted access');
 
 /**
+ *
+ * @TODO remove this field once is removed from the rest of templates
+ *
  * Wright basic field to include language files and other global properties for all the rest of the parameters in the template config
  *
  * @package     Wright
@@ -32,6 +35,7 @@ class JFormFieldWright extends JFormField
 	}
 
 	/**
+     *
 	 * Method to get the field label markup.
 	 *
 	 * @return  string  The field label markup.

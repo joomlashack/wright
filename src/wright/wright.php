@@ -222,6 +222,35 @@ class Wright
 		return true;
 	}
 
+    /**
+     * Method to render LESS files for custom template style
+     *
+     * @return  boolean
+     */
+    public function renderCustomStyle()
+    {
+        // Compile less files when using 'custom' style
+        if ($this->document->params->get('style', 'custom'))
+        {
+
+            // Check if the customization file is in place
+            $document               = JFactory::getDocument();
+            $lessCustomizationFile  = JPATH_THEMES . '/' . $document->template . '/less/customization.php';
+
+            if(file_exists($lessCustomizationFile))
+            {
+                require_once $lessCustomizationFile;
+            }
+            else
+            {
+                echo '<div class="wStatusError">Error: templates/' . $document->template . '/less/customization.php file doesn\'t exists!</div>';
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 	/**
 	 * Method to generate the header
 	 *
