@@ -44,7 +44,7 @@ class JFormFieldStyles extends JFormFieldList
 
 		if (!count($styles))
 		{
-		return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template'), true));
+		return array(JHTML::_('select.option', '', JText::_('TPL_JS_WRIGHT_NO_STYLES'), true));
 		}
 
 		foreach ($styles as $style)
@@ -54,6 +54,7 @@ class JFormFieldStyles extends JFormFieldList
 				$item = substr($style, 6, strpos($style, '.css') - 6);
 				$val	= $item;
 				$text	= ucfirst($item);
+
 				$options[] = JHTML::_('select.option', $val, JText::_($text));
 			}
 		}
