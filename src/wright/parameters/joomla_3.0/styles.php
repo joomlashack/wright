@@ -55,10 +55,10 @@ class JFormFieldStyles extends JFormFieldList
 				$val	= $item;
 				$text	= ucfirst($item);
 
-                // Output all the styles, except 'custom' style
-                if($val != 'custom') {
-                    $options[] = JHTML::_('select.option', $val, JText::_($text));
-                }
+				// Output all the styles, except 'custom' style
+				if($val != 'custom') {
+				    $options[] = JHTML::_('select.option', $val, JText::_($text));
+				}
 			}
 		}
 
