@@ -151,7 +151,7 @@ class JFormFieldCompilecss extends JFormField
             $doc->addScriptDeclaration('
                 jQuery(document).ready(function($){
                     try {
-                        $(\'.wCustomColor\').attr(\'disabled\', \'disabled\');
+                        $(\'.wCustomColor\').attr(\'disabled\', \'disabled\').trigger(\'liszt:updated\');
                         $(\'.wCustomColor\').css({\'opacity\': \'0.5\'});
                     } catch(err) {
                           console.log(err.message);
