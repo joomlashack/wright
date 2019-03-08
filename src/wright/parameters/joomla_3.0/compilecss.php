@@ -53,8 +53,6 @@ class JFormFieldCompilecss extends JFormField
         // Taken from id parameter from the URL
         $currentTemplateStyle   = JFactory::getApplication()->input->get('id', null, 'integer');
 
-        echo 'Database: ' . $lowestTemplateStyle . '</br>Current: ' . $currentTemplateStyle;
-
         // Output CSS and Javascript
         $doc = JFactory::getDocument();
         $doc->addScriptDeclaration('
