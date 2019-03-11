@@ -1,13 +1,13 @@
 <?php
 /**
- * Kunena Component
- * @package         Kunena.Template.Crypsis
- * @subpackage      Layout.Widget
+ * @package     Wright
+ * @subpackage  Kunena
  *
- * @copyright       Copyright (C) 2008 - 2018 Kunena Team. All rights reserved.
- * @license         https://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link            https://www.kunena.org
- **/
+ * @copyright   Copyright (C) 2005 - 2019 Joomlashack.   All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+// No direct access.
 defined('_JEXEC') or die;
 
 // @TODO Support for this override with Wright override system

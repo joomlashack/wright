@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Parameters
  *
- * @copyright   Copyright (C) 2005 - 2018 Joomlashack.  All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Joomlashack.   All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -45,7 +45,7 @@ class JFormFieldStyles extends JFormFieldList
 
 		if (!count($styles))
 		{
-		return array(JHTML::_('select.option', '', JText::_('No styles are provided for this template'), true));
+		return array(JHTML::_('select.option', '', JText::_('TPL_JS_WRIGHT_NO_STYLES'), true));
 		}
 
 		foreach ($styles as $style)
@@ -55,9 +55,17 @@ class JFormFieldStyles extends JFormFieldList
 				$item = substr($style, 6, strpos($style, '.css') - 6);
 				$val	= $item;
 				$text	= ucfirst($item);
-				$options[] = JHTML::_('select.option', $val, JText::_($text));
+
+				// Output all the styles, except 'custom' style
+				if($val != 'custom') {
+				    $options[] = JHTML::_('select.option', $val, JText::_($text));
+				}
 			}
 		}
+
+		// Custom style with support for custom colors
+		$options[] = JHTML::_('select.option', 'custom', JText::_('Custom'));
+
 
 		return $options;
 	}
