@@ -94,7 +94,7 @@ class Wright
 		$this->params = $document->params;
 		$this->baseurl = $document->baseurl;
 
-		if ($app->isAdmin())
+		if ($app->isClient('administrator'))
 		{
 			// If Wright is instanciated in backend, it stops loading
 			return;
