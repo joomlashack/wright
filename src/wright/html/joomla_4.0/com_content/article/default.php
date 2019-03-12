@@ -10,8 +10,12 @@
 
 defined('_JEXEC') or die;
 
+$app = JFactory::getApplication();
+
 /* Wright v.4: Helper */
-include_once(dirname(__FILE__) . '/../com_content.helper.php');
+include_once(JPATH_BASE . '/templates/' . $app->getTemplate() . '/wright/html/joomla_4.0/com_content/com_content.helper.php');
+
+use Joomla\CMS\HTML\HTMLHelper;
 
 /* Wright v.4: Item elements structure and extra elements */
 if (!isset($this->wrightElementsStructure)) $this->wrightElementsStructure  = Array();
@@ -37,7 +41,6 @@ if (empty($this->wrightElementsStructure)) :
 endif;
 
 /* Wright v.4: Bootstrapped images */
-$app                            = JFactory::getApplication();
 $template                       = $app->getTemplate(true);
 $this->wrightBootstrapImages    = $template->params->get('wright_bootstrap_images','');
 
@@ -106,12 +109,12 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 
 	<?php if (!$useDefList && $this->print) : ?>
 		<div id="pop-print" class="btn">
-			<?php echo JHtml::_('icon.print_screen', $this->item, $params); ?>
+            <?php echo HTMLHelper::_('contenticon.print_screen', $params); ?>
 		</div>
 		<div class="clearfix"> </div>
 	<?php endif; ?>
 
-<?php 
+<?php
 /* Wright v.4: Item elements structure */
 foreach ($this->wrightElementsStructure as $wrightElement) :
     switch ($wrightElement) :
@@ -180,7 +183,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
             <?php else : ?>
                 <?php if ($useDefList) : ?>
                     <div id="pop-print" class="btn">
-                        <?php echo JHtml::_('icon.print_screen', $this->item, $params); ?>
+                        <?php echo HTMLHelper::_('contenticon.print_screen', $params); ?>
                     </div>
                 <?php endif; ?>
             <?php endif;
