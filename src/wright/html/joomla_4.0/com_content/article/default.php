@@ -69,7 +69,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 	<meta itemprop="headline" content="<?php echo $this->escape($this->item->title); ?>" />
 	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
 	<meta itemprop="genre" content="<?php echo $this->escape($this->item->category_title); ?>" />
-	<?php if (!empty($this->item->parent_slug)) : // Parent category ?>
+	<?php if (!empty($this->item->parent_id)) : // Parent category ?>
 		<meta itemprop="genre" content="<?php echo $this->escape($this->item->parent_title); ?>" />
 	<?php endif; ?>
 	<?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>

@@ -9,18 +9,21 @@
 
 defined('JPATH_BASE') or die;
 
+use Joomla\CMS\Router\Route;
+
 ?>
 			<dd class="parent-category-name">
-				<span class="far fa-circle-arrow-up"></span> <?php // Wright v.4: Changed icon ?>
+				<span class="far fa-folder"></span> <?php // Wright v.4: Changed icon ?>
 				<?php $title = $this->escape($displayData['item']->parent_title);
-				$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->parent_slug)).'">'.$title.'</a>';?>
-				<?php if ($displayData['params']->get('link_parent_category') && !empty($displayData['item']->parent_slug)) : ?>
-					<?php echo '<span class="hidden-phone"> ' . JText::sprintf('COM_CONTENT_PARENT', $url) . '</span>';  // Wright v.4: Non-mobile version
-						echo '<span class="visible-phone"> ' . JText::sprintf($url) . '</span>';  // Wright v.4: Mobile version
+				$url = '<a href="' . Route::_(
+                        ContentHelperRoute::getCategoryRoute($displayData['item']->parent_id, $displayData['item']->parent_language)
+                    )
+                    . '">'.$title.'</a>';?>
+				<?php if ($displayData['params']->get('link_parent_category') && !empty($displayData['item']->parent_id)) : ?>
+					<?php echo JText::sprintf('COM_CONTENT_PARENT', $url);  // Wright v.4: Non-mobile version
 					?>
 				<?php else : ?>
-					<?php echo '<span class="hidden-phone"> ' . JText::sprintf('COM_CONTENT_PARENT', $title) . '</span>';  // Wright v.4: Non-mobile version
-						echo '<span class="visible-phone"> ' . JText::sprintf($title) . '</span>';  // Wright v.4: Mobile version
+					<?php echo JText::sprintf('COM_CONTENT_PARENT', $title);  // Wright v.4: Non-mobile version
 					?>
 				<?php endif; ?>
 			</dd>

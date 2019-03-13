@@ -9,12 +9,16 @@
 
 defined('JPATH_BASE') or die;
 
+use Joomla\CMS\Router\Route;
 ?>
 			<dd class="category-name">
 				<span class="far fa-folder"></span> <?php // Wright v.4: Added icon ?>
 				<?php $title = $this->escape($displayData['item']->category_title);
-				$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->catslug)).'">'.$title.'</a>';?>
-				<?php if ($displayData['params']->get('link_category') && $displayData['item']->catslug) : ?>
+				$url = '<a href="' . Route::_(
+                        ContentHelperRoute::getCategoryRoute($displayData['item']->catid, $displayData['item']->category_language)
+                    )
+                    . '">'.$title.'</a>';?>
+				<?php if ($displayData['params']->get('link_category') && $displayData['item']->catid) : ?>
 					<?php echo JText::sprintf('COM_CONTENT_CATEGORY', $url);  // Wright v.4: Non-mobile version ?>
 				<?php else : ?>
 					<?php echo JText::sprintf('COM_CONTENT_CATEGORY', $title);  // Wright v.4: Non-mobile version
