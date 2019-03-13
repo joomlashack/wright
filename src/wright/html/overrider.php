@@ -118,6 +118,37 @@ class Overrider
 					$file = JPATH_SITE.'/layouts/'.$override.'.php';
 				}
 				break;
+
+            case 'plg' :
+				// overriding plugins (Joomla 4.0+): 'plg.xx.yy', 'zz' (plugins/xx/yy/tmpl/zz.php)
+                $fileFound = false;
+                $override = str_replace('.', '_', substr($extension, 4));
+                $subversion = $version[1];
+
+                while (!$fileFound && $subversion >= 0) {
+                    // Load core Wright override
+                    if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/plg_'.$override.'/'.$layout.'.php')) {
+                        $fileFound = true;
+                        $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/plg_'.$override.'/'.$layout.'.php';
+                    }
+                    // Load override from 'overrides' folder
+                    elseif (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/plg_'.$override.'/'.$layout.'.php')) {
+                        $fileFound = true;
+                        $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/plg_'.$override.'/'.$layout.'.php';
+                    }
+                    else {
+                        // Nothing to do here
+                    }
+                    $subversion--;
+                }
+
+                // No template override. Load core view.
+                if (!$fileFound) {
+                    if ($strictOverride) return false;
+                    $override = str_replace('_', '/', $override);
+                    $file = JPATH_SITE.'/plugins/'.$override.'/tmpl/'.$layout.'.php';
+                }
+                break;
 		}
 		return $file;
 	}
