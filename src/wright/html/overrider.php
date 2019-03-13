@@ -43,10 +43,12 @@ class Overrider
 				$subversion = $version[1];
 				while (!$fileFound && $subversion >= 0) {
 	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php')) {
-	                	$fileFound = true;
+                        // Load custom override from 'overrides' folder
+                        $fileFound = true;
 						$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php';
 	                }
                     elseif (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php')) {
+                        // Load core Wright override
                         $fileFound = true;
                         $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php';
                     }
@@ -57,6 +59,7 @@ class Overrider
 				}
 				if (!$fileFound) {
 					if ($strictOverride) return false;
+                    // No template override. Load core view.
 					$file = JPATH_SITE.'/modules/'.$extension.'/tmpl/'.$layout.'.php';
 				}
 				break;
@@ -67,12 +70,14 @@ class Overrider
 				$subversion = $version[1];
 				list($folder, $view) = explode('.', $extension);
 				while (!$fileFound && $subversion >= 0) {
-	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php')) {
+                    if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php')) {
+                        // Load custom override from 'overrides' folder
                         $fileFound = true;
                         $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php';
 	                }
 	                elseif (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php')) {
-	                	$fileFound = true;
+                        // Load core Wright override
+                        $fileFound = true;
 						$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php';
 	                }
 	                else {
@@ -82,12 +87,11 @@ class Overrider
 				}
 				if (!$fileFound) {
 					if ($strictOverride) return false;
-
-					// Default path for components tmpl in Joomla 3
+					// No template override. Load core view from 'tmpl' folder in Joomla 3
 					if (version_compare(JVERSION, '4', 'lt')) {
 						$file = JPATH_SITE.'/components/'.$folder.'/views/'.$view.'/tmpl/'.$layout.'.php';
 					}
-					// Default path for components tmpl in Joomla 4
+					// No template override. Load core view from 'tmpl' folder in Joomla 4
 					else {
 						$file = JPATH_SITE.'/components/'.$folder.'/tmpl/'.$view.'/'.$layout.'.php';
 					}
@@ -100,11 +104,13 @@ class Overrider
 				$override = str_replace('.', '/', substr($extension, 4));
 				$subversion = $version[1];
 				while (!$fileFound && $subversion >= 0) {
-	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php')) {
+                    if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php')) {
+                        // Load custom override from 'overrides' folder
                         $fileFound = true;
                         $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php';
 	                }
 	                elseif (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php')) {
+                        // Load core Wright override
                         $fileFound = true;
                         $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php';
 	                }
@@ -115,6 +121,7 @@ class Overrider
 				}
 				if (!$fileFound) {
 					if ($strictOverride) return false;
+                    // No template override. Load core view.
 					$file = JPATH_SITE.'/layouts/'.$override.'.php';
 				}
 				break;
@@ -126,13 +133,13 @@ class Overrider
                 $subversion = $version[1];
 
                 while (!$fileFound && $subversion >= 0) {
-                    // Load core Wright override
                     if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/plg_'.$override.'/'.$layout.'.php')) {
+                        // Load custom override from 'overrides' folder
                         $fileFound = true;
                         $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/plg_'.$override.'/'.$layout.'.php';
                     }
-                    // Load override from 'overrides' folder
                     elseif (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/plg_'.$override.'/'.$layout.'.php')) {
+                        // Load core Wright override
                         $fileFound = true;
                         $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'joomla_'.$version[0].'.'.$subversion.'/plg_'.$override.'/'.$layout.'.php';
                     }
@@ -141,10 +148,9 @@ class Overrider
                     }
                     $subversion--;
                 }
-
-                // No template override. Load core view.
                 if (!$fileFound) {
                     if ($strictOverride) return false;
+                    // No template override. Load core view.
                     $override = str_replace('_', '/', $override);
                     $file = JPATH_SITE.'/plugins/'.$override.'/tmpl/'.$layout.'.php';
                 }
