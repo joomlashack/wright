@@ -159,10 +159,11 @@ class JFormFieldCompilecss extends JFormField
 
             // Output a message
             $html      .= '<div class="wStatusInfo">';
-            $html      .= JText::sprintf(
+            /*$html      .= JText::sprintf(
                             'TPL_JS_WRIGHT_COMPILE_LESS_MODIFY_CUSTOM_STYLE',
                             'index.php?option=com_templates&amp;task=style.edit&amp;id='. $lowestTemplateStyle
-                          );
+                          );*/
+            $html      .= 'Modify and compile the Custom style from <strong><a href="index.php?option=com_templates&amp;task=style.edit&amp;id=' . $lowestTemplateStyle. '" target="_blank">this template style <span class="icon-out-2"></span></a></strong>';
             $html      .= '</div>';
             $html      .= '<br>';
         }
