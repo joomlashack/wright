@@ -28,8 +28,33 @@ class JFormFieldCompilecss extends JFormField
 	 */
 	protected function getInput()
 	{
-        $doc        = JFactory::getDocument();
-        $template   = $this->form->getValue('template');
+        $template = $this->form->getValue('template');
+
+        /**
+         * Check if this template style is the one with lowest id
+         * due is the only template style where we can compile the custom style
+         */
+
+        $db     = JFactory::getDbo();
+        $query  = $db->getQuery(true);
+
+        $query
+            ->select($db->quoteName(array('id','title')))
+            ->from($db->quoteName('#__template_styles'))
+            ->where($db->quoteName('template') . ' LIKE '. $db->quote($template))
+            ->order('id ASC')
+            ->setLimit('1');
+
+        $db->setQuery($query);
+
+        // Record from database
+        $lowestTemplateStyle    = $db->loadResult();
+
+        // Taken from id parameter from the URL
+        $currentTemplateStyle   = JFactory::getApplication()->input->get('id', null, 'integer');
+
+        // Output CSS and Javascript
+        $doc = JFactory::getDocument();
         $doc->addScriptDeclaration('
             jQuery(function ($) {
 
@@ -78,6 +103,7 @@ class JFormFieldCompilecss extends JFormField
                 });
             });
         ');
+
         $doc->addStyleDeclaration('
             #wCompileCssStatus {
                 display: inline-block;
@@ -97,13 +123,50 @@ class JFormFieldCompilecss extends JFormField
             }
         ');
 
-        $link       = '../';
-        $html       = '<button class="btn btn-primary hasPopover"';
-        $html      .= ' id="wCompileCssBtn"';
-        $html      .= ' data-compiler="' . $link . '">';
-        $html      .= ' <span class="icon-loop" aria-hidden="true"></span> ' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS');
-        $html      .= ' </button>';
-        $html      .= '<div id="wCompileCssStatus"></div><br><br>';
+        /**
+         * Output the compile button if current template style
+         * uses the lowest id from the template.
+         *
+         * If not, just output a message pointing to
+         * the right template style.
+         */
+
+        $html           = '';
+
+        if($lowestTemplateStyle == $currentTemplateStyle){
+            $html      .= '<button class="btn btn-primary hasPopover"';
+            $html      .= ' id="wCompileCssBtn"';
+            $html      .= ' data-compiler="../">';
+            $html      .= ' <span class="icon-loop" aria-hidden="true"></span>';
+            $html      .= ' ' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS');
+            $html      .= '</button>';
+            $html      .= '<div id="wCompileCssStatus"></div>';
+            $html      .= '<br><br>';
+        }
+        else
+        {
+            // Disable all custom colors parameters
+            $doc->addScriptDeclaration('
+                jQuery(document).ready(function($){
+                    try {
+                        $(\'.wCustomColor\').attr(\'disabled\', \'disabled\').trigger(\'liszt:updated\');
+                        $(\'.wCustomColor\').css({\'opacity\': \'0.5\'});
+                    } catch(err) {
+                          console.log(err.message);
+                    }
+                });
+            ');
+
+            // Output a message
+            $html      .= '<div class="wStatusInfo">';
+            /*$html      .= JText::sprintf(
+                            'TPL_JS_WRIGHT_COMPILE_LESS_MODIFY_CUSTOM_STYLE',
+                            'index.php?option=com_templates&amp;task=style.edit&amp;id='. $lowestTemplateStyle
+                          );*/
+            $html      .= 'Modify and compile the Custom style from <strong><a href="index.php?option=com_templates&amp;task=style.edit&amp;id=' . $lowestTemplateStyle. '" target="_blank">this template style <span class="icon-out-2"></span></a></strong>';
+            $html      .= '</div>';
+            $html      .= '<br>';
+        }
 
         return $html;
 	}
