@@ -1,7 +1,13 @@
 // Wright custom mixins
 
-@mixin box-sizing($box-sizing) {
+@mixin box-sizing($box-sizing: none) {
     box-sizing: $box-sizing;
     -moz-box-sizing: $box-sizing;
     -webkit-box-sizing: $box-sizing;
+}
+
+@mixin appearance($appearance: none) {
+    -moz-appearance: $appearance;
+    -webkit-appearance: $appearance;
+    appearance: $appearance;
 }
