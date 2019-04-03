@@ -564,6 +564,10 @@ joomla-alert {
     padding: 1.5rem 1.5rem;
 }
 
+.custom-select {
+    @include appearance(none);
+}
+
 .fas,
 .far,
 .fab {
