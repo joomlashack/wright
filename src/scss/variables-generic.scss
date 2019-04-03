@@ -4,6 +4,9 @@
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 $color-one: #00A878;
 
+// Maximum width for form fields using "form-control" class
+$input-max-width:   240px;
+
 //
 // Color system
 //
@@ -242,7 +245,6 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
-
 // Fonts
 //
 // Font, line-height, and color for body text, headings, and more.
@@ -314,7 +316,6 @@ $mark-bg:                     #fcf8e3 !default;
 
 $hr-margin-y:                 $spacer !default;
 
-
 // Tables
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
@@ -347,7 +348,6 @@ $table-caption-color:         $text-muted !default;
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-max-width:             240px; // Maximum width for form fields using "form-control" class
 $input-btn-padding-y:         .375rem !default;
 $input-btn-padding-x:         .75rem !default;
 $input-btn-line-height:       $line-height-base !default;
