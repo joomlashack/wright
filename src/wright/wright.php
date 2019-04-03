@@ -503,9 +503,6 @@ class Wright
 		else {
 			$styles['template'][] = 'joomla-' . $this->_selectedStyle . '.css';
 
-			// Load Font Awesome 5
-			$styles['wrighttemplatecss'][] = 'font-awesome5.min.css';
-
 			// @todo Add RTL for Bootstrap 4
 			// @todo Add docs.css for Bootstrap 4
 			unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.min.css']);
