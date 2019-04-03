@@ -31,8 +31,8 @@ if ($context == 'com_content.categories')
 $rating = (int) $row->rating;
 
 // Icons for rating
-$starImageOn  = '<span class="fas fa-star"></span>';
-$starImageOff = '<span class="far fa-star"></span>';
+$starImageOn  = '<span class="fas fa-star wf-star-on"></span>';
+$starImageOff = '<span class="fas fa-star wf-star-off"></span>';
 
 $img = '';
 for ($i = 0; $i < $rating; $i++)

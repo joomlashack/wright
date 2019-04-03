@@ -434,6 +434,8 @@ dl.article-info {
     margin: 1rem 0;
 }
 
+
+
 /* Pagination */
 
 .container-pagination {
@@ -574,11 +576,21 @@ joomla-alert {
 }
 
 .fas,
-.far,
 .fab {
 
     &.input-group-text {
         line-height: $line-height-base;
+    }
+}
+
+.content_rating {
+
+    .wf-star-on {
+        color: $yellow;
+    }
+
+    .wf-star-off {
+        color: $gray-400;
     }
 }
 
