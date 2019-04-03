@@ -25,12 +25,12 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 				<li class="nav-item">
 					<?php if ($params->get('link_titles') == 1) : ?>
 						<a class="mod-articles-category-title nav-link <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">
-							<i class="far fa-file"></i> <?php // Wright v.4: Added icon ?>
+							<i class="fas fa-file"></i> <?php // Wright v.4: Added icon ?>
 							<?php echo $item->title; ?>
 						</a>
 					<?php else : ?>
 						<span class="nav-link">
-							<?php if($wrightEnableIcons): ?><i class="far fa-file"></i> <?php endif; ?>  <?php // Wright v.4: Added icon ?>
+							<?php if($wrightEnableIcons): ?><i class="fas fa-file"></i> <?php endif; ?>  <?php // Wright v.4: Added icon ?>
 							<?php echo $item->title; ?>
 						</span>
 					<?php endif; ?>
@@ -40,27 +40,27 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 
 							<?php if ($item->displayHits) :?>
 								<dd class="mod-articles-category-hits">
-									<i class="far fa-eye"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
+									<i class="fas fa-eye"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
 									<?php echo $item->displayHits; ?>  </dd>
 							<?php endif; ?>
 
 							<?php if ($params->get('show_author')) :?>
 								<dd class="mod-articles-category-writtenby">
-									<i class="far fa-user"></i>  <?php // Wright v.4: Added icon ?>
+									<i class="fas fa-user"></i>  <?php // Wright v.4: Added icon ?>
 									<?php echo $item->displayAuthorName; ?>
 								</dd>
 							<?php endif;?>
 
 							<?php if ($item->displayCategoryTitle) :?>
 								<dd class="mod-articles-category-category">
-									<i class="far fa-folder-open"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
+									<i class="fas fa-folder-open"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
 									<?php echo $item->displayCategoryTitle; ?>
 								</dd>
 							<?php endif; ?>
 
 							<?php if ($item->displayDate) : ?>
 								<dd class="mod-articles-category-date">
-									<i class="far fa-calendar"></i>  <?php // Wright v.4: Added icon ?>
+									<i class="fas fa-calendar"></i>  <?php // Wright v.4: Added icon ?>
 									<?php echo $item->displayDate; ?></dd>
 							<?php endif; ?>
 
@@ -104,12 +104,12 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 		<li class="nav-item">
 			<?php if ($params->get('link_titles') == 1) : ?>
 				<a class="mod-articles-category-title nav-link <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">
-				<?php if($wrightEnableIcons): ?><i class="far fa-file"></i> <?php endif; ?> <?php // Wright v.4: Added icon ?>
+				<?php if($wrightEnableIcons): ?><i class="fas fa-file"></i> <?php endif; ?> <?php // Wright v.4: Added icon ?>
 				<?php echo $item->title; ?>
 				</a>
 			<?php else : ?>
 				<span class="nav-link">
-					<?php if($wrightEnableIcons): ?><i class="far fa-file"></i> <?php endif; ?> <?php // Wright v.4: Added icon ?>
+					<?php if($wrightEnableIcons): ?><i class="fas fa-file"></i> <?php endif; ?> <?php // Wright v.4: Added icon ?>
 					<?php echo $item->title; ?>
 				</span>
 			<?php endif; ?>
@@ -119,27 +119,27 @@ $wrightIncludeImages = (isset($wrightIncludeImages) ? $wrightIncludeImages : tru
 
 					<?php if ($item->displayHits) :?>
 						<dd class="mod-articles-category-hits">
-						<i class="far fa-eye"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
+						<i class="fas fa-eye"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
 							<?php echo $item->displayHits; ?>  </dd>
 					<?php endif; ?>
 
 					<?php if ($params->get('show_author')) :?>
 						<dd class="mod-articles-category-writtenby">
-							<i class="far fa-user"></i>  <?php // Wright v.4: Added icon ?>
+							<i class="fas fa-user"></i>  <?php // Wright v.4: Added icon ?>
 							<?php echo $item->displayAuthorName; ?>
 						</dd>
 					<?php endif;?>
 
 					<?php if ($item->displayCategoryTitle) :?>
 						<dd class="mod-articles-category-category">
-						<i class="far fa-folder-open"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
+						<i class="fas fa-folder-open"></i>  <?php // Wright v.4: Added icon and removed parenthesis ?>
 							<?php echo $item->displayCategoryTitle; ?>
 						</dd>
 					<?php endif; ?>
 
 					<?php if ($item->displayDate) : ?>
 						<dd class="mod-articles-category-date">
-						<i class="far fa-calendar"></i>  <?php // Wright v.4: Added icon ?>
+						<i class="fas fa-calendar"></i>  <?php // Wright v.4: Added icon ?>
 							<?php echo $item->displayDate; ?></dd>
 					<?php endif; ?>
 

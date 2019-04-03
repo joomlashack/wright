@@ -12,7 +12,7 @@ defined('JPATH_BASE') or die;
 use Joomla\CMS\Router\Route;
 ?>
 			<dd class="category-name">
-				<span class="far fa-folder"></span> <?php // Wright v.4: Added icon ?>
+				<span class="fas fa-folder"></span> <?php // Wright v.4: Added icon ?>
 				<?php $title = $this->escape($displayData['item']->category_title);
 				$url = '<a href="' . Route::_(
                         ContentHelperRoute::getCategoryRoute($displayData['item']->catid, $displayData['item']->category_language)

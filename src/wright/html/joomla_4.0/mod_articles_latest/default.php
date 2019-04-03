@@ -18,7 +18,7 @@ defined('_JEXEC') or die;
 				if ($wrightAddIcon)
 					:
 			?>
-				<i class="far fa-file"></i>
+				<i class="fas fa-file"></i>
 			<?php
 				endif;
 				/* End Wright v.4: Add icon (optional) */

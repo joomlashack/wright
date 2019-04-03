@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 	<div class="archive-module<?php echo $moduleclass_sfx; ?> list-group">  <?php // Wright v.4: Added list-group class ?>
 		<?php foreach ($list as $item) : ?>
 			<a href="<?php echo $item->link; ?>" class="list-group-item"> <?php // Wright v.4: Added list-group-item class ?>
-				<i class="far fa-calendar"></i>  <?php // Wright v.4: Added Icon ?>
+				<i class="fas fa-calendar"></i>  <?php // Wright v.4: Added Icon ?>
 				<?php echo $item->text; ?>
 			</a>
 		<?php endforeach; ?>

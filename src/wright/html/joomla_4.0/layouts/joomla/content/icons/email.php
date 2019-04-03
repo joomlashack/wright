@@ -20,7 +20,7 @@ $legacy = $displayData['legacy'];
 	<?php if ($legacy) : ?>
 		<?php echo HTMLHelper::_('image', 'system/emailButton.png', Text::_('JGLOBAL_EMAIL'), null, true); ?>
 	<?php else : ?>
-		<span class="far fa-envelope" aria-hidden="true"></span>
+		<span class="fas fa-envelope" aria-hidden="true"></span>
 		<?php echo Text::_('JGLOBAL_EMAIL'); ?>
 	<?php endif; ?>
 <?php else : ?>

@@ -39,7 +39,7 @@ Text::script('JHIDE');
                     <input id="modlgn-username" type="text" name="username" class="form-control" placeholder="<?php echo Text::_('MOD_LOGIN_VALUE_USERNAME'); ?>">
 					<span class="input-group-append">
 						<label for="modlgn-username" class="sr-only"><?php echo Text::_('MOD_LOGIN_VALUE_USERNAME'); ?></label>
-						<span class="input-group-text far fa-user hasTooltip" title="<?php echo Text::_('MOD_LOGIN_VALUE_USERNAME'); ?>"></span>
+						<span class="input-group-text fas fa-user hasTooltip" title="<?php echo Text::_('MOD_LOGIN_VALUE_USERNAME'); ?>"></span>
 					</span>
                 </div>
             <?php else : ?>
@@ -54,7 +54,7 @@ Text::script('JHIDE');
                     <input id="modlgn-passwd" type="password" name="password" class="form-control" placeholder="<?php echo Text::_('JGLOBAL_PASSWORD'); ?>">
 					<span class="input-group-append">
 						<span class="sr-only"><?php echo Text::_('JSHOW'); ?></span>
-						<span class="input-group-text far fa-eye" aria-hidden="true"></span>
+						<span class="input-group-text fas fa-eye" aria-hidden="true"></span>
 					</span>
                 </div>
             <?php else : ?>
@@ -68,19 +68,19 @@ Text::script('JHIDE');
                 <?php if (!$params->get('usetext')) : ?>
                     <div class="input-group">
 						<span class="input-group-prepend">
-							<span class="input-group-text far fa-star hasTooltip" title="<?php echo Text::_('JGLOBAL_SECRETKEY'); ?>"></span>
+							<span class="input-group-text fas fa-star hasTooltip" title="<?php echo Text::_('JGLOBAL_SECRETKEY'); ?>"></span>
 							<label for="modlgn-secretkey" class="sr-only"><?php echo Text::_('JGLOBAL_SECRETKEY'); ?></label>
 						</span>
                         <input id="modlgn-secretkey" autocomplete="off" type="text" name="secretkey" class="form-control" placeholder="<?php echo Text::_('JGLOBAL_SECRETKEY'); ?>">
 						<span class="input-group-append hasTooltip" title="<?php echo Text::_('JGLOBAL_SECRETKEY_HELP'); ?>">
-							<span class="input-group-text far fa-help"></span>
+							<span class="input-group-text fas fa-help"></span>
 						</span>
                     </div>
                 <?php else : ?>
                     <label for="modlgn-secretkey"><?php echo Text::_('JGLOBAL_SECRETKEY'); ?></label>
                     <input id="modlgn-secretkey" autocomplete="off" type="text" name="secretkey" class="form-control" placeholder="<?php echo Text::_('JGLOBAL_SECRETKEY'); ?>">
                     <span class="btn width-auto hasTooltip" title="<?php echo Text::_('JGLOBAL_SECRETKEY_HELP'); ?>">
-						<span class="far fa-help"></span>
+						<span class="fas fa-help"></span>
 					</span>
                 <?php endif; ?>
             </div>
@@ -107,7 +107,7 @@ Text::script('JHIDE');
             <?php if ($usersConfig->get('allowUserRegistration')) : ?>
                 <li>
                     <a href="<?php echo Route::_('index.php?option=com_users&view=registration'); ?>">
-                        <?php echo Text::_('MOD_LOGIN_REGISTER'); ?> <span class="far fa-arrow-right"></span></a>
+                        <?php echo Text::_('MOD_LOGIN_REGISTER'); ?> <span class="fas fa-arrow-right"></span></a>
                 </li>
             <?php endif; ?>
             <li>

@@ -13,7 +13,7 @@ use Joomla\CMS\Router\Route;
 
 ?>
 			<dd class="parent-category-name">
-				<span class="far fa-folder"></span> <?php // Wright v.4: Changed icon ?>
+				<span class="fas fa-folder"></span> <?php // Wright v.4: Changed icon ?>
 				<?php $title = $this->escape($displayData['item']->parent_title);
 				$url = '<a href="' . Route::_(
                         ContentHelperRoute::getCategoryRoute($displayData['item']->parent_id, $displayData['item']->parent_language)

@@ -34,15 +34,15 @@ if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) : ?
 				<?php endif; ?>
 				<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($child->id)); ?>">
 				<?php echo $this->escape($child->title); ?></a>
-				<?php echo "<i class='far fa-folder-open'></i>"; // Wright v.4: Children categories icon ?>
+				<?php echo "<i class='fas fa-folder-open'></i>"; // Wright v.4: Children categories icon ?>
 
 				<?php if (count($child->getChildren()) > 0) : ?>
-					<a href="#category-<?php echo $child->id;?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini float-right"><span class="far fa-plus"></span></a>
+					<a href="#category-<?php echo $child->id;?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini float-right"><span class="fas fa-plus"></span></a>
 				<?php endif;?>
 			</h3>
 			<?php else : ?>
 			<h3 class="item-title"><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($child->id));?>">  <?php // Wright v.4: Removed page-header class ?>
-				<?php echo "<i class='far fa-folder-open'></i>"; // Wright v.4: Children categories icon ?>
+				<?php echo "<i class='fas fa-folder-open'></i>"; // Wright v.4: Children categories icon ?>
 				<?php echo $this->escape($child->title); ?></a>
 				<?php if ( $this->params->get('show_cat_num_articles', 1)) : ?>
 					<span class="badge badge-info tip hasTooltip" title="<?php echo JHtml::tooltipText('COM_CONTENT_NUM_ITEMS'); ?>">
@@ -51,7 +51,7 @@ if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) : ?
 				<?php endif; ?>
 
 				<?php if (count($child->getChildren()) > 0) : ?>
-					<a href="#category-<?php echo $child->id;?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini float-right"><span class="far fa-plus"></span></a>
+					<a href="#category-<?php echo $child->id;?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini float-right"><span class="fas fa-plus"></span></a>
 				<?php endif;?>
 			<?php endif;?>
 			</h3>

@@ -17,11 +17,11 @@ defined('_JEXEC') or die;
 	<<?php echo $item_heading; ?> class="newsflash-title">
 	<?php if ($item->link !== '' && $params->get('link_titles')) : ?>
 		<a href="<?php echo $item->link; ?>" class="nav-link">
-			<i class="far fa-file"></i> <?php // Wright v.4: Added icon ?>
+			<i class="fas fa-file"></i> <?php // Wright v.4: Added icon ?>
 			<?php echo $item->title; ?>
 		</a>
 	<?php else : ?>
-		<i class="far fa-file"></i> <?php // Wright v.4: Added icon ?>
+		<i class="fas fa-file"></i> <?php // Wright v.4: Added icon ?>
 		<?php echo $item->title; ?>
 	<?php endif; ?>
 	</<?php echo $item_heading; ?>>

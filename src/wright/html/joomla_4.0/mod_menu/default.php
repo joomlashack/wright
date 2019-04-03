@@ -167,14 +167,6 @@ foreach ($list as $i => &$item)
 	$span2          = '';
 	$hidden         = '';
 
-	// Regular Font Awesome Icons. e.g. far fa-user
-	if (preg_match_all('/far fa-([\S]+)/', $item->anchor_css, $matches))
-	{
-		$item->anchor_css = preg_replace('/far fa-([\S]+)/', '', $item->anchor_css);
-		$icons = 'far fa-' . implode(' far fa-', $matches[1]);
-		$structIcons = '<i class="' . $icons . '"></i>';
-	}
-
 	// Solid Font Awesome Icons. e.g. fas fa-user
 	if (preg_match_all('/fas fa-([\S]+)/', $item->anchor_css, $matches))
 	{
