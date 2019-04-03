@@ -568,6 +568,11 @@ joomla-alert {
     @include appearance(none);
 }
 
+.custom-select,
+.form-control {
+    max-width: $input-max-width;
+}
+
 .fas,
 .far,
 .fab {
