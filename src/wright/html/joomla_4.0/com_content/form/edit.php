@@ -22,7 +22,7 @@ HTMLHelper::_('behavior.formvalidator');
 
 HTMLHelper::_('script', 'com_content/form-edit.js', ['version' => 'auto', 'relative' => true]);
 
-HTMLHelper::_('stylesheet', 'templates/' . JFactory::getApplication()->getTemplate() . '/css/form.css');
+HTMLHelper::_('stylesheet', 'templates/' . JFactory::getApplication()->getTemplate() . '/css/frontendediting.css');
 
 $this->tab_name = 'com-content-form';
 $this->ignore_fieldsets = array('image-intro', 'image-full', 'jmetadata', 'item_associations');
