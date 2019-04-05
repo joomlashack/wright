@@ -160,7 +160,7 @@
         </minify>
 
         <include>AllediaFreeDefaultFiles</include>
-        <scss destination="css">
+        <scss destination="css" style="nested">
             <file>scss/joomla-generic.scss</file>
         </scss>
         <scss destination="css">
