@@ -164,7 +164,7 @@
             <file>scss/joomla-generic.scss</file>
         </scss>
         <scss destination="css">
-            <file>scss/frontendediting.scss</file>
+            <file>scss/frontediting.scss</file>
         </scss>
     </alledia>
 
