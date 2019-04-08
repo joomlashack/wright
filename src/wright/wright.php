@@ -9,6 +9,7 @@
 
 defined('_JEXEC') or die('You are not allowed to directly access this file');
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 
 if (version_compare(JVERSION, '3.0', 'lt'))
@@ -501,7 +502,21 @@ class Wright
 		}
 		// CSS for Joomla 4
 		else {
-			$styles['template'][] = 'joomla-' . $this->_selectedStyle . '.css';
+
+            // @todo Remove the line below if no issues are found with enableAsset()
+			//$styles['template'][] = 'joomla-' . $this->_selectedStyle . '.css';
+
+            $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+            $wr = $wa->getRegistry();
+            $wr->add(
+                new Joomla\CMS\WebAsset\WebAssetItem(
+                    'template.wright.style',
+                    [
+                        'css' => ['joomla-' . $this->_selectedStyle . '.css']
+                    ]
+                )
+            );
+            $wa->enableAsset('template.wright.style');
 
 			// @todo Add RTL for Bootstrap 4
 			// @todo Add docs.css for Bootstrap 4
