@@ -434,8 +434,9 @@ class Wright
 	private function addCSSToHead($styles)
 	{
         if (version_compare(JVERSION, '4', 'lt')) {
-            
-            // Joomla 3 - Nothing to do here!
+
+            /* Joomla 3
+             * Nothing to do here! */
         } else {
 
             // Joomla 4
