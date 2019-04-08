@@ -19,9 +19,9 @@ class WrightAdapterJoomlaNav
 
 		$doc = Wright::getInstance();
 
-		// Menu for Joomla 3
 		if (version_compare(JVERSION, '4', 'lt')) {
 
+            // Menu for Joomla 3
 			if ($args['type'] == 'toolbar') {
 				$nav =
 					'<div class="'.$args['wrapper'].'">
@@ -103,10 +103,9 @@ class WrightAdapterJoomlaNav
 				}
 			}
 
-		}
-		// Menu for Joomla 4
-		else {
+		} else {
 
+            // Menu for Joomla 4
 			if ($args['type'] == 'toolbar') {
 
 				$nav =

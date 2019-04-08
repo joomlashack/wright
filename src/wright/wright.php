@@ -132,12 +132,13 @@ class Wright
 		{
 			$wrightContainerClass = 'container-fluid';
 
-			// Joomla 3
 			if (version_compare(JVERSION, '4', 'lt')) {
-				// Nothing to do here
-			}
-			// Joomla 4 - row-fluid doesn't exist in Bootstrap 4
-			else {
+
+                // Joomla 3 - Nothing to do here
+			} else {
+
+                /* Joomla 4
+                 * row-fluid doesn't exist in Bootstrap 4 */
 				$wrightGridMode = 'row';
 			}
 		}
@@ -450,26 +451,28 @@ class Wright
 					switch ($folder)
 					{
                         case 'wrighttemplatecss':
-                            // Joomla 3
                             if (version_compare(JVERSION, '4', 'lt')) {
+
+                                // Joomla 3
                                 $sheet = $this->_urlWright . '/css/' . $style;
                                 $this->document->addStyleSheet($sheet);
-                            }
-                            // Joomla 4
-                            else {
-                                /* If a file from wright/css folder needs to be loaded,
-                                   do something here */
+                            } else {
+
+                                /* Joomla 4
+                                 * If a file from wright/css folder needs to be loaded,
+                                 * do something here */
                             }
 
                             break;
 						default:
-                            // Joomla 3
                             if (version_compare(JVERSION, '4', 'lt')) {
+
+                                // Joomla 3
                                 $sheet = $this->_urlTemplate . '/css/' . $style;
                                 $this->document->addStyleSheet($sheet);
-                            }
-                            // Joomla 4
-                            else {
+                            } else {
+
+                                // Joomla 4
                                 $wr->add(
                                     new Joomla\CMS\WebAsset\WebAssetItem(
                                         'template.wright.' . $style,
@@ -502,8 +505,9 @@ class Wright
 
 		$styles = Array();
 
-		// CSS for Joomla 3
 		if (version_compare(JVERSION, '4', 'lt')) {
+
+            // CSS for Joomla 3
 			$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
 			$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
 
@@ -532,10 +536,9 @@ class Wright
 			if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl.css')) {
 				$styles['template'][] = 'rtl.css';
 			}
-		}
-		// CSS for Joomla 4
-		else {
+		} else {
 
+            // CSS for Joomla 4
             $styles['template'][] = 'joomla-' . $this->_selectedStyle . '.css';
 
 			// @todo Add RTL for Bootstrap 4

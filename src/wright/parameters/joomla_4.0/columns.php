@@ -53,9 +53,9 @@ class JFormFieldColumns extends JFormField
 			$options[] = JHtml::_('select.option', $val, JText::_($text));
 		}
 
-		// Columns for Joomla 3
 		if (version_compare(JVERSION, '4', 'lt')) {
 
+            // Columns for Joomla 3
 			$doc->addScript(str_replace('/administrator/', '/', JURI::base()) . 'templates/' . $this->form->getValue('template') . '/wright/parameters/assets/columns/columns-30.js');
 			$doc->addStyleDeclaration('.columns.row-fluid [class*="span"] { margin-left: 0 }');
 
@@ -71,10 +71,9 @@ class JFormFieldColumns extends JFormField
 
 			$html .= '<div style="display: none; clear: both;"></div></div>';
 
-		}
-		// Columns for Joomla 4
-		else {
+		} else {
 
+            // Columns for Joomla 4
 			$doc->addScript(str_replace('/administrator/', '/', JURI::base()) . 'templates/' . $this->form->getValue('template') . '/wright/parameters/assets/columns/columns-40.js');
 			$doc->addStyleDeclaration('.columns.row [class*="col-md-"] { margin-left: 0 }');
 

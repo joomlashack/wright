@@ -87,12 +87,16 @@ class Overrider
 				}
 				if (!$fileFound) {
 					if ($strictOverride) return false;
-					// No template override. Load core view from 'tmpl' folder in Joomla 3
+
 					if (version_compare(JVERSION, '4', 'lt')) {
+
+                        /* Joomla 3
+                         * No template override. Load core view from 'tmpl' folder */
 						$file = JPATH_SITE.'/components/'.$folder.'/views/'.$view.'/tmpl/'.$layout.'.php';
-					}
-					// No template override. Load core view from 'tmpl' folder in Joomla 4
-					else {
+					} else {
+
+                        /* Joomla 4
+                         * No template override. Load core view from 'tmpl' folder */
 						$file = JPATH_SITE.'/components/'.$folder.'/tmpl/'.$view.'/'.$layout.'.php';
 					}
 				}
