@@ -1,0 +1,14 @@
+{
+  "name": "wright",
+  "version": "4.0.0-dev",
+  "description": "Joomlashack Wright Framework",
+  "license": "GPL-2.0+",
+  "assets": {
+    "template.wright.frontediting": {
+      "name": "template.wright.frontediting",
+      "css": [
+        "frontediting.css"
+      ]
+    }
+  }
+}

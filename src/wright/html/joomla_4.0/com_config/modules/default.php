@@ -21,7 +21,8 @@ HTMLHelper::_('behavior.combobox');
 
 HTMLHelper::_('script', 'com_config/modules-default.js', ['version' => 'auto', 'relative' => true]);
 
-HTMLHelper::_('stylesheet', 'templates/' . JFactory::getApplication()->getTemplate() . '/css/frontediting.css');
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$wa->enableAsset('template.wright.frontediting');
 
 $hasContent = empty($this->item['module']) || $this->item['module'] === 'custom' || $this->item['module'] === 'mod_custom';
 

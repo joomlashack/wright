@@ -10,6 +10,7 @@
 // No direct access.
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Language\Text;
@@ -22,7 +23,8 @@ HTMLHelper::_('behavior.formvalidator');
 
 HTMLHelper::_('script', 'com_content/form-edit.js', ['version' => 'auto', 'relative' => true]);
 
-HTMLHelper::_('stylesheet', 'templates/' . JFactory::getApplication()->getTemplate() . '/css/frontendediting.css');
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$wa->enableAsset('template.wright.frontediting');
 
 $this->tab_name = 'com-content-form';
 $this->ignore_fieldsets = array('image-intro', 'image-full', 'jmetadata', 'item_associations');
