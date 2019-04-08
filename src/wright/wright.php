@@ -432,7 +432,16 @@ class Wright
 	 */
 	private function addCSSToHead($styles)
 	{
-		foreach ($styles as $folder => $files)
+        if (version_compare(JVERSION, '4', 'lt')) {
+            // Joomla 3 - Nothing to do here!
+        } else {
+            // Joomla 4
+            $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+            $wr = $wa->getRegistry();
+        }
+
+
+        foreach ($styles as $folder => $files)
 		{
 			if (count($files))
 			{
@@ -441,13 +450,37 @@ class Wright
 					switch ($folder)
 					{
                         case 'wrighttemplatecss':
-                            $sheet = $this->_urlWright . '/css/' . $style;
+                            // Joomla 3
+                            if (version_compare(JVERSION, '4', 'lt')) {
+                                $sheet = $this->_urlWright . '/css/' . $style;
+                                $this->document->addStyleSheet($sheet);
+                            }
+                            // Joomla 4
+                            else {
+                                /* If a file from wright/css folder needs to be loaded,
+                                   do something here */
+                            }
+
                             break;
 						default:
-							$sheet = $this->_urlTemplate . '/css/' . $style;
+                            // Joomla 3
+                            if (version_compare(JVERSION, '4', 'lt')) {
+                                $sheet = $this->_urlTemplate . '/css/' . $style;
+                                $this->document->addStyleSheet($sheet);
+                            }
+                            // Joomla 4
+                            else {
+                                $wr->add(
+                                    new Joomla\CMS\WebAsset\WebAssetItem(
+                                        'template.wright.' . $style,
+                                        [
+                                            'css' => ['joomla-' . $this->_selectedStyle . '.css']
+                                        ]
+                                    )
+                                );
+                                $wa->enableAsset('template.wright.' . $style);
+                            }
 					}
-
-					$this->document->addStyleSheet($sheet);
 				}
 			}
 		}
@@ -503,20 +536,7 @@ class Wright
 		// CSS for Joomla 4
 		else {
 
-            // @todo Remove the line below if no issues are found with enableAsset()
-			//$styles['template'][] = 'joomla-' . $this->_selectedStyle . '.css';
-
-            $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-            $wr = $wa->getRegistry();
-            $wr->add(
-                new Joomla\CMS\WebAsset\WebAssetItem(
-                    'template.wright.style',
-                    [
-                        'css' => ['joomla-' . $this->_selectedStyle . '.css']
-                    ]
-                )
-            );
-            $wa->enableAsset('template.wright.style');
+            $styles['template'][] = 'joomla-' . $this->_selectedStyle . '.css';
 
 			// @todo Add RTL for Bootstrap 4
 			// @todo Add docs.css for Bootstrap 4
