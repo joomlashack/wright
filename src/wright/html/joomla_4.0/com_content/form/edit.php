@@ -23,9 +23,6 @@ HTMLHelper::_('behavior.formvalidator');
 
 HTMLHelper::_('script', 'com_content/form-edit.js', ['version' => 'auto', 'relative' => true]);
 
-$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$wa->enableAsset('template.wright.frontediting');
-
 $this->tab_name = 'com-content-form';
 $this->ignore_fieldsets = array('image-intro', 'image-full', 'jmetadata', 'item_associations');
 
@@ -170,3 +167,7 @@ if (!$editoroptions)
         </div>
     </form>
 </div>
+<?php
+// Load frontediting.css as last CSS file
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$wa->enableAsset('template.wright.frontediting');

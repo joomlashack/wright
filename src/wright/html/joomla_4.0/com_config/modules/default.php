@@ -21,9 +21,6 @@ HTMLHelper::_('behavior.combobox');
 
 HTMLHelper::_('script', 'com_config/modules-default.js', ['version' => 'auto', 'relative' => true]);
 
-$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$wa->enableAsset('template.wright.frontediting');
-
 $hasContent = empty($this->item['module']) || $this->item['module'] === 'custom' || $this->item['module'] === 'mod_custom';
 
 // If multi-language site, make language read-only
@@ -189,3 +186,7 @@ if (Multilanguage::isEnabled())
 		</div>
 	</div>
 </form>
+<?php
+// Load frontediting.css as last CSS file
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$wa->enableAsset('template.wright.frontediting');
