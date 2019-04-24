@@ -115,7 +115,8 @@ if (!empty($this->lead_items)) :
      * set: cols-2 or cols-3 or cols-4 ... cols-12
      */
     ?>
-<div class="items-leading wf-row wf-<?php echo $this->params->get('blog_class_leading') . ' ' . $this->wrightLeadingItemsClass; // Wright v.4: Leading Items extra Class ?>">
+<div class="items-leading wf-row wf-<?php echo ($this->params->get('blog_class_leading') != '') ? $this->params->get('blog_class_leading') : 'cols-1'
+    . ' ' . $this->wrightLeadingItemsClass; // Wright v.4: Leading Items extra Class ?>">
 	<?php foreach ($this->lead_items as &$item) : ?>
 		<div class="wf-col leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?> clearfix<?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.4: Item elements extra elements
 		 ?>">
@@ -142,7 +143,7 @@ if (!empty($this->intro_items)) :
      */
     ?>
 
-	<div class="wf-row wf-<?php echo $this->params->get('blog_class'); ?>">
+	<div class="wf-row wf-<?php echo ($this->params->get('blog_class') != '') ? $this->params->get('blog_class') : 'cols-1'; ?>">
 
 		<?php foreach ($this->intro_items as $key => &$item) : ?>
 
