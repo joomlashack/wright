@@ -179,10 +179,17 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	<?php if (isset($this->wrightLeadingIntroItemsClass)) if ($this->wrightLeadingIntroItemsClass != "") echo '<div class="' . $this->wrightLeadingIntroItemsClass . '">'; // Wright v.4: Extra Leading and Intro Items Div and Class ?>
 
 	<?php $leadingcount = 0; ?>
-	<?php if (!empty($this->lead_items)) : ?>
-	<div class="items-leading clearfix<?php echo " " . $this->wrightLeadingItemsClass; // Wright v.4: Leading Items extra Class ?>">
+	<?php
+    if (!empty($this->lead_items)) :
+        /*
+         * In order to set columns for leading_items,
+         * through Menu item > Layout > Blog Class (Leading articles)
+         * set: cols-2 or cols-3 or cols-4 ... cols-12
+         */
+        ?>
+	<div class="items-leading wf-row wf-<?php echo $this->params->get('blog_class_leading') . ' ' . $this->wrightLeadingItemsClass; // Wright v.4: Leading Items extra Class ?>">
 		<?php foreach ($this->lead_items as &$item) : ?>
-		<div class="mb-5 leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.4: Item elements extra elements
+		<div class="wf-col leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?><?php echo ($this->wrightLeadingExtraClass != '' ? ' ' . $this->wrightLeadingExtraClass : ''); if ($this->wrightLeadingHasImageClass != '') { $images = json_decode($item->images); echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightLeadingHasImageClass : ''); } // Wright v.4: Item elements extra elements
 		 ?>">
 			<div itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
                 <?php
@@ -198,7 +205,8 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 		?>
 		<?php endforeach; ?>
 	</div><!-- end items-leading -->
-	<?php endif;
+	<?php
+    endif;
     /*
      * In order to set columns for intro_items,
      * through Menu item > Layout > Blog Class
