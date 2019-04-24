@@ -6,7 +6,7 @@
         grid-column-gap: $grid-gutter-width;
         margin: 0; // To reset from flexbox
 
-        @for $i from 2 through 12 {
+        @for $i from 1 through 12 {
 
             &.wf-cols-#{$i} {
 

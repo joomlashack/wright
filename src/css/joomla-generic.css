@@ -6996,6 +6996,15 @@ form:not(.form-no-margin) .control-group {
     grid-column-gap: 30px;
     margin: 0; }
     @media (min-width: 768px) {
+      .wf-row.wf-cols-1 {
+        grid-template-columns: repeat(1, 1fr); }
+        .wf-row.wf-cols-1 .wf-col {
+          -ms-flex: unset;
+          flex: unset;
+          max-width: unset; }
+          .wf-row.wf-cols-1 .wf-col .wf-item {
+            margin: 0; } }
+    @media (min-width: 768px) {
       .wf-row.wf-cols-2 {
         grid-template-columns: repeat(2, 1fr); }
         .wf-row.wf-cols-2 .wf-col {
