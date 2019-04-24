@@ -135,7 +135,7 @@ if (!empty($this->intro_items)) :
      */
     ?>
 
-	<div class="wf-row wf-<?php echo $this->params->get('blog_class');?>">
+	<div class="wf-row wf-<?php echo $this->params->get('blog_class'); ?>">
 
 		<?php foreach ($this->intro_items as $key => &$item) : ?>
 
