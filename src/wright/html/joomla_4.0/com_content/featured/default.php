@@ -126,9 +126,16 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 </div>
 <?php endif; ?>
 
-<?php if (!empty($this->intro_items)) : ?>
+<?php
+if (!empty($this->intro_items)) :
+    /*
+     * In order to set columns for intro_items,
+     * through Menu item > Layout > Blog Class
+     * set: cols-2 or cols-3 or cols-4 ... cols-12
+     */
+    ?>
 
-	<div class="wf-row wf-cols-<?php echo (int) $this->columns;?>">
+	<div class="wf-row wf-<?php echo $this->params->get('blog_class');?>">
 
 		<?php foreach ($this->intro_items as $key => &$item) : ?>
 
