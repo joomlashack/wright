@@ -63,9 +63,8 @@ if ($displayData['active'])
         $limit = 'limitstart.value=0';
     }
 
-    $class = 'active';
+    $class = '';
     $title = 'title="' . $item->text . '"';
-    $onClick = 'document.adminForm.' . $item->prefix . 'limitstart.value=' . ($item->base > 0 ? $item->base : '0') . '; Joomla.submitform();return false;';
 }
 else
 {
@@ -74,7 +73,7 @@ else
 ?>
 <?php if ($displayData['active']) : ?>
     <li class="<?php echo $class; ?> page-item">
-        <a class="page-link" <?php echo $title; ?> aria-label="<?php echo $aria; ?>" href="#" onclick="<?php echo $onClick; ?>">
+        <a class="page-link" <?php echo $title; ?> aria-label="<?php echo $aria; ?>" href="<?php echo $item->link; ?>">
             <?php echo $display; ?>
         </a>
     </li>
