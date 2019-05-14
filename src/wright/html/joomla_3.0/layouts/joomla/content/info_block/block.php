@@ -4,7 +4,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Joomlashack. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -13,7 +13,7 @@ defined('JPATH_BASE') or die;
 $blockPosition = $displayData['params']->get('info_block_position', 0);
 
 ?>
-	<dl class="article-info  muted">
+	<dl class="article-info muted">
 
 		<?php if ($displayData['position'] == 'above' && ($blockPosition == 0 || $blockPosition == 2)
 				|| $displayData['position'] == 'below' && ($blockPosition == 1)

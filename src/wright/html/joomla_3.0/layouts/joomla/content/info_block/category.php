@@ -4,7 +4,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Joomlashack. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,7 +12,7 @@ defined('JPATH_BASE') or die;
 
 ?>
 <dd class="category-name">
-	<span class="icon-folder-close"></span> <?php // Wright v.3: Added icon ?>
+	<span class="icon-folder-open"></span> <?php // Wright v.3: Added icon ?>
 	<?php $title = $this->escape($displayData['item']->category_title);
 	$url = '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->catslug)).'">'.$title.'</a>';?>
 	<?php if ($displayData['params']->get('link_category') && $displayData['item']->catslug) : ?>
