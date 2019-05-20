@@ -14,6 +14,6 @@ use Joomla\CMS\Language\Text;
 
 ?>
 <dd class="published">
-    <span class="fas fa-calendar"></span>
+    <span class="fas fa-calendar-check"></span>
     <?php echo Text::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', HTMLHelper::_('date', $displayData['item']->publish_up, Text::_('DATE_FORMAT_LC3'))); ?>
 </dd>
