@@ -6853,11 +6853,14 @@ joomla-alert {
 .fab.input-group-text {
   line-height: 1.5; }
 
-.content_rating .wf-star-on {
-  color: #ffc107; }
-
-.content_rating .wf-star-off {
-  color: #ced4da; }
+.content_rating {
+  margin: 0 0 5px; }
+  .content_rating .wf-star-on {
+    color: #ffc107; }
+  .content_rating .wf-star-off {
+    color: #ced4da; }
+  .content_rating ~ form {
+    margin: 0 0 15px; }
 
 /* Tags */
 .mod-tagspopular-cloud a.tag-name {

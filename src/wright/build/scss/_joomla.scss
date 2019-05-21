@@ -584,13 +584,18 @@ joomla-alert {
 }
 
 .content_rating {
-
+    margin: 0 0 5px;
+    
     .wf-star-on {
         color: $yellow;
     }
 
     .wf-star-off {
         color: $gray-400;
+    }
+
+    ~ form {
+        margin: 0 0 15px;
     }
 }
 
