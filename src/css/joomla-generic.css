@@ -6684,6 +6684,12 @@ a.hidden-text span.hidden-text {
   font-weight: 300;
   border-radius: 0; }
 
+/* Breadcrumbs */
+.breadcrumb li > span {
+  color: #6c757d; }
+  .breadcrumb li > span.fas {
+    margin-right: 10px; }
+
 /* Articles newsflash */
 .mod-articlesnews .nav-item h1,
 .mod-articlesnews .nav-item h2,

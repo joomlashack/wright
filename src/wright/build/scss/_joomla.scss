@@ -228,6 +228,22 @@ a {
     @include border-radius(0);
 }
 
+/* Breadcrumbs */
+
+.breadcrumb {
+
+    li {
+
+        > span {
+            color: $gray-600;
+
+            &.fas {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
 /* Articles newsflash */
 
 .mod-articlesnews {
