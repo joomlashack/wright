@@ -16,8 +16,9 @@ $urls = json_decode($this->item->urls);
 $params = $this->item->params;
 if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))) :
 ?>
+<div class="clearfix"></div>
 <div class="content-links">
-	<ul class="nav nav-tabs nav-stacked">
+	<div class="list-group">
 		<?php
 			$urlarray = array(
 			array($urls->urla, $urls->urlatext, $urls->targeta, 'a'),
@@ -39,41 +40,37 @@ if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))
 
 				// If no target is present, use the default
 				$target = $target ? $target : $params->get('target'.$id);
-				?>
-			<li class="content-links-<?php echo $id; ?>">
-				<?php
-					// Compute the correct link
 
-					switch ($target)
-					{
-						case 1:
-							// open in a new window
-							echo '<a href="'. htmlspecialchars($link) .'" target="_blank"  rel="nofollow">'.
-								htmlspecialchars($label) .'</a>';
-							break;
+                // Compute the correct link
 
-						case 2:
-							// open in a popup window
-							$attribs = 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=600';
-							echo "<a href=\"" . htmlspecialchars($link) . "\" onclick=\"window.open(this.href, 'targetWindow', '".$attribs."'); return false;\">".
-								htmlspecialchars($label).'</a>';
-							break;
-						case 3:
-							// open in a modal window
-							JHtml::_('behavior.modal', 'a.modal');
-							echo '<a class="modal" href="'.htmlspecialchars($link).'"  rel="{handler: \'iframe\', size: {x:600, y:600}}">'.
-								htmlspecialchars($label) . ' </a>';
-							break;
+                switch ($target)
+                {
+                    case 1:
+                        // open in a new window
+                        echo '<a href="'. htmlspecialchars($link) .'" target="_blank"  rel="nofollow" class="list-group-item list-group-item-action">'.
+                            htmlspecialchars($label) .'</a>';
+                        break;
 
-						default:
-							// open in parent window
-							echo '<a href="'.  htmlspecialchars($link) . '" rel="nofollow">'.
-								htmlspecialchars($label) . ' </a>';
-							break;
-					}
-				?>
-				</li>
-		<?php endforeach; ?>
-	</ul>
+                    case 2:
+                        // open in a popup window
+                        $attribs = 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=600';
+                        echo "<a href=\"" . htmlspecialchars($link) . "\" onclick=\"window.open(this.href, 'targetWindow', '".$attribs."'); return false;\" class=\"list-group-item list-group-item-action\">".
+                            htmlspecialchars($label).'</a>';
+                        break;
+                    case 3:
+                        // open in a modal window
+                        JHtml::_('behavior.modal', 'a.modal');
+                        echo '<a class="modal" href="'.htmlspecialchars($link).'"  rel="{handler: \'iframe\', size: {x:600, y:600}}" class="list-group-item list-group-item-action">'.
+                            htmlspecialchars($label) . ' </a>';
+                        break;
+
+                    default:
+                        // open in parent window
+                        echo '<a href="'.  htmlspecialchars($link) . '" rel="nofollow" class="list-group-item list-group-item-action">'.
+                            htmlspecialchars($label) . ' </a>';
+                        break;
+                }
+		endforeach; ?>
+	</div>
 </div>
 <?php endif; ?>

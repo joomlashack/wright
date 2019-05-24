@@ -165,7 +165,7 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
             <?php if (!$this->print) : ?>
                 <?php if ($canEdit || $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
                 <div class="btn-group float-right icons-actions">   <?php // Wright v.4: Added icons-actions class ?>
-                    <a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" href="#"> <span class="fas fa-cog"></span> <span class="caret"></span> </a>
+                    <a class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" href="#"> <span class="fas fa-cog"></span> <span class="caret"></span> </a>
                     <?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
                     <ul class="dropdown-menu actions">
                         <?php if ($params->get('show_print_icon')) : ?>
