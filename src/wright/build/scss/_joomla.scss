@@ -364,6 +364,13 @@ a {
             @extend .mb-5;
         }
     }
+
+    .items-more {
+
+        ~ .cat-children {
+            margin-top: 3rem;
+        }
+    }
 }
 
 p {

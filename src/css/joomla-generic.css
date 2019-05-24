@@ -6734,6 +6734,10 @@ a.hidden-text span.hidden-text {
   margin-bottom: 2rem; }
 
 /* Articles */
+.blog .items-more ~ .cat-children,
+.blog-featured .items-more ~ .cat-children {
+  margin-top: 3rem; }
+
 p.img_caption {
   background: none repeat scroll 0 0 #e9ecef;
   font-size: 0.75em;

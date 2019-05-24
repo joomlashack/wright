@@ -26,7 +26,7 @@ if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) : ?
 		<div<?php echo $class; ?>>
 			<?php $class = ''; ?>
 			<?php if ($lang->isRTL()) : ?>
-			<h3 class="item-title">  <?php // Wright v.4: Removed page-header class ?>
+			<h4 class="item-title">  <?php // Wright v.4: Removed page-header class ?>
 				<?php if ( $this->params->get('show_cat_num_articles', 1)) : ?>
 					<span class="badge badge-info tip hasTooltip" title="<?php echo JHtml::tooltipText('COM_CONTENT_NUM_ITEMS'); ?>">
 						<?php echo $child->getNumItems(true); ?>
@@ -39,9 +39,9 @@ if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) : ?
 				<?php if (count($child->getChildren()) > 0) : ?>
 					<a href="#category-<?php echo $child->id;?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini float-right"><span class="fas fa-plus"></span></a>
 				<?php endif;?>
-			</h3>
+			</h4>
 			<?php else : ?>
-			<h3 class="item-title"><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($child->id));?>">  <?php // Wright v.4: Removed page-header class ?>
+			<h4 class="item-title"><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($child->id));?>">  <?php // Wright v.4: Removed page-header class ?>
 				<?php echo "<i class='fas fa-folder-open'></i>"; // Wright v.4: Children categories icon ?>
 				<?php echo $this->escape($child->title); ?></a>
 				<?php if ( $this->params->get('show_cat_num_articles', 1)) : ?>
@@ -54,7 +54,7 @@ if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) : ?
 					<a href="#category-<?php echo $child->id;?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini float-right"><span class="fas fa-plus"></span></a>
 				<?php endif;?>
 			<?php endif;?>
-			</h3>
+			</h4>
 
 			<?php if ($this->params->get('show_subcat_desc') == 1) : ?>
 			<?php if ($child->description) : ?>
