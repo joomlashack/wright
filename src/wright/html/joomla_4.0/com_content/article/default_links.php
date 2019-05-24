@@ -17,7 +17,7 @@ $params = $this->item->params;
 if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))) :
 ?>
 <div class="clearfix"></div>
-<div class="content-links">
+<div class="content-links mb-3">
 	<div class="list-group">
 		<?php
 			$urlarray = array(
