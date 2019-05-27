@@ -6901,6 +6901,9 @@ form:not(.form-no-margin) .control-group {
   form:not(.form-no-margin) .control-group.com-users-login__remember .controls {
     margin-left: 220px; }
 
+form .control-group .control-label .optional {
+  font-size: 0.8em; }
+
 /* Responsive utilities */
 @media (max-width: 575px) {
   /* Margin bottom */
