@@ -6927,19 +6927,11 @@ form .control-group .control-label .optional {
     margin-bottom: 1.5rem; } }
 
 .wf-contact-single-icons dl dt {
+  text-align: left;
   width: 30px; }
 
-[dir="ltr"] .wf-contact-single-icons dl dt {
-  text-align: left; }
-
-[dir="ltr"] .wf-contact-single-icons dl dd {
+.wf-contact-single-icons dl dd {
   margin-left: 30px; }
-
-[dir="rtl"] .wf-contact-single-icons dl dt {
-  text-align: right; }
-
-[dir="rtl"] .wf-contact-single-icons dl dd {
-  margin-right: 30px; }
 
 /* Responsive utilities */
 @media (max-width: 575px) {

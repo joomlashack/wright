@@ -480,11 +480,12 @@ class Wright
                                     new Joomla\CMS\WebAsset\WebAssetItem(
                                         'template.wright.' . $style,
                                         [
-                                            'css' => ['joomla-' . $this->_selectedStyle . '.css']
+                                            'css' => [$style]
                                         ]
                                     )
                                 );
                                 $wa->enableAsset('template.wright.' . $style);
+                                echo $style;
                             }
 					}
 				}
@@ -536,8 +537,8 @@ class Wright
 				$styles['template'][] = 'docs.css';
 			}
 
-			if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl.css')) {
-				$styles['template'][] = 'rtl.css';
+			if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl-30.css')) {
+				$styles['template'][] = 'rtl-30.css';
 			}
 		} else {
 
@@ -545,6 +546,10 @@ class Wright
             $styles['template'][] = 'joomla-' . $this->_selectedStyle . '.css';
 
 			// @todo Add RTL for Bootstrap 4
+            if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl-40.css')) {
+                $styles['template'][] = 'rtl-40.css';
+            }
+
 			// @todo Add docs.css for Bootstrap 4
 			unset($doc->_styleSheets[JURI::root(true) . '/media/vendor/bootstrap/css/bootstrap.min.css']);
 		}

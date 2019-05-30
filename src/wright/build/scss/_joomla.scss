@@ -735,41 +735,12 @@ form {
     dl {
 
         dt {
+            text-align: left;
             width: 30px;
         }
-    }
-}
 
-[dir="ltr"] {
-
-    .wf-contact-single-icons {
-
-        dl {
-
-            dt {
-                text-align: left;
-            }
-
-            dd {
-                margin-left: 30px;
-            }
-        }
-    }
-}
-
-[dir="rtl"] {
-
-    .wf-contact-single-icons {
-
-        dl {
-
-            dt {
-                text-align: right;
-            }
-
-            dd {
-                margin-right: 30px;
-            }
+        dd {
+            margin-left: 30px;
         }
     }
 }

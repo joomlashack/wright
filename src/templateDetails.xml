@@ -167,6 +167,13 @@
         <scss destination="css">
             <file>scss/frontediting.scss</file>
         </scss>
+        <scss destination="css">
+            <file>scss/rtl-40.scss</file>
+        </scss>
+
+        <obsolete>
+            <file>/templates/js_wright/css/rtl.css</file>
+        </obsolete>
     </alledia>
 
 </extension>

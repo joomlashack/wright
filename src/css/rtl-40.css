@@ -1,0 +1,10 @@
+/* ==== RTL Support ====
+ *
+ * The order of these files matter!
+*/
+/* ==== RTL Support ==== */
+.wf-contact-single-icons dl dt {
+  text-align: right; }
+
+.wf-contact-single-icons dl dd {
+  margin-right: 30px; }
