@@ -17,7 +17,7 @@ HTMLHelper::_('behavior.keepalive');
 HTMLHelper::_('behavior.formvalidator');
 
 ?>
-<div class="com-contact__form contact-form">
+<div class="com-contact__form contact-form mb-5">
     <form id="contact-form" action="<?php echo Route::_('index.php'); ?>" method="post" class="form-validate form-horizontal well">
         <?php foreach ($this->form->getFieldsets() as $fieldset) : ?>
             <?php if ($fieldset->name === 'captcha' && !$this->captchaEnabled) : ?>

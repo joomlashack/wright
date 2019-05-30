@@ -19,13 +19,30 @@ use Joomla\Component\Contact\Site\Helper\Route as ContactHelperRoute;
 
 $cparams = ComponentHelper::getParams('com_media');
 $tparams = $this->item->params;
+
+// Check Contact Options > Icons > Settings
+switch($this->params->get('contact_icons', 0)) {
+    default:
+        $wfContactSingleClass = 'wf-contact-single-icons';
+        break;
+
+    case 1:
+        $wfContactSingleClass = 'wf-contact-single-text';
+        break;
+
+    case 2:
+        $wfContactSingleClass = 'wf-contact-single-none';
+        break;
+}
 ?>
 
-<div class="com-contact contact" itemscope itemtype="https://schema.org/Person">
+<div class="com-contact contact <?php echo $wfContactSingleClass; ?>" itemscope itemtype="https://schema.org/Person">
     <?php if ($tparams->get('show_page_heading')) : ?>
-        <h1>
-            <?php echo $this->escape($tparams->get('page_heading')); ?>
-        </h1>
+        <div class="page-header">
+            <h1>
+                <?php echo $this->escape($tparams->get('page_heading')); ?>
+            </h1>
+        </div>
     <?php endif; ?>
 
     <?php if ($this->item->name && $tparams->get('show_name')) : ?>
@@ -76,18 +93,18 @@ $tparams = $this->item->params;
         <?php echo '<h3>' . Text::_('COM_CONTACT_DETAILS') . '</h3>'; ?>
 
         <?php if ($this->item->image && $tparams->get('show_image')) : ?>
-            <div class="com-contact__thumbnail thumbnail float-right">
+            <div class="com-contact__thumbnail thumbnail">
                 <?php echo HTMLHelper::_('image', $this->item->image, htmlspecialchars($this->contact->name,  ENT_QUOTES, 'UTF-8'), array('itemprop' => 'image')); ?>
             </div>
         <?php endif; ?>
 
         <?php if ($this->item->con_position && $tparams->get('show_position')) : ?>
-            <dl class="com-contact__position contact-position dl-horizontal">
-                <dt><?php echo Text::_('COM_CONTACT_POSITION'); ?>:</dt>
-                <dd itemprop="jobTitle">
+            <div class="com-contact__position contact-position dl-horizontal mb-5">
+                <strong><?php echo Text::_('COM_CONTACT_POSITION'); ?>:</strong>
+                <span itemprop="jobTitle">
                     <?php echo $this->item->con_position; ?>
-                </dd>
-            </dl>
+                </span>
+            </div>
         <?php endif; ?>
 
         <?php echo $this->loadTemplate('address'); ?>
@@ -132,7 +149,15 @@ $tparams = $this->item->params;
             <dl class="dl-horizontal">
                 <dt>
 					<span class="<?php echo $tparams->get('marker_class'); ?>">
-					<?php echo $tparams->get('marker_misc'); ?>
+                        <?php
+                        // Wright 4. If no icon is defined in the Contact Options > Icons
+                        // while Settings is set as "icons", we'll display a Font Awesome icon
+                        if($this->params->get('icon_misc') or $this->params->get('contact_icons') != 0) {
+                            echo $this->params->get('marker_misc');
+                        } else {
+                            echo '<i class="fas fa-info-circle"></i>';
+                        }
+                        ?>
 					</span>
                 </dt>
                 <dd>

@@ -16,7 +16,7 @@ JLoader::register('ContentHelperRoute', JPATH_SITE . '/components/com_content/he
 
 ?>
 <?php if ($this->params->get('show_articles')) : ?>
-    <div class="com-contact__articles contact-articles">
+    <div class="com-contact__articles contact-articles mb-5">
         <ul class="nav nav-tabs nav-stacked">
             <?php foreach ($this->item->articles as $article) : ?>
                 <li>

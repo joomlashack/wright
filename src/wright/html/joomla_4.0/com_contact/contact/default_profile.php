@@ -17,7 +17,7 @@ use Joomla\CMS\String\PunycodeHelper;
 ?>
 <?php if (PluginHelper::isEnabled('user', 'profile')) :
     $fields = $this->item->profile->getFieldset('profile'); ?>
-    <div class="com-contact__profile contact-profile" id="users-profile-custom">
+    <div class="com-contact__profile contact-profile mb-5" id="users-profile-custom">
         <dl class="dl-horizontal">
             <?php foreach ($fields as $profile) :
                 if ($profile->value) :

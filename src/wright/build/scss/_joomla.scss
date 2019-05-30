@@ -40,6 +40,24 @@ div {
     }
 }
 
+dl {
+
+    dt {
+        float: left;
+        width: 160px;
+        clear: left;
+        text-align: right;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    dd {
+        margin-left: 180px;
+        margin-bottom: 10px;
+    }
+}
+
 /* Hidden text */
 
 a {
@@ -690,6 +708,67 @@ form {
 
             .optional {
                 font-size: 0.8em;
+            }
+        }
+    }
+}
+
+/* Contact */
+
+.com-contact {
+
+    &.contact {
+
+        .thumbnail {
+            @media (min-width: 768px) {
+                float: right;
+            }
+            @media (max-width: 767px) {
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+}
+
+.wf-contact-single-icons {
+
+    dl {
+
+        dt {
+            width: 30px;
+        }
+    }
+}
+
+[dir="ltr"] {
+
+    .wf-contact-single-icons {
+
+        dl {
+
+            dt {
+                text-align: left;
+            }
+
+            dd {
+                margin-left: 30px;
+            }
+        }
+    }
+}
+
+[dir="rtl"] {
+
+    .wf-contact-single-icons {
+
+        dl {
+
+            dt {
+                text-align: right;
+            }
+
+            dd {
+                margin-right: 30px;
             }
         }
     }

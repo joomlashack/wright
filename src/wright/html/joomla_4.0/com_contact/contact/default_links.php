@@ -15,7 +15,7 @@ use Joomla\CMS\Language\Text;
 ?>
 <?php echo '<h3>' . Text::_('COM_CONTACT_LINKS') . '</h3>'; ?>
 
-<div class="com-contact__links contact-links">
+<div class="com-contact__links contact-links mb-5">
     <ul class="nav flex-column">
         <?php
         // Letters 'a' to 'e'

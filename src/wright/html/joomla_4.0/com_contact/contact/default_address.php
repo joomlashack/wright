@@ -16,12 +16,20 @@ use Joomla\CMS\String\PunycodeHelper;
  * jicon-text, jicon-none, jicon-icon
  */
 ?>
-<dl class="com-contact__address contact-address dl-horizontal" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+<dl class="com-contact__address contact-address dl-horizontal mb-5" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
     <?php if (($this->params->get('address_check') > 0) &&
         ($this->item->address || $this->item->suburb  || $this->item->state || $this->item->country || $this->item->postcode)) : ?>
         <dt>
 			<span class="<?php echo $this->params->get('marker_class'); ?>">
-				<?php echo $this->params->get('marker_address'); ?>
+				<?php
+                // Wright 4. If no icon is defined in the Contact Options > Icons
+                // while Settings is set as "icons", we'll display a Font Awesome icon
+                if($this->params->get('icon_address') or $this->params->get('contact_icons') != 0) {
+                    echo $this->params->get('marker_address');
+                } else {
+                    echo '<i class="fas fa-map-marker-alt"></i>';
+                }
+                ?>
 			</span>
         </dt>
 
@@ -71,7 +79,15 @@ use Joomla\CMS\String\PunycodeHelper;
     <?php if ($this->item->email_to && $this->params->get('show_email')) : ?>
         <dt>
 		<span class="<?php echo $this->params->get('marker_class'); ?>" itemprop="email">
-			<?php echo nl2br($this->params->get('marker_email')); ?>
+            <?php
+            // Wright 4. If no icon is defined in the Contact Options > Icons
+            // while Settings is set as "icons", we'll display a Font Awesome icon
+            if($this->params->get('icon_email') or $this->params->get('contact_icons') != 0) {
+                echo nl2br($this->params->get('marker_email'));
+            } else {
+                echo '<i class="fas fa-envelope"></i>';
+            }
+            ?>
 		</span>
         </dt>
         <dd>
@@ -84,7 +100,15 @@ use Joomla\CMS\String\PunycodeHelper;
     <?php if ($this->item->telephone && $this->params->get('show_telephone')) : ?>
         <dt>
 		<span class="<?php echo $this->params->get('marker_class'); ?>">
-			<?php echo $this->params->get('marker_telephone'); ?>
+            <?php
+            // Wright 4. If no icon is defined in the Contact Options > Icons
+            // while Settings is set as "icons", we'll display a Font Awesome icon
+            if($this->params->get('icon_telephone') or $this->params->get('contact_icons') != 0) {
+                echo $this->params->get('marker_telephone');
+            } else {
+                echo '<i class="fas fa-phone"></i>';
+            }
+            ?>
 		</span>
         </dt>
         <dd>
@@ -96,7 +120,15 @@ use Joomla\CMS\String\PunycodeHelper;
     <?php if ($this->item->fax && $this->params->get('show_fax')) : ?>
         <dt>
 		<span class="<?php echo $this->params->get('marker_class'); ?>">
-			<?php echo $this->params->get('marker_fax'); ?>
+            <?php
+            // Wright 4. If no icon is defined in the Contact Options > Icons
+            // while Settings is set as "icons", we'll display a Font Awesome icon
+            if($this->params->get('icon_fax') or $this->params->get('contact_icons') != 0) {
+                echo $this->params->get('marker_fax');
+            } else {
+                echo '<i class="fas fa-fax"></i>';
+            }
+            ?>
 		</span>
         </dt>
         <dd>
@@ -108,7 +140,15 @@ use Joomla\CMS\String\PunycodeHelper;
     <?php if ($this->item->mobile && $this->params->get('show_mobile')) : ?>
         <dt>
 		<span class="<?php echo $this->params->get('marker_class'); ?>">
-			<?php echo $this->params->get('marker_mobile'); ?>
+            <?php
+            // Wright 4. If no icon is defined in the Contact Options > Icons
+            // while Settings is set as "icons", we'll display a Font Awesome icon
+            if($this->params->get('icon_mobile') or $this->params->get('contact_icons') != 0) {
+                echo $this->params->get('marker_mobile');
+            } else {
+                echo '<i class="fas fa-mobile-alt"></i>';
+            }
+            ?>
 		</span>
         </dt>
         <dd>
@@ -120,6 +160,7 @@ use Joomla\CMS\String\PunycodeHelper;
     <?php if ($this->item->webpage && $this->params->get('show_webpage')) : ?>
         <dt>
 		<span class="<?php echo $this->params->get('marker_class'); ?>">
+            <i class="fas fa-globe-americas"></i>
 		</span>
         </dt>
         <dd>
