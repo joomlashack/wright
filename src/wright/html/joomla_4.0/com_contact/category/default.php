@@ -9,4 +9,13 @@
 
 defined('_JEXEC') or die;
 
-require(JPATH_BASE . '/components/com_contact/tmpl/category/default.php');
+use Joomla\CMS\Layout\LayoutHelper;
+
+?>
+
+<div class="com-contact-category">
+    <?php
+    $this->subtemplatename = 'items';
+    echo LayoutHelper::render('joomla.content.category_default', $this);
+    ?>
+</div>
