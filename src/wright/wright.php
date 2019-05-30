@@ -476,16 +476,18 @@ class Wright
                             } else {
 
                                 // Joomla 4
+                                // We need to extract 'filename' from 'file-name.css'
+                                $styleName = explode('.css', str_replace('-', '', $style));
                                 $wr->add(
                                     new Joomla\CMS\WebAsset\WebAssetItem(
-                                        'template.wright.' . $style,
+                                        'template.wright.' . $styleName[0],
                                         [
                                             'css' => [$style]
                                         ]
                                     )
                                 );
-                                $wa->enableAsset('template.wright.' . $style);
-                                echo $style;
+                                // 'template.wright.filename'
+                                $wa->enableAsset('template.wright.' . $styleName[0]);
                             }
 					}
 				}
