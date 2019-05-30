@@ -12,28 +12,28 @@ defined('_JEXEC') or die('You are not allowed to directly access this file');
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 
-if (version_compare(JVERSION, '3.0', 'lt'))
+if (version_compare(JVERSION, '4', 'lt'))
 {
-	// Check for PHP 5.2.4 if Joomla < 3.0
-	if (version_compare(PHP_VERSION, '5.2.4', 'lt'))
-	{
-		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 2.5 requires PHP 5.2.4 or greater. Please contact your host to use PHP 5.2.4 or greater (Joomla 5.3+ recommended).
+	// Check for PHP 5.3.10 if Joomla 3
+    if (version_compare(PHP_VERSION, '5.3.10', 'lt'))
+    {
+        print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 3.x requires PHP 5.3.10 or greater. Please contact your host to use PHP 5.3.10 or greater.
 			<br />Please check Joomla requirements in <a href="http://www.joomla.org/technical-requirements.html">http://www.joomla.org/technical-requirements.html</a>';
-		die();
-	}
+        die();
+    }
+    else
+    {
+    }
 }
 else
 {
-	// Check for PHP 5.3.1 if Joomla >= 3.0
-	if (version_compare(PHP_VERSION, '5.3.10', 'lt'))
-	{
-		print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 3.x requires PHP 5.3.10 or greater. Please contact your host to use PHP 5.3.10 or greater.
+    // Check for PHP 7.2 if Joomla 4.0
+    if (version_compare(PHP_VERSION, '7.2', 'lt'))
+    {
+        print 'You are using an out of date version of PHP, version ' . PHP_VERSION . ' and Joomla 4 requires PHP 7.2 or greater. Please contact your host to use PHP 7.2 or greater (Joomla 7.2+ recommended).
 			<br />Please check Joomla requirements in <a href="http://www.joomla.org/technical-requirements.html">http://www.joomla.org/technical-requirements.html</a>';
-		die();
-	}
-	else
-	{
-	}
+        die();
+    }
 }
 
 // Includes WrightTemplateBase class for customizations to the template
