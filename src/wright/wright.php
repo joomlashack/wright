@@ -547,7 +547,6 @@ class Wright
             // CSS for Joomla 4
             $styles['template'][] = 'joomla-' . $this->_selectedStyle . '.css';
 
-			// @todo Add RTL for Bootstrap 4
             if ($this->document->direction == 'rtl' && is_file(JPATH_SITE . '/templates/' . $this->document->template . '/css/rtl-40.css')) {
                 $styles['template'][] = 'rtl-40.css';
             }
