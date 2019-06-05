@@ -20,7 +20,7 @@ HTMLHelper::_('behavior.core');
 <div class="com-contact-category__items">
     <form action="<?php echo htmlspecialchars(Uri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm">
         <?php if ($this->params->get('filter_field') || $this->params->get('show_pagination_limit')) : ?>
-            <fieldset class="com-contact-category__filters filters btn-toolbar">
+            <fieldset class="com-contact-category__filters filters btn-toolbar card-body bg-light mb-5">
                 <?php if ($this->params->get('filter_field')) : ?>
                     <div class="com-contact-category__filter btn-group">
                         <label class="filter-search-lbl sr-only" for="filter-search">
@@ -34,7 +34,7 @@ HTMLHelper::_('behavior.core');
                             name="filter-search"
                             id="filter-search"
                             value="<?php echo $this->escape($this->state->get('list.filter')); ?>"
-                            class="inputbox" onchange="document.adminForm.submit();"
+                            class="form-control" onchange="document.adminForm.submit();"
                             title="<?php echo Text::_('COM_CONTACT_FILTER_SEARCH_DESC'); ?>"
                             placeholder="<?php echo Text::_('COM_CONTACT_FILTER_SEARCH_DESC'); ?>"
                             >
