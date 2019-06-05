@@ -749,6 +749,23 @@ form {
     }
 }
 
+.com-contact-category__list {
+
+    .contact-thumbnail {
+
+        @media (max-width: 767px) {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+.com-contact-category__items {
+
+    ~ .cat-children {
+        margin-top: 3rem;
+    }
+}
+
 /* Responsive utilities */
 
 @media (max-width: 575px) {

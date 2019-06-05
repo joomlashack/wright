@@ -6937,6 +6937,13 @@ form .control-group .control-label .optional {
 .wf-contact-single-icons dl dd {
   margin-left: 30px; }
 
+@media (max-width: 767px) {
+  .com-contact-category__list .contact-thumbnail {
+    margin-bottom: 0.5rem; } }
+
+.com-contact-category__items ~ .cat-children {
+  margin-top: 3rem; }
+
 /* Responsive utilities */
 @media (max-width: 575px) {
   /* Margin bottom */
