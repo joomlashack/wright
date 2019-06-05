@@ -457,6 +457,10 @@ dl.article-info {
         display: inline-block;
         margin-right: 15px;
         margin-bottom: .2rem;
+        overflow: visible;
+        float: none;
+        width: auto;
+        margin-left: 0;
     }
 }
 
