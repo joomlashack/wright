@@ -234,21 +234,30 @@ class Wright
      */
     public function renderCustomStyle()
     {
-        // Compile less files when using 'custom' style
+        // Compile less/scss files when using 'custom' style
         if ($this->document->params->get('style', 'custom'))
         {
 
-            // Check if the customization file is in place
-            $document               = JFactory::getDocument();
-            $lessCustomizationFile  = JPATH_THEMES . '/' . $document->template . '/less/customization.php';
+            if (version_compare(JVERSION, '4', 'lt')) {
+                // Joomla 3
+                $compiler  = 'less';
+            } else {
+                // Joomla 4
+                $compiler  = 'scss';
+            }
 
-            if(file_exists($lessCustomizationFile))
+            $document = JFactory::getDocument();
+
+            // Check if the customization file is in place
+            $customizationFile  = JPATH_THEMES . '/' . $document->template . '/' . $compiler . '/customization.php';
+
+            if(file_exists($customizationFile))
             {
-                require_once $lessCustomizationFile;
+                require_once $customizationFile;
             }
             else
             {
-                echo '<div class="wStatusError">Error: templates/' . $document->template . '/less/customization.php file doesn\'t exists!</div>';
+                echo '<div class="wStatusError">Error: templates/' . $document->template . '/' . $compiler . '/customization.php file doesn\'t exists!</div>';
                 return false;
             }
         }

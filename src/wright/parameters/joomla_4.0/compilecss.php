@@ -28,6 +28,14 @@ class JFormFieldCompilecss extends JFormField
 	 */
 	protected function getInput()
 	{
+        if (version_compare(JVERSION, '4', 'lt')) {
+            // Joomla 3
+            $compiler  = 'less';
+        } else {
+            // Joomla 4
+            $compiler  = 'scss';
+        }
+
         $template = $this->form->getValue('template');
 
         /**
@@ -63,7 +71,7 @@ class JFormFieldCompilecss extends JFormField
                     try {
                         $(\'#wCompileCssBtn\').attr(\'disabled\', \'disabled\');
                         $(\'#wCompileCssStatus\').html(
-                            \'<div class="wStatusInfo">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_INSTRUCTIONS') . '</div>\'
+                            \'<div class="wStatusInfo">' . JText::_('TPL_JS_WRIGHT_COMPILE_' . strtoupper($compiler) . '_INSTRUCTIONS') . '</div>\'
                         );
                     } catch(err) {
                           console.log(err.message);
@@ -74,7 +82,7 @@ class JFormFieldCompilecss extends JFormField
                 // A message while the compiling process is happening
                 $(\'#wCompileCssBtn\').bind(\'ajaxStart\', function(){
                     $(\'#wCompileCssStatus\').html(
-                        \'<div class="wStatusInfo">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_COMPILING') . '</div>\'
+                        \'<div class="wStatusInfo">' . JText::_('TPL_JS_WRIGHT_COMPILE_' . strtoupper($compiler) . '_COMPILING') . '</div>\'
                     );
                 });
 
@@ -96,7 +104,7 @@ class JFormFieldCompilecss extends JFormField
                         error: function(data) {
                             console.log(data);
                             $(\'#wCompileCssStatus\').html(
-                                \'<div class="wStatusError">' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS_ERROR') . '</div>\'
+                                \'<div class="wStatusError">' . JText::_('TPL_JS_WRIGHT_COMPILE_' . strtoupper($compiler) . '_ERROR') . '</div>\'
                             );
                         }
                     });
@@ -138,7 +146,7 @@ class JFormFieldCompilecss extends JFormField
             $html      .= ' id="wCompileCssBtn"';
             $html      .= ' data-compiler="../">';
             $html      .= ' <span class="icon-loop" aria-hidden="true"></span>';
-            $html      .= ' ' . JText::_('TPL_JS_WRIGHT_COMPILE_LESS');
+            $html      .= ' ' . JText::_('TPL_JS_WRIGHT_COMPILE_' . strtoupper($compiler));
             $html      .= '</button>';
             $html      .= '<div id="wCompileCssStatus"></div>';
             $html      .= '<br><br>';
