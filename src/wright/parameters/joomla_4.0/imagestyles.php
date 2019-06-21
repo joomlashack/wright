@@ -12,12 +12,12 @@ defined('_JEXEC') or die('Restricted access');
 
 // @TODO after the end of Joomla 3 support:
 // 1. Remove this file
-// 2. Change the type from "imagestyles" to "list" in templateDetails.xml
+// 2. Change the type from "wright.imagestyles" to "list" in templateDetails.xml
 // 3. Include the <options> for "wright_bootstrap_images" field in templateDetails.xml
 
 JFormHelper::loadFieldClass('list');
 
-class JFormFieldImageStyles extends JFormFieldList {
+class WrightFormFieldImageStyles extends JFormFieldList {
 
     protected $type = 'ImageStyles';
 
