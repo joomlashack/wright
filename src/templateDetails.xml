@@ -71,18 +71,18 @@
 		<fields name="params" addfieldpath="/templates/js_wright/wright/parameters/joomla_4.0">
 			<fieldset name="basic">
 				<!-- Start of default Wright params -->
-				<field name="rebrand" type="wradio" class="switcher" default="0" label="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_LABEL" description="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_DESC">
+				<field name="rebrand" type="wright.radio" class="switcher" default="0" label="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_LABEL" description="TPL_JS_WRIGHT_FIELD_REMOVE_BRANDING_DESC">
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
  				</field>
 				<field name="style" type="styles" default="generic" label="TPL_JS_WRIGHT_FIELD_STYLE_LABEL" description="TPL_JS_WRIGHT_FIELD_STYLE_DESC" />
 				<field name="linkColor" type="color" default="#08c" class="wCustomColor" label="TPL_JS_WRIGHT_FIELD_STYLE_LINK_COLOR_LABEL" description="TPL_JS_WRIGHT_FIELD_STYLE_LINK_COLOR_DESC" showon="style:custom" />
 				<field name="compileCss" type="compilecss" showon="style:custom"/>
-				<field name="modal" type="wradio" class="switcher" default="1" label="TPL_JS_WRIGHT_FIELD_ENABLE_MODAL_LABEL" description="TPL_JS_WRIGHT_FIELD_ENABLE_MODAL_DESC">
+				<field name="modal" type="wright.radio" class="switcher" default="1" label="TPL_JS_WRIGHT_FIELD_ENABLE_MODAL_LABEL" description="TPL_JS_WRIGHT_FIELD_ENABLE_MODAL_DESC">
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
 				</field>
-				<field name="javascriptBottom" type="wradio" class="switcher" default="1" label="TPL_JS_WRIGHT_FIELD_JAVASCRIPT_BOTTOM" description="TPL_JS_WRIGHT_FIELD_JAVASCRIPT_BOTTOM_DESC">
+				<field name="javascriptBottom" type="wright.radio" class="switcher" default="1" label="TPL_JS_WRIGHT_FIELD_JAVASCRIPT_BOTTOM" description="TPL_JS_WRIGHT_FIELD_JAVASCRIPT_BOTTOM_DESC">
 					<option value="0">JNO</option>
                     <option value="1">JYES</option>
 				</field>
@@ -91,7 +91,7 @@
 				<field name="body_font" type="typography" default="default" label="TPL_JS_WRIGHT_FIELD_BODY_FONT_LABEL" description="TPL_JS_WRIGHT_FIELD_BODY_FONT_DESC" />
 				<field name="header_font" type="typography" default="default" label="TPL_JS_WRIGHT_FIELD_HEADING_FONT_LABEL" description="TPL_JS_WRIGHT_FIELD_HEADING_FONT_DESC" />
 				<field name="columns" type="columns" default="sidebar1:3;main:6;sidebar2:3" sidebars="2" label="TPL_JS_WRIGHT_FIELD_COLUMNS_LABEL" description="TPL_JS_WRIGHT_FIELD_COLUMNS_DESC" />
-				<field name="documentationMode" type="wradio" class="switcher" default="0" label="TPL_JS_WRIGHT_DOCUMENTATION_MODE" description="TPL_JS_WRIGHT_DOCUMENTATION_MODE_DESC">
+				<field name="documentationMode" type="wright.radio" class="switcher" default="0" label="TPL_JS_WRIGHT_DOCUMENTATION_MODE" description="TPL_JS_WRIGHT_DOCUMENTATION_MODE_DESC">
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
 				</field>

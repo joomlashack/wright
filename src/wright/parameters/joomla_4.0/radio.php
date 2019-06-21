@@ -12,14 +12,14 @@ defined('_JEXEC') or die('Restricted access');
 
 // @TODO after the end of Joomla 3 support:
 // 1. Remove this file
-// 2. Change the type from "wradio" to "radio" in templateDetails.xml
-// 3. Remove the file wright/parameters/assets/wradio/wradio.css
+// 2. Change the type from "wright.radio" to "radio" in templateDetails.xml
+// 3. Remove the file wright/parameters/assets/radio/radio.css
 
 JFormHelper::loadFieldClass('radio');
 
-class JFormFieldWradio extends JFormFieldRadio {
+class WrightFormFieldRadio extends JFormFieldRadio {
 
-    protected $type = 'Wradio';
+    protected $type = 'Radio';
 
     /**
      * Method to override the data to be passed to the layout for rendering.
@@ -41,7 +41,7 @@ class JFormFieldWradio extends JFormFieldRadio {
             $doc->addStylesheet(
                 str_replace(
                     '/administrator/', '/', JURI::base()
-                ) . 'templates/' . $this->form->getValue('template') . '/wright/parameters/assets/wradio/wradio.css'
+                ) . 'templates/' . $this->form->getValue('template') . '/wright/parameters/assets/radio/radio.css'
             );
 
         }
