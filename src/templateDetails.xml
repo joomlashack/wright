@@ -167,11 +167,15 @@
         </scss>
 
         <obsolete>
-            <file>/templates/js_wright/css/rtl.css</file>
-            <file>/templates/js_wright/wright/js/utils.js</file>
-            <file>/templates/js_wright/wright/js/utils.min.js</file>
-            <file>/templates/js_wright/wright/js/stickyfooter.js</file>
-            <file>/templates/js_wright/wright/js/stickyfooter.min.js</file>
+            <folder>templates/js_wright/wright/parameters/joomla_3.0</folder>
+            <folder>templates/js_wright/wright/parameters/assets/presets</folder>
+            <folder>templates/js_wright/wright/parameters/assets/jscolor</folder>
+
+            <file>templates/js_wright/css/rtl.css</file>
+            <file>templates/js_wright/wright/js/utils.js</file>
+            <file>templates/js_wright/wright/js/utils.min.js</file>
+            <file>templates/js_wright/wright/js/stickyfooter.js</file>
+            <file>templates/js_wright/wright/js/stickyfooter.min.js</file>
         </obsolete>
     </alledia>
 
