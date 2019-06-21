@@ -24,7 +24,7 @@ JFormHelper::loadFieldClass('list');
  * @subpackage  Parameters
  * @since       2.0
  */
-class JFormFieldLogo extends JFormFieldList
+class WrightFormFieldLogo extends JFormFieldList
 {
 	public $type = 'Logo';
 

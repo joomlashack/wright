@@ -19,7 +19,7 @@ jimport('joomla.form.formfield');
  * @subpackage  Parameters
  * @since       2.0
  */
-class JFormFieldColumns extends JFormField
+class WrightFormFieldColumns extends JFormField
 {
 	public $type = 'Columns';
 

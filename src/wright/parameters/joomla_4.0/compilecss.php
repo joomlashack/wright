@@ -17,7 +17,7 @@ defined('_JEXEC') or die('Restricted access');
  * @subpackage  Parameters
  * @since       3.9.1
  */
-class JFormFieldCompilecss extends JFormField
+class WrightFormFieldCompilecss extends JFormField
 {
 	protected $type = 'Compilecss';
 

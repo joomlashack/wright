@@ -24,7 +24,7 @@ JFormHelper::loadFieldClass('list');
  * @subpackage  Parameters
  * @since       2.0
  */
-class JFormFieldStyles extends JFormFieldList
+class WrightFormFieldStyles extends JFormFieldList
 {
 	public $type = 'Styles';
 

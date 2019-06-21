@@ -24,7 +24,7 @@ JFormHelper::loadFieldClass('list');
  * @subpackage  Parameters
  * @since       2.0
  */
-class JFormFieldTypography extends JFormFieldList
+class WrightFormFieldTypography extends JFormFieldList
 {
 	public $type = 'Typography';
 

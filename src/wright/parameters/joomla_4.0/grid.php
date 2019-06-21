@@ -24,7 +24,7 @@ JFormHelper::loadFieldClass('list');
  * @subpackage  Parameters
  * @since       2.0
  */
-class JFormFieldGrid extends JFormFieldList
+class WrightFormFieldGrid extends JFormFieldList
 {
 	public $type = 'Grid';
 
