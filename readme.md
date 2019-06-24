@@ -74,7 +74,7 @@ If you’re using a hotfix or feature branch, clearly specify the purpose of it.
 
 ## Copyright and license
 
-Copyright 2005 - 2017 Joomlashack
+Copyright 2005 - 2019 Joomlashack
 
 Licensed under the GNU/GPL v3 (the "License");
 This framework is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
