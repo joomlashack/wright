@@ -275,7 +275,17 @@ class Wright
 		$user = JFactory::getUser();
 		$input = JFactory::getApplication()->input;
 
-		JHtml::_('behavior.framework', true);
+        if (version_compare(JVERSION, '4', 'lt')) {
+
+            // Joomla 3
+            JHtml::_('behavior.framework', true);
+        }
+        else {
+
+            // Joomla 4
+            // @TODO Look for a replacement for "JHtml::_('behavior.framework')" if exists
+            //JHtml::_('behavior.framework');
+        }
 
 		if ($this->loadBootstrap)
 		{

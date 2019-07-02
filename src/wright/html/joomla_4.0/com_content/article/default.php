@@ -46,7 +46,7 @@ $this->wrightBootstrapImages    = $template->params->get('wright_bootstrap_image
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
-// Caption support
+// @TODO Check caption support for Joomla 4
 // JHtml::_('behavior.caption');
 
 // Create shortcuts to some parameters.

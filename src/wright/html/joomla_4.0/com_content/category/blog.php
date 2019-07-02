@@ -93,6 +93,7 @@ function addExtraNonContentContainersClose($wrightNonContentContainer, $wrightNo
 
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 
+// @TODO Check caption support for Joomla 4
 // JHtml::_('behavior.caption');
 ?>
 <div class="blog<?php echo $this->pageclass_sfx;?>">

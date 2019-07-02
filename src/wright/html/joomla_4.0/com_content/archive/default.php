@@ -11,6 +11,7 @@ defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
+// @TODO Check caption support for Joomla 4
 // JHtml::_('behavior.caption');
 ?>
 <div class="archive<?php echo $this->pageclass_sfx;?>">
