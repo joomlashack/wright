@@ -6621,6 +6621,11 @@ a.hidden-text span.hidden-text {
   display: none; }
 
 /* Menus */
+#nav-menu > .menu,
+#nav-toolbar > .menu,
+#nav-bottom-menu > .menu {
+  width: 100%; }
+
 .nav li a .fas,
 .nav li a .far,
 .nav li a .fab,
@@ -6674,6 +6679,9 @@ a.hidden-text span.hidden-text {
   .wrapper-bottom-menu .navbar {
     padding-left: 0;
     padding-right: 0; }
+
+.navbar-dark a.jmodedit {
+  color: #fff; }
 
 /* Footer */
 .wrapper-footer {

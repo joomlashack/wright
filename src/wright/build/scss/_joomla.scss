@@ -81,6 +81,15 @@ a {
 
 /* Menus */
 
+#nav-menu,
+#nav-toolbar,
+#nav-bottom-menu {
+
+  > .menu {
+    width: 100%;
+  }
+}
+
 .nav,
 .navbar-nav {
 
@@ -197,6 +206,14 @@ a {
         padding-left: 0;
         padding-right: 0;
     }
+}
+
+// Make the edit module link visible
+.navbar-dark {
+
+  a.jmodedit {
+    color: $white;
+  }
 }
 
 /* Footer */
