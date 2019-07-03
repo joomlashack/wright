@@ -6694,8 +6694,8 @@ a.hidden-text span.hidden-text {
 [class*="module"] {
   margin-bottom: 1.5rem;
   /*&:last-child {
-        margin-bottom: 0;
-    }*/ }
+      margin-bottom: 0;
+  }*/ }
 
 .card-body p:last-child,
 .alert p:last-child {
@@ -6774,12 +6774,12 @@ p.img_caption {
 .readmore {
   /*overflow: hidden;
 
-    .btn {
-        max-width: calc(100% - 10px);
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-    }*/ }
+  .btn {
+      max-width: calc(100% - 10px);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+  }*/ }
 
 .item-image {
   margin-top: 7px;
