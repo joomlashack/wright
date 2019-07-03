@@ -10,5 +10,16 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-require('components/com_content/tmpl/category/default.php');
+use Joomla\CMS\Layout\LayoutHelper;
+
+?>
+<div class="com-content-category category-list">
+
+    <?php
+    $this->subtemplatename = 'articles';
+    echo LayoutHelper::render('joomla.content.category_default', $this);
+    ?>
+
+</div>
+
 
