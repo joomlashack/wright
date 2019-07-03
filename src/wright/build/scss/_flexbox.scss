@@ -1,27 +1,27 @@
 .wf-row {
-    display: flex;
-    display: -ms-flexbox;
-    flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    margin: 0 -($grid-gutter-width/2);
+  display: flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  margin: 0 -($grid-gutter-width/2);
 
-    @for $i from 2 through 12 {
+  @for $i from 2 through 12 {
 
-        &.wf-cols-#{$i} {
+    &.wf-cols-#{$i} {
 
-            .wf-col {
+      .wf-col {
 
-                @media (min-width: map-get($grid-breakpoints, "md")) {
+        @media (min-width: map-get($grid-breakpoints, "md")) {
 
-                    -ms-flex: 0 0 100%/$i;
-                    flex: 0 0 100%/$i;
-                    max-width: 100%/$i;
+          -ms-flex: 0 0 100%/$i;
+          flex: 0 0 100%/$i;
+          max-width: 100%/$i;
 
-                    .wf-item {
-                        margin: 0 ($grid-gutter-width/2);
-                    }
-                }
-            }
+          .wf-item {
+            margin: 0 ($grid-gutter-width/2);
+          }
         }
+      }
     }
+  }
 }

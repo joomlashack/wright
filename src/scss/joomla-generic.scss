@@ -13,29 +13,29 @@
 
 .footer1,
 .footer2 {
-    text-align: center;
+  text-align: center;
 }
 
 #footer {
-    color: $white;
-    overflow: hidden;
-    background-color: #1b1b1b;
-    background-repeat: repeat-x;
-    border-color: #252525;
+  color: $white;
+  overflow: hidden;
+  background-color: #1b1b1b;
+  background-repeat: repeat-x;
+  border-color: #252525;
 
-    .footer-content {
+  .footer-content {
 
-        a:hover {
-            color: $gray-700;
-        }
+    a:hover {
+      color: $gray-700;
     }
+  }
 
-    .moduletable,
-    .module {
-        @extend .m-0;
-    }
+  .moduletable,
+  .module {
+    @extend .m-0;
+  }
 }
 
 .wrapper-menu {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
