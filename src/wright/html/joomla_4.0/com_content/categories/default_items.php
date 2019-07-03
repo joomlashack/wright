@@ -23,7 +23,7 @@ if ($this->maxLevelcat != 0 && count($this->items[$this->parent->id]) > 0) :
         <?php foreach ($this->items[$this->parent->id] as $id => $item) : ?>
             <?php if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) : ?>
                 <div class="com-content-categories__item">
-                    <h4 class="page-header item-title">
+                    <h3 class="page-header item-title">
                         <a href="<?php echo Route::_(ContentHelperRoute::getCategoryRoute($item->id, $item->language)); ?>">
                             <?php echo $this->escape($item->title); ?></a>
                         <?php if ($this->params->get('show_cat_num_articles_cat') == 1) :?>
@@ -36,7 +36,7 @@ if ($this->maxLevelcat != 0 && count($this->items[$this->parent->id]) > 0) :
                             <a id="category-btn-<?php echo $item->id; ?>" href="#category-<?php echo $item->id; ?>"
                                data-toggle="collapse" data-toggle="button" class="btn btn-secondary btn-sm float-right" aria-label="<?php echo Text::_('JGLOBAL_EXPAND_CATEGORIES'); ?>"><span class="fas fa-plus" aria-hidden="true"></span></a>
                         <?php endif; ?>
-                    </h4>
+                    </h3>
                     <?php if ($this->params->get('show_description_image') && $item->getParams()->get('image')) : ?>
                         <img src="<?php echo $item->getParams()->get('image'); ?>" alt="<?php echo htmlspecialchars($item->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8'); ?>">
                     <?php endif; ?>
