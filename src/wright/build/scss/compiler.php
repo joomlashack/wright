@@ -18,10 +18,32 @@ defined('_JEXEC') or die('Restricted access');
  * @subpackage  Main Package
  * @since       4.0
  */
+
+require_once 'scssphp/scss.inc.php';
+
+use ScssPhp\ScssPhp\Compiler;
+
 class WrightScssCompiler {
 
-    public function start($style, $lessCustomizationVars) {
+    public function start($style, $scssCustomizationVars) {
 
-        var_dump($lessCustomizationVars);
+        //var_dump($scssCustomizationVars);
+
+        $scss = new Compiler();
+
+        $ds = '';
+
+        if ($scssCustomizationVars)
+        {
+            foreach ($scssCustomizationVars as $key => $value)
+            {
+                $ds .= $key . ': ' . $value . ';' . "\n";
+            }
+        }
+
+        echo $scss->compile(
+          $ds .
+          'div { color: $link-color; }
+        ');
     }
 }
