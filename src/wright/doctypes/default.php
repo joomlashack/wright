@@ -626,12 +626,18 @@ abstract class HtmlAdapterAbstract
 			}
 		}
 
-		// Auto set to full width if editing
-		if (JFactory::getApplication()->input->get('task') == 'edit' || JFactory::getApplication()->input->get('layout') == 'form')
+		/* @todo review the 5 lines below for the if() sentence.
+         * It doesn't seem to be applied and if were applied,
+         * it would just break the layout by moving sidebars
+         * below and above main component area.
+         *
+		 * Auto set to full width if editing
+         */
+		/*if (JFactory::getApplication()->input->get('task') == 'edit' || JFactory::getApplication()->input->get('layout') == 'form')
 		{
 			$layout = Array();
 			$layout[] = 'main';
-		}
+		}*/
 
 		switch (implode('-', $layout))
 		{
