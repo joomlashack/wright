@@ -626,13 +626,6 @@ abstract class HtmlAdapterAbstract
 			}
 		}
 
-		// Auto set to full width if editing
-		if (JFactory::getApplication()->input->get('task') == 'edit' || JFactory::getApplication()->input->get('layout') == 'form')
-		{
-			$layout = Array();
-			$layout[] = 'main';
-		}
-
 		switch (implode('-', $layout))
 		{
 			case 'main':
