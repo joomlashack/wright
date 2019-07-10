@@ -924,7 +924,7 @@ class Compiler
     {
         $env     = $this->pushEnv($block);
         $envs    = $this->compactEnv($env);
-        $without = isset($block->with) ? $this->compileWith($block->with) : static::WITH_RULE;
+        list($with, $without) = $this->compileWith(isset($block->with) ? $block->with : null);
 
         // wrap inline selector
         if ($block->selector) {
@@ -951,10 +951,10 @@ class Compiler
             $selfParent = $block->parent;
         }
 
-        $this->env = $this->filterWithout($envs, $without);
+        $this->env = $this->filterWithWithout($envs, $with, $without);
 
         $saveScope   = $this->scope;
-        $this->scope = $this->filterScopeWithout($saveScope, $without);
+        $this->scope = $this->filterScopeWithWithout($saveScope, $with, $without);
 
         // propagate selfParent to the children where they still can be useful
         $this->compileChildrenNoReturn($block->children, $this->scope, $selfParent);
@@ -970,11 +970,12 @@ class Compiler
      * Filter at-root scope depending of with/without option
      *
      * @param \ScssPhp\ScssPhp\Formatter\OutputBlock $scope
-     * @param mixed                                  $without
+     * @param array                                  $with
+     * @param array                                  $without
      *
      * @return mixed
      */
-    protected function filterScopeWithout($scope, $without)
+    protected function filterScopeWithWithout($scope, $with, $without)
     {
         $filteredScopes = [];
 
@@ -992,7 +993,7 @@ class Compiler
                 break;
             }
 
-            if (! $this->isWithout($without, $scope)) {
+            if ($this->isWith($scope, $with, $without)) {
                 $s = clone $scope;
                 $s->children = [];
                 $s->lines = [];
@@ -1083,69 +1084,60 @@ class Compiler
     }
 
     /**
-     * Compile @at-root's with: inclusion / without: exclusion into filter flags
+     * Compile @at-root's with: inclusion / without: exclusion into 2 lists uses to filter scope/env later
      *
-     * @param array $with
+     * @param array $withCondition
      *
-     * @return integer
+     * @return array
      */
-    protected function compileWith($with)
+    protected function compileWith($withCondition)
     {
-        static $mapping = [
-            'rule'     => self::WITH_RULE,
-            'media'    => self::WITH_MEDIA,
-            'supports' => self::WITH_SUPPORTS,
-            'all'      => self::WITH_ALL,
-        ];
+        // just compile what we have in 2 lists
+        $with = [];
+        $without = ['rule' => true];
 
-        // exclude selectors by default
-        $without = static::WITH_RULE;
+        if ($withCondition) {
+            if ($this->libMapHasKey([$withCondition, static::$with])) {
+                $without = []; // cancel the default
+                $list = $this->coerceList($this->libMapGet([$withCondition, static::$with]));
 
-        if ($this->libMapHasKey([$with, static::$with])) {
-            $without = static::WITH_ALL;
+                foreach ($list[2] as $item) {
+                    $keyword = $this->compileStringContent($this->coerceString($item));
 
-            $list = $this->coerceList($this->libMapGet([$with, static::$with]));
+                    $with[$keyword] = true;
+                }
+            }
 
-            foreach ($list[2] as $item) {
-                $keyword = $this->compileStringContent($this->coerceString($item));
+            if ($this->libMapHasKey([$withCondition, static::$without])) {
+                $without = []; // cancel the default
+                $list = $this->coerceList($this->libMapGet([$withCondition, static::$without]));
 
-                if (array_key_exists($keyword, $mapping)) {
-                    $without &= ~($mapping[$keyword]);
+                foreach ($list[2] as $item) {
+                    $keyword = $this->compileStringContent($this->coerceString($item));
+
+                    $without[$keyword] = true;
                 }
             }
         }
 
-        if ($this->libMapHasKey([$with, static::$without])) {
-            $without = 0;
-
-            $list = $this->coerceList($this->libMapGet([$with, static::$without]));
-
-            foreach ($list[2] as $item) {
-                $keyword = $this->compileStringContent($this->coerceString($item));
-
-                if (array_key_exists($keyword, $mapping)) {
-                    $without |= $mapping[$keyword];
-                }
-            }
-        }
-
-        return $without;
+        return [$with, $without];
     }
 
     /**
      * Filter env stack
      *
      * @param array   $envs
-     * @param integer $without
+     * @param array $with
+     * @param array $without
      *
      * @return \ScssPhp\ScssPhp\Compiler\Environment
      */
-    protected function filterWithout($envs, $without)
+    protected function filterWithWithout($envs, $with, $without)
     {
         $filtered = [];
 
         foreach ($envs as $e) {
-            if ($e->block && $this->isWithout($without, $e->block)) {
+            if ($e->block && ! $this->isWith($e->block, $with, $without)) {
                 $ec = clone $e;
                 $ec->block = null;
                 $ec->selectors = [];
@@ -1161,35 +1153,58 @@ class Compiler
     /**
      * Filter WITH rules
      *
-     * @param integer                                                       $without
      * @param \ScssPhp\ScssPhp\Block|\ScssPhp\ScssPhp\Formatter\OutputBlock $block
+     * @param array                                                         $with
+     * @param array                                                         $without
      *
      * @return boolean
      */
-    protected function isWithout($without, $block)
+    protected function isWith($block, $with, $without)
     {
         if (isset($block->type)) {
             if ($block->type === Type::T_MEDIA) {
-                return ($without & static::WITH_MEDIA) ? true : false;
+                return $this->testWithWithout('media', $with, $without);
             }
 
             if ($block->type === Type::T_DIRECTIVE) {
-                if (isset($block->name) && $block->name === 'supports') {
-                    return ($without & static::WITH_SUPPORTS) ? true : false;
+                if (isset($block->name)) {
+                    return $this->testWithWithout($block->name, $with, $without);
                 }
-
-                if (isset($block->selectors) && strpos(serialize($block->selectors), '@supports') !== false) {
-                    return ($without & static::WITH_SUPPORTS) ? true : false;
+                elseif (isset($block->selectors) && preg_match(',@(\w+),ims', json_encode($block->selectors), $m)) {
+                    return $this->testWithWithout($m[1], $with, $without);
+                }
+                else {
+                    return $this->testWithWithout('???', $with, $without);
                 }
             }
         }
-
-        if ((($without & static::WITH_RULE) && isset($block->selectors))) {
-            return true;
+        elseif (isset($block->selectors)) {
+            return $this->testWithWithout('rule', $with, $without);
         }
 
-        return false;
+        return true;
     }
+
+    /**
+     * Test a single type of block against with/without lists
+     *
+     * @param string $what
+     * @param array  $with
+     * @param array  $without
+     * @return bool
+     *   true if the block should be kept, false to reject
+     */
+    protected function testWithWithout($what, $with, $without) {
+
+        // if without, reject only if in the list (or 'all' is in the list)
+        if (count($without)) {
+            return (isset($without[$what]) || isset($without['all'])) ? false : true;
+        }
+
+        // otherwise reject all what is not in the with list
+        return (isset($with[$what]) || isset($with['all'])) ? true : false;
+    }
+
 
     /**
      * Compile keyframe block
@@ -1742,52 +1757,50 @@ class Compiler
      */
     protected function evaluateMediaQuery($queryList)
     {
+        static $parser = null;
+        $outQueryList = [];
         foreach ($queryList as $kql => $query) {
+            $shouldReparse = false;
             foreach ($query as $kq => $q) {
                 for ($i = 1; $i < count($q); $i++) {
                     $value = $this->compileValue($q[$i]);
 
                     // the parser had no mean to know if media type or expression if it was an interpolation
+                    // so you need to reparse if the T_MEDIA_TYPE looks like anything else a media type
                     if ($q[0] == Type::T_MEDIA_TYPE &&
                         (strpos($value, '(') !== false ||
                         strpos($value, ')') !== false ||
-                        strpos($value, ':') !== false)
+                        strpos($value, ':') !== false ||
+                        strpos($value, ',') !== false)
                     ) {
-                        $queryList[$kql][$kq][0] = Type::T_MEDIA_EXPRESSION;
-
-                        if (strpos($value, 'and') !== false) {
-                            $values = explode('and', $value);
-                            $value = trim(array_pop($values));
-
-                            while ($v = trim(array_pop($values))) {
-                                $type = Type::T_MEDIA_EXPRESSION;
-
-                                if (strpos($v, '(') === false &&
-                                    strpos($v, ')') === false &&
-                                    strpos($v, ':') === false
-                                ) {
-                                    $type = Type::T_MEDIA_TYPE;
-                                }
-
-                                if (substr($v, 0, 1) === '(' && substr($v, -1) === ')') {
-                                    $v = substr($v, 1, -1);
-                                }
-
-                                $queryList[$kql][] = [$type,[Type::T_KEYWORD, $v]];
-                            }
-                        }
-
-                        if (substr($value, 0, 1) === '(' && substr($value, -1) === ')') {
-                            $value = substr($value, 1, -1);
-                        }
+                        $shouldReparse = true;
                     }
 
                     $queryList[$kql][$kq][$i] = [Type::T_KEYWORD, $value];
                 }
             }
+            if ($shouldReparse) {
+                if (is_null($parser)) {
+                    $parser = $this->parserFactory(__METHOD__);
+                }
+                $queryString = $this->compileMediaQuery([$queryList[$kql]]);
+                $queryString = reset($queryString);
+                if (strpos($queryString, '@media ') === 0) {
+                    $queryString = substr($queryString, 7);
+                    $queries = [];
+                    if ($parser->parseMediaQueryList($queryString, $queries)) {
+                        $queries = $this->evaluateMediaQuery($queries[2]);
+                        while (count($queries)) {
+                            $outQueryList[] = array_shift($queries);
+                        }
+                        continue;
+                    }
+                }
+            }
+            $outQueryList[] = $queryList[$kql];
         }
 
-        return $queryList;
+        return $outQueryList;
     }
 
     /**
@@ -2309,7 +2322,7 @@ class Compiler
             case Type::T_FUNCTION:
                 list(, $block) = $child;
 
-                $this->set(static::$namespaces[$block->type] . $block->name, $block);
+                $this->set(static::$namespaces[$block->type] . $block->name, $block, true);
                 break;
 
             case Type::T_EXTEND:
@@ -4611,6 +4624,7 @@ class Compiler
             $hasVariable |= $isVariable;
         }
 
+        $splatSeparator      = null;
         $keywordArgs         = [];
         $deferredKeywordArgs = [];
         $remaining           = [];
@@ -4655,6 +4669,9 @@ class Compiler
                                 $keywordArgs[$name] = $item;
                             }
                         } else {
+                            if (is_null($splatSeparator)) {
+                                $splatSeparator = $val[1];
+                            }
                             $remaining[] = $item;
                         }
                     }
@@ -4678,6 +4695,9 @@ class Compiler
                                 $keywordArgs[$name] = $item;
                             }
                         } else {
+                            if (is_null($splatSeparator)) {
+                                $splatSeparator = $val[1];
+                            }
                             $remaining[] = $item;
                         }
                     }
@@ -4696,7 +4716,7 @@ class Compiler
             list($i, $name, $default, $isVariable) = $arg;
 
             if ($isVariable) {
-                $val = [Type::T_LIST, ',', [], $isVariable];
+                $val = [Type::T_LIST, is_null($splatSeparator) ? ',' : $splatSeparator , [], $isVariable];
 
                 for ($count = count($remaining); $i < $count; $i++) {
                     $val[2][] = $remaining[$i];
