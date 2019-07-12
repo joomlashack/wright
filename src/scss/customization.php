@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
 $document = JFactory::getDocument();
 
 // Don't modify this file!
-// Set your variables overrides for variables-something.less.
+// Set your variables overrides for variables-something.scss.
 // These variables overrides are defined on templateDetails.xml below 'style' field
 $scssCustomizationVars = array (
     '$link-color' => $document->params->get('linkColor', '#00A878')
