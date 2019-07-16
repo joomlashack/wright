@@ -21,13 +21,16 @@ if($app->input->get('c') == 1) {
     // Initialize the framework and render custom style
     $tpl = Wright::getInstance();
     $tpl->renderCustomStyle();
-}
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="robots" content="noindex,nofollow">
-</head>
-<body>
-</body>
-</html>
+} else {
+    ?>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="robots" content="noindex,nofollow">
+    </head>
+    <body>
+    </body>
+    </html>
+
+<?php } ?>
