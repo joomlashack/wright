@@ -88,12 +88,12 @@ class WrightScssCompiler {
      * Run the compilation process
      *
      * @param   array   $scssFiles          Array of scss files to include in compilation
-     * @param   string  $cssFile            Compiled css file
+     * @param   string  $cssOutputFile      Compiled css file
      * @param   string  $scssVarsOverrides  SCSS variables to override
      *
      * @return  void
      */
-    protected function compileWrightFile($scssFiles, $cssFile, $scssVarsOverrides = false)
+    protected function compileWrightFile($scssFiles, $cssOutputFile, $scssVarsOverrides = false)
     {
         $document   = JFactory::getDocument();
         $ds         = '';
@@ -122,6 +122,7 @@ class WrightScssCompiler {
         {
             $scss->setVariables($scssVarsOverrides);
         }
+
         $scss->setFormatter('ScssPhp\ScssPhp\Formatter\Compressed');
         $scss->setImportPaths(
             array(
@@ -131,7 +132,7 @@ class WrightScssCompiler {
         );
 
         file_put_contents(
-            $cssFile,
+            $cssOutputFile,
             $scss->compile($ds)
         );
     }
@@ -153,14 +154,15 @@ class WrightScssCompiler {
         $version            = explode('.', JVERSION);
         $joomlaVersion      = $version[0] . '0';
         $cssPath            = JPATH_THEMES . '/' . $document->template . '/css';
-        $scssFiles          = $this->getScssCode($style, $joomlaVersion, $scssCustomizationVars);
+        $scssFiles          = $this->getScssCode($style, $joomlaVersion);
 
         if ($scssFiles)
         {
 
             $this->compileWrightFile(
                 $scssFiles,
-                $cssPath . '/joomla-custom.css'
+                $cssPath . '/joomla-custom.css',
+                $scssCustomizationVars
             );
         }
         else
