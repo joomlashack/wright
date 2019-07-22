@@ -18,7 +18,7 @@ $document = JFactory::getDocument();
 // Set your variables overrides for variables-something.scss.
 // These variables overrides are defined on templateDetails.xml below 'style' field
 $scssCustomizationVars = array (
-    '$link-color' => $document->params->get('linkColor', '#00A878')
+    '$color-one' => $document->params->get('linkColor', '#00A878')
 );
 
 // Run the compiler - 'generic' is the default style

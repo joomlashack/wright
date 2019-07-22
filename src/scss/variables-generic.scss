@@ -2,7 +2,7 @@
 //
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
-$color-one: #00A878;
+$color-one: #00A878 !default;
 
 // Maximum width for form fields using "form-control" class
 $input-max-width:   240px;
