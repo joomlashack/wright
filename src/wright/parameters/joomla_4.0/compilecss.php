@@ -85,6 +85,7 @@ class WrightFormFieldCompilecss extends JFormField
                     $(\'#wCompileCssStatus\').html(
                         \'<div class="wStatusInfo">' . JText::_('TPL_JS_WRIGHT_COMPILE_' . strtoupper($compiler) . '_COMPILING') . '</div>\'
                     );
+                    $(\'#wCompileCssBtn\').attr(\'disabled\', \'disabled\');
 
                     $.ajax({
                         type: \'POST\',
@@ -96,6 +97,7 @@ class WrightFormFieldCompilecss extends JFormField
                         url: $(this).data(\'compiler\'),
                         success: function(data) {
                             $(\'#wCompileCssStatus\').html(data);
+                            $(\'#wCompileCssBtn\').prop(\'disabled\', false);
                         },
                         error: function(data) {
                             console.log(data);
