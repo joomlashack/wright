@@ -88,6 +88,33 @@ a {
   > .menu {
     width: 100%;
   }
+
+  // Display submenus on hover instead of onclick
+  // and fix submenu display levels 3 and 4
+  .dropdown {
+
+    &:hover > .dropdown-menu {
+      display: block;
+    }
+
+    &-submenu {
+      position: relative;
+
+      a::after {
+        transform: rotate(-90deg);
+        position: absolute;
+        right: 6px;
+        top: .8em;
+      }
+
+      .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-left: .1rem;
+        margin-right: .1rem;
+      }
+    }
+  }
 }
 
 .nav,
