@@ -58,7 +58,8 @@ var disableToolbarResize = false;
 })(jQuery);
 
 jQuery(document).ready( function () {
-    jQuery( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
+
+    /*jQuery( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
         var $el = jQuery( this );
         var $parent = jQuery( this ).offsetParent( ".dropdown-menu" );
         if ( !jQuery( this ).next().hasClass( 'show' ) ) {
@@ -78,7 +79,7 @@ jQuery(document).ready( function () {
         }
 
         return false;
-    } );
+    } );*/
 
     // Sticky footer
     function stickyFooter() {
