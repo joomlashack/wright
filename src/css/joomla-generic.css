@@ -6635,9 +6635,17 @@ a.hidden-text span.hidden-text {
 #nav-toolbar .dropdown-submenu,
 #nav-bottom-menu .dropdown-submenu {
   position: relative; }
-  #nav-menu .dropdown-submenu a::after,
-  #nav-toolbar .dropdown-submenu a::after,
-  #nav-bottom-menu .dropdown-submenu a::after {
+  #nav-menu .dropdown-submenu:hover > a,
+  #nav-menu .dropdown-submenu:focus > a,
+  #nav-toolbar .dropdown-submenu:hover > a,
+  #nav-toolbar .dropdown-submenu:focus > a,
+  #nav-bottom-menu .dropdown-submenu:hover > a,
+  #nav-bottom-menu .dropdown-submenu:focus > a {
+    color: #16181b;
+    background-color: #f8f9fa; }
+  #nav-menu .dropdown-submenu a:after,
+  #nav-toolbar .dropdown-submenu a:after,
+  #nav-bottom-menu .dropdown-submenu a:after {
     transform: rotate(-90deg);
     position: absolute;
     right: 6px;

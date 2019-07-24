@@ -100,11 +100,20 @@ a {
     &-submenu {
       position: relative;
 
-      a::after {
-        transform: rotate(-90deg);
-        position: absolute;
-        right: 6px;
-        top: .8em;
+      &:hover > a,
+      &:focus > a {
+        color: $dropdown-link-hover-color;
+        background-color: $dropdown-link-hover-bg;
+      }
+
+      a {
+
+        &:after {
+          transform: rotate(-90deg);
+          position: absolute;
+          right: 6px;
+          top: .8em;
+        }
       }
 
       .dropdown-menu {
