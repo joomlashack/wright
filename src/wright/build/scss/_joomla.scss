@@ -89,39 +89,24 @@ a {
     width: 100%;
   }
 
-  // Display submenus on hover instead of onclick
-  // and fix submenu display levels 3 and 4
-  @media (min-width: map-get($grid-breakpoints, "lg")) {
-    .dropdown {
+  .dropdown {
 
-      &:hover > .dropdown-menu {
-        display: block;
+    &-submenu {
+      position: relative;
+
+      &:hover > a,
+      &:focus > a {
+        color: $dropdown-link-hover-color;
+        background-color: $dropdown-link-hover-bg;
       }
 
-      &-submenu {
-        position: relative;
+      a {
 
-        &:hover > a,
-        &:focus > a {
-          color: $dropdown-link-hover-color;
-          background-color: $dropdown-link-hover-bg;
-        }
-
-        a {
-
-          &:after {
-            transform: rotate(-90deg);
-            position: absolute;
-            right: 6px;
-            top: .8em;
-          }
-        }
-
-        .dropdown-menu {
-          top: 0;
-          left: 100%;
-          margin-left: .1rem;
-          margin-right: .1rem;
+        &:after {
+          transform: rotate(-90deg);
+          position: absolute;
+          right: 6px;
+          top: .8em;
         }
       }
     }
@@ -821,7 +806,106 @@ form {
   }
 }
 
-/* Responsive utilities */
+/* Desktop */
+
+@media (min-width: map-get($grid-breakpoints, "lg")) {
+
+  #nav-menu,
+  #nav-toolbar,
+  #nav-bottom-menu {
+
+    .dropdown {
+
+      &:hover > .dropdown-menu {
+        display: block;
+      }
+
+      &-submenu {
+
+        .dropdown-menu {
+          top: 0;
+          left: 100%;
+          margin-left: .1rem;
+          margin-right: .1rem;
+        }
+      }
+    }
+  }
+}
+
+/* Mobile and Tablets */
+
+@media (max-width: (map-get($grid-breakpoints, "lg") - 1)) {
+
+  #nav-menu,
+  #nav-toolbar,
+  #nav-bottom-menu {
+
+    .menu {
+
+      > li {
+
+        &.dropdown {
+
+          .dropdown-menu {
+            display: none !important;
+
+            &.wDropdown-open {
+              display: block !important;
+            }
+          }
+
+          .dropdown-toggle {
+
+            &:after {
+              display: none;
+            }
+
+            .caret {
+              border: none;
+              margin-top: 0;
+              margin-left: 6px;
+
+              &:after {
+                display: inline-block;
+                font-family: 'FontAwesome';
+                font-weight: normal;
+                font-style: normal;
+                font-size: 30px;
+                content: "\f055";
+              }
+
+              &.wMinus-icon {
+
+                &:after {
+                  content: "\f056";
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .dropdown-submenu {
+
+      > a {
+
+        &:after {
+          display: none;
+        }
+      }
+
+      &:hover {
+
+        > .dropdown-menu {
+          display: inherit;
+        }
+      }
+    }
+  }
+}
+/* Smallest screens */
 
 @media (max-width: 575px) {
 

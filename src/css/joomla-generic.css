@@ -6626,37 +6626,25 @@ a.hidden-text span.hidden-text {
 #nav-bottom-menu > .menu {
   width: 100%; }
 
-@media (min-width: 992px) {
-  #nav-menu .dropdown:hover > .dropdown-menu,
-  #nav-toolbar .dropdown:hover > .dropdown-menu,
-  #nav-bottom-menu .dropdown:hover > .dropdown-menu {
-    display: block; }
-  #nav-menu .dropdown-submenu,
-  #nav-toolbar .dropdown-submenu,
-  #nav-bottom-menu .dropdown-submenu {
-    position: relative; }
-    #nav-menu .dropdown-submenu:hover > a,
-    #nav-menu .dropdown-submenu:focus > a,
-    #nav-toolbar .dropdown-submenu:hover > a,
-    #nav-toolbar .dropdown-submenu:focus > a,
-    #nav-bottom-menu .dropdown-submenu:hover > a,
-    #nav-bottom-menu .dropdown-submenu:focus > a {
-      color: #16181b;
-      background-color: #f8f9fa; }
-    #nav-menu .dropdown-submenu a:after,
-    #nav-toolbar .dropdown-submenu a:after,
-    #nav-bottom-menu .dropdown-submenu a:after {
-      transform: rotate(-90deg);
-      position: absolute;
-      right: 6px;
-      top: .8em; }
-    #nav-menu .dropdown-submenu .dropdown-menu,
-    #nav-toolbar .dropdown-submenu .dropdown-menu,
-    #nav-bottom-menu .dropdown-submenu .dropdown-menu {
-      top: 0;
-      left: 100%;
-      margin-left: .1rem;
-      margin-right: .1rem; } }
+#nav-menu .dropdown-submenu,
+#nav-toolbar .dropdown-submenu,
+#nav-bottom-menu .dropdown-submenu {
+  position: relative; }
+  #nav-menu .dropdown-submenu:hover > a,
+  #nav-menu .dropdown-submenu:focus > a,
+  #nav-toolbar .dropdown-submenu:hover > a,
+  #nav-toolbar .dropdown-submenu:focus > a,
+  #nav-bottom-menu .dropdown-submenu:hover > a,
+  #nav-bottom-menu .dropdown-submenu:focus > a {
+    color: #16181b;
+    background-color: #f8f9fa; }
+  #nav-menu .dropdown-submenu a:after,
+  #nav-toolbar .dropdown-submenu a:after,
+  #nav-bottom-menu .dropdown-submenu a:after {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 6px;
+    top: .8em; }
 
 .nav li a .fas,
 .nav li a .far,
@@ -6984,7 +6972,63 @@ form .control-group .control-label .optional {
 .com-contact-category__items ~ .cat-children {
   margin-top: 3rem; }
 
-/* Responsive utilities */
+/* Desktop */
+@media (min-width: 992px) {
+  #nav-menu .dropdown:hover > .dropdown-menu,
+  #nav-toolbar .dropdown:hover > .dropdown-menu,
+  #nav-bottom-menu .dropdown:hover > .dropdown-menu {
+    display: block; }
+  #nav-menu .dropdown-submenu .dropdown-menu,
+  #nav-toolbar .dropdown-submenu .dropdown-menu,
+  #nav-bottom-menu .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: .1rem;
+    margin-right: .1rem; } }
+
+/* Mobile and Tablets */
+@media (max-width: 991px) {
+  #nav-menu .menu > li.dropdown .dropdown-menu,
+  #nav-toolbar .menu > li.dropdown .dropdown-menu,
+  #nav-bottom-menu .menu > li.dropdown .dropdown-menu {
+    display: none !important; }
+    #nav-menu .menu > li.dropdown .dropdown-menu.wDropdown-open,
+    #nav-toolbar .menu > li.dropdown .dropdown-menu.wDropdown-open,
+    #nav-bottom-menu .menu > li.dropdown .dropdown-menu.wDropdown-open {
+      display: block !important; }
+  #nav-menu .menu > li.dropdown .dropdown-toggle:after,
+  #nav-toolbar .menu > li.dropdown .dropdown-toggle:after,
+  #nav-bottom-menu .menu > li.dropdown .dropdown-toggle:after {
+    display: none; }
+  #nav-menu .menu > li.dropdown .dropdown-toggle .caret,
+  #nav-toolbar .menu > li.dropdown .dropdown-toggle .caret,
+  #nav-bottom-menu .menu > li.dropdown .dropdown-toggle .caret {
+    border: none;
+    margin-top: 0;
+    margin-left: 6px; }
+    #nav-menu .menu > li.dropdown .dropdown-toggle .caret:after,
+    #nav-toolbar .menu > li.dropdown .dropdown-toggle .caret:after,
+    #nav-bottom-menu .menu > li.dropdown .dropdown-toggle .caret:after {
+      display: inline-block;
+      font-family: 'FontAwesome';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 30px;
+      content: "\f055"; }
+    #nav-menu .menu > li.dropdown .dropdown-toggle .caret.wMinus-icon:after,
+    #nav-toolbar .menu > li.dropdown .dropdown-toggle .caret.wMinus-icon:after,
+    #nav-bottom-menu .menu > li.dropdown .dropdown-toggle .caret.wMinus-icon:after {
+      content: "\f056"; }
+  #nav-menu .dropdown-submenu > a:after,
+  #nav-toolbar .dropdown-submenu > a:after,
+  #nav-bottom-menu .dropdown-submenu > a:after {
+    display: none; }
+  #nav-menu .dropdown-submenu:hover > .dropdown-menu,
+  #nav-toolbar .dropdown-submenu:hover > .dropdown-menu,
+  #nav-bottom-menu .dropdown-submenu:hover > .dropdown-menu {
+    display: inherit; } }
+
+/* Smallest screens */
 @media (max-width: 575px) {
   /* Margin bottom */
   .wf-xs-mb-1 {
