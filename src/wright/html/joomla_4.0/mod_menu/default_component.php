@@ -15,13 +15,6 @@ $class .= ($item->deeper) ? ' dropdown-toggle' : '';
 $class .= ($item->level == 1) ? ' nav-link' : ' dropdown-item';
 $class  = 'class="' . $class . '" ';
 
-// Add the toggler
-if($item->deeper) {
-    $toggle = 'data-toggle="dropdown" aria-expanded="false"';
-} else {
-    $toggle = '';
-}
-
 // The anchor title
 $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
 
@@ -48,7 +41,7 @@ switch ($item->browserNav)
 {
 	default:
 	case 0:
-?><a<?php echo $item->licollapse  // Wright v.4: Added collapsible option ?> <?php echo $class; ?>href="<?php echo $item->flink; ?>" <?php echo $title; ?> <?php echo $toggle; ?>><?php  echo $structIcons . $linktype; // Wright v.4: Added icons structure ?><?php echo $caret // Wright v.4: Added caret ?></a><?php
+?><a<?php echo $item->licollapse  // Wright v.4: Added collapsible option ?> <?php echo $class; ?>href="<?php echo $item->flink; ?>" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.4: Added icons structure ?><?php echo $caret // Wright v.4: Added caret ?></a><?php
 		break;
 	case 1:
 		// _blank
