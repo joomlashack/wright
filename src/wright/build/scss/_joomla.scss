@@ -474,14 +474,10 @@ p {
 }
 
 .readmore {
-  /*overflow: hidden;
 
   .btn {
-      max-width: calc(100% - 10px);
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-  }*/
+      white-space: normal;
+  }
 }
 
 .item-image {

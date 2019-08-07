@@ -6805,15 +6805,8 @@ p.img_caption {
   font-style: italic;
   text-align: left; }
 
-.readmore {
-  /*overflow: hidden;
-
-  .btn {
-      max-width: calc(100% - 10px);
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-  }*/ }
+.readmore .btn {
+  white-space: normal; }
 
 .item-image {
   margin-top: 7px;
