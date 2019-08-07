@@ -7010,6 +7010,10 @@ form .control-group .control-label .optional {
     #nav-toolbar .menu > li.dropdown .dropdown-menu.wDropdown-open,
     #nav-bottom-menu .menu > li.dropdown .dropdown-menu.wDropdown-open {
       display: block !important; }
+    #nav-menu .menu > li.dropdown .dropdown-menu .dropdown-menu,
+    #nav-toolbar .menu > li.dropdown .dropdown-menu .dropdown-menu,
+    #nav-bottom-menu .menu > li.dropdown .dropdown-menu .dropdown-menu {
+      margin: 0.25rem 0.5rem 0.25rem 1.5rem; }
   #nav-menu .menu > li.dropdown .dropdown-toggle:after,
   #nav-toolbar .menu > li.dropdown .dropdown-toggle:after,
   #nav-bottom-menu .menu > li.dropdown .dropdown-toggle:after {
