@@ -27,7 +27,7 @@ var disableToolbarResize = false;
 
                     $wToggleIcon       = $(this);
                     $wDropdown         = $(this).parent().siblings('.dropdown-menu');
-                    $wMenuContainer    = $(this).closest('.nav-collapse');
+                    $wMenuContainer    = $(this).closest('.navbar-collapse');
 
                     // Switch icon
                     if ($($wToggleIcon).is('.wMinus-icon')) {
