@@ -111,6 +111,22 @@ a {
       }
     }
   }
+
+  a {
+
+    .caret {
+      display: inline-block;
+      line-height: 20px;
+      width: 0;
+      height: 0;
+      vertical-align: top;
+      content: '';
+
+      &:after {
+        height: 20px;
+      }
+    }
+  }
 }
 
 .nav,

@@ -6646,6 +6646,20 @@ a.hidden-text span.hidden-text {
     right: 6px;
     top: .8em; }
 
+#nav-menu a .caret,
+#nav-toolbar a .caret,
+#nav-bottom-menu a .caret {
+  display: inline-block;
+  line-height: 20px;
+  width: 0;
+  height: 0;
+  vertical-align: top;
+  content: ''; }
+  #nav-menu a .caret:after,
+  #nav-toolbar a .caret:after,
+  #nav-bottom-menu a .caret:after {
+    height: 20px; }
+
 .nav li a .fas,
 .nav li a .far,
 .nav li a .fab,
