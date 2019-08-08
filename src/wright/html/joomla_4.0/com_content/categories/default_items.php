@@ -23,8 +23,8 @@ if ($this->maxLevelcat != 0 && count($this->items[$this->parent->id]) > 0) :
         <?php foreach ($this->items[$this->parent->id] as $id => $item) : ?>
             <?php if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) : ?>
                 <div class="com-content-categories__item">
-                    <h3 class="page-header item-title">
-                        <a href="<?php echo Route::_(ContentHelperRoute::getCategoryRoute($item->id, $item->language)); ?>">
+                    <h3 class="page-header item-title wf-level-<?php echo $item->level; ?>">
+                        <a class="wf-level-sign" href="<?php echo Route::_(ContentHelperRoute::getCategoryRoute($item->id, $item->language)); ?>">
                             <?php echo $this->escape($item->title); ?></a>
                         <?php if ($this->params->get('show_cat_num_articles_cat') == 1) :?>
                             <span class="badge badge-info">
@@ -49,7 +49,7 @@ if ($this->maxLevelcat != 0 && count($this->items[$this->parent->id]) > 0) :
                     <?php endif; ?>
 
                     <?php if (count($item->getChildren()) > 0 && $this->maxLevelcat > 1) : ?>
-                        <div class="com-content-categories__children collapse fade" id="category-<?php echo $item->id; ?>">
+                        <div class="com-content-categories__children wf-item-children collapse fade" id="category-<?php echo $item->id; ?>">
                             <?php
                             $this->items[$item->id] = $item->getChildren();
                             $this->parent = $item;
