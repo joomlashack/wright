@@ -19,8 +19,8 @@ if ($this->maxLevelcat != 0 && count($this->items[$this->parent->id]) > 0) :
     <?php foreach ($this->items[$this->parent->id] as $id => $item) : ?>
     <?php if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) : ?>
         <div class="com-contact-categories__items">
-            <h3 class="page-header item-title">
-                <a href="<?php echo Route::_(ContactHelperRoute::getCategoryRoute($item->id, $item->language)); ?>">
+            <h3 class="page-header item-title wf-level-<?php echo $item->level; ?>">
+                <a class="wf-level-sign" href="<?php echo Route::_(ContactHelperRoute::getCategoryRoute($item->id, $item->language)); ?>">
                     <?php echo $this->escape($item->title); ?></a>
                 <?php if ($this->params->get('show_cat_items_cat') == 1) :?>
                     <span class="badge badge-info">
@@ -42,7 +42,7 @@ if ($this->maxLevelcat != 0 && count($this->items[$this->parent->id]) > 0) :
             <?php endif; ?>
 
             <?php if ($this->maxLevelcat > 1 && count($item->getChildren()) > 0) : ?>
-                <div class="collapse fade" id="category-<?php echo $item->id; ?>">
+                <div class="wf-item-children collapse fade" id="category-<?php echo $item->id; ?>">
                     <?php
                     $this->items[$item->id] = $item->getChildren();
                     $this->parent = $item;

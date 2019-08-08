@@ -191,3 +191,54 @@
 .p-l-4 {
   padding-left: 4rem !important;
 }
+
+// Children items
+
+.wf-item-children {
+
+  .wf-level-2,
+  .wf-level-3,
+  .wf-level-4,
+  .wf-level-5,
+  .wf-level-6 {
+
+    .wf-level-sign:before {
+      display: inline-block;
+    }
+  }
+
+  .wf-level-2 {
+
+    .wf-level-sign:before {
+      content: "—";
+    }
+  }
+
+  .wf-level-3 {
+
+    .wf-level-sign:before {
+      content: "— -";
+    }
+  }
+
+  .wf-level-4 {
+
+    .wf-level-sign:before {
+      content: "— - -";
+    }
+  }
+
+  .wf-level-5 {
+
+    .wf-level-sign:before {
+      content: "— - - -";
+    }
+  }
+
+  .wf-level-6 {
+
+    .wf-level-sign:before {
+      content: "— - - - -";
+    }
+  }
+}
