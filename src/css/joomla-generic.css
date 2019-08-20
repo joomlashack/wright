@@ -6908,10 +6908,6 @@ dl.article-info {
   -moz-border-bottom-right-radius: 0;
   -webkit-border-bottom-right-radius: 0; }
 
-/* Search */
-span.highlight {
-  background-color: #f9f952; }
-
 /* Newsfeed */
 .mod-newsfeed h5.feed-link {
   margin-bottom: 0; }
