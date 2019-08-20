@@ -618,6 +618,25 @@ dl.article-info {
   }
 }
 
+/* Smart Search */
+.com-finder__search {
+
+  .input-group {
+
+    .awesomplete {
+
+      input {
+        border-top-right-radius: 0;
+        -moz-border-top-right-radius: 0;
+        -webkit-border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        -moz-border-bottom-right-radius: 0;
+        -webkit-border-bottom-right-radius: 0;
+      }
+    }
+  }
+}
+
 /* Search */
 
 span {
