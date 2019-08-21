@@ -63,7 +63,7 @@ use Joomla\CMS\Uri\Uri;
 </div>
 <br id="highlighter-end" />
 <?php // Display the pagination ?>
-<div class="container-pagination">
+<div class="container-pagination mt-5">
     <div class="counter float-right">
         <?php // Prepare the pagination string.  Results X - Y of Z ?>
         <?php $start = (int) $this->pagination->limitstart + 1; ?>
@@ -72,5 +72,7 @@ use Joomla\CMS\Uri\Uri;
         <?php $limit = (int) ($limit > $total ? $total : $limit); ?>
         <?php echo Text::sprintf('COM_FINDER_SEARCH_RESULTS_OF', $start, $limit, $total); ?>
     </div>
-    <?php echo $this->pagination->getPagesLinks(); ?>
+    <div class="float-left">
+        <?php echo $this->pagination->getPagesLinks(); ?>
+    </div>
 </div>

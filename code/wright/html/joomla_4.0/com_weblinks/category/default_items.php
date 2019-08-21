@@ -165,13 +165,15 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php echo JHtml::_('icon.create', $item, $item->params); ?>
 		<?php  endif; */ ?>
 		<?php if ($this->params->get('show_pagination')) : ?>
-		   <div class="container-pagination">
+		   <div class="container-pagination mt-5">
 			<?php if ($this->params->def('show_pagination_results', 1)) : ?>
-				<p class="counter float-right">
+				<div class="counter float-right">
 					<?php echo $this->pagination->getPagesCounter(); ?>
-				</p>
+				</div>
 			<?php endif; ?>
-				<?php echo $this->pagination->getPagesLinks(); ?>
+            <div class="float-left">
+                <?php echo $this->pagination->getPagesLinks(); ?>
+            </div>
 			</div>
 		<?php endif; ?>
 	</form>

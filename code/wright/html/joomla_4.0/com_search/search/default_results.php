@@ -43,6 +43,8 @@ defined('_JEXEC') or die;
 <?php endforeach; ?>
 </dl>
 
-<div class="container-pagination">
-	<?php echo $this->pagination->getPagesLinks(); ?>
+<div class="container-pagination mt-5">
+    <div class="float-left">
+        <?php echo $this->pagination->getPagesLinks(); ?>
+    </div>
 </div>

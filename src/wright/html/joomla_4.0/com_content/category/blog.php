@@ -312,12 +312,17 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 				addExtraNonContentContainers($this->wrightNonContentContainer, $this->wrightNonContentRowMode);
 			?>
 			<?php if ($this->wrightComplementExtraClass != "") echo '<div class="' . $this->wrightComplementExtraClass . '">' // Wright v.4: Extra complements class  ?>
-			<div class="container-pagination<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.4: Inner complements class  ?>">
+			<div class="container-pagination mt-5<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.4: Inner complements class  ?>">
 				<?php  if ($this->params->def('show_pagination_results', 1)) : ?>
-				<p class="counter float-right"> <?php echo $this->pagination->getPagesCounter(); ?> </p>
+				<div class="counter float-right">
+                    <?php echo $this->pagination->getPagesCounter(); ?>
+                </div>
 				<?php endif; ?>
-				<?php echo $this->pagination->getPagesLinks(); ?> </div>
-				<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.4: Extra complements class  ?>
+                <div class="float-left">
+                    <?php echo $this->pagination->getPagesLinks(); ?>
+                </div>
+            </div>
+			<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.4: Extra complements class  ?>
 			<?php
 				// Wright v.4: Extra container and row
 				addExtraNonContentContainersClose($this->wrightNonContentContainer, $this->wrightNonContentRowMode);

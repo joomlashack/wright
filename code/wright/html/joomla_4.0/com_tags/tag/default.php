@@ -66,11 +66,15 @@ if (!$this->params->get('show_page_heading')) : ?>
 
 <?php echo $this->loadTemplate('items'); ?>
     <?php if (($this->params->def('show_pagination', 1) == 1 || ($this->params->get('show_pagination') == 2)) && ($this->pagination->pagesTotal > 1)) : ?>
-	<div class="container-pagination">
+	<div class="container-pagination mt-5">
 		<?php  if ($this->params->def('show_pagination_results', 1)) : ?>
-		<p class="counter float-right"> <?php echo $this->pagination->getPagesCounter(); ?> </p>
+		<div class="counter float-right">
+            <?php echo $this->pagination->getPagesCounter(); ?>
+        </div>
 		<?php endif; ?>
-		<?php echo $this->pagination->getPagesLinks(); ?>
+        <div class="float-left">
+            <?php echo $this->pagination->getPagesLinks(); ?>
+        </div>
 	</div>
 	<?php  endif; ?>
 
