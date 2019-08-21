@@ -20,6 +20,7 @@ switch ((string) $item->text)
     case Text::_('JLIB_HTML_START') :
         $icon = 'fa fa-angle-double-left';
         $aria = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+        $linkTypeClass = 'wf-pagination-start';
         break;
 
     // Check for "Prev" item
@@ -27,23 +28,27 @@ switch ((string) $item->text)
         $item->text = Text::_('JPREVIOUS');
         $icon = 'fa fa-angle-left';
         $aria =Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+        $linkTypeClass = 'wf-pagination-prev';
         break;
 
     // Check for "Next" item
     case Text::_('JNEXT') :
         $icon = 'fa fa-angle-right';
         $aria = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+        $linkTypeClass = 'wf-pagination-next';
         break;
 
     // Check for "End" item
     case Text::_('JLIB_HTML_END') :
         $icon = 'fa fa-angle-double-right';
         $aria = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+        $linkTypeClass = 'wf-pagination-end';
         break;
 
     default:
         $icon = null;
         $aria = Text::sprintf('JLIB_HTML_GOTO_PAGE', strtolower($item->text));
+        $linkTypeClass = 'wf-pagination-default';
         break;
 }
 
@@ -72,14 +77,14 @@ else
 }
 ?>
 <?php if ($displayData['active']) : ?>
-    <li class="<?php echo $class; ?> page-item">
+    <li class="<?php echo $class . ' ' . $linkTypeClass; ?> page-item">
         <a class="page-link" <?php echo $title; ?> aria-label="<?php echo $aria; ?>" href="<?php echo $item->link; ?>">
             <?php echo $display; ?>
         </a>
     </li>
 <?php elseif (isset($item->active) && $item->active) : ?>
     <?php $aria = Text::sprintf('JLIB_HTML_PAGE_CURRENT', strtolower($item->text)); ?>
-    <li class="<?php echo $class; ?> page-item current">
+    <li class="<?php echo $class . ' ' . $linkTypeClass; ?> page-item current">
         <span class="page-link">
             <span aria-current="true" aria-label="<?php echo $aria; ?>">
                 <?php echo $display; ?>
@@ -87,7 +92,7 @@ else
         </span>
     </li>
 <?php else : ?>
-    <li class="<?php echo $class; ?> page-item">
+    <li class="<?php echo $class . ' ' . $linkTypeClass; ?> page-item">
         <span class="page-link">
             <?php echo $display; ?>
         </span>

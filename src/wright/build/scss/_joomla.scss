@@ -548,7 +548,7 @@ dl.article-info {
 
       &.page-item {
 
-        &:not(.pagination-start):not(.pagination-prev):not(.pagination-next):not(.pagination-end) {
+        &:not(.wf-pagination-start):not(.wf-pagination-prev):not(.wf-pagination-next):not(.wf-pagination-end) {
 
           @media (max-width: 767px) {
             display: none !important;

@@ -6866,7 +6866,7 @@ dl.article-info {
   margin: 0 !important; }
 
 @media (max-width: 767px) {
-  .container-pagination .pagination li.page-item:not(.pagination-start):not(.pagination-prev):not(.pagination-next):not(.pagination-end) {
+  .container-pagination .pagination li.page-item:not(.wf-pagination-start):not(.wf-pagination-prev):not(.wf-pagination-next):not(.wf-pagination-end) {
     display: none !important; } }
 
 /* Caption fixes */
