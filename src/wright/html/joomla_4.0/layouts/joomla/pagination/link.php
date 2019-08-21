@@ -18,37 +18,37 @@ switch ((string) $item->text)
 {
     // Check for "Start" item
     case Text::_('JLIB_HTML_START') :
-        $icon = 'fa fa-angle-double-left';
-        $aria = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
-        $linkTypeClass = 'wf-pagination-start';
+        $icon           = 'fa fa-angle-double-left';
+        $aria           = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+        $linkTypeClass  = 'wf-pagination-start';
         break;
 
     // Check for "Prev" item
     case $item->text === Text::_('JPREV') :
-        $item->text = Text::_('JPREVIOUS');
-        $icon = 'fa fa-angle-left';
-        $aria =Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
-        $linkTypeClass = 'wf-pagination-prev';
+        $item->text     = Text::_('JPREVIOUS');
+        $icon           = 'fa fa-angle-left';
+        $aria           = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+        $linkTypeClass  = 'wf-pagination-prev';
         break;
 
     // Check for "Next" item
     case Text::_('JNEXT') :
-        $icon = 'fa fa-angle-right';
-        $aria = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
-        $linkTypeClass = 'wf-pagination-next';
+        $icon           = 'fa fa-angle-right';
+        $aria           = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+        $linkTypeClass  = 'wf-pagination-next';
         break;
 
     // Check for "End" item
     case Text::_('JLIB_HTML_END') :
-        $icon = 'fa fa-angle-double-right';
-        $aria = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
-        $linkTypeClass = 'wf-pagination-end';
+        $icon           = 'fa fa-angle-double-right';
+        $aria           = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+        $linkTypeClass  = 'wf-pagination-end';
         break;
 
     default:
-        $icon = null;
-        $aria = Text::sprintf('JLIB_HTML_GOTO_PAGE', strtolower($item->text));
-        $linkTypeClass = 'wf-pagination-default';
+        $icon           = null;
+        $aria           = Text::sprintf('JLIB_HTML_GOTO_PAGE', strtolower($item->text));
+        $linkTypeClass  = 'wf-pagination-default';
         break;
 }
 
