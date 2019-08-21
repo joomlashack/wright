@@ -6913,6 +6913,10 @@ dl.article-info {
   .com-finder .search-results .wf-smart-search-item .result-title h4,
   .com-finder .search-results .wf-smart-search-item .result-taxonomy {
     margin-bottom: 0.5rem; }
+  .com-finder .search-results .wf-smart-search-item .result-text {
+    margin-bottom: 0.3rem; }
+  .com-finder .search-results .wf-smart-search-item .result-url {
+    opacity: 0.5; }
 
 /* Newsfeed */
 .mod-newsfeed h5.feed-link {
