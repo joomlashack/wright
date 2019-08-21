@@ -6900,13 +6900,19 @@ dl.article-info {
     margin-bottom: 1rem; } }
 
 /* Smart Search */
-.com-finder__search .input-group .awesomplete input {
+.com-finder .js-finder-searchform .input-group .awesomplete input {
   border-top-right-radius: 0;
   -moz-border-top-right-radius: 0;
   -webkit-border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   -moz-border-bottom-right-radius: 0;
   -webkit-border-bottom-right-radius: 0; }
+
+.com-finder .search-results .wf-smart-search-item {
+  margin-bottom: 1.5rem; }
+  .com-finder .search-results .wf-smart-search-item .result-title h4,
+  .com-finder .search-results .wf-smart-search-item .result-taxonomy {
+    margin-bottom: 0.5rem; }
 
 /* Newsfeed */
 .mod-newsfeed h5.feed-link {

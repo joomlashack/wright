@@ -619,19 +619,35 @@ dl.article-info {
 }
 
 /* Smart Search */
-.com-finder__search {
 
-  .input-group {
+.com-finder {
 
-    .awesomplete {
+  .js-finder-searchform {
 
-      input {
-        border-top-right-radius: 0;
-        -moz-border-top-right-radius: 0;
-        -webkit-border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        -moz-border-bottom-right-radius: 0;
-        -webkit-border-bottom-right-radius: 0;
+    .input-group {
+
+      .awesomplete {
+
+        input {
+          border-top-right-radius: 0;
+          -moz-border-top-right-radius: 0;
+          -webkit-border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          -moz-border-bottom-right-radius: 0;
+          -webkit-border-bottom-right-radius: 0;
+        }
+      }
+    }
+  }
+
+  .search-results {
+
+    .wf-smart-search-item {
+      margin-bottom: 1.5rem;
+
+      .result-title h4,
+      .result-taxonomy {
+        margin-bottom: 0.5rem;
       }
     }
   }
