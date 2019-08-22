@@ -6864,12 +6864,12 @@ dl.article-info {
   margin: 1rem 0; }
 
 /* Pagination */
-.container-pagination .counter {
+.wf-container-pagination .counter {
   line-height: 35px;
   margin: 0 !important; }
 
 @media (max-width: 767px) {
-  .container-pagination .pagination li.page-item:not(.wf-pagination-start):not(.wf-pagination-prev):not(.wf-pagination-next):not(.wf-pagination-end) {
+  .wf-container-pagination .pagination li.page-item:not(.wf-pagination-start):not(.wf-pagination-prev):not(.wf-pagination-next):not(.wf-pagination-end) {
     display: none !important; } }
 
 /* Caption fixes */

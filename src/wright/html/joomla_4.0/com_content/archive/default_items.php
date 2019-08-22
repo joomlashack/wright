@@ -208,7 +208,7 @@ $params = $this->params;
 	</div>
 	<?php endforeach; ?>
 </div>
-<div class="container-pagination mt-5">
+<div class="wf-container-pagination mt-5">
 	<div class="counter float-right">
         <?php echo $this->pagination->getPagesCounter(); ?>
     </div>

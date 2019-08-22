@@ -262,7 +262,7 @@ if (!empty($this->items))
 <?php // Add pagination links ?>
 <?php if (!empty($this->items)) : ?>
 	<?php if (($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->pagesTotal > 1)) : ?>
-		<div class="container-pagination mt-5">
+		<div class="wf-container-pagination mt-5">
 			<?php if ($this->params->def('show_pagination_results', 1)) : ?>
                 <div class="counter float-right">
 					<?php echo $this->pagination->getPagesCounter(); ?>

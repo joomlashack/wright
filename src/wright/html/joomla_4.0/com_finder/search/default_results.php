@@ -63,7 +63,7 @@ use Joomla\CMS\Uri\Uri;
 </div>
 <br id="highlighter-end" />
 <?php // Display the pagination ?>
-<div class="container-pagination mt-5">
+<div class="wf-container-pagination mt-5">
     <div class="counter float-right">
         <?php // Prepare the pagination string.  Results X - Y of Z ?>
         <?php $start = (int) $this->pagination->limitstart + 1; ?>
