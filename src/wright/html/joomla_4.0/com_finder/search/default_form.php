@@ -31,7 +31,7 @@ if ($this->params->get('show_autosuggest', 1))
     <?php if (false && $this->state->get('list.ordering') !== 'relevance_dsc') : ?>
         <input type="hidden" name="o" value="<?php echo $this->escape($this->state->get('list.ordering')); ?>">
     <?php endif; ?>
-    <fieldset class="com-finder__search word mb-3">
+    <fieldset class="com-finder__search word card-body bg-light mb-3">
         <div class="form-inline">
             <label for="q" class="mr-2">
                 <?php echo Text::_('COM_FINDER_SEARCH_TERMS'); ?>
