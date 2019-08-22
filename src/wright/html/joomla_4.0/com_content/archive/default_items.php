@@ -216,3 +216,4 @@ $params = $this->params;
         <?php echo $this->pagination->getPagesLinks(); ?>
     </div>
 </div>
+<div class="clearfix"></div>

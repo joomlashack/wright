@@ -262,15 +262,16 @@ if (!empty($this->items))
 <?php // Add pagination links ?>
 <?php if (!empty($this->items)) : ?>
 	<?php if (($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->pagesTotal > 1)) : ?>
-		<div class="com-content-category__navigation w-100">
+		<div class="container-pagination mt-5">
 			<?php if ($this->params->def('show_pagination_results', 1)) : ?>
-				<p class="com-content-category__counter counter float-right pt-3 pr-2">
+                <div class="counter float-right">
 					<?php echo $this->pagination->getPagesCounter(); ?>
-				</p>
+				</div>
 			<?php endif; ?>
-			<div class="com-content-category__pagination">
+			<div class="float-left">
 				<?php echo $this->pagination->getPagesLinks(); ?>
 			</div>
 		</div>
+        <div class="clearfix"></div>
 	<?php endif; ?>
 <?php endif; ?>

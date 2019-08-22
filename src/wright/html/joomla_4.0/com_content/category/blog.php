@@ -322,6 +322,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
                     <?php echo $this->pagination->getPagesLinks(); ?>
                 </div>
             </div>
+            <div class="clearfix"></div>
 			<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.4: Extra complements class  ?>
 			<?php
 				// Wright v.4: Extra container and row

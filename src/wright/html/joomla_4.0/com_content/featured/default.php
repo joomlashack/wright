@@ -188,14 +188,15 @@ if (!empty($this->intro_items)) :
 	<div class="container-pagination mt-5<?php if ($this->wrightComplementInnerClass != "") echo ' ' . $this->wrightComplementInnerClass // Wright v.4: Inner complements class  ?>">
 
 		<?php if ($this->params->def('show_pagination_results', 1)) : ?>
-			<p class="counter float-right">
+			<div class="counter float-right">
 				<?php echo $this->pagination->getPagesCounter(); ?>
-			</p>
+			</div>
 		<?php  endif; ?>
         <div class="float-left">
             <?php echo $this->pagination->getPagesLinks(); ?>
         </div>
 	</div>
+    <div class="clearfix"></div>
 	<?php if ($this->wrightComplementExtraClass != "") echo '</div>' // Wright v.4: Extra complements class  ?>
 <?php endif; ?>
 
