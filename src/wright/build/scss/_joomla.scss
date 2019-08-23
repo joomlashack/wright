@@ -807,6 +807,20 @@ form {
   }
 }
 
+.icon-eye,
+.icon-eye-close {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+.icon-eye:before {
+  content: "\f06e";
+}
+
+.icon-eye-close:before {
+  content: "\f070";
+}
+
 /* Contact */
 
 .com-contact {

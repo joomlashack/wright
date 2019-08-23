@@ -6997,6 +6997,17 @@ form:not(.form-no-margin) .control-group {
 form .control-group .control-label .optional {
   font-size: 0.8em; }
 
+.icon-eye,
+.icon-eye-close {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900; }
+
+.icon-eye:before {
+  content: "\f06e"; }
+
+.icon-eye-close:before {
+  content: "\f070"; }
+
 /* Contact */
 @media (min-width: 768px) {
   .com-contact.contact .thumbnail {
