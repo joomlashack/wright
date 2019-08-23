@@ -41,8 +41,8 @@ use Joomla\CMS\Router\Route;
 <?php endif; ?>
 
     <form action="<?php echo Route::_('index.php?option=com_users&task=user.logout'); ?>" method="post" class="com-users-logout__form form-horizontal well">
-        <div class="com-users-login__submit card">
-            <div class="card-body">
+        <div class="com-users-login__submit">
+            <div class="card-body bg-light">
                 <button type="submit" class="btn btn-primary">
                     <span class="fas fa-arrow-left"></span>
                     <?php echo Text::_('JLOGOUT'); ?>
