@@ -6997,6 +6997,9 @@ form:not(.form-no-margin) .control-group {
 form .control-group .control-label .optional {
   font-size: 0.8em; }
 
+[class*="col-md-"] form .switcher__legend {
+  margin-left: 0; }
+
 .icon-eye,
 .icon-eye-close {
   font-family: 'Font Awesome 5 Free';

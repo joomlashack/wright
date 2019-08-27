@@ -807,6 +807,10 @@ form {
   }
 }
 
+[class*="col-md-"] form .switcher__legend {
+  margin-left: 0;
+}
+
 .icon-eye,
 .icon-eye-close {
   font-family: 'Font Awesome 5 Free';
