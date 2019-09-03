@@ -24,18 +24,18 @@ $params = &$this->item->params;
 
 <form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">  <?php // Wright v.3: Added form-inline class ?>
 	<fieldset class="filters">
-	<legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
-	<div class="well well-small">   <?php // Wright v.3: Added well ?>
-	<?php if ($this->params->get('show_pagination_limit')) : ?>
-		<div class="display-limit">
-			<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
-			<?php echo $this->pagination->getLimitBox(); ?>
-		</div>
-	<?php endif; ?>
-		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-	</div>  <?php // Wright v.3: Added well ?>
-	</fieldset>
+        <legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
+        <?php if ($this->params->get('show_pagination_limit')) : ?>
+            <div class="well well-small">   <?php // Wright v.3: Added well ?>
+                <div class="display-limit">
+                    <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
+                    <?php echo $this->pagination->getLimitBox(); ?>
+                </div>
+            </div>  <?php // Wright v.3: Added well ?>
+        <?php endif; ?>
+        <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
+        <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+    </fieldset>
 
 	<table class="category table table-striped table-hover">  <?php // Wright v.3: Added table table-striped table-hover classes ?>
 		<?php if ($this->params->get('show_headings')) : ?>
