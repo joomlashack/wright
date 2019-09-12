@@ -124,7 +124,8 @@ class Wright
 
 		// Body classes
 		$wrightBodyClass = '';
-		$wrightBodyClass .= ($this->params->get('responsive', '1') == 1 ? ' responsive' : ' no-responsive');
+        // Keep "responsive" class just in case is required even after removing "Responsive" parameter
+		$wrightBodyClass .= ' responsive';
 
 		// Get the bootstrap row mode ( row )
 		$wrightGridMode = $this->params->get('bs_rowmode', 'row');
@@ -452,10 +453,7 @@ class Wright
 		$styles['template'][] = 'style-' . $this->_selectedStyle . '.css';
 		$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
 
-		if ($this->document->params->get('responsive', '1') == '1')
-		{
-			$styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
-		}
+        $styles['template'][] = 'joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-responsive.css';
 
 		$styles['wrighttemplatecss'][] = 'font-awesome.min.css';
 
