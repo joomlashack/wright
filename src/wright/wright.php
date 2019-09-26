@@ -119,7 +119,7 @@ class Wright
 
 		// Body classes
 		$wrightBodyClass = '';
-        // Keep "responsive" class just in case is required even after removing "Responsive" parameter
+		// Keep "responsive" class just in case is required even after removing "Responsive" parameter
 		$wrightBodyClass .= ' responsive';
 
 		// Get the bootstrap row mode ( row )
