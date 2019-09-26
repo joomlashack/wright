@@ -6927,6 +6927,9 @@ dl.article-info {
   .wf-newsfeeds-category .wf-newsfeed-item .list-title h4 {
     margin-bottom: 0.1rem; }
 
+.wf-newsfeeds-single > div {
+  margin-bottom: 2.5rem; }
+
 /* Form */
 .invalid {
   color: #dc3545; }

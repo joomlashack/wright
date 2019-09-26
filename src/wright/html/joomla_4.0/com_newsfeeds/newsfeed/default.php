@@ -40,9 +40,11 @@ use Joomla\CMS\Layout\FileLayout;
     <?php $images = json_decode($this->item->images); ?>
     <div class="com-newsfeeds-newsfeed newsfeed<?php echo $direction; ?>">
         <?php if ($this->params->get('display_num')) : ?>
-            <h1 class="<?php echo $direction; ?>">
-                <?php echo $this->escape($this->params->get('page_heading')); ?>
-            </h1>
+            <div class="page-header">
+                <h1 class="<?php echo $direction; ?>">
+                    <?php echo $this->escape($this->params->get('page_heading')); ?>
+                </h1>
+            </div>
         <?php endif; ?>
         <h2 class="<?php echo $direction; ?>">
             <?php if ($this->item->published == 0) : ?>
@@ -99,7 +101,7 @@ use Joomla\CMS\Layout\FileLayout;
 
         <!-- Show items -->
         <?php if (!empty($this->rssDoc[0])) : ?>
-            <ol class="com-newsfeeds-newsfeed__items">
+            <div class="wf-newsfeeds-single">
                 <?php for ($i = 0; $i < $this->item->numarticles; $i++) : ?>
                     <?php if (empty($this->rssDoc[$i])) : ?>
                         <?php break; ?>
@@ -107,7 +109,7 @@ use Joomla\CMS\Layout\FileLayout;
                     <?php $uri  = $this->rssDoc[$i]->uri || !$this->rssDoc[$i]->isPermaLink ? trim($this->rssDoc[$i]->uri) : trim($this->rssDoc[$i]->guid); ?>
                     <?php $uri  = !$uri || stripos($uri, 'http') !== 0 ? $this->item->link : $uri; ?>
                     <?php $text = $this->rssDoc[$i]->content !== '' ? trim($this->rssDoc[$i]->content) : ''; ?>
-                    <li>
+                    <div>
                         <?php if (!empty($uri)) : ?>
                             <h3 class="feed-link">
                                 <a href="<?php echo htmlspecialchars($uri); ?>" target="_blank">
@@ -127,9 +129,9 @@ use Joomla\CMS\Layout\FileLayout;
                                 <?php echo str_replace('&apos;', "'", $text); ?>
                             </div>
                         <?php endif; ?>
-                    </li>
+                    </div>
                 <?php endfor; ?>
-            </ol>
+            </div>
         <?php endif; ?>
     </div>
 <?php endif; ?>
