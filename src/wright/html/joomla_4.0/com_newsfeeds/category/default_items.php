@@ -26,7 +26,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
     <?php else : ?>
         <form action="<?php echo htmlspecialchars(Uri::getInstance()->toString(), ENT_COMPAT, 'UTF-8'); ?>" method="post" name="adminForm" id="adminForm">
             <?php if ($this->params->get('filter_field') !== 'hide' || $this->params->get('show_pagination_limit')) : ?>
-                <fieldset class="com-newsfeeds-category__filters filters btn-toolbar">
+                <fieldset class="com-newsfeeds-category__filters filters card-body bg-light mb-3">
                     <?php if ($this->params->get('filter_field') !== 'hide' && $this->params->get('filter_field') == '1') : ?>
                         <div class="btn-group">
                             <label class="filter-search-lbl sr-only" for="filter-search">
@@ -35,7 +35,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								</span>
                                 <?php echo Text::_('COM_NEWSFEEDS_FILTER_LABEL') . '&#160;'; ?>
                             </label>
-                            <input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="inputbox" onchange="document.adminForm.submit();" placeholder="<?php echo Text::_('COM_NEWSFEEDS_FILTER_SEARCH_DESC'); ?>">
+                            <input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="form-control" onchange="document.adminForm.submit();" placeholder="<?php echo Text::_('COM_NEWSFEEDS_FILTER_SEARCH_DESC'); ?>">
                         </div>
                     <?php endif; ?>
                     <?php if ($this->params->get('show_pagination_limit')) : ?>
@@ -48,54 +48,59 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                     <?php endif; ?>
                 </fieldset>
             <?php endif; ?>
-            <ul class="com-newsfeeds-category__category category list-striped list-condensed">
+            <div class="wf-newsfeeds-category list-striped">
                 <?php foreach ($this->items as $i => $item) : ?>
                     <?php if ($this->items[$i]->published == 0) : ?>
-                        <li class="system-unpublished cat-list-row<?php echo $i % 2; ?>">
+                        <div class="wf-newsfeed-item system-unpublished cat-list-row<?php echo $i % 2; ?>">
                     <?php else : ?>
-                        <li class="cat-list-row<?php echo $i % 2; ?>">
+                        <div class="wf-newsfeed-item cat-list-row<?php echo $i % 2; ?>">
                     <?php endif; ?>
                     <?php if ($this->params->get('show_articles')) : ?>
                         <span class="list-hits badge badge-info float-right">
 							<?php echo Text::sprintf('COM_NEWSFEEDS_NUM_ARTICLES_COUNT', $item->numarticles); ?>
 						</span>
+                        <br>
                     <?php endif; ?>
-                    <span class="list float-left">
+                    <div class="list">
 						<div class="list-title">
-                            <a href="<?php echo Route::_(NewsfeedsHelperRoute::getNewsfeedRoute($item->slug, $item->catid)); ?>">
-                                <?php echo $item->name; ?>
-                            </a>
+                            <h4>
+                                <a href="<?php echo Route::_(NewsfeedsHelperRoute::getNewsfeedRoute($item->slug, $item->catid)); ?>">
+                                    <?php echo $item->name; ?>
+                                </a>
+                            </h4>
                         </div>
-					</span>
+					</div>
                     <?php if ($this->items[$i]->published == 0) : ?>
                         <span class="badge badge-warning">
 							<?php echo Text::_('JUNPUBLISHED'); ?>
 						</span>
+                        <br>
                     <?php endif; ?>
-                    <br>
                     <?php if ($this->params->get('show_link')) : ?>
                         <?php $link = PunycodeHelper::urlToUTF8($item->link); ?>
-                        <span class="list float-left">
+                        <div class="list">
 							<a href="<?php echo $item->link; ?>">
                                 <?php echo $link; ?>
                             </a>
-						</span>
-                        <br>
+						</div>
                     <?php endif; ?>
-                    </li>
+                    </div>
                 <?php endforeach; ?>
-            </ul>
+            </div>
             <?php // Add pagination links ?>
             <?php if (!empty($this->items)) : ?>
                 <?php if (($this->params->def('show_pagination', 2) == 1 || ($this->params->get('show_pagination') == 2)) && ($this->pagination->pagesTotal > 1)) : ?>
-                    <div class="com-newsfeeds-category__pagination w-100">
+                    <div class="wf-container-pagination mt-5">
                         <?php if ($this->params->def('show_pagination_results', 1)) : ?>
-                            <p class="counter float-right pt-3 pr-2">
+                            <div class="counter float-right pt-3 pr-2">
                                 <?php echo $this->pagination->getPagesCounter(); ?>
-                            </p>
+                            </div>
                         <?php endif; ?>
-                        <?php echo $this->pagination->getPagesLinks(); ?>
+                        <div class="float-left">
+                            <?php echo $this->pagination->getPagesLinks(); ?>
+                        </div>
                     </div>
+                    <div class="clearfix"></div>
                 <?php endif; ?>
             <?php endif; ?>
         </form>
