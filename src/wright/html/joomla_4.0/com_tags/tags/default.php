@@ -15,9 +15,11 @@ $descriptionImage = $this->params->get('all_tags_description_image');
 ?>
 <div class="com-tags tag-category">
     <?php if ($this->params->get('show_page_heading')) : ?>
-        <h1>
-            <?php echo $this->escape($this->params->get('page_heading')); ?>
-        </h1>
+        <div class="page-header">
+            <h1>
+                <?php echo $this->escape($this->params->get('page_heading')); ?>
+            </h1>
+        </div>
     <?php endif; ?>
     <?php if ($this->params->get('all_tags_show_description_image') && !empty($descriptionImage)) : ?>
         <div class="com-tags__image">

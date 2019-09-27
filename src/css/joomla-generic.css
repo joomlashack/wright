@@ -6975,6 +6975,14 @@ joomla-alert {
   margin-bottom: 7px;
   margin-right: 3px; }
 
+.com-tags #filter-search {
+  border-top-left-radius: 0.25rem;
+  -moz-border-top-left-radius: 0.25rem;
+  -webkit-border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  -moz-border-bottom-left-radius: 0.25rem;
+  -webkit-border-bottom-left-radius: 0.25rem; }
+
 /* Random image */
 .mod-randomimage img {
   width: auto !important; }

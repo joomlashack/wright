@@ -759,6 +759,18 @@ joomla-alert {
   }
 }
 
+.com-tags {
+
+  #filter-search {
+    border-top-left-radius: $border-radius;
+    -moz-border-top-left-radius: $border-radius;
+    -webkit-border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    -moz-border-bottom-left-radius: $border-radius;
+    -webkit-border-bottom-left-radius: $border-radius;
+  }
+}
+
 /* Random image */
 
 .mod-randomimage img {
