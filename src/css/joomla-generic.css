@@ -6975,7 +6975,8 @@ joomla-alert {
   margin-bottom: 7px;
   margin-right: 3px; }
 
-.com-tags #filter-search {
+.com-tags #filter-search,
+.com-tags-tag #filter-search {
   border-top-left-radius: 0.25rem;
   -moz-border-top-left-radius: 0.25rem;
   -webkit-border-top-left-radius: 0.25rem;
