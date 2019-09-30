@@ -92,7 +92,7 @@ $n         = count($this->items);
         <?php foreach ($this->items as $i => $item) : ?>
 
             <?php if ($n === 1 || $i === 0 || $bscolumns === 1 || $i % $bscolumns === 0) : ?>
-                <ul class="com-tags__category category list-group">
+                <ul class="com-tags__category category list-group mb-3">
             <?php endif; ?>
 
             <li class="list-group-item list-group-item-action">
@@ -147,13 +147,17 @@ $n         = count($this->items);
     <?php // Add pagination links ?>
     <?php if (!empty($this->items)) : ?>
         <?php if (($this->params->def('show_pagination', 2) == 1 || ($this->params->get('show_pagination') == 2)) && ($this->pagination->pagesTotal > 1)) : ?>
-            <div class="com-tags__pagination w-100">
-                <?php if ($this->params->def('show_pagination_results', 1)) : ?>
-                    <p class="counter float-right pt-3 pr-2">
-                        <?php echo $this->pagination->getPagesCounter(); ?>
-                    </p>
-                <?php endif; ?>
-                <?php echo $this->pagination->getPagesLinks(); ?>
+            <div class="wf-container-pagination mt-5">
+                <div class="container-pagination">
+                    <?php if ($this->params->def('show_pagination_results', 1)) : ?>
+                        <p class="counter float-right">
+                            <?php echo $this->pagination->getPagesCounter(); ?>
+                        </p>
+                    <?php
+                    endif;
+                    echo $this->pagination->getPagesLinks();
+                    ?>
+                </div>
             </div>
         <?php endif; ?>
     <?php endif; ?>
