@@ -23,21 +23,23 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 ?>
 <form action="<?php echo htmlspecialchars(Uri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="com-tags-tag-list__items">
     <?php if ($this->params->get('filter_field') || $this->params->get('show_pagination_limit')) : ?>
-        <fieldset class="com-tags-tag-list__filters filters d-flex justify-content-between mb-3">
+        <fieldset class="com-tags-tag-list__filters filters card-body bg-light mb-3">
             <?php if ($this->params->get('filter_field')) : ?>
-                <div class="input-group">
-                    <label class="filter-search-lbl sr-only" for="filter-search">
-                        <?php echo Text::_('COM_TAGS_TITLE_FILTER_LABEL') . '&#160;'; ?>
-                    </label>
-                    <input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="form-control" title="<?php echo Text::_('COM_TAGS_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo Text::_('COM_TAGS_TITLE_FILTER_LABEL'); ?>">
-					<span class="input-group-append">
-						<button type="submit" name="filter-search-button" title="<?php echo Text::_('JSEARCH_FILTER_SUBMIT'); ?>" class="btn btn-secondary">
-                            <span class="fa fa-search" aria-hidden="true"></span>
-                        </button>
-						<button type="reset" name="filter-clear-button" title="<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>" class="btn btn-secondary">
-                            <span class="fa fa-times" aria-hidden="true"></span>
-                        </button>
-					</span>
+                <div class="btn-group">
+                    <div class="input-group">
+                        <label class="filter-search-lbl sr-only" for="filter-search">
+                            <?php echo Text::_('COM_TAGS_TITLE_FILTER_LABEL') . '&#160;'; ?>
+                        </label>
+                        <input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="form-control" title="<?php echo Text::_('COM_TAGS_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo Text::_('COM_TAGS_TITLE_FILTER_LABEL'); ?>">
+                        <span class="input-group-append">
+                            <button type="submit" name="filter-search-button" title="<?php echo Text::_('JSEARCH_FILTER_SUBMIT'); ?>" class="btn btn-primary">
+                                <span class="fa fa-search" aria-hidden="true"></span> <?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
+                            </button>
+                            <button type="reset" name="filter-clear-button" title="<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>" class="btn btn-secondary">
+                                <span class="fa fa-times" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
                 </div>
             <?php endif; ?>
             <?php if ($this->params->get('show_pagination_limit')) : ?>
