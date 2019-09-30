@@ -31,8 +31,10 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 			<p class="counter float-right">
 				<?php echo $this->pagination->getPagesCounter(); ?>
 			</p>
-		<?php  endif; ?>
-				<?php echo $this->pagination->getPagesLinks(); ?>
+		<?php
+        endif;
+        echo $this->pagination->getPagesLinks();
+        ?>
 	</div>
 <?php endif; ?>
 
