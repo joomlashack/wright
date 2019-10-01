@@ -116,14 +116,17 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
         </table>
         <?php // Add pagination links ?>
         <?php if (($this->params->def('show_pagination', 2) == 1 || ($this->params->get('show_pagination') == 2)) && ($this->pagination->pagesTotal > 1)) : ?>
-            <div class="com-tags-tag-list__pagination w-100">
+            <div class="wf-container-pagination mt-5">
                 <?php if ($this->params->def('show_pagination_results', 1)) : ?>
-                    <p class="counter float-right pt-3 pr-2">
+                    <div class="counter float-right pt-3 pr-2">
                         <?php echo $this->pagination->getPagesCounter(); ?>
-                    </p>
+                    </div>
                 <?php endif; ?>
-                <?php echo $this->pagination->getPagesLinks(); ?>
+                <div class="float-left">
+                    <?php echo $this->pagination->getPagesLinks(); ?>
+                </div>
             </div>
+            <div class="clearfix"></div>
         <?php endif; ?>
     <?php endif; ?>
 </form>
