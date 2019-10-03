@@ -79,6 +79,7 @@ class WrightScssCompiler {
         $this->checkAddFile($files, $scssWrightPath . '/_beforevars.scss');
         $this->checkAddFile($files, $scssTemplatePath . '/variables-' . $style . '.scss');
         $this->checkAddFile($files, $scssWrightPath . '/_aftervars.scss');
+        $this->checkAddFile($files, $scssTemplatePath . '/template.scss');
         $this->checkAddFile($files, $scssTemplatePath . '/style-' . $style . '.scss');
 
         return $files;
