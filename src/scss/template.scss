@@ -1,0 +1,34 @@
+// CSS to apply to all the styles
+
+#menu > .navbar {
+  @include border-radius($border-radius);
+}
+
+.footer1,
+.footer2 {
+  text-align: center;
+}
+
+#footer {
+  color: $white;
+  overflow: hidden;
+  background-color: #1b1b1b;
+  background-repeat: repeat-x;
+  border-color: #252525;
+
+  .footer-content {
+
+    a:hover {
+      color: $gray-700;
+    }
+  }
+
+  .moduletable,
+  .module {
+    @extend .m-0;
+  }
+}
+
+.wrapper-menu {
+  margin-bottom: 1rem;
+}
