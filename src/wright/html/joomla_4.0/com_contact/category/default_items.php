@@ -132,15 +132,17 @@ HTMLHelper::_('behavior.core');
         <?php endif; ?>
 
         <?php if ($this->params->get('show_pagination', 2)) : ?>
-            <div class="com-contact-category__counter w-100">
+            <div class="wf-container-pagination mt-5">
                 <?php if ($this->params->def('show_pagination_results', 1)) : ?>
-                    <p class="counter float-right pt-3 pr-2">
+                    <div class="counter float-right">
                         <?php echo $this->pagination->getPagesCounter(); ?>
-                    </p>
+                    </div>
                 <?php endif; ?>
-
-                <?php echo $this->pagination->getPagesLinks(); ?>
+                <div class="float-left">
+                    <?php echo $this->pagination->getPagesLinks(); ?>
+                </div>
             </div>
+            <div class="clearfix"></div>
         <?php endif; ?>
         <div>
             <input type="hidden" name="filter_order" value="<?php echo $this->escape($this->state->get('list.ordering')); ?>">
