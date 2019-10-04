@@ -21,6 +21,6 @@ else {
 
 	// Menu classes for Joomla 4
 	$toolbarMenuClasses = 'navbar-dark bg-dark fixed-top';
-	$mainMenuClasses    = 'navbar-dark bg-primary m-b-2';
+	$mainMenuClasses    = 'navbar-dark bg-primary m-b-1';
 	$bottomMenuClasses  = 'navbar-dark';
 }

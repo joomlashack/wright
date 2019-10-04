@@ -1,8 +1,47 @@
 // CSS to apply to all the styles
 
-#menu > .navbar {
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
+/*#menu > .navbar {
   @include border-radius($border-radius);
+}*/
+
+// Toolbar
+
+#toolbar {
+
+  .navbar {
+    padding-bottom: 0.1em;
+    padding-top: 0.1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 }
+
+// Main menu
+
+/*#menu {
+
+  > .navbar {
+
+    @media (min-width: map-get($grid-breakpoints, "lg")) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}*/
+
+// Bottom Menu
+
+.wrapper-bottom-menu {
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid $gray-700;
+}
+
+.wrapper-footer {
+
+}
+
+// Footer
 
 .footer1,
 .footer2 {
@@ -12,9 +51,7 @@
 #footer {
   color: $white;
   overflow: hidden;
-  background-color: #1b1b1b;
-  background-repeat: repeat-x;
-  border-color: #252525;
+  background-color: $gray-900;
 
   .footer-content {
 
@@ -27,8 +64,4 @@
   .module {
     @extend .m-0;
   }
-}
-
-.wrapper-menu {
-  margin-bottom: 1rem;
 }
