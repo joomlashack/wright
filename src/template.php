@@ -32,7 +32,7 @@ defined('_JEXEC') or die('Restricted access');
 		?>
 		<div class="<?php echo $wrightContainerClass; ?>">
 			<!-- header -->
-			<header id="header" class="m-b-1 p-t-1">
+			<header id="header" class="m-b-2 p-t-2">
 				<div class="<?php echo $wrightGridMode; ?> clearfix">
 					<w:logo name="top" />
 					<div class="clear"></div>
