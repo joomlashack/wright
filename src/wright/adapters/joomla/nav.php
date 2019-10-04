@@ -111,7 +111,7 @@ class WrightAdapterJoomlaNav
 				$nav =
 					'<div class="'.$args['wrapper'].'">
 				<div id="'.$args['name'].'">
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark wr-hover-menu ' . $args['wrapClass'] . '">
+                    <nav class="navbar navbar-expand-lg ' . $args['wrapClass'] . '">
                         <div class="' . $args['containerClass'] . '">
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-'.$args['name'].'" aria-controls="nav-'.$args['name'].'" aria-expanded="false" aria-label="Toggle navigation">';
 
@@ -140,7 +140,7 @@ class WrightAdapterJoomlaNav
 					'<div class="'.$args['wrapper'].'">
 				<div class="' . $args['containerClass'] . '">
 					<div id="'.$args['name'].'">
-					    <nav class="navbar navbar-expand-lg wr-hover-menu ' . $args['wrapClass'] . '">
+					    <nav class="navbar navbar-expand-lg ' . $args['wrapClass'] . '">
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-'.$args['name'].'" aria-controls="nav-'.$args['name'].'" aria-expanded="false" aria-label="Toggle navigation">';
 
 				if ($doc->document->params->get('mobile_menu_text', '') != "")
