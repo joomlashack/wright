@@ -20,7 +20,7 @@ if (version_compare(JVERSION, '4', 'lt')) {
 else {
 
 	// Menu classes for Joomla 4
-	$toolbarMenuClasses = 'navbar-light bg-light fixed-top';
-	$mainMenuClasses    = 'navbar-dark bg-primary';
+	$toolbarMenuClasses = 'navbar-dark bg-dark fixed-top';
+	$mainMenuClasses    = 'navbar-light bg-light';
 	$bottomMenuClasses  = 'navbar-dark';
 }

@@ -155,7 +155,7 @@ defined('_JEXEC') or die('Restricted access');
 		</div>
 
 		<!-- footer -->
-		<div class="wrapper-footer<?php echo ($this->params->get('stickyFooter', 1)) ? ' sticky' : ''; ?>">
+		<div class="wrapper-footer bg-dark<?php echo ($this->params->get('stickyFooter', 1)) ? ' sticky' : ''; ?>">
 		   <footer id="footer" <?php
 			if ($this->params->get('stickyFooter', 1))
 				:
