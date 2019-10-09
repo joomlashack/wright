@@ -11118,8 +11118,6 @@ readers do not read off random characters that represent icons */
   @include border-radius($border-radius);
 }*/
 #toolbar .navbar {
-  padding-bottom: 0.1em;
-  padding-top: 0.1em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
 /*#menu {
