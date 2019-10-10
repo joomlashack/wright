@@ -977,4 +977,45 @@ class Wright
 
 		return $bsprefix_;
 	}
+
+    /**
+     * Determines the autospan column width for a module position
+     * @param string $position - desired position to check
+     *
+     * @return integer
+     */
+    public function getPositionAutospanWidth($position) {
+        $robModules = JModuleHelper::getModules($position);
+        $maxColumns = 12;
+        $availableColumns = $maxColumns;
+        $autospanModules = count($robModules);
+
+        if ($robModules) {
+            foreach ( $robModules as $robModule ) {
+                $modParams = new JRegistry($robModule->params);
+                $bootstrapSize = (int) $modParams->get('bootstrap_size', 0);
+
+                // module width has been fixed?
+
+                $matches = Array();
+
+                if (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches) && $bootstrapSize != 0) {
+                    $modColumns = $bootstrapSize;
+                    $availableColumns -= $modColumns;
+                    $autospanModules--;
+                }
+                elseif (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)){
+                    $modColumns = (int)$matches[1];
+                    $availableColumns -= $modColumns;
+                    $autospanModules--;
+                }
+            }
+        }
+
+        // calculate the span width ( columns / modules)
+        if ($autospanModules <= 0 ) $autospanModules = 1;
+        $spanWidth = $availableColumns / $autospanModules;
+
+        return (int)$spanWidth;
+    }
 }

@@ -12,52 +12,13 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.module.helper');
 
 /**
- * Determines the autospan column width for a module position
- * @param string $position - desired position to check
- * @return number - column width for the generated spans
- */
-function getPositionAutospanWidth($position) {
-    $robModules = JModuleHelper::getModules($position);
-    $maxColumns = 12;
-    $availableColumns = $maxColumns;
-    $autospanModules = count($robModules);
-
-    if ($robModules) {
-        foreach ( $robModules as $robModule ) {
-            $modParams = new JRegistry($robModule->params);
-            $bootstrapSize = (int) $modParams->get('bootstrap_size', 0);
-
-            // module width has been fixed?
-
-            $matches = Array();
-
-            if (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches) && $bootstrapSize != 0) {
-                $modColumns = $bootstrapSize;
-                $availableColumns -= $modColumns;
-                $autospanModules--;
-            }
-            elseif (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)){
-                $modColumns = (int)$matches[1];
-                $availableColumns -= $modColumns;
-                $autospanModules--;
-            }
-        }
-    }
-
-    // calculate the span width ( columns / modules)
-    if ($autospanModules <= 0 ) $autospanModules = 1;
-    $spanWidth = $availableColumns / $autospanModules;
-
-    return (int)$spanWidth;
-}
-
-/**
  * Wright Flex Grid
  * (i.e. <w:module type="{row/row-fluid}" name="position" chrome="wrightflexgrid" extradivs="{optional}" extraclass="{optional}" />
  */
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $headerTag = htmlspecialchars($params->get('header_tag', 'h3'));
 
+    $wright = Wright::getInstance();
     $app = JFactory::getApplication();
     $templatename = $app->getTemplate();
 
@@ -66,7 +27,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     if (!isset($modulenumbera[$attribs['name']]))
         $modulenumbera[$attribs['name']] = 1;
 
-    $spanWidth = getPositionAutospanWidth($attribs['name']);
+    $spanWidth = $wright->getPositionAutospanWidth($attribs['name']);
     $bootstrapSize = (int) $params->get('bootstrap_size', 0);
     $robModules = JModuleHelper::getModules($attribs['name']);
 
