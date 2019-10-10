@@ -17,8 +17,6 @@ jimport('joomla.application.module.helper');
  * @return number - column width for the generated spans
  */
 function getPositionAutospanWidth($position) {
-
-	$doc = Wright::getInstance();
     $robModules = JModuleHelper::getModules($position);
     $maxColumns = 12;
     $availableColumns = $maxColumns;
@@ -27,22 +25,22 @@ function getPositionAutospanWidth($position) {
     if ($robModules) {
         foreach ( $robModules as $robModule ) {
             $modParams = new JRegistry($robModule->params);
-			$bootstrapSize = (int) $modParams->get('bootstrap_size', 0);
+            $bootstrapSize = (int) $modParams->get('bootstrap_size', 0);
 
             // module width has been fixed?
 
             $matches = Array();
 
-			if (preg_match('/' . $doc->setColumnPrefix() . '([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches) && $bootstrapSize != 0) {
-				$modColumns = $bootstrapSize;
-				$availableColumns -= $modColumns;
-				$autospanModules--;
+            if (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches) && $bootstrapSize != 0) {
+                $modColumns = $bootstrapSize;
+                $availableColumns -= $modColumns;
+                $autospanModules--;
             }
-			elseif (preg_match('/' . $doc->setColumnPrefix() . '([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)){
-				$modColumns = (int)$matches[1];
-				$availableColumns -= $modColumns;
-				$autospanModules--;
-			}
+            elseif (preg_match('/span([0-9]{1,2})/', $modParams->get('moduleclass_sfx'), $matches)){
+                $modColumns = (int)$matches[1];
+                $availableColumns -= $modColumns;
+                $autospanModules--;
+            }
         }
     }
 
@@ -58,10 +56,7 @@ function getPositionAutospanWidth($position) {
  * (i.e. <w:module type="{row/row-fluid}" name="position" chrome="wrightflexgrid" extradivs="{optional}" extraclass="{optional}" />
  */
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
-
-	$doc = Wright::getInstance();
-
-	$headerTag = htmlspecialchars($params->get('header_tag', 'h3'));
+    $headerTag = htmlspecialchars($params->get('header_tag', 'h3'));
 
     $app = JFactory::getApplication();
     $templatename = $app->getTemplate();
@@ -85,7 +80,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
         $class .= ' first';
         // for 5 modules with span2 first and last modules will have 3 columns width
         if (count($robModules) == 5 && $spanWidth == 2) {
-        	$spanWidth = 3;
+            $spanWidth = 3;
         }
     }
     if ( $modulenumbera[$attribs['name']] == $document->countModules( $attribs['name'] ) ) {
@@ -93,25 +88,25 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
         $modulenumbera[$attribs['name']] = 0;
         // for 5 modules with span2 first and last modules will have 3 columns width
         if (count($robModules) == 5 && $spanWidth == 2) {
-        	$spanWidth = 3;
+            $spanWidth = 3;
         }
     }
 
-	if (preg_match('/span([0-9]{1,2})/', $class, $matches)) {
-		// user assigned span width in module parameters
-		$params->set('moduleclass_sfx',preg_replace('/' . $doc->setColumnPrefix() . '([0-9]{1,2})/', '', $class));
-		$class = $params->get('moduleclass_sfx');
-		$spanWidth = (int)$matches[1];
-		$module->content = preg_replace('/<([^>]+)class="([^""]*)' . $doc->setColumnPrefix() . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
-	}
+    if (preg_match('/span([0-9]{1,2})/', $class, $matches)) {
+        // user assigned span width in module parameters
+        $params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
+        $class = $params->get('moduleclass_sfx');
+        $spanWidth = (int)$matches[1];
+        $module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
+    }
 
-	if ($bootstrapSize != 0)
-	{
-		$params->set('moduleclass_sfx',preg_replace('/' . $doc->setColumnPrefix() . '([0-9]{1,2})/', '', $class));
-		$class = $params->get('moduleclass_sfx');
-		$spanWidth = $bootstrapSize;
-		$module->content = preg_replace('/<([^>]+)class="([^""]*)' . $doc->setColumnPrefix() . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
-	}
+    if ($bootstrapSize != 0)
+    {
+        $params->set('moduleclass_sfx',preg_replace('/span([0-9]{1,2})/', '', $class));
+        $class = $params->get('moduleclass_sfx');
+        $spanWidth = $bootstrapSize;
+        $module->content = preg_replace('/<([^>]+)class="([^""]*)span' . $spanWidth . '([^""]*)"([^>]*)>/sU', '<$1class="$2 $3"$4>', $module->content);
+    }
 
     $featured = false;
     $featuredLinkImg = (preg_match("/featured-link-img/", $class)) ? true : false ;
@@ -141,7 +136,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
             $module->content = preg_replace('/<h4([^>]*)>(.+?)<\/h4>/ims', '', $module->content, 1);
             $featuredSubtitle = '<h4' . $matches[1] . ' class="wrightmodule-subtitle">' . $matches[2] . '</h4>';
         }
-     }
+    }
 
     if ($moduleTitle == '')
         $moduleTitle = '<' . $headerTag . '>' . $module->title . '</' . $headerTag . '>';
@@ -152,36 +147,34 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     $modulenumbera[$attribs['name']]++;
 
     ?>
-<div class="<?php echo $doc->setColumnPrefix() . $spanWidth . $extraclass ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?>">
-	<div class="module<?php echo $class; ?>">
-	<?php if (in_array('module',$extradivs)) : ?>
-	    <div class="module-inner">
-	<?php
-	    endif;
+    <div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> span<?php echo $spanWidth . $extraclass ?>">
+        <?php if (in_array('module',$extradivs)) : ?>
+        <div class="module-inner">
+            <?php
+            endif;
 
-	    if ($featured)
-	        echo $featuredImg . '<div class="wrightmodule-content">' . $featuredSubtitle;
+            if ($featured)
+                echo $featuredImg . '<div class="wrightmodule-content">' . $featuredSubtitle;
 
-	    if ($module->showtitle) : ?>
-		<?php if (in_array('title',$extradivs)) : ?>	<div class="module_title"> <?php endif; ?>
-	    <?php echo $moduleTitle; ?>
-	    <?php if (in_array('in-title',$extradivs)) : ?> <div class="module_title_in"></div> <?php endif; ?>
-		<?php if (in_array('title',$extradivs)) : ?>	</div> <?php endif; ?>
-	<?php endif; ?>
-	<?php
+            if ($module->showtitle) : ?>
+                <?php if (in_array('title',$extradivs)) : ?>	<div class="module_title"> <?php endif; ?>
+                <?php echo $moduleTitle; ?>
+                <?php if (in_array('in-title',$extradivs)) : ?> <div class="module_title_in"></div> <?php endif; ?>
+                <?php if (in_array('title',$extradivs)) : ?>	</div> <?php endif; ?>
+            <?php endif; ?>
+            <?php
 
-	    $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2$3"$4>', $module->content);
-	    echo $module->content;
-	    if ($featured)
-	        echo '</div>';
-	?>
-	<?php if (in_array('module',$extradivs)) : ?>
-	    </div>
-	<?php
-	    endif;
-	?>
-	</div>
-</div>
+            $module->content = preg_replace('/<([^>]+)class="([^""]*)' . $params->get('moduleclass_sfx') . '([^""]*)"([^>]*)>/sU', '<$1class="$2$3"$4>', $module->content);
+            echo $module->content;
+            if ($featured)
+                echo '</div>';
+            ?>
+            <?php if (in_array('module',$extradivs)) : ?>
+        </div>
+    <?php
+    endif;
+    ?>
+    </div>
 <?php
 }
 
@@ -194,7 +187,7 @@ function modChrome_wrightfeatured($module, &$params, &$attribs) {
     $extradivs = explode(',',$attribs['extradivs']);
     $extraclass = ($attribs['extraclass'] != '' ? ' ' . $attribs['extraclass'] : '');
     ?>
-<?php
+    <?php
     $img = '';
     $h4 = '';
     $linkTitle = '';
@@ -220,22 +213,22 @@ function modChrome_wrightfeatured($module, &$params, &$attribs) {
             $h4 = '<h4' . $matches[1] . ' class="wrightmodule-subtitle">' . $matches[2] . '</h4>';
         }
     }
-?>
-<div class="moduletable<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?><?php echo $extraclass ?>">
-<?php
-    echo $img;
-    echo "<div class=\"wrightmodule-content\">";
-    echo $h4;
-    if ($module->showtitle) {
-        if (in_array('title',$extradivs)) : ?> <div class="module_title"> <?php endif;
-        echo "<h3>" . ($linkTitle != "" ? "<a href='$linkTitle'>" : "") . $module->title . ($linkTitle != "" ? "</a>" : "") . "</h3>";
-        if (in_array('in-title',$extradivs)) : ?> <div class="module_title_in"></div> <?php endif;
-        if (in_array('title',$extradivs)) : ?> </div> <?php endif;
-    }
-    echo $module->content;
-    echo "</div>";
-?>
-</div>
+    ?>
+    <div class="moduletable<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?><?php echo $extraclass ?>">
+        <?php
+        echo $img;
+        echo "<div class=\"wrightmodule-content\">";
+        echo $h4;
+        if ($module->showtitle) {
+            if (in_array('title',$extradivs)) : ?> <div class="module_title"> <?php endif;
+            echo "<h3>" . ($linkTitle != "" ? "<a href='$linkTitle'>" : "") . $module->title . ($linkTitle != "" ? "</a>" : "") . "</h3>";
+            if (in_array('in-title',$extradivs)) : ?> <div class="module_title_in"></div> <?php endif;
+            if (in_array('title',$extradivs)) : ?> </div> <?php endif;
+        }
+        echo $module->content;
+        echo "</div>";
+        ?>
+    </div>
 <?php
 }
 
@@ -244,7 +237,7 @@ function modChrome_wrightxhtml($module, &$params, &$attribs)
     $moduleTag      = $params->get('module_tag', 'div');
     $headerTag      = htmlspecialchars($params->get('header_tag', 'h3'));
     $bootstrapSize  = (int) $params->get('bootstrap_size', 0);
-    $moduleClass    = $bootstrapSize != 0 ? ' ' . $doc->setColumnPrefix() . $bootstrapSize : '';
+    $moduleClass    = $bootstrapSize != 0 ? ' span' . $bootstrapSize : '';
 
     // Temporarily store header class in variable
     $headerClass    = $params->get('header_class');
@@ -256,23 +249,23 @@ function modChrome_wrightxhtml($module, &$params, &$attribs)
     $extradivs = explode(',',$attribs['extradivs']);
     $extraclass = ($attribs['extraclass'] != '' ? ' ' . $attribs['extraclass'] : '');
 
-    if (!empty ($content)) { 
-    ?>
+    if (!empty ($content)) {
+        ?>
         <<?php echo $moduleTag; ?> class="moduletable<?php echo htmlspecialchars($params->get('moduleclass_sfx')) . $moduleClass; ?>">
               <?php if (in_array('module', $extradivs)) : ?>
-              <div class="module-inner">
+            <div class="module-inner">
+        <?php endif; ?>
+
+        <?php if ($module->showtitle != 0) : ?>
+            <<?php echo $headerTag . $headerClass . '>' . $module->title; ?></<?php echo $headerTag; ?>>
               <?php endif; ?>
 
-              <?php if ($module->showtitle != 0) : ?>
-                  <<?php echo $headerTag . $headerClass . '>' . $module->title; ?></<?php echo $headerTag; ?>>
-              <?php endif; ?>
+        <?php echo $content; ?>
 
-              <?php echo $content; ?>
-
-              <?php if (in_array('module', $extradivs)) : ?>
+        <?php if (in_array('module', $extradivs)) : ?>
               </div>
-              <?php endif; ?> 
+              <?php endif; ?>
         </<?php echo $moduleTag; ?>>
-    <?php 
-    }  
+    <?php
+    }
 }
