@@ -16,12 +16,12 @@ $module         = $displayData['module'];
 $params         = $displayData['params'];
 $attribs        = $displayData['attribs'];
 
-//$modulePos      = $module->position;
-//$moduleTag      = $params->get('module_tag', 'div');
-$headerTag      = htmlspecialchars($params->get('header_tag', 'h4'));
-//$headerClass    = htmlspecialchars($params->get('header_class', ''));
-
 if ($module->content) :
+
+    $headerTag      = htmlspecialchars($params->get('header_tag', 'h4'));
+    //@TODO add support for these parameters
+    //$moduleTag      = $params->get('module_tag', 'div');
+    //$headerClass    = htmlspecialchars($params->get('header_class', ''));
 
     $wright = Wright::getInstance();
     $app = JFactory::getApplication();
