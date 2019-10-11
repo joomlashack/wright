@@ -27,15 +27,6 @@ class WrightAdapterJoomlaModule
     		    $html .= '<jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['chrome'].'" extradivs="'.$args['extradivs'].'" extraclass="'.$args['extraclass'].'" extra="'.$args['extra'].'" />';
     		    break;
 		    case 'row' :
-                // Remove negative margin for row class
-                if (version_compare(JVERSION, '4', 'lt')) {
-
-                    // Joomla 3 - Nothing to do here
-                } else {
-
-                    // Joomla 4
-                    if($args['type'] == 'row') $args['type'] = 'row no-gutters';
-                }
 		        $doc = JFactory::getDocument();
 		        $html .= '<div class="'.$args['type'].'">';
 		        $html .= '<jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['chrome'].'" grid="'.$doc->countModules($args['name']).'" extradivs="'.$args['extradivs'].'" extraclass="'.$args['extraclass'].'" extra="'.$args['extra'].'" />';
