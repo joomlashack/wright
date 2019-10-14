@@ -8,6 +8,7 @@
  */
 
 /**
+ * @TODO Wright doesn't use this chrome. Check if other template is using it.
  * Wright Featured Module
  * (i.e. <w:module name="position" chrome="wrightfeatured" extraclass="{optional}" />
  */
