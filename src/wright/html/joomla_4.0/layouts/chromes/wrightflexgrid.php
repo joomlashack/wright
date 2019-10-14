@@ -113,7 +113,8 @@ if ($module->content) :
     $modulenumbera[$attribs['name']]++;
 
     ?>
-    <div class="module<?php echo $class; ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> col-md-<?php echo $spanWidth . $extraclass ?>">
+    <div class="col-md-<?php echo $spanWidth ?>">
+        <div class="module<?php echo $class . $extraclass ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?>">
         <?php if (in_array('module',$extradivs)) : ?>
         <div class="module-inner">
             <?php
@@ -138,6 +139,7 @@ if ($module->content) :
             <?php if (in_array('module',$extradivs)) : ?>
         </div>
     <?php endif; ?>
+        </div>
     </div>
 
 <?php endif; ?>
