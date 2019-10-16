@@ -25,18 +25,19 @@ img {
   }
 }
 
-a,
-div {
+div.joomlashack {
+  font-size: 11px;
+  text-align: center;
+  margin: 10px auto;
 
-  &.joomlashack {
-    display: block;
-    margin: 10px auto 30px;
-    text-align: center;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
 
-    img {
-      width: 75px;
-      height: auto;
-    }
+  img {
+    width: 75px;
+    height: auto;
   }
 }
 

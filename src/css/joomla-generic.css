@@ -6614,12 +6614,13 @@ img {
 #logo img {
   width: 100%; }
 
-a.joomlashack,
 div.joomlashack {
-  display: block;
-  margin: 10px auto 30px;
-  text-align: center; }
-  a.joomlashack img,
+  font-size: 11px;
+  text-align: center;
+  margin: 10px auto; }
+  div.joomlashack a {
+    color: #fff;
+    text-decoration: none; }
   div.joomlashack img {
     width: 75px;
     height: auto; }
