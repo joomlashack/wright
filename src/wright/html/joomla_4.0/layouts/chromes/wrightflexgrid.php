@@ -20,8 +20,8 @@ if ($module->content) :
 
     $headerTag      = htmlspecialchars($params->get('header_tag', 'h4'));
     //@TODO add support for these parameters
-    //$moduleTag      = $params->get('module_tag', 'div');
-    //$headerClass    = htmlspecialchars($params->get('header_class', ''));
+    $moduleTag      = $params->get('module_tag', 'div');
+    $headerClass    = ' class="' . htmlspecialchars($params->get('header_class', '')) . '"';
 
     $wright = Wright::getInstance();
     $app = JFactory::getApplication();
@@ -105,7 +105,7 @@ if ($module->content) :
     }
 
     if ($moduleTitle == '')
-        $moduleTitle = '<' . $headerTag . '>' . $module->title . '</' . $headerTag . '>';
+        $moduleTitle = '<' . $headerTag . $headerClass . '>' . $module->title . '</' . $headerTag . '>';
 
 
     $class .= ' mod_'.$modulenumbera[$attribs['name']];
@@ -114,7 +114,7 @@ if ($module->content) :
 
     ?>
     <div class="col-md-<?php echo $spanWidth ?>">
-        <div class="module<?php echo $class . $extraclass ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?>">
+        <<?php echo $moduleTag ?> class="module<?php echo $class . $extraclass ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?>">
             <?php if (in_array('module',$extradivs)) : ?>
             <div class="module-inner">
                 <?php
@@ -139,7 +139,7 @@ if ($module->content) :
                 <?php if (in_array('module',$extradivs)) : ?>
             </div>
         <?php endif; ?>
-        </div>
+        </<?php echo $moduleTag ?>>
     </div>
 
 <?php endif; ?>
