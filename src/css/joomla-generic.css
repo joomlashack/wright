@@ -7125,6 +7125,52 @@ form .control-group .control-label .optional {
   .wf-xs-mt-3 {
     margin-top: 1rem; } }
 
+/* Animations */
+@keyframes wFmenuAnimate {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0; }
+  100% {
+    transform: translateY(0rem);
+    opacity: 1; }
+  0% {
+    transform: translateY(1rem);
+    opacity: 0; } }
+
+@-webkit-keyframes wFmenuAnimate {
+  0% {
+    -webkit-transform: transform;
+    -webkit-opacity: 0; }
+  100% {
+    -webkit-transform: translateY(0);
+    -webkit-opacity: 1; }
+  0% {
+    -webkit-transform: translateY(1rem);
+    -webkit-opacity: 0; } }
+
+.dropdown-menu {
+  -webkit-animation-name: wFmenuAnimate;
+  animation-name: wFmenuAnimate; }
+
+@media (min-width: 992px) {
+  /* Dropdown */
+  .dropdown-menu {
+    animation-duration: 0.3s;
+    -webkit-animation-duration: 0.3s;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both; }
+  #nav-menu .dropdown:hover > .dropdown-menu,
+  #nav-toolbar .dropdown:hover > .dropdown-menu,
+  #nav-bottom-menu .dropdown:hover > .dropdown-menu {
+    display: block; }
+  #nav-menu .dropdown-submenu .dropdown-menu,
+  #nav-toolbar .dropdown-submenu .dropdown-menu,
+  #nav-bottom-menu .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: .1rem;
+    margin-right: .1rem; } }
+
 .wf-row {
   display: flex;
   display: -ms-flexbox;
