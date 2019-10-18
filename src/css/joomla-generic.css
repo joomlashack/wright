@@ -7085,7 +7085,8 @@ form .control-group .control-label .optional {
   #nav-bottom-menu .menu > li.dropdown .dropdown-toggle .caret {
     border: none;
     margin-top: 0;
-    margin-left: 6px; }
+    margin-left: 6px;
+    line-height: 26px; }
     #nav-menu .menu > li.dropdown .dropdown-toggle .caret:after,
     #nav-toolbar .menu > li.dropdown .dropdown-toggle .caret:after,
     #nav-bottom-menu .menu > li.dropdown .dropdown-toggle .caret:after {
