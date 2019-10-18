@@ -23,8 +23,12 @@ $wrightCollapseMenus = true;
 $menuType = 'vertical';
 
 if (preg_match('/nav\-pills/', $class_sfx) || preg_match('/nav\-tabs/', $class_sfx)){
-	$wrightCollapseMenus = false;
-	$menuType = 'horizontal';
+    $wrightCollapseMenus = false;
+    $menuType = 'horizontal';
+}
+if (preg_match('/nav\-pills/', $class_sfx) && preg_match('/flex\-column/', $class_sfx)){
+    $wrightCollapseMenus = false;
+    $menuType = 'vertical';
 }
 /*if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class_sfx)){
 	$wrightCollapseMenus = true;
