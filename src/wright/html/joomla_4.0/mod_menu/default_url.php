@@ -44,11 +44,11 @@ $flink = JFilterOutput::ampReplace(htmlspecialchars($flink));
 switch ($item->browserNav) :
 	default:
 	case 0:
-?><a <?php echo $item->licollapse  // Wright v.4: Added collapsible option ?> <?php echo $class; ?>href="<?php echo $flink; ?>" <?php echo $title; ?>><?php echo $structIcons . $linktype; // Wright v.4: Added icons structure ?><?php echo $caret // Wright v.4: Added caret ?></a><?php
+?><a <?php echo $item->licollapse  // Wright v.4: Added collapsible option ?> <?php echo $toggle . $class; ?>href="<?php echo $flink; ?>" <?php echo $title; ?>><?php echo $structIcons . $linktype; // Wright v.4: Added icons structure ?><?php echo $caret // Wright v.4: Added caret ?></a><?php
 		break;
 	case 1:
 		// _blank
-?><a <?php echo $item->licollapse  // Wright v.4: Added collapsible option ?> <?php echo $class; ?>href="<?php echo $flink; ?>" target="_blank" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.4: Added icons structure ?><?php echo $caret // Wright v.4: Added caret ?></a><?php
+?><a <?php echo $item->licollapse  // Wright v.4: Added collapsible option ?> <?php echo $toggle . $class; ?>href="<?php echo $flink; ?>" target="_blank" <?php echo $title; ?>><?php  echo $structIcons . $linktype; // Wright v.4: Added icons structure ?><?php echo $caret // Wright v.4: Added caret ?></a><?php
 		break;
 	case 2:
 		// window.open

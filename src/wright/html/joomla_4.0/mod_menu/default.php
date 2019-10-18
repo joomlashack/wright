@@ -118,7 +118,8 @@ foreach ($list as $i => &$item)
 
 	if ($item->deeper)
 	{
-		$class .= ' deeper dropdown';  // Wright v.4: Added dropdown class to parent items
+		$toggle  = 'data-toggle="dropdown" ';
+		$class  .= ' deeper dropdown';  // Wright v.4: Added dropdown class to parent items
 	}
 
 	if ($item->parent) {
