@@ -124,6 +124,8 @@ foreach ($list as $i => &$item)
 	{
         if (!in_array($module->position, $wrightTemplate->menuPositions)){
             // When this property is added to a menu, the parent menu links won't work
+            // however makes the dropdown accessible
+            // @TODO check how to make dropdown accessible through keyboard
             $toggle  = 'data-toggle="dropdown" ';
         } else {
             $toggle = '';
@@ -228,7 +230,7 @@ foreach ($list as $i => &$item)
 		// Wright v.4 adds sub-menu for level 2 and beyond
 
 		$dropdownmenu = $menuType == 'vertical' ? '' : 'dropdown-menu';  // Wright v.4 adds sub-menu for level 2 and beyond
-		echo '<ul' . $idul . ' class="' . $dropdownmenu . $uladd . '">';  // Wright v.4: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
+		echo '<ul' . $idul . ' class="' . $dropdownmenu . $uladd . '" role="menu">';  // Wright v.4: Added dropdown-menu class for submenus and collapsible menus options (including collapsed)
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)
