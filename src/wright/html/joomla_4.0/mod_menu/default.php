@@ -125,6 +125,8 @@ foreach ($list as $i => &$item)
         if (!in_array($module->position, $wrightTemplate->menuPositions)){
             // When this property is added to a menu, the parent menu links won't work
             $toggle  = 'data-toggle="dropdown" ';
+        } else {
+            $toggle = '';
         }
 		$class  .= ' deeper dropdown';  // Wright v.4: Added dropdown class to parent items
 	}
