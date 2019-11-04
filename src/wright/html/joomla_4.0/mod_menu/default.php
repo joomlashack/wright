@@ -34,19 +34,6 @@ if (preg_match('/nav\-pills/', $class_sfx) && preg_match('/flex\-column/', $clas
     $menuType = 'vertical';
 }
 
-/*if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class_sfx)){
-	$wrightCollapseMenus = true;
-	$menuType = 'vertical';
-}
-if (preg_match('/tabbable/', $params->get('moduleclass_sfx'))) {
-	$wrightCollapseMenus = true;
-	$menuType = 'vertical';
-}
-if (preg_match('/navbar/', $params->get('moduleclass_sfx'))) {
-	$wrightCollapseMenus = false;
-	$menuType = 'horizontal';
-}*/
-
 if (preg_match('/no\-collapse/', $class_sfx)) {
 	$wrightCollapseMenus = false;
     $menuType = 'vertical';
