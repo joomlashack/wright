@@ -14,15 +14,18 @@ require_once(JPATH_THEMES.'/'.$app->getTemplate().'/wrighttemplate.php');
 
 // Note. It is important to remove spaces between elements.
 
+$wrightTemplate = WrightTemplate::getInstance();
+
 /* @todo Find out what is removing empty spaces in module and menu classes.
  * Currently we use double empty space due one space is removed.
  * /
 
+ *
 /* Wright v.4: Distinguish collapsible and non-collapsible menus.  If the position is an official menu position in the template, or if it has the suffixe "no-collapse", it won't do the collapse */
 $wrightCollapseMenus = true;
 $menuType = 'vertical';
 
-if (preg_match('/nav\-pills/', $class_sfx) || preg_match('/nav\-tabs/', $class_sfx)){
+if (preg_match('/nav\-pills/', $class_sfx) || preg_match('/nav\-tabs/', $class_sfx) || preg_match('/justify\-content\-center/', $class_sfx) || preg_match('/justify\-content\-end/', $class_sfx)){
     $wrightCollapseMenus = false;
     $menuType = 'horizontal';
 }
@@ -30,6 +33,7 @@ if (preg_match('/nav\-pills/', $class_sfx) && preg_match('/flex\-column/', $clas
     $wrightCollapseMenus = false;
     $menuType = 'vertical';
 }
+
 /*if (preg_match('/nav\-stacked/', $class_sfx) || preg_match('/nav\-list/', $class_sfx)){
 	$wrightCollapseMenus = true;
 	$menuType = 'vertical';
@@ -45,10 +49,8 @@ if (preg_match('/navbar/', $params->get('moduleclass_sfx'))) {
 
 if (preg_match('/no\-collapse/', $class_sfx)) {
 	$wrightCollapseMenus = false;
-}
-else {
-	$wrightTemplate = WrightTemplate::getInstance();
-
+    $menuType = 'vertical';
+} else {
 	if (in_array($module->position, $wrightTemplate->menuPositions)){
 		$wrightCollapseMenus = false;
 		$menuType = 'horizontal';
@@ -120,17 +122,10 @@ foreach ($list as $i => &$item)
 		$class .= ''; // Wright v.4: Removed divider class from separators
 	}
 
+
 	if ($item->deeper)
 	{
-        if (!in_array($module->position, $wrightTemplate->menuPositions)){
-            // When this property is added to a menu, the parent menu links won't work
-            // however makes the dropdown accessible
-            // @TODO check how to make dropdown accessible through keyboard
-            $toggle  = 'data-toggle="dropdown" ';
-        } else {
-            $toggle = '';
-        }
-		$class  .= ' deeper dropdown';  // Wright v.4: Added dropdown class to parent items
+        $class  .= ' deeper dropdown';  // Wright v.4: Added dropdown class to parent items
 	}
 
 	if ($item->parent) {
@@ -150,11 +145,18 @@ foreach ($list as $i => &$item)
 		$class = ' class="' . trim($class) . '"';
 	}
 
-	/* Wright v.4: Unique tagging for collapsible submenus */
-	$ulid = '';
-	$item->licollapse = '';
-	$idul = '';
-	$uladd = '';
+    /* Wright v.4: Unique tagging for collapsible submenus */
+    if ($item->deeper && !in_array($module->position, $wrightTemplate->menuPositions)){
+        // When this property is added to a menu, the parent menu links won't work
+        // however makes the dropdown accessible
+        // @TODO check how to make dropdown accessible through keyboard
+        $item->licollapse  = 'data-toggle="dropdown" ';
+    } else {
+        $item->licollapse = '';
+    }
+    $ulid = '';
+    $idul = '';
+    $uladd = '';
 
 	if ($item->type == "separator" || $item->type == "heading")
 		$item->flink = '#';
