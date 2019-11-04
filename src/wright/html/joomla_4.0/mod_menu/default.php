@@ -51,9 +51,10 @@ if (in_array($module->position, $wrightTemplate->menuPositions)){
     // Allow only justify-content-center and justify-content-end as menu classes
     if (preg_match('/justify\-content\-center/', $class_sfx)) {
         $class_sfx = 'justify-content-center';
-    }
-    if (preg_match('/justify\-content\-end/', $class_sfx)) {
+    } elseif (preg_match('/justify\-content\-end/', $class_sfx)) {
         $class_sfx = 'justify-content-end';
+    } else {
+        $class_sfx = '';
     }
 }
 
