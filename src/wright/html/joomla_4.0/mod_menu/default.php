@@ -20,15 +20,20 @@ $wrightTemplate = WrightTemplate::getInstance();
  * Currently we use double empty space due one space is removed.
  * /
 
- *
-/* Wright v.4: Distinguish collapsible and non-collapsible menus.  If the position is an official menu position in the template, or if it has the suffixe "no-collapse", it won't do the collapse */
+/* Wright v.4: Distinguish collapsible and non-collapsible menus.
+ * If the position is an official menu position in the template, or if it has the suffixe "no-collapse", it won't do the collapse
+ */
 $wrightCollapseMenus = true;
 $menuType = 'vertical';
 
+/* These classes are supported in all module positions, except for menu, toolbar and bottom-menu:
+ * nav-pills, nav-tabs, flex-column, no-collapse
+ */
 if (preg_match('/nav\-pills/', $class_sfx) || preg_match('/nav\-tabs/', $class_sfx) || preg_match('/justify\-content\-center/', $class_sfx) || preg_match('/justify\-content\-end/', $class_sfx)){
     $wrightCollapseMenus = false;
     $menuType = 'horizontal';
 }
+
 if (preg_match('/nav\-pills/', $class_sfx) && preg_match('/flex\-column/', $class_sfx)){
     $wrightCollapseMenus = false;
     $menuType = 'vertical';
@@ -37,11 +42,19 @@ if (preg_match('/nav\-pills/', $class_sfx) && preg_match('/flex\-column/', $clas
 if (preg_match('/no\-collapse/', $class_sfx)) {
 	$wrightCollapseMenus = false;
     $menuType = 'vertical';
-} else {
-	if (in_array($module->position, $wrightTemplate->menuPositions)){
-		$wrightCollapseMenus = false;
-		$menuType = 'horizontal';
-	}
+}
+
+/* Forced values for menu, toolbar and bottom-menu positions */
+if (in_array($module->position, $wrightTemplate->menuPositions)){
+    $wrightCollapseMenus = false;
+    $menuType = 'horizontal';
+    // Allow only justify-content-center and justify-content-end as menu classes
+    if (preg_match('/justify\-content\-center/', $class_sfx)) {
+        $class_sfx = 'justify-content-center';
+    }
+    if (preg_match('/justify\-content\-end/', $class_sfx)) {
+        $class_sfx = 'justify-content-end';
+    }
 }
 
 /* End Wright v.4: Distinguish collapsible and non-collapsible menus */
