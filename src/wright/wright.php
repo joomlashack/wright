@@ -408,26 +408,39 @@ class Wright
 	 */
 	private function checkStyleFiles()
 	{
-		$version = explode('.', JVERSION);
-		$mainversion = $version[0];
-		$subversion = $version[1];
+        $fileFound = false;
 
-		$fileFound = false;
+        if (version_compare(JVERSION, '4', 'lt')) {
 
-		while (!$fileFound && $subversion >= 0)
-		{
-			$this->_baseVersion = $mainversion . $subversion;
+            // Joomla 3
+            $version = explode('.', JVERSION);
+            $mainversion = $version[0];
+            $subversion = $version[1];
 
-			if (file_exists(JPATH_SITE . '/templates/' . $this->document->template . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css'))
-			{
-				$fileext = $this->_urlTemplate . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
-				$fileFound = true;
-			}
-			else
-			{
-				$subversion--;
-			}
-		}
+            while (!$fileFound && $subversion >= 0)
+            {
+                $this->_baseVersion = $mainversion . $subversion;
+
+                if (file_exists(JPATH_SITE . '/templates/' . $this->document->template . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css'))
+                {
+                    $fileext = $this->_urlTemplate . '/css/joomla' . $this->_baseVersion . '-' . $this->_selectedStyle . '-extended.css';
+                    $fileFound = true;
+                }
+                else
+                {
+                    $subversion--;
+                }
+            }
+
+        } else {
+
+            // Joomla 4
+            if (file_exists(JPATH_SITE . '/templates/' . $this->document->template . '/css/joomla-' . $this->_selectedStyle . '.css'))
+            {
+                $fileext = $this->_urlTemplate . '/css/joomla-' . $this->_selectedStyle . '.css';
+                $fileFound = true;
+            }
+        }
 
 		return $fileFound;
 	}
