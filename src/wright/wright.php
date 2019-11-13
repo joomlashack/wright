@@ -475,6 +475,12 @@ class Wright
             // Joomla 4
             $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
             $wr = $wa->getRegistry();
+
+            /*
+             * @TODO Load Font Awesome from Joomla core instead
+             * when comply with native Font Awesome 5
+             */
+            // $wa->enableAsset('fontawesome-free');
         }
 
 
