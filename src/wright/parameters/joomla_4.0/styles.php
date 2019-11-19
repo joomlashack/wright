@@ -40,8 +40,8 @@ class WrightFormFieldStyles extends JFormFieldList
 
 		$filesFound = false;
 
-		// @todo check existing styles by looking files with filename in format: joomla-something.css
-		$styles = JFolder::files(JPATH_ROOT . '/templates' . '/' . $this->form->getValue('template') . '/css', 'style-([^\.]*)\.css');
+		// Look for existing styles by checking files with filename in format: joomla-something.css
+		$styles = JFolder::files(JPATH_ROOT . '/templates' . '/' . $this->form->getValue('template') . '/css', 'joomla-([^\.]*)\.css');
 
 		if (!count($styles))
 		{
@@ -50,17 +50,14 @@ class WrightFormFieldStyles extends JFormFieldList
 
 		foreach ($styles as $style)
 		{
-			if (!preg_match('/-responsive.css$/', $style) && !preg_match('/-extended.css$/', $style))
-			{
-				$item = substr($style, 6, strpos($style, '.css') - 6);
-				$val	= $item;
-				$text	= ucfirst($item);
+            $item = substr($style, 7, strpos($style, '.css') - 7);
+            $val	= $item;
+            $text	= ucfirst($item);
 
-				// Output all the styles, except 'custom' style
-				if($val != 'custom') {
-				    $options[] = JHTML::_('select.option', $val, JText::_($text));
-				}
-			}
+            // Output all the styles, except 'custom' style
+            if($val != 'custom') {
+                $options[] = JHTML::_('select.option', $val, JText::_($text));
+            }
 		}
 
 		// Custom style with support for custom colors
