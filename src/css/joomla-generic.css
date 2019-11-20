@@ -7060,7 +7060,10 @@ form .control-group .control-label .optional {
     top: 0;
     left: 100%;
     margin-left: .1rem;
-    margin-right: .1rem; } }
+    margin-right: .1rem; }
+  #nav-bottom-menu .dropdown-menu {
+    bottom: 100%;
+    top: unset; } }
 
 /* Mobile and Tablets */
 @media (max-width: 991px) {

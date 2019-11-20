@@ -927,6 +927,14 @@ form {
       }
     }
   }
+
+  #nav-bottom-menu {
+
+    .dropdown-menu {
+      bottom: 100%;
+      top: unset;
+    }
+  }
 }
 
 /* Mobile and Tablets */
