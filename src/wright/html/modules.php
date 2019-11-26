@@ -56,7 +56,9 @@ function getPositionAutospanWidth($position) {
  * (i.e. <w:module type="{row/row-fluid}" name="position" chrome="wrightflexgrid" extradivs="{optional}" extraclass="{optional}" />
  */
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
-    $headerTag = htmlspecialchars($params->get('header_tag', 'h3'));
+    $headerTag      = htmlspecialchars($params->get('header_tag', 'h3'));
+    $headerClass    = $params->get('header_class');
+    $headerClass    = ($headerClass) ? ' class="' . htmlspecialchars($headerClass) . '"' : '';
 
     $app = JFactory::getApplication();
     $templatename = $app->getTemplate();
@@ -139,7 +141,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
      }
 
     if ($moduleTitle == '')
-        $moduleTitle = '<' . $headerTag . '>' . $module->title . '</' . $headerTag . '>';
+        $moduleTitle = '<' . $headerTag . $headerClass . '>' . $module->title . '</' . $headerTag . '>';
 
 
     $class .= ' mod_'.$modulenumbera[$attribs['name']];
