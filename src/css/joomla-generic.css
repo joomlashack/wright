@@ -7068,7 +7068,7 @@ form .control-group .control-label .optional {
     left: 100%;
     margin-left: .1rem;
     margin-right: .1rem; }
-  #nav-bottom-menu .dropdown-menu {
+  #nav-bottom-menu > ul > li > ul.dropdown-menu {
     bottom: 100%;
     top: unset; } }
 

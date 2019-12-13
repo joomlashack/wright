@@ -936,12 +936,9 @@ form {
     }
   }
 
-  #nav-bottom-menu {
-
-    .dropdown-menu {
-      bottom: 100%;
-      top: unset;
-    }
+  #nav-bottom-menu > ul > li > ul.dropdown-menu {
+    bottom: 100%;
+    top: unset;
   }
 }
 
