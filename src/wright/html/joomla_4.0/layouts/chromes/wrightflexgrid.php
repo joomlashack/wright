@@ -111,7 +111,7 @@ $modulenumbera[$attribs['name']]++;
 
 ?>
 <div class="col-md-<?php echo $spanWidth ?>">
-    <<?php echo $moduleTag ?> class="module<?php echo $class . $extraclass ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?>">
+    <<?php echo $moduleTag ?> class="module<?php echo $class . $extraclass ?><?php if (!$module->showtitle) : ?> no_title<?php endif; ?> wf-flexgrid-item">
 
     <?php if (in_array('module',$extradivs)) : ?>
     <div class="module-inner">

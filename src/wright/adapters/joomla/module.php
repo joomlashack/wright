@@ -28,7 +28,7 @@ class WrightAdapterJoomlaModule
     		    break;
 		    case 'row' :
 		        $doc = JFactory::getDocument();
-		        $html .= '<div class="'.$args['type'].'">';
+		        $html .= '<div class="'.$args['type'].' wf-flexgrid-wrapper">';
 		        $html .= '<jdoc:include type="modules" name="'.$args['name'].'" style="'.$args['chrome'].'" grid="'.$doc->countModules($args['name']).'" extradivs="'.$args['extradivs'].'" extraclass="'.$args['extraclass'].'" extra="'.$args['extra'].'" />';
 		        $html .= '</div>';
 		        break;

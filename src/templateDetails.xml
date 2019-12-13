@@ -153,6 +153,7 @@
         <minify>
             <script>wright/js/utils-30.js</script>
             <script>wright/js/utils-40.js</script>
+            <script>wright/js/jquery-match-height.js</script>
         </minify>
 
         <include>AllediaFreeDefaultFiles</include>

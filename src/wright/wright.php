@@ -313,6 +313,7 @@ class Wright
 		else {
 
 			// Javascript for Joomla 4
+			$this->addJSScript($this->_urlJS . '/jquery-match-height.min.js');
 			$this->addJSScript($this->_urlJS . '/utils-40.min.js');
 
 			// Alerts progressive enhancement
