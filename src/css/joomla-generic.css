@@ -6409,7 +6409,7 @@ a.text-dark:hover, a.text-dark:focus {
 .p-r-1 {
   padding-right: 1rem !important; }
 
-.p-b-1 {
+.p-b-1, #footer .footer-content {
   padding-bottom: 1rem !important; }
 
 .p-l-1 {
@@ -6618,7 +6618,10 @@ div.joomlashack {
   font-size: 11px;
   text-align: center;
   margin: 10px auto 20px; }
-  div.joomlashack a {
+  div.joomlashack a,
+  div.joomlashack a:hover,
+  div.joomlashack a:focus,
+  div.joomlashack a:active {
     color: #fff;
     text-decoration: none; }
   div.joomlashack img {
@@ -6743,6 +6746,10 @@ a.hidden-text span.hidden-text {
 
 #footer.sticky {
   width: 100%; }
+
+.footer1,
+.footer2 {
+  text-align: center; }
 
 /* Modules */
 [class*="module"] {
@@ -11783,33 +11790,13 @@ readers do not read off random characters that represent icons */
 .fab {
   font-family: 'Font Awesome 5 Brands'; }
 
-/*#menu > .navbar {
-  @include border-radius($border-radius);
-}*/
 #toolbar .navbar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
-/*#menu {
-
-  > .navbar {
-
-    @media (min-width: map-get($grid-breakpoints, "lg")) {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-}*/
 .wrapper-bottom-menu {
   background: rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid #495057; }
 
-.footer1,
-.footer2 {
-  text-align: center; }
-
 #footer {
   color: #fff;
-  overflow: hidden;
   background-color: #212529; }
-  #footer .footer-content a:hover {
-    color: #495057; }

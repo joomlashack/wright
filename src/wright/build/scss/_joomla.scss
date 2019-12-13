@@ -30,7 +30,10 @@ div.joomlashack {
   text-align: center;
   margin: 10px auto 20px;
 
-  a {
+  a,
+  a:hover,
+  a:focus,
+  a:active {
     color: #fff;
     text-decoration: none;
   }
@@ -263,6 +266,11 @@ a {
   &.sticky {
     width: 100%;
   }
+}
+
+.footer1,
+.footer2 {
+  text-align: center;
 }
 
 /* Modules */
