@@ -23,6 +23,10 @@ $lang = Factory::getLanguage();
 $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
 
 HTMLHelper::_('script', 'com_users/two-factor-switcher.min.js', array('version' => 'auto', 'relative' => true));
+
+// Load own CSS to fix any visual issue
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$wa->enableAsset('template.wright.frontediting');
 ?>
 <div class="com-users-profile__edit profile-edit">
     <?php if ($this->params->get('show_page_heading')) : ?>
@@ -136,7 +140,3 @@ HTMLHelper::_('script', 'com_users/two-factor-switcher.min.js', array('version' 
         <?php echo HTMLHelper::_('form.token'); ?>
     </form>
 </div>
-<?php
-// Load frontediting.css as last CSS file
-$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$wa->enableAsset('template.wright.frontediting');

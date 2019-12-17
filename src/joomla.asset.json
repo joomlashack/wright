@@ -6,6 +6,10 @@
   "assets": [
     {
       "name": "template.wright.frontediting",
+      "dependencies": [
+        "awesomplete",
+        "choicesjs"
+      ],
       "css": [
         "frontediting.css"
       ]

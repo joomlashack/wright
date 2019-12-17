@@ -28,6 +28,10 @@ if (Multilanguage::isEnabled())
 {
 	$this->form->setFieldAttribute('language', 'readonly', 'true');
 }
+
+// Load own CSS to fix any visual issue
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$wa->enableAsset('template.wright.frontediting');
 ?>
 
 <form action="<?php echo Route::_('index.php?option=com_config'); ?>" method="post" name="adminForm" id="modules-form" class="form-validate"  data-cancel-task="config.cancel.modules">
@@ -186,7 +190,3 @@ if (Multilanguage::isEnabled())
 		</div>
 	</div>
 </form>
-<?php
-// Load frontediting.css as last CSS file
-$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$wa->enableAsset('template.wright.frontediting');

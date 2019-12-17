@@ -36,6 +36,10 @@ if (!$editoroptions)
 {
     $params->show_urls_images_frontend = '0';
 }
+
+// Load own CSS to fix any visual issue
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$wa->enableAsset('template.wright.frontediting');
 ?>
 <div class="edit item-page">
     <?php if ($params->get('show_page_heading')) : ?>
@@ -167,7 +171,3 @@ if (!$editoroptions)
         </div>
     </form>
 </div>
-<?php
-// Load frontediting.css as last CSS file
-$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$wa->enableAsset('template.wright.frontediting');
