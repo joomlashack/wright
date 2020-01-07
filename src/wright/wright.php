@@ -533,6 +533,8 @@ class Wright
 				}
 			}
 		}
+        //var_dump($style);
+        //var_dump($wa->getAssets());
 	}
 
 	/**
