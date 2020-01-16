@@ -13,6 +13,12 @@
       "css": [
         "frontediting.css"
       ]
+    },
+    {
+      "name": "template.wright.test",
+      "dependencies": [
+        "fontawesome-free"
+      ]
     }
   ]
 }

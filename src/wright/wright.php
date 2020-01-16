@@ -286,6 +286,15 @@ class Wright
             // Joomla 4
             // @TODO Look for a replacement for "JHtml::_('behavior.framework')" if exists
             //JHtml::_('behavior.framework');
+
+            // @TODO - Enable back and test this for article and module edit in frontend
+            // Load Web Assets file
+            /*$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+            $wr = $wa->getRegistry();
+            $wr->addRegistryFile('templates/' . $this->document->template . '/wright/joomla.asset.json');
+            $wa->enableAsset('template.wright.test');
+            $wa->enableAsset('template.wright.frontediting');*/
+
         }
 
 		if ($this->loadBootstrap)
