@@ -111,7 +111,7 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 		}
 	});
 
-    // Copied from protostar template
+    // Copied from protostar template - Set Bootstrap design style to radio buttons
     'use strict';
 
     var $w = $(window);
@@ -167,8 +167,3 @@ if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 
     initRadioButtons();
 })(jQuery);
-
-
-jQuery(function($) {
-
-});
