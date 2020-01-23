@@ -4,7 +4,7 @@
  * @package     Joomla.Site
  * @subpackage  com_content
  *
- * @copyright   Copyright (C) 2005 - 2019 Joomlashack. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2020 Joomlashack. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -85,7 +85,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 		</div>
 	<?php endif; ?>
 	<div itemprop="author" itemscope itemtype="https://schema.org/Person">
-		<meta itemprop="name" content="<?php echo $this->item->author; ?>" />
+		<meta itemprop="name" content="<?php echo $this->escape(strip_tags($this->item->author)); ?>" />
 	</div>
 
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>

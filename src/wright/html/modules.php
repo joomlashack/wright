@@ -3,7 +3,7 @@
  * @package     Wright
  * @subpackage  Modules
  *
- * @copyright   Copyright (C) 2005 - 2019 Joomlashack.   All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2020 Joomlashack. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -16,7 +16,9 @@ jimport('joomla.application.module.helper');
  * (i.e. <w:module type="{row/row-fluid}" name="position" chrome="wrightflexgrid" extradivs="{optional}" extraclass="{optional}" />
  */
 function modChrome_wrightflexgrid($module, &$params, &$attribs) {
-    $headerTag = htmlspecialchars($params->get('header_tag', 'h3'));
+    $headerTag      = htmlspecialchars($params->get('header_tag', 'h3'));
+    $headerClass    = $params->get('header_class');
+    $headerClass    = ($headerClass) ? ' class="' . htmlspecialchars($headerClass) . '"' : '';
 
     $wright = Wright::getInstance();
     $app = JFactory::getApplication();
@@ -100,7 +102,7 @@ function modChrome_wrightflexgrid($module, &$params, &$attribs) {
     }
 
     if ($moduleTitle == '')
-        $moduleTitle = '<' . $headerTag . '>' . $module->title . '</' . $headerTag . '>';
+        $moduleTitle = '<' . $headerTag . $headerClass . '>' . $module->title . '</' . $headerTag . '>';
 
 
     $class .= ' mod_'.$modulenumbera[$attribs['name']];

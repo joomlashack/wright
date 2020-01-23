@@ -4,7 +4,7 @@
  * @package     Joomla.Site
  * @subpackage  mod_articles_news
  *
- * @copyright   Copyright (C) 2005 - 2019 Joomlashack. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2020 Joomlashack. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -26,19 +26,31 @@ $wrightItemContainer = (isset($wrightItemContainer) ? $wrightItemContainer : fal
 
 // no direct access
 defined('_JEXEC') or die;
-$item_heading = $params->get('item_heading', 'h4');
+$item_heading       = $params->get('item_heading', 'h4');
+$img_intro_full     = $params->get('img_intro_full', 'none');
 
 // Wright v.3: Changing image intro on hover if file -hover exists
 $images = json_decode($item->images);
-$introFiles = explode(".", $images->image_intro);
+
+// Check if is intro or fulltext image
+if($img_intro_full == 'intro') {
+    $img_intro_full     = $images->image_intro;
+    $img_intro_full_alt = $images->image_intro_alt;
+}
+if($img_intro_full == 'full') {
+    $img_intro_full = $images->image_fulltext;
+    $img_intro_full_alt = $images->image_fulltext_alt;
+}
+
+//$introFiles = explode(".", $images->image_intro);
 $hoverImage = '';
-$hoverImageOrg = JURI::root(true) . '/' . $images->image_intro;
+$hoverImageOrg = JURI::root(true) . '/' . $img_intro_full;
 
 
-if ($images->image_intro != '')
+if ($img_intro_full != '')
 {
-	$ext = pathinfo($images->image_intro, PATHINFO_EXTENSION);
-	$hoverImage = substr($images->image_intro, 0, strlen($images->image_intro) - strlen($ext) - 1) . '-hover.' . $ext;
+	$ext = pathinfo($img_intro_full, PATHINFO_EXTENSION);
+	$hoverImage = substr($img_intro_full, 0, strlen($img_intro_full) - strlen($ext) - 1) . '-hover.' . $ext;
 
 	if (!file_exists($hoverImage))
 	{
@@ -58,13 +70,13 @@ if ($images->image_intro != '')
 
 <?php
 	// Wright v.3: Added imge if show firts image is true
-	if($wrightImageFirst):
+	if($wrightImageFirst && $img_intro_full != 'none'):
 		if ($params->get('image','1')) :
-			if (isset($images->image_intro) and !empty($images->image_intro)) :
+			if (isset($img_intro_full) and !empty($img_intro_full)) :
 ?>
 				<div class="img-intro-left">
 					<a href="<?php echo $item->link;?>">
-						<img src="<?php echo $images->image_intro; ?>" alt="<?php echo $images->image_intro_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $hoverImageOrg; ?>"<?php endif; ?> />
+						<img src="<?php echo $img_intro_full; ?>" alt="<?php echo $img_intro_full_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $hoverImageOrg; ?>"<?php endif; ?> />
 					</a>
 				</div>
 <?php
@@ -105,13 +117,13 @@ if ($images->image_intro != '')
 
 <?php
 	/* Wright v.3: Added intro image */
-	if(!$wrightImageFirst):
+	if(!$wrightImageFirst && $img_intro_full != 'none'):
 		if ($params->get('image','1')) :
-			if (isset($images->image_intro) and !empty($images->image_intro)) :
+			if (isset($img_intro_full) and !empty($img_intro_full)) :
 ?>
 				<div class="img-intro-left">
 					<a href="<?php echo $item->link;?>">
-						<img src="<?php echo $images->image_intro; ?>" alt="<?php echo $images->image_intro_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $hoverImageOrg; ?>"<?php endif; ?> />
+						<img src="<?php echo $img_intro_full; ?>" alt="<?php echo $img_intro_full_alt; ?>"<?php if ($hoverImage != '') : ?> class="wrightHoverNewsflash" data-wrighthover="<?php echo $hoverImage ?>" data-wrighthoverorig="<?php echo $hoverImageOrg; ?>"<?php endif; ?> />
 					</a>
 				</div>
 <?php
