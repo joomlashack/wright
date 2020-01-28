@@ -998,6 +998,18 @@ aside a.readmore{
 /* Bootstrap style radio buttons */
 .radio.btn-group {
 
+  .btn:not(.btn-success):not(.btn-danger) {
+    background: #e6e6e6;
+    color: #333;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: #ccc;
+      color: #333;
+    }
+  }
+
   input[type=radio] {
     display: none;
   }
