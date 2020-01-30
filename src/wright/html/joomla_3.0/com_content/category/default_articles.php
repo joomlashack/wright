@@ -35,36 +35,35 @@ if (!empty($this->items))
 }
 ?>
 
-<form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">
-	<?php if ($this->params->get('show_headings') || $this->params->get('filter_field') != 'hide' || $this->params->get('show_pagination_limit')) :?>
-	<div class="well well-small">  <?php // Wright v.3: Added well ?>
-		<fieldset class="filters btn-toolbar clearfix">
-			<?php if ($this->params->get('filter_field') != 'hide') :?>
-				<div class="btn-group">
-					<label class="filter-search-lbl element-invisible" for="filter-search">
-						<?php echo JText::_('COM_CONTENT_'.$this->params->get('filter_field').'_FILTER_LABEL').'&#160;'; ?>
-					</label>
-					<input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="inputbox" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTENT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTENT_'.$this->params->get('filter_field').'_FILTER_LABEL'); ?>" />
-				</div>
-			<?php endif; ?>
-			<?php if ($this->params->get('show_pagination_limit') and !empty($this->items)) : ?>
-				<div class="btn-group pull-right">
-					<label for="limit" class="element-invisible">
-						<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
-					</label>
-					<?php echo $this->pagination->getLimitBox(); ?>
-				</div>
-			<?php endif; ?>
+<?php if ($this->params->get('show_headings') || $this->params->get('filter_field') != 'hide' || $this->params->get('show_pagination_limit')) :?>
+    <form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">
+        <div class="well well-small">  <?php // Wright v.3: Added well ?>
+            <fieldset class="filters btn-toolbar clearfix">
+                <?php if ($this->params->get('filter_field') != 'hide') :?>
+                    <div class="btn-group">
+                        <label class="filter-search-lbl element-invisible" for="filter-search">
+                            <?php echo JText::_('COM_CONTENT_'.$this->params->get('filter_field').'_FILTER_LABEL').'&#160;'; ?>
+                        </label>
+                        <input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="inputbox" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTENT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTENT_'.$this->params->get('filter_field').'_FILTER_LABEL'); ?>" />
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->params->get('show_pagination_limit') and !empty($this->items)) : ?>
+                    <div class="btn-group pull-right">
+                        <label for="limit" class="element-invisible">
+                            <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
+                        </label>
+                        <?php echo $this->pagination->getLimitBox(); ?>
+                    </div>
+                <?php endif; ?>
 
-			<input type="hidden" name="filter_order" value="" />
-			<input type="hidden" name="filter_order_Dir" value="" />
-			<input type="hidden" name="limitstart" value="" />
-			<input type="hidden" name="task" value="" />
-		</fieldset>
-	</div>  <?php // Wright v.3: Added well ?>
-
-	<?php endif; ?>
-</form>
+                <input type="hidden" name="filter_order" value="" />
+                <input type="hidden" name="filter_order_Dir" value="" />
+                <input type="hidden" name="limitstart" value="" />
+                <input type="hidden" name="task" value="" />
+            </fieldset>
+        </div>  <?php // Wright v.3: Added well ?>
+    </form>
+<?php endif; ?>
 
 <?php if (empty($this->items)) : ?>
 
