@@ -44,6 +44,7 @@ if (empty($this->item->wrightElementsStructure))    $this->item->wrightElementsS
     "article-info-below",
     "article-info-split"
 );
+$this->item->wrightBootstrapImages  = $this->wrightBootstrapImages;
 if (!isset($this->item->wrightLegendTop))           $this->item->wrightLegendTop            = '';
 if (!isset($this->item->wrightLegendBottom))        $this->item->wrightLegendBottom         = '';
 

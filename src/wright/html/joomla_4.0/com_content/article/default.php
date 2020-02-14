@@ -45,8 +45,8 @@ if (empty($this->wrightElementsStructure)) :
 endif;
 
 /* Wright v.4: Bootstrapped images */
-$template                       = $app->getTemplate(true);
-$this->wrightBootstrapImages    = $template->params->get('wright_bootstrap_images','');
+$template                               = $app->getTemplate(true);
+$this->item->wrightBootstrapImages      = $template->params->get('wright_bootstrap_images','');
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
