@@ -157,42 +157,9 @@ foreach ($this->item->wrightElementsStructure as $wrightElement) :
         /* End article-info */
 
         case "image":
-        ?>
 
-            <?php if (isset($images->image_intro) && !empty($images->image_intro)) : ?>
-            <?php $imgfloat = (empty($images->float_intro)) ? $params->get('float_intro') : $images->float_intro; ?>
-            <div class="float-<?php echo htmlspecialchars($imgfloat); ?> item-image">
-                <?php
-                /* Wright v.4: Added link to the image from the article */
-                if ($params->get('access-view')) :
-                ?>
-                <a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid)); ?>">
-                    <?php
-                    endif;
-                    /* End Wright v.4: Added link to the image from the article */
-                    ?>
-                    <img
-                        <?php if ($images->image_intro_caption):
-                            echo 'class="caption ' . $this->wrightBootstrapImages . '"'.' title="' .htmlspecialchars($images->image_intro_caption) .'"';  // Wright .v.3: Added image class
-                        /* Wright v.4: Image class when no caption present */
-                        else:
-                            echo 'class="' . $this->wrightBootstrapImages . '"';
-                            /* End Wright v.4: Image class when no caption present */
-                        endif; ?>
-                        src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>">
-                    <?php
-                    /* Wright v.4: Added link to the image from the article */
-                    if ($params->get('access-view')) :
-                    ?>
-                </a>
-            <?php
-            endif;
-            /* End Wright v.4: Added link to the image from the article */
-            ?>
-            </div>
-        <?php endif; ?>
+            echo JLayoutHelper::render('joomla.content.intro_image', $this->item);
 
-            <?php
             break;
 
         /* End image */
