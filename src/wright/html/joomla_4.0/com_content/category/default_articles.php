@@ -16,6 +16,7 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Factory;
+use Joomla\Component\Content\Administrator\Extension\ContentComponent;
 
 HTMLHelper::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
@@ -182,17 +183,17 @@ if (!empty($this->items))
 						<?php endforeach; ?>
 					<?php endif; ?>
 				<?php endif; ?>
-				<?php if ($article->state == 0) : ?>
+                <?php if ($article->stage_condition == ContentComponent::CONDITION_UNPUBLISHED) : ?>
 					<span class="list-published badge badge-warning">
 						<?php echo JText::_('JUNPUBLISHED'); ?>
 					</span>
 				<?php endif; ?>
-				<?php if (strtotime($article->publish_up) > strtotime(Factory::getDate())) : ?>
+                <?php if (strtotime($article->publish_up) > strtotime(Factory::getDate())) : ?>
 					<span class="list-published badge badge-warning">
 						<?php echo JText::_('JNOTPUBLISHEDYET'); ?>
 					</span>
 				<?php endif; ?>
-				<?php if ((strtotime($article->publish_down) < strtotime(Factory::getDate())) && $article->publish_down != Factory::getDbo()->getNullDate()) : ?>
+                <?php if (!is_null($article->publish_down) && strtotime($article->publish_down) < strtotime(Factory::getDate())) : ?>
 					<span class="list-published badge badge-warning">
 						<?php echo JText::_('JEXPIRED'); ?>
 					</span>

@@ -10,6 +10,10 @@
 
 defined('_JEXEC') or die;
 
+
+use Joomla\CMS\Factory;
+use Joomla\Component\Content\Administrator\Extension\ContentComponent;
+
 $app = JFactory::getApplication();
 
 /* Wright v.4: Helper */
@@ -136,13 +140,13 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
                     <?php endif; ?>
                 </h2>
 
-                <?php if ($this->item->state == 0) : ?>
+                <?php if ($this->item->condition == ContentComponent::CONDITION_UNPUBLISHED) : ?>
                     <span class="badge badge-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
                 <?php endif; ?>
-                <?php if (strtotime($this->item->publish_up) > strtotime(JFactory::getDate())) : ?>
+                <?php if (strtotime($this->item->publish_up) > strtotime(Factory::getDate())) : ?>
                     <span class="badge badge-warning"><?php echo JText::_('JNOTPUBLISHEDYET'); ?></span>
                 <?php endif; ?>
-                <?php if ((strtotime($this->item->publish_down) < strtotime(JFactory::getDate())) && $this->item->publish_down != '0000-00-00 00:00:00') : ?>
+                <?php if (!is_null($this->item->publish_down) && (strtotime($this->item->publish_down) < strtotime(Factory::getDate()))) : ?>
                     <span class="badge badge-warning"><?php echo JText::_('JEXPIRED'); ?></span>
                 <?php endif; ?>
 

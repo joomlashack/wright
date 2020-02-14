@@ -9,6 +9,8 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+
 // Create a shortcut for params.
 $params = $displayData->params;
 $canEdit = $displayData->params->get('access-edit');
@@ -31,13 +33,13 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 				</h2>
 			<?php endif; ?>
 
-			<?php if ($displayData->state == 0) : ?>
+            <?php if ($displayData->state == 0) : ?>
 				<span class="badge badge-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
 			<?php endif; ?>
-			<?php if (strtotime($displayData->publish_up) > strtotime(JFactory::getDate())) : ?>
+            <?php if (strtotime($displayData->publish_up) > strtotime(Factory::getDate())) : ?>
 				<span class="badge badge-warning"><?php echo JText::_('JNOTPUBLISHEDYET'); ?></span>
 			<?php endif; ?>
-			<?php if ((strtotime($displayData->publish_down) < strtotime(JFactory::getDate())) && $displayData->publish_down != '0000-00-00 00:00:00') : ?>
+            <?php if ($displayData->publish_down !== null && strtotime($displayData->publish_down) < strtotime(Factory::getDate())) : ?>
 				<span class="badge badge-warning"><?php echo JText::_('JEXPIRED'); ?></span>
 		<?php endif; ?>
 		<?php // </div> Wright v.4: Removed page-header ?>
