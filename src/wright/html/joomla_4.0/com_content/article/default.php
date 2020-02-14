@@ -248,27 +248,8 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
         /* End article-info */
 
         case "image":
-        ?>
 
-            <?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '0')) || ($params->get('urls_position') == '0' && empty($urls->urls_position)))
-                || (empty($urls->urls_position) && (!$params->get('urls_position')))) : ?>
-            <?php echo $this->loadTemplate('links'); ?>
-            <?php endif; ?>
-
-            <?php if ($params->get('access-view')):?>
-                <?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
-                    <?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
-                    <div class="float-<?php echo htmlspecialchars($imgfloat); ?> item-image">
-                        <img class="<?php echo $this->wrightBootstrapImages; ?>" src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" />
-                        <?php if ($images->image_fulltext_caption): ?>
-                            <div class="caption <?php echo $this->wrightBootstrapImages; ?>">
-                                <?php echo htmlspecialchars($images->image_fulltext_caption); ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
-            <?php
-            endif; // access-view
+            echo JLayoutHelper::render('joomla.content.full_image', $this->item);
 
             break;
 
