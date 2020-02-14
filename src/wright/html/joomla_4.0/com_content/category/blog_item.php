@@ -136,11 +136,9 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
             /* End article-info */
 
 			case "image":
-            ?>
 
-                <?php echo JLayoutHelper::render('joomla.content.intro_image', $this->item); ?>
+                echo JLayoutHelper::render('joomla.content.intro_image', $this->item);
 
-                <?php
 				break;
 
 			case "content":

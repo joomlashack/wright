@@ -24,7 +24,7 @@ $imgfloat   = (empty($images->float_intro)) ? $params->get('float_intro') : $ima
             </a>
         <?php endif; ?>
 
-        <?php if ($images->image_intro_caption): ?>
+        <?php if ($images->image_intro_caption !== ''): ?>
             <div class="caption <?php echo $displayData->wrightBootstrapImages; ?>">
                 <?php echo htmlspecialchars($images->image_intro_caption); ?>
             </div>
