@@ -468,16 +468,6 @@ a {
   }
 }
 
-p {
-
-  &.img_caption {
-    background: none repeat scroll 0 0 $gray-200;
-    font-size: 0.75em;
-    font-style: italic;
-    text-align: left;
-  }
-}
-
 .readmore {
 
   .btn {
@@ -489,6 +479,14 @@ p {
   margin-top: 7px;
   margin-bottom: 1rem;
   max-width: 100%;
+
+  .caption {
+    background: $gray-200;
+    font-size: 0.75em;
+    text-align: center;
+    padding: 5px;
+    margin-top: 2px;
+  }
 }
 
 .float-right {

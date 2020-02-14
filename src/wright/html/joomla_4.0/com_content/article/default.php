@@ -50,9 +50,6 @@ $this->wrightBootstrapImages    = $template->params->get('wright_bootstrap_image
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
-// @TODO Check caption support for Joomla 4
-// JHtml::_('behavior.caption');
-
 // Create shortcuts to some parameters.
 $params     = $this->item->params;
 $images     = json_decode($this->item->images);
@@ -260,17 +257,15 @@ foreach ($this->wrightElementsStructure as $wrightElement) :
 
             <?php if ($params->get('access-view')):?>
                 <?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
-                <?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
-                <div class="float-<?php echo htmlspecialchars($imgfloat); ?> item-image"> <img
-                <?php if ($images->image_fulltext_caption):
-                    echo 'class="caption ' . $this->wrightBootstrapImages . '"'.' title="' .htmlspecialchars($images->image_fulltext_caption) . '"';  // Wright .v.3: Added image class
-                    /* Wright v.4: Image class when no caption present */
-                    else:
-                        echo 'class="' . $this->wrightBootstrapImages . '"';
-                    /* End Wright v.4: Image class when no caption present */
-                endif; ?>
-                src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" />
-                </div>
+                    <?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
+                    <div class="float-<?php echo htmlspecialchars($imgfloat); ?> item-image">
+                        <img class="<?php echo $this->wrightBootstrapImages; ?>" src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" />
+                        <?php if ($images->image_fulltext_caption): ?>
+                            <div class="caption <?php echo $this->wrightBootstrapImages; ?>">
+                                <?php echo htmlspecialchars($images->image_fulltext_caption); ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 <?php endif; ?>
             <?php
             endif; // access-view
