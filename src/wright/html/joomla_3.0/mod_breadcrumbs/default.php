@@ -21,7 +21,7 @@ $separator = '<i class="icon-caret-right"></i>';  // Wright v.3: Joomla 3.x sepa
 	<?php
 	if ($params->get('showHere', 1))
 	{
-		echo '<li class="active">' . JText::_('MOD_BREADCRUMBS_HERE') . '&#160;</span></li>';
+		echo '<li class="active"><span class="show-breadcrumbs-here">' . JText::_('MOD_BREADCRUMBS_HERE') . '&#160;</span></li>';
 	}
 	else
 	{
