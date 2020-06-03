@@ -161,6 +161,10 @@
         </minify>
 
         <include>AllediaFreeDefaultFiles</include>
+
+        <obsolete>
+            <folder>templates/js_wright/wright/html/joomla_2.5</folder>
+        </obsolete>
     </alledia>
 
 </extension>
