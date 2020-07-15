@@ -42,9 +42,9 @@ class Overrider
 				$fileFound = false;
 				$subversion = $version[1];
 				while (!$fileFound && $subversion >= 0) {
-	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php')) {
+	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/overrides/joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php')) {
 	                	$fileFound = true;
-						$file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php';
+						$file = JPATH_THEMES.'/'.$app->getTemplate().'/overrides/joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php';
 	                }
                     elseif (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.$version[0].'.'.$subversion.'/'.$extension.'/'.$layout.'.php')) {
                         $fileFound = true;
@@ -66,9 +66,9 @@ class Overrider
 				$subversion = $version[1];
 				list($folder, $view) = explode('.', $extension);
 				while (!$fileFound && $subversion >= 0) {
-	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php')) {
+	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/overrides/joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php')) {
                         $fileFound = true;
-                        $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php';
+                        $file = JPATH_THEMES.'/'.$app->getTemplate().'/overrides/joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php';
 	                }
 	                elseif (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.$version[0].'.'.$subversion.'/'.$folder.'/'.$view.'/'.$layout.'.php')) {
 	                	$fileFound = true;
@@ -91,9 +91,9 @@ class Overrider
 				$override = str_replace('.', '/', substr($extension, 4));
 				$subversion = $version[1];
 				while (!$fileFound && $subversion >= 0) {
-	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php')) {
+	                if (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/overrides/joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php')) {
                         $fileFound = true;
-                        $file = JPATH_THEMES.'/'.$app->getTemplate().'/'.'overrides'.'/'.'joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php';
+                        $file = JPATH_THEMES.'/'.$app->getTemplate().'/overrides/joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php';
 	                }
 	                elseif (is_file(JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/joomla_'.$version[0].'.'.$subversion.'/layouts/'.$override.'.php')) {
                         $fileFound = true;

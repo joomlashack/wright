@@ -29,15 +29,15 @@ class WrightAdapterJoomla
 	public function get($config)
 	{
 		$tag = key($config);
-		$file = dirname(__FILE__).'/'.'joomla'.'/'.$tag.'.php';
+		$file = dirname(__FILE__).'/joomla/'.$tag.'.php';
 		$class = 'WrightAdapterJoomla'.ucfirst($tag);
 
-		if (is_file(dirname(__FILE__).'/'.'joomla'.'/'.'joomla_'.$this->getVersion().'/'.$tag.'.php'))
+		if (is_file(dirname(__FILE__).'/joomla/joomla_'.$this->getVersion().'/'.$tag.'.php'))
 		{
-			$file = dirname(__FILE__).'/'.'joomla'.'/'.'joomla_'.$this->getVersion().'/'.$tag.'.php';
+			$file = dirname(__FILE__).'/joomla/joomla_'.$this->getVersion().'/'.$tag.'.php';
 			$class = 'WrightAdapterJoomla'.$this->getVersion().ucfirst($tag);
 		}
-		
+
 		require_once $file;
 
 		$item = new $class();
@@ -49,5 +49,5 @@ class WrightAdapterJoomla
 	{
 		return $this->version;
 	}
-	
+
 }
