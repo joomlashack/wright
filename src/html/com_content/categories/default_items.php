@@ -13,5 +13,5 @@ defined('_JEXEC') or die;
 
 $app = JFactory::getApplication();
 
-require_once JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php';
+require_once JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/overrider.php';
 include Overrider::getOverride('com_content.categories','default_items');
