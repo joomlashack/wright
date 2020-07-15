@@ -211,4 +211,4 @@ if (!empty($this->items))
 		<?php echo $this->pagination->getPagesLinks(); ?>
 	</div>
 	<?php endif; ?>
-<?php  endif; ?>
+<?php  endif;

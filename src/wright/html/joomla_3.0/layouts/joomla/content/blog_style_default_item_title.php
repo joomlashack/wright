@@ -39,6 +39,5 @@ JHtml::_('behavior.framework');
 			<?php endif; ?>
 			<?php if ((strtotime($displayData->publish_down) < strtotime(JFactory::getDate())) && $displayData->publish_down != '0000-00-00 00:00:00') : ?>
 				<span class="label label-warning"><?php echo JText::_('JEXPIRED'); ?></span>
-		<?php endif; ?>
-		<?php // </div> Wright v.3: Removed page-header ?>
-	<?php endif; ?>
+		<?php endif; // </div> Wright v.3: Removed page-header
+	endif;
