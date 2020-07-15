@@ -14,4 +14,3 @@ $app = JFactory::getApplication();
 
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
 include(Overrider::getOverride('lyt.joomla.content.blog_style_default_item_title'));
-

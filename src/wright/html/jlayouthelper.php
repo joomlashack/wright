@@ -35,4 +35,3 @@ if (version_compare(JVERSION, '3.1', 'lt')) {
 	}
 
 }
-
