@@ -13,4 +13,4 @@ $app = JFactory::getApplication();
 
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
 include(Overrider::getOverride('com_content.featured','default_item'));
-?>
+

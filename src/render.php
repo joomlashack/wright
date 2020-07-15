@@ -13,4 +13,4 @@ defined('_JEXEC') or die('Restricted access');
 $app = JFactory::getApplication();
 
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/wright/build/render.php');
-?>
+
