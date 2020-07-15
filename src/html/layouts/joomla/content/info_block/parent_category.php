@@ -13,4 +13,4 @@ defined('_JEXEC') or die;
 $app = JFactory::getApplication();
 
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
-include(Overrider::getOverride('lyt.joomla.content.info_block.parent_category'));
+include Overrider::getOverride('lyt.joomla.content.info_block.parent_category');
