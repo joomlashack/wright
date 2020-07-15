@@ -16,7 +16,7 @@ $app = JFactory::getApplication();
 if($app->input->get('c') == 1) {
 
     // Include the framework
-    require_once(JPATH_THEMES.'/'.$app->getTemplate().'/wright/wright.php');
+    require_once JPATH_THEMES.'/'.$app->getTemplate().'/wright/wright.php';
 
     // Initialize the framework and render custom style
     $tpl = Wright::getInstance();

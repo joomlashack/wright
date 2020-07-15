@@ -33,4 +33,4 @@ defined('_JEXEC') or die;
 				</div>
 			<?php endif; ?>
 		<?php endif; ?>
-	<?php endif; ?>
+	<?php endif;

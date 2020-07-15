@@ -63,4 +63,4 @@ if (!$this->params->get('show_page_heading')) : ?>
 
 <?php endif; ?>
 
-<?php echo $this->loadTemplate('items'); ?>
+<?php echo $this->loadTemplate('items');

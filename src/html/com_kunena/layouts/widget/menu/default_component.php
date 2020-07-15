@@ -10,4 +10,4 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-require(JPATH_BASE . '/modules/mod_menu/tmpl/default_component.php');
+require JPATH_BASE . '/modules/mod_menu/tmpl/default_component.php';

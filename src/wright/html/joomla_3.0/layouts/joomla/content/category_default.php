@@ -73,4 +73,3 @@ $tagsData  = $displayData->get('category')->tags->itemTags;
 		<?php endif; ?>
 	</div>
 </div>
-

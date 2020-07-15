@@ -48,7 +48,7 @@ $class = ($item->deeper) ? 'class="' . $hidden . 'separator dropdown-toggle" ' :
 
 ?><a href="<?php echo $item->flink; // Wright v.3: Added link option for collapsible menus ?>" <?php echo $class . $item->licollapse // Wright v.3: Added collapsible option ?>><?php echo $title; ?>
 	<?php echo $structIcons . $linktype; ?><?php
-	
+
 // Wright v.3: Closing pseudo-link for sub-menus
 if ($item->deeper) {
 	// Opens a caret-right for levels 2 and above
@@ -60,4 +60,4 @@ if ($item->deeper) {
 			echo '<b class="caret"></b>'; // Wright v.3: Added caret
 	}
 }
-?></a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure ?>
+?></a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure

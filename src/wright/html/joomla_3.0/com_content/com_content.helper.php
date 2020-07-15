@@ -6,10 +6,8 @@
  * @copyright	Copyright (C) 2005 - 2020 Joomlashack.  All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
- 
- 
- // no direct access
- defined('_JEXEC') or die;
+
+defined('_JEXEC') or die;
 
 function wrightTransformArticleContent($content) {
 	// Page Break Plugin
@@ -132,5 +130,3 @@ function getSiteLogo() {
 
 	return $site_logo;
 }
-
-?>
