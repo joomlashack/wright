@@ -41,4 +41,3 @@ $this->MoreItemsGridOrientation = Array(
 
 require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
 include(Overrider::getOverride('com_content.category','blog'));
-?>
