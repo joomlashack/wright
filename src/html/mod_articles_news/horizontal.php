@@ -13,5 +13,5 @@ $app = JFactory::getApplication();
 
 $wrightMaxColumns = 4;  // Max number of columns in horizontal layout
 
-require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
-require(Overrider::getOverride('mod_articles_news','horizontal'));
+require_once JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php';
+require Overrider::getOverride('mod_articles_news','horizontal');

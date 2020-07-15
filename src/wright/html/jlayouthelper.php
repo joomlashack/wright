@@ -29,7 +29,7 @@ if (version_compare(JVERSION, '3.1', 'lt')) {
 		}
 
 		public function doRender($layout, &$displayData, $file) {
-			require($file);
+			require $file;
 		}
 
 	}
