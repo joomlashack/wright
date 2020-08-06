@@ -1,16 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Alledia Extension Builder" default="">
+<!-- initial entry point for extensions implementing Shack Builder -->
+<project name="ShackBuilder Client" default="build">
+    <property name="builder.client.version" value="1.0.0"/>
+    <echo message="${phing.version}"/>
+    <echo message="${phing.project.name} Version ${builder.client.version}"/>
+
+    <!-- Look for build.properties file -->
+    <available property="project.properties.file" file="${project.basedir}/build.properties"/>
+    <fail unless="project.properties.file">-
+Properties File Not Found: ${project.basedir}/build.properties.
+    </fail>
+
+    <!-- Load builder properties file and defaults -->
+    <property file="${project.basedir}/build.properties"/>
+    <fail unless="builder.path">-
+Property is required: 'builder.path'
+    </fail>
+    <property name="project.path" value="${project.basedir}"/>
+    <property name="project.path.source" value="${project.path}/src"/>
+
+    <!-- Verify base paths -->
+    <available property="project.path.exists" file="${project.path}"/>
+    <fail unless="project.path.exists">-
+Project Base Path is invalid: ${project.path}
+    </fail>
+
+    <available property="project.path.source.exists" file="${project.path.source}"/>
+    <fail unless="project.path.source.exists">-
+Project Source Path is invalid: ${project.path.source}
+    </fail>
+
+    <!-- Check for a build file in the builder path -->
+    <property name="builder.path.source" value="${builder.path}/src"/>
+    <available property="builder.path.source.exists" file="${builder.path.source}/build.xml"/>
+    <fail unless="builder.path.source.exists">-
+ShackBuilder Not Found: ${builder.path.source}/build.xml
+    </fail>
+
+    <!-- Verify readable configuration file -->
+    <property name="project.path.configuration" value="${project.path}/shackconfig.json"/>
+    <available property="project.path.configuration.exists" file="${project.path.configuration}"/>
+
     <if>
-        <available file="./build.properties" type="file" />
+        <isset property="project.path.configuration.exists"/>
         <then>
-            <property file="./build.properties" />
+            <property name="builder.path.build" value="${builder.path}/src/build.xml"/>
         </then>
         <else>
-            <fail message="Missed build.properties file on the project root folder. Duplicate the build.properties.dist file and customize with your settings" />
+            <property name="builder.path.build" value="${builder.path}/src/migrate.xml"/>
         </else>
     </if>
 
-    <fail unless="builder.path" message="Missed builder.path property" />
+    <available property="builder.path.build.exists" file="${builder.path.build}"/>
+    <fail unless="builder.path.build.exists">-
+ShackBuilder xml file not found: ${builder.path.build}
+    </fail>
 
-    <import file="${builder.path}/src/build.xml"/>
+    <import file="${builder.path.build}"/>
 </project>
