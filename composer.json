@@ -2,16 +2,8 @@
     "name"             : "joomlashack/tpl_js_wright",
     "description"      : "JS Wright",
     "minimum-stability": "stable",
-    "license"          : "GPL-2+",
-    "type"             : "joomla.template",
-    "extra"            : {
-        "element"        : "tpl_js_wright",
-        "element-short"  : "js_wright",
-        "name"           : "Wright",
-        "client"         : "site",
-        "package-license": "free",
-        "target-platform": "3.*"
-    },
+    "license"          : "GPL-2.0-or-later",
+    "type"             : "library",
     "authors"          : [
         {
             "name" : "Joomlashack",

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.9" type="template" method="upgrade" client="site">
+<extension type="template" method="upgrade" client="site">
 	<name>js_wright</name>
-	<creationDate>April 23 2020</creationDate>
 	<author>Joomlashack</author>
-	<authorEmail>support@joomlashack.com</authorEmail>
-	<authorUrl>https://www.joomlashack.com</authorUrl>
+	<authorEmail>help@joomlashack.com</authorEmail>
+	<authorUrl>https://www.joomlashack.com/</authorUrl>
 	<copyright>Copyright Joomlashack 2005 - 2020. All rights reserved</copyright>
-	<license>GNU GPLv2</license>
-	<version>3.7.12</version>
+	<license>GNU GPL; see LICENSE file</license>
 	<description>TPL_JS_WRIGHT_XML_DESCRIPTION</description>
+	<creationDate>April 23 2020</creationDate>
+	<version>3.7.12</version>
+
+    <variant>FREE</variant>
 
 	<languages folder="language">
 		<!-- en-GB -->
@@ -112,7 +114,7 @@
 				<field name="mobile_menu_text" type="text" default="" label="TPL_JS_WRIGHT_MOBILE_MENU_TEXT" description="TPL_JS_WRIGHT_MOBILE_MENU_TEXT_DESC" />
 				<!-- End of default Wright params -->
 			</fieldset>
-			<fieldset name="footer" addfieldpath="/templates/js_wright/form/fields">     
+			<fieldset name="footer" addfieldpath="/templates/js_wright/form/fields">
                 <field
                     type="customfooter"
                     name="customfooter"
@@ -132,39 +134,4 @@
     <updateservers>
         <server type="extension" priority="1" name="Wright"><![CDATA[https://deploy.ostraining.com/client/update/free/stable/tpl_js_wright]]></server>
     </updateservers>
-
-    <variant>FREE</variant>
-
-    <alledia>
-        <element>tpl_js_wright</element>
-        <namespace>JS_Wright</namespace>
-        <name>JS Wright</name>
-        <license>free</license>
-        <targetplatform>3.*</targetplatform>
-
-        <relatedExtensions>
-            <extension
-                type="library"
-                element="allediaframework">AllediaFramework</extension>
-
-            <extension
-                type="plugin"
-                group="system"
-                element="ossystem"
-                publish="true"
-                ordering="first">OSSystem</extension>
-        </relatedExtensions>
-
-        <minify>
-            <script>wright/js/utils.js</script>
-            <script>wright/js/stickyfooter.js</script>
-        </minify>
-
-        <include>AllediaFreeDefaultFiles</include>
-
-        <obsolete>
-            <folder>templates/js_wright/wright/html/joomla_2.5</folder>
-        </obsolete>
-    </alledia>
-
 </extension>

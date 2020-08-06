@@ -1,0 +1,27 @@
+{
+    "name": "Wright",
+    "element": "tpl_js_wright",
+    "license": "free",
+    "client": "site",
+    "requires": {
+        "joomla": "3.9",
+        "php": "5.6"
+    },
+    "homepage": "https://wright.joomlashack.com/",
+    "documentation": "https://demo.wright.joomlashack.com/documentation-and-setup/installation",
+    "demo": "https://demo.wright.joomlashack.com/",
+    "minify": {
+        "scripts": [
+            "wright/js/utils.js",
+            "wright/js/stickyfooter.js"
+        ]
+    },
+    "include": [
+        "installer"
+    ],
+    "obsolete": {
+        "folders": [
+            "templates/js_wright/wright/html/joomla_2.5"
+        ]
+    }
+}
