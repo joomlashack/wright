@@ -227,6 +227,14 @@ abstract class HtmlAdapterAbstract
 
 		$class .= " rev_" . $wright->revision;
 
+		// Page class suffix
+		$params     = $menu->getParams($itemId);
+		$pageclass  = $params->get('pageclass_sfx');
+		if($pageclass != '') {
+			$class .= ' ' . $pageclass;
+		}
+
+
 		return '<body class="' . $class . '"' . ($style != '' ? ' style="' . $style . '"' : '') . $data . '>';
 	}
 
