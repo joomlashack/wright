@@ -10,7 +10,7 @@
 
 defined('JPATH_PLATFORM') or die;
 
-require_once(JPATH_PLATFORM . '/joomla/html/html/tabs.php');
+require_once JPATH_PLATFORM . '/joomla/html/html/tabs.php';
 
 abstract class JHtmlWrightTabs extends JHtmlTabs
 {

@@ -12,5 +12,5 @@ defined('_JEXEC') or die('Restricted access');
 // Include default chromes
 $app = JFactory::getApplication();
 
-require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
-include(Overrider::getOverride('lyt.chromes.wrightxhtml'));
+require_once JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/overrider.php';
+include Overrider::getOverride('lyt.chromes.wrightxhtml');

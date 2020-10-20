@@ -53,4 +53,4 @@ if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) :
 	<?php endif; ?>
 <?php endforeach; ?>
 </ul>
-<?php endif; ?>
+<?php endif;

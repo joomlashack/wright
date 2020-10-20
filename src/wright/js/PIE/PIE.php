@@ -1,4 +1,3 @@
 <?php
 header( 'Content-type: text/x-component' );
-include( 'PIE.htc' );
-?>
+include 'PIE.htc';

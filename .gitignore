@@ -2,39 +2,56 @@
 ###################################
 .*
 *~
-build.properties
-
+*.bak
 !.gitignore
-!.htaccess
 
 # Icon must ends with two \r.
 Icon
 
 
-# Windows
+# Windows Files #
+#################
+# Windows image file caches
 Thumbs.db
+ehthumbs.db
+
+# Folder config file
 Desktop.ini
 
-# Sublime Text
-sftp-config.json
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
 
-# Netbeans (custom)
-/nbproject/*
 
-# Temp files
-*.tmp
-*.bak
-*.swp
-*~.nib
+# Eclipse #
+###########
+bin/**
+tmp/**
+tmp/**/*
+local.properties
 
-# Packages #
-*.zip
-*.tar.*
+# JetBrains Apps #
+## IntelliJ
+out/
 
-# Composer
-composer.lock
-/vendor
+# NetBeans IDE #
+################
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
 
-# Never ignore
-!index.html
-!index.php
+# misc other files #
+####################
+_notes/
+
+packages/*
+!packages/.gitkeep
+
+build.properties
+
+tests/_output/*
+*.sublime-project
+*.sublime-workspace

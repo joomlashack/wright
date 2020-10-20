@@ -248,5 +248,4 @@ fs.writeFileSync('../js/bootstrap.min.js', jssug, {flag: 'a+'});
 copyFileSync('../css/bootstrap.min.css', templateCSSjui + '/bootstrap.min.css', 'utf8');
 copyFileSync('../css/bootstrap-responsive.min.css', templateCSSjui + '/bootstrap-responsive.min.css', 'utf8');
 copyFileSync('../css/bootstrap-extended.css', templateCSSjui + '/bootstrap-extended.css', 'utf8');
-copyFileSync('../js/jquery.min.js', templateJSjui + '/jquery.min.js', 'utf8');
 copyFileSync('../js/bootstrap.min.js', templateJSjui + '/bootstrap.min.js', 'utf8');

@@ -8,19 +8,19 @@ div.js-columns select.columns { float: none; }
 .column a { cursor: pointer; }
 
 div.js-col select {
-    max-width: 50px;
+  max-width: 50px;
 }
 
 p#column_info #columns_warning {
-    color: red;
+  color: red;
 }
 
 p#column_info,
 div#columns {
-	clear: both;
+  clear: both;
 }
 
 a .icon-arrow-left, a .icon-arrow-left,
 a .icon-arrow-right, a .icon-arrow-right {
-    cursor: pointer;
+  cursor: pointer;
 }

@@ -118,4 +118,4 @@ $c = 0; // Wright v.3: Counter variable to get horizontal columns (set by $wrigh
 		<?php /* End Wright v.3: Close row-fluid */ ?>
 
 	<?php endfor; ?>
-</div> <?php // Wright v.3: Changed ul for div element ?>
+</div> <?php // Wright v.3: Changed ul for div element

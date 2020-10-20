@@ -116,6 +116,6 @@ foreach ($list as $item) :
 		}
 		?>
  </li>
-<?php } // Wright v.3: If horizontal display is enabled, displays categories showing category image (when available) and in horizontal / column layout */
- ?>
-<?php endforeach; ?>
+<?php
+ 	} // Wright v.3: If horizontal display is enabled, displays categories showing category image (when available) and in horizontal / column layout
+endforeach;

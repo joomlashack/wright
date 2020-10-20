@@ -83,4 +83,4 @@ $class = ' class="first"';
 		</div>
 		<?php endif; ?>
 	<?php endforeach; ?>
-<?php endif; ?>
+<?php endif;

@@ -90,4 +90,4 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php endif; ?>
 		<?php  endif; ?>
 	</form>
-<?php endif; ?>
+<?php endif;
