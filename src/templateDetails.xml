@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.9" type="template" method="upgrade" client="site">
 	<name>js_wright</name>
-	<creationDate>October 20 2020</creationDate>
+	<creationDate>October 21 2020</creationDate>
 	<author>Joomlashack</author>
 	<authorEmail>support@joomlashack.com</authorEmail>
 	<authorUrl>https://www.joomlashack.com</authorUrl>
