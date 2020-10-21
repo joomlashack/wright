@@ -208,4 +208,4 @@ endif; ?>
 endif; ?>
 <?php if($wrightItemContainer):	// Wright v.3: Item wrapper ?>
 	</div>
-<?php endif; ?>
+<?php endif;

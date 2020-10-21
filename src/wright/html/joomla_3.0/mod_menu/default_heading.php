@@ -39,4 +39,4 @@ $class = ($item->deeper) ? 'class="heading dropdown-toggle" ' : 'class="heading"
         }
     }
 	?>
-</a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure ?>
+</a> <?php // Wright v.3 changed <span> for <a> for Bootstrap structure

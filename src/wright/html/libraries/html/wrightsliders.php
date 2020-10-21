@@ -10,7 +10,7 @@
 
 defined('JPATH_PLATFORM') or die;
 
-require_once(JPATH_PLATFORM . '/joomla/html/html/sliders.php');
+require_once JPATH_PLATFORM . '/joomla/html/html/sliders.php';
 
 /**
  * Utility class for Sliders elements

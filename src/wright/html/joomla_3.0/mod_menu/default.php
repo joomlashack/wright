@@ -11,7 +11,7 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-require_once(JPATH_THEMES.'/'.$app->getTemplate().'/wrighttemplate.php');
+require_once JPATH_THEMES.'/'.$app->getTemplate().'/wrighttemplate.php';
 
 // Note. It is important to remove spaces between elements.
 

@@ -60,7 +60,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 ?>
 
 <div class="item-page<?php echo $this->pageclass_sfx?><?php echo ($this->wrightExtraClass != '' ? ' ' . $this->wrightExtraClass : ''); if ($this->wrightHasImageClass != '') { echo ((isset($images->image_intro) and !empty($images->image_intro)) ? ' ' . $this->wrightHasImageClass : ''); } // Wright v.3: Item elements extra elements
- ?>" itemscope itemtype="http://schema.org/Article">
+ ?>" itemscope itemtype="https://schema.org/Article">
 
 	<!-- Schema.org markup -->
 	<meta itemprop="name" content="<?php echo $this->escape($this->params->get('page_heading')); ?>" />
@@ -77,7 +77,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 	<meta itemprop="dateModified" content="<?php echo JHtml::_('date', $this->item->modified, 'c'); ?>" />
 	<meta itemprop="datePublished" content="<?php echo JHtml::_('date', $this->item->publish_up, 'c'); ?>" />
 	<?php if (getSiteLogo() != '') : ?>
-		<div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+		<div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
 			<meta itemprop="name" content="<?php echo $this->escape($app->getCfg('sitename')); ?>" />
 			<div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
 				<meta itemprop="url" content="<?php echo getSiteLogo(); ?>">

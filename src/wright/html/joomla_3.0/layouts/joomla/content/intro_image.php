@@ -44,4 +44,4 @@ $params  = $displayData->params;
 	/* End Wright v.3: Added link to the image from the article */
 	?>
 	 </div>
-<?php endif; ?>
+<?php endif;

@@ -19,4 +19,4 @@ $wrightHorizontal = (isset($wrightHorizontal) ? $wrightHorizontal : false);  // 
 <?php
 require JModuleHelper::getLayoutPath('mod_articles_categories', $params->get('layout', 'default').'_items');
 ?><?php if (!$wrightHorizontal) : // Wright v.3: Removed ul when used horizontal layout ?></ul>
-<?php endif; // Wright v.3: Removed ul when used horizontal layout ?>
+<?php endif; // Wright v.3: Removed ul when used horizontal layout

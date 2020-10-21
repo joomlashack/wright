@@ -13,5 +13,5 @@ $app = JFactory::getApplication();
 
 $wrightEnableIcons = true;  // Optionally disable icons in items
 
-require_once(JPATH_THEMES.'/'.$app->getTemplate().'/'.'wright'.'/'.'html'.'/'.'overrider.php');
-require(Overrider::getOverride('mod_articles_news','_item'));
+require_once JPATH_THEMES.'/'.$app->getTemplate().'/wright/html/overrider.php';
+require Overrider::getOverride('mod_articles_news','_item');
