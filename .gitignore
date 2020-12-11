@@ -36,7 +36,7 @@ out/
 # NetBeans IDE #
 ################
 nbproject/private/
-build/
+# build/
 nbbuild/
 dist/
 nbdist/
