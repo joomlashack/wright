@@ -11,6 +11,8 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access');
 
+require_once __DIR__ . '/libraries/lessphp/lessc.inc.php';
+
 /**
  * Wright Less Compiler class
  *
