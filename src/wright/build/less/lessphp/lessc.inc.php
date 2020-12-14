@@ -37,7 +37,7 @@
  * The `lessc_formatter` takes a CSS tree, and dumps it to a formatted string,
  * handling things like indentation.
  */
-ini_set('precision', 17);
+ini_set('precision', 20);
 
 class lessc {
 	static public $VERSION = "v0.5.0";
