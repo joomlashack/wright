@@ -36,9 +36,9 @@ out/
 # NetBeans IDE #
 ################
 nbproject/private/
-build/
+/build/
 nbbuild/
-dist/
+/dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml

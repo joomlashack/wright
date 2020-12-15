@@ -1024,3 +1024,15 @@ aside a.readmore{
     -moz-border-radius-topleft: @baseBorderRadius;
   }
 }
+
+// Print
+@media print {
+
+  a[href]:after {
+    content: "";
+  }
+
+  #pop-print {
+    display: none;
+  }
+}

@@ -209,6 +209,11 @@ abstract class HtmlAdapterAbstract
 			}
 		}
 
+		// Add style class
+		if(!empty($this->params->get('style'))) {
+			$class .= ' s_' . $this->params->get('style');
+		}
+		
 		$app = JFactory::getApplication();
 		
 		// Prevents XSS vulnerability, making sure to get only integers
@@ -226,6 +231,13 @@ abstract class HtmlAdapterAbstract
 		}
 
 		$class .= " rev_" . $wright->revision;
+
+		// Page class suffix
+		$params     = $menu->getParams($itemId);
+		$pageclass  = $params->get('pageclass_sfx');
+		if($pageclass != '') {
+			$class .= ' ' . $pageclass;
+		}
 
 		return '<body class="' . $class . '"' . ($style != '' ? ' style="' . $style . '"' : '') . $data . '>';
 	}
