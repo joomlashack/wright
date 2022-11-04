@@ -1,24 +1,20 @@
-The Wright Framework is used to create Joomla Templates.  The name is in honor of the famous architect, Frank Lloyd Wright, because the framework is like a blueprint.   It provides a solid foundation to build from, and helps to keep the entire template together while merging some unique features and tools.  This is the end result, which is a great tool integrated with the templates, providing many benefits.
+The Wright Framework is used to create Joomla 3 templates.  
+
+This framework will not be updated for Joomla 4.
+
+The name is in honor of the famous architect, Frank Lloyd Wright, because the framework is like a blueprint.   It provides a solid foundation to build from, and helps to keep the entire template together while merging some unique features and tools.  This is the end result, which is a great tool integrated with the templates, providing many benefits.
 
 ## Wright General Overview
 
 ### The Wright-based Joomla Template - a "Strictly Joomla" approach to templates
 
-Wright helps building light, non-bloated, and simple to install Joomla Templates to make your life easier.  We call them "strictly Joomla" because in most cases the templates do no require any extra extensions to function, only the Joomla CMS and it's built-in features.  This is different from many other template frameworks because they require you to install extra plugins and/or components for the template to work.
-
-## Quick start
-
-Three quick start options are available:
-
-* [Check out the demo](http://wright.joomlashack.com/demo).
-* [Download the latest release](http://wright.joomlashack.com/download) to start building your template (check out the **Developers** section in this document)
-* Clone the repo: `git clone git://github.com/joomlashack/wright.git`
+Wright helped building light, non-bloated, and simple to install Joomla templates.  We called them "strictly Joomla" because in most cases the templates do no require any extra extensions to function, only the Joomla CMS and it's built-in features.  This iw different from many other template frameworks that required you to install extra plugins and/or components for the template to work.
 
 ## Versioning
 
-For transparency and insight into our release cycle, and for striving to maintain backward compatibility, Wright will be maintained under the Semantic Versioning guidelines as much as possible.
+For transparency and insight into our release cycle, and for striving to maintain backward compatibility, Wright was maintained under the Semantic Versioning guidelines as much as possible.
 
-Releases will be numbered with the following format:
+Releases were numbered with the following format:
 
 `<major>.<minor>.<patch>`
 
@@ -30,25 +26,13 @@ And constructed with the following guidelines:
 
 For more information on SemVer, please visit http://semver.org/.
 
-## Bug tracker
-
-Have a bug or a feature request? [Please open a new issue](https://github.com/joomlashack/wright/issues?state=open). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
-
 ### Bootstrapped
 
-Wright is is based on version 2 of [Twitter Bootstrap](http://twitter.github.com/bootstrap/). We will remain with version 2 until the core Joomla updates to a more recent verison.
-
-## Community
-
-Keep track of development and community news.
-
-* Follow [@joomlashack on Twitter](http://twitter.com/joomlashack).
-* Read and subscribe to the [The Joomlashack Wright Blog](http://www.joomlashack.com/blog/wright-template-framework).
-
+Wright was based on version 2 of [Twitter Bootstrap](http://twitter.github.com/bootstrap/). 
 
 ## Developers
 
-A few notes when you start creating your new Joomla template using Wright.
+A few notes on creating your new Joomla template using Wright.
 
 ### Joomla Template
 
@@ -74,7 +58,7 @@ If you’re using a hotfix or feature branch, clearly specify the purpose of it.
 
 ## Copyright and license
 
-Copyright 2005 - 2019 Joomlashack
+Copyright 2005 - Joomlashack
 
 Licensed under the GNU/GPL v3 (the "License");
 This framework is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
