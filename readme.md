@@ -1,10 +1,12 @@
+## Wright for Joomla 3 and Joomla 4.
+
 The Wright Framework is used to create Joomla 3 templates.  
 
-This framework will not be updated for Joomla 4.
-
-The name is in honor of the famous architect, Frank Lloyd Wright, because the framework is like a blueprint.   It provides a solid foundation to build from, and helps to keep the entire template together while merging some unique features and tools.  This is the end result, which is a great tool integrated with the templates, providing many benefits.
+The Wright Framework will not be updated for Joomla 4.
 
 ## Wright General Overview
+
+The name is in honor of the famous architect, Frank Lloyd Wright, because the framework is like a blueprint.   It provides a solid foundation to build from, and helps to keep the entire template together while merging some unique features and tools.  This is the end result, which is a great tool integrated with the templates, providing many benefits.
 
 ### The Wright-based Joomla Template - a "Strictly Joomla" approach to templates
 
