@@ -1,4 +1,4 @@
-## Wright for Joomla 3 and Joomla 4.
+## The Wright Framework
 
 The Wright Framework is used to create Joomla 3 templates.  
 
